@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TeamTask id="ZCHZ76">
+	<TeamTaskMeta>
+		<CreationDate format="yyyy-MM-dd :: HH:mm:ss z">2010-09-07 :: 09:30:41 EDT</CreationDate>
+		<LastModificationDate format="yyyy-MM-dd :: HH:mm:ss z">2011-01-06 :: 10:55:38 EST</LastModificationDate>
+	</TeamTaskMeta>
+	<Summary>Fix that thing</Summary>
+	<User>NBK75OS</User>
+	<Module>charmgrjs</Module>
+	<AssignedTo />
+	<State description="Assigned" index="1" />
+	<Severity description="Enhancement" index="0" />
+	<Description>flksadfj;alkjsdfl;		</Description>
+	<Notification>
+		<Recipient>todd.chambery@gmail.com</Recipient>
+	</Notification>
+	<LinkList />
+	<NoteHistory>
+		<Note user="NBK75OS" id="0">
+			<NoteMeta>
+				<NoteDate format="yyyy-MM-dd :: HH:mm:ss z">2010-09-07 :: 14:10:55 EDT</NoteDate>
+			</NoteMeta>
+			asdfaasdfd
+		</Note>
+		<Note user="NBK75OS" id="1">
+			<NoteMeta>
+				<NoteDate format="yyyy-MM-dd :: HH:mm:ss z">2010-09-07 :: 14:10:57 EDT</NoteDate>
+			</NoteMeta>
+			asdfasdf
+		</Note>
+	</NoteHistory>
+</TeamTask>
+

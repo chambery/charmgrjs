@@ -1,0 +1,155 @@
+domains = new TAFFY ([{
+	name: "Air",
+	deities: ["Obad-Hai"],
+	detail: "Turn or destroy earth creatures as a good cleric turns undead. Rebuke, command, or bolster air creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+	spells: ["Obscuring Mist", "Wind Wall", "Gaseous Form", "Air Walk", "Control Winds", "Chain Lightning", "Control Weather", "Whirlwind", "Elemental Swarm"], 
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Animal",
+	deities: ["Ehlonna", "Obad-Hai"],
+	detail: "You can use <i>speak with animals</i> once per day as a spell-like ability. Add Knowledge (nature) to your list of cleric class skills.",
+	spells: ["Calm Animals", "Hold Animal", "Dominate Animal", "Summon Nature's Ally IV", "Commune with Nature", "Antilife Shell", "Animal Shapes", "Summon Nature's Ally VII", "Shapechange"], 
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Chaos",
+	deities: ["Corellon Larethian", "Ehlonna", "Gruumsh", "Kord", "Olidammara"],
+	detail: "You cast chaos spells at +1 caster level",
+	spells: ["Protection from Law", "Shatter", "Magic Circle against Law", "Chaos Hammer", "Dispel Law", "Animate Objects", "Word of Chaos", "Cloak of Chaos", "Summon Monster IX"], 
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Death",
+	deities: ["Nerull", "Wee Jas"],
+	detail: "You may use a death touch once per day. Your death touch is a supernatural ability that produces a death effect. You must succeed on a melee touch attack against a living creature (using the rules for touch spells). When you touch, roll 1d6 per cleric level you possess. If the total at least equals the creature's current hit points, it dies (no save).",
+	spells: ["Cause Fear", "Death Knell", "Forcecage", "Death Ward", "Slay Living", "Create Undead", "Destruction", "Create Greater Undead", "Wail of the Banshee"], 
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Destruction",
+	deities: ["Hextor", "St. Cuthbert"],
+	detail: "You gain the smite power, the supernatural ability to make a single melee attack with a +4 bonus on attack rolls and a bonus on damage rolls equal to your cleric level (if you hit). You must declare the smite before making the attack. This ability is usable once per day.",
+	spells: ["Inflict Light Wounds", "Shatter", "Contagion", "Inflict Critical Wounds", "Inflict Light Wounds, Mass", "Harm", "Disintegrate", "Earthquake", "Implosion"], 
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Earth",
+	deities: ["Moradin", "Obad-Hai"],
+	detail: "Turn or destroy air creatures as a good cleric turns undead. Rebuke, command, or bolster earth creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+	spells: ["Magic Stone","Soften Earth and Stone","Stone Shape","Spike Stones","Wall of Stone","Stoneskin","Earthquake","Iron Body","Elemental Swarm"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Evil",
+	deities: ["Erythnul"," Gruumsh"," Hextor"," Nerull", "Vecna"],
+	detail: "You cast evil spells at +1 caster level",
+	spells: ["Protection from Good","Desecrate","Magic Circle against Good","Unholy Blight","Dispel Good","Create Undead","Blasphemy","Unholy Aura","Summon Monster IX"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Fire",
+	deities: ["Obad-Hai"],
+	detail: "Turn or destroy water creatures as a good cleric turns undead. Rebuke, command, or bolster fire creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+	spells: ["Burning Hands","Produce Flame","Resist Energy","Wall of Fire","Fire Shield","Fire Seeds","Fire Storm","Incendiary Cloud","Elemental Swarm"],
+	type: "domain", 
+	tags: ["pathfinder"]	
+}, {
+	name: "Good",
+	deities: ["Corellon Larethian"," Ehlonna"," Garl Glittergold"," Heironeous"," Kord"," Moradin"," Pelor", "Yondalla"],
+	detail: "You cast good spells at +1 caster level.",
+	spells: ["Protection from Evil","Aid","Magic Circle against Evil","Holy Smite","Dispel Evil","Blade Barrier","Holy Word","Holy Aura","Summon Monster IX"],
+	type: "domain", 
+	tags: ["pathfinder"]	
+}, {
+	name: "Healing",
+	deities: ["Pelor"],
+	detail: "You cast healing spells at +1 caster level.",
+	spells: ["Cure Light Wounds","Cure Moderate Wounds","Cure Serious Wounds","Cure Critical Wounds","Cure Light Wounds, Mass","Heal","Regenerate","Cure Critical Wounds, Mass","Heal, Mass"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Knowledge",
+	deities: ["Boccob", "Vecna"] ,
+	detail: "Add all Knowledge skills to your list of cleric class skills. You cast divination spells at +1 caster level.",
+	spells: ["Detect Secret Doors","Detect Thoughts","Clairaudience/Clairvoyance","Divination","True Seeing","Find the Path","Legend Lore","Discern Location","Foresight"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Law", 
+	deities: ["St. Cuthbert", "Heironeous", "Hextor", "Moradin", "Wee Jas", "Yondalla"],
+	detail: "You cast law spells at +1 caster level.",
+	spells:["Protection from Chaos","Calm Emotions","Magic Circle against Chaos", "Order's Wrath","Dispel Chaos","Hold Monster","Dictum","Shield of Law",	"Summon Monster IX"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Luck",
+	deities: ["Fharlanghn", "Kord", "Olidammara"],
+	detail: "You gain the power of good fortune, which is usable once per day. This extraordinary ability allows you to reroll one roll that you have just made before the DM declares whether the roll results in success or failure. You must take the result of the reroll, even if it's worse than the original roll.",
+	spells: ["Entropic Shield","Aid","Protection from Energy","Freedom of Movement","Break Enchantment","Mislead","Spell Turning","Moment of Prescience","Miracle"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Magic", 
+	deities: ["Boccob", "Vecna", "Wee Jas"], 
+	power: "Use scrolls, wands, and other devices with spell completion or spell trigger activation as a wizard of one-half your cleric level (at least 1st level). For the purpose of using a scroll or other magic device, if you are also a wizard, actual wizard levels and these effective wizard levels stack.",
+	spells: ["Nystul's Magic Aura","Identify","Dispel Magic","Imbue with Spell Ability","Spell Resistance","Antimagic Field","Spell Turning","Protection from Spells", "Mordenkainen's Disjunction"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Plant",
+	deities: ["Ehlonna", "Obad-Hai"], 
+	detail: "Rebuke or command plant creatures as an evil cleric rebukes or commands undead. Use this ability a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability. Add Knowledge (nature) to your list of cleric class skills.", 
+	spells: ["Entangle","Barkskin","Plant Growth","Command Plants","Wall of Thorns","Repel Wood","Animate Plants","Control Plants","Shambler"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Protection",
+	deities: ["Corellon Larethian", "St. Cuthbert", "Fharlanghn", "Garl Glittergold", "Moradin", "Yondalla"], 
+	power: "You can generate a  protective ward as a supernatural ability. Grant someone you touch a resistance bonus equal to your cleric level on his or her next saving throw. Activating this power is a standard action. The protective ward is an abjuration effect with a duration of 1 hour that is usable once per day.",
+	spells: ["Sanctuary","Shield Other","Protection from Energy","Spell Immunity","Spell Resistance","Antimagic Field","Repulsion","Mind Blank","Prismatic Sphere"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Strength",
+	deities: ["St. Cuthbert", "Gruumsh", "Kord", "Pelor"],
+	power: "You can perform a feat of strength as a supernatural ability. You gain an enhancement bonus to Strength equal to your cleric level. Activating the power is a free action, the power lasts 1 round, and it is usable once per day.",
+	spells: ["Enlarge Person","Bull's Strength","Magic Vestment","Spell Immunity","Righteous Might","Stoneskin","Bigby's Grasping Hand","Bigby's Clenched Fist", "Bigby's Crushing Hand"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Sun",
+	deities: ["Ehlonna", "Pelor"],
+	detail: "Once per day, you can perform a greater turning against undead in place of a regular turning. The greater turning is like a normal turning except that the undead creatures that would be turned are destroyed instead.",
+	spells: ["Endure Elements","Heat Metal","Searing Light","Fire Shield","Flame Strike","Fire Seeds","Sunbeam","Sunburst","Prismatic Sphere"],
+	type: "domain", 
+	tags: ["pathfinder"]
+}, {
+	name: "Travel",
+	deities: ["Fharlanghn"], 
+	detail: "For a total time per day of 1 round per cleric level you possess, you can act normally regardless of magical effects that impede movement as if you were affected by the spell freedom of movement. This effect occurs automatically as soon as it applies, lasts until it runs out or is no longer needed, and can operate multiple times per day (up to the total daily limit of rounds). This granted power is a supernatural ability. Add Survival to your list of cleric class skills.",
+	spells: ["Longstrider","Locate Object","Fly","Dimension Door","Teleport","Find the Path","Teleport, Greater","Phase Door","Astral Projection"],
+	type: "domain", 
+	tags: ["pathfinder"]	
+}, {
+	name: "Trickery",
+	deities: ["Boccob", "Erythnul", "Garl Glittergold", "Olidammara", "Nerull"], 
+	power: "Add Bluff, Disguise, and Hide to your list of cleric class skills.",
+	spells: ["Disguise Self","Invisibility","Nondetection","Confusion","False Vision","Mislead","Screen","Polymorph Any Object","Time Stop"],
+	type: "domain", 
+	tags: ["pathfinder"]	
+}, {
+	name: "War",
+	deities: ["Corellon Larethian", "Erythnul", "Gruumsh", "Heironeous", "Hextor"], 
+	power: "Free Martial Weapon Proficiency with deity's favored weapon (if necessary) and Weapon Focus with the deity's favored weapon. The favored weapons of the war deities are as follows; Corellon, longsword; Erythnul, morningstar; Gruumsh, spear (or longspear); Heironeous, longsword; Hextor, flail (light or heavy).", 
+	spells: ["Magic Weapon","Spiritual Weapon","Magic Vestment","Divine Power","Flame Strike","Blade Barrier","Power Word Blind","Power Word Stun","Power Word Kill"],
+	type: "domain", 
+	tags: ["pathfinder"]	
+}, {
+	name: "Water",
+	deities: "[Obad-Hai]", 
+	power: "Turn or destroy fire creatures as a good cleric turns undead. Rebuke, command, or bolster water creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+	spells: ["Obscuring Mist","Fog Cloud","Water Breathing","Control Water","Ice Storm","Cone of Cold","Acid Fog","Horrid Wilting","Elemental Swarm"],
+	type: "domain", 
+	tags: ["pathfinder"]	
+}]);

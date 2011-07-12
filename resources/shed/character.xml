@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CharacterXMLDataset>
+	<Character>
+		<CharacterName>Felonious</CharacterName>
+		<PlayerName>Todd</PlayerName>
+		<Age></Age>
+		<Size></Size>
+		<Gender></Gender>
+		<Race></Race>
+		<Height></Height>
+		<Alignment></Alignment>
+		<Deity></Deity>
+		<Domains>
+			<Domain></Domain>
+		</Domains>
+		<Classes>
+			<Class></Class>
+			<ClassName></ClassName>
+			<ClassLevel></ClassLevel>
+			<XP></XP>
+
+		</Classes>
+	</Character>
+</CharacterXMLDataset>

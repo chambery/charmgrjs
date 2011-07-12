@@ -1,0 +1,84 @@
+<form name='charmgr'>
+<div id='topline' class='dp100'><input id='charname' value='' size='6' type='text' />&nbsp;<span id='class_select'></span>&nbsp;<span id='race_select'></span>&nbsp;<b>HP
+</b><input id='hp' value='' type='text' style='width: 25px' /></div>
+<div id='abilitiespart' class='dp100' style='padding-bottom: 5px;'>
+	<table border="0">
+		<tbody>
+			<tr>
+				<td align="center"><b>Str</b></td>
+				<td align="center"><b>Dex</b></td>
+				<td align="center"><b>Int</b></td>
+				<td align="center"><b>Con</b></td>
+				<td align="center"><b>Cha</b></td>
+				<td align="center"><b>Wis</b></td>
+			</tr>
+			<tr>
+				<td align="center"><input type="text" onblur="recalc_edit_page()" value="" name="Strscore" class="two_digit" id="ability_Str"></td>
+				<td align="center"><input type="text" onblur="recalc_edit_page()" value="" name="Dexscore" class="two_digit" id="ability_Dex"></td>
+				<td align="center"><input type="text" onblur="recalc_edit_page()" value="" name="Intscore" class="two_digit" id="ability_Int"></td>
+				<td align="center"><input type="text" onblur="recalc_edit_page()" value="" name="Conscore" class="two_digit" id="ability_Con"></td>
+				<td align="center"><input type="text" onblur="recalc_edit_page()" value="" name="Chascore" class="two_digit" id="ability_Cha"></td>
+				<td align="center"><input type="text" onblur="recalc_edit_page()" value="" name="Wisscore" class="two_digit" id="ability_Wis"></td>
+				<td><b>XP</b> <input type="text" onblur="recalc_edit_page()" size="5" value="" name="xp" id="xp"></td>
+			</tr>
+			<tr>
+				<td align="center" id="race_Str_mod"></td>
+				<td align="center" id="race_Dex_mod"></td>
+				<td align="center" id="race_Int_mod"></td>
+				<td align="center" id="race_Con_mod"></td>
+				<td align="center" id="race_Cha_mod"></td>
+				<td align="center" id="race_Wis_mod"></td>
+			</tr>
+		</tbody>
+	</table>
+	<select id='alignment' onchange='recalc_edit_page()' style='width: 95px'></select> <select id='deity' onchange='recalc_edit_page()' style='width: 95px'></select>
+
+</div>
+<br style='clear: both' />
+<div id='middlepart' class='dp60'>
+<div id='weaponspart' class='dp100'>
+<div id='ranger_weapon_style' style='padding-bottom: 5px;'>Weapon style: <select id='weapon_style' style='width: 110px' onchange='recalc_edit_page()'>
+	<option id='two_weapon_combat' value='two_weapon_combat'>2-weapon combat</option>
+	<option id='archery' value='archery'>Archery</option>
+</select></div>
+<div id='favored_enemies'>
+<table id='favored_enemies' style='width: 100%;'>
+	<tr style='background-color: #8DC3E9'>
+		<td colspan=2>Favored Enemies</td>
+	</tr>
+</table>
+<hr style='width: 80%;' />
+</div>
+<div id='char_weapons'></div>
+<div id='new_weapon' class='new_weapon'></div>
+<hr width='80%' />
+</div>
+<div id='armorpart' class='dp100'>
+<div id='char_armors'></div>
+<div id='new_armor' class='new_weapon'></div>
+<hr width='80%' />
+</div>
+<div id='shieldpart' class='dp100'>
+<div id='char_shields'></div>
+<div id='new_shield' class='new_weapon'></div>
+</div>
+</div>
+<div id='skillspart' class='dp33'>
+<table border='0'>
+	<tr>
+		<td colspan='2'><span id='skill_pts_remaining' style='float: right;'>0</span>Skill pts left:</td>
+	</tr>
+	<tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'>
+		<td colspan=2><a class='fake_link'><span style='float: right'>[<span id='languages_expand_flag' style='font-family: monospace;'>+</span>]</span>Languages</a></td>
+	</tr>
+	<tr id='languages'>
+		<td colspan=2>
+		<table id='language_table' width='100%' style='border-collapse: collapse;'>
+
+		</table>
+		</td>
+	</tr>
+</table>
+</div>
+<div class='clear'></div>
+</form>

@@ -1,0 +1,33 @@
+_design/chars
+   "language": "javascript",
+   "views": {
+       "all_chars": {
+           "map": "function(doc) {\u000a\u0009\u0009if (doc.type == 'character') {\u000a\u0009\u0009\u0009emit(doc.name, doc);\u000a\u0009\u0009}\u000a}"
+       }
+   }
+   
+   
+_design/ext_data
+   "views": {
+       "by_tag": {
+           "map": "function(doc) {\u000a\u0009if (doc.tags && doc.tags.length > 0) {\u000a       \u0009    for(var i in doc.tags) {\u000a\u0009\u0009emit(doc.tags[i], doc);   \u0009\u0009\u000a       \u0009    }\u000a\u0009}\u000a}"
+       },
+       "by_name": {
+           "map": "function(doc) {\u000a\u0009if (doc.tags && doc.tags.length > 0 && doc.name) { \u000a\u0009\u0009emit(doc.name, doc); \u000a\u0009} \u000a}"
+       },
+       "by_type": {
+           "map": "function(doc) { if(doc.tags && doc.tags.length > 0 && doc.type) { emit(doc.type, doc); } }"
+       }
+   }
+   
+_design/logs
+   "language": "javascript",
+   "views": {
+       "all_logs": {
+           "map": "function(doc) {\u000a\u0009\u0009if (doc.type == \"log\") {\u000a\u0009\u0009\u0009emit(doc.name, doc);\u000a\u0009\u0009}\u000a}"
+       }
+   },
+   "shows": {
+       "note": "function(doc, req) { return '<blockquote style=\\'width: 80%; margin-left: auto; margin-right: auto;\\'>' + doc.note + '</blockquote>';}"
+   }
+

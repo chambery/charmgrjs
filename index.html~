@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta name='viewport' content='width=320' />
+<!-- below script is specific to: http://grendel.couchone.com/cm-dev/hrothgar/ -->
+<script src="http://www.google.com/jsapi?key=ABQIAAAAK-hbGBc180XUHwvac5jBVRQKzB5Av4mFSuRj08VATgINH_oZ9RRT4bdKsnADJE5qX3gRxYKp9n-u1A" type="text/javascript"></script>
+<script type="text/javascript">
+	google.load("jquery", "1.4");
+	google.load("jqueryui", "1.8");
+</script>
+<script type="text/javascript" src="resources/armors.js"></script>
+<script type="text/javascript" src="resources/classes.js"></script>
+<script type="text/javascript" src="resources/deities.js"></script>
+<script type="text/javascript" src="resources/deities-pf.js"></script>
+<script type="text/javascript" src="resources/domains.js"></script>
+<script type="text/javascript" src="resources/favored_enemies.js"></script>
+<script type="text/javascript" src="resources/feats.js"></script>
+<script type="text/javascript" src="resources/feats2.js"></script>
+<script type="text/javascript" src="resources/feats-pf.js"></script>
+<script type="text/javascript" src="resources/languages.js"></script>
+<script type="text/javascript" src="resources/pathfinder_feats.js"></script>
+<script type="text/javascript" src="resources/races.js"></script>
+<script type="text/javascript" src="resources/schools.js"></script>
+<script type="text/javascript" src="resources/shields.js"></script>
+<script type="text/javascript" src="resources/skills.js"></script>
+<script type="text/javascript" src="resources/skills-pf.js"></script>
+<script type="text/javascript" src="resources/sorceror_bloodlines.js"></script>
+<script type="text/javascript" src="resources/specials.js"></script>
+<script type="text/javascript" src="resources/spells.js"></script>
+<script type="text/javascript" src="resources/spells2.js"></script>
+<script type="text/javascript" src="resources/spells-pf.js"></script>
+<script type="text/javascript" src="resources/weapons.js"></script>
+<script>
+function load() {
+	chardata = {
+		name: "name",
+		race: "race",
+		array: ["one", "two", "three"],
+		object: {"one" : "1", "two" : "2"}
+	}
+
+	$("form#foo").submit(function () {
+			$.post('/character/' + $('#owner').val() + '/' + $('#name').val(), chardata);
+		return false;
+	});
+	$.getJSON('character/foo/bar', process_json)
+}
+
+function process_json(data) {
+		console.log("data" + data);
+        var items = [];
+
+        $.each(data, function (key, val) {
+            items.push('<li id="' + key + '">' + val + '</li>');
+        });
+
+        $('<ul/>', {
+            'class': 'my-new-list',
+            html: items.join('')
+        }).appendTo('body');
+}
+
+</script>
+
+<style type="text/css" media="all">
+@import "charmgr.css";
+</style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css" type="text/css" rel="Stylesheet" />
+
+<style type="text/css" media="all">
+@import "clickmenu.css";
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="SHORTCUT ICON" href="logo.ico"/>
+<title>D&amp;D Player's Companion</title>
+</head>
+<body onload='javascript:load()'>
+Loading some JSON...
+<form id="foo">
+	<input id="owner" type="text" name="user[owner]" />
+	<input id="name" type="text" name="user[name]" />
+	<!-- input type="hidden" name="user[chardata]"  -->
+	<input type="submit" value="Submit"  />
+</form>
+</body>
+</html>

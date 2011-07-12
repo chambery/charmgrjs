@@ -1,0 +1,199 @@
+Name,Type,Prerequistites,Summary
+Agile Maneuvers,Combat,-,Use your Dex bonus when calculating your CMB
+Arcane Armor Mastery,Combat,"Arcane Armor Training, Armor Proficiency, Medium, caster level 7th",Reduce your arcane spell failure chance by 20%
+Arcane Armor Training,Combat,"Armor Proficiency, Light, caster level 3rd",Reduce your arcane spell failure chance by 10%
+Arcane Strike,Combat,Ability to cast arcane spells,+1 damage and weapons are considered magic
+Bleeding Critical,Combat,"Critical Focus, base attack bonus +11","Whenever you score a critical hit, the target takes 2d6 bleed"
+Blind-Fight,Combat,-,
+Blinding Critical,Combat,"Critical Focus, base attack bonus +15","Whenever you score a critical hit, the target is blinded"
+Catch Off-Guard,Combat,-,No penalties for improvised melee weapons
+Channel Smite,Combat,Channel energy class feature,Channel energy through your attack
+Cleave,Combat,Power Attack,Make an additional attack if the first one hits
+Combat Expertise,Combat,Int 13,Trade attack bonus for AC bonus
+Combat Reflexes,Combat,-,Make additional attacks of opportunity
+Critical Focus,Combat,Base attack bonus +9,+4 bonus on attack rolls made to confirm critical hits
+Critical Mastery,Combat,"Any two critical feats, 14th-level fighter",Apply two effects to your critical hits
+Dazzling Display,Combat,Weapon Focus,Intimidate all foes within 30 feet
+Deadly Aim,Combat,"Dex 13, base attack bonus +1",Trade ranged attack bonus for damage
+Deadly Stroke,Combat,"Greater Weapon Focus, Shatter Defenses, base attack bonus +11",Deal double damage plus 1 Conbleed 
+Deafening Critical,Combat,"Critical Focus, base attack bonus +13","Whenever you score a critical hit, the target is deafened"
+Defensive Combat Training,Combat,-,Use your total Hit Dice as your base attack bonus for CMD
+Deflect Arrows,Combat,"Dex 13, Improved Unarmed Strike",Avoid one ranged attack per round
+Disruptive,Combat,6th-level fighter,Increases the DC to cast spells adjacent to you
+Dodge,Combat,Dex 13,+1 dodge bonus to AC
+Double Slice,Combat,Two-Weapon Fighting,Add your Str bonus to off-hand damage rolls 
+Exhausting Critical,Combat,"Tiring Critical, base attack bonus +15","Whenever you score a critical hit, the target is exhausted"
+Exotic Weapon Proficiency,Combat,Base attack bonus +1,No penalty on attacks made with one exotic weapon
+Far Shot,Combat,Point Blank Shot,Decrease ranged penalties by half
+Gorgon&apos;s Fist,Combat,"Scorpion Style, base attack bonus +6",Stagger a foe whose speed is reduced
+Great Cleave,Combat,"Cleave, base attack bonus +4",Make an additional attack after each attack hits
+Greater Bull Rush,Combat,"Improved Bull Rush, base attack bonus +6",Enemies you bull rush provoke attacks of opportunity
+Greater Disarm,Combat,"Improved Disarm, base attack bonus +6",Disarmed weapons are knocked away from your enemy
+Greater Feint,Combat,"Improved Feint, base attack bonus +6",Enemies you feint lose their Dex bonus for 1 round
+Greater Grapple,Combat,"Improved Grapple, base attack bonus +6",Maintain your grapple as a move action
+Greater Overrun,Combat,"Improved Overrun, base attack bonus +6",Enemies you overrun provoke attacks of opportunity
+Greater Penetrating Strike,Combat,"Penetrating Strike, 16th-level fighter",Your attacks ignore 10 points of damage reduction
+Greater Shield Focus,Combat,"Shield Focus, 8th-level fighter",Gain a +1 bonus to your AC when using a shield
+Greater Sunder,Combat,"Improved Sunder, base attack bonus +6",Damage from sunder attempts transfers to your enemy
+Greater Trip,Combat,"Improved Trip, base attack bonus +6",Enemies you trip provoke attacks of opportunity 
+Greater Two-Weapon Fighting,Combat,"Dex 19, Improved Two-Weapon Fighting, base attack bonus +11",Gain a third off-hand attack
+Greater Vital Strike,Combat,"Improved Vital Strike, base attack bonus +16",Deal four times the normal damage on a single attack
+Greater Weapon Focus,Combat,"Weapon Focus, 8th-level fighter",+1 bonus on attack rolls with one weapon
+Greater Weapon Specialization,Combat,"Weapon Specialization, 12th-level fighter",+2 bonus on damage rolls with one weapon
+Improved Bull Rush,Combat,Power Attack,"+2 bonus on bull rush attempts, no attack of opportunity"
+Improved Critical,Combat,"Proficiency with weapon, base attack bonus +8",Double the threat range of one weapon
+Improved Disarm,Combat,Combat Expertise,"+2 bonus on disarm attempts, no attack of opportunity"
+Improved Feint,Combat,Combat Expertise,Feint as a move action
+Improved Grapple,Combat,"Dex 13, Improved Unarmed Strike","+2 bonus on grapple attempts, no attack of opportunity"
+Improved Initiative,Combat,-,+4 bonus on initiative checks
+Improved Overrun,Combat,Power Attack,"+2 bonus on overrun attempts, no attack of opportunity"
+Improved Precise Shot,Combat,"Dex 19, Precise Shot, base attack bonus +11",No cover or concealment chance on ranged attacks
+Improved Shield Bash,Combat,Shield Proficiency,Keep your shield bonus when shield bashing
+Improved Sunder,Combat,Power Attack,"+2 bonus on sunder attempts, no attack of opportunity"
+Improved Trip,Combat,Combat Expertise,"+2 bonus on trip attempts, no attack of opportunity"
+Improved Two-Weapon Fighting,Combat,"Dex 17, Two-Weapon Fighting, base attack bonus +6",Gain additional off-hand attack
+Improved Unarmed Strike,Combat,-,Always considered armed
+Improved Vital Strike,Combat,"Vital Strike, base attack bonus +11",Deal three times the normal damage on a single attack
+Improvised Weapon Mastery,Combat,"Catch Off-Guard or Throw Anything, base attack bonus +8",Make an improvised weapon deadly
+Intimidating Prowess,Combat,-,Add Str to Intimidate  in addition to Cha
+Lightning Stance,Combat,"Dex 17, Wind Stance, base attack bonus +11",Gain 50% concealment if you move
+Lunge,Combat,Base attack bonus +6,Take a –2 penalty to your AC to attack with reach
+Manyshot,Combat,"Dex 17, Rapid Shot, base attack bonus +6",Shoot two arrows simultaneously
+Medusa&apos;s Wrath,Combat,"Gorgon&apos;s Fist, base attack bonus +11",Make 2 extra attacks against a hindered foe
+Mobility,Combat,Dodge,+4 AC against attacks of opportunity from movement
+Mounted Archery,Combat,Mounted Combat,Halve the penalty for ranged attacks while mounted
+Mounted Combat,Combat,Ride 1 rank,Avoid attacks on mount with Ride  check 
+Penetrating Strike,Combat,"Weapon Focus, 12th-level fighter",Your attacks ignore 5 points of damage reduction
+Pinpoint Targeting,Combat,"Improved Precise Shot, base attack bonus +16",No armor or shield bonus on one ranged attack
+Point-Blank Shot,Combat,-,+1 attack and damage on targets within 30 feet
+Power Attack,Combat,"Str 13, base attack bonus +1",Trade melee attack bonus for damage
+Precise Shot,Combat,Point Blank Shot,No penalty for shooting into melee
+Quick Draw,Combat,Base attack bonus +1,Draw weapon as a free action
+Rapid Reload,Combat,Weapon proficiency (crossbow),Reload crossbow quickly
+Rapid Shot,Combat,"Dex 13, Point Blank Shot",Make one extra ranged attack
+Ride-By Attack,Combat,Mounted Combat,Move before and after a charge attack while mounted
+Scorpion Style,Combat,Improved Unarmed Strike,Reduce target&apos;s speed to 5 ft.
+Shatter Defenses,Combat,"Dazzling Display, base attack bonus +6",Hindered foes are flat-footed
+Shield Focus,Combat,"Shield Proficiency, base attack bonus +1",Gain a +1 bonus to your AC when using a shield
+Shield Master,Combat,"Shield Slam, base attack bonus +11",No two-weapon penalties when attacking with a shield
+Shield Slam,Combat,"Improved Shield Bash, Two-Weapon Fighting, base attack bonus +6",Free bull rush with a bash attack
+Shot on the Run,Combat,"Dex 13, Mobility, Point Blank Shot, base attack bonus +4",Make ranged attack at any point during movement
+Sickening Critical,Combat,"Critical Focus, base attack bonus +11","Whenever you score a critical hit, the target is sickened"
+Snatch Arrows,Combat,"Dex 15, Deflect Arrows",Catch one ranged attack per round
+Spellbreaker,Combat,"Disruptive, 10th-level fighter",Enemies provoke attacks if their spells fail
+Spirited Charge,Combat,Ride-By Attack,Double damage on a mounted charge
+Spring Attack,Combat,"Mobility, base attack bonus +4",Move before and after melee attack
+Staggering Critical,Combat,"Critical Focus, base attack bonus +13","Whenever you score a critical hit, the target is staggered"
+Stand Still,Combat,Combat Reflexes,Stop enemies from moving past you
+Step Up,Combat,Base attack bonus +1,Take a 5-foot step as an immediate action
+Strike Back,Combat,Base attack bonus +11,Attack foes that strike you while using reach
+Stunning Critical,Combat,"Staggering Critical, base attack bonus +17","Whenever you score a critical hit, the target is stunned"
+Stunning Fist,Combat,"Dex 13, Wis 13, Improved Unarmed Strike, base attack bonus +8",Stun opponent with an unarmed strike
+Throw Anything,Combat,-,No penalties for improvised ranged weapons
+Tiring Critical,Combat,"Critical Focus, base attack bonus +13","Whenever you score a critical hit, the target is fatigued"
+Tower Shield Proficiency,Combat,Shield Proficiency,No penalties on attack rolls when using a tower shield
+Trample,Combat,Mounted Combat,Overrun targets while mounted
+Two-Weapon Defense,Combat,Two-Weapon Fighting,Gain +1 shield bonus when fighting with two weapons
+Two-Weapon Fighting,Combat,Dex 15,Reduce two-weapon fighting penalties
+Two-Weapon Rend,Combat,"Double Slice, Improved Two-Weapon Fighting, base attack bonus +11",Rend a foe hit by both your weapons
+Unseat,Combat,"Improved Bull Rush, Mounted Combat",Knock opponents from their mounts
+Vital Strike,Combat,Base attack bonus +6,Deal twice the normal damage on a single attack
+Weapon Finesse,Combat,-,Use Dex instead of Str on attack rolls with light weapons
+Weapon Focus,Combat,"Proficiency with weapon, base attack bonus +1",+1 bonus on attack rolls with one weapon
+Weapon Specialization,Combat,"Weapon Focus, 4th-level fighter",+2 bonus on damage rolls with one weapon
+Whirlwind Attack,Combat,"Dex 13, Combat Expertise, Spring Attack, base attack bonus +4",Make one melee attack against all foes within reach
+Wind Stance,Combat,"Dex 15, Dodge, base attack bonus +6",Gain 20% concealment if you move
+Bleeding Critical,Critical,"Critical Focus, base attack bonus +11","Whenever you score a critical hit, the target takes 2d6 bleed"
+Blinding Critical,Critical,"Critical Focus, base attack bonus +15","Whenever you score a critical hit, the target is blinded"
+Deafening Critical,Critical,"Critical Focus, base attack bonus +13","Whenever you score a critical hit, the target is deafened"
+Exhausting Critical,Critical,"Tiring Critical, base attack bonus +15","Whenever you score a critical hit, the target is exhausted"
+Sickening Critical,Critical,"Critical Focus, base attack bonus +11","Whenever you score a critical hit, the target is sickened"
+Staggering Critical,Critical,"Critical Focus, base attack bonus +13","Whenever you score a critical hit, the target is staggered"
+Stunning Critical,Critical,"Staggering Critical, base attack bonus +17","Whenever you score a critical hit, the target is stunned"
+Tiring Critical,Critical,"Critical Focus, base attack bonus +13","Whenever you score a critical hit, the target is fatigued"
+Acrobatic,General,-,+2 bonus on Acrobatics  and Fly  checks
+Acrobatic Steps,General,"Dex 15, Nimble Moves",Ignore 20 feet of difficult terrain when you move
+Alertness,General,-,+2 bonus on Perception  and Sense Motive checks 
+Alignment Channel,General,Channel energy class feature,Channel energy can heal or harm outsiders
+Animal Affinity,General,-,+2 bonus on Handle Animal and Ride checks
+"Armor Proficiency, Heavy",General,"Armor Proficiency, Medium",No penalties on attack rolls while wearing heavy armor
+"Armor Proficiency, Light",General,-,No penalties on attack rolls while wearing light armor
+"Armor Proficiency, Medium",General,"Armor Proficiency, Light",No penalties on attack rolls while wearing medium armor
+Athletic,General,-,+2 bonus on Climb and Swim  checks  
+Augment Summoning,General,Spell Focus (conjuration),Summoned creatures gain +4 Str and Con
+Combat Casting,General,-,+4 bonus on concentration checks for casting defensively
+Command Undead,General,Channel negative energy class feature,Channel energy can be used to control undead
+Deceitful,General,-,+2 bonus on Bluff and Disguise checks 
+Deft Hands,General,-,+2 bonus on Disable Device and Sleight of Hand checks
+Diehard,General,Endurance,Automatically stabilize and remain conscious below 0 hp
+Elemental Channel,General,Channel energy class feature,Channel energy can harm or heal elementals
+Endurance,General,-,+4 bonus on checks to avoid nonlethal damage
+Eschew Materials,General,-,Cast spells without material components
+Extra Channel,General,Channel energy class feature,Channel energy two additional times per day
+Extra Ki,General,Ki pool class feature,Increase your ki pool by 2 points 
+Extra Lay On Hands,General,Lay on hands class feature,Use lay on hands two additional times per day
+Extra Mercy,General,Mercy class feature,Your lay on hands benefits from one additional mercy
+Extra Performance,General,Bardic performance class feature,Use bardic performance for 6 additional rounds per day
+Extra Rage,General,Rage class feature,Use rage for 6 additional rounds per day
+Fleet,General,-,Your base speed increases by 5 feet
+Great Fortitude,General,-,+2 on Fortitude saves 
+Greater Spell Focus,General,Spell Focus,+1 bonus on save DCs for one school
+Greater Spell Penetration,General,Spell Penetration,+2 bonus on level checks to beat spell resistance
+Improved Channel,General,Channel energy class feature,+2 bonus on channel energy DC
+Improved Counterspell,General,-,Counterspell with spell of the same school
+Improved Familiar,General,"Ability to acquire a familiar, see feat",Gain a more powerful familiar
+Improved Great Fortitude,General,Great Fortitude,"Once per day, you may reroll a Fortitude save"
+Improved Iron Will,General,Iron Will,"Once per day, you may reroll a Will save "
+Improved Lightning Reflexes,General,Lightning Reflexes,"Once per day, you may reroll a Reflex save  "
+Iron Will,General,-,+2 bonus on Will saves 
+Leadership,General,Character level 7th,Gain a cohort and followers
+Lightning Reflexes,General,-,+2 bonus on Reflex saves 
+Magical Aptitude,General,-,+2 bonus on Spellcraft  and Use Magic Device checks 
+Martial Weapon Proficiency,General,-,No penalty on attacks made with one martial weapon
+Master Craftsman,General,5 ranks in any Craft or Profession skill,You can craft magic items without being a spellcaster
+Natural Spell,General,"Wis 13, wild shape class feature",Cast spells while using wild shape
+Nimble Moves,General,Dex 13,Ignore 5 feet of difficult terrain when you move
+Persuasive,General,-,+2 bonus on Diplomacy and Intimidate checks
+Run,General,-,Run at 5 times your normal speed
+Selective Channeling,General,"Cha 13, channel energy class feature",Choose whom to affect with channel energy
+Self-Sufficient,General,-,+2 bonus on Heal and Survival  checks 
+Shield Proficiency,General,-,No penalties on attack rolls when using a shield
+Simple Weapon Proficiency,General,-,No penalty on attacks made with simple weapons
+Skill Focus,General,-,+3 bonus on one skill (+6 at 10 ranks)
+Spell Focus,General,-,+1 bonus on save DCs for one school
+Spell Mastery,General,1st-level Wizard,Prepare some spells without a spellbook
+Spell Penetration,General,-,+2 bonus on level checks to beat spell resistance
+Stealthy,General,-,+2 bonus on Escape Artist and Stealth checks
+Toughness,General,-,"+3 hit points, +1 per Hit Die beyond 3"
+Turn Undead,General,Channel positive energy class feature,Channel energy can be used to make undead flee
+Brew Potion,Item Creation,Caster level 3rd,Create magic potions
+Craft Magic Arms and Armor,Item Creation,Caster level 5th,"Create magic armors, shields, and weapons"
+Craft Rod,Item Creation,Caster level 9th,Create magic rods
+Craft Staff,Item Creation,Caster level 11th,Create magic staves
+Craft Wand,Item Creation,Caster level 5th,Create magic wands
+Craft Wondrous Item,Item Creation,Caster level 3rd,Create magic wondrous items
+Forge Ring,Item Creation,Caster level 7th,Create magic rings.
+Scribe Scroll,Item Creation,Caster level 1st,Create magic scrolls
+Empower Spell,Metamagic,-,Increase spell variables by 50%
+Enlarge Spell,Metamagic,-,Double spell range
+Extend Spell,Metamagic,-,Double spell duration
+Heighten Spell,Metamagic,-,Treat spell as a higher level
+Maximize Spell,Metamagic,-,Maximize spell variables
+Quicken Spell,Metamagic,-,Cast spell as a swift action
+Silent Spell,Metamagic,-,Cast spell without verbal components
+Still Spell,Metamagic,-,Cast spell without somatic components
+Widen Spell,Metamagic,-,Double spell area
+Ability Focus,Monster,Special attack.,+2 bonus to DC for saving throws against a monsters special ability.
+Awesome Blow,Monster,"Str 25, Power Attack, Improved Bull Rush, size Large or larger.",Knock an opponent 10 feet away and prone.
+Craft Construct,Monster,"Caster level 5th, Craft Magic Arms and Armor, Craft Wondrous Item.",You can create any construct whose prerequisites you meet.
+Empower Spell-Like Ability,Monster,Spell-like ability at caster level 6th or higher.,"Choose one of the creature&apos;s spell-like abilities, subject to the restrictions below. The creature can use that ability as an empowered spell-like ability three times per day (or less, if the ability is normally usable only once or twice per day)."
+Flyby Attack,Monster,Fly speed.,"When flying, the creature can take a move action and another standard action at any point during the move. The creature cannot take a second move action during a round when it makes a flyby attack."
+Hover,Monster,Fly speed.,This creature can hover in place with ease and can kick up clouds of dust and debris.
+Improved Natural Armor,Monster,"Natural armor, Con 13.",The creature&apos;s natural armor bonus increases by +1.
+Improved Natural Attack,Monster,"Natural weapon, base attack bonus +4.",Increase damage from one of a creatures natural attacks by one step.
+Multiattack,Monster,Three or more natural attacks.,The creature&apos;s secondary attacks with natural weapons take only a –2 penalty.
+Multiweapon Fighting,Monster,"Dex 13, three or more hands.",Penalties for fighting with multiple weapons are reduced by –2 with the primary hand and by –6 with off hands.
+Noxious Bite,Monster,"Acidic breath weapon, bite attack",Deal extra acid damage with your bite attack along with nauseating the enemy.
+Quicken Spell-Like Ability,Monster,Spell-like ability at CL 10th or higher.,One of a creatures spell-like abilities is usable as a swift action.
+Snatch,Monster,Size Huge or larger.,"The creature can start a grapple when it hits with a claw or bite attack, as though it had the grab ability."
+Wingover,Monster,Fly speed.,"Once each round, a creature with this feat can turn up to 180 degrees as a free action without making a Fly skill check. This free turn does not consume any additional movement from the creature."

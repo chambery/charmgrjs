@@ -1,0 +1,303 @@
+
+	<html><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Felonious</title><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><style>
+          DIV.description {
+          FONT-SIZE: 9pt; FONT-FAMILY: Times New Roman, Times Roman, serif
+          }
+          DIV.description P {
+          MARGIN: 6pt 8pt; TEXT-INDENT: 12pt
+          }
+          DIV.description TABLE {
+          MARGIN: 6pt 14pt; TEXT-INDENT: 0pt
+          }
+          DIV.description TD {
+          PADDING-RIGHT: 6pt; PADDING-LEFT: 6pt; FONT-SIZE: 9pt; PADDING-BOTTOM: 0pt; TEXT-INDENT: 0pt; PADDING-TOP: 0pt; FONT-FAMILY: Times New Roman, Times Roman, serif
+          }
+          DIV.description UL {
+          MARGIN-TOP: 0pt; LEFT: -10pt; POSITION: relative; TOP: 0pt
+          }
+          .symbol8 {
+          FONT-SIZE: 8pt; FONT-FAMILY: Wingdings
+          }
+          .v1 {
+          FONT-SIZE: 1pt; FONT-FAMILY: Verdana
+          }
+          .v2 {
+          FONT-SIZE: 2pt; FONT-FAMILY: Verdana
+          }
+          .v3 {
+          FONT-SIZE: 3pt; FONT-FAMILY: Verdana
+          }
+          .v4 {
+          FONT-SIZE: 4pt; FONT-FAMILY: Verdana
+          }
+          .v5 {
+          FONT-SIZE: 5pt; FONT-FAMILY: Verdana
+          }
+          .v6 {
+          FONT-SIZE: 6pt; FONT-FAMILY: Verdana
+          }
+          .v7 {
+          FONT-SIZE: 7pt; FONT-FAMILY: Verdana
+          }
+          .v8 {
+          FONT-SIZE: 8pt; FONT-FAMILY: Verdana
+          }
+          .v9 {
+          FONT-SIZE: 9pt; FONT-FAMILY: Verdana
+          }
+          .v10 {
+          FONT-SIZE: 10pt; FONT-FAMILY: Verdana
+          }
+          .v5w {
+          FONT-SIZE: 5pt; COLOR: white; FONT-FAMILY: Verdana
+          }
+          .v6w {
+          FONT-SIZE: 6pt; COLOR: white; FONT-FAMILY: Verdana
+          }
+          .v7w {
+          FONT-SIZE: 7pt; COLOR: white; FONT-FAMILY: Verdana
+          }
+          .v8w {
+          FONT-SIZE: 8pt; COLOR: white; FONT-FAMILY: Verdana
+          }
+          .v9w {
+          FONT-SIZE: 9pt; COLOR: white; FONT-FAMILY: Verdana
+          }
+          .v10w {
+          FONT-SIZE: 10pt; COLOR: white; FONT-FAMILY: Verdana
+          }
+          .versionInfo {
+          MARGIN-TOP: 0ex; FONT-SIZE: 5pt; MARGIN-BOTTOM: 0ex; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+          }
+          .itemName {
+          MARGIN-TOP: 0ex; FONT-WEIGHT: bold; FONT-SIZE: 7pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 1ex; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+          }
+          .itemNameDetail {
+          MARGIN-TOP: 0ex; FONT-WEIGHT: normal; FONT-SIZE: 6pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 0ex; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+          }
+          .itemDetail {
+          MARGIN-TOP: 0ex; FONT-SIZE: 7pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 0ex; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+          }
+          .containerHead {
+          background-color: #DDDDDD; MARGIN-TOP: 0ex; FONT-WEIGHT: bold; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 1ex; TEXT-TRANSFORM: uppercase; COLOR: #000000; FONT-FAMILY: Verdana; TEXT-ALIGN: left; border-bottom:1px solid #000000;
+          }
+          .weaponHand {
+          FONT-SIZE: 9pt; VERTICAL-ALIGN: top; FONT-FAMILY: Wingdings; TEXT-ALIGN: left
+          }
+          .weaponTwoHanded {
+          FONT-SIZE: 6pt; VERTICAL-ALIGN: bottom; FONT-FAMILY: Verdana
+          }
+          .weaponThrown {
+          FONT-SIZE: 9pt; VERTICAL-ALIGN: top; FONT-FAMILY: Wingdings3; TEXT-ALIGN: left
+          }
+          .loadText {
+          MARGIN-TOP: 0ex; FONT-SIZE: 6pt; MARGIN-BOTTOM: 0ex; TEXT-TRANSFORM: uppercase; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+          }
+          .loadTotalCarried {
+          MARGIN-TOP: 0ex; FONT-WEIGHT: bold; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0ex; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+          }
+          .classFeatureHead {
+          MARGIN-TOP: 0ex; FONT-WEIGHT: bold; FONT-SIZE: 7pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 1ex; TEXT-TRANSFORM: uppercase; COLOR: #666666; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+          }
+          .classFeatureText {
+          MARGIN-TOP: 0ex; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 1ex; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+          }
+          .tableHeadingText {
+          MARGIN-TOP: 0ex; FONT-WEIGHT: bold; FONT-SIZE: 9pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 1ex; TEXT-TRANSFORM: uppercase; COLOR: #ffffff; FONT-FAMILY: Verdana
+          }
+          .tableBodyText {
+          MARGIN-TOP: 0ex; FONT-SIZE: 7pt; MARGIN-BOTTOM: 0ex; FONT-FAMILY: Verdana
+          }
+          .tableColumnText {
+          MARGIN-TOP: 0ex; FONT-WEIGHT: bold; FONT-SIZE: 6pt; MARGIN-BOTTOM: 0ex; TEXT-TRANSFORM: uppercase; COLOR: #ffffff; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+          }
+          .featText {
+          MARGIN-TOP: 0ex; FONT-SIZE: 7pt; MARGIN-BOTTOM: 0ex; MARGIN-LEFT: 1ex; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+          }
+          .italic {
+          FONT-STYLE: italic
+          }
+          .bold {
+          FONT-WEIGHT: bold
+          }
+          .upCase {
+          TEXT-TRANSFORM: uppercase
+          }
+          .cellUnderline {
+          BORDER-BOTTOM: black 1px solid
+          }
+          .tableHeading {
+          BORDER-TOP: black 1px solid; BORDER-BOTTOM: black 1px solid; BACKGROUND-COLOR: #000000
+          }
+          .tableSubHeading {
+          BORDER-TOP: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid; BACKGROUND-COLOR: #dddddd
+          }
+          A {
+          color: #000000;
+          text-decoration: none;
+          }
+          .tableSubHeadingTopRuled {
+          background-color:#DDDDDD;
+          border-top:1px solid #000000;
+          border-bottom:1px solid #DDDDDD;
+          }
+          .tableSubColumnText {
+          font-family:Verdana;
+          font-size:6pt;
+          font-weight:bold;
+          color:#000000;
+          text-align:center;
+          text-transform:uppercase;
+          margin-bottom:0ex;
+          margin-top:0ex;
+          }
+          .cellRangeIncHeading {
+          background-color:#666666;
+          xborder-right:1px solid white;
+          }
+          .cellRangeIncHeadingText {
+          font-family: Verdana;
+          font-size:6pt;
+          font-weight:bold;
+          color:#FFFFFF;
+          text-align:center;
+          text-transform:uppercase;
+          }
+          .cellRangeIncTop {
+          background-color:#DDDDDD;
+          border-right:1px solid white;
+          }
+          .cellRangeIncBottom {
+          background-color:#DDDDDD;
+          border-right:1px solid white;
+          border-top:1px solid white;
+          }
+          .cellRangeIncText {
+          font-family: Verdana;
+          font-size:6pt;
+          text-align:center;
+          }
+          .cellRangeIncTextHvy {
+          font-family: Verdana;
+          font-size:6pt;
+          font-weight:bold;
+          text-align:center;
+          }
+        </style></head><body bgColor="white"><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="83%" align="left" vAlign="top"><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr vAlign="bottom"><td style="BORDER-BOTTOM: black 1pt solid"><b><font face="ForgottenUncial, timesnewroman, Verdana" style="FONT-SIZE: 12pt">Felonious</font></b></td><td align="right" style="BORDER-BOTTOM: black 1pt solid"><font face="ForgottenUncial, timesnewroman, Verdana" style="FONT-SIZE: 10pt">Todd</font></td></tr></tbody></table><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td bgColor="black" align="middle" class="v6w"><b>CHARACTER BIO</b></td></tr><tr><td class="v8"><b>Felonious</b> is a <b></b> year old, <b></b> sized,
+												<b></b> <b></b>
+													(<b>Humanoid</b>).
+														
+												Stands <b></b> tall and weighs <b></b> World view 
+												is <b></b> in nature.
+												</td></tr><tr><td style="BORDER-BOTTOM: black 1px solid" class="v1"><br></td></tr></tbody></table><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr bgColor="#dddddd"><td width="20%" align="middle" class="v6"><b>CHARACTER LEVEL</b></td><td width="80%" align="left" class="v6"><b>CLASSES and LEVELS</b></td></tr><tr><td align="middle" class="v8"></td><td align="left" class="v8"></td></tr><tr><td colSpan="2" style="BORDER-BOTTOM: black 1px solid" class="v1"><br></td></tr></tbody></table><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr bgColor="#dddddd"><td width="15%" align="middle" class="v6"><b>CURRENT EXPERIENCE</b></td><td width="15%" align="middle" class="v6"><b>NEXT LEVEL AT</b></td><td width="15%" align="middle" class="v6"><b>NEEDED TO MAKE LEVEL</b></td><td width="35%" align="middle" class="v6"><b>EXPERIENCE GAINED IN PLAY</b></td></tr><tr vAlign="bottom"><td align="middle" class="v8">NaN</td><td align="middle" class="v8">NaN</td><td align="middle" class="v8">NaN</td><td align="middle" class="v8"><br></td></tr><tr><td colSpan="4" class="v1"><br></td></tr></tbody></table></td><td width="1%"><br></td><td width="17%" align="right" vAlign="top"><p class="versionInfo">Character Sheet (RPGX) - v. 1.3.1</p></td></tr></tbody></table><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td bgColor="black" width="5%" align="middle" style="BORDER-TOP: black 1px solid" class="v6w"><b>HP<br>TRACK</b></td><td width="45%" style="BORDER-TOP: black 1px solid" class="v6"><br></td><td bgColor="#dddddd" width="5%" align="middle" style="BORDER-TOP: black 1px solid" class="v6"><b>NON<br>LETHAL</b></td><td width="20%" style="BORDER-TOP: black 1px solid" class="v6"><br></td><td bgColor="black" width="5%" align="middle" style="BORDER-TOP: black 1px solid" class="v6w"><b>AC<br>TRACK</b></td><td width="10%" style="BORDER-TOP: black 1px solid" class="v6"><br></td></tr><tr><td colSpan="6" style="BORDER-BOTTOM: black 2px solid" class="v1"><br></td></tr><tr><td colSpan="6" class="v3"><br></td></tr></tbody></table><table border="0" bgColor="white" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="15%"></td><td width="10%"></td><td width="20%"></td><td width="13%"></td><td width="12%"></td><td width="14%"></td><td width="16%"></td></tr><tr><td rowSpan="2" colSpan="2" vAlign="top"><table width="100%"><tbody><tr><td width="24%" align="middle" class="v4">
+												ABILITY<br>NAME
+											</td><td width="19%" align="middle" class="v4">
+												ABILITY<br>SCORE
+											</td><td width="19%" align="middle" class="v4">
+												ABILITY<br>MODIFIER
+											</td><td width="19%" align="middle" class="v4">
+												TEMPORARY<br>SCORE
+											</td><td width="19%" align="middle" class="v4">
+												TEMPORARY<br>MODIFIER
+											</td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>STR</b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>DEX</b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>CON</b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>INT</b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>WIS</b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>CHA</b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr></tbody></table></td><td colSpan="5" vAlign="top"><table border="0" width="100%"><tbody><tr vAlign="bottom"><td></td><td align="middle" vAlign="bottom" class="v4">
+												TOTAL
+											</td><td colSpan="9" align="middle" class="v4">
+												HIT DIE TYPE
+											</td><td colSpan="6" align="middle" class="v4">
+												DAMAGE<br>REDUCTION
+											</td><td></td><td colSpan="2"></td><td colSpan="6" align="middle" class="v4">
+												MOVEMENT TYPES and RATES
+											</td></tr><tr><td bgColor="black" align="middle" class="v9w"><b>HP</b><br><span class="v5w">POINTS</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td colSpan="9" align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v7"><b>NaN</b></td><td colSpan="6" align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v7"><b><br></b></td><td></td><td colSpan="2" bgColor="black" align="middle" class="v9w"><b>SPEED</b><br><span class="v5w">MOVE</span></td><td colSpan="6" align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v8"><b></b></td></tr><tr><td width="7%"></td><td width="5%"></td><td width="5%"></td><td width="5%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="5%"></td><td width="1%"></td><td width="6%"></td><td width="6%"></td><td width="6%"></td><td width="6%"></td></tr><tr><td bgColor="black" align="middle" class="v9w"><b>AC</b><br><span class="v5w">ARMOR</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" class="v9"><b>10</b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b>NaN</b></td><td rowSpan="2"></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b><br></b></td><td rowSpan="2"></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b>NaN%<br></b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b><br></b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b><br></b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b><br></b></td></tr><tr><td></td><td align="middle" vAlign="top" class="v4">
+												NORMAL
+											</td><td align="middle" class="v4">
+												FLAT<br>FOOTED
+											</td><td align="middle" class="v4">
+												TOUCH<br>AC
+											</td><td align="middle" class="v4">
+												HELPLESS<br>AC
+											</td><td></td><td align="middle" vAlign="top" class="v4">
+												BASE
+											</td><td></td><td align="middle" class="v4">
+												ARMOR<br>BONUS
+											</td><td></td><td align="middle" class="v4">
+												SHIELD<br>BONUS
+											</td><td></td><td align="middle" class="v4">
+												DEX<br>BONUS
+											</td><td></td><td align="middle" class="v4">
+												SIZE<br>BONUS
+											</td><td></td><td align="middle" class="v4">
+												NATURAL<br>ARMOR
+											</td><td></td><td align="middle" class="v4">
+												MISC<br>BONUS
+											</td><td align="middle" class="v4">
+												MISS<br>CHANCE
+											</td><td align="middle" class="v4">
+												% SPELL<br>FAILURE
+											</td><td align="middle" class="v4">
+												ARMOR<br>CHECK
+											</td><td align="middle" class="v4">
+												MAX<br>DEX
+											</td><td align="middle" class="v4">
+												SPELL<br>RESIST
+											</td></tr></tbody></table></td></tr><tr><td colSpan="4" vAlign="top"><table border="0" width="100%" cellPadding="0"><tbody><tr vAlign="bottom"><td width="20%" align="middle" class="v4"></td><td width="10%" align="middle" vAlign="bottom" class="v4">
+												TOTAL
+											</td><td></td><td width="9%" align="middle" class="v4">
+												BASE<br>SAVE
+											</td><td></td><td width="9%" align="middle" class="v4">
+												ABILITY<br>MODIFIER
+											</td><td></td><td width="9%" align="middle" class="v4">
+												MAGIC<br>MODIFIER
+											</td><td></td><td width="9%" align="middle" class="v4">
+												MISC<br>MODIFIER
+											</td><td></td><td width="9%" align="middle" class="v4">
+												TEMPORARY<br>MODIFIER
+											</td><td></td><td width="25%" align="middle" class="v4">
+												CONDITIONAL<br>MODIFIERS
+											</td></tr><tr><td bgColor="black" align="middle" class="v9w"><b>FORTITUDE</b><br><span class="v5w">CON</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid">
+												&nbsp;
+											</td><td rowSpan="3" align="middle" vAlign="center" class="v7"><b>+</b></td><td class="v7" rowSpan="3" valign="top" align="left" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v9w"><b>REFLEX</b><br><span class="v5w">DEX</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid">
+												&nbsp;
+											</td></tr><tr><td bgColor="black" align="middle" class="v9w"><b>WILL</b><br><span class="v5w">WIS</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid">
+												&nbsp;
+											</td></tr></tbody></table></td><td align="right" vAlign="top"><table border="0" width="95%"><tbody><tr><td bgColor="black" width="40%" align="middle" class="v9w"><b>BASE ATTACK</b></td></tr><tr><td bgColor="#dddddd" width="60%" align="middle" class="v9"><b></b></td></tr></tbody></table><table border="0" width="95%" cellPadding="0"><tbody><tr><td width="29%"></td><td width="2%"></td><td width="29%"></td><td width="2%"></td><td width="28%"></td></tr><tr><td colSpan="5" bgColor="black" align="middle" class="v9w"><b>INITIATIVE</b><br><span class="v5w">MODIFIER</span></td></tr><tr><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b>NaN</b></td></tr><tr><td align="middle" vAlign="top" class="v4">
+												TOTAL
+											</td><td></td><td align="middle" vAlign="top" class="v4">
+												DEX MOD
+											</td><td></td><td align="middle" class="v4">
+												MISC
+											</td></tr></tbody></table></td><td colSpan="2"></td></tr><tr><td colSpan="4" vAlign="top"><table width="99%" cellPadding="0"><tbody><tr><td bgColor="black" align="middle" class="v10w"><b>GRAPPLE</b><br><span class="v5w">ATTACK BONUS</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>MELEE</b><br><span class="v5w">ATTACK BONUS</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td bgColor="black" align="middle" class="v10w"><b>RANGED</b><br><span class="v5w">ATTACK BONUS</span></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v9"><b></b></td><td align="middle" class="v7"><b>=</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" class="v10"><b></b><br></td><td align="middle" class="v7"><b>+</b></td><td align="middle" style="BORDER-RIGHT: #dddddd 3px solid; BORDER-TOP: #dddddd 3px solid; BORDER-LEFT: #dddddd 3px solid; BORDER-BOTTOM: #dddddd 3px solid"><br></td></tr><tr><td width="16%"></td><td width="25%" align="middle" vAlign="top" class="v5">
+												TOTAL
+											</td><td width="1%"></td><td width="6%" align="middle" class="v4">
+												BASE<br>ATTACK
+											</td><td width="1%"></td><td width="6%" align="middle" class="v4">
+												ABILITY<br>MODIFIER
+											</td><td width="1%"></td><td width="6%" align="middle" class="v4">
+												SIZE<br>MODIFIER
+											</td><td width="1%"></td><td width="6%" align="middle" class="v4">
+												MISC<br>MODIFIER
+											</td><td width="1%"></td><td width="8%" align="middle" class="v4">
+												TEMP<br>MODIFIER
+											</td></tr></tbody></table><table border="0" width="98%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="2%"></td><td width="42%"></td><td width="18%"></td><td width="10%"></td><td width="13%"></td></tr><tr><td colSpan="2" class="tableHeading"><p class="tableHeadingText">Weapons
+												<span class="tableColumnText">(DMG TYPE)</span></p></td><td class="tableHeading"><p class="tableColumnText">Attack<br>
+												Bonus</p></td><td class="tableHeading"><p class="tableColumnText">Damage</p></td><td class="tableHeading"><p class="tableColumnText">Critical</p></td></tr><tr><td colSpan="5"><table border="0" align="center" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td align="middle" class="v6"><span class="weaponHand">I</span>&nbsp;&mdash; Main hand 
+																(Primary)</td><td align="middle" class="v6"><span class="weaponHand">w</span>&nbsp;&mdash; Off hand 
+																(Secondary)</td><td align="middle" class="v6"><span class="weaponHand">I</span><span class="weaponTwoHanded">2</span>&nbsp;&mdash; 
+																Two-handed</td><td align="middle" class="v6"><span class="weaponHand"><span class="weaponThrown">R</span></span>&nbsp;&mdash; 
+																Thrown</td></tr></tbody></table></td></tr><tr><td class="v3"><br></td></tr></tbody></table><table border="0" width="98%" cellPadding="0" cellSpacing="0"><tbody><tr><td><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tr><td style="width:100%;"></td></tr></table><span class="v3"><br></span><span class="v3"><br></span></td></tr></tbody></table></td><td colSpan="3" vAlign="top"><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="1%"></td><td width="51%"></td><td width="7%"></td><td width="1%"></td><td width="6%"></td><td width="1%"></td><td width="6%"></td><td width="1%"></td><td width="6%"></td></tr><tr><td bgColor="black" align="middle"></td><td bgColor="black" align="left" class="v10w"><b>SKILLS</b></td><td colSpan="7" bgColor="black" align="right" vAlign="top" class="v7w"><b><span style="MARGIN-RIGHT: 2px">MAX RANKS 3/1.5</span></b></td></tr><tr><td bgColor="black" align="middle" class="v6w"><br></td><td bgColor="black" align="left" vAlign="bottom" class="v6w"><b>NAME (KEY ABILITY)</b></td><td bgColor="black" align="right" vAlign="bottom" class="v6w"><b>TOT</b></td><td bgColor="black" class="v6w"><br></td><td bgColor="black" align="middle" vAlign="bottom" class="v6w"><b>RNK</b></td><td bgColor="black" class="v6w"><br></td><td bgColor="black" align="middle" vAlign="bottom" class="v6w"><b>ABL</b></td><td bgColor="black" class="v6w"><br></td><td bgColor="black" align="middle" vAlign="bottom" class="v6w"><b>MSC</b></td></tr><br><tr><td class="v3"><br></td></tr><tr><td></td><td colSpan="9" align="middle"><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td class="v6"><span class="symbol8">w</span>
+																Can be used untrained
+															</td><td class="v6">* Armor Check penalty</td><td class="v6">** Armor Check &times;2</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><br style="PAGE-BREAK-AFTER: always"><table border="0" bgColor="white" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="1%"></td><td width="26%"></td><td width="5%"></td><td width="7%"></td><td width="3%"></td><td width="7%"></td><td width="1%"></td><td width="26%"></td><td width="5%"></td><td width="7%"></td><td width="3%"></td><td width="7%"></td></tr><tr><td colspan="2" class="tableHeading"><p class="tableHeadingText">Equipment
+									<span class="tableColumnText">Description</span></p></td><td class="tableHeading"><p class="tableColumnText">Charges</p></td><td class="tableHeading"><p class="tableColumnText">Value<br>
+									Each</p></td><td class="tableHeading"><p class="tableColumnText">Qty</p></td><td style="BORDER-RIGHT: white 1px solid" class="tableHeading"><p class="tableColumnText">Lbs</p></td><td colspan="2" class="tableHeading"><p class="tableHeadingText">Equipment
+									<span class="tableColumnText">Description</span></p></td><td class="tableHeading"><p class="tableColumnText">Charges</p></td><td class="tableHeading"><p class="tableColumnText">Value<br>
+									Each</p></td><td class="tableHeading"><p class="tableColumnText">Qty</p></td><td class="tableHeading"><p class="tableColumnText">Lbs</p></td></tr></tbody></table><table border="0" bgColor="white" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td colSpan="5"><table border="0" bgColor="white" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="24%"></td><td width="15%"></td><td width="15%"></td><td width="16%"></td><td width="10%"></td><td width="10%"></td><td width="10%"></td></tr><tr><td class="v2"><br></td></tr><tr><td rowSpan="2" style="BORDER-RIGHT: black 1px dashed"><p class="loadText">Carried Weight</p><p class="loadTotalCarried"></p></td><td align="middle"><p class="tableBodyText"></p></td><td align="middle"><p class="tableBodyText"></p></td><td align="middle" style="BORDER-RIGHT: black 1px dashed"><p class="tableBodyText"></p></td><td align="middle"><p class="tableBodyText"> lb.</p></td><td align="middle"><p class="tableBodyText">NaN lb.</p></td><td align="middle"><p class="tableBodyText">NaN lb.</p></td></tr><tr><td><p class="loadText">Light</p></td><td><p class="loadText">Medium</p></td><td><p class="loadText">Heavy</p></td><td><p class="loadText">Over<br>
+													Head</p></td><td><p class="loadText">Off<br>
+													Grnd</p></td><td><p class="loadText">Push<br>
+													Drag</p></td></tr></tbody></table></td></tr></tbody></table><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td class="v2"><br></td></tr><tr><td width="60%" vAlign="top"><span class="v3"><br></span><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="16%"></td><td width="14%"></td><td width="14%"></td><td width="14%"></td><td width="14%"></td><td width="14%"></td><td width="14%"></td></tr><tr><td class="tableHeading"><p class="tableHeadingText">Feats</p></td><td class="tableHeading"><p class="tableColumnText">Armor<br>
+													Light</p></td><td class="tableHeading"><p class="tableColumnText">Armor<br>
+													Medium</p></td><td class="tableHeading"><p class="tableColumnText">Armor<br>
+													Heavy</p></td><td class="tableHeading"><p class="tableColumnText">Weapon<br>
+													Simple</p></td><td class="tableHeading"><p class="tableColumnText">Weapon<br>
+													Martial</p></td><td class="tableHeading"><p class="tableColumnText">Shield</p></td></tr><tr><td class="cellUnderline"><p class="v9"><br></p></td><td class="cellUnderline"><p class="itemDetail">Untrained</p></td><td class="cellUnderline"><p class="itemDetail">Untrained</p></td><td class="cellUnderline"><p class="itemDetail">Untrained</p></td><td class="cellUnderline"><p class="itemDetail">Untrained</p></td><td class="cellUnderline"><p class="itemDetail">Untrained</p></td><td class="cellUnderline"><p class="itemDetail">Untrained</p></td></tr></tbody></table><span class="v3"><br></span><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="75%"></td><td width="25%"></td></tr><tr><td class="tableHeading"><p class="tableHeadingText">Protective Items</p></td><td class="tableHeading"><p class="tableColumnText">Bonuses<br>
+													Provided</p></td></tr></tbody></table><span class="v3"><br></span></td><td width="1%"><br></td><td width="39%" vAlign="top"><span class="v3"><br></span><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td class="tableHeading"><p class="tableHeadingText">Character Features</p></td></tr></tbody></table><span class="v3"><br></span><table border="0" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td class="tableHeading"><p class="tableHeadingText">Languages</p></td></tr><tr><td class="cellUnderline"><p class="classFeatureText"></p></td></tr></tbody></table><span class="v3"><br></span><table border="0" bgColor="white" width="100%" cellPadding="0" cellSpacing="0"><tbody><tr><td width="30%"></td><td width="70%"></td></tr><tr><td class="tableHeading"><p class="tableHeadingText">Coins</p></td><td class="tableHeading"><p class="tableColumnText">New Coins<br>
+													Gained in Play</p></td></tr><tr><td bgColor="#dddddd" align="right" style="BORDER-RIGHT: black 1px dashed; BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td><td bgColor="#dddddd" style="BORDER-BOTTOM: black 1px solid" class="v8"><br></td></tr><tr><td align="right" style="BORDER-RIGHT: black 1px dashed; BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td><td style="BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td></tr><tr><td bgColor="#dddddd" align="right" style="BORDER-RIGHT: black 1px dashed; BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td><td bgColor="#dddddd" style="BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td></tr><tr><td align="right" style="BORDER-RIGHT: black 1px dashed; BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td><td style="BORDER-BOTTOM: black 1px solid" class="v8">&nbsp;</td></tr></tbody></table><span class="v3"><br></span></td></tr></tbody></table></body></html>
+	
