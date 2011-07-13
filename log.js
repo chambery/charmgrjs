@@ -1,6 +1,6 @@
 function edit_log_metadata(element_id, string) {
 	$('#' + element_id).html("<input id='temp' type='text' value='" + string + "' style='width: " + $("#" + element_id).width() + "px;' />");
-	$('#temp').bind('blur', function(){ $('#' + element_id).html("<span onclick=\"edit_log_metadata('" + element_id + "', $('#" + element_id + "').text())\">" + $('#temp').val() + "</span>"); });
+	$('#temp').bind('blur', function(){ $('#' + element_id).html("<span onclick=\"edit_log_metadata('" + element_id + "', $('#" + element_id + "').text())\">" + ($('#temp').val().length() > 0 ? $('#temp').val() : string) + "</span>"); });
 	$('#temp').focus();
 }
 

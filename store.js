@@ -9,29 +9,7 @@ function save_remote(db, data, key, view, filter) {
 }
 
 // TODO - WTF with the owner business?
-function get_remote_item(db, view, name, filter) {
-	// console.group("get_remote_item");
-	var items = [];
-    var matches = $.couch.db(db).view(view, { key: name });
-	// TODO - clean this business up
-	if(matches) {
-	    var results = matches.rows.map(function(e) {
-			return e.value;
-	    });
-	    if(results) {
-		    if(filter) {
-		    		for(var i in results) {
-		    			if(filter(results[i])) {
-		    				items.push(results[i]);
-		    			}	
-				}
-			} else {
-				items = results;
-			}    	
-		}
-	}
-	// console.groupEnd();
-    return items;
+function get_remote_item(name, filter) {
 }
 
 function import_character(db) {
@@ -44,7 +22,7 @@ function import_character(db) {
 		if(data.charAt(0) == "{") {
 			chardata = parse_character_data(data);
 		} else {
-			chardata = get_remote_item(db, "chars/all_chars", data, filter_owner)[0];
+			chardata = $.getJSON("character/" + chardata.options.owner + "/" + data);
 			parse_taffy_data(chardata);
 		}
 		if(chardata != null) {

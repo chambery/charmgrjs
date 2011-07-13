@@ -8,7 +8,7 @@ var fs = require('fs')
 	
 	app.get('/character/:owner/:name', function(req, res) {
 		console.log("in get");
-		fs.readFile(req.params.owner + "_" + req.params.name, encoding='utf8', function(err, data) {
+		fs.readFile("users/" + req.params.owner + "_" + req.params.name, encoding='utf8', function(err, data) {
 			if(err) {
 				console.log(err);
 			} else {
@@ -16,17 +16,16 @@ var fs = require('fs')
 				console.log(data);
 			}
 		}); 
-		
     });
 
 	app.post('/character/:owner/:name', function(req, res){
-		console.log("in put");
+		console.log("in put chardata");
 		console.log(req.params)		
 		console.log("body:");
 		console.log(req.body)		
 		console.log("body.chardata");
 		console.log(req.body.chardata)		
-		fs.writeFile(req.params.owner + "_" + req.params.name, JSON.stringify(req.body), function(err) {
+		fs.writeFile("users/" + req.params.owner + "_" + req.params.name, JSON.stringify(req.body), function(err) {
 			if(err) {
 				console.log(err);
 			} else {

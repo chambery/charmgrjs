@@ -1,4 +1,4 @@
-deities = new TAFFY([ {
+var deities = new TAFFY([ {
 	name: "Erastil",
 	alignment: "Lawful",
 	goodness: "Good",
