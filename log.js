@@ -107,12 +107,13 @@ function edit_log_entry(entry_id) {
 	$('#save_log').val('update');
 }
 
+/**
+ * Return the most recent log entry from remote and local stores
+ */
 function get_log_entry(entry_id) {
 	var log_data = get_cookie_data(get_log_name(entry_id));
 	var log = TAFFY.JSON.parse(unescape(log_data));
-	var db = new CouchDB("cm-dev", {"X-Couch-Full-Commit":"false"});
-	var remote_log = get_remote_item(db, "logs/all_logs", get_log_name(entry_id))[0];
-	log = remote_log && (log == null || remote_log.last_mod > log.last_mod) ? remote_log : log;
+	log = chardata.log[entry_id].last_mod && (log == null || chardata.log[entry_id].last_mod > log.last_mod) ? chardata.log[entry_id] : log;
 
 	return log;
 }

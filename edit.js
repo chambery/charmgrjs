@@ -10,7 +10,7 @@ function calc_skill_points() {
 	// hang on to a random class to calculate first level skill points
 	var class_skills_per_level = 0;
 	for (var classname in chardata.classes) {
-		class_skills_per_level = classs.first( {
+		class_skills_per_level = classes.first( {
 			name : classname
 		}).skill_points_per_level + int_mod;
 		var level_1_points = (class_skills_per_level * 4) + (is_human ? 4 : 0);
@@ -307,7 +307,7 @@ function recalc_edit_page() {
 	var char_langs = chardata.languages || [];
 	var class_langs = [];
 	for (var classname in chardata.classes) {
-		var clazz = classs.first({ name : classname });
+		var clazz = classes.first({ name : classname });
 		class_langs.concat(clazz.languages != null ? clazz.languages : []);
 	}
 	for(var i=0, len=langs.length; i<len; i++) {
@@ -406,7 +406,7 @@ function recalc_edit_page() {
 		// if no features, don't show the fieldset
 		var feature_count = 0;
 		$("#classespart").append("<fieldset id='" + classname + "'><legend>" + classname + "</legend></fieldset>");
-		var clazz = classs.first({ name : classname });
+		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.edit) {
 			for (level in  clazz.custom.edit) {
 				if (chardata.classes[classname].level >= level) {

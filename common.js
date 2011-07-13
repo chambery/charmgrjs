@@ -4,7 +4,7 @@ spells = new TAFFY([]);
 feats = new TAFFY([]);
 races = new TAFFY([]);
 domains = new TAFFY([]);
-classs = new TAFFY([]);
+classes = new TAFFY([]);
 schools = new TAFFY([]);
 weapons = new TAFFY([]);
 armors = new TAFFY([]);
@@ -66,7 +66,7 @@ function calc_total_base_feats_count(race_name, xp) {
 function calc_total_class_feats_count(xp) {
 	var class_feat_count = 0;
 	for (var classname in chardata.classes) {
-		var class_feats = classs.first({
+		var class_feats = classes.first({
 			name: classname
 		}).bonus_feats_levels;
 		// TODO - do this elegantly
@@ -269,7 +269,7 @@ function set_links_part(page_id) {
 	var is_spellpicker = false;
 	for (var classname in chardata.classes) {
 		is_spellpicker = spellpickers.indexOf(classname) > -1 ? true : is_spellpicker;
-		var class_shortname = classs.first( {
+		var class_shortname = classes.first( {
 			name : classname
 		}).shortname;
 		classes_html += "<td id='view_class_" + classname + "' style='color: blue;text-align: right; vertical-align: top' nowrap><a class='fake_link view' onclick='var level_diff=(calc_level()+1)-calc_current_level(); show_class_dialog(level_diff,0);'>" + class_shortname + "</a><sub>" + (chardata.classes[classname].level + 1) + "</sub></td>";
@@ -351,7 +351,7 @@ function set_links_part(page_id) {
 //		var nam = characters[i].name;
 //		if(nam.length == 0) {
 //			var race_name = races.first({ name: characters[i].race_name }).shortname;
-//			var class_name = classs.first({ name: characters[i].class_name }).shortname;
+//			var class_name = classes.first({ name: characters[i].class_name }).shortname;
 //			nam = race_name + "_" + class_name;
 
 	
@@ -488,7 +488,7 @@ function calc_ac(dex_score) {
 	var armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor");
 	var shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield");
 	// TODO - move to ac: in classes
-	var monk_mod = chardata.classes["Monk"] != null ? classs.first({ name: "Monk" }).ac_bonus[calc_level()] : 0;
+	var monk_mod = chardata.classes["Monk"] != null ? classes.first({ name: "Monk" }).ac_bonus[calc_level()] : 0;
 	return 10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod('AC') + ac;
 }
 
@@ -954,7 +954,7 @@ function is_class_feat(feat_name) {
 function get_class_feat_names() {
 	var class_feats = [];
 	for (var classname in chardata.classes) {
-		var clazz = classs.first({ name : classname });
+		var clazz = classes.first({ name : classname });
 		for (var level in clazz.feats) {
 			if(chardata.classes[classname].level >= level) {
 				class_feats = class_feats.concat(clazz.feats[level]);
@@ -980,7 +980,7 @@ function get_all_char_feats() {
 function get_special_abilities() {
 	var special_abilities = [];
 	for (var classname in chardata.classes) {
-		var class_specials = classs.first({ name: classname }).specials;
+		var class_specials = classes.first({ name: classname }).specials;
 		for(var level=0; level<=chardata.classes[classname].level; level++) {
 			for(var item=0; item<class_specials[level].length; item++) {
 				var class_special = specials.first({ name: class_specials[level][item].special_name });
@@ -1073,7 +1073,7 @@ function calc_current_level() {
 function calc_save(type) {
 	var save = 0;
 	for (var classname in chardata.classes) {
-		save += classs.first({ name: classname })[type][chardata.classes[classname].level];
+		save += classes.first({ name: classname })[type][chardata.classes[classname].level];
 	}
 	
 	return save;

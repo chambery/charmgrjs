@@ -161,6 +161,10 @@ sup {
 	background-color: #eaeaea;
 }
 
+input {
+	border: solid 1px Lightgrey;
+}
+
 input.two_digit {
 	width: 15px;
 }

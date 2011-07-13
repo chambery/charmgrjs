@@ -15,12 +15,12 @@ function show_class_dialog(level_diff, ability_increase) {
 	for(var i=1; i<=level_diff; i++) { 
 		options += '<option>' + i + '</option>'; 
 	}
-	var classes = classs.get();
-	for (var i in classes) {
-		if(classnames.indexOf(classes[i].name) == -1) {
-			html += "<tr><td><input type='checkbox' id='class_dialog_" + classes[i].name + "' name='" + classes[i].name + "' classname='" + classes[i].name + "' onclick=\"do_checkbox( $(this).attr('classname'))\" /></td><td colspan='2'>" + classes[i].name + "</td><td id=''><select id='class_dialog_" + classes[i].name + "' disabled='true' style='width: 100%' classname='" + classes[i].name + "' onchange=\"var classname = $(this).attr('classname'); chardata.classes[classname].level = parseInt($(this).val())-1; repopulate_linked_class_selects();\" >" + options + "</select></td></tr>";			
+	classes.forEach(function (clazz, n) {
+		if(classnames.indexOf(clazz.name) == -1) {
+			html += "<tr><td><input type='checkbox' id='class_dialog_" + clazz.name + "' name='" + clazz.name + "' classname='" + clazz.name + "' onclick=\"do_checkbox( $(this).attr('classname'))\" /></td><td colspan='2'>" + clazz.name + "</td><td id=''><select id='class_dialog_" + clazz.name + "' disabled='true' style='width: 100%' classname='" + clazz.name + "' onchange=\"var classname = $(this).attr('classname'); chardata.classes[classname].level = parseInt($(this).val())-1; repopulate_linked_class_selects();\" >" + options + "</select></td></tr>";			
 		} 
-	}
+	});
+		
 	html += "</table><input type='hidden' id='level_selection_total' name='level_selection_total' value='" + level_selection_total + "' />";
 	show_dialog("Classes", html, true, "char_classes = chardata.classes.keys; switch_content(1, chardata)");
 }

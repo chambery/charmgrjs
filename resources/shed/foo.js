@@ -20,7 +20,7 @@ if ($('#literacy_header').length == 0) {
 }
 var langs = [];
 for ( var classname in chardata.classes) {
-	var clazz = classs.first( {
+	var clazz = classes.first( {
 		name : classname
 	});
 	langs = langs.concat(clazz.languages != null ? clazz.languages : []);

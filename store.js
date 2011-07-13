@@ -1,17 +1,3 @@
-function save_remote(db, data, key, view, filter) {
-	var remote_data = get_remote_item(db, view, key, filter);
-	if(remote_data[0]) {
-		// TODO - handle name conflicts?
-		data._id = remote_data[0]._id;
-		data._rev = remote_data[0]._rev;
-	}	
-	db.save(data);
-}
-
-// TODO - WTF with the owner business?
-function get_remote_item(name, filter) {
-}
-
 function import_character(db) {
 	if(chardata.options.owner == null) {
 		update_options("Owner string is required to load character data.");
@@ -50,25 +36,27 @@ function import_character(db) {
 	}
 }
 
-function lod(db, cookie_name) {
-	// TODO - refactor for scoping issues
-	var cookie_data = get_cookie_data("ch_" + cookie_name);
-	if(cookie_data) {
-		chardata = parse_character_data(cookie_data);
-	}
-	if(cookie_name) {			
-		var owner = chardata.options ? chardata.options.owner : null;
-		var remote = get_remote_item(db, "chars/all_chars", cookie_name, filter_owner)[0];
-		if(remote && remote.last_mod > chardata.last_mod) {
-			chardata = parse_character_data(remote);
+function lod(char_name) {
+	if(char_name) {
+		// TODO - refactor for scoping issues
+		var cookie_data = get_cookie_data("ch_" + char_name);
+		if(cookie_data) {
+			chardata = parse_character_data(cookie_data);
 		}
-		// for(var classname in chardata.classes) {
-		// 	var clazz = classs.first({ name: classname });
-		// 		for (var i in clazz.spells) {
-		// 			class_spells.concat(clazz.spells[i])
-		// 		}
-		// 	 = clazz.spells;
-		// }
+		var owner = chardata.options ? chardata.options.owner : null;
+		if(owner) {
+			var remote_data = $.getJSON("character/" + owner + "/" + char_name);
+			if(remote_data && remote_data.last_mod > chardata.last_mod) {
+				chardata = parse_character_data(remote_data);
+			}
+			// for(var classname in chardata.classes) {
+			// 	var clazz = classes.first({ name: classname });
+			// 		for (var i in clazz.spells) {
+			// 			class_spells.concat(clazz.spells[i])
+			// 		}
+			// 	 = clazz.spells;
+			// }
+		}
 	}
 	load_static_data();
 }
@@ -76,23 +64,15 @@ function filter_owner(character) {
 	return character && character.options && character.options.owner && chardata && chardata.options && chardata.options.owner && chardata.options.owner == character.options.owner;
 }
 
-function sav(data, cookie_name, view) {
+function sav(data, cookie_name) {
 	if (data != null) {
 		data.last_mod = new Date();
-		if(view) {
-			var remote_name = cookie_name;
-			var filter;
-			if(data.type == "character") { 
-				remote_name = cookie_name.substring(3); 
-				filter = has_same_owner;
-			}
-			save_remote(data, remote_name, view, filter);
-		}
+		var remote_name = cookie_name.substring(3);
+		$.post('/character/' + chardata.options.owner + '/' + remote_name, data);
 		
 		data = escape(TAFFY.JSON.stringify(data));
 
-		var d = new Date(2020, 02, 02);
-		document.cookie = cookie_name + "=" + data + ";expires=" + d.toUTCString();
+		document.cookie = cookie_name + "=" + data + ";expires=" + (new Date(2020, 02, 02)).toUTCString();
 	}
 }
 
@@ -107,7 +87,7 @@ function save_character() {
 		var race_name = races.first({ name: chardata.race_name }).shortname;
 		var class_name = "";
 		for(var classname in chardata.classes) {
-			class_name += classs.first({ name: classname }).shortname + "_";
+			class_name += classes.first({ name: classname }).shortname + "_";
 		}
 		name = race_name + "_" + class_name;
 	}
@@ -161,85 +141,7 @@ function parse_taffy_data(data) {
 }
 
 function load_static_data() {
-	var db = new CouchDB("cm-dev", {"X-Couch-Full-Commit":"false"});
-	// classes come first
-
-	// set(key, value)
 	
-	// $.jStorage.set(key, value)
-	// Saves a value to local storage. key needs to be string otherwise an exception is thrown. value can be any JSONeable value, including objects and arrays.
-	
-	// get(key[, default])
-	
-	// value = $.jStorage.get(key)
-	// value = $.jStorage.get(key, "default value")
-		
-	// get retrieves the value if key exists, or default if it doesn't. key needs to be string otherwise an exception is thrown. default can be any value.
-	
-	// deleteKey(key)
-	
-	// $.jStorage.deleteKey(key)
-	// Removes a key from the storage. key needs to be string otherwise an exception is thrown.
-	
-	// flush()
-	
-	// $.jStorage.flush()
-	// Clears the cache.
-	
-	var items = get_remote_item(db, "ext_data/by_type", "class");
-	for(var j=0; j<items.length; j++) {
-		eval(items[j].type + "s").insert(items[j]);
-	}
-	
-	// TODO ugh..
-	var tags = ["pathfinder"];
-	if(chardata.options && chardata.options.ext_data && chardata.options.ext_data.length > 0) {
-		tags = tags.concat(chardata.options.ext_data.split(" "));
-	}
-	
-	for(var i in tags) {
-		var items = localStorage && localStorage[tags[i]] ? $.evalJSON(localStorage[tags[i]]) : null;
-		var items_timestamp = localStorage[tags[i] + "_timestamp"];
-		var tag_timestamp = db.open(tags[i] + "_timestamp");
-		if(items == null || items.length == 0 || items_timestamp == null || items_timestamp < tag_timestamp.timestamp) {
-			items = get_remote_item(db, "ext_data/by_tag", tags[i]);
-			localStorage[tags[i]] = $.toJSON(items);
-			localStorage[tags[i] + "_timestamp"] = new Date().getTime();
-		}
-		
-		while(items.length > 0) {
-			var item = items.pop();
-			// item.type maps to a TAFFY db
-			if(item.type != "class") {
-				eval(item.type + "s").insert(item);
-			}
-			// populate class relational data
-			if(item.classes) {
-				for(var classname in item.classes) {
-					var clazz = classs.first({ name: classname });
-					if(item.type != "special") {
-						// Druid - spells [ [..] [..] ]
-						// level data is 1-based 
-						var level = item.classes[classname] - 1;
-						// TODO - add to clazz prototype
-//						if(!clazz[item.type + "s"]) { clazz[item.type + "s"] = [] };
-//						if(!clazz[item.type + "s"][level]) { clazz[item.type + "s"][level] = []; }
-						clazz[item.type + "s"][level].push(item.name);
-					} else {
-						for(var k in item.classes[classname]) {
-							var special = { special_name: item.name };
-							if(item.classes[classname][k].mod) {
-								special.mod = item.classes[classname][k].mod;
-							}
-							clazz[item.type + "s"][item.classes[classname][k].level - 1].push(special);
-						}
-					}
-
-				}
-			}
-		}
-	}
-		
 	feats.forEach(function(feat, n) {
 		if(feat.multi) {
 			feat.multi.db = eval(feat.multi.db);
@@ -284,7 +186,7 @@ function load_static_data() {
 	// feats.orderBy({name:"logical"});
 	races.orderBy({name:"logical"});
 	// domains.orderBy({name:"logical"});
-	classs.orderBy({name:"logical"});
+	classes.orderBy({name:"logical"});
 	// schools.orderBy({name:"logical"});
 	weapons.orderBy({name:"logical"});
 	armors.orderBy({name:"logical"});

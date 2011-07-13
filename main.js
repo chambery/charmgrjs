@@ -169,7 +169,7 @@ function build_main_page() {
 	
 	// custom class features
 	for (var classname in chardata.classes) {
-		var clazz = classs.first({ name : classname });
+		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.main) {
 			for (var script in clazz.custom.main) {
 				eval(clazz.custom.main[script]);
@@ -272,7 +272,7 @@ function build_main_page() {
 	$('#spellspart').css('margin-top', '10px');
 	$('#spellspart').html("");
 	for (var classname in chardata.classes) {
-		var clazz = classs.first( {
+		var clazz = classes.first( {
 			name : classname
 		});
 
@@ -530,7 +530,7 @@ function recalc_main_page() {
 	// spell
 	// TODO - what's the modifier for SPD?
 	for (var classname in chardata.classes) {
-		var clazz = classs.first({ name: classname });
+		var clazz = classes.first({ name: classname });
 		var spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
 		
 		for (var i in spells_per_day) {
@@ -686,7 +686,7 @@ function calc_grapple() {
 function calc_base_attack_bonus() {
 	var bab = [];
 	for (var classname in chardata.classes) {
-		var class_babs = classs.first({ name: classname }).base_attack_bonus;
+		var class_babs = classes.first({ name: classname }).base_attack_bonus;
 		var attacks = class_babs[chardata.classes[classname].level].split("/");
 		for (var i=0; i<attacks.length; i++) {
 			bab[i] = (bab[i] | 0) + parseInt(attacks[i]);

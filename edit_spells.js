@@ -9,7 +9,7 @@ function build_spells_page() {
 	$('#content').html("");
 	for (var classname in chardata.classes) {
 		if (spellcasters.indexOf(classname) > -1) {
-			var clazz = classs.first( {
+			var clazz = classes.first( {
 				name : classname
 			});
 			if (clazz.spells_known.length > 0) {
@@ -77,7 +77,7 @@ function build_spells_page() {
 function populate_spells_page() {
 	for (classname in chardata.classes) {
 		if (spellcasters.indexOf(classname) > -1) {
-			var clazz = classs.first( {
+			var clazz = classes.first( {
 				name : classname
 			});
 			for ( var level in chardata.classes[classname].spells) {
@@ -102,7 +102,7 @@ function recalc_spells_page(level, spell_name, classname) {
 		name : spell_name
 	})._id;
 	var checked = $("input#" + spell_id + "_" + classname).attr("checked");
-	var clazz = classs.first( {
+	var clazz = classes.first( {
 		name : classname
 	});
 	// parse the current

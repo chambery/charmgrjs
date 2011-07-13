@@ -9,7 +9,7 @@ function build_feats_page() {
 	// // console.group("build_feats_page");
 	var is_spellcaster = false;
 	for (var classname in chardata.classes) {
-		if (spellcasters.indexOf(classname) > -1 && classs.first( {
+		if (spellcasters.indexOf(classname) > -1 && classes.first( {
 				name : classname
 		}).spells_per_day[calc_current_level()][0] != '-') {
 			is_spellcaster = true;
@@ -139,7 +139,7 @@ function populate_feats_page() {
 	// // console.group("populate_feats_page");
 	// apply class customizations
 	for (var classname in chardata.classes) {
-		var clazz = classs.first({ name : classname });
+		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.feats) {
 			for(var feature in clazz.custom.feats) {
 				eval(clazz.custom.feats[feature]);
@@ -295,8 +295,8 @@ function is_prereqs_met(feat_id, prereqs) {
 
     if (prereqs.classes) {
         for (var clazz in chardata.classes) {
-            var classes = $.extend(keys, prereqs.classes);
-            if (classes.indexOf(clazz) == -1 || classes[clazz] < chardata.classes[clazz].level) {
+            var classs = $.extend(keys, prereqs.classes);
+            if (classs.indexOf(clazz) == -1 || classs[clazz] < chardata.classes[clazz].level) {
                 return false;
             }
         }
@@ -490,7 +490,7 @@ function filter_options(feat, options_db) {
 function update_count(feat) {
 	var count = calc_feats_remaining();
 	var is_fighter = chardata.classes["Fighter"] == null;
-	var fighter_bonus_feats = classs.first( {
+	var fighter_bonus_feats = classes.first( {
 		name : "Fighter"
 	}).bonus_feats;
 
