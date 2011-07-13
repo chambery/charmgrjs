@@ -49,17 +49,16 @@ function build_feats_page() {
 		}
 		if (allfeats[i].prereqs.classes) {
 			var remove_me = true;
-				for (var classname in chardata.classes) {
-					if (allfeats[i].prereqs.classes && allfeats[i].prereqs.classes[classname]) {
-						remove_me = false;
-						break;
-					}
-					if (remove_me) {
-						remove(allfeats, i);
-					}
+			for (var classname in chardata.classes) {
+				if (allfeats[i].prereqs.classes && allfeats[i].prereqs.classes[classname]) {
+					remove_me = false;
+					break;
 				}
-			} 
-		}
+				if (remove_me) {
+					remove(allfeats, i);
+				}
+			}
+		} 
 	}
 	for ( var i in allfeats) {
 		if (!allfeats[i].hidden) {
@@ -266,107 +265,109 @@ function calc_prereqs() {
  * TODO - find a way around passing in the feat id
  */
 function is_prereqs_met(feat_id, prereqs) {
-	var char_feats = get_char_feats();
-	var prereqs_met = true;
-	// handle or's separately
-	if (prereqs.or) {
-		// // console.group(" : or");
-		for ( var j in prereqs.or) {
-			prereqs_met = is_prereqs_met(feat_id, prereqs.or[j]);
-			// // console.log(j + " : " + prereqs.or[j] + " = " + prereqs_met);
-			if (prereqs_met) {
-				// if we get one true, move on
-				break;
-			}
-		}
-		// // console.groupEnd();
-		if (!prereqs_met) {
-			// got through all without a match, fail
-			return false;
-		}
-	}
-	// level 
-	if(prereqs.level) {
-		for(var k in chardata.classes) {
-			if(chardata.classes[k].level < prereqs.level) {
-				return false;
-			}
-		}
-	}
-	
-	if(prereqs.classes) {
-		for(var clazz in chardata.classes) {
-			var classes = $.extend(keys, prereqs.classes)
-				if(classes.indexOf(clazz) == -1 || classes[clazz] < chardata.classes[clazz].level) {
-					return false;
-				}
-			}
-		}
-	}
-	
-	if (prereqs.pick) {
-		// // console.group(" : pick");
-		if(prereqs.pick.feats) {
-			handle_pick(prereqs.pick.feats, prereqs.pick.count);
-		}
-		
-		if(prereqs.pick.group) {
-			var group_feats = feats.get({ group: { has: prereqs.pick.group } });
-			handle_pick(group_feats, prereqs.pick.count);
-		}
-	}
+    var char_feats = get_char_feats();
+    var prereqs_met = true;
+    // handle or's separately
+    if (prereqs.or) {
+        // // console.group(" : or");
+        for (var j in prereqs.or) {
+            prereqs_met = is_prereqs_met(feat_id, prereqs.or[j]);
+            // // console.log(j + " : " + prereqs.or[j] + " = " + prereqs_met);
+            if (prereqs_met) {
+                // if we get one true, move on
+                break;
+            }
+        }
+        // // console.groupEnd();
+        if (!prereqs_met) {
+            // got through all without a match, fail
+            return false;
+        }
+    }
+    // level 
+    if (prereqs.level) {
+        for (var k in chardata.classes) {
+            if (chardata.classes[k].level < prereqs.level) {
+                return false;
+            }
+        }
+    }
 
-	// if feat prereqs contain another feat, and that feat has not been selected...
-	if (prereqs.feats) {
-		for ( var k in prereqs.feats) {
-			// if it's not a char feat or a class feat
-			if ((chardata.feats == null || chardata.feats.first( {
-				feat_name : prereqs.feats[k]
-			}) == false) && !is_class_feat(prereqs.feats[k])) {
-				// // console.log("feat fail: " + prereqs.feats[k]);
+    if (prereqs.classes) {
+        for (var clazz in chardata.classes) {
+            var classes = $.extend(keys, prereqs.classes);
+            if (classes.indexOf(clazz) == -1 || classes[clazz] < chardata.classes[clazz].level) {
+                return false;
+            }
+        }
+    }
 
-				return false;
-			}
-		}
-	}
+    if (prereqs.pick) {
+        // // console.group(" : pick");
+        if (prereqs.pick.feats) {
+            handle_pick(prereqs.pick.feats, prereqs.pick.count);
+        }
 
-	if (prereqs.multi) {
-		for ( var k in prereqs.multi) {
-			for ( var l in prereqs.multi[k]) {
-				if (chardata.feats || !chardata.feats.first( {
-					name : k
-				}) || !(chardata.feats.first( {
-					name : k
-				}).multi.indexOf(prereqs.multi[k][l]) > -1)) {
-					// // console.log("multi fail: " + k + " - " + prereqs.multi[k][l]);
-					return false;
-				}
-			}
-		}
-	}
+        if (prereqs.pick.group) {
+            var group_feats = feats.get({
+                group: {
+                    has: prereqs.pick.group
+                }
+            });
+            handle_pick(group_feats, prereqs.pick.count);
+        }
+    }
 
-	if (prereqs.abilities) {
-		for ( var k in prereqs.abilities) {
-			if (chardata.abilities[k] < prereqs.abilities[k]) {
-				// // console.log("ability fail: " + chardata.abilities[k] + " < " + prereqs.abilities[k]);
-				return false;
-			}
-		}
-	}
+    // if feat prereqs contain another feat, and that feat has not been selected...
+    if (prereqs.feats) {
+        for (var k in prereqs.feats) {
+            // if it's not a char feat or a class feat
+            if ((chardata.feats == null || chardata.feats.first({
+                feat_name: prereqs.feats[k]
+            }) == false) && !is_class_feat(prereqs.feats[k])) {
+                // console.log("feat fail: " + prereqs.feats[k]);
+                return false;
+            }
+        }
+    }
 
-	if (prereqs.skills) {
-		for ( var k in prereqs.skills) {
-			var char_skill = chardata.skills && chardata.skills.first( {
-				name : k
-			});
-			if (char_skill && char_skill.ranks < prereqs.skills[k]) {
-				// // console.log("skill fail: " + char_skill.ranks + " < " + prereqs.skills[k]);
-				return false;
-			}
-		}
-	}
+    if (prereqs.multi) {
+        for (var k in prereqs.multi) {
+            for (var l in prereqs.multi[k]) {
+                if (chardata.feats || !chardata.feats.first({
+                    name: k
+                }) || !(chardata.feats.first({
+                    name: k
+                }).multi.indexOf(prereqs.multi[k][l]) > -1)) {
+                    // // console.log("multi fail: " + k + " - " + prereqs.multi[k][l]);
+                    return false;
+                }
+            }
+        }
+    }
 
-	return true;
+    if (prereqs.abilities) {
+        for (var k in prereqs.abilities) {
+            if (chardata.abilities[k] < prereqs.abilities[k]) {
+                // // console.log("ability fail: " + chardata.abilities[k] + " < " + prereqs.abilities[k]);
+                return false;
+            }
+        }
+    }
+
+    if (prereqs.skills) {
+        for (var k in prereqs.skills) {
+            var char_skill = chardata.skills && chardata.skills.first({
+                name: k
+            });
+            if (char_skill && char_skill.ranks < prereqs.skills[k]) {
+                // // console.log("skill fail: " + char_skill.ranks + " < " + prereqs.skills[k]);
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 function calc_feats_remaining() {
