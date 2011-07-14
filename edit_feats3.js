@@ -106,7 +106,7 @@ function create_feat_listing(feat, indent) {
 			var db = feat.multi.db || feat.multi.type;
 			var all_options = filter_options(feat, db);
 			var expand_bar = "<tr id='" + feat._id + "_sub'><td colspan='2'></td><td style='width: 100%' bgcolor='#8DC3E9'><a class='fake_link'><span id='" + feat._id
-					+ "_sub__expand_flag' style='float: right; vertical-align: middle;'><img src='collapsed.png' /></span>" + feat.name + " options</a></td></tr>";
+					+ "_sub__expand_flag' style='float: right; vertical-align: middle;'><img src='images/collapsed.png' /></span>" + feat.name + " options</a></td></tr>";
 			$("tr#" + feat._id).after(expand_bar);
 			$("tr#" + feat._id + "_sub").bind('click', {
 				feat_id : feat._id

@@ -71,8 +71,8 @@ function sav(data, cookie_name) {
 		$.post('/character/' + chardata.options.owner + '/' + remote_name, data);
 		
 		data = escape(TAFFY.JSON.stringify(data));
-
-		document.cookie = cookie_name + "=" + data + ";expires=" + (new Date(2020, 02, 02)).toUTCString();
+		d = new Date(2020, 02, 02);
+		document.cookie = cookie_name + "=" + data + ";expires=" + d.toUTCString();
 	}
 }
 

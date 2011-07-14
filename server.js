@@ -23,8 +23,6 @@ var fs = require('fs')
 		console.log(req.params)		
 		console.log("body:");
 		console.log(req.body)		
-		console.log("body.chardata");
-		console.log(req.body.chardata)		
 		fs.writeFile("users/" + req.params.owner + "_" + req.params.name, JSON.stringify(req.body), function(err) {
 			if(err) {
 				console.log(err);

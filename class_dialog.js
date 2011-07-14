@@ -1,5 +1,5 @@
 function show_class_dialog(level_diff, ability_increase) {
-	var html = "<table>" + (chardata.xp > 0 ? "" : "<tr><td colspan=4>Please select a starting class:<td></tr>") + "<tr><td>Available Levels:</td><td id='level_diff' style='width: 40%;text-align: left;'>" + level_diff + "</td><td style='text-align: right;'>XP</td><td><input type='text' id='xp_input' name='xp_input' value='" + (chardata.xp ? chardata.xp : 0) + "' onblur=\"\" size='5' disabled='disabled' /></td></tr></table><table>";
+	var html = "<table>" + (chardata.xp > 0 ? "" : "<tr><td colspan=4>Please select a starting class:<td></tr>") + "<tr><td colspan='2'>Available Levels:</td><td id='level_diff' style='width: 40%;text-align: left;'>" + level_diff + "</td><td></td></tr></table><table>";
 	var classnames = [];
 	var level_selection_total = 0;
 	for (var classname in chardata.classes) {
@@ -22,7 +22,7 @@ function show_class_dialog(level_diff, ability_increase) {
 	});
 		
 	html += "</table><input type='hidden' id='level_selection_total' name='level_selection_total' value='" + level_selection_total + "' />";
-	show_dialog("Classes", html, true, "char_classes = chardata.classes.keys; switch_content(1, chardata)");
+	show_dialog("Classes", html, true, "char_classes = chardata.classes.keys; switch_content(1, chardata)", { width: 190 });
 }
 
 function do_checkbox(classname) {

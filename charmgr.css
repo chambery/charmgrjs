@@ -167,6 +167,7 @@ input {
 
 input.two_digit {
 	width: 15px;
+	text-align: center;
 }
 
 input.three_digit {

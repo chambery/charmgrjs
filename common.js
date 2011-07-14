@@ -256,7 +256,7 @@ function generate_id(){return Math.floor(Math.random()*4294967295).toString(16);
 function toggle_visible(section, hide) {
 	$("#" + section).toggle(hide);
 	var hidden = $('#' + section).is(":hidden");
-	$("#" + section + '_expand_flag').html(hidden ? "<img src='collapsed.png'/>" : "<img src='expanded.png'/>");	
+	$("#" + section + '_expand_flag').html(hidden ? "<img src='images/collapsed.png'/>" : "<img src='images/expanded.png'/>");	
 }
 
 function calc_ability_modifier(score) {
@@ -591,7 +591,7 @@ function calc_damage(weapon, ability_score, char_feats, char_weapon) {
 	return damage;
 }
 
-function show_dialog(title, content, save_on_close, close_fn) {
+function show_dialog(title, content, save_on_close, close_fn, opts) {
 	// close dialog when clicking outside of it
 	$(".ui-widget-overlay").live("click", function() {  $("#mydialog").dialog("close"); } );
 	if(save_on_close) {
@@ -603,13 +603,15 @@ function show_dialog(title, content, save_on_close, close_fn) {
 		$("#mydialog").unbind('dialogclose');
 	}
 	$("#mydialog").html(content);
-	$("#mydialog").dialog( {
+	var options = {
 		modal: true,
 		autoOpen: false,
 		title: title,
-		position: "center",
-		width: 320
-	});
+		position: [50,50],
+		width:320
+	};
+	$.extend(options, opts)
+	$("#mydialog").dialog(options);
 	$("tr[class='detail'][class!='header']:even").addClass("even_row");
 	//	$(".editinplace").editInPlace({});
 	$("#mydialog").dialog('open');
