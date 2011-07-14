@@ -6,7 +6,7 @@ var deities = new TAFFY([ {
 	domains: [ "Animal", "Community", "Good", "Law", "Plant" ],
 	weapon: "Longbow",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "6b19"
 }, {
 	name: "Iomedae",
 	alignment: "Lawful",
@@ -15,7 +15,7 @@ var deities = new TAFFY([ {
 	domains: [ "Glory", "Good", "Law", "Sun", "War" ],
 	weapon: "Longsword",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "c7ce"
 }, {
 	name: "Torag",
 	alignment: "Lawful",
@@ -24,7 +24,7 @@ var deities = new TAFFY([ {
 	domains: [ "Artifice", "Earth", "Good", "Law", "Protection" ],
 	weapon: "Warhammer",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "c272"
 }, {
 	name: "Sarenrae",
 	alignment: "Neutral",
@@ -33,7 +33,7 @@ var deities = new TAFFY([ {
 	domains: [ "Fire", "Glory", "Good", "Healing", "Sun" ],
 	weapon: "Scimitar",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "de44"
 }, {
 	name: "Shelyn",
 	alignment: "Neutral",
@@ -42,7 +42,7 @@ var deities = new TAFFY([ {
 	domains: [ "Air", "Charm", "Good", "Luck", "Protection" ],
 	weapon: "Glaive",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "6802"
 }, {
 	name: "Desna",
 	alignment: "Chaotic",
@@ -51,7 +51,7 @@ var deities = new TAFFY([ {
 	domains: [ "Chaos", "Good", "Liberation", "Luck", "Travel" ],
 	weapon: "Starknife",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "a1ac"
 }, {
 	name: "Cayden Cailean",
 	alignment: "Chaotic",
@@ -60,7 +60,7 @@ var deities = new TAFFY([ {
 	domains: [ "Chaos", "Charm", "Good", "Strength", "Travel" ],
 	weapon: "Rapier",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "fb51"
 }, {
 	name: "Abadar",
 	alignment: "Lawful",
@@ -69,24 +69,24 @@ var deities = new TAFFY([ {
 	domains: [ "Earth", "Law", "Nobility", "Protection", "Travel" ],
 	weapon: "Light Crossbow",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "42ff"
 }, {
 	name: "Irori",
 	alignment: "Lawful",
 	goodness: "Neutral",
-	portfolios: [ "istory", "knowledge", "self-perfection" ],
+	portfolios: [ "history", "knowledge", "self-perfection" ],
 	domains: [ "Healing", "Knowledge", "Law", "Rune", "Strength" ],
 	weapon: "Unarmed Strike",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "1eac"
 }, {
 	name: "Gozreh",
 	alignment: "Neutral",
-	portfolios: [ "ature", "weather", "the_sea" ],
+	portfolios: [ "nature", "weather", "the sea" ],
 	domains: [ "Air", "Animal", "Plant", "Water", "Weather" ],
 	weapon: "Trident",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "691e"
 }, {
 	name: "Pharasma",
 	alignment: "Neutral",
@@ -94,33 +94,33 @@ var deities = new TAFFY([ {
 	domains: [ "Death", "Healing", "Knowledge", "Repose", "Water" ],
 	weapon: "Dagger",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "942b"
 }, {
 	name: "Nethys",
 	alignment: "Neutral",
-	portfolios: [ magic ],
+	portfolios: [ "magic" ],
 	domains: [ "Destruction", "Knowledge", "Magic", "Protection", "Rune" ],
 	weapon: "Quarterstaff ",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "52ea"
 }, {
 	name: "Gorum",
 	alignment: "Chaotic",
 	goodness: "Neutral",
-	portfolios: [ "trength", "battle", "weapons" ],
+	portfolios: [ "strength", "battle", "weapons" ],
 	domains: [ "Chaos", "Destruction", "Glory", "Strength", "War" ],
 	weapon: "Greatsword",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "866c"
 }, {
 	name: "Calistria",
 	alignment: "Chaotic",
 	goodness: "Neutral",
-	portfolios: [ "rickery", "lust", "revenge" ],
+	portfolios: [ "trickery", "lust", "revenge" ],
 	domains: [ "Chaos", "Charm", "Knowledge", "Luck", "Trickery" ],
 	weapon: "Whip",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "6751"
 }, {
 	name: "Asmodeus",
 	alignment: "Lawful",
@@ -129,7 +129,7 @@ var deities = new TAFFY([ {
 	domains: [ "Evil", "Fire", "Law", "Magic", "Trickery" ],
 	weapon: "Mace",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "237b"
 }, {
 	name: "Zon-Kuthon",
 	alignment: "Lawful",
@@ -138,7 +138,7 @@ var deities = new TAFFY([ {
 	domains: [ "Darkness", "Death", "Destruction", "Evil", "Law" ],
 	weapon: "Spiked Chain",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "3ed6"
 }, {
 	name: "Urgathoa",
 	alignment: "Neutral",
@@ -147,7 +147,7 @@ var deities = new TAFFY([ {
 	domains: [ "Death", "Evil", "Magic", "Strength", "War" ],
 	weapon: "Scythe",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "cdd2"
 }, {
 	name: "Norgorber",
 	alignment: "Neutral",
@@ -156,23 +156,23 @@ var deities = new TAFFY([ {
 	domains: [ "Charm", "Death", "Evil", "Knowledge", "Trickery" ],
 	weapon: "Short Sword",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "ab92"
 }, {
 	name: "Lamashtu",
 	alignment: "Chaotic",
 	goodness: "Evil",
-	portfolios: [ "adness", "monsters", "nightmares" ],
+	portfolios: [ "madness", "monsters", "nightmares" ],
 	domains: [ "Chaos", "Evil", "Madness", "Strength", "Trickery" ],
 	weapon: "Falchion",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "5ec4"
 }, {
 	name: "Rovagug",
 	alignment: "Chaotic",
 	goodness: "Evil",
-	portfolios: [ "rath", "disaster", "destruction" ],
+	portfolios: [ "wrath", "disaster", "destruction" ],
 	domains: [ "Chaos", "Destruction", "Evil", "War", "Weather" ],
 	weapon: "Greataxe",
 	tags: [ "pathfinder" ],
-	type: [ "deity" ]
+	type: "deity", _id: "1339"
 } ]);

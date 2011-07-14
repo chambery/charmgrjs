@@ -11,7 +11,7 @@ armors = new TAFFY([{
     weight: 10,
     category: "light", 
     type: "armor", 
-    tags: ["pathfinder"]
+    tags: ["pathfinder"], _id: "ce4b"
 }, {
     name: "Leather",
     cost: "10 gp",
@@ -24,7 +24,7 @@ armors = new TAFFY([{
     weight: 15,
     category: "light", 
     type: "armor", 
-    tags: ["pathfinder"]
+    tags: ["pathfinder"], _id: "22d2"
 }, {
     name: "Studded leather",
     cost: "25 gp",
@@ -37,7 +37,7 @@ armors = new TAFFY([{
     weight: 20,
     category: "light",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "b81b"
 }, {
     name: "Chain shirt",
     cost: "100 gp",
@@ -50,7 +50,7 @@ armors = new TAFFY([{
     weight: 25,
     category: "light",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d1b3"
 }, {
     name: "Hide",
     cost: "15 gp",
@@ -63,7 +63,7 @@ armors = new TAFFY([{
     weight: 25,
     category: "medium",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "b2a2"
 }, {
     name: "Scale mail",
     cost: "50 gp",
@@ -76,7 +76,7 @@ armors = new TAFFY([{
     weight: 30,
     category: "medium",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "2943"
 }, {
     name: "Chainmail",
     cost: "150 gp",
@@ -89,7 +89,7 @@ armors = new TAFFY([{
     weight: 40,
     category: "medium",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f5c2"
 }, {
     name: "Breastplate",
     cost: "200 gp",
@@ -102,7 +102,7 @@ armors = new TAFFY([{
     weight: 30,
     category: "medium",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f519"
 }, {
     name: "Splint mail",
     cost: "200 gp",
@@ -115,7 +115,7 @@ armors = new TAFFY([{
     weight: 45,
     category: "heavy",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f962"
 }, {
     name: "Banded mail",
     cost: "250 gp",
@@ -128,7 +128,7 @@ armors = new TAFFY([{
     weight: 35,
     category: "heavy",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "7be5"
 }, {
     name: "Half-plate",
     cost: "600 gp",
@@ -141,7 +141,7 @@ armors = new TAFFY([{
     weight: 50,
     category: "heavy",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "3afd"
 }, {
     name: "Full plate",
     cost: "1,500 gp",
@@ -154,7 +154,7 @@ armors = new TAFFY([{
     weight: 50,
     category: "heavy",
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "90df"
 },  {
     name: "Armor spikes",
     cost: "50 gp",
@@ -166,7 +166,7 @@ armors = new TAFFY([{
     speed20: "-",
     weight: 10,
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "5a59"
 }, {
     name: "Gauntlet, locked",
     cost: "8 gp",
@@ -178,7 +178,7 @@ armors = new TAFFY([{
     speed20: "-",
     weight: 5,
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "9803"
 }, {
     name: "Shield spikes",
     cost: "10 gp",
@@ -190,5 +190,5 @@ armors = new TAFFY([{
     speed20: "-",
     weight: 5,
 	type: "armor",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "fb80"
 }]);

@@ -70,15 +70,13 @@ function build_edit_page() {
 		for(var foo in align_range) {
 				console.log(align_range[foo]);
 		}
-		var available_deities = deitys.get({ alignment: align_range });
-		for(var foo in available_deities) {
-			console.log(available_deities[foo].name + " : " + available_deities[foo].alignment);
-		}
+			
 		align_html = [];
 		align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
-		for (var i=0; i<available_deities.length; i++) {
+		deities.forEach( function(deity, i) {
+			console.log(deity.name + " : " + deity.alignment);
 			align_html.push(["<option id='deity_option_" + available_deities[i].name + "' data_id='" + available_deities[i]._id + "' value='" + available_deities[i].name + "'>" + available_deities[i].name + "</option>"]);
-		}
+		}, { alignment: align_range });
 		$("#deity").html(align_html.join(''));
 		if($("#deity").containsOption(chardata.deity)) {
 			$("#deity").val(chardata.deity);
@@ -93,11 +91,10 @@ function build_edit_page() {
 	});
 
 	align_html = [];
-	var deities = deitys.get();
 	align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
-	for (var i=0; i<deities.length; i++) {
-		align_html.push(["<option id='deity_option_" + deities[i].name + "' data_id='" + deities[i]._id + "' value='" + deities[i].name + "'>" + deities[i].name + "</option>"]);
-	}
+	deities.forEach( function(deity, i) { 
+			align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
+		});
 	$("#deity").html(align_html.join(''));
 	
 	$("#deity").change(function() {

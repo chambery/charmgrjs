@@ -18,7 +18,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "bd08"
 		},
 		{
 			name : "Acrobatic Steps",
@@ -34,7 +34,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "ae16"
 		},
 		{
 			name : "Agile Maneuvers",
@@ -45,7 +45,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a364"
 		},
 		{
 			name : "Alertness",
@@ -65,7 +65,7 @@ feats = new TAFFY ([
 			},
 			prereqs : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "768a"
 		},
 		{
 			name : "Alignment Channel",
@@ -80,7 +80,7 @@ feats = new TAFFY ([
 				class_features : [ "Channel Energy" ]
 			},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d93f"
 		},
 		{
 			name : "Animal Affinity",
@@ -100,7 +100,7 @@ feats = new TAFFY ([
 			},
 			prereqs : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "9477"
 		},
 		{
 			name : "Arcane Armor Mastery",
@@ -113,7 +113,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "760c"
 		},
 		{
 			name : "Arcane Armor Training",
@@ -126,7 +126,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "53db"
 		},
 		{
 			name : "Arcane Strike",
@@ -139,7 +139,7 @@ feats = new TAFFY ([
 			arcane : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f6b4"
 		},
 		{
 			name : "Armor Proficiency, Heavy",
@@ -159,7 +159,7 @@ feats = new TAFFY ([
 				feats : [ "Armor Proficiency, Medium" ]
 			},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "44c1"
 		},
 		{
 			name : "Armor Proficiency, Light",
@@ -177,7 +177,7 @@ feats = new TAFFY ([
 			},
 			prereqs : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "ffd4"
 		},
 		{
 			name : "Armor Proficiency, Medium",
@@ -197,7 +197,7 @@ feats = new TAFFY ([
 				feats : [ "Armor Proficiency, Light" ]
 			},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f286"
 		},
 		{
 			name : "Athletic",
@@ -217,7 +217,7 @@ feats = new TAFFY ([
 			},
 			prereqs : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "5a9"
 		},
 		{
 			name : "Augment Summoning",
@@ -234,7 +234,7 @@ feats = new TAFFY ([
 			},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "97ff"
 		},
 		{
 			name : "Bleeding Critical",
@@ -248,7 +248,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat", "Critical" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "960a"
 		},
 		{
 			name : "Blind-Fight",
@@ -259,7 +259,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "2fec"
 		},
 		{
 			name : "Blinding Critical",
@@ -273,7 +273,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat", "Critical" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "70b4"
 		},
 		{
 			name : "Brew Potion",
@@ -290,7 +290,7 @@ feats = new TAFFY ([
 			},
 			spell_related : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "de37"
 		},
 		{
 			name : "Catch Off-Guard",
@@ -301,7 +301,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "ae37"
 		},
 		{
 			name : "Channel Smite",
@@ -314,7 +314,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3a9e"
 		},
 		{
 			name : "Cleave",
@@ -332,7 +332,7 @@ feats = new TAFFY ([
 			op : "",
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1547"
 		},
 		{
 			name : "Combat Casting",
@@ -348,7 +348,7 @@ feats = new TAFFY ([
 			},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b11c"
 		},
 		{
 			name : "Combat Expertise",
@@ -363,7 +363,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b278"
 		},
 		{
 			name : "Combat Reflexes",
@@ -374,7 +374,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "ec2e"
 		},
 		{
 			name : "Command Undead",
@@ -387,7 +387,7 @@ feats = new TAFFY ([
 			},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "7e21"
 		},
 		{
 			name : "Craft Magic Arms and Armor",
@@ -406,7 +406,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "833"
 		},
 		{
 			name : "Craft Rod",
@@ -424,7 +424,7 @@ feats = new TAFFY ([
 			conditional : false,
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a987"
 		},
 		{
 			name : "Craft Staff",
@@ -442,7 +442,7 @@ feats = new TAFFY ([
 			conditional : false,
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "634e"
 		},
 		{
 			name : "Craft Wand",
@@ -460,7 +460,7 @@ feats = new TAFFY ([
 			conditional : false,
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "45d8"
 		},
 		{
 			name : "Craft Wondrous Item",
@@ -477,7 +477,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f94f"
 		},
 		{
 			name : "Critical Focus",
@@ -490,7 +490,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b6a5"
 		},
 		{
 			name : "Critical Mastery",
@@ -509,7 +509,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e447"
 		},
 		{
 			name : "Dazzling Display",
@@ -525,7 +525,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "85a6"
 		},
 		{
 			name : "Deadly Aim",
@@ -541,7 +541,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "587d"
 		},
 		{
 			name : "Deadly Stroke",
@@ -555,7 +555,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "17c8"
 		},
 		{
 			name : "Deafening Critical",
@@ -569,7 +569,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat", "Critical" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "11fa"
 		},
 		{
 			name : "Deceitful",
@@ -588,7 +588,7 @@ feats = new TAFFY ([
 				}
 			},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "bafb"
 		},
 		{
 			name : "Defensive Combat Training",
@@ -597,7 +597,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "fa85"
 		},
 		{
 			name : "Deflect Arrows",
@@ -608,12 +608,12 @@ feats = new TAFFY ([
 				abilities : {
 					Dex : 13
 				},
-				feats : [ "Improved Unarmed Defense" ]
+				feats : [ "Improved Unarmed Strike" ]
 			},
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f2ad"
 		},
 		{
 			name : "Deft Hands",
@@ -632,7 +632,7 @@ feats = new TAFFY ([
 				}
 			},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e5c9"
 		},
 		{
 			name : "Diehard",
@@ -644,7 +644,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "9ca9"
 		},
 		{
 			name : "Disruptive",
@@ -659,7 +659,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b5d6"
 		},
 		{
 			name : "Dodge",
@@ -674,7 +674,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f3b3"
 		},
 		{
 			name : "Double Slice",
@@ -690,7 +690,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "693f"
 		},
 		{
 			name : "Elemental Channel",
@@ -702,7 +702,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "ee8d"
 		},
 		{
 			name : "Empower Spell",
@@ -715,7 +715,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "5d75"
 		},
 		{
 			name : "Endurance",
@@ -725,7 +725,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "7b92"
 		},
 		{
 			name : "Enlarge Spell",
@@ -744,7 +744,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1835"
 		},
 		{
 			name : "Eschew Materials",
@@ -761,7 +761,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "811a"
 		},
 		{
 			name : "Exhausting Critical",
@@ -775,7 +775,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Combat", "Critical" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "da18"
 		},
 		{
 			name : "Exotic Weapon Proficiency",
@@ -787,7 +787,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "db65"
 		},
 		{
 			name : "Extend Spell",
@@ -806,7 +806,7 @@ feats = new TAFFY ([
 			conditional : true,
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "fed8"
 		},
 		{
 			name : "Extra Channel",
@@ -818,7 +818,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3029"
 		},
 		{
 			name : "Extra Ki",
@@ -830,7 +830,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "35cd"
 		},
 		{
 			name : "Extra Lay On Hands",
@@ -842,7 +842,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e8a1"
 		},
 		{
 			name : "Extra Mercy",
@@ -854,7 +854,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1af0"
 		},
 		{
 			name : "Extra Performance",
@@ -866,7 +866,7 @@ feats = new TAFFY ([
 			benefit : {},
 			conditional : true,
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e2e3"
 		},
 		{
 			name : "Extra Rage",
@@ -875,7 +875,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e69b"
 		},
 		{
 			name : "Far Shot",
@@ -885,7 +885,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "4d5"
 		},
 		{
 			name : "Fleet",
@@ -894,7 +894,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "43fd"
 		},
 		{
 			name : "Forge Ring",
@@ -904,7 +904,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "44c8"
 		},
 		{
 			name : "Gorgon&apos;s Fist",
@@ -914,7 +914,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e518"
 		},
 		{
 			name : "Great Cleave",
@@ -924,7 +924,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8f53"
 		},
 		{
 			name : "Great Fortitude",
@@ -933,7 +933,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e253"
 		},
 		{
 			name : "Greater Bull Rush",
@@ -943,7 +943,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "2e00"
 		},
 		{
 			name : "Greater Disarm",
@@ -953,7 +953,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "23e7"
 		},
 		{
 			name : "Greater Feint",
@@ -963,7 +963,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "9940"
 		},
 		{
 			name : "Greater Grapple",
@@ -973,7 +973,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "941"
 		},
 		{
 			name : "Greater Overrun",
@@ -983,7 +983,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "7793"
 		},
 		{
 			name : "Greater Penetrating Strike",
@@ -993,7 +993,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "cd74"
 		},
 		{
 			name : "Greater Shield Focus",
@@ -1003,7 +1003,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "9e7d"
 		},
 		{
 			name : "Greater Spell Focus",
@@ -1012,7 +1012,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1cad"
 		},
 		{
 			name : "Greater Spell Penetration",
@@ -1021,7 +1021,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "4637"
 		},
 		{
 			name : "Greater Sunder",
@@ -1031,7 +1031,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "45a0"
 		},
 		{
 			name : "Greater Trip",
@@ -1041,7 +1041,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f879"
 		},
 		{
 			name : "Greater Two-Weapon Fighting",
@@ -1051,7 +1051,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "707"
 		},
 		{
 			name : "Greater Vital Strike",
@@ -1061,7 +1061,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "acc3"
 		},
 		{
 			name : "Greater Weapon Focus",
@@ -1071,7 +1071,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "4cf8"
 		},
 		{
 			name : "Greater Weapon Specialization",
@@ -1081,7 +1081,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b9f2"
 		},
 		{
 			name : "Heighten Spell",
@@ -1091,7 +1091,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "284a"
 		},
 		{
 			name : "Improved Bull Rush",
@@ -1101,7 +1101,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e579"
 		},
 		{
 			name : "Improved Channel",
@@ -1110,7 +1110,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "cbbf"
 		},
 		{
 			name : "Improved Counterspell",
@@ -1119,7 +1119,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a511"
 		},
 		{
 			name : "Improved Critical",
@@ -1129,7 +1129,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "936a"
 		},
 		{
 			name : "Improved Disarm",
@@ -1139,7 +1139,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "47bb"
 		},
 		{
 			name : "Improved Familiar",
@@ -1148,7 +1148,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "baf6"
 		},
 		{
 			name : "Improved Feint",
@@ -1158,7 +1158,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f782"
 		},
 		{
 			name : "Improved Grapple",
@@ -1168,7 +1168,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e38a"
 		},
 		{
 			name : "Improved Great Fortitude",
@@ -1177,7 +1177,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8de1"
 		},
 		{
 			name : "Improved Initiative",
@@ -1187,7 +1187,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "5a09"
 		},
 		{
 			name : "Improved Iron Will",
@@ -1196,7 +1196,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "da6b"
 		},
 		{
 			name : "Improved Lightning Reflexes",
@@ -1205,7 +1205,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "eeb0"
 		},
 		{
 			name : "Improved Overrun",
@@ -1215,7 +1215,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "f536"
 		},
 		{
 			name : "Improved Precise Shot",
@@ -1225,7 +1225,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "5ff0"
 		},
 		{
 			name : "Improved Shield Bash",
@@ -1235,7 +1235,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "5e60"
 		},
 		{
 			name : "Improved Sunder",
@@ -1245,7 +1245,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "dff1"
 		},
 		{
 			name : "Improved Trip",
@@ -1255,7 +1255,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "405d"
 		},
 		{
 			name : "Improved Two-Weapon Fighting",
@@ -1265,7 +1265,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1eca"
 		},
 		{
 			name : "Improved Unarmed Strike",
@@ -1275,7 +1275,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "db7"
 		},
 		{
 			name : "Improved Vital Strike",
@@ -1285,7 +1285,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "cf3c"
 		},
 		{
 			name : "Improvised Weapon Mastery",
@@ -1295,7 +1295,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "aaa1"
 		},
 		{
 			name : "Intimidating Prowess",
@@ -1305,7 +1305,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a157"
 		},
 		{
 			name : "Iron Will",
@@ -1314,7 +1314,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "49e8"
 		},
 		{
 			name : "Leadership",
@@ -1323,7 +1323,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "c13f"
 		},
 		{
 			name : "Lightning Reflexes",
@@ -1332,7 +1332,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "68f5"
 		},
 		{
 			name : "Lightning Stance",
@@ -1342,7 +1342,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a1d4"
 		},
 		{
 			name : "Lunge",
@@ -1352,7 +1352,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "dac8"
 		},
 		{
 			name : "Magical Aptitude",
@@ -1361,7 +1361,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "160f"
 		},
 		{
 			name : "Manyshot",
@@ -1371,7 +1371,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "6b98"
 		},
 		{
 			name : "Martial Weapon Proficiency",
@@ -1380,7 +1380,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "da10"
 		},
 		{
 			name : "Master Craftsman",
@@ -1389,7 +1389,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "50d3"
 		},
 		{
 			name : "Maximize Spell",
@@ -1399,7 +1399,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d18c"
 		},
 		{
 			name : "Medusa&apos;s Wrath",
@@ -1409,7 +1409,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b1ba"
 		},
 		{
 			name : "Mobility",
@@ -1419,7 +1419,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "94cb"
 		},
 		{
 			name : "Mounted Archery",
@@ -1429,7 +1429,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1dd9"
 		},
 		{
 			name : "Mounted Combat",
@@ -1439,7 +1439,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d4b9"
 		},
 		{
 			name : "Natural Spell",
@@ -1448,7 +1448,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a684"
 		},
 		{
 			name : "Nimble Moves",
@@ -1457,7 +1457,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "98b8"
 		},
 		{
 			name : "Penetrating Strike",
@@ -1467,7 +1467,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "91c0"
 		},
 		{
 			name : "Persuasive",
@@ -1476,7 +1476,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1366"
 		},
 		{
 			name : "Pinpoint Targeting",
@@ -1486,7 +1486,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "ad5c"
 		},
 		{
 			name : "Point-Blank Shot",
@@ -1496,7 +1496,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "7da6"
 		},
 		{
 			name : "Power Attack",
@@ -1506,7 +1506,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3b2b"
 		},
 		{
 			name : "Precise Shot",
@@ -1516,7 +1516,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "dec"
 		},
 		{
 			name : "Quick Draw",
@@ -1526,7 +1526,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3961"
 		},
 		{
 			name : "Quicken Spell",
@@ -1536,7 +1536,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3cb0"
 		},
 		{
 			name : "Rapid Reload",
@@ -1546,7 +1546,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8630"
 		},
 		{
 			name : "Rapid Shot",
@@ -1556,7 +1556,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "5af6"
 		},
 		{
 			name : "Ride-By Attack",
@@ -1566,7 +1566,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8a59"
 		},
 		{
 			name : "Run",
@@ -1575,7 +1575,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "547e"
 		},
 		{
 			name : "Scorpion Style",
@@ -1585,7 +1585,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d58c"
 		},
 		{
 			name : "Scribe Scroll",
@@ -1595,7 +1595,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Item Creation" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d970"
 		},
 		{
 			name : "Selective Channeling",
@@ -1604,7 +1604,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "6fa4"
 		},
 		{
 			name : "Self-Sufficient",
@@ -1613,7 +1613,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "2aea"
 		},
 		{
 			name : "Shatter Defenses",
@@ -1623,7 +1623,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "bcda"
 		},
 		{
 			name : "Shield Focus",
@@ -1633,7 +1633,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3728"
 		},
 		{
 			name : "Shield Master",
@@ -1643,7 +1643,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3fde"
 		},
 		{
 			name : "Shield Proficiency",
@@ -1652,7 +1652,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "6d9e"
 		},
 		{
 			name : "Shield Slam",
@@ -1662,7 +1662,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "74c9"
 		},
 		{
 			name : "Shot on the Run",
@@ -1672,7 +1672,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d4ba"
 		},
 		{
 			name : "Sickening Critical",
@@ -1682,7 +1682,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Critical", "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8a4a"
 		},
 		{
 			name : "Silent Spell",
@@ -1692,7 +1692,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "137d"
 		},
 		{
 			name : "Simple Weapon Proficiency",
@@ -1701,7 +1701,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1c6b"
 		},
 		{
 			name : "Skill Focus",
@@ -1710,7 +1710,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "b3d6"
 		},
 		{
 			name : "Snatch Arrows",
@@ -1720,7 +1720,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e53d"
 		},
 		{
 			name : "Spell Focus",
@@ -1729,7 +1729,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "48dc"
 		},
 		{
 			name : "Spell Mastery",
@@ -1738,7 +1738,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "dcf3"
 		},
 		{
 			name : "Spell Penetration",
@@ -1747,7 +1747,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8f2"
 		},
 		{
 			name : "Spellbreaker",
@@ -1757,7 +1757,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a306"
 		},
 		{
 			name : "Spirited Charge",
@@ -1767,7 +1767,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "fb"
 		},
 		{
 			name : "Spring Attack",
@@ -1777,7 +1777,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "8fa2"
 		},
 		{
 			name : "Staggering Critical",
@@ -1787,7 +1787,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Critical", "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3df7"
 		},
 		{
 			name : "Stand Still",
@@ -1797,7 +1797,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "251b"
 		},
 		{
 			name : "Stealthy",
@@ -1806,7 +1806,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "1f2a"
 		},
 		{
 			name : "Step Up",
@@ -1816,7 +1816,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "179a"
 		},
 		{
 			name : "Still Spell",
@@ -1826,7 +1826,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "af86"
 		},
 		{
 			name : "Strike Back",
@@ -1836,7 +1836,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "fb94"
 		},
 		{
 			name : "Stunning Critical",
@@ -1846,7 +1846,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Critical", "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "2a8d"
 		},
 		{
 			name : "Stunning Fist",
@@ -1856,7 +1856,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3be0"
 		},
 		{
 			name : "Throw Anything",
@@ -1866,7 +1866,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "32d3"
 		},
 		{
 			name : "Tiring Critical",
@@ -1879,7 +1879,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Critical", "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "fd28"
 		},
 		{
 			name : "Toughness",
@@ -1888,7 +1888,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "4779"
 		},
 		{
 			name : "Tower Shield Proficiency",
@@ -1898,7 +1898,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "6fdf"
 		},
 		{
 			name : "Trample",
@@ -1908,7 +1908,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "7e41"
 		},
 		{
 			name : "Turn Undead",
@@ -1917,7 +1917,7 @@ feats = new TAFFY ([
 			prereqs : {},
 			benefit : {},
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a35"
 		},
 		{
 			name : "Two-Weapon Defense",
@@ -1927,7 +1927,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "c1ce"
 		},
 		{
 			name : "Two-Weapon Fighting",
@@ -1937,7 +1937,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "a305"
 		},
 		{
 			name : "Two-Weapon Rend",
@@ -1947,7 +1947,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e339"
 		},
 		{
 			name : "Unseat",
@@ -1957,7 +1957,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3b95"
 		},
 		{
 			name : "Vital Strike",
@@ -1967,7 +1967,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "cbd5"
 		},
 		{
 			name : "Weapon Finesse",
@@ -1979,7 +1979,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "e272"
 		},
 		{
 			name : "Weapon Focus",
@@ -1989,7 +1989,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "63e4"
 		},
 		{
 			name : "Weapon Specialization",
@@ -2007,7 +2007,7 @@ feats = new TAFFY ([
 			},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "d445"
 		},
 		{
 			name : "Whirlwind Attack",
@@ -2017,7 +2017,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "3574"
 		},
 		{
 			name : "Widen Spell",
@@ -2027,7 +2027,7 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Metamagic" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "51c4"
 		},
 		{
 			name : "Wind Stance",
@@ -2037,5 +2037,5 @@ feats = new TAFFY ([
 			benefit : {},
 			groups : [ "Combat" ],
 			tags : [ "pathfinder" ],
-			type : "feat"
+			type: "feat", _id: "13c1"
 		} ]);

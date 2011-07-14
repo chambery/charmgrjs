@@ -1,4 +1,4 @@
-shield_types = [{ name: "buckler", type: "shield_type", tags: ["pathfinder"] }, { name: "light", type: "shield_type", tags: ["pathfinder"] }, { name: "heavy", type: "shield_type", tags: ["pathfinder"] }, { name: "tower", type: "shield_type", tags: ["pathfinder"] }];
+shield_types = [{ name: "buckler", type: "shield_type", tags: ["pathfinder"], _id: "e80c" }, { name: "light", type: "shield_type", tags: ["pathfinder"], _id: "f761" }, { name: "heavy", type: "shield_type", tags: ["pathfinder"], _id: "1831" }, { name: "tower", type: "shield_type", tags: ["pathfinder"], _id: "9e74" }];
 shields = new TAFFY([{
     name: "Buckler",
     cost: "15 gp",
@@ -11,7 +11,7 @@ shields = new TAFFY([{
     weight: 5,
     category: "buckler",
 	type: "shield",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "69dc"
 }, {
     name: "Shield, small, wooden",
     cost: "3 gp",
@@ -24,7 +24,7 @@ shields = new TAFFY([{
     weight: 5,
     category: "light",
 	type: "shield",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "5a6a"
 }, {
     name: "Shield, small, steel",
     cost: "9 gp",
@@ -37,7 +37,7 @@ shields = new TAFFY([{
     weight: 6,
     category: "light",
 	type: "shield",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "1f64"
 }, {
     name: "Shield, large, wooden",
     cost: "7 gp",
@@ -50,7 +50,7 @@ shields = new TAFFY([{
     weight: 10,
     category: "heavy",
 	type: "shield",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "70ac"
 }, {
     name: "Shield, large, steel",
     cost: "20 gp",
@@ -63,7 +63,7 @@ shields = new TAFFY([{
     weight: 15,
     category: "heavy",
 	type: "shield",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "74dd"
 }, {
     name: "Shield, tower",
     cost: "30 gp",
@@ -76,5 +76,5 @@ shields = new TAFFY([{
     weight: 45,
     category: "tower",
 	type: "shield",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "9408"
 }]);

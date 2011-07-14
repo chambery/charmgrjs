@@ -11,7 +11,7 @@ classes = new TAFFY([{
     bonus_feats_levels: [6, 12, 18],
 	hd: 12, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "2c3d",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -21,7 +21,8 @@ classes = new TAFFY([{
     				script: "function update_literacy(language_id) {\n var checked = $('#literacy_' + language_id + '_check').attr('checked');\n var language = languages.first( {\n _id : language_id }\n);\n if (!checked && chardata.classes['Barbarian'].literacy[language.name]) {\n delete chardata.classes['Barbarian'].literacy[language.name];\n }\n else {\n chardata.classes['Barbarian'].literacy[language.name]=true;\n }\n var skill_pts = calc_skill_points() - (count_attrs(chardata.classes['Barbarian'].literacy) * 2);\n $('#skill_pts_remaining').html(skill_pts < 0 ? [ '<span class=\"alarm\">', skill_pts, '</span>' ].join('') : skill_pts);\n save_character();\n }\n if (chardata.classes['Barbarian'].literacy == null) {\n chardata.classes['Barbarian'].literacy = [];\n }\n if ($('#literacy_header').length == 0) {\n $('#language_table').prepend('<tr><td id=\"literacy_header\" colspan=2></td><td>Lit</td>');\n }\n var langs = [];\n for ( var classname in chardata.classes) {\n var clazz = classes.first( {\n name : classname }\n);\n langs = langs.concat(clazz.languages != null ? clazz.languages : []);\n }\n langs = langs.concat(race.languages);\n langs = langs.concat(chardata.languages);\n for ( var i in langs) {\n var lang = languages.first( {\n name : langs[i] }\n);\n if ($('#literacy_' + lang._id).length == 0) {\n $('tr#language_' + lang._id).append('<td id=\"literacy_' + lang._id + '\"><input id=\"literacy_' + lang._id + '_check\" type=\"checkbox\" /></td>');\n $('#literacy_' + lang._id + '_check').click(function() {\n return update_literacy(lang._id);\n }\n);\n if (chardata.classes['Barbarian'].literacy[lang.name]) {\n $('#literacy_' + lang._id + '_check').attr('checked', 'checked');\n }\n }\n }"
     		}]
     	}
-    }
+    },
+    class_features: []
 }, {
     name: "Bard",
     shortname: "Brd",
@@ -35,7 +36,7 @@ classes = new TAFFY([{
     bonus_feats_levels: [5, 10],
 	hd: 6, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "246b",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -54,7 +55,7 @@ classes = new TAFFY([{
 	languages: [0, 3, 14],
 	hd: 8, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "d577",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -81,7 +82,7 @@ classes = new TAFFY([{
     languages: [16],
 	hd: 8, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "6041",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -100,10 +101,11 @@ classes = new TAFFY([{
     bonus_feats_levels: [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19],
 	hd: 10, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "4b8c",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+    specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    class_features: []
 }, {
     name: "Monk",
     shortname: "Mnk",
@@ -121,10 +123,11 @@ classes = new TAFFY([{
     bonus_feats_levels: [0, 1, 5],
 	hd: 8, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "4b46",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+    specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    class_features: []
 }, {
 	// TODO - Impl turn undead (55)
     name: "Paladin",
@@ -139,7 +142,7 @@ classes = new TAFFY([{
     bonus_feats_levels: [4, 9, 15],
 	hd: 1, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "487f",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -157,7 +160,7 @@ classes = new TAFFY([{
     bonus_feats_levels: [4, 9, 14, 19],
 	hd: 8, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "7226",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -203,10 +206,11 @@ classes = new TAFFY([{
     special_abilities_levels: [9, 12, 15, 19],
 	hd: 6, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "3410",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+    specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    class_features: []
 }, {
     name: "Sorceror",
     shortname: "Sor",
@@ -220,7 +224,7 @@ classes = new TAFFY([{
     bonus_feats_levels: [2, 5, 8, 11, 14, 17],
 	hd: 4, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "9c80",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -239,7 +243,7 @@ classes = new TAFFY([{
     languages: [16],
 	hd: 4, 
 	type: "class", 
-	tags: ["pathfinder"],
+	tags: ["pathfinder"], _id: "d1b5",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],

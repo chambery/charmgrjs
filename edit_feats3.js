@@ -37,17 +37,17 @@ function build_feats_page() {
 		// weed out the impossible feats
 		// class features, eg "Channel Energy"
 		var prereqs = allfeats[i].prereqs;
-		if(prereqs.class_features) {
-			for(var k in chardata.classes) {
-				var clazz = classes.first({ name: chardata.classes[k] });
+		if(prereqs && prereqs.class_features) {
+			for(var classname in chardata.classes) {
+				var clazz = classes.first({ name: classname });
 				for(var l in prereqs.class_features) {
-					if(!clazz.class_features.contains(prereqs.class_features[l])) {
+					if(!clazz.class_features.indexOf(prereqs.class_features[l]) > -1) {
 						remove(allfeats, i);
 					}
 				}
 			}
 		}
-		if (allfeats[i].prereqs.classes) {
+		if (prereqs && prereqs.classes) {
 			var remove_me = true;
 			for (var classname in chardata.classes) {
 				if (allfeats[i].prereqs.classes && allfeats[i].prereqs.classes[classname]) {
@@ -80,13 +80,13 @@ function create_feat_listing(feat, indent) {
 		indent = create_feat_listing(prereq, indent + 1);
 	}
 	var html = "<tr id='" + feat._id + "' class='feat'><td class='feat'><input id='" + feat._id + "' type='checkbox' class='feat' /><td id='" + feat._id + "' class='feat' valign='top'><a id='"
-			+ feat._id + "' class='fake_link'>" + feat.name + "</a></td><td class='feat' valign='top'>" + feat.description + "</td></tr>";
+			+ feat._id + "' class='fake_link'>" + feat.name + "</a></td><td class='feat' valign='top'>" + feat.summary + "</td></tr>";
 
 	// ignore already printed feats
 	if ($('#' + feat._id).length == 0) {
 		if (feat.prereqs && feat.prereqs.feats) {
 			var prereq = feats.first( {
-				name : feat.prereqs.feats[0]
+				name : feat.prereqs.feats[0]	
 			});
 			var multi = prereq.multi ? "_sub_" : "";
 			$('#' + prereq._id + multi).after(html);
@@ -446,7 +446,7 @@ function filter_options(feat, options_db) {
 				if (char_feat) {
 					filtered_options = filtered_options.concat(multi_feat.collection.db.get(multi_feat.collection.filter));
 				}
-			} else if (multi_feat.multi.filter) {
+			// } else if (multi_feat.multi.filter) {
 
 			} else {
 				// TODO - REFACTOR!!!!

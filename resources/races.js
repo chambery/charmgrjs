@@ -11,7 +11,7 @@ races = new TAFFY ([{
 	languages: ["Common", "Draconic"],
 	speed: 20,	
 	type: "race", 
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f0e3"
 }, {
 	name: "Human",
 	shortname: "Hum",
@@ -21,7 +21,7 @@ races = new TAFFY ([{
 	languages: ["Common"], 
 	speed: 30,
 	type: "race", 
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "7a57"
 }, {
 	name: "Dwarf",
 	shortname: "Dwf",
@@ -36,7 +36,7 @@ races = new TAFFY ([{
 	languages: ["Common", "Dwarven"],
 	speed: 20,
 	type: "race", 
-	tags: ["pathfinder"]    
+	tags: ["pathfinder"], _id: "62a2"    
 }, {
 	name: "Half-Orc",
 	shortname: "H-O",
@@ -51,7 +51,7 @@ races = new TAFFY ([{
 	languages: ["Common", "Orc"], 
 	speed: 30,
 	type: "race", 
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "3f3c"
 }, {
 	name: "Elf",
 	shortname: "Elf",
@@ -65,7 +65,7 @@ races = new TAFFY ([{
 	languages: ["Common", "Elven"], 
 	speed: 30,
 	type: "race", 
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "274c"
 }, {
 	name: "Gnome",
 	shortname: "Gnm",
@@ -78,7 +78,7 @@ races = new TAFFY ([{
 	favored_class: "Bard",
 	languages: ["Common", "Gnome"], 
 	type: "race", 
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "6e46"
 }, {
 	name: "Half-Elf",
 	shortname: "H-E",
@@ -88,5 +88,5 @@ races = new TAFFY ([{
 	languages: ["Common", "Elven"], 
 	speed: 30,
 	type: "race", 
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "667a"
 }]);

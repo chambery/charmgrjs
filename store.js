@@ -1,4 +1,4 @@
-function import_character(db) {
+function import_character() {
 	if(chardata.options.owner == null) {
 		update_options("Owner string is required to load character data.");
 	}
@@ -6,9 +6,11 @@ function import_character(db) {
 	if (data != null && jQuery.trim(data).length > 0) {
 		var curr_char = chardata;
 		if(data.charAt(0) == "{") {
+			// data is a cookie string
 			chardata = parse_character_data(data);
 		} else {
-			chardata = $.getJSON("character/" + chardata.options.owner + "/" + data);
+			var char_name = data;
+			chardata = $.getJSON("character/" + chardata.options.owner + "/" + char_name);
 			parse_taffy_data(chardata);
 		}
 		if(chardata != null) {
@@ -60,19 +62,18 @@ function lod(char_name) {
 	}
 	load_static_data();
 }
-function filter_owner(character) {
-	return character && character.options && character.options.owner && chardata && chardata.options && chardata.options.owner && chardata.options.owner == character.options.owner;
-}
 
-function sav(data, cookie_name) {
+function sav(data, name) {
 	if (data != null) {
 		data.last_mod = new Date();
-		var remote_name = cookie_name.substring(3);
-		$.post('/character/' + chardata.options.owner + '/' + remote_name, data);
+		if(data.type == 'character' && (data.name && data.name.length > 0 && data.options && data.options.owner && data.options.owner.length > 0)) {
+			$.post('/character/' + chardata.options.owner + '/' + name, data);
+			// cookie-fy the name
+			name = "ch_" + name;
+		}
 		
 		data = escape(TAFFY.JSON.stringify(data));
-		d = new Date(2020, 02, 02);
-		document.cookie = cookie_name + "=" + data + ";expires=" + d.toUTCString();
+		document.cookie = name + "=" + data + ";expires=" + (new Date(2020, 02, 02)).toUTCString();
 	}
 }
 
@@ -81,7 +82,6 @@ function has_same_owner(item) {
 }
 
 function save_character() {
-	chardata.type = "character";
 	var name = chardata.name;
 	if(name == null || name.length == 0) {
 		var race_name = races.first({ name: chardata.race_name }).shortname;
@@ -102,12 +102,7 @@ function save_character() {
 		save_data.feats = save_data.feats.get();
 	}
 	save_data.type = "character";
-	var view;
-	if(chardata.name && chardata.name.length > 0 && save_data.options && save_data.options.owner && save_data.options.owner.length > 0) {
-		// don't save owner-less, name-less characters remotely
-		view = "chars/all_chars";
-	}
-	sav(save_data, "ch_" + name, view);
+	sav(save_data, name);
 }
 
 function get_cookie_data(cookie_name) {

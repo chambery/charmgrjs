@@ -1,6 +1,6 @@
-damage_types = new TAFFY([{ name: "bludgeoning", tags: ["pathfinder"], type: "damage_type" }, 
-{ name: "slashing", tags: ["pathfinder"], type: "damage_type" }, 
-{ name: "piercing", tags: ["pathfinder"], type: "damage_type" }]);
+damage_types = new TAFFY([{ name: "bludgeoning", tags: ["pathfinder"], _id: "b0fe", type: "damage_type" }, 
+{ name: "slashing", tags: ["pathfinder"], _id: "ec4", type: "damage_type" }, 
+{ name: "piercing", tags: ["pathfinder"], _id: "c497", type: "damage_type" }]);
 
 weapons = new TAFFY([ {
 	id: 0,
@@ -13,7 +13,7 @@ weapons = new TAFFY([ {
 	weight: "25 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "3a88"
 }, {
 	id: 1,
 	name: "Axe, throwing",
@@ -25,7 +25,7 @@ weapons = new TAFFY([ {
 	weight: "4 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "62a8"
 }, {
 	id: 2,
 	name: "Battleaxe",
@@ -37,7 +37,7 @@ weapons = new TAFFY([ {
 	weight: "7 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d1bd"
 }, {
 	id: 3,
 	name: "Chain, spiked",
@@ -49,7 +49,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "492e"
 }, {
 	id: 4,
 	name: "Club",
@@ -61,7 +61,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "71fe"
 }, {
 	id: 5,
 	name: "Crossbow, hand",
@@ -73,7 +73,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "281"
 }, {
 	id: 6,
 	name: "Crossbow, heavy",
@@ -85,7 +85,7 @@ weapons = new TAFFY([ {
 	weight: "9 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "8328"
 }, {
 	id: 7,
 	name: "Crossbow, light",
@@ -97,7 +97,7 @@ weapons = new TAFFY([ {
 	weight: "6 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "257"
 }, {
 	id: 8,
 	name: "Crossbow, repeating",
@@ -109,7 +109,7 @@ weapons = new TAFFY([ {
 	weight: "16 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "fb3"
 }, {
 	id: 9,
 	name: "Dagger",
@@ -121,7 +121,7 @@ weapons = new TAFFY([ {
 	weight: "1 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "fcd0"
 }, {
 	id: 10,
 	name: "Dagger, punching",
@@ -133,7 +133,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "572a"
 }, {
 	id: 11,
 	name: "Dart",
@@ -145,7 +145,7 @@ weapons = new TAFFY([ {
 	weight: "1/2 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d733"
 }, {
 	id: 12,
 	name: "Falchion",
@@ -157,7 +157,7 @@ weapons = new TAFFY([ {
 	weight: "16 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "84da"
 }, {
 	id: 13,
 	name: "Flail, dire",
@@ -169,7 +169,7 @@ weapons = new TAFFY([ {
 	weight: "20 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "2743"
 }, {
 	id: 14,
 	name: "Flail, heavy",
@@ -181,7 +181,7 @@ weapons = new TAFFY([ {
 	weight: "20 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "1693"
 }, {
 	id: 15,
 	name: "Flail, light",
@@ -193,7 +193,7 @@ weapons = new TAFFY([ {
 	weight: "5 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "ade0"
 }, {
 	id: 16,
 	name: "Gauntlet",
@@ -205,7 +205,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "6478"
 }, {
 	id: 17,
 	name: "Gauntlet, spiked",
@@ -217,7 +217,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d5eb"
 }, {
 	id: 18,
 	name: "Glaive",
@@ -229,7 +229,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f04"
 }, {
 	id: 19,
 	name: "Greataxe",
@@ -241,7 +241,7 @@ weapons = new TAFFY([ {
 	weight: "20 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "2780"
 }, {
 	id: 20,
 	name: "Greatclub",
@@ -253,7 +253,7 @@ weapons = new TAFFY([ {
 	weight: "10 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "c20"
 }, {
 	id: 21,
 	name: "Greatsword",
@@ -265,7 +265,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "1c29"
 }, {
 	id: 22,
 	name: "Guisarme",
@@ -277,7 +277,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "93c8"
 }, {
 	id: 23,
 	name: "Halberd",
@@ -289,7 +289,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "piercing and slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "8045"
 }, {
 	id: 24,
 	name: "Halfspear",
@@ -301,7 +301,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "402c"
 }, {
 	id: 25,
 	name: "Hammer, gnome hooked",
@@ -313,7 +313,7 @@ weapons = new TAFFY([ {
 	weight: "6 lb.",
 	damage_type: "bludgeoning and piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "e33e"
 }, {
 	id: 26,
 	name: "Hammer, light",
@@ -325,7 +325,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "9107"
 }, {
 	id: 27,
 	name: "Handaxe",
@@ -337,7 +337,7 @@ weapons = new TAFFY([ {
 	weight: "5 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "b98b"
 }, {
 	id: 28,
 	name: "Javelin",
@@ -349,7 +349,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "664e"
 }, {
 	id: 29,
 	name: "Kama",
@@ -361,7 +361,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "1ace"
 }, {
 	id: 30,
 	name: "Kama, halfling",
@@ -373,7 +373,7 @@ weapons = new TAFFY([ {
 	weight: "1 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "774e"
 }, {
 	id: 31,
 	name: "Kukri",
@@ -385,7 +385,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "3230"
 }, {
 	id: 32,
 	name: "Lance, heavy",
@@ -397,7 +397,7 @@ weapons = new TAFFY([ {
 	weight: "10 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d17d"
 }, {
 	id: 33,
 	name: "Lance, light",
@@ -409,7 +409,7 @@ weapons = new TAFFY([ {
 	weight: "5 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "e99a"
 }, {
 	id: 34,
 	name: "Longbow",
@@ -421,7 +421,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d19b"
 }, {
 	id: 35,
 	name: "Longbow, composite",
@@ -433,7 +433,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "57b9"
 }, {
 	id: 36,
 	name: "Longspear",
@@ -445,7 +445,7 @@ weapons = new TAFFY([ {
 	weight: "9 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "229a"
 }, {
 	id: 37,
 	name: "Longsword",
@@ -457,7 +457,7 @@ weapons = new TAFFY([ {
 	weight: "4 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "6f25"
 }, {
 	id: 38,
 	name: "Mace, heavy",
@@ -469,7 +469,7 @@ weapons = new TAFFY([ {
 	weight: "12 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "2c62"
 }, {
 	id: 39,
 	name: "Mace, light",
@@ -481,7 +481,7 @@ weapons = new TAFFY([ {
 	weight: "6 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "290d"
 }, {
 	id: 40,
 	name: "Morningstar",
@@ -493,7 +493,7 @@ weapons = new TAFFY([ {
 	weight: "8 lb.",
 	damage_type: "bludgeoning and piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "1959"
 }, {
 	id: 41,
 	name: "Net",
@@ -505,7 +505,7 @@ weapons = new TAFFY([ {
 	weight: "10 lb.",
 	damage_type: "*",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "5916"
 }, {
 	id: 42,
 	name: "Nunchaku",
@@ -517,7 +517,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "9030"
 }, {
 	id: 43,
 	name: "Nunchaku, halfling",
@@ -529,7 +529,7 @@ weapons = new TAFFY([ {
 	weight: "1 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d9b0"
 }, {
 	id: 44,
 	name: "Pick, heavy",
@@ -541,7 +541,7 @@ weapons = new TAFFY([ {
 	weight: "6 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "514b"
 }, {
 	id: 45,
 	name: "Pick, light",
@@ -553,7 +553,7 @@ weapons = new TAFFY([ {
 	weight: "4 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "498b"
 }, {
 	id: 46,
 	name: "Quarterstaff",
@@ -565,7 +565,7 @@ weapons = new TAFFY([ {
 	weight: "4 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "b6f5"
 }, {
 	id: 47,
 	name: "Ranseur",
@@ -577,7 +577,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "2dc"
 }, {
 	id: 48,
 	name: "Rapier",
@@ -589,7 +589,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "4f0a"
 }, {
 	id: 49,
 	name: "Sap",
@@ -601,7 +601,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "cdac"
 }, {
 	id: 50,
 	name: "Scimitar",
@@ -613,7 +613,7 @@ weapons = new TAFFY([ {
 	weight: "4 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "4f13"
 }, {
 	id: 51,
 	name: "Scythe",
@@ -625,7 +625,7 @@ weapons = new TAFFY([ {
 	weight: "12 lb.",
 	damage_type: "piercing and slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "75df"
 }, {
 	id: 52,
 	name: "Shortbow",
@@ -637,7 +637,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f1e7"
 }, {
 	id: 53,
 	name: "Shortbow, composite",
@@ -649,7 +649,7 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "6e34"
 }, {
 	id: 54,
 	name: "Shortspear",
@@ -661,7 +661,7 @@ weapons = new TAFFY([ {
 	weight: "5 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "13aa"
 }, {
 	id: 55,
 	name: "Shuriken",
@@ -673,7 +673,7 @@ weapons = new TAFFY([ {
 	weight: "1/10 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "f19c"
 }, {
 	id: 56,
 	name: "Siangham",
@@ -685,7 +685,7 @@ weapons = new TAFFY([ {
 	weight: "1 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d6a7"
 }, {
 	id: 57,
 	name: "Siangham, halfling",
@@ -697,7 +697,7 @@ weapons = new TAFFY([ {
 	weight: "1 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "35be"
 }, {
 	id: 58,
 	name: "Sickle",
@@ -709,7 +709,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "3dd9"
 }, {
 	id: 59,
 	name: "Sling",
@@ -721,7 +721,7 @@ weapons = new TAFFY([ {
 	weight: "0 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "b31b"
 }, {
 	id: 60,
 	name: "Strike, unarmed (Medium-size being)",
@@ -733,7 +733,7 @@ weapons = new TAFFY([ {
 	weight: "-",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "781d"
 }, {
 	id: 61,
 	name: "Strike, unarmed (Small being)",
@@ -745,7 +745,7 @@ weapons = new TAFFY([ {
 	weight: "-",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "e305"
 }, {
 	id: 62,
 	name: "Sword, bastard",
@@ -757,7 +757,7 @@ weapons = new TAFFY([ {
 	weight: "10 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "d6da"
 }, {
 	id: 63,
 	name: "Sword, short",
@@ -769,7 +769,7 @@ weapons = new TAFFY([ {
 	weight: "3 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "176c"
 }, {
 	id: 64,
 	name: "Sword, two-bladed",
@@ -781,7 +781,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "e2bc"
 }, {
 	id: 65,
 	name: "Trident",
@@ -793,7 +793,7 @@ weapons = new TAFFY([ {
 	weight: "5 lb.",
 	damage_type: "piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "df7a"
 }, {
 	id: 66,
 	name: "Urgrosh, dwarven",
@@ -805,7 +805,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "slashing and piercing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "bf3d"
 }, {
 	id: 67,
 	name: "Waraxe, dwarven",
@@ -817,7 +817,7 @@ weapons = new TAFFY([ {
 	weight: "15 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "4b6f"
 }, {
 	id: 68,
 	name: "Warhammer",
@@ -829,7 +829,7 @@ weapons = new TAFFY([ {
 	weight: "8 lb.",
 	damage_type: "bludgeoning",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "a06e"
 }, {
 	id: 69,
 	name: "Whip",
@@ -841,5 +841,5 @@ weapons = new TAFFY([ {
 	weight: "2 lb.",
 	damage_type: "slashing",
 	type: "weapon",
-	tags: ["pathfinder"]
+	tags: ["pathfinder"], _id: "fcc8"
 } ]);
