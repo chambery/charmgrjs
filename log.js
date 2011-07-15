@@ -1,6 +1,6 @@
 function edit_log_metadata(element_id, string) {
 	$('#' + element_id).html("<input id='temp' type='text' value='" + string + "' style='width: " + $("#" + element_id).width() + "px;' />");
-	$('#temp').bind('blur', function(){ $('#' + element_id).html("<span onclick=\"edit_log_metadata('" + element_id + "', $('#" + element_id + "').text())\">" + ($('#temp').val().length() > 0 ? $('#temp').val() : string) + "</span>"); });
+	$('#temp').bind('blur', function(){ $('#' + element_id).html("<span onclick=\"edit_log_metadata('" + element_id + "', $('#" + element_id + "').text())\">" + ($('#temp').val().length > 0 ? $('#temp').val() : string) + "</span>"); });
 	$('#temp').focus();
 }
 
@@ -16,7 +16,9 @@ function save_log() {
 			chardata.log.push(entry_id);
 		}
 		// edit entry
-		sav({id: entry_id, name: get_log_name(entry_id), type: "log", xp: $("#log_xp").text(), hp:  $("#log_hp").text(), date:  Date.parse($("#log_date").text()), note: htmlize($("#log_note").val())}, "log_" + chardata.name + "_" + entry_id, "logs/all_logs");
+		var log = {id: entry_id, name: get_log_name(entry_id), type: "log", xp: $("#log_xp").text(), hp:  $("#log_hp").text(), date:  Date.parse($("#log_date").text()), note: htmlize($("#log_note").val())};
+		chardata.log.push(entry_id);
+		sav(log, "log_" + chardata.name + "_" + entry_id);
 
 		$('#entry_id').val('');
 		$('#save_log').val('save');
@@ -72,7 +74,7 @@ function populate_log_history() {
         history += "<td style='text-align: right; font-size: xx-small' nowrap>";
         var path = window.location.pathname.split( '/' );
         path = path.slice(0, path.length-2);
-        history += "<a href='" + window.location.protocol + "//" + window.location.host + "/" + path.join("/") + "/_design/logs/_show/note/" + entries[i]._id + "' target='_blank' style='color: #B4B5B5; text-decoration: none;')\">link &nbsp;</a> ";
+        history += "<a href='" + window.location.protocol + "//" + window.location.host + "/" + path.join("/") + "logs/" + entries[i]._id + "' target='_blank' style='color: #B4B5B5; text-decoration: none;')\">link &nbsp;</a> ";
         history += "<a class='fake_link' onclick=\"edit_log_entry('" + entries[i].id + "')\")\">edit</a> ";
         history += "<a class='fake_link' onclick=\"delete_log_entry('" + entries[i].id + "')\">delete</a></td></tr>";
         history += "<tr><td colspan=4 style='border: 1px solid; padding: 5px;' >" + entries[i].note + "</td></tr>";
@@ -111,9 +113,10 @@ function edit_log_entry(entry_id) {
  * Return the most recent log entry from remote and local stores
  */
 function get_log_entry(entry_id) {
+	console.log("log id: " + entry_id);
 	var log_data = get_cookie_data(get_log_name(entry_id));
 	var log = TAFFY.JSON.parse(unescape(log_data));
-	log = chardata.log[entry_id].last_mod && (log == null || chardata.log[entry_id].last_mod > log.last_mod) ? chardata.log[entry_id] : log;
+	log = chardata.log[entry_id] && chardata.log[entry_id].last_mod && (log == null || chardata.log[entry_id].last_mod > log.last_mod) ? chardata.log[entry_id] : log;
 
 	return log;
 }

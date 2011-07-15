@@ -64,21 +64,20 @@ function lod(char_name) {
 }
 
 function sav(data, name) {
+	save_local(data, name);
+	save_remote(data, name);
+}
+
+function save_remote(data, name) {
 	if (data != null) {
 		data.last_mod = new Date();
-		if(data.type == 'character' && (data.name && data.name.length > 0 && data.options && data.options.owner && data.options.owner.length > 0)) {
-			$.post('/character/' + chardata.options.owner + '/' + name, data);
-			// cookie-fy the name
-			name = "ch_" + name;
-		}
-		
-		data = escape(TAFFY.JSON.stringify(data));
-		document.cookie = name + "=" + data + ";expires=" + (new Date(2020, 02, 02)).toUTCString();
+		$.post('/' + data.type + '/' + chardata.options.owner + '/' + name, data);
 	}
 }
 
-function has_same_owner(item) {
-	return item.owner == chardata.owner;
+function save_local(data, name) {
+	data = escape(TAFFY.JSON.stringify(data));
+	document.cookie = name + "=" + data + ";expires=" + (new Date(2020, 02, 02)).toUTCString();
 }
 
 function save_character() {
@@ -102,7 +101,11 @@ function save_character() {
 		save_data.feats = save_data.feats.get();
 	}
 	save_data.type = "character";
-	sav(save_data, name);
+	
+	save_local(save_data, "ch_" + name);
+	if(save_data.name && save_data.name.length > 0 && save_data.options && save_data.options.owner && save_data.options.owner.length > 0)) {
+		save_remote(save_data, name);
+	}
 }
 
 function get_cookie_data(cookie_name) {
