@@ -51,32 +51,13 @@ function build_edit_page() {
 
 	$("#alignment").change(function() {
 		console.group("deity - ALIGNMENT_CHANGED");
-		var align_range = [chardata.alignment + " " + chardata.goodness];
-		var good_idx = goodness.indexOf(chardata.goodness);
-		var align_idx = alignments.indexOf(chardata.alignment);
-		if(align_idx+1 < 3) {
-			align_range.push(alignments[align_idx + 1] + " " + chardata.goodness);
-		}
-		if(align_idx-1 > -1) { 
-			align_range.push(alignments[align_idx - 1] + " " + chardata.goodness);
-		}
-		if(good_idx+1 < 3) {
-			align_range.push(chardata.alignment + " " + goodness[good_idx + 1]);
-		}
-		if(good_idx-1 > -1) {
-			align_range.push(chardata.alignment + " " + goodness[good_idx - 1]);				
-		}
-		
-		for(var foo in align_range) {
-				console.log(align_range[foo]);
-		}
-			
+
 		align_html = [];
 		align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
-		deities.forEach( function(deity, i) {
-			console.log(deity.name + " : " + deity.alignment);
-			align_html.push(["<option id='deity_option_" + available_deities[i].name + "' data_id='" + available_deities[i]._id + "' value='" + available_deities[i].name + "'>" + available_deities[i].name + "</option>"]);
-		}, { alignment: align_range });
+		$.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
+			console.log(deity.name + " : " + deity.alignment + " " + deity.goodness);
+			align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
+		});
 		$("#deity").html(align_html.join(''));
 		if($("#deity").containsOption(chardata.deity)) {
 			$("#deity").val(chardata.deity);
@@ -89,10 +70,10 @@ function build_edit_page() {
 		chardata.goodness = $('#alignment').val().split(' ')[1];
 		console.groupEnd();
 	});
-
+	
 	align_html = [];
 	align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
-	deities.forEach( function(deity, i) { 
+	$.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) { 
 			align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
 		});
 	$("#deity").html(align_html.join(''));
