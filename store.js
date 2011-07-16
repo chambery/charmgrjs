@@ -63,15 +63,33 @@ function lod(char_name) {
 	load_static_data();
 }
 
-function sav(data, name) {
-	save_local(data, name);
-	save_remote(data, name);
+function sav(data, local_name, remote_name) {
+	if(local_name && local_name.length > 0) {
+		data.last_mod = (new Date()).getTime();
+		save_local(data, local_name);
+		
+		if(!remote_name) {
+			remote_name = local_name;
+		}
+		if(chardata.options && chardata.options.owner && chardata.options.owner.length > 0) {
+			save_remote(data, remote_name);
+		}
+	}
 }
 
 function save_remote(data, name) {
 	if (data != null) {
-		data.last_mod = new Date();
-		$.post('/' + data.type + '/' + chardata.options.owner + '/' + name, data);
+		post_data = JSON.stringify(data);
+		console.log(post_data);
+		$.ajax({
+		  type: "POST",
+		  url: "/" + data.type + "/" + chardata.options.owner + "/" + name,
+		  data: post_data,
+		  contentType: "application/json; charset=utf-8",
+		  dataType: "json"
+		});
+		// var post_data = {};
+		// $.post( + (entry_id ? "/" + entry_id : ""), data);
 	}
 }
 
@@ -91,7 +109,7 @@ function save_character() {
 		name = race_name + "_" + class_name;
 	}
 	players_companion.last_character = name;
-	sav(players_companion, "players_companion");
+	save_local(players_companion, "players_companion");
 	
 	var save_data = klone(chardata);
 	if (save_data.skills != null) {
@@ -102,10 +120,7 @@ function save_character() {
 	}
 	save_data.type = "character";
 	
-	save_local(save_data, "ch_" + name);
-	if(save_data.name && save_data.name.length > 0 && save_data.options && save_data.options.owner && save_data.options.owner.length > 0)) {
-		save_remote(save_data, name);
-	}
+	sav(save_data, "ch_" + name, name);
 }
 
 function get_cookie_data(cookie_name) {

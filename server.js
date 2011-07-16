@@ -20,7 +20,7 @@ var fs = require('fs')
 
     app.get('/log/:owner/:name/:entry_id', function(req, res) {
 		console.log("in get log entry");
-		fs.readFile("users/logs/" + req.params.entry_id, encoding='utf8', function(err, data) {
+		fs.readFile("users/" + req.params.owner + "/" + req.params.name + "/" + req.params.entry_id, encoding='utf8', function(err, data) {
 			if(err) {
 				console.log(err);
 			} else {
@@ -28,11 +28,19 @@ var fs = require('fs')
 				console.log(data);
 			}
 		});     	
-    }
+    });
     
 	app.post('/character/:owner/:name', function(req, res){
-		console.log(req.body)		
-		fs.writeFile("users/" + req.params.owner + "_" + req.params.name, JSON.stringify(req.body), function(err) {
+		console.log(req.body);
+		
+		// try {
+			// fs.lstatSync("users/" + req.params.owner + "/" + req.params.name);
+		// } catch(e) {
+			fs.mkdir("users/" + req.params.owner + "/" + req.params.name, 0755, true);
+		// }
+		
+		console.log(req.body.alignment);
+		fs.writeFile("users/" + req.params.owner + "/" + req.params.name + "/chardata", JSON.stringify(req.body), function(err) {
 			if(err) {
 				console.log(err);
 			} else {
@@ -42,9 +50,23 @@ var fs = require('fs')
 		res.send(req.body);
 	});
 
-	app.post('/log/:owner/:name/', function(req, res){
-		var log = JSON.parse(req.body);
-		fs.writeFile("users/logs/" + log.entry_id, JSON.stringify(req.body), function(err) {
+	app.post('/log/:owner/:name', function(req, res){
+		console.log("in post log: " + req.params.entry_id);
+		console.log(req.body);
+		// try {
+		// 	fs.lstatSync("users/" + req.params.owner);
+		// } catch(e) {
+		// 	fs.mkdir("users/" + req.params.owner);
+		// }
+		
+		// try {
+			// fs.lstatSync("users/" + req.params.owner + "/" + req.body.char_name);
+		// } catch(e) {
+			fs.mkdir("users/" + req.params.owner + "/" + req.body.char_name, 0755, true);
+		// }
+
+		// .substring(req.params.entry_id.lastIndexOf("_")+1)
+		fs.writeFile("users/" + req.params.owner + "/" + req.body.char_name + "/" + req.body.entry_id, JSON.stringify(req.body), function(err) {
 			if(err) {
 				console.log(err);
 			} else {
@@ -52,7 +74,7 @@ var fs = require('fs')
 			}
 		}); 
 		res.send(req.body);
-	}
+	});
 	
 	app.use('/', express.static(__dirname));
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
