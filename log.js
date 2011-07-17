@@ -126,16 +126,19 @@ function get_log_name(entry_id) {
 function sync_logs() {
 	if(chardata.options && chardata.options.owner && chardata.options.owner.length > 0 && chardata.name && chardata.name.length > 0) {
 		var logs = {}
-		for(var i=0; i<chardata.log; i++) {
-			var remote = $.getJSON("log/" + chardata.options.owner + "/" + chardata.name + "/" + chardata.log[i].id);
-			var local = get_log_entry(chardata.log[i].id);
+		for(var i=0; i<chardata.log.length; i++) {
+			var remote = {};
+			$.getJSON("log/" + chardata.options.owner + "/" + chardata.name + "/" + chardata.log[i], function(data) {remote = data;});
+			var local = get_log_entry(chardata.log[i]);
 			
-			if(!remote || (local && remote && remote.last_mod < local.last_mod)) {
-				save_remote(local, local.id)
-			} else(!local || (local && remote && remote.last_mod > local.last_mod)) {
-				save_local(remote, remote.id)
+			if((!remote.id && local) || (local && remote.last_mod < local.last_mod)) {
+				console.log("Saving log " + chardata.log[i] + " to remote");
+				save_remote(local, local.id);
+			} else if((!local && remote.id) || (local && remote && remote.last_mod > local.last_mod)) {
+				console.log("Saving log " + chardata.log[i] + " to local");
+				save_local(remote, "log_" + chardata.name + "_" + remote.id);
 			} else {
-				console.log("Log " + chardata.log[i].id + " not found.");
+				console.log("Log " + chardata.log[i] + " not found.");
 			}
 		}
 	}
