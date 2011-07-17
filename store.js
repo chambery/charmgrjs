@@ -58,6 +58,7 @@ function lod(char_name) {
 			// 		}
 			// 	 = clazz.spells;
 			// }
+			sync_logs();
 		}
 	}
 	load_static_data();

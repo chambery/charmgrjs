@@ -122,3 +122,21 @@ function get_log_entry(entry_id) {
 function get_log_name(entry_id) {
 	return "log_" + chardata.name + "_" + entry_id;
 }
+
+function sync_logs() {
+	if(chardata.options && chardata.options.owner && chardata.options.owner.length > 0 && chardata.name && chardata.name.length > 0) {
+		var logs = {}
+		for(var i=0; i<chardata.log; i++) {
+			var remote = $.getJSON("log/" + chardata.options.owner + "/" + chardata.name + "/" + chardata.log[i].id);
+			var local = get_log_entry(chardata.log[i].id);
+			
+			if(!remote || (local && remote && remote.last_mod < local.last_mod)) {
+				save_remote(local, local.id)
+			} else(!local || (local && remote && remote.last_mod > local.last_mod)) {
+				save_local(remote, remote.id)
+			} else {
+				console.log("Log " + chardata.log[i].id + " not found.");
+			}
+		}
+	}
+}
