@@ -71,7 +71,7 @@ function sav(data, local_name, remote_name) {
 		if(!remote_name) {
 			remote_name = local_name;
 		}
-		if(chardata.options && chardata.options.owner && chardata.options.owner.length > 0) {
+		if(chardata.name && chardata.options && chardata.options.owner && chardata.options.owner.length > 0) {
 			save_remote(data, remote_name);
 		}
 	}
@@ -79,17 +79,13 @@ function sav(data, local_name, remote_name) {
 
 function save_remote(data, name) {
 	if (data != null) {
-		post_data = JSON.stringify(data);
-		console.log(post_data);
 		$.ajax({
 		  type: "POST",
 		  url: "/" + data.type + "/" + chardata.options.owner + "/" + name,
-		  data: post_data,
+		  data: JSON.stringify(data),
 		  contentType: "application/json; charset=utf-8",
 		  dataType: "json"
 		});
-		// var post_data = {};
-		// $.post( + (entry_id ? "/" + entry_id : ""), data);
 	}
 }
 

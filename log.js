@@ -17,8 +17,7 @@ function save_log() {
 		}
 		// edit entry
 		var log = {id: entry_id, name: get_log_name(entry_id), type: "log", xp: $("#log_xp").text(), hp:  $("#log_hp").text(), date:  Date.parse($("#log_date").text()), note: htmlize($("#log_note").val()), char_name: chardata.name };
-		sav(log, "log_" + chardata.name + "_" + entry_id, entry_id);
-
+		sav(log, "log_" + chardata.name + "_" + entry_id);
 		$('#entry_id').val('');
 		$('#save_log').val('save');
 		$('#log_date').text((new Date()).toDateString());
