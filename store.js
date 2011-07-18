@@ -151,6 +151,12 @@ function parse_taffy_data(data) {
 }
 
 function load_static_data() {
+	spells.forEach(function(spell, n) {
+		for(classname in spell.classes) {
+			var clazz = classes.first({ name: classname });
+			clazz.spells[spell.classes[classname]].push(spell.name);
+		}
+	});
 	
 	feats.forEach(function(feat, n) {
 		if(feat.multi) {

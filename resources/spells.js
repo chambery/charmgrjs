@@ -12,7 +12,7 @@ spells = [{
     phb: "196", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "<i>Acid fog</i> creates a billowing mass of misty vapors similar to that produced by a solid fog spell (page 281). In addition to slowing creatures down and obscuring sight, this spell's vapors are highly acidic. Each round on your turn, starting when you cast the spell, the fog deals 2d6 points of acid damage to each creature and object within it.<p class=sub><i>Arcane Material Component</i>: A pinch of dried, powdered peas combined with powdered animal hoof.</p>"
@@ -30,7 +30,7 @@ spells = [{
     phb: "196", tags: ["phb"], 
     type: "spell",
     classes: {
-	    "Sorceror": 1,
+	    "Sorcerer": 1,
 	    "Wizard": 1
 	},
     detail: "You fire a small orb of acid at the target. You must succeed on a ranged touch attack to hit your target. The orb deals 1d3 points of acid damage."
@@ -85,7 +85,7 @@ spells = [{
     classes: {
         "Bard": 2,
         "Ranger": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "<i>Alarm</i> sounds a mental or audible alarm each time a creature of Tiny or larger size enters the warded area or touches it. A creature that speaks the password (determined by you at the time of casting) does not set off the <i>alarm</i>. You decide at the time of casting whether the <i>alarm</i> will be mental or audible. <p class=sub><i>Mental Alarm</i>: A mental alarm alerts you (and only you) so long as you remain within 1 mile of the warded area. You note a single mental 'ping' that awakens you from normal sleep but does not otherwise disturb concentration. A <i>silence</i> spell has no effect on a mental <i>alarm</i>. <p class=sub><i>Audible Alarm</i>: An audible <i>alarm</i> produces the sound of a hand bell, and anyone within 60 feet of the warded area can hear it clearly. Reduce the distance by 10 feet for each interposing closed door and by 20 feet for each substantial interposing wall. <p class=sub>In quiet conditions, the ringing can be heard faintly as far as 180 feet away. The sound lasts for 1 round. Creatures within a <i>silence</i> spell cannot hear the ringing. <p class=sub>Ethereal or astral creatures do not trigger the alarm. <p class=sub><i>Alarm</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Arcane Focus</i>: A tiny bell and a piece of very fine silver wire"
@@ -121,7 +121,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You assume the form of a creature of the same type as your normal form (such as humanoid or magical beast). The new form must be within one size category of your normal size. The maximum HD of an assumed form is equal to your caster level, to a maximum of 5 HD at 5th level. You can change into a member of your own kind or even into yourself. <p class=sub>You retain your own ability scores. Your class and level, hit points, alignment, base attack bonus, and base save bonuses all remain the same. You retain all supernatural and spell-like special attacks and quali-ties of your normal form, except for those requiring a body part that the new form does not have (such as a mouth for a breath weapon or eyes for a gaze attack). You keep all extraordinary special attacks and qualities derived from class levels (such as a barbarian's rage ability), but you lose any from your normal form that are not derived from class levels (such as a dragon's frightful presence ability). <p class=sub>If the new form is capable of speech, you can communicate normally. You retain any spellcasting ability you had in your original form, but the new form must be able to speak intelligibly (that is, speak a language) to use verbal components and must have limbs capable of fine manipu-lation to use somatic or material components. <p class=sub>You acquire the physical qualities of the new form while retaining your own mind. Physical qualities include natural size, mundane movement capabilities (such as burrowing, climbing, walking, swimming, and flight with wings, to a maximum speed of 120 feet for flying or 60 feet for nonflying movement), natural armor bonus, natural weapons (such as claws, bite, and so on), racial skill bonuses, racial bonus feats, and any gross physical quali-ties (presence or absence of wings, number of extremities, and so forth). A body with extra limbs does not allow you to make more attacks (or more advantageous two-weapon attacks) than normal. <p class=sub>You do not gain any extraordinary special attacks or special qualities not noted above under physical qualities, such as darkvision, low-light vision, blindsense, blindsight, fast healing, regeneration, scent, and so forth. <p class=sub>You do not gain any supernatural special attacks, special qualities, or spell-like abilities of the new form. Your creature type and subtype (if any) remain the same regardless of your new form. You cannot take the form of any creature with a tem-plate, even if that template doesn't change the creature type or subtype. <p class=sub>You can freely designate the new form's minor physical qualities (such as hair color, hair texture, and skin color) within the normal ranges for a creature of that kind. <p class=sub>The new form's significant physical qualities (such as height, weight, and gender) are also under your control, but they must fall within the norms for the new form's kind. You are effectively disguised as an average member of the new form's race. If you use this spell to create a disguise, you get a +10 bonus on your Disguise check. <p class=sub>When the change occurs, your equipment, if any, either remains worn or held by the new form (if it is capable of wearing or holding the item), or melds into the new form and becomes nonfunctional. <p class=sub>When you revert to your true form, any objects previously melded into the new form reappear in the same location on your body they previously occupied and are once again functional. Any new items you wore in the assumed form and can't wear in your normal form fall off and land at your feet; any that you could wear in either form or carry in a body part common to both forms (mouth, hands, or the like) at the time of reversion are still held in the same way. Any part of the body or piece of equipment that is separated from the whole reverts to its true form."
@@ -140,7 +140,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You discern all spells and magical proper-ties present in a number of creatures or objects. Each round, you may examine a single creature or object that you can see as a free action. In the case of a magic item, you learn its functions, how to activate its functions (if appropriate), and how many charges are left (if it uses charges). In the case of an object or creature with active spells cast upon it, you learn each spell, its effect, and its caster level. <p class='sub'>An attended object may attempt a Will save to resist this effect if its holder so desires. If the save succeeds, you learn nothing about the object except what you can discern by looking at it. An object that makes its save cannot be affected by any other <i>analyze dweomer</i> spells for 24 hours. <p class='sub'><i>Analyze dweomer</i> does not function when used on an artifact (see the <i>Dungeon Master's Guide</i> for details on artifacts). <p class='sub'><b>Focus</b>: A tiny lens of ruby or sapphire set in a small golden loop. The gemstone must be worth at least 1,500 gp. "
@@ -160,7 +160,7 @@ spells = [{
     classes: {
         "Druid": 6,
         "Ranger": 4,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "A number of animals grow to twice their normal size and eight times their normal weight. This alteration changes each animal's size category to the next largest (from Large to Huge, for example), grants it a +8 size bonus to Strength and a +4 size bonus to Constitution (and thus an extra 2 hit points per HD), and imposes a -2 size penalty to Dexterity. The creature's existing natural armor bonus increases by 2. The size change also affects the animal's modifier to AC and attack rolls and its base damage, as detailed on Table 2-2 in the <i>Dungeon Master's Guide</i>. The animal's space and reach change as indicated on Table 8-4: Creature Size and Scale (page 149), but its speed does not change. <p class=sub>The spell also grants each subject damage reduction 10/magic and a +4 resistance bonus on saving throws. <p class=sub>If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it–the spell cannot be used to crush a creature by increasing its size. <p class=sub>All equipment worn or carried by an animal is similarly enlarged by the spell, though this change has no effect on the magical properties of any such equipment. Any enlarged item that leaves the enlarged creature's possession instantly returns to its normal size. <p class=sub>The spell gives no means of command or influence over the enlarged animals. <p class=sub>Multiple magical effects that increase size do not stack, which means (among other things) that you can't use a second casting of this spell to further increase the size of an animal that's still under the effect of the first casting."
@@ -233,7 +233,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "<p class=sub>This spell turns the bones or bodies of dead creatures into undead skeletons or zombies that follow your spoken commands. The undead can follow you, or they can remain in an area and attack any creature (or just a specific kind of creature) entering the place. They remain animated until they are destroyed. (A destroyed skeleton or zombie can't be animated again.) <p class=sub>Regardless of the type of undead you create with this spell, you can't create more HD of undead than twice your caster level with a single casting of <i>animate dead</i>. (The <i>desecrate</i> spell doubles this limit; see page 218.) <p class=sub>The undead you create remain under your control indefinitely. No matter how many times you use this spell, however, you can control only 4 HD worth of undead creatures per caster level. If you exceed this number, all the newly created creatures fall under your control, and any excess undead from previous castings become uncontrolled. (You choose which creatures are released.) If you are a cleric, any undead you might command by virtue of your power to command or rebuke undead do not count toward the limit. <p class=sub><i>Skeletons</i>: A skeleton can be created only from a mostly intact corpse or skeleton. The corpse must have bones, so creating a skeleton from a purple worm, for example, is not possible. If a skeleton is made from a corpse, the flesh falls off the bones. The statistics for a skeleton depend on its size; they do not depend on what abilities the creature may have had while alive. The Monster Manual has game statistics for skeletons. <p class=sub><i>Zombies</i>: A zombie can be created only from a mostly intact corpse. The corpse must be that of a creature with a true anatomy, so a dead gelatinous cube, for example, cannot be animated as a zombie. The statistics for a zombie depend on its size, not on what abilities the creature may have had while alive. The <i>Monster Manual</i> has game statistics for zombies. <p class=sub><i>Material Component</i>: You must place a black onyx gem worth at least 25 gp per Hit Die of the undead into the mouth or eye socket of each corpse you intend to animate. The magic of the spell turns these gems into worthless, burned-out shells."
@@ -287,7 +287,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You can animate a nonliving ropelike object, such as string, yarn, cord, line, rope, or even a cable. The maximum length assumes a rope with a 1-inch diameter. Reduce the maximum length by 50% for every additional inch of thickness, and increase it by 50% for each reduction of the rope's diameter by half. <p class=sub>The possible commands are 'coil' (form a neat, coiled stack), 'coil and knot,' 'loop,' 'loop and knot,' 'tie and knot,' and the opposites of all of the above ('uncoil,' and so forth). You can give one command each round as a move action, as if directing an active spell. <p class=sub>The rope can enwrap only a creature or an object within 1 foot of it–it does not snake outward–so it must be thrown near the intended target. Doing so requires a successful ranged touch attack roll (range increment 10 feet). A typical 1-inch-diameter hempen rope has 2 hit points, AC 10, and requires a DC 23 Strength check to burst it. The rope does not deal damage, but it can be used as a trip line or to cause a single opponent that fails a Reflex saving throw to become entangled. A creature capable of spellcasting that is bound by this spell must make a DC 15 Concentration check to cast a spell. An entangled creature can slip free with a DC 20 Escape Artist check. <p class=sub>The rope itself and any knots tied in it are not magical. <p class=sub>This spell grants a +2 bonus on any Use Rope checks you make when using the transmuted rope. <p class=sub>The spell cannot animate objects carried or worn by a creature."
@@ -324,7 +324,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "An invisible barrier surrounds you and moves with you. The space within this barrier is impervious to most magical effects, including spells, spell-like abilities, and supernatural abilities. Likewise, it prevents the functioning of any magic items or spells within its confines. <p class=sub>An <i>antimagic field</i> suppresses any spell or magical effect used within, brought into, or cast into the area, but does not dispel it. A <i>hasted</i> creature, for example, is not hasted while inside the field, but the spell resumes functioning when the creature leaves the field. Time spent within an <i>antimagic field</i> counts against the suppressed spell's duration. <p class=sub>Summoned creatures of any type and incorporeal undead wink out if they enter an <i>antimagic field</i>. They reappear in the same spot once the field goes away. Time spent winked out counts normally against the duration of the conjuration that is maintaining the creature. If you cast <i>antimagic field</i> in an area occupied by a summoned creature that has spell resistance, you must make a caster level check (1d20 + caster level) against the creature's spell resistance to make it wink out. (The effects of instantaneous conjurations, such as <i>create water</i>, are not affected by an <i>antimagic field</i> because the conjuration itself is no longer in effect, only its result.) <p class=sub>A normal creature (a normally encountered griffon rather than a conjured one, for instance) can enter the area, as can normal missiles. Furthermore, while a magic sword does not function magically within the area, it is still a sword (and a masterwork sword at that). The spell has no effect on golems and other constructs that are imbued with magic during their creation process and are thereafter self-supporting (unless they have been summoned, in which case they are treated like any other summoned creatures). Elementals, corporeal undead, and outsiders are likewise unaffected unless summoned. These creatures' spell-like or supernatural abilities, however, may be temporarily nullified by the field. <p class=sub><i>Dispel magic</i> does not remove the field. Two or more <i>antimagic fields</i> sharing any of the same space have no effect on each other. Certain spells, such as <i>wall of force</i>, <i>prismatic sphere</i>, and <i>prismatic wall</i>, remain unaffected by <i>antimagic field</i> (see the individual spell descriptions). Artifacts and deities are unaffected by mortal magic such as this. (See the <i>Dungeon Master's Guide</i> for more about artifacts.) <p class=sub>Should a creature be larger than the area enclosed by the barrier, any part of it that lies outside the barrier is unaffected by the field. <p class=sub><i>Arcane Material Component</i>: A pinch of powdered iron or iron filings."
@@ -342,7 +342,7 @@ spells = [{
     phb: "200", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "You cause an object or location to emanate magical vibrations that repel either a specific kind of intelligent creature or creatures of a particular alignment, as defined by you. The kind of creature to be affected must be named specifically–for example, red dragons, hill giants, wererats, lammasus, cloakers, or vampires. A creature subtype (such as goblinoid) is not specific enough. Likewise, the specific alignment to be repelled must be named–for example, chaotic evil, chaotic good, lawful neutral, or neutral. <p class=sub>Creatures of the designated kind or alignment feel an overpowering urge to leave the area or to avoid the affected item. <p class=sub>A compulsion forces them to abandon the area or item, shunning it and never willingly returning to it while the spell is in effect. A creature that makes a successful saving throw can stay in the area or touch the item but feels uncomfortable doing so. This distracting discomfort reduces the creature's Dexterity score by 4 points. <i>Antipathy</i> counters and dispels <i>sympathy</i>. <p class=sub><i>Arcane Material Component</i>: A lump of alum soaked in vinegar."
@@ -377,7 +377,7 @@ spells = [{
     phb: "200", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You create an invisible magical sensor that sends you visual information. You can create the <i>arcane eye</i> at any point you can see, but it can then travel outside your line of sight without hindrance. An <i>arcane eye</i> travels at 30 feet per round (300 feet per minute) if viewing an area ahead as a human would (primarily looking at the floor) or 10 feet per round (100 feet per minute) if examining the ceiling and walls as well as the floor ahead. It sees exactly as you would see if you were there. The eye can travel in any direction as long as the spell lasts. Solid barriers block its passage, but it can pass through a hole or space as small as 1 inch in diameter. The eye can't enter another plane of existence, even through a gate or similar magical portal. <p class=sub>You must concentrate to use an <i>arcane eye</i>. If you do not concentrate, the eye is inert until you again concentrate. <p class=sub><i>Material Component</i>: A bit of bat fur."
@@ -395,7 +395,7 @@ spells = [{
     phb: "200", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "An <i>arcane lock</i> spell cast upon a door, chest,or portal magically locks it. You can freely pass your own <i>arcane lock</i> without affecting it; otherwise, a door or object secured withthis spell can be opened only by breaking in or with a successful <i>dispel magic</i> or <i>knock spell</i>. Add 10 to the normal DC to break open a door or portal affected by this spell.(A <i>knock spell</i> does not remove an <i>arcane lock</i>; it only suppresses the effect for 10 minutes.)<p class=sub><i>Material Component</i>: Gold dust worth 25 gp."
@@ -413,7 +413,7 @@ spells = [{
     phb: "201", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "This spell allows you to inscribe your personal rune or mark, which can consist of no more than six characters. The writing can be visible or invisible. An <i>arcane mark</i> spell enables you to etch the rune upon any substance (even stone or metal) without harm to the material upon which it is placed. If an invisible mark is made, a <i>detect magic</i> spell causes it to glow and be visible, though not necessarily understandable. See <i>invisibility</i>, <i>true seeing</i>, a <i>gem of seeing</i>, or a <i>robe of eyes</i> likewise allows the user to see an invisible <i>arcane mark</i>. A <i>read magic</i> spell reveals the words, if any. The mark cannot be dispelled, but it can be removed by the caster or by an erase spell. If an <i>arcane mark</i> is placed on a living being, normal wear gradually causes the effect to fade in about a month. <p class=sub><i>Arcane mark</i> must be cast on an object prior to casting <i>Drawmij's instant summons</i> on the same object (see that spell description for details)."
@@ -431,7 +431,7 @@ spells = [{
     phb: "201", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell makes your eyes glow blue and allows you to see magical auras within 120 feet of you. The effect is similar to that of a <i>detect magic</i> spell, but <i>arcane sight</i> does not require concentration and discerns aura location and power more quickly. <p class=sub>You know the location and power of all magical auras within your sight. An aura's power depends on a spell's functioning level or an item's caster level, as noted in the description of the <i>detect magic</i> spell (page 219). If the items or creatures bearing the auras are in line of sight, you can make Spellcraft skill checks to determine the school of magic involved in each. (Make one check per aura; DC 15 + spell level, or 15 + one-half caster level for a nonspell effect.) <p class=sub>If you concentrate on a specific creature within 120 feet of you as a standard action, you can determine whether it has any spellcasting or spell-like abilities, whether these are arcane or divine (spell-like abilities register as arcane), and the strength of the most powerful spell or spell-like ability the creature currently has available for use. In some cases, <i>arcane sight</i> may give a deceptively low reading–for example, when you use it on a spellcaster who has used up most of his or her daily spell allotment. <p class=sub><i>Arcane sight</i> can be made permanent with a <i>permanency</i> spell. "
@@ -449,7 +449,7 @@ spells = [{
     phb: "201", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>arcane sight</i>, except that you automatically know which spells or magical effects are active upon any individual or object you see. Greater arcane sight doesn't let you identify magic items. <p class=sub>Unlike <i>arcane sight</i>, this spell cannot be made permanent with a <i>permanency</i> spell."
@@ -468,7 +468,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 10,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "By freeing your spirit from your physical body, this spell allows you to project an astral body onto another plane altogether. You can bring the astral forms of other willing creatures with you, provided that these subjects are linked in a circle with you at the time of the casting. These fellow travelers are dependent upon you and must accompany you at all times. If something happens to you during the journey, your companions are stranded wherever you left them. <p class='sub'>You project your astral self onto the Astral Plane, leaving your physical body behind on the Material Plane in a state of suspended animation. The spell projects an astral copy of you and all you wear or carry onto the Astral Plane. Since the Astral Plane touches upon other planes, you can travel astrally to any of these other planes as you will. To enter one, you leave the Astral Plane, forming a new physical body (and equipment) on the plane of existence you have chosen to enter. <p class='sub'>While you are on the Astral Plane, your astral body is connected at all times to your physical body by a silvery cord. If the cord is broken, you are killed, astrally and physically. Luckily, very few things can destroy a silver cord (see the <i>Dungeon Master's Guide</i> for more information). When a second body is formed on a different plane, the incorporeal silvery cord remains invisibly attached to the new body. If the second body or the astral form is slain, the cord simply returns to your body where it rests on the Material Plane, thereby reviving it from its state of suspended animation. <p class='sub'>Although astral projections are able to function on the Astral Plane, their actions affect only creatures existing on the Astral Plane; a physical body must be materialized on other planes. <p class='sub'>You and your companions may travel through the Astral Plane indefinitely. Your bodies simply wait behind in a state of suspended animation until you choose to return your spirits to them. The spell lasts until you desire to end it, or until it is terminated by some outside means, such as dispel magic cast upon either the physical body or the astral form, the breaking of the silver cord, or the destruction of your body back on the Material Plane (which kills you). <p class='sub'><i>Material Component</i>: A jacinth worth at least 1,000 gp, plus a silver bar worth 5 gp for each person to be affected."
@@ -539,7 +539,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "As <i>polymorph</i>, except that you change the subject into a Small or smaller animal of no more than 1 HD (such as a dog, lizard, monkey, or toad). If the new form would prove fatal to the creature (for example, if you <i>polymorphed</i> a landbound target into a fish, or a flying target into a toad) the subject gets a +4 bonus on the save. <p class=sub>If the spell succeeds, the subject must also make a Will save. If this second save fails, the creature loses its extraordinary, supernatural, and spell-like abilities, loses its ability to cast spells (if it had the ability), and gains the alignment, special abilities, and Intelligence, Wisdom, and Charisma scores of its new form in place of its own. It still retains its class and level (or HD), as well as all benefits deriving therefrom (such as base attack bonus, base save bonuses, and hit points). It retains any class features (other than spellcasting) that aren't extraordinary, supernatural, or spell-like abilities. <p class=sub>Incorporeal or gaseous creatures are immune to being <i>polymorphed</i>, and a creature with the shapechanger subtype (such as a lycanthrope or a doppelganger) can revert to its natural form as a standard action."
@@ -577,7 +577,7 @@ spells = [{
         "Cleric": 7,
         "Druid": 3,
         "Ranger": 2,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "A <i>banishment</i> spell is a more powerful version of the <i>dismissal</i> spell. It enables you to force extraplanar creatures out of your home plane. As many as 2 Hit Dice of creatures per caster level can be banished. You can improve the spell's chance of success by presenting at least one object or substance that the target hates, fears, or otherwise opposes. For each such object or substance, you gain a +1 bonus on your caster level check to overcome the target's spell resistance (if any), the saving throw DC increases by 2. For example, if this spell were cast on a demon that hated light and was vulnerable to holy water and cold iron weapons, you might use iron, holy water, and a torch in the spell. The three items would give you a +3 bonus on your check to overcome the demon's spell resistance and add 6 to the spell's save DC. <p class=sub>At the DM's option, certain rare items might work twice as well as a normal item for the purpose of the bonuses (each providing a +2 bonus on the caster level check against spell resistance and increasing the save DC by 4). <p class=sub><i>Arcane Focus</i>: Any item that is distasteful to the subject (optional, see above)."
@@ -613,7 +613,7 @@ spells = [{
         "Cleric": 3,
         "Druid": 3,
         "Ranger": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The affected creature gains greater vitality and stamina. The spell grants the subject a +4 enhancement bonus to Constitution, which adds the usual benefits to hit points, Fortitude saves, Constitution checks, and so forth. <p class=sub>Hit points gained by a temporary increase in Constitution score are not temporary hit points. They go away when the subject's Constitution drops back to normal. They are not lost first as temporary hit points are (see page 146)."
@@ -633,7 +633,7 @@ spells = [{
     classes: {
         "Cleric": 7,
         "Druid": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "<i>Mass bear's endurance</i> works like <i>bear's endurance</i>, except that it affects multiple creatures."
@@ -652,7 +652,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You place a curse on the subject. Choose one of the following three effects. <p class=sub><ul><li>-6 decrease to an ability score (minimum 1). </li><p class=sub><li>-4 penalty on attack rolls, saves, ability checks, and skill checks.</li><p class=sub><li>Each turn, the target has a 50% chance to act normally; otherwise, it takes no action. </li></ul><p class=sub>You may also invent your own curse, but it should be no more powerful than those described above, and the DM has final say on the curse's effect. <p class=sub>The <i>curse</i> bestowed by this spell cannot be dispelled, but it can be removed with a <i>break enchantment</i>, <i>limited wish</i>, <i>miracle</i>, <i>remove curse</i>, or <i>wish</i> spell. <p class=sub><i>Bestow curse</i> counters <i>remove curse</i>."
@@ -670,7 +670,7 @@ spells = [{
     phb: "203", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>Bigby's interposing hand</i>, except that the hand can interpose itself, push, or strike one opponent that you select. The floating hand can move as far as 60 feet and can attack in the same round. Since this hand is directed by you, its ability to notice or attack invisible or concealed creatures is no better than yours. <p class=sub>The hand attacks once per round, and its attack bonus equals your caster level + your Intelligence, Wisdom, or Charisma modifier (for a wizard, cleric, or sorcerer, respectively), +11 for the hand's Strength score (33), -1 for being Large. The hand deals 1d8+11 points of damage on each attack, and any creature struck must make a Fortitude save (against this spell's save DC) or be stunned for 1 round. Directing the spell to a new target is a move action. <p class=sub>The <i>clenched fist</i> can also interpose itself as <i>Bigby's interposing hand</i> does, or it can bull rush an opponent as <i>Bigby's forceful hand</i> does, but at a +15 bonus on the Strength check. <p class=sub>Clerics who cast this spell name it for their deities–<i>Pelor's clenched fist</i>, for example. <p class=sub><i>Arcane Focus</i>: A leather glove"
@@ -688,7 +688,7 @@ spells = [{
     phb: "203", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>Bigby's interposing hand</i>, except that the hand can interpose itself, push, or crush one opponent that you select. <p class=sub>The crushing hand can grapple an opponent like <i>Bigby's grasping hand</i> does. Its grapple bonus equals your caster level + your Intelligence, Wisdom, or Charisma modifier (for a wizard, cleric, or sorcerer, respectively), +12 for the hand's Strength score (35), +4 for being Large. The hand deals 2d6+12 points of damage (lethal, not nonlethal) on each successful grapple check against an opponent. <p class=sub>The <i>crushing hand</i> can also interpose itself as <i>Bigby's interposing hand</i> does, or it can bull rush an opponent as <i>Bigby's forceful hand</i> does, but at a +18 bonus. <p class=sub>Directing the spell to a new target is a move action. <p class=sub>Clerics who cast this spell name it for their deities–<i>St. Cuthbert's crushing hand</i>, for example. <p class=sub><i>Arcane Material Component</i>: The shell of an egg. <p class=sub><i>Arcane Focus</i>: A glove of snakeskin."
@@ -706,7 +706,7 @@ spells = [{
     phb: "204", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>Bigby's interposing hand</i>, except that the forceful hand pursues and pushes away the opponent that you designate. Treat this attack as a bull rush with a +14 bonus on the Strength check (+8 for Strength 27, +4 for being Large, and a +2 bonus for charging, which it always gets). The hand always moves with the opponent to push that target back the full distance allowed, and it has no speed limit. <p class=sub>Directing the spell to a new target is a move action. <p class=sub>A very strong creature could not push the hand out of its way because the latter would instantly reposition itself between the creature and you, but an opponent could push the hand up against you by successfully bull rushing it. <p class=sub><i>Focus</i>: A sturdy glove made of leather or heavy cloth."
@@ -724,7 +724,7 @@ spells = [{
     phb: "204", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>Bigby's interposing hand</i>, except the hand can also grapple oneopponent that you select. The graspinghand gets one grapple attack per round. Its attack bonus to make contact equals yourcaster level + your Intelligence, Wisdom,or Charisma modifier (for wizards, clerics,and sorcerers, respectively), +10 for the hand's Strength score (31), -1 for beingLarge. Its grapple bonus is this same figure, except with a +4 modifier for being Large instead of -1. The hand holds but does not harm creatures it grapples. Directing the spell to a new target is a move action. <p class=sub>The grasping hand can also bull rush an opponent as <i>Bigby's forceful hand</i> does, but at a +16 bonus on the Strength check (+10 for Strength 35, +4 for being Large, and a +2 bonus for charging, which it always gets), or interpose itself as <i>Bigby's interposing hand</i> does. <p class=sub>Clerics who cast this spell name it for their deities–<i>Kord's grasping hand</i>, for example. <p class=sub><i>Arcane Focus</i>: A leather glove."
@@ -742,7 +742,7 @@ spells = [{
     phb: "204", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "<i>Bigby's Interposing hand</i> creates a Large magic hand that appears between you and one opponent. This floating, disembodied hand then moves to remain between the two of you, regardless of where you move or how the opponent tries to get around it, providing cover (+4 AC) for you against that opponent. Nothing can fool the hand–it sticks with the selected opponent in spite of darkness, invisibility, polymorphing, or any other attempt at hiding or disguise. The hand does not pursue an opponent, however. <p class=sub>A <i>Bigby's hand</i> is 10 feet long and about that wide with its fingers outstretched. It has as many hit points as you do when you're undamaged, and its AC is 20 (-1 size, +11 natural). It takes damage as a normal creature, but most magical effects that don't cause damage do not affect it. The hand never provokes attacks of opportunity from opponents. It cannot push through a <i>wall of force</i> or enter an <i>antimagic field</i>, but it suffers the full effect of a <i>prismatic wall</i> or <i>prismatic sphere</i>. The hand makes saving throws as its caster. <p class=sub><i>Disintegrate</i> or a successful <i>dispel magic</i> destroys it. <p class=sub>Any creature weighing 2,000 pounds or less that tries to push past the hand is slowed to half its normal speed. The hand cannot reduce the speed of a creature weighing more than 2,000 pounds, but it still affects the creature's attacks. <p class=sub>Directing the spell to a new target is a move action. <p class=sub><i>Focus</i>: A soft glove."
@@ -760,7 +760,7 @@ spells = [{
     phb: "204", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "A <i>binding</i> spell creates a magical restraint to hold a creature. The target gets an initial saving throw only if its Hit Dice equal at least one-half your caster level. <p class=sub>You may have as many as six assistants help you with the spell. For each assistant who casts <i>suggestion</i>, your caster level for this casting of <i>binding</i> increases by 1. For each assistant who casts <i>dominate animal</i>, <i>dominate person</i>, or <i>dominate monster</i>, your caster level for this casting of binding increases by a number equal to one-third of that assistant's level, provided that the spell's target is appropriate for a binding spell. Since the assistants' spells are cast simply to improve your caster level for the purpose of the <i>binding</i> spell, saving throws and spell resistance against the assistants' spells are irrelevant. Your caster level determines whether the target gets an initial Will saving throw and how long the binding lasts. All <i>binding</i> spells are dismissible. <p class=sub>Regardless of the version of binding you cast, you can specify triggering conditions that end the spell and release the creature whenever they occur. These triggers can be as simple or elaborate as you desire, but the DM must agree that the condition is reasonable and has a likelihood of coming to pass. The conditions can be based on a creature's name, identity, or alignment but otherwise must be based on observable actions or qualities. Intangibles such as level, class, Hit Dice, or hit points don't qualify. For example, a <i>bound</i> creature can be released when a lawful good creature approaches, but not when a paladin approaches. Once the spell is cast, its triggering conditions cannot be changed. Setting a release condition increases the save DC (assuming a saving throw is allowed) by 2. <p class=sub>If you are casting any of the first three versions of <i>binding</i> (those with limited durations), you may cast additional binding spells to prolong the effect, since the durations overlap. If you do so, the target gets a saving throw at the end of the first spell's duration, even if your caster level was high enough to disallow an initial saving throw. If the creature succeeds on this save, all the <i>binding</i> spells it has received are broken. <p class=sub>The <i>binding</i> spell has six versions. Choose one of the following versions when you cast the spell. <p class=sub><i>Chaining</i>: The subject is confined by restraints that generate an <i>antipathy</i> spell affecting all creatures who approach the subject, except you. The duration is one year per caster level. The subject of this form of <i>binding</i> is confined to the spot it occupied when it received the spell. <p class=sub><i>Slumber</i>: This version causes the subject to become comatose for as long as one year per caster level. The subject does not need to eat or drink while <i>slumbering</i>, nor does it age. This form of <i>binding</i> is more difficult to cast than <i>chaining</i>, making it slightly easier to resist. Reduce the spell's save DC by 1. <p class=sub><i>Bound Slumber</i>: This combination of <i>chaining</i> and <i>slumber</i> lasts for as long as one month per caster level. Reduce the save DC by 2. <p class=sub><i>Hedged Prison</i>: The subject is transported to or otherwise brought within a confined area (such as a labyrinth) from which it cannot wander by any means. The effect is permanent. Reduce the save DC by 3. <p class=sub><i>Metamorphosis</i>: The subject assumes gaseous form, except for its head or face. It is held harmless in a jar or other container, which may be transparent if you so choose. The creature remains aware of its surroundings and can speak, but it cannot leave the container, attack, or use any of its powers or abilities. The <i>binding</i> is permanent. The subject does not need to breathe, eat, or drink while metamorphosed, nor does it age. Reduce the save DC by 4. <p class=sub><i>Minimus Containment</i>: The subject is shrunk to a height of 1 inch or even less and held within some gem, jar, or similar object. The <i>binding</i> is permanent. The subject does not need to breathe, eat, or drink while <i>contained</i>, nor does it age. Reduce the save DC by 4. <p class=sub>You can't dispel a <i>binding</i> spell with <i>dispel magic</i> or a similar effect, though an <i>antimagic field</i> or <i>Mordenkainen's disjunction</i> affects it normally. A <i>bound</i> extraplanar creature cannot be sent back to its home plane due to <i>dismissal</i>, <i>banishment</i>, or a similar effect. <p class=sub><i>Components</i>: The components for a binding spell vary according to the version of the spell, but they always include a continuous chanting utterance read from the scroll or spellbook page containing the spell, somatic gestures, and materials appropriate to the form of binding used. These components can include such items as miniature chains of special metals (silver for lycanthropes, cold iron for demons, and so forth), soporific herbs of the rarest sort (for slumber bindings), a bell jar of the finest crystal, and the like. <p class=sub>In addition to the specially made props suited to the specific type of binding (cost500 gp), the spell requires opals worth atleast 500 gp for each HD of the target and avellum depiction or carved statuette of the subject to be captured."
@@ -865,7 +865,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 5,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell withers a single plant of any size. An affected plant creature takes 1d6 points of damage per level (maximum 15d6) and may attempt a Fortitude saving throw for half damage. A plant that isn't a creature (such as a tree or shrub) doesn't receive a save and immediately withers and dies. <p class=sub>This spell has no effect on the soil or surrounding plant life."
@@ -885,7 +885,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 4,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You call upon the powers of unlife to render the subject blinded or deafened, as you choose."
@@ -904,7 +904,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "Like a blink dog (see the <i>Monster Manual</i>), you 'blink' back and forth between the Material Plane and the Ethereal Plane. You look as though you're winking in and out of reality very quickly and at random. <p class=sub><i>Blinking</i> has several effects, as follows. <p class=sub>Physical attacks against you have a 50% miss chance, and the Blind-Fight feat doesn't help opponents, since you're ethereal and not merely invisible. If the attack is capable of striking ethereal creatures, the miss chance is only 20% (for concealment). If the attacker can see invisible creatures, the miss chance is also only 20%. (For an attacker who can both see and strike ethereal creatures, there is no miss chance.) Likewise, your own attacks have a 20% miss chance, since you sometimes go ethereal just as you are about to strike. <p class=sub>Any individually targeted spell has a 50% chance to fail against you while you're <i>blinking</i> unless your attacker can target invisible, ethereal creatures. Your own spells have a 20% chance to activate just as you go ethereal, in which case they typically do not affect the Material Plane. <p class=sub>While <i>blinking</i>, you take only half damage from area attacks (but full damage from those that extend onto the Ethereal Plane). You strike as an invisible creature (with a +2 bonus on attack rolls), denying your target any Dexterity bonus to AC. You take only half damage from falling, since you fall only while you are material. <p class=sub>While <i>blinking</i>, you can step through (but not see through) solid objects. For each 5 feet of solid material you walk through, there is a 50% chance that you become material. If this occurs, you are shunted off to the nearest open space and take 1d6 points of damage per 5 feet so traveled. You can move at only three-quarters speed (because movement on the Ethereal Plane is at half speed, and you spend about half your time there and half your time material.) <p class=sub>Since you spend about half your time on the Ethereal Plane, you can see and even attack ethereal creatures. You interact with ethereal creatures roughly the same way you interact with material ones. For instance, your spells against ethereal creatures are 20% likely to activate just as you go material and be lost. <p class=sub>An ethereal creature is invisible, incorporeal, and capable of moving in any direction, even up or down. As an incorporeal creature, you can move through solid objects, including living creatures. An ethereal creature can see and hear the Material Plane, but everything looks gray and insubstantial. Sight and hearing on the Material Plane are limited to 60 feet. Force effects (such as <i>magic missile</i> and <i>wall of force</i>) and abjurations affect you normally. Their effects extend onto the Ethereal Plane from the Material Plane, but not vice versa. An ethereal creature can't attack material creatures, and spells you cast while ethereal affect only other ethereal things. Certain material creatures or objects have attacks or effects that work on the Ethereal Plane (such as the basilisk and its gaze attack. Treat other ethereal creatures and objects as material."
@@ -923,7 +923,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The subject's outline appears blurred, shifting and wavering. This distortion grants the subject concealment (20% miss chance). <p class=sub>A see <i>invisibility</i> spell does not counteract the <i>blur</i> effect, but a <i>true seeing</i> spell does. <p class=sub>Opponents that cannot see the subject ignore the spell's effect (though fighting an unseen opponent carries penalties of its own; see page 151)."
@@ -944,7 +944,7 @@ spells = [{
         "Bard": 5,
         "Cleric": 6,
         "Paladin": 4,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell frees victims from enchantments, transmutations, and curses. <i>Break enchantment</i> can reverse even an instantaneous effect, such as <i>flesh to stone</i>. For each such effect, you make a caster level check (1d20 + caster level, maximum +15) against a DC of 11 + caster level of the effect. Success means that the creature is free of the spell, curse, or effect. For a cursed magic item, the DC is 25. <p class=sub>If the spell is one that cannot be dispelled by <i>dispel magic</i>, <i>break enchantment</i> works only if that spell is 5th level or lower. For instance, <i>bestow curse</i> cannot be dispelled by <i>dispel magic</i>, but <i>break enchantment</i> can dispel it. <p class=sub>If the effect comes from some permanent magic item, such as a cursed sword, <i>break enchantment</i> does not remove the curse from the item, but it does frees the victim from the item's effects. For example, a cursed item can change the alignment of its user. <i>Break enchantment</i> allows the victim to be rid of the item and negates the alignment change, but the item's curse is intact and affects the next creature to pick up the item–even if it's the recent recipient of the <i>break enchantment</i> spell."
@@ -965,7 +965,7 @@ spells = [{
         "Cleric": 3,
         "Druid": 3,
         "Paladin": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and other uses of the Strength modifier. <p class=sub><i>Arcane Material Component</i>: A few hairs, or a pinch of dung, from a bull."
@@ -985,7 +985,7 @@ spells = [{
     classes: {
         "Cleric": 7,
         "Druid": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>bull's strength</i>, except that it affects multiple creatures."
@@ -1003,7 +1003,7 @@ spells = [{
     phb: "207", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A cone of searing flame shoots from your fingertips. Any creature in the area of the flames takes 1d4 points of fire damage per caster level (maximum 5d4). Flammable materials, such as cloth, paper, parchment, and thin wood burn if the flames touch them. A character can extinguish burning items as a full-round action."
@@ -1094,7 +1094,7 @@ spells = [{
         "Bard": 3,
         "Druid": 3,
         "Ranger": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The transmuted creature becomes more graceful, agile, and coordinated. The spell grants a +4 enhancement bonus to Dexterity, adding the usual benefits to AC, Reflex saves, and other uses of the Dexterity modifier. <p class=sub><i>Material Component</i>: A pinch of cat fur."
@@ -1114,7 +1114,7 @@ spells = [{
     classes: {
         "Bard": 7,
         "Druid": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like cat<i>'s grace</i>, except <p class=sub>that it affects multiple creatures."
@@ -1134,7 +1134,7 @@ spells = [{
     classes: {
         "Bard": 2,
         "Cleric": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "The affected creature becomes frightened. If the subject succeeds on a Will save, it is shaken for 1 round. Creatures with 6 or more Hit Dice are immune to this effect. <p class=sub><i>Cause fear</i> counters and dispels <i>remove fear</i>."
@@ -1152,7 +1152,7 @@ spells = [{
     phb: "208", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell creates an electrical discharge that begins as a single stroke commencing from your fingertips. Unlike <i>lightning bolt</i>, <i>chain lightning</i> strikes one object or creature initially, then arcs to other targets. <p class=sub>The bolt deals 1d6 points of electricity damage per caster level (maximum 20d6) to the primary target. After it strikes, lightning can arc to a number of secondary targets equal to your caster level (maximum 20). The secondary bolts each strike one target and deal half as much damage as the primary one did (rounded down). For example, a 19th-level sorcerer generates a primary bolt (19d6 points of damage) and as many as nineteen secondary bolts (each of which deals half as much as the primary bolt dealt). Each target can attempt a Reflex saving throw for half damage. You choose secondary targets as you like, but they must all be within 30 feet of the primary target, and no target can be struck more than once. You can choose to affect fewer secondary targets than the maximum (to avoid allies in the area, for example).<p class=sub><i>Focus</i>: A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for each of your caster levels."
@@ -1221,7 +1221,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>charm person</i>, except that the effect is not restricted by creature type or size."
@@ -1240,7 +1240,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>charm monster</i>, except that <i>mass charm monster</i> affects a number of creatures whose combined HD do not exceed twice your level, or at least one creature regardless of HD. If there are more potential targets than you can affect, you choose them one at a time until you choose a creature with too many HD."
@@ -1259,7 +1259,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This charm makes a humanoid creature regard you as its trusted friend and ally (treat the target's attitude as friendly; see Influencing NPC Attitudes, page 72). If the creature is currently being threatened or attacked by you or your allies, however, it receives a +5 bonus on its saving throw. <p class=sub>The spell does not enable you to control the <i>charmed person</i> as if it were an automaton, but it perceives your words and actions in the most favorable way. You can try to give the subject orders, but you must win an opposed Charisma check to convince it to do anything it wouldn't ordinarily do. (Retries are not allowed.) An affected creature never obeys suicidal or obviously harmful orders, but a charmed fighter, for example, might believe you if you assured him that the only chance to save your life is for him to hold back an onrushing red dragon for 'just a few seconds.' Any act by you or your apparent allies that threatens the charmed person breaks the spell. You must speak the person's language to communicate your commands, or else be good at pantomiming."
@@ -1294,7 +1294,7 @@ spells = [{
     phb: "209", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A touch from your hand, which glows with blue energy, disrupts the life force of living creatures. Each touch channels negative energy that deals 1d6 points of damage. The touched creature also takes 1 point of Strength damage unless it makes a successful Fortitude saving throw. You can use this melee touch attack up to one time per level. <p class=sub>An undead creature you touch takes no damage of either sort, but it must make a successful Will saving throw or flee as if panicked for 1d4 rounds +1 round per caster level."
@@ -1312,7 +1312,7 @@ spells = [{
     phb: "209", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "A <i>circle of death</i> snuffs out the life force of living creatures, killing them instantly. <p class=sub>The spell slays 1d4 HD worth of living creatures per caster level (maximum 20d4). Creatures with the fewest HD are affected first; among creatures with equal HD, those who are closest to the burst's point of origin are affected first. No creature of 9 or more HD can be affected, and Hit Dice that are not sufficient to affect a creature are wasted. <p class=sub><i>Material Component</i>: The powder of a crushed black pearl with a minimum value of 500 gp."
@@ -1331,7 +1331,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "<i>Clairaudience/clairvoyance</i> creates an invisible magical sensor at a specific location that enables you to hear or see (your choice) almost as if you were there. You don't need line of sight or line of effect, but the locale must be known–a place familiar to you or an obvious one, such as behind a door, around a corner, or in a grove of trees. Once you have selected the locale, the sensor doesn't move, but you can rotate it in all directions to view the area as desired. Unlike other scrying spells, this spell does not allow magically or supernaturally enhanced senses to work through it. If the chosen locale is magically dark, you see nothing. If it is naturally pitch black, you can see in a 10-foot radius around the center of the spell's effect. Clairaudience/clairvoyance functions only on the plane of existence you are currently occupying. <p class=sub><i>Arcane Focus</i>: A small horn (for hearing) or a glass eye (for seeing)."
@@ -1366,7 +1366,7 @@ spells = [{
     phb: "210", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell makes an inert duplicate of a creature. If the original individual has been slain, its soul immediately transfers to the clone, creating a replacement (provided that the soul is free and willing to return; see Bringing Back the Dead, page 171). The original's physical remains, should they still exist, become inert and cannot thereafter be restored to life. If the original creature has reached the end of its natural life span (that is, it has died of natural causes), any cloning attempt fails. <p class=sub>To create the duplicate, you must have a piece of flesh (not hair, nails, scales, or the like) with a volume of at least 1 cubic inch that was taken from the original creature's living body. The piece of flesh need not be fresh, but it must be kept from rotting (for example, by the <i>gentle repose</i> spell). Once the spell is cast, the duplicate must be grown in a laboratory for 2d4 months. <p class=sub>When the clone is completed, the original's soul enters it immediately, if that creature is already dead. The clone is physically identical with the original and possesses the same personality and memories as the original. In other respects, treat the clone as if it were the original character raised from the dead, including the loss of one level or 2 points of Constitution (if the original was a 1st-level character). If this Constitution adjustment would give the clone a Constitution score of 0, the spell fails. If the original creature has lost levels since the flesh sample was taken and died at a lower level than the clone would otherwise be, the clone is one level below the level at which the original died. <p class=sub>The spell duplicates only the original's body and mind, not its equipment. <p class=sub>A duplicate can be grown while the original still lives, or when the original soul is unavailable, but the resulting body is merely a soulless bit of inert flesh, which rots if not preserved. <p class=sub><i>Material Component</i>: The piece of flesh and various laboratory supplies (cost 1,000 gp). <p class=sub><i>Focus</i>: Special laboratory equipment (cost 500 gp)."
@@ -1384,7 +1384,7 @@ spells = [{
     phb: "210", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell generates a bank of fog, similar to a <i>fog cloud</i>, except that its vapors are yellowish green and poisonous. These vapors automatically kill any living creature with 3 or fewer HD (no save). A living creature with 4 to 6 HD is slain unless it succeeds on a Fortitude save (in which case it takes 1d4 points of Constitution damage on your turn each round while in the cloud). A living creature with 6 or more HD takes 1d4 points of Constitution damage on your turn each round while in the cloud (a successful Fortitude save halves this damage). Holding one's breath doesn't help, but creatures immune to poison are unaffected by the spell. <p class=sub>Unlike a <i>fog cloud</i>, the <i>cloudkill</i> moves away from you at 10 feet per round, rolling along the surface of the ground. Figure out the cloud's new spread each round based on its new point of origin, which is 10 feet farther away from the point of origin where you cast the spell. <p class=sub>Because the vapors are heavier than air, they sink to the lowest level of the land, even pouring down den or sinkhole openings; thus, the spell is ideal for slaying hives of giant ants, for example. It cannot penetrate liquids, nor can it be cast underwater."
@@ -1402,7 +1402,7 @@ spells = [{
     phb: "210", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A vivid cone of clashing colors springs forth from your hand, causing creatures to become stunned, perhaps also blinded, and possibly knocking them unconscious. Each creature within the cone is affected according to its Hit Dice. <p class=sub><i>2 HD or less</i>: The creature is unconscious, blinded, and stunned for 2d4 rounds, then blinded and stunned for 1d4 rounds, and then stunned for 1 round. (Only living creatures are knocked unconscious.) <p class=sub><i>3 or 4 HD</i>: The creature is blinded and stunned for 1d4 rounds, then stunned for 1 round. <p class=sub><i>5 or more HD</i>: The creature is stunned for 1 round. <p class=sub>Sightless creatures are not affected by <i>color spray</i>. <p class=sub><i>Material Component</i>: A pinch each of powder or sand that is colored red, yellow, and blue."
@@ -1472,7 +1472,7 @@ spells = [{
     phb: "211", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell allows you some degree of control over an undead creature. Assuming the subject is intelligent, it perceives your words and actions in the most favorable way (treat its attitude as friendly). It will not attack you while the spell lasts. You can try to give the subject orders, but you must win an opposed Charisma check to convince it to do anything it wouldn't ordinarily do. (Retries are not allowed.) An intelligent commanded undead never obeys suicidal or obviously harmful orders, but it might be convinced that something very dangerous is worth doing (see <i>charm person</i>). <p class=sub>A nonintelligent undead creature (such as a skeleton or zombie) gets no saving throw against this spell. When you control a mindless being, you can communicate only basic commands, such as 'come here,' 'go there,' 'fight,' 'stand still,' and so on. Nonintelligent undead won't resist suicidal or obviously harmful orders. <p class=sub>Any act by you or your apparent allies that threatens the commanded undead (regardless of its Intelligence) breaks the spell. <p class=sub>Your commands are not telepathic. The undead creature must be able to hear you. <p class=sub><i>Material Component</i>: A shred of raw meat and a splinter of bone."
@@ -1527,7 +1527,7 @@ spells = [{
     classes: {
         "Bard": 2,
         "Cleric": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You can understand the spoken words of creatures or read otherwise incomprehensible written messages. In either case, you must touch the creature or the writing. The ability to read does not necessarily impart insight into the material, merely its literal meaning. The spell enables you to understand or read an unknown language, not speak or write it. <p class=sub>Written material can be read at the rate of one page (250 words) per minute. Magical writing cannot be read, though the spell reveals that it is magical, but <i>comprehend languages</i> is often useful when deciphering treasure maps. This spell can be foiled by certain warding magic (such as the <i>secret page</i> and <i>illusory script</i> spells). It does not decipher codes or reveal messages concealed in otherwise normal text. <p class=sub><i>Comprehend languages</i> can be made permanent with a permanency spell. <p class=sub><i>Arcane Material Component</i>: A pinch of soot and a few grains of salt."
@@ -1545,7 +1545,7 @@ spells = [{
     phb: "212", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "<i>Cone of cold</i> creates an area of extreme cold, originating at your hand and extending outward in a cone. It drains heat, dealing 1d6 points of cold damage per caster level (maximum 15d6). <p class=sub><i>Arcane Material Component</i>: A very small crystal or glass cone."
@@ -1564,7 +1564,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell causes the targets to become <i>confused</i>, making them unable to independently determine what they will do. <p class=sub>Roll on the following table at the beginning of each subject's turn each round to see what the subject does in that round. <table><tr class=header><td>d%</td><td>Behavior</td></tr><tr><td>01-10</td><td>Attack caster with melee or ranged weapons (or close with caster if attack is not possible).</td></tr><tr><td>11-20</td><td>Act normally.</td></tr><tr><td>21-50</td><td>Do nothing but babble incoherently.</td></tr><tr><td>51-70</td><td>Flee away from caster at top possible speed.</td></tr><tr><td>71-100</td><td>Attack nearest creature (for this purpose, a familiar counts as part of the subject's self).</td></tr></table><p class=sub>A <i>confused</i> character who can't carry out the indicated action does nothing but babble incoherently. Attackers are not at any special advantage when attacking a <i>confused</i> character. Any confused character who is attacked automatically attacks its attackers on its next turn, as long as it is still <i>confused</i> when its turn comes. Note that a <i>confused</i> character will not make attacks of opportunity against any creature that it is not already devoted to attacking (either because of its most recent action or because it has just been attacked). <p class=sub><i>Arcane Material Component</i>: A set of three nut shells."
@@ -1616,7 +1616,7 @@ spells = [{
     phb: "212", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You send your mind to another plane of existence (an Elemental Plane or some plane farther removed) in order to receive advice and information from powers there. (See the accompanying table for possible consequences and results of the attempt.) The powers reply in a language you understand, but they resent such contact and give only brief answers to your questions. (The DM answers all questions with 'yes,' 'no,' 'maybe,' 'never,' 'irrelevant,' or some other one-word answer.) You must concentrate on maintaining the spell (a standard action) in order to ask questions at the rate of one per round. A question is answered by the power during the same round. For every two caster levels, you may ask one question. <p class=sub>Contact with minds far removed from your home plane increases the probability that you will incur a decrease to Intelligence and Charisma, but the chance of the power knowing the answer, as well as the probability of the entity answering correctly, are likewise increased by moving to distant planes. Once the Outer Planes are reached, the power of the deity contacted determines the effects. (Random results obtained from the table are subject to DM changes, the personalities of individual deities, and so on.) <p class=sub>On rare occasions, this divination may be blocked by an act of certain deities or forces.<table><tr class=header><td>Plane Contacted</td><td>Avoid Int/Cha Decrease</td><td>True Answer</td><td>Don't Know</td><td>Lie</td><td>Random Answer</td></tr><tr><td>Elemental Plane</td><td>DC 7/1 week</td><td>01-34</td><td>35-62</td><td>63-83</td> <td>84-100</td></tr> <tr><td>(appropriate)</td><td>(DC 7/1 week)</td><td>(01-68)</td><td>(69-75)</td><td>(76-98)</td><td>(99-100)</td></tr> <tr><td>Positive/Negative Energy Plane</td><td>DC 8/1 week</td><td>01-39</td><td>40-65</td><td>66-86</td><td>87-100</td></tr> <tr><td>Astral Plane</td><td>DC 9/1 week</td><td>01-44</td><td>45-67</td><td>68-88</td><td>89-100</td></tr> <tr><td>Outer Plane, demideity</td><td>DC 10/2 weeks</td><td>01-49</td><td>50-70</td><td>71-91</td><td>92-100</td></tr> <tr><td>Outer Plane, lesser deity</td><td>DC 12/3 weeks</td><td>01-60</td><td>61-75</td><td>76-95</td><td>96-100</td></tr> <tr><td>Outer Plane, intermediate deity</td><td>DC 14/4 weeks</td><td>01-73</td><td>74-81</td><td>82-98</td><td>99-100</td></tr> <tr><td>Outer Plane, greater deity</td><td>DC 16/5 weeks</td><td>01-88</td><td>89-90</td><td>91-99</td><td>100</td></tr></table> <p class=sub><i>Avoid Int/Cha Decrease</i>: You must succeed on an Intelligence check against this DC to avoid a decrease in Intelligence and Charisma. If the check fails, your Intelligence and Charisma scores each fall to 8 for the stated duration, and you become unable to cast arcane spells. If you lose Intelligence and Charisma, the effect strikes as soon as the first question is asked, and no answer is received. (The entries in parentheses are for questions that pertain to the appropriate Elemental Plane.) <p class=sub><b>Results of a Successful Contact</b>: d% is rolled for the result shown on the table: <p class=sub><i>True Answer</i>: You get a true, one-word answer. Questions that cannot be answered in this way are answered randomly. <p class=sub><i>Don't Know</i>: The entity tells you that it doesn't know. <p class=sub><i>Lie</i>: The entity intentionally lies to you. <p class=sub><i>Random Answer</i>: The entity tries to lie but doesn't know the answer, so it makes one up."
@@ -1636,7 +1636,7 @@ spells = [{
     classes: {
         "Cleric": 4,
         "Druid": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "The subject contracts a disease selected from the table below, which strikes immediately (no incubation period). The DC noted is for the subsequent saves (use contagion's normal save DC for the initial saving throw). <p class=sub><sup>1</sup> Each time a victim takes 2 or more points of Strength damage from blinding sickness, he or she must make another Fortitude save (using the disease's save DC) or be permanently blinded.<p><p class=sub>See the <i>Dungeon Master's Guide</i> for descriptions of each disease, as well as for the general effects of disease.<table><tr class=header><td>Disease</td><td>DC</td><td>Damage</td></tr> <tr><td>Blinding sickness</td><td>16</td><td>1d4 Str<sup>1</sup></td></tr><tr><td>Cackle fever</td><td>16</td><td>1d6 Wis</td></tr> <tr><td>Filth fever</td><td>12</td><td>1d3 Dex and 1d3 Con</td></tr><tr><td>Mindfire</td><td>12</td><td>1d4 Int</td></tr> <tr><td>Red ache</td><td>15</td><td>1d6 Str</td></tr> <tr><td>Shakes</td><td>13</td><td>1d8 Dex</td></tr> <tr><td>Slimy doom</td><td>14</td><td>1d4 Con</td></tr> </table>"
@@ -1654,7 +1654,7 @@ spells = [{
     phb: "213", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You can place another spell upon your person so that it comes into effect under some condition you dictate when casting <i>contingency</i>. The <i>contingency</i> spell and the companion spell are cast at the same time. The 10-minute casting time is the minimum total for both castings; if the companion spell has a casting time longer than 10 minutes, use that instead. <p class=sub>The spell to be brought into effect by the contingency must be one that affects your person (<i>feather fall</i>, <i>levitate</i>, <i>fly</i>, <i>teleport</i>, and so forth) and be of a spell level no higher than one-third your caster level (rounded down, maximum 6th level). <p class=sub>The conditions needed to bring the spell into effect must be clear, although they can be general. For example, a <i>contingency</i> cast with <i>water breathing</i> might prescribe that any time you are plunged into or otherwise engulfed in water or similar liquid, the <i>water breathing</i> spell instantly comes into effect. Or a <i>contingency</i> could bring a <i>feather fall</i> spell into effect any time you fall more than 4 feet. In all cases, the <i>contingency</i> immediately brings into effect the companion spell, the latter being 'cast' instantaneously when the prescribed circumstances occur. If complicated or convoluted conditions are prescribed, the whole spell combination (<i>contingency</i> and the companion magic) may fail whencalled on. The companion spell occurs based solely on the stated conditions, regardless of whether you want it to. <p class=sub>You can use only one contingency spell at a time; if a second is cast, the first one (if still active) is dispelled. <p class=sub><i>Material Component</i>: That of the companion spell, plus quicksilver and an eyelash of an ogre mage, rakshasa, or similar spell-using creature. <p class=sub><i>Focus</i>: A statuette of you carved from elephant ivory and decorated with gems (worth at least 1,500 gp). You must carry the focus for the contingency to work."
@@ -1673,7 +1673,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 4,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A flame, equivalent in brightness to a torch, springs forth from an object that you touch. The effect looks like a regular flame, but it creates no heat and doesn't use oxygen. A continual flame can be covered and hidden but not smothered or quenched. <p class=sub>Light spells counter and dispel darkness spells of an equal or lower level. <p class=sub><i>Material Component</i>: You sprinkle ruby dust (worth 50 gp) on the item that is to carry the flame."
@@ -1708,7 +1708,7 @@ spells = [{
     phb: "214", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell enables you to command undead creatures for a short period of time. You command them by voice and they understand you, no matter what language you speak. Even if vocal communication is impossible (in the area of a silence spell, for instance), the controlled undead do not attack you. At the end of the spell, the subjects revert to their normal behavior. Intelligent undead creatures remember that you controlled them. <p class=sub><i>Material Component</i>: A small piece of bone and a small piece of raw meat."
@@ -1728,7 +1728,7 @@ spells = [{
     classes: {
         "Cleric": 5,
         "Druid": 5,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "Depending on the version you choose, the <i>control water</i> spell raises or lowers water. <p class=sub><i>Lower Water</i>: This causes water or similar liquid to reduce its depth by as much as 2 feet per caster level (to a minimum depth of 1 inch). The water is lowered within a squarish depression whose sides are up to caster level Ãƒ– 10 feet long. In extremely large and deep bodies of water, such as a deep ocean, the spell creates a whirlpool that sweeps ships and similar craft downward, putting them at risk and rendering them unable to leave by normal movement for the duration of the spell. When cast on water elementals and other water-based creatures, this spell acts as a slow spell (Will negates). The spell has no effect on other creatures. <p class=sub><i>Raise Water</i>: This causes water or similar liquid to rise in height, just as the lower water version causes it to lower. Boats raised in this way slide down the sides of the hump that the spell creates. If the area affected by the spell includes riverbanks, a beach, or other land nearby, the water can spill over onto dry land. <p class=sub>With either version, you may reduce one horizontal dimension by half and double the other horizontal dimension. <p class=sub><i>Arcane Material Component</i>: A drop of water (for <i>raise water</i>) or a pinch of dust (for <i>lower water</i>)."
@@ -1748,7 +1748,7 @@ spells = [{
     classes: {
         "Cleric": 8,
         "Druid": 8,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You change the weather in the local area. It takes 10 minutes to cast the spell and an additional 10 minutes for the effects to manifest. The current, natural weather conditions are determined by the DM. You can call forth weather appropriate to the climate and season of the area you are in. <p class=sub><table><p class=sub><tr class=header><td>Season</td><td>Possible Weather</td></tr> <p class=sub><tr><td>Spring</td><td>Tornado, thunderstorm, sleet storm, or hot weather</td></tr> <p class=sub><tr><td>Summer</td><td>Torrential rain, heat wave, or hailstorm</td></tr> <p class=sub><tr><td>Autumn</td><td>Hot or cold weather, fog, or sleet</td></tr> <p class=sub><tr><td>Winter</td><td>Frigid cold, blizzard, or thaw</td></tr> <p class=sub><tr><td>Late winter</td><td>Hurricane-force winds or early spring (coastal area)</td></tr> <p class=sub></table> <p class=sub>You control the general tendencies of the weather, such as the direction and intensity of the wind. You cannot control specific applications of the weather–where lightning strikes, for example, or the exact path of a tornado. When you select a certain weather condition to occur, the weather assumes that condition 10 minutes later (changing gradually, not abruptly). The weather continues as you left it for the duration, or until you use a standard action to designate a new kind of weather (which fully manifests itself 10 minutes later). Contradictory conditions are not possible simultaneously–fog and strong wind, for example. <p class=sub><i>Control weather</i> can do away with atmospheric phenomena (naturally occurring or otherwise) as well as create them. <p class=sub>A druid casting this spell doubles the duration and affects a circle with a 3-mile radius."
@@ -1801,7 +1801,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>create undead</i>, except that you can create more powerful and intelligent sorts of undead: shadows, wraiths, spectres, and devourers (see the <i>Monster Manual</i> for more information on all types of undead). The type or types of undead you can create is based on your caster level, as shown on the table below.<table> <tr class=header><td>Caster Level</td><td>Undead Created</td></tr><tr><td>15th or lower</td><td>Shadow</td></tr> <tr><td>16th-17th</td><td>Wraith</td></tr> <tr><td>18th-19th</td><td>Spectre</td></tr> <tr><td>20th or higher</td><td>Devourer</td></tr> </table>"
@@ -1820,7 +1820,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "A much more potent spell than <i>animate dead</i>, this evil spell allows you to create more powerful sorts of undead: ghouls, ghasts, mummies, and mohrgs (see the <i>Monster Manual</i> for more information on all types of undead). The type or types of undead you can create is based on your caster level, as shown on the table below.<table><tr class=header><td>Caster Level</td><td>Undead Created</td></tr> <tr><td>11th or lower</td><td>Ghoul</td></tr> <tr><td>12th-14th</td><td>Ghast</td></tr> <tr><td>15th-17th</td><td>Mummy</td></tr><tr><td>18th or higher</td><td>Mohrg</td></tr></table><p class=sub>You may create less powerful undead than your level would allow if you choose. For example, at 16th level you could decide to create a ghoul or a ghast instead of a mummy. Doing this may be a good idea, because created undead are not automatically under the control of their animator. If you are capable of commanding undead, you may attempt to command the undead creature as it forms (see Turn or Rebuke Undead, page 159). <p class=sub>This spell must be cast at night. <p class=sub><i>Material Component</i>: A clay pot filled with grave dirt and another filled with brackish water. The spell must be cast on a dead body. You must place a black onyx gem worth at least 50 gp per HD of the undead to be created into the mouth or eye socket of each corpse. The magic of the spell turns these gems into worthless shells."
@@ -1874,7 +1874,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "An invisible cone of despair causes great sadness in the subjects. Each affected creature takes a -2 penalty on attack rolls, saving throws, ability checks, skill checks, and weapon damage rolls. <p class=sub><i>Crushing despair</i> counters and dispels <i>good hope</i>. <p class=sub><i>Material Component</i>: A vial of tears. "
@@ -2082,7 +2082,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "Depending on the version selected, you create up to four lights that resemble lanterns or torches (and cast that amount of light), or up to four glowing spheres of light (which look like will-o'-wisps), or one faintly glowing, vaguely humanoid shape. The <i>dancing lights</i> must stay within a 10-foot-radius area in relation to each other but otherwise move as you desire (no concentration required): forward or back, up or down, straight or turning corners, or the like. The lights can move up to 100 feet per round. A light winks out if the distance between you and it exceeds the spell's range.<p class=sub><i>Dancing lights</i> can be made permanent with a permanency spell."
@@ -2102,7 +2102,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell causes an object to radiate shadowy illumination out to a 20-foot radius. All creatures in the area gain concealment (20% miss chance). Even creatures that can normally see in such conditions (such as with darkvision or low-light vision) have the miss chance in an area shrouded in magical <i>darkness</i>. Normal lights (torches, candles, lanterns, and so forth) are incapable of brightening the area, as are light spells of lower level (such as <i>light</i> or <i>dancing lights</i>). Higher level light spells (such as <i>daylight</i>) are not affected by <i>darkness</i>. <p class=sub>If <i>darkness</i> is cast on a small object that is then placed inside or under a lightproof covering, the spell's effect is blocked until the covering is removed. <p class=sub><i>Darkness</i> counters or dispels any light spell of equal or lower spell level. <p class=sub><i>Arcane Material Component</i>: A bit of bat fur and either a drop of pitch or a piece of coal."
@@ -2121,7 +2121,7 @@ spells = [{
     type: "spell",
     classes: {
         "Ranger": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The subject gains the ability to see 60 feet even in total darkness. <i>Darkvision</i> is black and white only but otherwise like normal sight. Darkvision does not grant one the ability to see in magical darkness. <p class=sub><i>Darkvision</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: Either a pinch of dried carrot or an agate."
@@ -2143,7 +2143,7 @@ spells = [{
         "Cleric": 4,
         "Druid": 4,
         "Paladin": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The object touched sheds light as bright as full daylight in a 60-foot radius, and dim light for an additional 60 feet beyond that. Creatures that take penalties in bright light also take them while within the radius of this magical light. Despite its name, this spell is not the equivalent of daylight for the purposes of creatures that are damaged or destroyed by bright light (such as vampires). If daylight is cast on a small object that is then placed inside or under a light-proof covering, the spell'seffects are blocked until the covering is removed. <p class=sub><i>Daylight</i> brought into an area of magical darkness (or vice versa) is temporarily negated, so that the otherwise prevailing light conditions exist in the overlapping areas of effect. <p class=sub><i>Daylight</i> counters or dispels any darkness spell of equal or lower level, such as <i>darkness</i>."
@@ -2162,7 +2162,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "This enchantment clouds the mind of a humanoid creature with 4 or fewer Hit Dice so that it takes no actions. Humanoids of 5 or more HD are not affected. A dazed subject is not stunned, so attackers get no special advantage against it. <p class=sub><i>Material Component</i>: A pinch of wool or similar substance."
@@ -2181,7 +2181,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell functions like <i>daze</i>, but <i>daze monster</i> can affect any one living creature of any type. Creatures of 7 or more HD are not affected."
@@ -2253,7 +2253,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like sleep, except that it affects 10 HD of creatures."
@@ -2309,7 +2309,7 @@ spells = [{
     phb: "217", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>fireball</i>, except that it is more powerful and can detonate up to 5 rounds after the spell is cast. The burst of flame deals 1d6 points of fire damage per caster level (maximum 20d6). <p class=sub>The glowing bead created by <i>delayed blast fireball</i> can detonate immediately if you desire, or you can choose to delay the burst for as many as 5 rounds. You select the amount of delay upon completing the spell, and that time cannot change once it has been set unless someone touches the bead (see below). If you choose a delay, the glowing bead sits at its destination until it detonates. A creature can pick up and hurl the bead as a thrown weapon (range increment 10 feet). If a creature handles and moves the bead within 1 round of its detonation, there is a 25% chance that the bead detonates while being handled."
@@ -2327,7 +2327,7 @@ spells = [{
     phb: "217", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>sending</i>, but the message can also contain a <i>suggestion</i> (see the <i>suggestion</i> spell), which the subject does its best to carry out. A successful Will save negates the <i>suggestion</i> effect but not the contact itself. The <i>demand</i>, if received, is understood even if the subject's Intelligence score is as low as 1. If the message is impossible or meaningless according to the circumstances that exist for the subject at the time the <i>demand</i> is issued, the message is understood but the <i>suggestion</i> is ineffective. <p class=sub>The <i>demand</i>'s message to the creature must be twenty-five words or less, including the <i>suggestion</i>. The creature can also give a short reply immediately. <p class=sub><i>Material Component</i>: A short piece of copper wire and some small part of the subject–a hair, a bit of nail, or the like."
@@ -2468,7 +2468,7 @@ spells = [{
         "Bard": 1,
         "Cleric": 1,
         "Druid": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject. <p class=sub><i>1st Round</i>: Presence or absence of magical auras. <p class=sub><i>2nd Round</i>: Number of different magical auras and the power of the most potent aura. <p class=sub><i>3rd Round</i>: The strength and location of each aura. If the items or creatures bearing the auras are in line of sight, you can make Spellcraft skill checks to determine the school of magic involved in each. (Make one check per aura; DC 15 + spell level, or 15 + half caster level for a nonspell effect.) <p class=sub>Magical areas, multiple types of magic, or strong local magical emanations may distort or conceal weaker auras. <p class=sub><i>Aura Strength</i>: An aura's power depends on a spell's functioning spell level or an item's caster level. If an aura falls into more than one category, <i>detect magic</i> indicates the stronger of the two.<table><tr class=header><td></td><td colspan=4>–––– Aura Power ––––</td></tr><tr class=header><td>Spell or Object</td><td>Faint</td><td>Moderate</td><td>Strong</td><td>Overwhelming</td></tr><tr><td>Functioning spell (spell level)</td><td>3rd or lower</td><td>4th-6th</td><td>7th-9th</td><td>10th+ (deity-level)</td></tr><tr><td>Magic item (caster level)</td><td>5th or lower</td><td>6th-11th</td><td>12th-20th</td><td>21st+ (artifact)</td></tr></table><p class=sub><i>Lingering Aura</i>: A magical aura lingers after its original source dissipates (in the case of a spell) or is destroyed (in the case of a magic item). If <i>detect magic</i> is cast and directed at such a location, the spell indicates an aura strength of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original power: <table><tr class=header><td>Original Strength</td><td>Duration of Lingering Aura</td></tr><tr><td>Faint</td><td>1d6 rounds</td></tr><tr><td>Moderate</td><td>1d6 minutes</td></tr><tr><td>Strong</td><td>1d6x10 minutes</td></tr><tr><td>Overwhelming</td><td>1d6 days</td></tr></table><p class=sub>Outsiders and elementals are not magical in themselves, but if they are summoned, the conjuration spell registers. <p class=sub>Each round, you can turn to detect magic in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it. <p class=sub><i>Detect magic</i> can be made permanent with a <i>permanency</i> spell."
@@ -2490,7 +2490,7 @@ spells = [{
         "Druid": 1,
         "Paladin": 1,
         "Ranger": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You determine whether a creature, object, or area has been poisoned or is poisonous. <p class=sub>You can determine the exact type of poison with a DC 20 Wisdom check. A character with the Craft (alchemy) skill may try a DC 20 Craft (alchemy) check if the Wisdom check fails, or may try the Craft (alchemy) check prior to the Wisdom check. <p class=sub>The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it."
@@ -2509,7 +2509,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You immediately become aware of any attempt to observe you by means of a divination (scrying) spell or effect. The spell's area radiates from you and moves as you move. You know the location of every magical sensor within the spell's area. <p class=sub>If the scrying attempt originates within the area, you also know its location; otherwise, you and the scrier immediately make opposed caster level checks (1d20 + caster level). If you at least match the scrier's result, you get a visual image of the scrier and an accurate sense of his or her direction and distance from you. <p class=sub><i>Material Component</i>: A small piece of mirror and a miniature brass hearing trumpet."
@@ -2528,7 +2528,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You can detect secret doors, compartments, caches, and so forth. Only passages, doors, or openings that have been specifically constructed to escape detection are detected by this spell–an ordinary trapdoor underneath a pile of crates would not be detected. The amount of information revealed depends on how long you study a particular area or subject. <p class=sub><i>1st Round</i>: Presence or absence of secret doors. <p class=sub><i>2nd Round</i>: Number of secret doors and the location of each. If an aura is outside your line of sight, then you discern its direction but not its exact location. <p class=sub><i>Each Additional Round</i>: The mechanism or trigger for one particular secret portal closely examined by you. <p class=sub>Each round, you can turn to detect secret doors in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it."
@@ -2565,7 +2565,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You detect surface thoughts. The amount of information revealed depends on how long you study a particular area or subject. <p class=sub><i>1st Round</i>: Presence or absence of thoughts (from conscious creatures with Intelligence scores of 1 or higher). <p class=sub><i>2nd Round</i>: Number of thinking minds and the Intelligence score of each. If the highest Intelligence is 26 or higher (and at least 10 points higher than your own Intelligence score), you are stunned for 1 round and the spell ends. This spell does not let you determine the location of the thinking minds if you can't see the creatures whose thoughts you are detecting. <p class=sub><i>3rd Round</i>: Surface thoughts of any mind in the area. A target's Will save prevents you from reading its thoughts, and you must cast <i>detect thoughts</i> again to have another chance. Creatures of animal intelligence (Int 1 or 2) have simple, instinctual thoughts that you can pick up. <p class=sub>Each round, you can turn to detect thoughts in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it. <p class=sub><i>Arcane Focus</i>: A copper piece."
@@ -2585,7 +2585,7 @@ spells = [{
     classes: {
         "Cleric": 2,
         "Paladin": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You can detect the aura that surrounds undead creatures. The amount of information revealed depends on how long you study a particular area. <p class=sub><i>1st Round</i>: Presence or absence of undead auras. <p class=sub><i>2nd Round</i>: Number of undead auras in the area and the strength of the strongest undead aura present. If you are of good alignment, and the strongest undead aura's strength is overwhelming (see below), and the creature has HD of at least twice your character level, you are stunned for 1 round and the spell ends. <p class=sub><i>3rd Round</i>: The strength and location of each undead aura. If an aura is outside your line of sight, then you discern its direction but not its exact location. <p class=sub><i>Aura Strength</i>: The strength of an undead aura is determined by the HD of the undead creature, as given on the following table:<table><tr class=header><td>HD</td><td>Strength</td></tr> <tr><td>1 or lower</td><td>Faint</td></tr> <tr><td>2-4</td><td>Moderate</td></tr> <tr><td>5-10</td><td>Strong</td></tr> <tr><td>11 or higher</td><td>Overwhelming</td></tr> </table> <p class=sub><i>Lingering Aura</i>: An undead aura lingers after its original source is destroyed. If detect undead is cast and directed at such a location, the spell indicates an aura strength of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original power: <table> <tr class=header><td>Original Strength</td><td>Duration of Lingering Aura</td></tr> <tr><td>Faint</td><td>1d6 rounds</td></tr> <tr><td>Moderate</td><td>1d6 minutes</td></tr> <tr><td>Strong</td><td>1d6Ãƒ–10 minutes</td></tr> <tr><td>Overwhelming</td><td>1d6 days</td></tr> </table> <p class=sub>Each round, you can turn to detect undead in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it. <p class=sub><i>Arcane Material Component</i>: A bit of earth from a grave."
@@ -2621,7 +2621,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You instantly transfer yourself from your current location to any other spot within range. You always arrive at exactly the spot desired–whether by simply visualizing the area or by stating direction, such as '900 feet straight downward,' or 'upward to the northwest, 45-degree angle, 1,200 feet.' After using this spell, you can't take any other actions until your next turn. You can bring along objects as long as their weight doesn't exceed your maximum load. You may also bring one additional willing Medium or smaller creature (carrying gear or objects up to its maxi-mum load) or its equivalent per three caster levels. A Large creature counts as two Medium creatures, a Huge creature counts as two Large creatures, and so forth. All creatures to be transported must be in contact with one another, and at least one of those creatures must be in contact with you. <p class=sub>If you arrive in a place that is already occupied by a solid body, you and each creature traveling with you take 1d6 points of damage and are shunted to a random open space on a suitable surface within 100 feet of the intended location. If there is no free space within 100 feet, you and each creature traveling with you take an additional 2d6 points of damage and are shunted to a free space within 1,000 feet. If there is no free space within 1,000 feet, you and each creature travelling with you take an additional 4d6 points of damage and the spell simply fails."
@@ -2640,7 +2640,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "A green ray springs from your outstretched hand. You must make a ranged touch attack to hit the target. Any creature or object struck by the ray is covered with a shimmering emerald field that completely blocks extradimensional travel. Forms of movement barred by a <i>dimensional anchor</i> include <i>astral projection</i>, <i>blink</i>, <i>dimension door</i>, <i>ethereal jaunt</i>, <i>etherealness</i>, <i>gate</i>, <i>maze</i>, <i>plane shift</i>, <i>shadow walk</i>, <i>teleport</i>, and similar spell-like or psionic abilities. The spell also prevents the use of a <i>gate</i> or <i>teleportation circle</i> for the duration of the spell. <p class=sub>A <i>dimensional anchor</i> does not interfere with the movement of creatures already in ethereal or astral form when the spell is cast, nor does it block extradimensional perception or attack forms, such as a basilisk's gaze. Also, dimensional anchor does not prevent summoned creatures from disappearing at the end of a summoning spell."
@@ -2659,7 +2659,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "You create a shimmering emerald barrier that completely blocks extradimensional travel. Forms of movement barred include <i>astral projection</i>, <i>blink</i>, <i>dimension door</i>, <i>ethereal jaunt</i>, <i>etherealness</i>, <i>gate</i>, <i>maze</i>, <i>plane shift</i>, <i>shadow walk</i>, <i>teleport</i>, and similar spell-like or psionic abilities. Once <i>dimensional lock</i> is in place, extradimensional travel into or out of the area is not possible. <p class=sub>A <i>dimensional lock</i> does not interfere with the movement of creatures already in ethereal or astral form when the spell is cast, nor does it block extradimensional perception or attack forms, such as a basilisk's gaze. Also, the spell does not prevent summoned creatures from disappearing at the end of a summoning spell."
@@ -2714,7 +2714,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "A <i>discern location</i> spell is among the most powerful means of locating creatures or objects. Nothing short of a <i>mind blank</i> spell or the direct intervention of a deity keeps you from learning the exact location of a single individual or object. <i>Discern location</i> circumvents normal means of protection from scrying or location. The spell reveals the name of the creature or object's location (place, name, business name, building name, or the like), community, county (or similar political division), country, continent, and the plane of existence where the target lies. <p class=sub>To find a creature with the spell, you must have seen the creature or have some item that once belonged to it. To find an object, you must have touched it at least once."
@@ -2733,7 +2733,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You make yourself–including clothing, armor, weapons, and equipment–look different. You can seem 1 foot shorter or taller, thin, fat, or in between. You cannot change your body type. For example, a human caster could look human, humanoid, or like any other human-shaped bipedal creature. Otherwise, the extent of the apparent change is up to you. You could add or obscure a minor feature or look like an entirely different person. <p class=sub>The spell does not provide the abilities or mannerisms of the chosen form, nor does it alter the perceived tactile (touch) or audible (sound) properties of you or your equipment. A battleaxe made to look like a dagger still functions as a battleaxe. <p class=sub>If you use this spell to create a disguise, you get a +10 bonus on the Disguise check. <p class=sub>A creature that interacts with the glamer gets a Will save to recognize it as an illusion. For example, a creature that touched you and realized that the tactile sensation did not match the visual one would be entitled to such a save."
@@ -2751,7 +2751,7 @@ spells = [{
     phb: "222", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "A thin, green ray springs from your pointing finger. You must make a successful ranged touch attack to hit. Any creature struck by the ray takes 2d6 points of damage per caster level (to a maximum of 40d6). Any creature reduced to 0 or fewer hit points by this spell is entirely disintegrated, leaving behind only a trace of fine dust. A disintegrated creature's equipment is unaffected. <p class=sub>When used against an object, the ray simply disintegrates as much as one 10-foot cube of nonliving matter. Thus, the spell disintegrates only part of any very large object or structure targeted. The ray affects even objects constructed entirely of force, such as <i>Bigby's forceful hand</i> or a <i>wall of force</i>, but not magical effects such as a <i>globe of invulnerability</i> or an <i>antimagic field</i>. <p class=sub>A creature or object that makes a successful Fortitude save is partially affected, taking only 5d6 points of damage. If this damage reduces the creature or object to 0 or fewer hit points, it is entirely disintegrated. <p class=sub>Only the first creature or object struck can be affected; that is, the ray affects only one target per casting. <p class=sub><i>Arcane Material Component</i>: A lodestone and a pinch of dust."
@@ -2770,7 +2770,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 5,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell forces an extraplanar creature back to its proper plane if it fails a special Will save (DC = spell's save DC - creature's HD + your caster level). If the spell is successful, the creature is instantly whisked away, but there is a 20% chance of actually sending the subject to a plane other than its own."
@@ -2862,7 +2862,7 @@ spells = [{
         "Cleric": 4,
         "Druid": 5,
         "Paladin": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "Because magic is so powerful, so too is the ability to dispel magic. You can use dispel magic to end ongoing spells that have been cast on a creature or object, to temporarily suppress the magical abilities of a magic item, to end ongoing spells (or at least their effects) within an area, or to counter another spellcaster's spell. A dispelled spell ends as if its duration had expired. Some spells, as detailed in their descriptions, can't be defeated by dispel magic. <i>Dispel magic</i> can dispel (but not counter) spell-like effects just as it does spells. <p class=sub><i>Note</i>: The effect of a spell with an instantaneous duration can't be dispelled, because the magical effect is already over before the <i>dispel magic</i> can take effect. Thus, you can't use <i>dispel magic</i> to repair damage caused by a <i>fireball</i> or to turn a petrified character back to flesh. In these cases, the magic has departed, leaving only burned flesh or perfectly normal stone in its wake. <p class=sub><i>You choose to use <i>dispel magic</i> in one of three ways</i>: a targeted dispel, an area dispel, or a counterspell: <p class=sub><i>Targeted Dispel</i>: One object, creature, or spell is the target of the <i>dispel magic</i> spell. You make a dispel check (1d20 + your caster level, maximum +10) against the spell or against each ongoing spell currently in effect on the object or creature. The DC for this dispel check is 11 + the spell's caster level. <p class=sub>For example, Mialee, at 5th level, targets dispel magic on a drow who is under the effects of <i>haste</i>, <i>mage armor</i>, and <i>bull's strength</i>. All three spells were cast on the drow by a 7th-level wizard. Mialee makes a dispel check (1d20 + 5 against DC 18) three times, once each for the <i>haste</i>, <i>mage armor</i>, and <i>bull's strength</i> effects. If she succeeds on a particular check, that spell is dispelled (the drow's spell resistance doesn't help him); if she fails, that spell remains in effect. <p class=sub>If you target an object or creature that is the effect of an ongoing spell (such as a monster summoned by <i>monster summoning</i>), you make a dispel check to end the spell that conjured the object or creature. <p class=sub><i>If the object that you target is a magic item, you make a dispel check against the item's caster level. If you succeed, all the item's magical properties are suppressed for 1d4 rounds, after which the item recovers on its own. A suppressed item becomes nonmagical for the duration of the effect. An interdimensional interface (such as a <i>bag of holding</i>) is temporarily closed. A magic item's physical properties are unchanged</i>: A suppressed magic sword is still a sword (a masterwork sword, in fact). Artifacts and deities are unaffected by mortal magic such as this. <p class=sub>You automatically succeed on your dispel check against any spell that you cast yourself. <p class=sub><i>Area Dispel</i>: When <i>dispel magic</i> is used in this way, the spell affects everything within a 20-foot radius. <p class=sub>For each creature within the area that is the subject of one or more spells, you make a dispel check against the spell with the highest caster level. If that check fails, you make dispel checks against progressively weaker spells until you dispel one spell (which discharges the <i>dispel magic</i> spell so far as that target is concerned) or until you fail all your checks. The creature's magic items are not affected. <p class=sub>For each object within the area that is the target of one or more spells, you make dispel checks as with creatures. Magic items are not affected by an area dispel. <p class=sub>For each ongoing area or effect spell whose point of origin is within the area of the <i>dispel magic</i> spell, you can make a dispel check to dispel the spell. <p class=sub>For each ongoing spell whose area overlaps that of the <i>dispel magic</i> spell, you can make a dispel check to end the effect, but only within the overlapping area. <p class=sub>If an object or creature that is the effect of an ongoing spell (such as a monster summoned by <i>monster summoning</i>) is in the area, you can make a dispel check to end the spell that conjured that object or creature (returning it whence it came) in addition to attempting to dispel spells targeting the creature or object. <p class=sub>You may choose to automatically succeed on dispel checks against any spell that you have cast. <p class=sub><i>Counterspell</i>: When <i>dispel magic</i> is used in this way, the spell targets a spellcaster and is cast as a counterspell (page 170). Unlike a true counterspell, however, <i>dispel magic</i> may not work; you must make a dispel check to counter the other spellcaster's spell. "
@@ -2883,7 +2883,7 @@ spells = [{
         "Bard": 6,
         "Cleric": 7,
         "Druid": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>dispel magic</i>, except that the maximum caster level on your dispel check is +20 instead of +10. Additionally, <i>greater dispel magic</i> has a chance to dispel any effect that <i>remove curse</i> can remove, even if <i>dispel magic</i> can't dispel that effect."
@@ -2902,7 +2902,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "Emulating the natural ability of the displacer beast (see the <i>Monster Manual</i>), the subject of this spell appears to be about 2 feet away from its true location. The creature benefits from a 50% miss chance as if it had total concealment. However, unlike actual total concealment, <i>displacement</i> does not prevent enemies from targeting the creature normally. <i>True seeing</i> reveals its true location. <p class=sub><i>Material Component</i>: A small strip of leather made from displacer beast hide, twisted into a loop."
@@ -2920,7 +2920,7 @@ spells = [{
     phb: "223", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You direct a ray of positive energy. You must make a ranged touch attack to hit, and if the ray hits an undead creature, it deals 1d6 points of damage to it."
@@ -3024,7 +3024,7 @@ spells = [{
     phb: "224", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>dominate person</i>, except that the spell is not restricted by creature type."
@@ -3043,7 +3043,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You can control the actions of any humanoid creature through a telepathic link that you establish with the subject's mind. If you and the subject have a common language, you can generally force the subject to perform as you desire, within the limits of its abilities. If no common language exists, you can communicate only basic commands, such as \"Come here,\" \"Go there,\" \"Fight,\" and \"Stand still.\" You know what the subject is experiencing, but you do not receive direct sensory input from it, nor can it communicate with you telepathically. <p class=sub>Once you have given a <i>dominated</i> creature a command, it continues to attempt to carry out that command to the exclusion of all other activities except those necessary for day-to-day survival (such as sleeping, eating, and so forth). Because of this limited range of activity, a Sense Motive check against DC 15 (rather than DC 25) can determine that the subject's behavior is being influenced by an enchantment effect (see the Sense Motive skill description, page 81). <p class=sub>Changing your instructions or giving a dominated creature a new command is the equivalent of redirecting a spell, so it is a move action. <p class=sub>By concentrating fully on the spell (a standard action), you can receive full sensory input as interpreted by the mind of the subject, though it still can't communicate with you. You can't actually see through the subject's eyes, so it's not as good as being there yourself, but you still get a good idea of what's going on (the subject is walking through a smelly courtyard, the subject is talking to a guard, the guard looks suspicious, and so forth). <p class=sub>Subjects resist this control, and any subject forced to take actions against its nature receives a new saving throw with a +2 bonus. Obviously self-destructive orders are not carried out. Once control is established, the range at which it can be exercised is unlimited, as long as you and the subject are on the same plane. You need not see the subject to control it.<p class=sub>If you don't spend at least 1 round concentrating on the spell each day, the subject receives a new saving throw to throw off the domination. <p class=sub><i>Protection from evil</i> or a similar spell can prevent you from exercising control or using the telepathic link while the subject is so warded, but such an effect neither prevents the establishment of dominationnor dispels it."
@@ -3078,7 +3078,7 @@ spells = [{
     phb: "225", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You call some nonliving item from virtually any location directly to your hand. <p class=sub>First, you must place your arcane mark (page 201) on the item. Then you cast this spell, which magically and invisibly inscribes the name of the item on a sapphire worth at least 1,000 gp. Thereafter, you can summon the item by speaking a special word (set by you when the spell is cast) and crushing the gem. The item appears instantly in your hand. Only you can use the gem in this way. <p class=sub>If the item is in the possession of another creature, the spell does not work, but you know who the possessor is and roughly where that creature is located when the summons occurs. <p class=sub>The inscription on the gem is invisible. It is also unreadable, except by means of a read magic spell, to anyone but you. <p class=sub>The item can be summoned from another plane, but only if no other creature has claimed ownership of it. <p class=sub><i>Material Component</i>: A sapphire worth at least 1,000 gp."
@@ -3097,7 +3097,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You, or a messenger touched by you, sends a phantasmal message to others in the form of a dream. At the beginning of the spell, you must name the recipient or identify him or her by some title that leaves no doubt as to identity. The messenger then enters a trance, appears in the intended recipient's dream, and delivers the message. The message can be of any length, and the recipient remembers it perfectly upon waking. The communication is one-way. The recipient cannot ask questions or offer information, nor can the messenger gain any information by observing the dreams of the recipient. Once the message is delivered, the messenger's mind returns instantly to its body. The duration of the spell is the time required for the messenger to enter the recipient's dream and deliver the message. <p class=sub>If the recipient is awake when the spell begins, the messenger can choose to wake up (ending the spell) or remain in the trance. The messenger can remain in the trance until the recipient goes to sleep, then enter the recipient's dream and deliver the message as normal. A messenger that is disturbed during the trance comes awake, ending the spell. <p class=sub>Creatures who don't sleep (such as elves, but not half-elves) or don't dream cannot be contacted by this spell. <p class=sub>The messenger is unaware of its own surroundings or of the activities around it while in the trance. It is defenseless both physically and mentally (always fails any saving throw) while in the trance."
@@ -3118,7 +3118,7 @@ spells = [{
         "Bard": 3,
         "Cleric": 3,
         "Paladin": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The transmuted creature becomes more poised, articulate, and personally forceful. The spell grants a +4 enhancement bonus to Charisma, adding the usual benefits to Charisma-based skill checks and other uses of the Charisma modifier. Sorcerers and bards (and other spellcasters who rely on Charisma) affected by this spell do not gain any additional bonus spells for the increased Charisma, but the save DCs for spells they cast while under this spell's effect do increase. <p class=sub><i>Arcane Material Component</i>: A few feathers or a pinch of droppings from an eagle."
@@ -3138,7 +3138,7 @@ spells = [{
     classes: {
         "Bard": 7,
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>eagle's splendor</i>, except that it affects multiple creatures."
@@ -3194,7 +3194,7 @@ spells = [{
         "Druid": 2,
         "Paladin": 1,
         "Ranger": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A creature protected by <i>endure elements</i> suffers no harm from being in a hot or cold environment. It can exist comfortably in conditions between '50 and 140 degrees Fahrenheit without having to make Fortitude saves (as described in the <i>Dungeon Master's Guide</i>). The creature's equipment is likewise protected. <p class=sub><i>Endure elements</i> doesn't provide any protection from fire or cold damage, nor does it protect against other environmental hazards such as smoke, lack of air, and so forth."
@@ -3213,7 +3213,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 10,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>enervation</i>, except that the creature struck gains 2d4 negative levels, and the negative levels last longer. <p class=sub>There is no saving throw to avoid gaining the negative levels, but 24 hours after gaining them, the subject must make a Fortitude saving throw (DC = <i>energy drain</i> spell's save DC) for each negative level. If the save succeeds, that negative level is removed. If it fails, the negative level also goes away, but one of the subject's character levels is permanently drained. <p class=sub>An undead creature struck by the ray gains 2d4Ã—5 temporary hit points for 1 hour."
@@ -3231,7 +3231,7 @@ spells = [{
     phb: "226", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You point your finger and utter the incantation, releasing a black ray of crackling negative energy that suppresses the life force of any living creature it strikes. You must make a ranged touch attack to hit. If the attack succeeds, the subject gains 1d4 negative levels. <p class=sub>If the subject has at least as many negative levels as HD, it dies. Each negative level gives a creature a '1 penalty on attack rolls, saving throws, skill checks, ability checks, and effective level (for determining the power, duration, DC, and other details of spells or special abilities). Additionally, a spellcaster loses one spell or spell slot from his or her highest available level. Negative levels stack. <p class=sub>Assuming the subject survives, it regains lost levels after a number of hours equal to your caster level (maximum 15 hours). Usually, negative levels have a chance of permanently draining the victim's levels, but the negative levels from <i>enervation</i> don't last long enough to do so. <p class=sub>An undead creature struck by the ray gains 1d4Ã—5 temporary hit points for 1 hour."
@@ -3249,7 +3249,7 @@ spells = [{
     phb: "226", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell causes instant growth of a humanoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature's size category to the next larger one. The target gains a +2 size bonus to Strength, a '2 size penalty to Dexterity (to a minimum of 1), and a '1 penalty on attack rolls and AC due to its increased size. <p class=sub>A humanoid creature whose size increases to Large has a space of 10 feet and a natural reach of 10 feet. This spell does not change the target's speed. <p class=sub>If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it–the spell cannot be used to crush a creature by increasing its size. <p class=sub>All equipment worn or carried by a creature is similarly enlarged by the spell. Melee and projectile weapons affected by this spell deal more damage (see Table 2'2 in the <i>Dungeon Master's Guide</i>). Other magical properties are not affected by this spell. Any <i>enlarged</i> item that leaves an <i>enlarged</i> creature's possession (including a projectile or thrown weapon) instantly returns to its normal size. This means that thrown weapons deal their normal damage, and projectiles deal damage based on the size of the weapon that fired them. Magical properties of <i>enlarged</i> items are not increased by this spell–an <i>enlarged</i> +1 sword still has only a +1 enhancement bonus, a staff-sized wand is still only capable of its normal functions, a giant-sized potion merely requires a greater fluid intake to make its magical effects operate, and so on. <p class=sub>Multiple magical effects that increase size do not stack, which means (among other things) that you can't use a second casting of this spell to further increase the size of a humanoid that's still under the effect of the first casting. <p class=sub><i>Enlarge person</i> counters and dispels <i>reduce person</i>. <p class=sub><i>Enlarge person</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: A pinch of powdered iron."
@@ -3267,7 +3267,7 @@ spells = [{
     phb: "227", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>enlarge person</i>, except that it affects multiple creatures."
@@ -3339,7 +3339,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "Erase removes writings of either magical or mundane nature from a scroll or from one or two pages of paper, parchment, or similar surfaces. With this spell, you can remove <i>explosive runes</i>, a <i>glyph of warding</i>, a <i>sepia snake sigil</i>, or an <i>arcane mark</i>, but not <i>illusory script</i> or a <i>symbol</i> spell. Nonmagical writing is automatically erased if you touch it and no one else is holding it. Otherwise, the chance of erasing nonmagical writing is 90%. <p class=sub>Magic writing must be touched to be erased, and you also must succeed on a caster level check (1d20 + caster level) against DC 15. (A natural 1 or 2 is always a failure on this check.) If you fail to erase <i>explosive runes</i>, a <i>glyph of warding</i>, or a <i>sepia snake sigil</i>, you accidentally activate that writing instead."
@@ -3358,7 +3358,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 8,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You become ethereal, along with your equipment. For the duration of the spell, you are in a place called the Ethereal Plane, which overlaps the normal, physical, Material Plane. When the spell expires, you return to material existence. <p class=sub>An ethereal creature is invisible, insubstantial, and capable of moving in any direction, even up or down, albeit at half normal speed. As an insubstantial creature, you can move through solid objects, including living creatures. An ethereal creature can see and hear on the Material Plane, but everything looks gray and ephemeral. Sight and hearing onto the Material Plane are limited to 60 feet. Force effects (such as <i>magic missile</i> and <i>wall of force</i>) and abjurations affect an ethereal creature normally. Their effects extend onto the Ethereal Plane from the Material Plane, but not vice versa. An ethereal creature can't attack material creatures, and spells you cast while ethereal affect only other ethereal things. Certain material creatures or objects have attacks or effects that work on the Ethereal Plane (such as a basilisk's gaze attack). Treat other ethereal creatures and ethereal objects as if they were material. <p class=sub>If you end the spell and become material while inside a material object (such as a solid wall), you are shunted off to the nearest open space and take 1d6 points of damage per 5 feet that you so travel."
@@ -3377,7 +3377,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 10,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>ethereal jaunt</i>, except that you and other willing creatures joined by linked hands (along with their equipment) become ethereal. Besides yourself, you can bring one creature per three caster levels to the Ethereal Plane. Once ethereal, the subjects need not stay together. <p class=sub>When the spell expires, all affected creatures on the Ethereal Plane return to material existence."
@@ -3395,7 +3395,7 @@ spells = [{
     phb: "228", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell conjures a field of rubbery black tentacles, each 10 feet long. These waving members seem to spring forth from the earth, floor, or whatever surface is underfoot–including water. They grasp and entwine around creatures that enter the area, holding them fast and crushing them with great strength. <p class=sub>Every creature within the area of the spell must make a grapple check, opposed by the grapple check of the tentacles. Treat the tentacles attacking a particular target as a Large creature with a base attack bonus equal to your caster level and a Strength score of 19. Thus, its grapple check modifier is equal to your caster level +8. The tentacles are immune to all types of damage. <p class=sub>Once the tentacles grapple an opponent, they may make a grapple check each round on your turn to deal 1d6+4 points of bludgeoning damage. The tentacles continue to crush the opponent until the spell ends or the opponent escapes. <p class=sub>Any creature that enters the area of the spell is immediately attacked by the tentacles. Even creatures who aren't grappling with the tentacles may move through the area at only half normal speed. <p class=sub><i>Material Component</i>: A piece of tentacle from a giant octopus or a giant squid."
@@ -3414,7 +3414,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell increases your base land speed by 30 feet. (This adjustment is treated as an enhancement bonus.) There is no effect on other modes of movement, such as burrow, climb, fly, or swim. As with any effect that increases your speed, this spell affects your jumping distance (see the Jump skill, page 77). <p class=sub>This spell need not be used as part of a retreat; the name of the spell merely hints at the typical wizard's attitude towards combat."
@@ -3432,7 +3432,7 @@ spells = [{
     phb: "228", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You trace these mystic runes upon a book, map, scroll, or similar object bearing written information. The <i>runes</i> detonate when read, dealing 6d6 points of force damage. Anyone next to the <i>runes</i> (close enough to read them) takes the full damage with no saving throw; any other creature within 10 feet of the <i>runes</i> is entitled to a Reflex save for half damage. The object on which the runes were written also takes full damage (no saving throw). <p class=sub>You and any characters you specifically instruct can read the protected writing without triggering the <i>runes</i>. Likewise, you can remove the <i>runes</i> whenever desired. Another creature can remove them with a successful <i>dispel magic</i> or <i>erase</i> spell, but attempting to dispel or erase the runes and failing to do so triggers the explosion. <p class=sub><i>Note</i>: Magic traps such as <i>explosive runes</i> are hard to detect and disable. A rogue (only) can use the Search skill to find the <i>runes</i> and Disable Device to thwart them. The DC in each case is 25 + spell level, or 28 for <i>explosive runes</i>."
@@ -3451,7 +3451,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "Each round, you may target a single living creature, striking it with waves of evil power. Depending on the target's HD, this attack has as many as three effects. <table><tr class=header><td>HD</td><td>Effect</td></tr> <tr><td align=center>10 or more</td><td>Sickened</td></tr> <tr><td align=center>5'9</td><td>Panicked, sickened</td></tr> <tr><td align=center>4 or less</td><td>Comatose, panicked, sickened</td></tr></table> <p class=sub>The effects are cumulative and concurrent. <p class=sub><i>Sickened</i>: Sudden pain and fever sweeps over the subject's body. A sickened creature takes a '2 penalty on attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks. A creature affected by this spell remains sickened for 10 minutes per caster level. The effects cannot be negated by a <i>remove disease</i> or <i>heal</i> spell, but a <i>remove curse</i> is effective. <p class=sub><i>Panicked</i>: The subject becomes panicked for 1d4 rounds. Even after the panic ends, the creature remains shaken for 10 minutes per caster level, and it automatically becomes panicked again if it comes within sight of you during that time. This is a fear effect. <p class=sub><i>Comatose</i>: The subject falls into a catatonic coma for 10 minutes per caster level. During this time, it cannot be awakened by any means short of dispelling the effect. This is not a <i>sleep</i> effect, and thus elves are not immune to it. <p class=sub>The spell lasts for 1 round per three caster levels. You must spend a move action each round after the first to target a foe."
@@ -3469,7 +3469,7 @@ spells = [{
     phb: "229", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You convert material of one sort into a product that is of the same material. Thus, you can fabricate a wooden bridge from a clump of tress, a rope from a patch of hemp, clothes from flax or wool, and so forth. Creatures or magic items cannot be created or transmuted by the fabricate spell. The quality of items made by this spell is commensurate with the quality of material used as the basis for the new fabrication. If you work with a mineral, the target is reduced to 1 cubic foot per level instead of 10 cubic feet. <p class=sub>You must make an appropriate Craft check to fabricate articles requiring a high degree of craftsmanship (jewelry, swords, glass, crystal, and the like). <p class=sub>Casting requires 1 round per 10 cubic feet (or 1 cubic foot) of material to be affected by the spell. <p class=sub><i>Material Component</i>: The original material, which costs the same amount as the raw materials required to craft the item to be created."
@@ -3504,7 +3504,7 @@ spells = [{
     phb: "229", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You harness the power of unlife to grant yourself a limited ability to avoid death. While this spell is in effect, you gain temporary hit points equal to 1d10 +1 per caster level (maximum +10). <p class=sub><i>Material Component</i>: A small amount of alcohol or distilled spirits, which you use to trace certain sigils on your body during casting. These sigils cannot be seen once the alcohol or spirits evaporate."
@@ -3523,7 +3523,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "Any divination (scrying) spell used to view anything within the area of this spell instead receives a false image (as the <i>major image</i> spell), as defined by you at the time of casting. As long as the duration lasts, you can concentrate to change the image as desired. While you aren't concentrating, the image remains static. <p class=sub><i>Arcane Material Component</i>: The ground dust of a piece of jade worth at least 250 gp, which is sprinkled into the air when the spell is cast."
@@ -3542,7 +3542,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "An invisible cone of terror causes each living creature in the area to become panicked unless it succeeds on a Will save. If cornered, a panicked creature begins cowering. (See the <i>Dungeon Master's Guide</i> for more information on fear-panicked creatures.) If the Will save succeeds, the creature is shaken for 1 round. <p class=sub><i>Material Component</i>: Either the heart of a hen or a white feather."
@@ -3561,7 +3561,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "The affected creatures or objects fall slowly, though faster than feathers typically do. <i>Feather fall</i> instantly changes the rate at which the targets fall to a mere 60 feet per round (equivalent to the end of a fall from a few feet), and the subjects take no damage upon landing while the spell is in effect. However, when the spell duration expires, a normal rate of falling resumes. <p class=sub><i>The spell affects one or more Medium or smaller creatures (including gear and carried objects up to each creature's maximum load) or objects, or the equivalent in larger creatures</i>: A Large creature or object counts as two Medium creatures or objects, a Huge creature or object counts as two Large creatures or objects, and so forth. <p class=sub>You can cast this spell with an instant utterance, quickly enough to save yourself if you unexpectedly fall. Casting the spell is a free action, like casting a quickened spell, and it counts toward the normal limit of one quickened spell per round. You may even cast this spell when it isn't your turn. <p class=sub>This spell has no special effect on ranged weapons unless they are falling quite a distance. If the spell is cast on a falling item, such as a boulder dropped from the top of a castle wall, the object does half normal damage based on its weight, with no bonus for the height of the drop. (See the <i>Dungeon Master's Guide</i> for information on falling objects.) <p class=sub><i>Feather fall</i> works only upon free-falling objects. It does not affect a sword blow or a charging or flying creature."
@@ -3579,7 +3579,7 @@ spells = [{
     phb: "229", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "If the target creature fails a Will saving throw, its Intelligence and Charisma scores each drop to 1, giving it roughly the intellect of a lizard. The affected creature is unable to use Intelligence- or Charisma-based skills, cast spells, understand language, or communicate coherently. Still, it knows who its friends are and can follow them and even protect them. The subject remains in this state until a <i>heal</i>, <i>limited wish</i>, <i>miracle</i>, or <i>wish</i> spell is used to cancel the effect of the <i>feeblemind</i>. A creature that can cast arcane spells, such as a sorcerer or a wizard, takes a '4 penalty on its saving throw. <p class=sub><i>Material Component</i>: A handful of clay, crystal, glass, or mineral spheres."
@@ -3633,7 +3633,7 @@ spells = [{
     phb: "230", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You can slay any one living creature within range. The target is entitled to a Fortitude saving throw to survive the attack. If the save is successful, the creature instead takes 3d6 points of damage +1 point per caster level (maximum +25). The subject might die from damage even if it succeeds on its saving throw."
@@ -3668,7 +3668,7 @@ spells = [{
     phb: "230", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell wreathes you in flame and causes damage to each creature that attacks you in melee. The flames also protect you from either cold- or fire-based attacks (your choice). <p class=sub>Any creature striking you with its body or a handheld weapon deals normal damage, but at the same time the attacker takes 1d6 points of damage +1 point per caster level (maximum +15). This damage is either cold damage (if the <i>shield</i> protects against fire-based attacks) or fire damage (if the <i>shield</i> protects against cold-based attacks). If the attacker has spell resistance, it applies to this effect. Creatures wielding weapons with exceptional reach are not subject to this damage if they attack you. <p class=sub>When casting this spell, you appear to immolate yourself, but the flames are thin and wispy, giving off light equal to only half the illumination of a normal torch (10 feet). The color of the flames is determined randomly (50% chance of either color)–blue or green if the <i>chill shield</i> is cast, violet or blue if the <i>warm shield</i> is employed. The special powers of each version are as follows. <p class=sub><i>Warm Shield</i>: The flames are warm to the touch. You take only half damage from cold-based attacks. If such an attack allows a Reflex save for half damage, you take no damage on a successful save. <p class=sub><i>Chill Shield</i>: The flames are cool to the touch. You take only half damage from fire-based attacks. If such an attack allows a Reflex save for half damage, you take no damage on a successful save. <p class=sub><i>Arcane Material Component</i>: A bit of phosphorus for the <i>warm</i> shield; a live firefly or glowworm or the tail portions of four dead ones for the <i>chill</i> shield."
@@ -3705,7 +3705,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 3,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "<i>Fire trap</i> creates a fiery explosion when an intruder opens the item that the trap protects. A <i>fire trap</i> can ward any object that can be opened and closed (book, box, bottle, chest, coffer, coffin, door, drawer, and so forth). <p class=sub>When casting <i>fire trap</i>, you select a point on the object as the spell's center. When someone other than you opens the object, a fiery explosion fills the area within a 5-foot radius around the spell's center. The flames deal 1d4 points of fire damage +1 point per caster level (maximum +20). The item protected by the trap is not harmed by this explosion. <p class=sub>A <i>fire trapped</i> item cannot have a second closure or warding spell placed on it. <p class=sub>A <i>knock</i> spell does not bypass a <i>fire trap</i>. An unsuccessful <i>dispel magic</i> spell does not detonate the spell. <p class=sub>Underwater, this ward deals half damage and creates a large cloud of steam. <p class=sub>You can use the <i>fire trapped</i> object without discharging it, as can any individual to whom the object was specifically attuned when cast. Attuning a <i>fire trapped</i> object to an individual usually involves setting a password that you can share with friends. <p class=sub><i>Note</i>: Magic traps such as <i>fire trap</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a <i>fire trap</i> and Disable Device to thwart it. The DC in each case is 25 + spell level (DC 27 for a druid's <i>fire trap</i> or DC 29 for the arcane version). <p class=sub><i>Material Component</i>: A half-pound of gold dust (cost 25 gp) sprinkled on the warded object."
@@ -3723,7 +3723,7 @@ spells = [{
     phb: "231", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "A <i>fireball</i> spell is an explosion of flame that detonates with a low roar and deals 1d6 points of fire damage per caster level (maximum 10d6) to every creature within the area. Unattended objects also take this damage. The explosion creates almost no pressure. <p class=sub>You point your finger and determine the range (distance and height) at which the fireball is to burst. A glowing, pea-sized bead streaks from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball at that point. (An early impact results in an early detonation.) If you attempt to send the bead through a narrow passage, such as through an arrow slit, you must \"hit\" the opening with a ranged touch attack, or else the bead strikes the barrier and detonates prematurely. <p class=sub>The <i>fireball</i> sets fire to combustibles and damages objects in the area. It can melt metals with low melting points, such as lead, gold, copper, silver, and bronze. If the damage caused to an interposing barrier shatters or breaks through it, the <i>fireball</i> may continue beyond the barrier if the area permits; otherwise it stops at the barrier just as any other spell effect does. <p class=sub><i>Material Component</i>: A tiny ball of bat guano and sulfur."
@@ -3741,7 +3741,7 @@ spells = [{
     phb: "231", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You turn ammunition (such as arrows, bolts, shuriken, and stones) into fiery projectiles. Each piece of ammunition deals an extra 1d6 points of fire damage to any target it hits. A flaming projectile can easily ignite a flammable object or structure, but it won't ignite a creature it strikes. <p class=sub><i>Material Component</>: A drop of oil and a small piece of flint."
@@ -3795,7 +3795,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A burning globe of fire rolls in whichever direction you point and burns those it strikes. It moves 30 feet per round. As part of this movement, it can ascend or jump up to 30 feet to strike a target. If it enters a space with a creature, it stops moving for the round and deals 2d6 points of fire damage to that creature, though a successful Reflex save negates that damage. A flaming sphere rolls over barriers less than 4 feet tall, such as furniture and low walls. It ignites flammable substances it touches and illuminates the same area as a torch would. <p class=sub>The sphere moves as long as you actively direct it (a move action for you); otherwise, it merely stays at rest and burns. It can be extinguished by any means that would put out a normal fire of its size. The surface of the sphere has a spongy, yielding consistency and so does not cause damage except by its flame. It cannot push aside unwilling creatures or batter down large obstacles. A <i>flaming sphere</i> winks out if it exceeds the spell's range. <p class=sub><b>Arcane Material Component</b>: A bit of tallow, a pinch of brimstone, and a dusting of powdered iron."
@@ -3815,7 +3815,7 @@ spells = [{
     classes: {
         "Bard": 1,
         "Druid": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "This cantrip creates a burst of light. If you cause the light to burst directly in front of a single creature, that creature is dazzled for 1 minute unless it makes a successful Fortitude save. Sightless creatures, as well as creatures already dazzled, are not affected by <i>flare</i>."
@@ -3833,7 +3833,7 @@ spells = [{
     phb: "232", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "The subject, along with all its carried gear, turns into a mindless, inert statue. If the statue resulting from this spell is broken or damaged, the subject (if ever returned to its original state) has similar damage or deformities. The creature is not dead, but it does not seem to be alive either when viewed with spells such as <i>deathwatch</i>. Only creatures made of flesh are affected by this spell. <p class=sub><i>Material Component</i>: Lime, water, and earth."
@@ -3851,7 +3851,7 @@ spells = [{
     phb: "232", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The subject can fly at a speed of 60 feet (or 40 feet if it wears medium or heavy armor, or if it carries a medium or heavy load). It can ascend at half speed and descend at double speed, and its maneuverability is good. Using a <i>fly</i> spell requires only as much concentration as walking, so the subject can attack or cast spells normally. The subject of a <i>fly</i> spell can charge but not run, and it cannot carry aloft more weight than its maximum load, plus any armor it wears. <p class=sub>Should the spell duration expire while the subject is still aloft, the magic fails slowly. The subject floats downward 60 feet per round for 1d6 rounds. If it reaches the ground in that amount of time, it lands safely. If not, it falls the rest of the distance, taking 1d6 points of damage per 10 feet of fall. Since dispelling a spell effectively ends it, the subject also descends in this way if the <i>fly</i> spell is dispelled, but not if it is negated by an <i>antimagic field</i>. <p class=sub><i>Arcane Focus</i>: A wing feather from any bird."
@@ -3870,7 +3870,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A bank of fog billows out from the point you designate. The fog obscures all sight, including darkvision, beyond 5 feet. A creature within 5 feet has concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker can't use sight to locate the target). <p class=sub>A moderate wind (11+ mph) disperses the fog in 4 rounds; a strong wind (21+ mph) disperses the fog in 1 round. <p class=sub>The spell does not function underwater."
@@ -3905,7 +3905,7 @@ spells = [{
     phb: "233", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This powerful spell brings into being an immobile, invisible cubical prison composed of either bars of force or solid walls of force (your choice). <p class=sub>Creatures within the area are caught and contained unless they are too big to fit inside, in which case the spell automatically fails. Teleportation and other forms of astral travel provide a means of escape, but the force walls or bars extend into the Ethereal Plane, blocking ethereal travel. <p class=sub>Like a <i>wall of force</i> spell, a <i>forcecage</i> resists <i>dispel magic</i>, but it is vulnerable to a <i>disintegrate</i> spell, and it can be destroyed by a <i>sphere of annihilation</i> or a <i>rod of cancellation</i>. <p class=sub><i>Barred Cage</i>: This version of the spell produces a 20-foot cube made of bands of force (similar to a <i>wall of force</i> spell) for bars. The bands are a half-inch wide, with half-inch gaps between them. Any creature capable of passing through such a small space can escape; others are confined. You can't attack a creature in a barred cage with a weapon unless the weapon can fit between the gaps. Even against such weapons (including arrows and similar ranged attacks), a creature in the barred cage has cover. All spells and breath weapons can pass through the gaps in the bars. <p class=sub><i>Windowless Cell</i>: This version of the spell produces a 10-foot cube with no way in and no way out. Solid walls of force form its six sides. <p class=sub><i>Material Component</i>: Ruby dust worth 1,500 gp, which is tossed into the air and disappears when you cast the spell."
@@ -3923,7 +3923,7 @@ spells = [{
     phb: "233", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell grants you a powerful sixth sense in relation to yourself or another. Once <i>foresight</i> is cast, you receive instantaneous warnings of impending danger or harm to the subject of the spell. Thus, if you are the subject of the spell, you would be warned in advance if a rogue were about to attempt a sneak attack on you, or if a creature were about to leap out from a hiding place, or if an attacker were specifically targeting you with a spell or ranged weapon. You are never surprised or flat-footed. In addition, the spell gives you a general idea of what action you might take to best protect yourself–duck, jump right, close your eyes, and so on–and gives you a +2 insight bonus to AC and Reflex saves. This insight bonus is lost whenever you would lose a Dexterity bonus to AC. <p class=sub>When another creature is the subject of the spell, you receive warnings about that creature. You must communicate what you learn to the other creature for the warning to be useful, and the creature can be caught unprepared in the absence of such a warning. Shouting a warning, yanking a person back, and even telepathically communicating (via an appropriate spell) can all be accomplished before some danger befalls the subject, provided you act on the warning without delay. The subject, however, does not gain the insight bonus to AC and Reflex saves. <p class=sub><i>Arcane Material Component</i>: A hummingbird's feather."
@@ -3942,7 +3942,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The transmuted creature becomes smarter. The spell grants a +4 enhancement bonus to Intelligence, adding the usual benefits to Intelligence-based skill checks and other uses of the Intelligence modifier. Wizards (and other spellcasters who rely on Intelligence) affected by this spell do not gain any additional bonus spells for the increased Intelligence, but the save DCs for spells they cast while under this spell's effect do increase. This spell doesn't grant <p class=sub>extra skill points. <p class=sub><i>Arcane Material Component</i>: A few hairs, or a pinch of dung, from a fox."
@@ -3961,7 +3961,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like fox's cunning, except that it affects multiple creatures."
@@ -3979,7 +3979,7 @@ spells = [{
     phb: "233", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "The subject is freed from spells and effects that restrict its movement, including <i>binding</i>, <i>entangle</i>, grappling, <i>imprisonment</i>, <i>maze</i>, paralysis, <i>petrification</i>, pinning, <i>sleep</i>, <i>slow</i>, stunning, <i>temporal stasis</i>, and <i>web</i>. To free a creature from <i>imprisonment</i> or <i>maze</i>, you must know its name and background, and you must cast this spell at the spot where it was entombed or banished into the <i>maze</i>."
@@ -4018,7 +4018,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The subject and all its gear become insubstantial, misty, and translucent. Its material armor (including natural armor) becomes worthless, though its size, Dexterity, deflection bonuses, and armor bonuses from force effects (for example, from the mage armor spell) still apply. The subject gains damage reduction 10/magic and becomes immune to poison and critical hits. It can't attack or cast spells with verbal, somatic, material, or focus components while in gaseous form. (This does not rule out the use of certain spells that the subject may have prepared using the feats Silent Spell, Still Spell, and Eschew Materials.) The subject also loses supernatural abilities while in gaseous form. If it has a touch spell ready to use, that spell is discharged harmlessly when the gaseous form spell takes effect. <p class=sub>A gaseous creature can't run, but it can fly at a speed of 10 feet (maneuverability perfect). It can pass through small holes or narrow openings, even mere cracks, with all it was wearing or holding in its hands, as long as the spell persists. The creature is subject to the effects of wind, and it can't enter water or other liquid. It also can't manipulate objects or activate items, even those carried along with its gaseous form. Continuously active items remain active, though in some cases their effects may be moot (such as those that supply armor or natural armor bonuses). <p class=sub><i>Arcane Material Component</i>: A bit of gauze and a wisp of smoke."
@@ -4037,7 +4037,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 10,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "Casting a <i>gate</i> spell has two effects. First, it creates an interdimensional connection between your plane of existence and a plane you specify, allowing travel between those two planes in either direction. <p class=sub>Second, you may then call a particular individual or kind of being through the gate. The <i>gate</i> itself is a circular hoop or disk from 5 to 20 feet in diameter (caster's choice), oriented in the direction you desire when it comes into existence (typically vertical and facing you). It is a two-dimensional window looking into the plane you specified when casting the spell, and anyone or anything that moves through is shunted instantly to the other side. <p class=sub>A <i>gate</i> has a front and a back. Creatures moving through the gate from the front are transported to the other plane; creatures moving through it from the back are not. <p class=sub><i>Planar Travel</i>: As a mode of planar travel, a <i>gate</i> spell functions much like a <i>plane shift</i> spell, except that the <i>gate</i> opens precisely at the point you desire (a creation effect). Deities and other beings who rule a planar realm can prevent a <i>gate</i> from opening in their presence or personal demesnes if they so desire. Travelers need not join hands with you–anyone who chooses to step through the portal is transported. A <i>gate</i> cannot be opened to another point on the same plane; the spell works only for interplanar travel. <p class=sub>You could position a <i>gate</i> in a hallway in order to absorb any attack or force coming at you by shunting it to another plane. Whether the denizens of that plane appreciate this tactic is, of course, another matter. <p class=sub>You may hold the gate open only for a brief time (no more than 1 round per caster level), and you must concentrate on doing so, or else the interplanar connection is severed. <p class=sub><i>Calling Creatures</i>: The second effect of the gate spell is to call an extraplanar creature to your aid (a calling effect). By naming a particular being or kind of being as you cast the spell, you cause the gate to open in the immediate vicinity of the desired creature and pull the subject through, willing or unwilling. Deities and unique beings are under no compulsion to come through the gate, although they may choose to do so of their own accord. This use of the spell creates a gate that remains open just long enough to transport the called creatures. This use of the spell has an XP cost (see below). <p class=sub>If you choose to call a kind of creature instead of a known individual–for instance, a bearded devil or a ghaele eladrin–you may call either a single creature (of any HD) or several creatures. You can call and control several creatures as long as their HD total does not exceed your caster level. In the case of a single creature, you can control it if its HD do not exceed twice your caster level. A single creature with more HD than twice your caster level can't be controlled. Deities and unique beings cannot be controlled in any event. An uncontrolled being acts as it pleases, making the calling of such creatures rather dangerous. An uncontrolled being may return to its home plane at any time. <p class=sub><i>A controlled creature can be commanded to perform a service for you. Such services fall into two categories</i>: immediate tasks and contractual service. Fighting for you in a single battle or taking any other actions that can be accomplished within 1 round per caster level counts as an immediate task; you need not make any agreement or pay any reward for the creature's help. The creature departs at the end of the spell. <p class=sub>If you choose to exact a longer or more involved form of service from a called creature, you must offer some fair trade in return for that service. The service exacted must be reasonable with respect to the promised favor or reward; see the lesser planar ally spell for appropriate rewards. (Some creatures may want their payment in \"livestock\" rather than in coin, which could involve complications.) Immediately upon completion of the service, the being is transported to your vicinity, and you must then and there turn over the promised reward. After this is done, the creature is instantly freed to return to its own plane. <p class=sub>Failure to fulfill the promise to the letter results in your being subjected to service by the creature or by its liege and master, at the very least. At worst, the creature or its kin may attack you. <p class=sub><i>Note</i>: When you use a calling spell such as gate to call an air, chaotic, earth, evil, fire, good, lawful, or water creature, it becomes a spell of that type. For example, gate is a chaotic and evil spell when you cast it to call a demon. <p class=sub><i>XP Cost</i>: 1,000 XP (only for the calling creatures function)."
@@ -4056,7 +4056,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "A <i>lesser geas </i> places a magical command on a creature to carry out some service or to refrain from some action or course of activity, as desired by you. The creature must have 7 or fewer Hit Dice and be able to understand you. While a <i>geas</i> cannot compel a creature to kill itself or perform acts that would result in certain death, it can cause almost any other course of activity. The <i>geased</i> creature must follow the given instructions until the <i>geas</i> is completed, no matter how long it takes. <p class=sub><i>If the instructions involve some open-ended task that the recipient cannot complete through his own actions (such as \"Wait here\" or \"Defend this area against attack\"), the spell remains in effect for a maximum of one day per caster level. A clever recipient can subvert some instructions</i>: For example, if you order the recipient to protect you from all harm, it might place you in a nice, safe dungeon for the duration of the spell. <p class=sub>If the subject is prevented from obeying the <i>lesser geas</i> for 24 hours, it takes a '2 penalty to each of its ability scores. Each day, another '2 penalty accumulates, up to a total of '8. No ability score can be reduced to less than 1 by this effect. The ability score penalties are removed 24 hours after the subject resumes obeying the <i>lesser geas</i>. <p class=sub>A <i>lesser geas</i> (and all ability score penalties) can be ended by <i>break enchantment</i>, <i>limited wish</i>, <i>remove curse</i>, <i>miracle</i>, or <i>wish</i>. <i>Dispel magic</i> does not affect a <i>lesser geas</i>."
@@ -4076,7 +4076,7 @@ spells = [{
     classes: {
         "Bard": 7,
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions similarly to <i>lesser geas</i>, except that it affects a creature of any HD and allows no saving throw. <p class=sub>Instead of taking penalties to ability scores (as with <i>lesser geas</i>), the subject takes 3d6 points of damage each day it does not attempt to follow the <i>geas/quest</i>. Additionally, each day it must make a Fortitude saving throw or become sickened. These effects end 24 hours after the creature attempts to resume the <i>geas/ quest</i>. <p class=sub>A <i>remove curse</i> spell ends a <i>geas/quest</i> spell only if its caster level is at least two higher than your caster level. <i>Break enchantment</i> does not end a <i>geas/quest</i>, but <i>limited wish</i>, <i>miracle</i>, and <i>wish</i> do. <p class=sub>Bards, sorcerers, and wizards usually refer to this spell as <i>geas</i>, while clerics call the same spell <i>quest</i>."
@@ -4095,7 +4095,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You preserve the remains of a dead creature so that they do not decay. Doing so effectively extends the time limit on raising that creature from the dead (see <i>raise dead</i>). Days spent under the influence of this spell don't count against the time limit. Additionally, this spell makes transporting a fallen comrade more pleasant. <p class=sub>The spell also works on severed body parts and the like. <p class=sub><i>Arcane Material Component</i>: A pinch of salt, and a copper piece for each eye the corpse has (or had)."
@@ -4114,7 +4114,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "<i>Ghost sound</i> allows you to create a volume of sound that rises, recedes, approaches, or remains at a fixed place. You choose what type of sound ghost sound creates when casting it and cannot thereafter change the sounds basic character. <p class=sub>The volume of sound created depends on your level. You can produce as much noise as four normal humans per caster level (maximum twenty humans). Thus, talking, singing, shouting, walking, marching, or running sounds can be created. The noise a <i>ghost sound</i> spell produces can be virtually any type of sound within the volume limit. A horde of rats running and squeaking is about the same volume as eight humans running and shouting. A roaring lion is equal to the noise from sixteen humans, while a roaring dire tiger is equal to the noise from twenty humans. <p class=sub><i>Ghost sound</i> can enhance the effectiveness of a silent image spell. <p class=sub><i>Ghost sound</i> can be made permanent with a permanency spell. <p class=sub><i>Material Component</i>: A bit of wool or a small lump of wax."
@@ -4132,7 +4132,7 @@ spells = [{
     phb: "235", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "Imbuing you with negative energy, this spell allows you to paralyze a single living humanoid for the duration of the spell with a successful melee touch attack. <p class=sub>Additionally, the paralyzed subject exudes a carrion stench that causes all living creatures (except you) in a 10-foot-radius spread to become sickened (Fortitude negates). A <i>neutralize poison</i> spell removes the effect from a sickened creature, and creatures immune to poison are unaffected by the stench. <p class=sub><i>Material Component</i>: A small scrap of cloth taken from clothing worn by a ghoul, or a pinch of earth from a ghoul's lair."
@@ -4186,7 +4186,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A cloud of golden particles covers everyone and everything in the area, causing creatures to become blinded and visibly outlining invisible things for the duration of the spell. All within the area are covered by the dust, which cannot be removed and continues to sparkle until it fades. <p class=sub>Any creature covered by the dust takes a -40 penalty on Hide checks. <p class=sub><i>Material Component</i>: Ground mica."
@@ -4204,7 +4204,7 @@ spells = [{
     phb: "236", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>lesser globe of invulnerability</i>, except that it also excludes 4th-level spells and spell-like effects."
@@ -4222,7 +4222,7 @@ spells = [{
     phb: "236", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "An immobile, faintly shimmering magical sphere surrounds you and excludes all spell effects of 3rd level or lower. The area or effect of any such spells does not include the area of the <i>lesser globe of invulnerability</i>. Such spells fail to affect any target located within the globe. Excluded effects include spell-like abilities and spells or spell-like effects from items. However, any type of spell can be cast through or out of the magical globe. Spells of 4th level and higher are not affected by the globe, nor are spells already in effect when the globe is cast. The globe can be brought down by a targeted <i>dispel magic</i> spell, but not by an area <i>dispel magic</i>. You can leave and return to the globe without penalty. <p class=sub>Note that spell effects are not disrupted unless their effects enter the globe, and even then they are merely suppressed, not dispelled. For example, creatures inside the globe would still see a <i>mirror image</i> created by a caster outside the globe. If that caster then entered the globe, the images would wink out, to reappear when the caster exited the globe. Likewise, a caster standing in the area of a <i>light</i> spell would still receive sufficient illumination for vision, even though that part of the <i>light</i> spell's area that lies within the globe would not be luminous. <p class=sub>If a given spell has more than one level depending on which character class is casting it, use the level appropriate to the caster to determine whether <i>lesser globe of invulnerability</i> stops it. <p class=sub><i>Material Component</i>: A glass or crystal bead that shatters at the expiration of the spell."
@@ -4309,7 +4309,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A <i>grease</i> spell covers a solid surface with a layer of slippery grease. Any creature in the area when the spell is cast must make a successful Reflex save or fall. This save is repeated on your turn each round that the creature remains within the area. A creature can walk within or through the area of grease at half normal speed with a DC 10 Balance check. Failure means it can't move that round (and must then make a Reflex save or fall), while failure by 5 or more means it falls (see the Balance skill for details). <p class=sub>The DM should adjust saving throws by circumstance. For example, a creature charging down an incline that is suddenly <i>greased</i> has little chance to avoid the effect, but its ability to exit the affected area is almost assured (whether it wants to or not). <p class=sub>The spell can also be used to create a greasy coating on an item–a rope, ladder rungs, or a weapon handle, for instance. Material objects not in use are always affected by this spell, while an object wielded or employed by a creature receives a Reflex saving throw to avoid the effect. If the initial saving throw fails, the creature immediately drops the item. A saving throw must be made in each round that the creature attempts to pick up or use the greased item. A creature wearing <i>greased</i> armor or clothing gains a +10 circumstance bonus on Escape Artist checks and on grapple checks made to resist or escape a grapple or to escape a pin. <p class=sub><i>Material Component</i>: A bit of pork rind or butter."
@@ -4327,7 +4327,7 @@ spells = [{
     phb: "237", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This powerful spell is primarily used to defend your stronghold. The ward protects 200 square feet per caster level. The warded area can be as much as 20 feet high, and shaped as you desire. You can ward several stories of a stronghold by dividing the area among them; you must be somewhere within the area to be warded to cast the spell. The spell creates the following magical effects within the warded area. <p class=sub><i>Fog</i>: Fog fills all corridors, obscuring all sight, including darkvision, beyond 5 feet. A creature within 5 feet has concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker cannot use sight to locate the target). Saving Throw: None. Spell Resistance: No. <p class=sub><i>Arcane Locks</i>: All doors in the warded area are arcane locked. Saving Throw: None. Spell Resistance: No. <p class=sub><i>Webs</i>: Webs fill all stairs from top to bottom. These strands are identical with those created by the web spell, except that they regrow in 10 minutes if they are burned or torn away while the guards and wards spell lasts. Saving Throw: Reflex negates; see text for web. Spell Resistance: No. <p class=sub><i>Confusion</i>: Where there are choices in direction–such as a corridor intersection or side passage–a minor <i>confusion</i>-type effect functions so as to make it 50% probable that intruders believe they are going in the opposite direction from the one they actually chose. This is an enchantment, mind-affecting effect. Saving Throw: None. Spell Resistance: Yes. <p class=sub><i>Lost Doors</i>: One door per caster level is covered by a silent image to appear as if it were a plain wall. Saving Throw: Will disbelief (if interacted with). Spell Resistance: No. <p class=sub>In addition, you can place your choice of one of the following five magical effects. <p class=sub><i>1. <i>Dancing lights</i> in four corridors. You can designate a simple program that causes the lights to repeat as long as the <i>guards and wards</i> spell lasts. Saving Throw</i>: None. Spell Resistance: No. <p class=sub><i>2. A <i>magic mouth</i> in two places. Saving Throw</i>: None. Spell Resistance: No. <p class=sub><i>3. A <i>stinking cloud</i> in two places. The vapors appear in the places you designate; they return within 10 minutes if dispersed by wind while the <i>guards and wards</i> spell lasts. Saving Throw</i>: Fortitude negates; see text for <i>stinking cloud</i>. Spell Resistance: No. <p class=sub><i>4. A <i>gust of wind</i> in one corridor or room. Saving Throw</i>: Fortitude negates. Spell Resistance: Yes. <p class=sub><i>5. A <i>suggestion</i> in one place. You select an area of up to 5 feet square, and any creature who enters or passes through the area receives the <i>suggestion</i> mentally. Saving Throw</i>: Will negates. Spell Resistance: Yes. <p class=sub>The whole warded area radiates strong magic of the abjuration school. A dispel magic cast on a specific effect, if successful, removes only that effect. A successful <i>Mordenkainen's disjunction</i> destroys the entire <i>guards and wards</i> effect. <p class=sub><i>Material Component</i>: Burning incense, a small measure of brimstone and oil, a knotted string, and a small amount of blood. <p class=sub><i>Focus</i>: A small silver rod."
@@ -4364,7 +4364,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell creates a severe blast of air (approximately 50 mph) that originates from you, affecting all creatures in its path. A Tiny or smaller creature on the ground is knocked down and rolled 1d4Ã—10 feet, taking 1d4 points of nonlethal damage per 10 feet. If flying, a Tiny or smaller creature is blown back 2d6Ã—10 feet and takes 2d6 points of nonlethal damage due to battering and buffeting. <p class=sub>Small creatures are knocked prone by the force of the wind, or if flying are blown back 1d6Ã—10 feet. <p class=sub>Medium creatures are unable to move forward against the force of the wind, or if flying are blown back 1d6Ã—5 feet. <p class=sub>Large or larger creatures may move normally within a <i>gust of wind</i> effect. <p class=sub>A <i>gust of wind</i> can't move a creature beyond the limit of its range. <p class=sub>Any creature, regardless of size, takes a -4 penalty on ranged attacks and Listen checks in the area of a <i>gust of wind.</i> <p class=sub>The force of the gust automatically extinguishes candles, torches, and similar unprotected flames. It causes protected flames, such as those of lanterns, to dance wildly and has a 50% chance to extinguish those lights. <p class=sub>In addition to the effects noted, a <i>gust of wind</i> can do anything that a sudden blast of wind would be expected to do. It can create a stinging spray of sand or dust, fan a large fire, overturn delicate awnings or hangings, heel over a small boat, and blow gases or vapors to the edge of its range. <p class=sub><i>Gust of wind</i> can be made permanent with a permanency spell."
@@ -4401,7 +4401,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You make natural terrain look, sound, and smell like some other sort of natural terrain. Thus, open fields or a road can be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road. Structures, equipment, and creatures within the area are not hidden or changed in appearance. <p class=sub><i>Material Component</i>: A stone, a twig, and a bit of green plant."
@@ -4419,7 +4419,7 @@ spells = [{
     phb: "238", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell renders as many as three undead creatures immobile. A nonintelligent undead creature (such as a skeleton or zombie) gets no saving throw; an intelligent undead creature does. If the spell is successful, it renders the undead creature immobile for the duration of the spell (similar to the effect of hold person on a living creature). The effect is broken if the halted creatures are attacked or take damage. <p class=sub><i>Material Component</i>: A pinch of sulfur and powdered garlic."
@@ -4455,7 +4455,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The transmuted creatures move and act more quickly than normal. This extra speed has several effects. When making a full attack action, a <i>hasted</i> creature may make one extra attack with any weapon he is holding. The attack is made using the creature's full base attack bonus, plus any modifiers appropriate to the situation. (This effect is not cumulative with similar effects, such as that provided by a weapon of speed, nor does it actually grant an extra action, so you can't use it to cast a second spell or otherwise take an extra action in the round.) <p class=sub>A <i>hasted</i> creature gains a +1 bonus on attack rolls and a +1 dodge bonus to AC and Reflex saves. Any condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. <p class=sub>All of the <i>hasted</i> creature's modes of movement (including land movement, burrow, climb, fly, and swim) increase by 30 feet, to a maximum of twice the subject's normal speed using that form of movement. This increase counts as an enhancement bonus, and it affects the creature's jumping distance as normal for increased speed. <p class=sub>Multiple <i>haste</i> effects don't stack. <i>Haste</i> dispels and counters <i>slow</i>. <p class=sub><i>Material Component</i>: A shaving of licorice root."
@@ -4578,7 +4578,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell imbues a single creature with great bravery and morale in battle. The target gains a +2 morale bonus on attack rolls, saves, and skill checks."
@@ -4597,7 +4597,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>heroism</i>, except the creature gains a +4 morale bonus on attack rolls, saves, and skill checks, immunity to fear effects, and temporary hit points equal to your caster level (maximum 20)."
@@ -4669,7 +4669,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>hold person</i>, except that it affects any living creature that fails its Will save. <p class=sub><i>Arcane Material Component</i>: One hard metal bar or rod, which can be as small as a three-penny nail. "
@@ -4687,7 +4687,7 @@ spells = [{
     phb: "241", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>hold person</i>, except that it affects multiple creatures and holds any living creature that fails its Will save."
@@ -4707,7 +4707,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The subject becomes paralyzed and freezes in place. It is aware and breathes normally but cannot take any actions, even speech. Each round on its turn, the subject may attempt a new saving throw to end the effect. (This is a full-round action that does not provoke attacks of opportunity.) <p class=sub>A winged creature who is paralyzed cannot flap its wings and falls. A swimmer can't swim and may drown. <p class=sub><i>Arcane Focus</i>: A small, straight piece of iron."
@@ -4725,7 +4725,7 @@ spells = [{
     phb: "241", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>hold person</i>, except as noted above."
@@ -4743,7 +4743,7 @@ spells = [{
     phb: "241", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell magically holds shut a door, gate, window, or shutter of wood, metal, or stone. The magic affects the portal just as if it were securely closed and normally locked. A <i>knock</i> spell or a successful <i>dispel magic</i> spell can negate a <i>hold portal</i> spell. For a portal affected by this spell, add 5 to the normal DC for forcing open the portal."
@@ -4827,7 +4827,7 @@ spells = [{
     phb: "242", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell evaporates moisture from the body of each subject living creature, dealing 1d6 points of damage per caster level (maximum 20d6). This spell is especially devastating to water elementals and plant creatures, which instead take 1d8 points of damage per caster level (maximum 20d8). <p class=sub><i>Arcane Material Component</i>: A bit of sponge."
@@ -4846,7 +4846,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A twisting pattern of subtle, shifting colors weaves through the air, fascinating creatures within it. Roll 2d4 and add your caster level (maximum 10) to determine the total number of Hit Dice of creatures affected. Creatures with the fewest HD are affected first; and, among creatures with equal HD, those who are closest to the spell's point of origin are affected first. Hit Dice that are not sufficient to affect a creature are wasted. Affected creatures become fascinated by the pattern of colors. Sightless creatures are not affected. <p class=sub>A wizard or sorcerer need not utter a sound to cast this spell, but a bard must sing, play music, or recite a rhyme as a verbal component. <p class=sub><i>Material Component</i>: A glowing stick of incense or a crystal rod filled with phosphorescent material."
@@ -4865,7 +4865,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "Your gestures and droning incantation fascinate nearby creatures, causing them to stop and stare blankly at you. In addition, you can use their rapt attention to make your suggestions and requests seem more plausible. Roll 2d4 to see how many total Hit Dice of creatures you affect. Creatures with fewer HD are affected before creatures with more HD. Only creatures that can see or hear you are affected, but they do not need to understand you to be fascinated. <p class=sub>If you use this spell in combat, each target gains a +2 bonus on its saving throw. If the spell affects only a single creature not in combat at the time, the saving throw has a penalty of '2. <p class=sub>While the subject is fascinated by this spell, it reacts as though it were two steps more friendly in attitude (see Influencing NPC Attitudes, page 72). This allows you to make a single request of the affected creature (provided you can communicate with it). The request must be brief and reasonable. Even after the spell ends, the creature retains its new attitude toward you, but only with respect to that particular request.<p class=sub>A creature that fails its saving throwdoes not remember that you enspelled it."
@@ -4884,7 +4884,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "Great magical hailstones pound down for 1 full round, dealing 3d6 points of bludgeoning damage and 2d6 points of cold damage to every creature in the area. A -4 penalty applies to each Listen check made within the <i>ice storm</i>'s effect, and all land movement within its area is at half speed. At the end of the duration, the hail disappears, leaving no aftereffects (other than the damage dealt). <p class=sub><i>Arcane Material Component</i>: A pinch of dust and a few drops of water. "
@@ -4903,7 +4903,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "The spell determines all magic properties of a single magic item, including how to activate those functions (if appropriate), and how many charges are left (if any). <p class=sub><i>Identify</i> does not function when used on an artifact (see the <i>Dungeon Master's Guide</i> for details on artifacts). <p class=sub><i>Arcane Material Component</i>: A pearl of at least 100 gp value, crushed and stirred into wine with an owl feather; the infusion must be drunk prior to spellcasting."
@@ -4922,7 +4922,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You write instructions or other information on parchment, paper, or any suitable writing material. The <i>illusory script</i> appears to be some form of foreign or magical writing. Only the person (or people) designated by you at the time of the casting are able to read the writing; it's unintelligible to any other character, although an illusionist recognizes it as <i>illusory script</i>. <p class=sub>Any unauthorized creature attempting to read the script triggers a potent illusory effect and must make a saving throw. A successful saving throw means the creature can look away with only a mild sense of disorientation. Failure means the creature is subject to a suggestion implanted in the script by you at the time the illusory script spell was cast. The suggestion lasts only 30 minutes. Typical suggestions include \"Close the book and leave,\" \"Forget the existence of the book,\" and so forth. If successfully dispelled by <i>dispel magic</i>, the <i>illusory script</i> and its secret message disappear. The hidden message can be read by a combination of the <i>true seeing</i> spell with the <i>read magic</i> or <i>comprehend languages</i> spell. <p class=sub>The casting time depends on how long a message you wish to write, but it is always at least 1 minute. <p class=sub><i>Material Component</i>: A lead-based ink (cost of not less than 50 gp)."
@@ -4940,7 +4940,7 @@ spells = [{
     phb: "243", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell creates the illusion of a wall, floor, ceiling, or similar surface. It appears absolutely real when viewed, but physical objects can pass through it without difficulty. When the spell is used to hide pits, traps, or normal doors, any detection abilities that do not require sight work normally. Touch or a probing search reveals the true nature of the surface, though such measures do not cause the illusion to disappear."
@@ -4992,7 +4992,7 @@ spells = [{
     phb: "244", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "When you cast <i>imprisonment</i> and touch a creature, it is entombed in a state of suspended animation (see the <i>temporal stasis</i> spell) in a small sphere far beneath the surface of the earth. The subject remains there unless a <i>freedom</i> spell is cast at the locale where the imprisonment took place. Magical search by a <i>crystal ball</i>, a <i>locate object</i> spell, or some other similar divination does not reveal the fact that a creature is imprisoned, but <i>discern location</i> does. A <i>wish</i> or <i>miracle</i> spell will not free the recipient, but will reveal where it is entombed. If you know the target's name and some facts about its life, the target takes a -4 penalty on its save."
@@ -5010,7 +5010,7 @@ spells = [{
     phb: "244", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "An <i>incendiary cloud</i> spell creates a cloud of roiling smoke shot through with white-hot embers. The smoke obscures all sight as a <i>fog cloud</i> does. In addition, the white-hot embers within the cloud deal 4d6 points of fire damage to everything within the cloud on your turn each round. All targets can make Reflex saves each round to take half damage. <p class=sub>As with a <i>cloudkill</i> spell, the smoke moves away from you at 10 feet per round. Figure out the smoke's new spread each round based on its new point of origin, which is 10 feet farther away from where you were when you cast the spell. By concentrating, you can make the cloud (actually its point of origin) move as much as 60 feet each round. Any portion of the cloud that would extend beyond your maximum range dissipates harmlessly, reducing the remainder's spread thereafter. <p class=sub>As with <i>fog cloud</i>, wind disperses the smoke, and the spell can't be cast underwater."
@@ -5181,7 +5181,7 @@ spells = [{
     phb: "244", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "The affected creature suffers from a continuous <i>confusion</i> effect, as the spell. <p class=sub><i>Remove curse</i> does not remove <i>insanity</i>. <i>Greater restoration, heal, limited wish, miracle</i>, or <i>wish</i> can restore the creature."
@@ -5218,7 +5218,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The creature or object touched becomes invisible, vanishing from sight, even from darkvision. If the recipient is a creature carrying gear, that vanishes, too. If you cast the spell on someone else, neither you nor your allies can see the subject, unless you can normally see invisible things or you employ magic to do so. <p class=sub>Items dropped or put down by an invisible creature become visible; items picked up disappear if tucked into the clothing or pouches worn by the creature. Light, however, never becomes invisible, although a source of light can become so (thus, the effect is that of a light with no visible source). Any part of an item that the subject carries but that extends more than 10 feet from it becomes visible, such as a trailing rope. <p class=sub>Of course, the subject is not magically silenced, and certain other conditions can render the recipient detectable (such as stepping in a puddle). The spell ends if the subject attacks any creature. For purposes of this spell, an attack includes any spell targeting a foe or whose area or effect includes a foe. (Exactly who is a foe depends on the invisible character's perceptions.) Actions directed at unattended objects do not break the spell. Causing harm indirectly is not an attack. Thus, an invisible being can open doors, talk, eat, climb stairs, summon monsters and have them attack, cut the ropes holding a rope bridge while enemies are on the bridge, remotely trigger traps, open a portcullis to release attack dogs, and so forth. If the subject attacks directly, however, it immediately becomes visible along with all its gear. Spells such as bless that specifically affect allies but not foes are not attacks for this purpose, even when they include foes in their area. <p class=sub><i>See Table 8-5</i>: Attack Roll Modifiers and Table 8-6: Armor Class Modifiers, page 151, for the effects of invisibility on combat. <p class=sub><i>Invisibility</i> can be made permanent (on objects only) with a <i>permanency</i> spell. <p class=sub><i>Arcane Material Component</i>: An eyelash encased in a bit of gum arabic."
@@ -5237,7 +5237,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>invisibility</i>, except that it doesn't end if the subject attacks."
@@ -5255,7 +5255,7 @@ spells = [{
     phb: "245", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>invisibility</i>, except that the effect is mobile with the group and is broken when anyone in the group attacks. Individuals in the group cannot see each other. The spell is broken for any individual who moves more than 180 feet from the nearest member of the group. (If only two individuals are affected, the one moving away from the other one loses its invisibility. If both are moving away from each other, they both become visible when the distance between them exceeds 180 feet.) <p class=sub><i>Material Component</i>: An eyelash encased in a bit of gum arabic."
@@ -5291,7 +5291,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>invisibility</i>, except that this spell confers invisibility upon all creatures within 10 feet of the recipient. The center of the effect is mobile with the recipient. <p class=sub>Those affected by this spell can see each other and themselves as if unaffected by the spell. Any affected creature moving out of the area becomes visible, but creatures moving into the area after the spell is cast do not become invisible. Affected creatures (other than the recipient) who attack negate the invisibility only for themselves. If the spell recipient attacks, the <i>invisibility sphere</i> ends."
@@ -5309,7 +5309,7 @@ spells = [{
     phb: "245", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell transforms your body into living iron, which grants you several powerful resistances and abilities. <p class=sub>You gain damage reduction 15/adamantine. You are immune to blindness, critical hits, ability score damage, deafness, disease, drowning, electricity, poison, stunning, and all spells or attacks that affect your physiology or respiration, because you have no physiology or respiration while this spell is in effect. You take only half damage from acid and fire of all kinds. However, you also become vulnerable to all special attacks that affect iron golems. <p class=sub>You gain a +6 enhancement bonus to your Strength score, but you take a -6 penalty to Dexterity as well (to a minimum Dexterity score of 1), and your speed is reduced to half normal. You have an arcane spell failure chance of 50% and a -8 armor check penalty, just as if you were clad in full plate armor. You cannot drink (and thus can't use potions) or play wind instruments. <p class=sub>Your unarmed attacks deal damage equal to a club sized for you (1d4 for Small characters or 1d6 for Medium characters), and you are considered armed when making unarmed attacks. <p class=sub>Your weight increases by a factor of ten, causing you to sink in water like a stone. However, you could survive the crushing pressure and lack of air at the bottom of the ocean–at least until the spell duration expires. <p class=sub><i>Arcane Material Component</i>: A small piece of iron that was once part of either an iron golem, a hero's armor, or a war machine."
@@ -5346,7 +5346,7 @@ spells = [{
     classes: {
         "Druid": 2,
         "Ranger": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "The subject gets a +10 enhancement bonus on Jump checks. The enhancement bonus increases to +20 at caster level 5th, and to +30 (the maximum) at caster level 9th. <p class=sub><i>Material Component</i>: A grasshopper's hind leg, which you break when the spell is cast."
@@ -5364,7 +5364,7 @@ spells = [{
     phb: "246", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell makes a weapon magically keen, improving its ability to deal telling blows. This transmutation doubles the threat range of the weapon. A threat range of 20 becomes 19-20, a threat range of 19-20 becomes 17-20, and a threat range of 18-20 becomes 15-20. The spell can be cast only on piercing or slashing weapons. If cast on arrows or crossbow bolts, the keen edge on a particular projectile ends after one use, whether or not the missile strikes its intended target. (Treat shuriken as arrows, rather than as thrown weapons, for the purpose of this spell.) <p class=sub>Multiple effects that increase a weapon's threat range (such as the <i>keen edge</i> spell and the Improved Critical feat) don't stack. You can't cast this spell on a natural weapon, such as a claw."
@@ -5382,7 +5382,7 @@ spells = [{
     phb: "246", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The <i>knock</i> spell opens stuck, barred, locked, <i>held</i>, or <i>arcane locked</i> doors. It opens secret doors, as well as locked or trick-opening boxes or chests. It also loosens welds, shackles, or chains (provided they serve to hold closures shut). If used to open a <i>arcane locked</i> door, the spell does not remove the <i>arcane lock</i> but simply suspends its functioning for 10 minutes. In all other cases, the door does not relock itself or become stuck again on its own. <i>Knock</i> does not raise barred gates or similar impediments (such as a portcullis), nor does it affect ropes, vines, and the like. The effect is limited by the area. A 3rd-level caster can cast a <i>knock</i> spell on a door of 30 square feet or less (for example, a standard 4-foot-by-7-foot door). Each spell can undo as many as two means of preventing egress. Thus if a door is locked, barred, and held, or quadruple locked, opening it requires two <i>knock</i> spells."
@@ -5419,7 +5419,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "<i>Legend lore</i> brings to your mind legends about an important person, place, or thing. If the person or thing is at hand, or if you are in the place in question, the casting time is only 1d4Ã—10 minutes. If you have only detailed information on the person, place, or thing, the casting time is 1d10 days, and the resulting lore is less complete and specific (though it often provides enough information to help you find the person, place, or thing, thus allowing a better <i>legend lore</i> result next time). If you know only rumors, the casting time is 2d6 weeks, and the resulting lore is vague and incomplete (though it often directs you to more detailed information, thus allowing a better <i>legend lore</i> result next time). <p class=sub><i>During the casting, you cannot engage in other than routine activities</i>: eating, sleeping, and so forth. When completed, the divination brings legends (if any) about the person, place, or things to your mind. These may be legends that are still current, legends that have been forgotten, or even information that has never been generally known. If the person, place, or thing is not of legendary importance, you gain no information. As a rule of thumb, characters who are 11th level and higher are \"legendary,\" as are the sorts of creatures they contend with, the major magic items they wield, and the places where they perform their key deeds. <p class=sub>Examples of <i>legend lore</i> results include the following. <p class=sub><i>A divination about a mysterious magic axe you have at hand</i>: \"Woe to the evildoer whose hand touches the axe, for even the haft chops the hand of the evil ones. Only a true Son or Daughter of Stone, one who loves Moradin and whom Moradin loves, may awaken the true powers of the axe, and only with the sacred word '<i>Rudnogg</i>' on the lips.\" <p class=sub><i>A divination about a legendary paladin about whom you know many details</i>: \"Vanashon has been denied the glory of death and the duty of life. He waits patiently beneath the Forbidden Mountain.\" (The paladin has been turned to stone in the caverns under the mountain.) <p class=sub><i>A divination about ancient ruins about which you have only a passing reference in a partially damaged tome</i>: \"The sorcerer who called herself Ryth built a library without words and a temple without gods. Those tho read and those who pray tore it down in a night and a day.\" (These clues may be enough for you to find out more and get details you need to cast a better <i>legend lore</i>.) <p class=sub><i>Material Component</i>: Incense worth at least 250 gp. <p class=sub><i>Focus</i>: Four strips of ivory (worth 50 gp each) formed into a rectangle. "
@@ -5437,7 +5437,7 @@ spells = [{
     phb: "247", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You hide a chest on the Ethereal Plane for as long as sixty days and can retrieve it at will. The chest can contain up to 1 cubic foot of material per caster level (regardless of the chest's actual size, which is about 3 feet by 2 feet by 2 feet). If any living creatures are in the chest, there is a 75% chance that the spell simply fails. Once the chest is hidden, you can retrieve it by concentrating (a standard action), and it appears next to you. <p class=sub>The chest must be exceptionally well crafted and expensive, constructed for you by master crafters. If made principally of wood, it must be ebony, rosewood, sandalwood, teak, or the like, and all of its corner fittings, nails, and hardware must be platinum. If constructed of ivory, the metal fittings of the chest must be gold. If the chest is fashioned from bronze, copper, or silver, its fittings must be silver or electrum (a valuable metal). The cost of such a chest is never less than 5,000 gp. Once it is constructed, you must make a tiny replica (of the same materials and perfect in every detail), so that the miniature of the chest appears to be a perfect copy. (The replica costs 50 gp.) You can have but one pair of these chests at any given time–even a <i>wish</i> spell does not allow more. The chests are nonmagical and can be fitted with locks, wards, and so on, just as any normal chest can be. <p class=sub>To hide the chest, you cast the spell while touching both the chest and the replica. The chest vanishes into the Ethereal Plane. You need the replica to recall the chest. After sixty days, there is a cumulative chance of 5% per day that the chest is irretrievably lost. If the miniature of the chest is lost or destroyed, there is no way, not even with a <i>wish</i> spell, that the large chest can be summoned back, although an extraplanar expedition might be mounted to find it. <p class=sub>Living things in the chest eat, sleep, and age normally, and they die if they run out of food, air, water, or whatever they need to survive. <p class=sub><i>Focus</i>: The chest and its replica."
@@ -5456,7 +5456,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You conjure a sturdy cottage or lodge made of material that is common in the area where the spell is cast–stone, timber, or (at worst) sod. The floor is level, clean, and dry. In all respects the lodging resembles a normal cottage, with a sturdy door, two shuttered windows, and a small fireplace. <p class=sub>The shelter has no heating or cooling source (other than natural insulation qualities). Therefore, it must be heated as a normal dwelling, and extreme heat adversely affects it and its occupants. The dwelling does, however, provide considerable security otherwise–it is as strong as a normal stone building, regardless of its material composition. The dwelling resists flames and fire as if it were stone. It is impervious to normal missiles (but not the sort cast by siege engines or giants). <p class=sub>The door, shutters, and even chimney are secure against intrusion, the former two being arcane locked and the latter secured by an iron grate at the top and a narrow flue. In addition, these three areas are protected by an <i>alarm</i> spell. Finally, an unseen servant is conjured to provide service to you for the duration of the shelter. <p class=sub>The <i>secure shelter</i> contains rude furnishings–eight bunks, a trestle table, eight stools, and a writing desk. <p class=sub><i>Material Component</i>: A square chip of stone, crushed lime, a few grains of sand, a sprinkling of water, and several splinters of wood. These must be augmented by the components of the unseen servant spell (string and a bit of wood) if this benefit is to be included. <p class=sub><i>Focus</i>: The focus of the <i>alarm</i> spell (silver wire and a tiny bell) if this benefit is to be included."
@@ -5475,7 +5475,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You create an unmoving, opaque sphere of force of any color you desire around yourself. Half the sphere projects above the ground, and the lower hemisphere passes through the ground. As many as nine other Medium creatures can fit into the field with you; they can freely pass into and out of the hut without harming it. However, if you remove yourself from the hut, the spell ends. <p class=sub>The temperature inside the hut is 70Â° F if the exterior temperature is between 0Â° and 100Â° F. An exterior temperature below 0Â° or above 100Â° lowers or raises the interior temperature on a 1-degree-for-1 basis (thus, if it's -20Â° outside, inside the hut it's 50Â°). The hut also provides protection against the elements, such as rain, dust, and sandstorms. The hut withstands any wind of less than hurricane force, but a hurricane (75+ mph wind speed) or greater force destroys it. <p class=sub>The interior of the hut is a hemisphere. You can illuminate it dimly upon command or extinguish the light as desired. Although the force field is opaque from the outside, it is transparent from within. Missiles, weapons, and most spell effects can pass through the hut without affecting it, although the occupants cannot be seen from outside the hut (they have total concealment). <p class=sub><i>Material Component</i>: A small crystal bead that shatters when the spell duration expires or the <i>hut</i> is dispelled."
@@ -5493,7 +5493,7 @@ spells = [{
     phb: "247", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell makes a lock or small mechanism seem to be trapped to anyone who can detect traps. You place the spell upon any small mechanism or device, such as a lock, hinge, hasp, cork, cap, or ratchet. Any character able to detect traps, or who uses any spell or device enabling trap detection, is 100% certain a real trap exists. Of course, the effect is illusory and nothing happens if the trap is \"sprung\"; its primary purpose is to frighten away thieves or make them waste precious time. <p class=sub>If another <i>Leomund's trap</i> is active within 50 feet when the spell is cast, the casting fails. <p class=sub><i>Material Component</i>: A piece of iron pyrite touched to the object to the trapped while the object is sprinkled with a special dust requiring 50gp to prepare."
@@ -5511,7 +5511,7 @@ spells = [{
     phb: "248", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "<i>Levitate</i> allows you to move yourself, another creature, or an object up and down as you wish. A creature must be willing to be levitated, and an object must be unattended or possessed by a willing creature. You can mentally direct the recipient to move up or down as much as 20 feet each round; doing so is a move action. You cannot move the recipient horizontally, but the recipient could clamber along the face of a cliff, for example, or push against a ceiling to move laterally (generally at half its base land speed). <p class=sub>A <i>levitating</i> creature that attacks with a melee or ranged weapon finds itself increasingly unstable; the first attack has a -1 penalty on attack rolls, the second -2, and so on, to a maximum penalty of -5. A full round spent stabilizing allows the creature to begin again at -1. <p class=sub><i>Focus</i>: Either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end."
@@ -5532,7 +5532,7 @@ spells = [{
         "Bard": 1,
         "Cleric": 1,
         "Druid": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "This spell causes an object to glow like a torch, shedding bright light in a 20-foot-radius (and dim light for an additional 20 feet) from the point you touch. The effect is immobile, but it can be cast on a movable object. Light taken into an area of <i>magical</i> darkness does not function. <p class=sub>A light spell (one with the light descriptor) counters and dispels a <i>darkness</i> spell (one with the darkness descriptor) of an equal or lower level. <p class=sub><i>Arcane Material Component</i>: A firefly or a piece of phosphorescent moss."
@@ -5550,7 +5550,7 @@ spells = [{
     phb: "248", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You release a powerful stroke of electrical energy that deals 1d6 points of electricity damage per caster level (maximum 10d6) to each creature within its area. The bolt begins at your fingertips. <p class=sub>The <i>lightning bolt</i> sets fire to combustibles and damages objects in its path. It can melt metals with a low melting point, such as lead, gold, copper, silver, or bronze. If the damage caused to an interposing barrier shatters or breaks through it, the bolt may continue beyond the barrier if the spell's range permits; otherwise, it stops at the barrier just as any other spell effect does. <p class=sub><i>Material Component</i>: A bit of fur and an amber, crystal, or glass rod."
@@ -5568,7 +5568,7 @@ spells = [{
     phb: "248", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "A <i>limited wish</i> lets you create nearly any type of effect. For example, a <i>limited wish</i> can do any of the following things. <p class=sub><ul><p class=sub><li> Duplicate any sorcerer/wizard spell of 6th level or lower, provided the spell is not of a school prohibited to you. <p class=sub><li> Duplicate any other spell of 5th level or lower, provided the spell is not of a school prohibited to you. <p class=sub><li> Duplicate any sorcerer/wizard spell of 5th level or lower, even if it's of a prohibited school. <p class=sub><li> Duplicate any other spell of 4th level or lower, even if it's of a prohibited school. <p class=sub><li> Undo the harmful effects of many spells, such as <i>geas/quest</i> or <i>insanity</i>. <p class=sub><li> Produce any other effect whose power level is in line with the above effects, such as a single creature automatically hitting on its next attack or taking a -7 penalty on its next saving throw. <p class=sub></ul> <p class=sub>A duplicated spell allows saving throws and spell resistance as normal (but the save DC is for a 7th-level spell). When a <i>limited wish</i> duplicates a spell that has an XP cost, you must pay that cost or 300 XP, whichever is more. When a <i>limited wish</i> spell duplicates a spell with a material component that costs more than 1,000 gp, you must provide that component. <p class=sub><i>XP Cost</i>: 300 XP or more (see above)."
@@ -5604,7 +5604,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>locate object</i>, except this spell locates a known or familiar creature. <p class=sub>You slowly turn and sense when you are facing in the direction of the creature to be located, provided it is within range. You also know in which direction the creature is moving, if any. <p class=sub>The spell can locate a creature of a specific kind (such as a human or a unicorn) or a specific creature known to you. It cannot find a creature of a certain type (such as humanoid or animal). To find a kind of creature, you must have seen such a creature up close (within 30 feet) at least once. <p class=sub>Running water blocks the spell. It cannot detect objects. It can be fooled by <i>mislead</i>, <i>nondetection</i>, and <i>polymorph</i> spells. <p class=sub><i>Material Component</i>: A bit of fur from a bloodhound."
@@ -5624,7 +5624,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 4,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You sense the direction of a well-known or clearly visualized object. The spell locates such objects as apparel, jewelry, furniture, tools, weapons, or even a ladder. You can search for general items such as a stairway, a sword, or a jewel, in which case you locate the nearest one of its kind if more than one is within range. Attempting to find a certain item, such as a particular piece of jewelry, requires a specific and accurate mental image; if the image is not close enough to the actual object, the spell fails. You cannot specify a unique item (such as \"Baron Vulden's signet ring\") unless you have observed that particular item firsthand (not through divination). <p class=sub>The spell is blocked by even a thin sheet of lead. Creatures cannot be found by this spell. <i>Polymorph any object</i> fools it. <p class=sub><i>Arcane Focus</i>: A forked twig."
@@ -5677,7 +5677,7 @@ spells = [{
     phb: "249", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "An invisible but tangible field of force surrounds the subject of a <i>mage armor</i> spell, providing a +4 armor bonus to AC. Unlike mundane armor, <i>mage armor</i> entails no armor check penalty, arcane spell failure chance, or speed reduction. Since <i>mage armor</i> is made of force, incorporeal creatures can't bypass it the way they do normal armor. <p class=sub><i>Focus</i>: A piece of cured leather"
@@ -5696,7 +5696,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You point your finger at an object and can lift it and move it at will from a distance. As a move action, you can propel the object as far as 15 feet in any direction, though the spell ends if the distance between you and the object ever exceeds the spell's range."
@@ -5716,7 +5716,7 @@ spells = [{
     classes: {
         "Cleric": 4,
         "Paladin": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>magic circle against evil</i>, except that it is similar to <i>protection from chaos</i> instead of <i>protection from evil</i>, and it can imprison a nonlawful called creature."
@@ -5736,7 +5736,7 @@ spells = [{
     classes: {
         "Cleric": 4,
         "Paladin": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "All creatures within the area gain the effects of a <i>protection from evil</i> spell, and no nongood summoned creatures can enter the area either. You must overcome a creature's spell resistance in order to keep it at bay (as in the third function of <i>protection from evil</i>), but the deflection and resistance bonuses and the protection from mental control apply regardless of enemies' spell resistance. <p class=sub>This spell has an alternative version that you may choose when casting it. A <i>magic circle against evil</i> can be focused inward rather than outward. When focused inward, the spell binds a nongood called creature (such as those called by the <i>lesser planar binding</i>, <i>planar binding</i>, and <i>greater planar binding</i> spells) for a maximum of 24 hours per caster level, provided that you cast the spell that calls the creature within 1 round of casting the <i>magic circle</i>. The creature cannot cross the circle's boundaries. If a creature too large to fit into the spell's area is the subject of the spell, the spell acts as a normal <i>protection from evil</i> spell for that creature only. <p class=sub>A <i>magic circle</i> leaves much to be desired as a trap. If the circle of powdered silver laid down in the process of spellcasting is broken, the effect immediately ends. The trapped creature can do nothing that disturbs the circle, directly or indirectly, but other creatures can. If the called creature has spell resistance, it can test the trap once a day. If you fail to overcome its spell resistance, the creature breaks free, destroying the circle. A creature capable of any form of dimensional travel (<i>astral projection</i>, <i>blink</i>, <i>dimension door</i>, <i>etherealness</i>, <i>gate</i>, <i>plane shift</i>, <i>shadow walk</i>, <i>teleport</i>, and similar abilities) can simply leave the circle through that means. You can prevent the creature's extradimensional escape by casting a <i>dimensional anchor</i> spell on it, but you must cast the spell before the creature acts. If you are successful, the <i>anchor</i> effect lasts as long as the <i>magic circle</i> does. The creature cannot reach across the <i>magic circle</i>, but its ranged attacks (ranged weapons, spells, magical abilities, and the like) can. The creature can attack any target it can reach with its ranged attacks except for the circle itself. <p class=sub>You can add a special diagram (a two-dimensional bounded figure with no gaps along its circumference, augmented with various magical sigils) to make the <i>magic circle</i> more secure. Drawing the diagram by hand takes 10 minutes and requires a DC 20 Spellcraft check. The DM makes this check secretly. If the check fails, the diagram is ineffective. You can take 10 (see page 65) when drawing the diagram if you are under no particular time pressure to complete the task. This task also takes 10 full minutes. If time is no factor at all, and you devote 3 hours and 20 minutes to the task, you can take 20. <p class=sub>A successful diagram allows you to cast a <i>dimensional anchor</i> spell on the <i>magic circle</i> during the round before casting any summoning spell. The <i>anchor</i> holds any called creatures in the <i>magic circle</i> for 24 hours per caster level. A creature cannot use its spell resistance against a <i>magic circle</i> prepared with a diagram, and none of its abilities or attacks can cross the diagram. If the creature tries a Charisma check to break free of the trap (see the <i>lesser planar binding</i> spell), the DC increases by 5. The creature is immediately released if anything disturbs the diagram–even a straw laid across it. However, the creature itself cannot disturb the diagram either directly or indirectly, as noted above. <p class=sub>This spell is not cumulative with <i>protection from evil</i> and vice versa. <p class=sub><i>Arcane Material Component</i>: A little powdered silver with which you trace a 3-foot-diameter circle on the floor (or ground) around the creature to be warded."
@@ -5755,7 +5755,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>magic circle against evil</i>, except that it is similar to <i>protection from good</i> instead of <i>protection from evil</i>, and it can imprison a nonevil called creature."
@@ -5774,7 +5774,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>magic circle against evil</i>, except that it is similar to <i>protection from law</i> instead of <i>protection from evil</i>, and it can imprison a nonchaotic called creature."
@@ -5828,7 +5828,7 @@ spells = [{
     phb: "250", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "By casting <i>magic jar</i>, you place your soul in a gem or large crystal (known as the <i>magic jar</i>), leaving your body lifeless. Then you can attempt to take control of a nearby body, forcing its soul into the <i>magic jar</i>. You may move back to the jar (thereby returning the trapped soul to its body) and attempt to possess another body. The spell ends when you send your soul back to your own body, leaving the receptacle empty. <p class=sub>To cast the spell, the <i>magic jar</i> must be within spell range and you must know where it is, though you do not need line of sight or line of effect to it. When you transfer your soul upon casting, your body is, as near as anyone can tell, dead. <p class=sub>While in the <i>magic jar</i>, you can sense and attack any life force within 10 feet per caster level (and on the same plane of existence). You do need line of effect from the jar to the creatures. You cannot determine the exact creature types or positions of these creatures. In a group of life forces, you can sense a difference of 4 or more Hit Dice between one creature and another and can determine whether a life force is powered by positive or negative energy. (Undead creatures are powered by negative energy. Only sentient undead creatures have, or are, souls.) <p class=sub>For example, if two 10th-level characters are attacking a hill giant (12 HD) and four ogres (4 HD), you could determine that there are three stronger and four weaker life forces within the range, all powered by positive energy. You could choose to take over either a stronger or a weaker creature, but which particular stronger or weaker creature you attempt to possess is determined randomly. <p class=sub>Attempting to possess a body is a full-round action. It is blocked by <i>protection from evil</i> or a similar ward. You possess the body and force the creature's soul into the magic jar unless the subject succeeds on a Will save. Failure to take over the host leaves your life force in the <i>magic jar</i>, and the target automatically succeeds on further saving throws if you attempt to possess its body again. <p class=sub>If you are successful, your life force occupies the host body, and the host's life force is imprisoned in the <i>magic jar</i>. You keep your Intelligence, Wisdom, Charisma, level, class, base attack bonus, base save bonuses, alignment, and mental abilities. The body retains its Strength, Dexterity, Constitution, hit points, natural abilities, and automatic abilities. For example, a fish's body breathes water and a troll's body regenerates. A body with extra limbs does not allow you to make more attacks (or more advantageous two-weapon attacks) than normal. You can't choose to activate the body's extraordinary or supernatural abilities. The creature's spells and spell-like abilities do not stay with the body. <p class=sub>As a standard action, you can shift freely from a host to the <i>magic jar</i> if within range, sending the trapped soul back to its body. The spell ends when you shift from the jar to your own body. <p class=sub>If the host body is slain, you return to the <i>magic jar</i>, if within range, and the life force of the host departs (it is dead). If the host body is slain beyond the range of the spell, both you and the host die. Any life force with nowhere to go is treated as slain. If the spell ends while you are in the <i>magic jar</i>, you return to your body (or die if your body is out of range or destroyed). If the spell ends while you are in a host, you return to your body (or die, if it is out of range of your current position), and the soul in the <i>magic jar</i> returns to its body (or dies if it is out of range). Destroying the receptacle ends the spell, and the spell can be dispelled at either the <i>magic jar</i> or at the host's location. <p class=sub><i>Focus</i>: A gem or crystal worth at least 100 gp."
@@ -5846,7 +5846,7 @@ spells = [{
     phb: "251", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A missile of magical energy darts forth from your fingertip and strikes its target, dealing 1d4+1 points of force damage. <p class=sub>The missile strikes unerringly, even if the target is in melee combat or has less than total cover or total concealment. Specific parts of a creature can't be singled out. Inanimate objects are not damaged by the spell. <p class=sub>For every two caster levels beyond 1st, you gain an additional missile–two at 3rd level, three at 5th, four at 7th, and the maximum of five missiles at 9th level or higher. If you shoot multiple missiles, you can have them strike a single creature or several creatures. A single missile can strike only one creature. You must designate targets before you check for spell resistance or roll damage."
@@ -5865,7 +5865,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell imbues the chosen object or creature with an enchanted mouth that suddenly appears and speaks its message the next time a specified event occurs. The message, which must be twenty-five or fewer words long, can be in any language known by you and can be delivered over a period of 10 minutes. The mouth cannot utter verbal components, use command words, or activate magical effects. It does, however, move according to the words articulated; if it were placed upon a statue, the mouth of the statue would move and appear to speak. Of course, <i>magic mouth</i> can be placed upon a tree, rock, or any other object or creature. <p class=sub><i>The spell functions when specific conditions are fulfilled according to your command as set in the spell. Commands can be as general or as detailed as desired, although only visual and audible triggers can be used, such as the following</i>: \"Speak only when a venerable female human carrying a sack sits cross-legged within a distance of one foot.\" Triggers react to what appears to be the case. Disguises and illusions can fool them. Normal darkness does not defeat a visual trigger, but magical <i>darkness</i> or <i>invisibility</i> does. Silent movement or magical <i>silence</i> defeats audible triggers. Audible triggers can be keyed to general types of noises (footsteps, metal clanking) or to a specific noise or spoken word (when a pin drops, or when anyone says \"Boo\"). Actions can serve as triggers if they are visible or audible. For example, \"Speak when any creature touches the statue\" is an acceptable command if the creature is visible. A <i>magic mouth</i> cannot distinguish alignment, level, Hit Dice, or class except by external garb. <p class=sub>The range limit of a trigger is 15 feet per caster level, so a 6th-level caster can command a <i>magic mouth</i> to respond to triggers as far as 90 feet away. Regardless of range, the mouth can respond only to visible or audible triggers and actions in line of sight or within hearing distance. <p class=sub><i>Magic mouth</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: A small bit of honeycomb and jade dust worth 10 gp."
@@ -5920,7 +5920,7 @@ spells = [{
     classes: {
         "Cleric": 2,
         "Paladin": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "<i>Magic weapon</i> gives a weapon a +1 enhancement bonus on attack and damage rolls. (An enhancement bonus does not stack with a masterwork weapon's +1 bonus on attack rolls.) <p class=sub>You can't cast this spell on a natural weapon, such as an unarmed strike (instead, see <i>magic fang</i>). A monk's unarmed strike is considered a weapon, and thus it can be enhanced by this spell."
@@ -5940,7 +5940,7 @@ spells = [{
     classes: {
         "Cleric": 5,
         "Paladin": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>magic weapon</i>, except that it gives a weapon an enhancement bonus on attack and damage rolls of +1 per four caster levels (maximum +5). <p class=sub>Alternatively, you can affect as many as fifty arrows, bolts, or bullets. The projectiles must be of the same kind, and they have to be together (in the same quiver or other container). Projectiles, but not thrown weapons, lose their transmutation when used. (Treat shuriken as projectiles, rather than as thrown weapons, for the purpose of this spell.) <p class=sub><i>Arcane Material Component</i>: Powdered lime and carbon."
@@ -5958,7 +5958,7 @@ spells = [{
     phb: "252", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like minor creation, except that you can also create an object of mineral nature: stone, crystal, metal, or the like. The duration of the created item varies with its relative hardness and rarity, as indicated on the following table. <table><tr class=header><td>Hardness and RarityExamples</td><td>Duration</td></tr> <tr><td>Vegetable matter</td><td>2 hr./level</td></tr> <tr><td>Stone, crystal, base metals</td><td>1 hr./level</td></tr> <tr><td>Precious metals</td><td>20 min./level</td></tr> <tr><td>Gems</td><td>10 min./level</td></tr> <tr><td>Rare metal<sup>1</sup></td><td>1 round/level</td></tr> </table><p class=sub><sup>1</sup> Includes adamantine, alchemical silver, and mithral. You can't use major creation to create a cold iron item. See the <i>Dungeon Master's Guide</i> for details"
@@ -5977,7 +5977,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>silent image</i>, except that sound, smell, and thermal illusions are included in the spell effect. While concentrating, you can move the image within the range. <p class=sub>The image disappears when struck by an opponent unless you cause the illusion to react appropriately."
@@ -6030,7 +6030,7 @@ spells = [{
     phb: "252", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "You banish the subject into an extradimensional labyrinth of force planes. Each round on its turn, it may attempt a DC 20 Intelligence check to escape the labyrinth as a full-round action. If the subject doesn't escape, the maze disappears after 10 minutes, forcing the subject to leave. <p class=sub>On escaping or leaving the maze, the subject reappears where it had been when the <i>maze</i> spell was cast. If this location is filled with a solid object, the subject appears in the nearest open space. <p class=sub>Spells and abilities that move a creature within a plane, such as <i>teleport</i> and <i>dimension door</i>, do not help a creature escape a <i>maze</i> spell, although a <i>plane shift</i> spell allows it to exit to whatever plane is designated in that spell. Minotaurs are not affected by this spell."
@@ -6066,7 +6066,7 @@ spells = [{
     phb: "253", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A magical arrow of acid springs from your hand and speeds to its target. You must succeed on a ranged touch attack to hit your target. The arrow deals 2d4 points of acid damage with no splash damage. For every three caster levels (to a maximum of 18th), the acid, unless somehow neutralized, lasts for another round, dealing another 2d4 points of damage in that round. <p class=sub><i>Material Component</i>: Powdered rhubarb leaf and an adder's stomach. <p class=sub><i>Focus</i>: A dart."
@@ -6087,7 +6087,7 @@ spells = [{
         "Bard": 1,
         "Cleric": 1,
         "Druid": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "<i>Mending</i> repairs small breaks or tears in objects (but not warps, such as might be caused by a warp wood spell). It will weld broken metallic objects such as a ring, a chain link, a medallion, or a slender dagger, providing but one break exists. Ceramic or wooden objects with multiple breaks can be invisibly rejoined to be as strong as new. A hole in a leather sack or a wineskin is completely healed over by mending. The spell can repair a magic item, but the item's magical abilities are not restored. (For restoring a broken magic item's abilities, see the item creation feats in Chapter 5: Feats.) The spell cannot mend broken magic rods, staffs, or wands, nor does it affect creatures (including constructs)."
@@ -6106,7 +6106,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You can whisper messages and receive whispered replies with little chance of being overheard. You point your finger at each creature you want to receive the message. When you whisper, the whispered message is audible to all targeted creatures within range. Magical <i>silence</i>, 1 foot of stone, 1 inch of common metal (or a thin sheet of lead), or 3 feet of wood or dirt blocks the spell. The message does not have to travel in a straight line. It can circumvent a barrier if there is an open path between you and the subject, and the path's entire length lies within the spell's range. The creatures that receive the message can whisper a reply that you hear. The spell transmits sound, not meaning. It doesn't transcend language barriers. <p class=sub><i>Note</i>: To speak a message, you must mouth the words and whisper, possibly allowing observers the opportunity to read your lips. <p class=sub><i>Focus</i>: A short piece of copper wire."
@@ -6124,7 +6124,7 @@ spells = [{
     phb: "253", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "<i>Meteor swarm</i> is a very powerful and spectacular spell that is similar to <i>fireball</i> in many aspects. When you cast it, four 2-foot-diameter spheres spring from your outstretched hand and streak in straight lines to the spots you select. The meteor spheres leave a fiery trail of sparks. <p class=sub>If you aim a sphere at a specific creature, you may make a ranged touch attack to strike the target with the meteor. Any creature struck by one of these spheres takes 2d6 points of bludgeoning damage (no save) and receives no saving throw against the sphere's fire damage (see below). If a targeted sphere misses its target, it simply explodes at the nearest corner of the target's space. You may aim more than one meteor at the same target. <p class=sub>Once a sphere reaches its destination, it explodes in a 40-foot-radius spread, dealing 6d6 points of fire damage to each creature in the area. If a creature is within the area of more than one sphere, it must save separately against each. (Fire resistance applies to each sphere's damage individually.)"
@@ -6142,7 +6142,7 @@ spells = [{
     phb: "253", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "The subject is protected from all devices and spells that detect, influence, or read emotions or thoughts. This spell protects against all mind-affecting spells and effects as well as information gathering by divination spells or effects. <i>Mind blank</i> even foils <i>limited wish</i>, <i>miracle</i>, and <i>wish</i> spells when they are used in such a way as to affect the subject's mind or to gain information about it. <p class=sub>In the case of scrying that scans an area the creature is in, such as <i>arcane eye</i>, the spell works but the creature simply isn't detected. Scrying attempts that are targeted specifically at the subject do not work at all."
@@ -6161,7 +6161,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "<i>Mind fog</i> produces a bank of thin mist that weakens the mental resistance of those caught in it. Creatures in the mind fog take a -10 competence penalty on Wisdom checks and Will saves. (A creature that successfully saves against the fog is not affected and need not make further saves even if it remains in the fog.) Affected creatures take the penalty as long as they remain in the fog and for 2d6 rounds thereafter. The fog is stationary and lasts for 30 minutes (or until dispersed by wind). <p class=sub>A moderate wind (11+ mph) disperses the fog in four rounds; a strong wind (21+ mph) disperses the fog in 1 round. <p class=sub>The fog is thin and does not significantly hamper vision."
@@ -6179,7 +6179,7 @@ spells = [{
     phb: "253", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You create a nonmagical, unattended object of nonliving, vegetable matter–linen clothes, a hemp rope, a wooden ladder, and so forth. The volume of the item created cannot exceed 1 cubic foot per caster level. You must succeed on an appropriate skill check to make a complex item, such as Craft (bowmaking) check to make straight arrow shafts. <p class=sub>Attempting to use any created object as a material component causes the spell to fail. <p class=sub><i>Material Component</i>: A tiny piece of matter of the same sort of item you plan to create with <i>minor creation</i>–a bit of twisted hemp to create rope, and so forth."
@@ -6198,7 +6198,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell functions like <i>silent image</i>, except that <i>minor image</i> includes some minor sounds but not understandable speech."
@@ -6234,7 +6234,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>hallucinatory terrain</i>, except that it enables you to make any area appear to be something other than it is. The illusion includes audible, visual, tactile, and olfactory elements. Unlike <i>hallucinatory terrain</i>, the spell can alter the appearance of structures (or add them where none are present). Still, it can't disguise, conceal, or add creatures (though creatures within the area might hide themselves within the illusion just as they can hide themselves within a real location)."
@@ -6253,7 +6253,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "Several illusory duplicates of you pop into being, making it difficult for enemies to know which target to attack. The figments stay near you and disappear when struck. <p class=sub><i>Mirror image</i> creates 1d4 images plus one image per three caster levels (maximum eight images total). These figments separate from you and remain in a cluster, each within 5 feet of at least one other figment or you. You can move into and through a <i>mirror image</i>. When you and the <i>mirror image</i> separate, observers can't use vision or hearing to tell which one is you and which the image. The figments may also move through each other. The figments mimic your actions, pretending to cast spells when you cast a spell, drink potions when you drink a potion, levitate when you levitate, and so on. <p class=sub>Enemies attempting to attack you or cast spells at you must select from among indistinguishable targets. Generally, roll randomly to see whether the selected target is real or a figment. Any successful attack against an image destroys it. An image's AC is 10 + your size modifier + your Dex modifier. Figments seem to react normally to area spells (such as looking like they're burned or dead after being hit by a <i>fireball</i>). <p class=sub>While moving, you can merge with and split off from figments so that enemies who have learned which image is real are again confounded. <p class=sub>An attacker must be able to see the images to be fooled. If you are invisible or an attacker shuts his or her eyes, the spell has no effect. (Being unable to see carries the same penalties as being blinded.)"
@@ -6272,7 +6272,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "By means of this spell, you misdirect the information from divination spells that reveal auras (<i>detect evil</i>, <i>detect magic</i>, <i>discern lies</i>, and the like). On casting the spell, you choose another object within range. For the duration of the spell, the subject of <i>misdirection</i> is detected as if it were the other object. (Neither the subject nor the other object gets a saving throw against this effect.) Detection spells provide information based on the second object rather than on the actual target of the detection unless the caster of the detection succeeds on a Will save. For instance, you could make yourself detect as a tree if one were within range at casting: not evil, not lying, not magical, neutral in alignment, and so forth. This spell does not affect other types of divination magic (<i>augury</i>, <i>detect thoughts</i>, <i>clairaudience/clairvoyance</i>, and the like)."
@@ -6291,7 +6291,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You become invisible (as <i>improved invisibility</i>, a glamer), and at the same time, an illusory double of you (as <i>major image</i>, a figment) appears. You are then free to go elsewhere while your double moves away. The double appears within range but thereafter moves as you direct it (which requires concentration beginning on the first round after the casting). You can make the figment appear superimposed perfectly over your own body so that observers don't notice an image appearing and you turning invisible. You and the figment can then move in different directions. The double moves at your speed and can talk and gesture as if it were real, but it cannot attack or cast spells, though it can pretend to do so. <p class=sub>The illusory double lasts as long as you concentrate upon it, plus 3 additional rounds. After you cease concentration, the illusory double continues to carry out the same activity (for instance, fleeing down a hallway) until the duration expires. The <i>improved invisibility</i> lasts for 1 round per level, regardless of concentration."
@@ -6326,7 +6326,7 @@ spells = [{
     phb: "255", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell grants you a powerful sixth sense in relation to yourself. Once during the spell's duration, you may choose to use its effect. This spell grants you an insight bonus equal to your caster level (maximum +25) on any single attack roll, opposed ability or skill check, or saving throw. Alternatively, you can apply the insight bonus to your AC against a single attack (even if flat-footed). Activating the effect doesn't take an action; you can even activate it on another character's turn if needed. You must choose to use the <i>moment of prescience</i> before you make the roll it is to modify. Once used, the spell ends.<p class=sub>You can't have more than one <i>moment of prescience</i> active on you at the same time"
@@ -6344,7 +6344,7 @@ spells = [{
     phb: "255", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "All magical effects and magic items within the radius of the spell, except for those that you carry or touch, are disjoined. That is, spells and spell-like effects are separated into their individual components (ending the effect as a <i>dispel magic</i> spell does), and each permanent magic item must make a successful Will save or be turned into a normal item. An item in a creature's possession uses its own Will save bonus or its possessor's Will save bonus, whichever is higher. <p class=sub>You also have a 1% chance per caster level of destroying an <i>antimagic field</i>. If the <i>antimagic field</i> survives the <i>disjunction</i>, no items within it are disjoined. <p class=sub>Even artifacts are subject to <i>disjunction</i>, though there is only a 1% chance per caster level of actually affecting such powerful items. Additionally, if an artifact is destroyed, you must make a DC 25 Will save or permanently lose all spellcasting abilities. (These abilities cannot be recovered by mortal magic, not even <i>miracle</i> or <i>wish</i>.) <p class=sub><i>Note</i>: Destroying artifacts is a dangerous business, and it is 95% likely to attract the attention of some powerful being who has an interest in or connection with the device."
@@ -6362,7 +6362,7 @@ spells = [{
     phb: "255", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You conjure up a phantom watchdog that is invisible to everyone but yourself. It then guards the area where it was conjured (it does not move). The hound immediately starts barking loudly if any Small or larger creature approaches within 30 feet of it. (Those within 30 feet of the hound when it is conjured may move about in the area, but if they leave and return, they activate the barking.) The hound sees invisible and ethereal creatures. It does not react to figments, but it does react to shadow illusions. <p class=sub>If an intruder approaches to within 5 feet of the hound, the dog stops barking and delivers a vicious bite (+10 attack bonus, 2d6+3 points of piercing damage) once per round. The dog also gets the bonuses appropriate to an invisible creature. <p class=sub>The dog is considered ready to bite intruders, so it delivers its first bite on the intruder's turn. Its bite is the equivalent of a magic weapon for the purpose of damage reduction. The hound cannot be attacked, but it can be dispelled. <p class=sub>The spell lasts for 1 hour per caster level, but once the hound begins barking, it lasts only 1 round per caster level. If you are ever more than 100 feet distant from the hound, the spell ends. <p class=sub><i>Material Component</i>: A tiny silver whistle, a piece of bone, and a thread."
@@ -6380,7 +6380,7 @@ spells = [{
     phb: "256", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You instantly recall any one spell of 5th level or lower that you have used during the past 24 hours. The spell must have been actually cast during that period. The recalled spell is stored in your mind as through prepared in the normal fashion. If the recalled spell requires material components, you must provide them. The recovered spell is not usable until the material components are available."
@@ -6398,7 +6398,7 @@ spells = [{
     phb: "256", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You conjure up an extradimensional dwelling that has a single entrance on the plane from which the spell was cast. The entry point looks like a faint shimmering in the air that is 4 feet wide and 8 feet high. Only those you designate may enter the mansion, and the portal is shut and made invisible behind you when you enter. You may open it again from your own side at will. Once observers have passed beyond the entrance, they are in a magnificent foyer with numerous chambers beyond. The atmosphere is clean, fresh, and warm. <p class=sub>You can create any floor plan you desire to the limit of the spell's effect. The place is furnished and contains sufficient foodstuffs to serve a nine-course banquet to a dozen people per caster level. A staff of near-transparent servants (as many as two per caster level), liveried and obedient, wait upon all who enter. The servants function as <i>unseen servant</i> spells except that they are visible and can go anywhere in the mansion. <p class=sub>Since the place can be entered only through its special portal, outside conditions do not affect the mansion, nor do conditions inside it pass to the plane beyond. <p class=sub><i>Focus</i>: A miniature portal carved from ivory, a small piece of polished marble, and a tiny silver spoon (each item worth 5 gp)."
@@ -6416,7 +6416,7 @@ spells = [{
     phb: "256", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell ensures privacy. Anyone looking into the area from outside sees only a dark, foggy mass. Darkvision cannot penetrate it. No sounds, no matter how loud, can escape the area, so nobody can eavesdrop from outside. Those inside can see out normally. <p class=sub>Divination (scrying) spells cannot perceive anything within the area, and those within are immune to <i>detect thoughts</i>. The ward prevents speech between those inside and those outside (because it blocks sound), but it does not prevent other communication, such as a <i>sending</i> or <i>message</i> spell, or telepathic communication, such as that between a wizard and her familiar. <p class=sub>The spell does not prevent creatures or objects from moving into and out of the area. <p class=sub>Mordenkainen's private sanctum can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: A thin sheet of lead, a piece of opaque glass, a wad of cotton or cloth, and powdered chrysolite."
@@ -6434,7 +6434,7 @@ spells = [{
     phb: "256", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell brings into being a shimmering, swordlike plane of force. The sword strikes at any opponent within its range, as you desire, starting in the round that you cast the spell. The sword attacks its designated target once each round on your turn. Its attack bonus is equal to your caster level + your Int bonus or your Cha bonus (for wizards or sorcerers, respectively) with an additional +3 enhancement bonus. As a force effect, it can strike ethereal and incorporeal creatures. It deals 4d6+3 points of force damage, with a threat range of 19'20 and a critical multiplier of Ã—2. <p class=sub>The sword always strikes from your direction. It does not get a bonus for flanking or help a combatant get one. If the sword goes beyond the spell range from you, if it goes out of your sight, or if you are not directing it, the sword returns to you and hovers. <p class=sub>Each round after the first, you can use a standard action to switch the sword to a new target. If you do not, the sword continues to attack the previous round's target. The sword cannot be attacked or harmed by physical attacks, but <i>dispel magic</i>, <i>disintegrate</i>, a <i>sphere of annihilation</i>, or a <i>rod of cancellation</i> affects it. The sword's AC is 13 (10, +0 size bonus for Medium object, +3 deflection bonus). <p class=sub>If an attacked creature has spell resistance, the resistance is checked the first time <i>Mordenkainen's sword</i> strikes it. If the sword is successfully resisted, the spell is dispelled. If not, the sword has its normal full effect on that creature for the duration of the spell. <p class=sub><i>Focus</i>: A miniature platinum sword with a grip and pommel of copper and zinc. It costs 250 gp to construct."
@@ -6452,7 +6452,7 @@ spells = [{
     phb: "256", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You summon a light horse or a pony (your choice) to serve you as a mount. The steed serves willingly and well. The mount comes with a bit and bridle and a riding saddle. <p class=sub><i>Material Component</i>: A bit of horse hair."
@@ -6471,7 +6471,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "Move earth moves dirt (clay, loam, sand), possibly collapsing embankments, moving hillocks, shifting dunes, and so forth. However, in no event can rock formations be collapsed or moved. The area to be affected determines the casting time. For every 150-foot square (up to 10 feet deep), casting takes 10 minutes. The maximum area, 750 feet by 750 feet, takes 4 hours and 10 minutes to move. <p class=sub>This spell does not violently break the surface of the ground. Instead, it creates wavelike crests and troughs, with the earth reacting with glacierlike fluidity until the desired result is achieved. Trees, structures, rock formations, and such are mostly unaffected except for changes in elevation and relative topography. <p class=sub>The spell cannot be used for tunneling and is generally too slow to trap or bury creatures. Its primary use is for digging or filling moats or for adjusting terrain contours before a battle. <p class=sub>This spell has no effect on earth creatures. <p class=sub><i>Material Component</i>: A mixture of soils (clay, loam, and sand) in a small bag, and an iron blade."
@@ -6511,7 +6511,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You send a hideous and unsettling phantasmal vision to a specific creature that you name or otherwise specifically designate. The <i>nightmare</i> prevents restful sleep and causes 1d10 points of damage. The <i>nightmare</i> leaves the subject fatigued and unable to regain arcane spells for the next 24 hours. <p class=sub>The difficulty of the save depends on how well you know the subject and what sort of physical connection (if any) you have to that creature. <table> <tr class=header><td>Knowledge</td><td>Will Save Modifier</td></tr> <tr><td>None<sup>1</sup></td><td>+10</td></tr> <tr><td>Secondhand (you have heard of the subject)</td><td>+5</td></tr> <tr><td>Firsthand (you have met the subject)</td><td>+0</td></tr> <tr><td>Familiar (you know the subject well)</td><td>'5</td></tr> </table><p><sup>1</sup> You must have some sort of connection to a creature you have no knowledge of. <p class=sub><table> <tr class=header><td>Connection</td><td>Will Save Modifier</td></tr> <tr><td>Likeness or picture</td><td>'2</td></tr> <tr><td>Possession or garment</td><td>'4</td></tr> <tr><td>Body part, lock of hair, bit of nail, etc.</td><td>'10</td></tr> </table> <p class=sub><i>Dispel evil</i> cast on the subject while you are casting the spell dispels the <i>nightmare</i> and causes you to be stunned for 10 minutes per caster level of the <i>dispel evil</i>. <p class=sub>If the recipient is awake when the spell begins, you can choose to cease casting (ending the spell) or to enter a trance until the recipient goes to sleep, whereupon you become alert again and complete the casting. If you are disturbed during the trance, you must succeed on a Concentration check as if you were in the midst of casting a spell (see page 69) or the spell ends. <p class=sub>If you choose to enter a trance, you are not aware of your surroundings or the activities around you while in the trance. You are defenseless, both physically and mentally, while in the trance. (You always fail any saving throw, for example.) <p class=sub>Creatures who don't sleep (such as elves, but not half-elves) or dream are immune to this spell."
@@ -6530,7 +6530,7 @@ spells = [{
     type: "spell",
     classes: {
         "Ranger": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The warded creature or object becomes difficult to detect by divination spells such as <i>clairaudience/clairvoyance</i>, <i>locate object</i>, and <i>detect</i> spells. <i>Nondetection</i> also prevents location by such magic items as <i>crystal balls</i>. If a divination is attempted against the warded creature or item, the caster of the divination must succeed on a caster level check (1d20 + caster level) against a DC of 11 + the caster level of the spellcaster who cast <i>nondetection</i>. If you cast <i>nondetection</i> on yourself or on an item currently in your possession, the DC is 15 + your caster level. <p class=sub>If cast on a creature, <i>nondetection</i> wards the creature's gear as well as the creature itself. <p class=sub><i>Material Component</i>: A pinch of diamond dust worth 50 gp."
@@ -6549,7 +6549,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You alter an item's aura so that it registers to <i>detect</i> spells (and spells with similar capabilities) as though it were nonmagical, or a magic item of a kind you specify, or the subject of a spell you specify. You could make an ordinary sword register as a +2 vorpal sword as far as magical detection is concerned or make a +2 <i>vorpal sword</i> register as if it were a +1 <i>sword</i> or even a nonmagical sword. <p class=sub>If the object bearing <i>Nystul's magic aura</i> has <i>identify</i> cast on it or is similarly examined, the examiner recognizes that the aura is false and detects the object's actual qualities if he succeeds on a Will save. Otherwise, he believes the aura and no amount of testing reveals what the true magic is. <p class=sub>If the targeted item's own aura is exceptionally powerful (if it is an artifact, for instance), <i>Nystul's magic aura</i> doesn't work. <p class=sub><i>Note</i>: A magic weapon, shield, or suit of armor must be a masterwork item, so a sword of average make, for example, looks suspicious if it has a magical aura. <p class=sub><i>Focus</i>: A small square of silk that must be passed over the object that receives the aura."
@@ -6569,7 +6569,7 @@ spells = [{
     classes: {
         "Bard": 2,
         "Cleric": 4,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell hides an object from location by divination (scrying) effects, such as the <i>scrying</i> spell or a <i>crystal ball</i>. Such an attempt automatically fails (if the divination is targeted on the object) or fails to perceive the object (if the divination is targeted on a nearby location, object, or person). <p class=sub><i>Arcane Material Component</i>: A piece of chameleon skin."
@@ -6589,7 +6589,7 @@ spells = [{
     classes: {
         "Cleric": 2,
         "Druid": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A misty vapor arises around you. It is stationary once created. The vapor obscures all sight, including darkvision, beyond 5 feet. A creature 5 feet away has concealment (attacks have a 20% miss chance). Creatures farther away have total concealment (50% miss chance, and the attacker cannot use sight to locate the target). <p class=sub>A moderate wind (11+ mph), such as from a <i>gust of wind</i> spell, disperses the fog in 4 rounds. A strong wind (21+ mph) disperses the fog in 1 round. A <i>fireball</i>, <i>flame strike</i>, or similar spell burns away the fog in the explosive or fiery spell's area. A wall of fire burns away the fog in the area into which it deals damage. <p class=sub>This spell does not function underwater."
@@ -6608,7 +6608,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You can open or close (your choice) a door, chest, box, window, bag, pouch, bottle, barrel, or other container. If anything resists this activity (such as a bar on a door or a lock on a chest), the spell fails. In addition, the spell can only open and close things weighing 30 pounds or less. Thus, doors, chests, and similar objects sized for enormous creatures may be beyond this spell's ability to affect. <p class=sub><i>Focus</i>: A brass key."
@@ -6641,7 +6641,7 @@ spells = [{
     phb: "258", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "<i>Otiluke's Freezing sphere</i> creates a frigid globe of cold energy that streaks from your fingertips to the location you select, where it explodes in a 10-foot-radius burst, dealing 1d6 points of cold damage per caster level (maximum 15d6) to each creature in the area. An elemental (water) creature instead takes 1d8 points of cold damage per caster level (maximum 15d8). <p class=sub>If the <i>freezing sphere</i> strikes a body of water or a liquid that is principally water (not including water-based creatures), it freezes the liquid to a depth of 6 inches over an area equal to 100 square feet (a 10-foot square) per caster level (maximum 1,500 square feet). This ice lasts for 1 round per caster level. Creatures that were swimming on the surface of frozen water become trapped in the ice. Attempting to break free is a full-round action. A trapped creature must make a DC 25 Strength check or a DC 25 Escape Artist check to do so. <p class=sub>You can refrain from firing the globe after completing the spell, if you wish. Treat this as a touch spell for which you are holding the charge (see page 176). You can hold the charge for as long as 1 round per level, at the end of which time the <i>freezing sphere</i> bursts centered on you (and you receive no saving throw to resist its effect). Firing the globe in a later round is a standard action. <p class=sub><i>Focus</i>: A small crystal sphere."
@@ -6659,7 +6659,7 @@ spells = [{
     phb: "258", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "A globe of shimmering force encloses a creature, provided the creature is small enough to fit within the diameter of the sphere. The sphere contains its subject for the spell's duration. The sphere is not subject to damage of any sort except from a <i>rod of cancellation</i>, a <i>rod of negation</i>, a <i>disintegrate</i> spell, or a targeted <i>dispel magic</i> spell. These effects destroy the sphere without harm to the subject. Nothing can pass through the sphere, inside or out, though the subject can breathe normally. The subject may struggle, but the sphere cannot be physically moved either by people outside it or by the struggles of those within. <p class=sub><i>Material Component</i>: A hemispherical piece of clear crystal and a matching hemispherical piece of gum arabic."
@@ -6677,7 +6677,7 @@ spells = [{
     phb: "259", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>Otiluke's resilient sphere</i>, with the addition that the creatures or objects inside the globe are nearly weightless. Anything contained within an <i>Otiluke's telekinetic sphere</i> weighs only one-sixteenth of its normal weight. You can telekinetically lift anything in the sphere that normally weighs 5,000 pounds or less. The telekinetic control extends from you out to medium range (100 feet + 10 feet per caster level) after the sphere has succeeded in encapsulating its contents. <p class=sub>You can move objects or creatures in the sphere that weigh a total of 5,000 pounds or less by concentrating on the sphere. You can begin moving a sphere in the round after casting the spell. If you concentrate on doing so (a standard action), you can move the sphere as much as 30 feet in a round. If you cease concentrating, the sphere does not move in that round (if on a level surface) or descends at its falling rate (if aloft) until it reaches a level surface, or the spell's duration expires, or you begin concentrating again. If you cease concentrating (voluntarily or due to failing a Concentration check), you can resume concentrating on your next turn or any later turn during the spell's duration. <p class=sub>The sphere falls at a rate of only 60 feet per round, which is not fast enough to cause damage to the contents of the sphere. <p class=sub>You can move the sphere telekinetically even if you are in it. <p class=sub><i>Material Component</i>: A hemispherical piece of clear crystal, a matching hemispherical piece of gum arabic, and a pair of small bar magnets."
@@ -6696,7 +6696,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "The subject feels an undeniable urge to dance and begins doing so, complete with foot shuffling and tapping. The spell effect makes it impossible for the subject to do anything other than caper and prance in place. The effect imposes a -4 penalty to Armor Class and a -10 penalty on Reflex saves, and it negates any AC bonus granted by a shield the target holds. The dancing subject provokes attacks of opportunity each round on its turn."
@@ -6714,7 +6714,7 @@ spells = [{
     phb: "259", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like a <i>fly</i> spell, except you can fly at a speed of 40 feet (30 feet if wearing medium or heavy armor, or if carrying a medium or heavy load) with average maneuverability. When using this spell for long-distance movement, you can hustle without taking nonlethal damage (a forced march still requires Constitution checks). This means you can cover 64 miles in an eight-hour period of flight (or 48 miles at a speed of 30 feet). See page 164 for more on overland movement."
@@ -6736,7 +6736,7 @@ spells = [{
         "Druid": 3,
         "Paladin": 2,
         "Ranger": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The transmuted creature becomes wiser. The spell grants a +4 enhancement bonus to Wisdom, adding the usual benefit to Wisdom-related skills. Clerics, druids, paladins, and rangers (and other Wisdom-based spellcasters) who receive owl's wisdom do not gain any additional bonus spells for the increased Wisdom, but the save DCs for their spells increase. <p class=sub><i>Arcane Material Component</i>: A few feathers, or a pinch of droppings, from an owl."
@@ -6756,7 +6756,7 @@ spells = [{
     classes: {
         "Cleric": 7,
         "Druid": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>owl's wisdom</i>, except that it affects multiple creatures."
@@ -6774,7 +6774,7 @@ spells = [{
     phb: "259", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You create a passage through wooden, plaster, or stone walls, but not through metal or other harder materials. The passage is 10 feet deep plus an additional 5 feet deep per three caster levels above 9th (15 feet at 12th, 20 feet at 15th, and a maximum of 25 feet deep at 18th level). If the wall's thickness is more than the depth of the passage created, then a single <i>passwall</i> simply makes a niche or short tunnel. Several <i>passwall</i> spells can then form a continuing passage to breach very thick walls. When <i>passwall</i> ends, creatures within the passage are ejected out the nearest exit. If someone dispels the <i>passwall</i> or you dismiss it, creatures in the passage are ejected out the far exit, if there is one, or out the sole exit if there is only one. <p class=sub><i>Material Component</i>: A pinch of sesame seeds."
@@ -6810,7 +6810,7 @@ spells = [{
     phb: "259", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell makes certain other spells permanent. Depending on the spell, you must be of a minimum caster level and must expend a number of XP. <p class=sub>You can make the following spells permanent in regard to yourself. <p class=sub><table><tr class=header><td>Spell</td><td>Minimum Caster Level</td><td>XP Cost</td></tr> <tr><td><i>Arcane sight</i></td><td align=center>11th</td><td align=right>1,500</td></tr> <tr><td><i>Comprehend languages</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Darkvision</i></td><td align=center>10th</td><td align=right>1,000</td></tr> <tr><td><i>Detect magic</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Read magic</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>See invisibility</i></td><td align=center>10th</td><td align=right>1,000</td></tr><tr><td><i>Tongues</i></td><td align=center>11th</td><td align=right>1,500</td></tr></table> <p class=sub>You cast the desired spell and then follow it with the <i>permanency</i> spell. You cannot cast these spells on other creatures. This application of <i>permanency</i> can be dispelled only by a caster of higher level than you were when you cast the spell. <p class=sub>In addition to personal use, <i>permanency</i> can be used to make the following spells permanent on yourself, another creature, or an object (as appropriate). <p class=sub><table><tr class=header><td>Spell</td><td>Minimum Caster Level</td><td>XP Cost</td></tr><tr><td><i>Enlarge person</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Magic fang</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Magic fang, greater</i></td><td align=center>11th</td><td align=right>1,500</td></tr><tr><td><i>Rary's telepathic bond</i><sup>1</sup></td><td align=center>13th</td><td align=right>2,500</td></tr><tr><td><i>Reduce person</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Resistance</i></td><td align=center>9th</td><td align=right>500</td></tr></table><p class=sub><p><sup>1</sup> Only bonds two creatures per casting of <i>permanency</i>. <p class=sub>Additionally, the following spells can be cast upon objects or areas only and rendered permanent. <p class=sub><table><tr class=header><td>Spell</td><td>Minimum Caster Level</td><td>XP Cost</td></tr> <tr><td><i>Alarm</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Animate objects</i></td><td align=center>14th</td><td align=right>3,000</td></tr><tr><td><i>Dancing lights</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Ghost sound</i></td><td align=center>9th</td><td align=right>500</td></tr><tr><td><i>Gust of wind</i></td><td align=center>11th</td><td align=right>1,500</td></tr><tr><td><i>Invisibility</i></td><td align=center>10th</td><td align=right>1,000</td></tr><tr><td><i>Magic mouth</i></td><td align=center>10th</td><td align=right>1,000</td></tr><tr><td><i>Mordenkainen's private sanctum</i></td><td align=center>13th</td><td align=right>2,500</td></tr> <tr><td><i>Phase door</i></td><td align=center>15th</td><td align=right>3,500</td></tr><tr><td><i>Prismatic sphere</i></td><td align=center>17th</td><td align=right>4,500</td></tr><tr><td><i>Prismatic wall</i></td><td align=center>16th</td><td align=right>4,000</td></tr><tr><td><i>Shrink item</i></td><td align=center>11th</td><td align=right>1,500</td></tr><tr><td><i>Solid fog</i></td><td align=center>12th</td><td align=right>2,000</td></tr><tr><td><i>Stinking cloud</i></td><td align=center>11th</td><td align=right>1,500</td></tr><tr><td><i>Symbol of death</i></td><td align=center>16th</td><td align=right>4,000</td></tr><tr><td><i>Symbol of fear</i></td><td align=center>14th</td><td align=right>3,000</td></tr><tr><td><i>Symbol of insanity</i></td><td align=center>16th</td><td align=right>4,000</td></tr><tr><td><i>Symbol of pain</i></td><td align=center>13th</td><td align=right>2,500</td></tr><tr><td><i>Symbol of persuasion</i></td><td align=center>14th</td><td align=right>3,000</td></tr><tr><td><i>Symbol of sleep</i></td><td align=center>16th</td><td align=right>4,000</td></tr><tr><td><i>Symbol of stunning</i></td><td align=center>15th</td><td align=right>3,500</td></tr><tr><td><i>Symbol of weakness</i></td><td align=center>15th</td><td align=right>3,500</td></tr><tr><td><i>Teleportation circle</i></td><td align=center>17th</td><td align=right>4,500</td></tr><tr><td><i>Wall of fire</i></td><td align=center>12th</td><td align=right>2,000</td></tr><tr><td><i>Wall of force</i></td><td align=center>13th</td><td align=right>2,500</td></tr><tr><td><i>Web</i></td><td align=center>10th</td><td align=right>1,000</td></tr></table><p class=sub>Spells cast on other creatures, objects, or locations (not on you) are vulnerable to <i>dispel magic</i> as normal. <p class=sub>The DM may allow other selected spells to be made permanent. Researching this possible application of a spell costs as much time and money as independently researching the selected spell (see the <i>Dungeon Master's Guide</i> for details). If the DM has already determined that the application is not possible, the research automatically fails. Note that you never learn what is possible except by the success or failure of your research. <p class=sub><i>XP Cost</i>: See tables above."
@@ -6829,7 +6829,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>silent image</i>, except that the figment includes visual, auditory, olfactory, and thermal elements, and the spell is permanent. By concentrating, you can move the image within the limits of the range, but it is static while you are not concentrating. <p class=sub><i>Material Component</i>: A bit of fleece plus powdered jade worth 100 gp."
@@ -6848,7 +6848,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>silent image</i>, except that the figment includes visual, auditory, olfactory, and thermal components, and the figment follows a script determined by you. The figment follows that script without your having to concentrate on it. The illusion can include intelligible speech if you wish. For instance, you could create the illusion of several orcs playing cards and arguing, culminating in a fistfight. <p class=sub><i>Material Component</i>: A bit of fleece and several grains of sand."
@@ -6866,7 +6866,7 @@ spells = [{
     phb: "260", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You create a phantasmal image of the most fearsome creature imaginable to the subject simply by forming the fears of the subject's subconscious mind into something that its conscious mind can visualize: this most horrible beast. Only the spell's subject can see the phantasmal killer. You see only a vague shape. The target first gets a Will save to recognize the image as unreal. If that save fails, the phantasm touches the subject, and the subject must succeed on a Fortitude save or die from fear. Even if the Fortitude save is successful, the subject takes 3d6 points of damage. <p class=sub>If the subject of a <i>phantasmal killer</i> attack succeeds in disbelieving and is wearing a <i>helm of telepathy</i>, the beast can be turned upon you. You must then disbelieve it or become subject to its deadly fear attack."
@@ -6885,7 +6885,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You conjure a Large, quasi-real, horselike creature. The steed can be ridden only by you or by the one person for whom you specifically created the mount. A phantom steed has a black head and body, gray mane and tail, and smoke-colored, insubstantial hooves that make no sound. It has what seems to be a saddle, bit, and bridle. It does not fight, but animals shun it and refuse to attack it. <p class=sub>The mount has an AC of 18 (-1 size, +4 natural armor, +5 Dex) and 7 hit points +1 hit point per caster level. If it loses all its hit points, the phantom steed disappears. A phantom steed has a speed of 20 feet per caster level, to a maximum of 240 feet. It can bear its rider's weight plus up to 10 pounds per caster level. <p class=sub>These mounts gain certain powers according to caster level. A mount's abilities include those of mounts of lower caster levels. Thus, a mount created by a 12th-level caster has the 8th, 10th, and 12th caster level abilities. <p class=sub><i>8th Level</i>: The mount can ride over sandy, muddy, or even swampy ground without difficulty or decrease in speed. <p class=sub><i>10th Level</i>: The mount can use <i>water walk</i> at will (as the spell, no action required to activate this ability). <p class=sub><i>12th Level</i>: The mount can use <i>air walk</i> at will (as the spell, no action required to activate this ability) for up to 1 round at a time, after which it falls to the ground."
@@ -6903,7 +6903,7 @@ spells = [{
     phb: "261", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell creates an ethereal passage through wooden, plaster, or stone walls, but not other materials. The <i>phase door</i> is invisible and inaccessible to all creatures except you, and only you can use the passage. You disappear when you enter the <i>phase door</i> and appear when you exit. If you desire, you can take one other creature (Medium or smaller) through the door. This counts as two uses of the door. The door does not allow light, sound, or spell effects through it, nor can you see through it without using it. Thus, the spell can provide an escape route, though certain creatures, such as phase spiders, can follow with ease. A <i>gem of true seeing</i> or similar magic reveals the presence of a <i>phase door</i> but does not allow its use. <p class=sub>A <i>phase door</i> is subject to <i>dispel magic</i>. If anyone is within the passage when it is dispelled, he is harmlessly ejected just as if he were inside a <i>passwall</i> effect. <p class=sub>You can allow other creatures to use the <i>phase door</i> by setting some triggering condition for the door. Such conditions can be as simple or elaborate as you desire. They can be based on a creature's name, identity, or alignment, but otherwise must be based on observable actions or qualities. Intangibles such as level, class, Hit Dice, and hit points don't qualify. <p class=sub><i>Phase door</i> can be made permanent with a <i>permanency</i> spell. "
@@ -6972,7 +6972,7 @@ spells = [{
     phb: "261", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>lesser planar binding</i>, except that you may call a single creature of 12 HD or less, or up to three creatures of the same kind whose Hit Dice total no more than 12. Each creature gets a save, makes an independent attempt to escape, and must be individually persuaded to aid you."
@@ -6990,7 +6990,7 @@ spells = [{
     phb: "261", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>lesser planar binding</i>, except that you may call a single creature of 18 HD or less, or up to three creatures of the same kind whose Hit Dice total no more than 18. Each creature gets a saving throw, makes independent attempts to escape, and must be persuaded to aid you individually."
@@ -7008,7 +7008,7 @@ spells = [{
     phb: "261", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "Casting this spell attempts a dangerous act: to lure a creature from another plane to a specifically prepared trap, which must lie within the spell's range. The called creature is held in the trap until it agrees to perform one service in return for its freedom. <p class=sub>To create the trap, you must use a <i>magic circle</i> spell, focused inward. The kind of creature to be bound must be known and stated. If you wish to call a specific individual, you must use that individual's proper name in casting the spell. <p class=sub>The target creature is allowed a Will saving throw. If the saving throw succeeds, the creature resists the spell. If the saving throw fails, the creature is immediately drawn to the trap (spell resistance does not keep it from being called). The creature can escape from the trap with by successfully pitting its spell resistance against your caster level check, by dimensional travel, or with a successful Charisma check (DC 15 + 1/2 your caster level + your Cha modifier). It can try each method once per day. If it breaks loose, it can flee or attack you. A <i>dimensional anchor</i> cast on the creature prevents its escape via dimensional travel. You can also employ a calling diagram (see <i>magic circle against evil</i>, page 246) to make the trap more secure. <p class=sub>If the creature does not break free of the trap, you can keep it bound for as long as you dare. You can attempt to compel the creature to perform a service by describing the service and perhaps offering some sort of reward. You make a Charisma check opposed by the creature's Charisma check. The DM assigns your check a bonus of +0 to +6 based on the nature of the service and the reward. If the creature wins the opposed check, it refuses service. New offers, bribes, and the like can be made or the old ones reoffered every 24 hours. This process can be repeated until the creature promises to serve, until it breaks free, or until you decide to get rid of it by means of some other spell. Impossible demands or unreasonable commands are never agreed to. If you roll a 1 on the Charisma check, the creature breaks free of the binding and can escape or attack you. Once the requested service is completed, the creature need only so inform you to be instantly sent back whence it came. The creature might later seek revenge. If you assign some open-ended task that the creature cannot complete though its own actions (such as \"Wait here\" or \"Defend this area against attack\"), the spell remains in effect for a maximum of one day per caster level, and the creature gains an immediate chance to break free. Note that a clever recipient can subvert some instructions. <p class=sub>When you use a calling spell to call an air, chaotic, earth, evil, fire, good, lawful, or water creature, it is a spell of that type. For example, <i>lesser planar binding</i> is a water spell when you cast it to call a water elemental."
@@ -7027,7 +7027,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 6,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You move yourself or some other creature to another plane of existence or alternate dimension. If several willing persons link hands in a circle, as many as eight can be affected by the <i>plane shift</i> at the same time. Precise accuracy as to a particular arrival location on the intended plane is nigh impossible. From the Material Plane, you can reach any other plane, though you appear 5 to 500 miles (5d%) from your intended destination. <p class=sub><i>Note</i>: <i>Plane shift</i> transports creatures instantaneously and then ends. The creatures need to find other means if they are to travel back. <p class=sub><i>Focus</i>: A small, forked metal rod. The size and metal type dictates to which plane of existence or alternate dimension the spell sends the affected creatures. Forked rods keyed to certain planes or dimensions may be difficult to come by, as decided by the DM."
@@ -7081,7 +7081,7 @@ spells = [{
     phb: "262", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "A blue-white ray of freezing air and ice springs from your hand. You must succeed on a ranged touch attack with the ray to deal damage to a target. The ray deals 1d6 points of cold damage per caster level (maximum 25d6).<p class=sub><i>Focus</i>: A small, white ceramic cone or prism."
@@ -7099,7 +7099,7 @@ spells = [{
     phb: "263", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>polymorph</i>, except that it changes one object or creature into another. The duration of the spell depends on how radical a change is made from the original state to its enchanted state. The DM determines the duration by using the following guidelines.<table><tr class=header><td>Changed Subject Is:</td><td>Increase to Duration Factor<sup>1</sup></td></tr><tr><td>Same kingdom (animal, vegetable, mineral)</td><td align=center>+5</td></tr> <tr><td>Same class (mammals, fungi, metals, etc.)</td><td align=center>+2</td></tr> <tr><td>Same size</td><td align=center>+2</td></tr> <tr><td>Related (twig is to tree, wolf fur is to wolf, etc.)</td><td align=center>+2</td></tr> <tr><td>Same or lower Intelligence</td><td align=center>+2</td></tr> </table><p class=sub><p><sup>1</sup> Add all that apply. Look up the total on the next table.<table> <tr class=header><td>Duration Factor</td><td>Duration</td><td>Example</td></tr> <tr><td>0</td><td>20 minutes</td><td>Pebble to human</td></tr> <tr><td>2</td><td>1 hour</td><td>Marionette to human</td></tr> <tr><td>4</td><td>3 hours</td><td>Human to marionette</td></tr> <tr><td>5</td><td>12 hours</td><td>Lizard to manticore</td></tr> <tr><td>6</td><td>2 days</td><td>Sheep to wool coat</td></tr> <td>7</td><td>1 week</td><td>Shrew to manticore</td> <tr><td>9+</td><td>Permanent</td><td>Manticore to shrew</td></tr> </table> <p class=sub>Unlike <i>polymorph</i>, <i>polymorph any object</i> does grant the creature the Intelligence score of its new form. If the original form didn't have a Wisdom or Charisma score, it gains those scores as appropriate for the new form. <p class=sub>Damage taken by the new form can result in the injury or death of the poly-morphed creature. For example, it is pos-sible to polymorph a creature into rock and then grind it to dust, causing damage, perhaps even death. If the creature was changed to dust to start with, more creative methods to damage it would be needed. Perhaps you could use a gust of wind spell to scatter the dust far and wide. In general, damage occurs when the new form is changed through physical force, although the DM must adjudicate many of these situations. <p class=sub>A nonmagical object cannot be made into a magic item with this spell. Magic items aren't affected by this spell. This spell cannot create material of great intrinsic value, such as copper, silver, gems, silk, gold, platinum, mithral, or adamantine. It also cannot reproduce the special properties of cold iron in order to overcome the damage reduction of certain creatures. <p class=sub>This spell can also be used to duplicate the effects of <i>polymorph, flesh to stone, stone to flesh, transmute mud to rock, transmute water to dust</i>, or <i>transmute rock to mud</i>. <p class=sub><i>Arcane Material Component</i>: Mercury, gum arabic, and smoke."
@@ -7117,7 +7117,7 @@ spells = [{
     phb: "263", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>alter self</i>, except that you change the willing subject into another form of living creature. The new form may be of the same type as the subject or any of the following types aberration, animal, dragon, fey, giant, humanoid, magical beast, monstrous humanoid, ooze, plant, or vermin. The assumed form can't have more Hit Dice than your caster level (or the subject's HD, whichever is lower), to a maximum of 15 HD at 15th level. You can't cause a subject to assume a form smaller than Fine, nor can you cause a subject to assume an incorporeal or gaseous form. The subject's creature type and subtype (if any) change to match the new form (see the <i>Monster Manual</i> for more information). <p class=sub>Upon changing, the subject regains lost hit points as if it had rested for a night (though this healing does not restore temporary ability damage and provide other benefits of resting; and changing back does not heal the subject further). If slain, the subject reverts to its original form, though it remains dead. <p class=sub>The subject gains the Strength, Dexterity, and Constitution scores of the new form but retains its own Intelligence, Wisdom, and Charisma scores. It also gains all extraordinary special attacks possessed by the form (such as constrict, improved grab, and poison) but does not gain the extraordinary special qualities possessed by the new form (such as blindsense, fast healing, regeneration, and scent) or any supernatural or spell-like abilities. <p class=sub>Incorporeal or gaseous creatures are immune to being <i>polymorphed</i>, and a creature with the shapechanger subtype (such as a lycanthrope or a doppelganger) can revert to its natural form as a standard action. <p class=sub><i>Material Component</i>: An empty cocoon. "
@@ -7135,7 +7135,7 @@ spells = [{
     phb: "263", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You utter a single word of power that causes one creature of your choice to become blinded, whether the creature can hear the word or not. The duration of the spell depends on the target's current hit point total. Any creature that currently has 201 or more hit points is unaffected by <i>power word blind</i>. <table><tr class=header><td>Hit Points</td><td>Duration</td></tr> <tr><td>50 or less</td><td>Permanent</td></tr> <tr><td>51-100</td><td>1d4+1 minutes</td></tr> <tr><td>101-200</td><td>1d4+1 rounds</td></tr> </table>"
@@ -7153,7 +7153,7 @@ spells = [{
     phb: "263", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "You utter a single word of power that instantly kills one creature of your choice, whether the creature can hear the word or not. Any creature that currently has 101 or more hit points is unaffected by <i>power word kill</i>."
@@ -7171,7 +7171,7 @@ spells = [{
     phb: "263", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "You utter a single word of power that instantly causes one creature of your choice to become stunned, whether the creature can hear the word or not. The duration of the spell depends on the target's current hit point total. Any creature that currently has 151 or more hit points is unaffected by <i>power word stun</i>.<table><tr class=header><td>Hit Points</td><td>Duration</td></tr><tr><td>50 or less</td><td>4d4 rounds</td></tr> <tr><td>51-100</td><td>2d4 rounds</td></tr> <tr><td>101-150</td><td>1d4 rounds</td></tr> </table>"
@@ -7208,7 +7208,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "Prestidigitations are minor tricks that novice spellcasters use for practice. Once cast, a <i>prestidigitation</i> spell enables you to perform simple magical effects for 1 hour. The effects are minor and have severe lim-itations. A prestidigitation can slowly lift 1 pound of material. It can color, clean, or soil items in a 1-foot cube each round. It can chill, warm, or flavor 1 pound of non-living material. It cannot deal damage or affect the concentration of spellcasters. <i>Prestidigitation</i> can create small objects, but they look crude and artificial. The materials created by a <i>prestidigitation</i> spell are extremely fragile, and they cannot be used as tools, weapons, or spell compo-nents. Finally, a <i>prestidigitation</i> lacks the power to duplicate any other spell effects. Any actual change to an object (beyond just moving, cleaning, or soiling it) persists only 1 hour. <p class=sub>Characters typically use <i>prestidigitation</i> spells to impress common folk, amuse children, and brighten dreary lives. Common tricks with <i>prestidigitations</i> include producing tinklings of ethereal music, brightening faded flowers, creating glowing balls that float over your hand, generating puffs of wind to flicker candles, spicing up aromas and flavors of bland food, and making little whirlwinds to sweep dust under rugs."
@@ -7226,7 +7226,7 @@ spells = [{
     phb: "264", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>prismatic wall</i>, except you conjure up an immobile, opaque globe of shimmering, multicolored light that surrounds you and protects you from all forms of attack. The sphere flashes in all colors of the visible spectrum. <p class=sub>The sphere's <i>blindness</i> effect on creatures with less than 8 HD lasts 2d4Ã—10 minutes. You can pass into and out of the <i>prismatic sphere</i> and remain near it without harm. However, when you're inside it, the sphere blocks any attempt to project something through the sphere (including spells). Other creatures that attempt to attack you or pass through suffer the effects of each color, one at a time. <p class=sub>Typically, only the upper hemisphere of the globe will exist, since you are at the center of the sphere, so the lower half is usually excluded by the floor surface you are standing on. <p class=sub>The colors of the sphere have the same effects as the colors of a <i>prismatic wall</i>. <p class=sub><i>Prismatic sphere</i> can be made permanent with a <i>permanency</i> spell"
@@ -7244,7 +7244,7 @@ spells = [{
     phb: "264", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell causes seven shimmering, intertwined, multicolored beams of light to spray from your hand. Each beam has a different power. Creatures in the area of the spell with 8 HD or less are automatically blinded for 2d4 rounds. Every creature in the area is randomly struck by one or more beams, which have additional effects. <table> <tr class=header><td>1d8</td><td>Color of Beam</td><td>Effect</td></tr> <tr><td>1</td><td>Red</td><td>20 points fire damage (Reflex half)</td></tr> <tr><td>2</td><td>Orange</td><td>40 points acid damage (Reflex half)</td></tr> <tr><td>3</td><td>Yellow</td><td>80 points electricity damage (Reflex half)</td></tr> <tr><td>4</td><td>Green</td><td>Poison (Kills; Fortitude partial, take 1d6 points of Con damage instead)</td></tr> <tr><td>5</td><td>Blue</td><td>Turned to stone (Fortitude negates)</td></tr> <tr><td>6</td><td>Indigo</td><td>Insane, as <i>insanity</i> spell (Will negates)</td></tr> <tr><td>7</td><td>Violet</td><td>Sent to another plane (Will negates)</td></tr> <tr><td>8</td><td></td><td>Struck by two rays; roll twice more, ignoring any \"8\" results.</td></tr> </table>"
@@ -7262,7 +7262,7 @@ spells = [{
     phb: "264", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "<i>Prismatic wall</i> creates a vertical, opaque wall–a shimmering, multicolored plane of light that protects you from all forms of attack. The wall flashes with seven colors, each of which has a distinct power and purpose. The wall is immobile, and you can pass through and remain near the wall without harm. However, any other creature with less than 8 HD that is within 20 feet of the wall is blinded for 2d4 rounds by the colors if it looks at the wall. <p class=sub>The wall's maximum proportions are 4 feet wide per caster level and 2 feet high per caster level. A prismatic wall spell cast to materialize in a space occupied by a creature is disrupted, and the spell is wasted. <p class=sub>Each color in the wall has a special effect. The accompanying table shows the seven colors of the wall, the order in which they appear, their effects on creatures trying to attack you or pass through the wall, and the magic needed to negate each color. <p class=sub>The wall can be destroyed, color by color, in consecutive order, by various magical effects; however, the first color must be brought down before the second can be affected, and so on. A <i>rod of cancellation</i> or a <i>Mordenkainen's disjunction</i> spell destroys a <i>prismatic wall</i>, but an <i>antimagic field</i> fails to penetrate it. <i>Dispel magic</i> and <i>greater dispel magic</i> cannot dispel the wall or anything beyond it. Spell resistance is effective against a <i>prismatic wall</i>, but the caster level check must be repeated for each color present. <i>Prismatic wall</i> can be made permanent with a <i>permanency</i> spell. <table> <tr class=header><td>Color</td><td>Order</td><td>Effect of Color</td><td>Negated By</td></tr> <tr><td>Red</td><td>1st</td><td>Stops nonmagical ranged weapons. Deals 20 points of fire damage (Reflex half).</td><td><i>Cone of cold</i></td></tr> <tr><td>Orange</td><td>2nd</td><td>Stops magical ranged weapons. Deals 40 points of acid damage (Reflex half).</td><td><i>Gust of wind</i></td></tr> <tr><td>Yellow</td><td>3rd</td><td>Stops poisons, gases, and petrification. Deals 80 points of electricity damage (Reflex half).</td><td><i>Disintegrate</i></td></tr> <tr><td>Green</td><td>4th</td><td>Stops breath weapons. Poison (Kills; Fortitude partial for 1d6 points of Con damage instead).</td><td><i>Passwall</i></td></tr> <tr><td>Blue</td><td>5th</td><td>Stops divination and mental attacks. Turned to stone (Fortitude negates).</td><td><i>Magic missile</i></td></tr> <tr><td>Indigo</td><td>6th</td><td>Stops all spells. Will save or become insane (as insanity spell).</td><td>Daylight</td></tr> <tr><td>Violet</td><td>7th</td><td>Energy field destroys all objects and effects.<sup>1</sup> Creatures sent to another plane (Will negates).</td><td><i>Dispel magic</i></td></tr> </table><p class=sub><p><sup>1</sup> The violet effect makes the special effects of the other six colors redundant, but these six effects are included here because certain magic items can create prismatic effects one color at a time, and spell resistance might render some colors ineffective (see above)."
@@ -7298,7 +7298,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>silent image</i>, except that this spell's figment activates when a specific condition occurs. The figment includes visual, auditory, olfactory, and thermal elements, including intelligible speech. <p class=sub>You set the triggering condition (which may be a special word) when casting the spell. The event that triggers the illusion can be as general or as specific and detailed as desired but must be based on an audible, tactile, olfactory, or visual trigger. The trigger cannot be based on some quality not normally obvious to the senses, such as alignment. (See <i>magic mouth</i> for more details about such triggers.) <p class=sub><i>Material Component</i>: A bit of fleece and jade dust worth 25 gp."
@@ -7317,7 +7317,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "You tap energy from the Plane of Shadow to create a quasi-real, illusory version of yourself. The projected image looks, sounds, and smells like you but is intangible. The projected image mimics your actions (including speech) unless you direct it to act differently (which is a move action).<p class=sub>You can see through its eyes and hear through its ears as if you were standing where it is, and during your turn you can switch from using its senses to using your own, or back again, as a free action. While you are using its senses, your body is considered blinded and deafened. <p class=sub>If you desire, any spell you cast whose range is touch or greater can originate from the projected image instead of from you. The projected image can't cast any spells on itself except for illusion spells. The spells affect other targets normally, despite originating from the projected image. <p class=sub>Objects are affected by the projected image as if they had succeeded on their Will save. <p class=sub>You must maintain line of effect to the projected image at all times. If your line of effect is obstructed, the spell ends. If you use dimension door, teleport, plane shift, or a similar spell that breaks your line of effect, even momentarily, the spell ends. <p class=sub><i>Material Component</i>: A small replica of you (a doll), which costs 5 gp to create."
@@ -7335,7 +7335,7 @@ spells = [{
     phb: "266", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The warded creature gains resistance to ranged weapons. The subject gains damage reduction 10/magic against ranged weapons. (This spell doesn't grant you the ability to damage creatures with similar damage reduction.) Once the spell has prevented a total of 10 points of damage per caster level (maximum 100 points), it is discharged. <p class=sub><i>Focus</i>: A piece of shell from a tortoise or a turtle."
@@ -7355,7 +7355,7 @@ spells = [{
     classes: {
         "Cleric": 2,
         "Paladin": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell functions like <i>protection from evil</i>, except that the deflection and resistance bonuses apply to attacks from chaotic creatures, and chaotic summoned creatures cannot touch the subject."
@@ -7376,7 +7376,7 @@ spells = [{
         "Cleric": 4,
         "Druid": 4,
         "Ranger": 2,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "<i>Protection from energy</i> grants temporary immunity to the type of energy you specify when you cast it (acid, cold, electricity, fire, or sonic). When the spell absorbs 12 points per caster level of energy damage (to a maximum of 120 points at 10th level), it is discharged. <p class=sub><i>Note</i>: <i>Protection from energy</i> overlaps (and does not stack with) <i>resist energy</i>. If a character is warded by <i>protection from energy</i> and <i>resist energy</i>, the protection spell absorbs damage until its power is exhausted."
@@ -7396,7 +7396,7 @@ spells = [{
     classes: {
         "Cleric": 2,
         "Paladin": 1,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell wards a creature from attacks by evil creatures, from mental control, and from summoned creatures. It creates a magical barrier around the subject at a distance of 1 foot. The barrier moves with the subject and has three major effects. <p class=sub>First, the subject gains a +2 deflection bonus to AC and a +2 resistance bonus on saves. Both these bonuses apply against attacks made or effects created by evil creatures. <p class=sub>Second, the barrier blocks any attempt to possess the warded creature (by a magic jar attack, for example) or to exercise mental control over the creature (including enchantment (charm) effects and enchantment (compulsion) effects that grant the caster ongoing control over the subject, such as <i>dominate</i> person). The <i>protection</i> does not prevent such effects from targeting the protected creature, but it suppresses the effect for the duration of the <i>protection from evil</i> effect. If the <i>protection from evil</i> effect ends before the effect granting mental control does, the would-be controller would then be able to mentally command the controlled creature. Likewise, the barrier keeps out a possessing life force but does not expel one if it is in place before the spell is cast. This second effect works regardless of alignment. <p class=sub>Third, the spell prevents bodily contact by summoned creatures. This causes the natural weapon attacks of such creatures to fail and the creatures to recoil if such attacks require touching the warded creature. Good summoned creatures are immune to this effect. The protection against contact by summoned creatures ends if the warded creature makes an attack against or tries to force the barrier against the blocked creature. Spell resistance can allow a creature to overcome this protection and touch the warded creature. <p class=sub><i>Arcane Material Component</i>: A little powdered silver with which you trace a 3-foot-diameter circle on the floor (or ground) around the creature to be warded."
@@ -7415,7 +7415,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell functions like <i>protection from evil</i>, except that the deflection and resistance bonuses apply to attacks from good creatures, and good summoned creatures cannot touch the subject."
@@ -7434,7 +7434,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell functions like <i>protection from evil</i>, except that the deflection and resistance bonuses apply to attacks from lawful creatures, and lawful summoned creatures cannot touch the subject."
@@ -7452,7 +7452,7 @@ spells = [{
     phb: "266", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "The subject gains a +8 resistance bonus on saving throws against spells and spell-like abilities (but not against supernatural and extraordinary abilities). <p class=sub><i>Material Component</i>: A diamond of at least 500 gp value, which must be crushed and sprinkled over the targets. <p class=sub><i>Focus</i>: One 1,000 gp diamond per creature to be granted the protection. Each subject must carry one such gem for the duration of the spell. If a subject loses the gem, the spell ceases to affect him."
@@ -7470,7 +7470,7 @@ spells = [{
     phb: "266", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You create a number of semitangible, visible magical orbs (called \"eyes\") equal to 1d4 + your caster level. These eyes move out, scout around, and return as you direct them when casting the spell. Each eye can see 120 feet (normal vision only) in all directions. <p class=sub>While the individual eyes are quite fragile, they're small and difficult to spot. Each eye is a Fine construct, about the size of a small apple, that has 1 hit point, AC 18 (+8 bonus for its size), flies at a speed of 30 feet with perfect maneuverability, and has a +16 Hide modifier. It has a Spot modifier equal to your caster level (maximum +15) and is subject to illusions, darkness, fog, and any other factors that would affect your ability to receive visual information about your surroundings. An eye traveling through darkness must find its way by touch. <p class=sub>When you create the eyes, you specify instructions you want them to follow in a command of no more than twenty-five words. Any knowledge you possess is known by the eyes as well, so if you know, for example, what a typical merchant looks like, the eyes do as well. <p class=sub><i>A sample command</i>: \"Surround me at a range of four hundred feet and return if you spot any dangerous creatures.\" The phrase \"Surround me\" directs the eyes to form an equally spaced, horizontal ring at whatever range you indicate, and then move with you. As eyes return or are destroyed, the rest automatically space themselves to compensate. In the case of this sample command, an eye returns only if it spots a creature you would regard as dangerous. A \"peasant\" that is actually a shapechanged dragon wouldn't trigger an eye's return. Ten eyes can form a ring with a radius of 400 feet and between themselves see everything that crosses the ring. <p class=sub><i>Another sample command</i>: \"Spread out and search the town for Arweth. Follow him for three minutes, staying out of sight, and then return.\" The phrase \"Spread out\" directs the eyes to move away from you in all directions. In this case, each eye would separately follow Arweth for three minutes once it spots him. <p class=sub>Other commands that might be useful include having eyes form a line in a certain manner, making them move at random within a certain range, or having them follow a certain type of creature. The DM is the final judge of the suitability of your directions. <p class=sub>In order to report their findings, the eyes must return to your hand. Each replays in your mind all it has seen during its existence. It takes an eye 1 round to replay 1 hour of recorded images. After relaying its findings, an eye disappears. <p class=sub>If an eye ever gets more than 1 mile away from you, it instantly ceases to exist. However, your link with the eye is such that you won't know if the eye was destroyed because it wandered out of range or because of some other event. <p class=sub>The eyes exist for up to 1 hour per caster level or until they return to you. <i>Dispel magic</i> can destroy eyes. Roll separately for each eye caught in an area dispel. Of course, if an eye is sent into darkness, it could hit a wall or similar obstacle and destroy itself. <p class=sub><i>Material Component</i>: A handful of crystal marbles."
@@ -7488,7 +7488,7 @@ spells = [{
     phb: "267", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>prying eyes</i>, except that the eyes can see all things as they actually are, just as if they had <i>true seeing</i> with a range of 120 feet. Thus, they can navigate darkened areas at full normal speed. Also, a greater prying eye's maximum Spot modifier is +25 instead of +15."
@@ -7525,7 +7525,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "<i>Pyrotechnics</i> turns a fire into either a burst of blinding fireworks or a thick cloud of choking smoke, depending on the version you choose. <p class=sub><i>Fireworks</i>: The fireworks are a flashing, fiery, momentary burst of glowing, colored aerial lights. This effect causes creatures within 120 feet of the fire source to become blinded for 1d4+1 rounds (Will negates). These creatures must have line of sight to the fire to be affected. Spell resistance can prevent blindness. <p class=sub><i>Smoke Cloud</i>: A writhing stream of smoke billows out from the source, form-ing a choking cloud. The cloud spreads 20 feet in all directions and lasts for 1 round per caster level. All sight, even darkvision, is ineffective in or through the cloud. All within the cloud take -4 penalties to Strength and Dexterity (Fortitude negates). These effects last for 1d4+1 rounds after the cloud dissipates or after the creature leaves the area of the cloud. Spell resistance does not apply. <p class=sub><i>Material Component</i>: The spell uses one <p class=sub>fire source, which is immediately extinguished. A fire so large that it exceeds a 20-foot cube is only partly extinguished. Magical fires are not extinguished, al-though a fire-based creature (such as a fire elemental) used as a source takes 1 point of damage per caster level."
@@ -7561,7 +7561,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "Each affected creature gains a +2 morale bonus to Strength and Constitution, a +1 morale bonus on Will saves, and a -2 penalty to AC. The effect is otherwise identical with a barbarian's rage (see page 25), except that the subjects aren't fatigued at the end of the rage."
@@ -7580,7 +7580,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "A glowing, rainbow-hued pattern of interweaving colors fascinates those within it. <i>Rainbow pattern</i> fascinates a maximum of 24 Hit Dice of creatures. Creatures with the fewest HD are affected first. Among creatures with equal HD, those who are closest to the spell's point of origin are affected first. An affected creature that fails its saves is fascinated by the pattern. <p class=sub>With a simple gesture (a free action), you can make the rainbow pattern move up to 30 feet per round (moving its effective point of origin). All fascinated creatures follow the moving rainbow of light, trying to get or remain within the effect. Fascinated creatures who are restrained and removed from the pattern still try to follow it. If the pattern leads its subjects into a dangerous area (through flame, off a cliff, or the like), each fascinated creature gets a second save. If the view of the lights is completely blocked (by an <i>obscuring mist</i> spell, for instance), creatures who can't see them are no longer affected. <p class=sub>The spell does not affect sightless creatures. <p class=sub><i>Verbal Component</i>: A wizard or sorcerer need not utter a sound to cast this spell, but a bard must sing, play music, or recite a rhyme as a verbal component. <p class=sub><i>Material Component</i>: A piece of phosphor.<p class=sub><i>Focus</i>: A crystal prism."
@@ -7615,7 +7615,7 @@ spells = [{
     phb: "268", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "Casting this spell allows you to prepare additional spells or retain spells recently cast. Pick one of these two versions when the spell is cast. <p class=sub><i>Prepare</i>: You prepare up to three additional levels of spells (such as three 1st-level spells, a 2nd- and a 1st-level spell, or a 3rd-level spell). A cantrip counts as 1/2 level for this purpose. You prepare and cast these spells normally. <p class=sub><i>Retain</i>: You retain any spell of 3rd level or lower that you had cast up to 1 round before you started casting the mnemonic enhancer. This restores the previously cast spell to your mind. <p class=sub>In either event, the spell or spells prepared or retained fade after 24 hours (if not cast). <p class=sub><i>Material Component</i>: A piece of string, and ink consisting of squid secretion with black dragon's blood. <p class=sub><i>Focus</i>: An ivory plaque of at least 50 gp value."
@@ -7633,7 +7633,7 @@ spells = [{
     phb: "268", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You forge a telepathic bond among yourself and a number of willing creatures, each of which must have an Intelligence score of 3 or higher. Each creature included in the link is linked to all the others. The creatures can communicate telepathically through the bond regardless of language. No special power or influence is established as a result of the bond. Once the bond is formed, it works over any distance (although not from one plane to another). <p class=sub>If desired, you may leave yourself out of the telepathic bond forged. This decision must be made at the time of casting. <p class=sub><i>Rary's telepathic bond</i> can be made permanent with a <i>permanency</i> spell, though it only bonds two creatures per casting of <i>permanency</i>. <p class=sub><i>Material Component</i>: Pieces of eggshell from two different kinds of creatures."
@@ -7651,7 +7651,7 @@ spells = [{
     phb: "269", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A coruscating ray springs from your hand. You must succeed on a ranged touch attack to strike a target. The subject takes a penalty to Strength equal to 1d6+1 per two caster levels (maximum 1d6+5). The subject's Strength score cannot drop below 1."
@@ -7669,7 +7669,7 @@ spells = [{
     phb: "269", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "A black ray projects from your pointing finger. You must succeed on a ranged touch attack with the ray to strike a target. The subject is immediately exhausted for the spell's duration. A successful Fortitude save means the creature is only fatigued. A character that is already fatigued instead becomes exhausted. <p class=sub>This spell has no effect on a creature that is already exhausted. Unlike normal exhaustion or fatigue, the effect ends as soon as the spell's duration expires. <p class=sub><i>Material Component</i>: A drop of sweat."
@@ -7687,7 +7687,7 @@ spells = [{
     phb: "269", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "A ray of freezing air and ice projects from your pointing finger. You must succeed on a ranged touch attack with the ray to deal damage to a target. The ray deals 1d3 points of cold damage."
@@ -7710,7 +7710,7 @@ spells = [{
         "Druid": 1,
         "Paladin": 1,
         "Ranger": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "By means of <i>read magic</i>, you can decipher magical inscriptions on objects–books, scrolls, weapons, and the like–that would otherwise be unintelligible. This deciphering does not normally invoke the magic contained in the writing, although it may do so in the case of a cursed scroll. Furthermore, once the spell is cast and you have read the magical inscription, you are thereafter able to read that particular writing without recourse to the use of read magic. You can read at the rate of one page (250 words) per minute. The spell allows you to identify a <i>glyph of warding</i> with a DC 13 Spellcraft check, a <i>greater glyph of warding</i> with a DC 16 Spellcraft check, or any <i>symbol</i> spell with a Spellcraft check (DC 10 + spell level). <p class=sub><i>Read magic</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Focus</i>: A clear crystal or mineral prism."
@@ -7746,7 +7746,7 @@ spells = [{
     phb: "269", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell causes instant diminution of a humanoid creature, halving its height, length, and width and dividing its weight by 8. This decrease changes the creature's size category to the next smaller one. The target gains a +2 size bonus to Dexterity, a -2 size penalty to Strength (to a minimum of 1), and a +1 bonus on attack rolls and AC due to its reduced size. <p class=sub>A Small humanoid creature whose size decreases to Tiny has a space of 2-1/2 feet and a natural reach of 0 feet (meaning that it must enter an opponent's square to attack). A Large humanoid creature whose size decreases to Medium has a space of 5 feet and a natural reach of 5 feet. This spell doesn't change the target's speed. <p class=sub>All equipment worn or carried by a creature is similarly reduced by the spell. Melee and projectile weapons deal less damage (see Table 2-3 in the Dungeon Master's Guide). Other magical properties are not affected by this spell. Any <i>reduced</i> item that leaves the <i>reduced</i> creature's possession (including a projectile or thrown weapon) instantly returns to its normal size. This means that thrown weapons deal their normal damage (projectiles deal damage based on the size of the weapon that fired them). <p class=sub>Multiple magical effects that reduce size do not stack, which means (among other things) that you can't use a second casting of this spell to further reduce the size of as humanoid that's still under the effect of the first casting. <p class=sub><i>Reduce person</i> counters and dispels <i>enlarge person</i>.<p class=sub><i>Reduce person</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: A pinch of powdered iron."
@@ -7764,7 +7764,7 @@ spells = [{
     phb: "269", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>reduce person</i>, except that it affects multiple creatures. "
@@ -7783,7 +7783,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 8,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "You create powerful magic in some specially prepared object–a statuette, a jeweled rod, a gem, or the like. This object contains the power to instantly transport its possessor across any distance within the same plane to your abode. Once the item is transmuted, you must give it willingly to a creature and at the same time inform it of a command word to be spoken when the item is used. To make use of the item, the subject speaks the command word at the same time that it rends or breaks the item (a standard action). When this is done, the individual and all objects it is wearing and carrying (to a maximum of the character's heavy load) are instantly transported to your abode. No other creatures are affected (aside from a familiar that is touching the subject). <p class=sub>You can alter the spell when casting it so that it transports you to within 10 feet of the possessor of the item when it is broken and the command word spoken. You will have a general idea of the location and situation of the item possessor at the time the refuge spell is discharged, but once you decide to alter the spell in this fashion, you have no choice whether or not to be transported. <p class=sub><i>Material Component</i>: The specially prepared object, whose construction requires gems worth 1,500 gp."
@@ -7856,7 +7856,7 @@ spells = [{
         "Bard": 4,
         "Cleric": 4,
         "Paladin": 3,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "<i>Remove curse</i> instantaneously removes all curses on an object or a creature. <i>Remove curse</i> does not remove the curse from a cursed shield, weapon, or suit of armor, although the spell typically enables the creature afflicted with any such cursed item to remove and get rid of it. Certain special curses may not be countered by this spell or may be countered only by a caster of a certain level or higher. <p class=sub><i>Remove curse</i> counters and dispels <i>bestow curse</i>."
@@ -7984,7 +7984,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 8,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "An invisible, mobile field surrounds you and prevents creatures from approaching you. You decide how big the field is at the time of casting (to the limit your level allows). Any creature within or entering the field must attempt a save. If it fails, it becomes unable to move toward you for the duration of the spell. Repelled creatures' actions are not otherwise restricted. They can fight other creatures and can cast spells and attack you with ranged weapons. If you move closer to an affected creature, nothing happens. (The creature is not forced back.) The creature is free to make melee attacks against you if you come within reach. If a repelled creature moves away from you and then tries to turn back toward you, it cannot move any closer if it is still within the spell's area. <p class=sub><i>Arcane Focus</i>: A pair of small iron bars attached to two small canine statuettes, one black and one white, the whole array worth 50 gp."
@@ -8006,7 +8006,7 @@ spells = [{
         "Cleric": 1,
         "Druid": 1,
         "Paladin": 1,
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You imbue the subject with magical energy that protects it from harm, granting it a +1 resistance bonus on saves. <i>Resistance</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Arcane Material Component</i>: A miniature cloak."
@@ -8028,7 +8028,7 @@ spells = [{
         "Druid": 3,
         "Paladin": 2,
         "Ranger": 1,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This abjuration grants a creature limited protection from damage of whichever one of five energy types you select: acid, cold, electricity, fire, or sonic. The subject gains energy resistance 10 against the energy type chosen, meaning that each time the creature is subjected to such damage (whether from a natural or magical source), that damage is reduced by 10 points before being applied to the creature's hit points. The value of the energy resistance granted increases to 20 points at 7th level and to a maximum of 30 points at 11th level. The spell protects the recipient's equipment as well. <p class=sub><i>Resist energy</i> absorbs only damage. The subject could still suffer unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice. <p class=sub><i>Note</i>: <i>Resist energy</i> overlaps (and does not stack with) <i>protection from energy</i>. If a character is warded by <i>protection from energy</i> and <i>resist energy</i>, the <i>protection</i> spell absorbs damage until its power is exhausted."
@@ -8117,7 +8117,7 @@ spells = [{
     phb: "273", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell reverses gravity in an area, causing all unattached objects and creatures within that area to fall upward and reach the top of the area in 1 round. If some solid object (such as a ceiling) is encountered in this fall, falling objects and creatures strike it in the same manner as they would during a normal downward fall. If an object or creature reaches the top of the area without striking anything, it remains there, oscillating slightly, until the spell ends. At the end of the spell duration, affected objects and creatures fall downward. <p class=sub>Provided it has something to hold onto, a creature caught in the area can attempt a Reflex save to secure itself when the spell strikes. Creatures who can fly or levitate can keep themselves from falling. <p class=sub><i>Arcane Material Component</i>: A lodestone and iron filings."
@@ -8152,7 +8152,7 @@ spells = [{
     phb: "273", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "When this spell is cast upon a piece of rope from 5 to 30 feet long, one end of the rope rises into the air until the whole rope hangs perpendicular to the ground, as if affixed at the upper end. The upper end is, in fact, fastened to an extradimensional space that is outside the multiverse of extradimensional spaces (\"planes\"). Creatures in the extradimensional space are hidden, beyond the reach of spells (including divinations), unless those spells work across planes. The space holds as many as eight creatures (of any size). Creatures in the space can pull the rope up into the space, making the rope \"disappear.\" In that case, the rope counts as one of the eight creatures that can fit in the space. The rope can support up to 16,000 pounds. A weight greater than that can pull the rope free. <p class=sub>Spells cannot be cast across the extra-dimensional interface, nor can area effects cross it. Those in the extradimensional space can see out of it as if a 3-foot-by- 5-foot window were centered on the rope. The window is present on the Material Plane, but it's invisible, and even creatures that can see the window can't see through it. Anything inside the extradimensional space drops out when the spell ends. The rope can be climbed by only one person at a time. The <i>rope trick</i> spell enables climbers to reach a normal place if they do not climb all the way to the extradimensional space. <p class=sub><i>Note</i>: It is hazardous to create an extradimensional space within an existing extradimensional space or to take an extradimensional space into an existing one. <p class=sub><i>Material Component</i>: Powdered corn extract and a twisted loop of parchment."
@@ -8205,7 +8205,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell functions like <i>cause fear</i>, except that it causes all targeted creatures of less than 6 HD to become frightened. <p class=sub><i>Material Component</i>: A bit of bone from an undead skeleton, zombie, ghoul, ghast, or mummy."
@@ -8223,7 +8223,7 @@ spells = [{
     phb: "274", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "A twisting pattern of discordant, coruscating colors weaves through the air, affecting creatures within it. The spell affects a total number of Hit Dice of creatures equal to your caster level (maximum 20). Creatures with the fewest HD are affected first; and, among creatures with equal HD, those who are closest to the spell's point of origin are affected first. Hit Dice that are not sufficient to affect a creature are wasted. The spell affects each subject according to its Hit Dice. <p class=sub><i>6 or less</i>: Unconscious for 1d4 rounds, then stunned for 1d4 rounds, and then confused for 1d4 rounds. (Treat an unconscious result as stunned for nonliving creatures.) <p class=sub><i>7 to 12</i>: Stunned for 1d4 rounds, then confused for 1d4 rounds. <p class=sub><i>13 or more</i>: Confused for 1d4 rounds. <p class=sub>Sightless creatures are not affected by scintillating pattern. <p class=sub><i>Material Component</i>: A small crystal prism."
@@ -8241,7 +8241,7 @@ spells = [{
     phb: "274", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You blast your enemies with fiery rays. You may fire one ray, plus one additional ray for every four levels beyond 3rd (to a maximum of three rays at 11th level). Each ray requires a ranged touch attack to hit and deals 4d6 points of fire damage. The rays may be fired at the same or different targets, but all bolts must be aimed at targets within 30 feet of each other and fired simultaneously."
@@ -8259,7 +8259,7 @@ spells = [{
     phb: "274", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell combines several elements to create a powerful protection from scrying and direct observation. When casting the spell, you dictate what will and will not be observed in the spell's area. The illusion created must be stated in general terms. Thus, you could specify the illusion of yourself and another character playing chess for the duration of the spell, but you could not have the illusory chess players take a break, make dinner, and then resume their game. You could have a crossroads appear quiet and empty even while an army is actually passing through the area. You could specify that no one be seen (including passing strangers), that your troops be undetected, or even that every fifth person or unit should be visible. Once the conditions are set, they cannot be changed. <p class=sub>Attempts to scry the area automatically detect the image stated by you with no save allowed. Sight and sound are appropriate to the illusion created. A band of people standing in a meadow could be concealed as an empty meadow with birds chirping, for instance. <p class=sub>Direct observation may allow a save (as per a normal illusion), if there is cause to disbelieve what is seen. Certainly onlookers in the area would become suspicious if a marching army disappeared at one point to reappear at another. Even entering the area does not cancel the illusion or necessarily allow a save, assuming that hidden beings take care to stay out of the way of those affected by the illusion."
@@ -8280,7 +8280,7 @@ spells = [{
         "Bard": 4,
         "Cleric": 6,
         "Druid": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You can see and hear some creature, which may be at any distance. If the subject succeeds on a Will save, the scrying attempt simply fails. The difficulty of the save depends on how well you know the subject and what sort of physical connection (if any) you have to that creature. Furthermore, if the subject is on another plane, it gets a +5 bonus on its Will save. <table><tr class=header><td>Knowledge</td><td>Will Save Modifier</td></tr> <tr><td>None<sup>1</sup></td><td>+10</td></tr> <tr><td>Secondhand (you have heard of the subject)</td><td>+5</td></tr> <tr><td>Firsthand (you have met the subject)</td><td>+0</td></tr> <tr><td>Familiar (you know the subject well)</td><td>-5</td></tr> </table><p class=sub><p><sup>1</sup> You must have some sort of connection to a creature you have no knowledge of. <table> <tr class=header><td>Connection</td><td>Will Save Modifier</td></tr> <tr><td>Likeness or picture</td><td>-2</td></tr> <tr><td>Possession or garment</td><td>-4</td></tr> <tr><td>Body part, lock of hair, bit of nail, etc.</td><td>-10</td></tr> </table> <p class=sub>If the save fails, you can see and hear the subject and the subject's immediate surroundings (approximately 10 feet in all directions of the subject). If the subjectmoves, the sensor follows at a speed of up to 150 feet. <p class=sub><i>As with all divination (scrying) spells, the sensor has your full visual acuity, including any magical effects. In addition, the following spells have a 5% chance per caster level of operating through the sensor</i>: <i>detect chaos, detect evil, detect good, detect law, detect magic,</i> and <i>message</i>. <p class=sub>If the save succeeds, you can't attempt to scry on that subject again for at least 24 hours. <p class=sub><i>Arcane Material Component</i>: The eye of a hawk, an eagle, or a roc, plus nitric acid, copper, and zinc. <p class=sub><i>Wizard, Sorcerer, or Bard Focus</i>: A mirror of finely wrought and highly polished silver costing not less than 1,000 gp. The mirror must be at least 2 feet by 4 feet. <p class=sub><i>Cleric Focus</i>: A holy water font costing not less than 100 gp. <p class=sub><i>Druid Focus</i>: A natural pool of water."
@@ -8301,7 +8301,7 @@ spells = [{
         "Bard": 7,
         "Cleric": 8,
         "Druid": 8,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>scrying</i>, except as noted above. Additionally, all of the following spells function reliably through the sensor: <i>detect chaos, detect evil, detect good, detect law, detect magic, message, read magic,</i> and <i>tongues</i>."
@@ -8354,7 +8354,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "<i>Secret page</i> alters the contents of a page so that they appear to be something entirely different. Thus, a map can be changed to become a treatise on burnishing ebony walking sticks. The text of a spell can be changed to show a ledger page or even another spell. <i>Explosive runes</i> or <i>sepia snake</i> sigil can be cast upon the <i>secret page</i>. <p class=sub>A <i>comprehend languages</i> spell alone cannot reveal a <i>secret page</i>'s contents. You are able to reveal the original contents by speaking a special word. You can then peruse the actual page, and return it to its secret page form at will. You can also remove the spell by double repetition of the special word. A <i>detect magic</i> spell reveals dim magic on the page in question but does not reveal its true contents. <i>True seeing</i> reveals the presence of the hidden material but does not reveal the contents unless cast in combination with comprehend languages. A <i>secret page</i> spell can be dispelled, and the hidden writings can be destroyed by <p class=sub>means of an <i>erase</i> spell. <p class=sub><i>Material Component</i>: Powdered herring scales and will-o'-wisp essence."
@@ -8373,7 +8373,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You can see any objects or beings that are invisible within your range of vision, as well as any that are ethereal, as if they were normally visible. Such creatures are visible to you as translucent shapes, allowing you easily to discern the difference between visible, invisible, and ethereal creatures. <p class=sub>The spell does not reveal the method used to obtain invisibility. It does not reveal illusions or enable you to see through opaque objects. It does not reveal creatures who are simply hiding, concealed, or otherwise hard to see. <p class=sub><i>See invisibility</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: A pinch of talc and a small sprinkling of powdered silver."
@@ -8392,7 +8392,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>disguise self</i>, except that you can change the appearance of other people as well. Affected creatures resume their normal appearances if slain. <p class=sub>Unwilling targets can negate the spell's effect on them by making Will saves or with spell resistance."
@@ -8411,7 +8411,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 5,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You contact a particular creature with which you are familiar and send a short message of twenty-five words or less to the subject. The subject recognizes you if it knows you. It can answer in like manner immediately. A creature with an Intelligence score as low as 1 can understand the sending, though the subject's ability to react is limited as normal by its Intelligence score. Even if the <i>sending</i> is received, the subject is not obligated to act upon it in any manner. <p class=sub>If the creature in question is not on the same plane of existence as you are, there is a 5% chance that the <i>sending</i> does not arrive. (Local conditions on other planes may worsen this chance considerably, at the option of the DM.) <p class=sub><i>Arcane Material Component</i>: A short piece of fine copper wire."
@@ -8430,7 +8430,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "When you cast <i>sepia snake sigil</i>, a small symbol appears in the text of one written work such as a book, scroll, or map. The text containing the symbol must be at least twenty-five words long. When anyone reads the text containing the symbol, the <i>sepia snake</i> springs into being and strikes the reader, provided there is line of effect between the symbol and the reader. Simply seeing the enspelled text is not sufficient to trigger the spell; the subject must deliberately read it. The target is entitled to a save to evade the snake's strike. If it succeeds, the sepia snake dissipates in a flash of brown light accompanied by a puff of dun-colored smoke and a loud noise. If the target fails its save, it is engulfed in a shimmering amber field of force and immobilized until released, either at your command or when 1d4 days + one day per caster level have elapsed. <p class=sub>While trapped in the amber field of force, the subject does not age, breathe, grow hungry, sleep, or regain spells. It is preserved in a state of suspended animation, unaware of its surroundings. It can be damaged by outside forces (and perhaps even killed), since the field provides no protection against physical injury. However, a dying subject does not lose hit points or become stable until the spell ends. <p class=sub>The hidden sigil cannot be detected by normal observation, and <i>detect magic</i> reveals only that the entire text is magical. A <i>dispel magic</i> can remove the sigil. An <i>erase</i> spell destroys the entire page of text. <i>Sepia snake sigil</i> can be cast in combination with other spells that hide or garble text, such as <i>secret page</i>. <p class=sub><i>Material Component</i>: 500 gp worth of powdered amber, a scale from any snake, and a pinch of mushroom spores."
@@ -8448,7 +8448,7 @@ spells = [{
     phb: "276", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "When cast, this spell not only prevents divination spells from working to detect or locate the creature or object affected by sequester, it also renders the affected creature or object invisible to any form of sight or seeing (as the <i>invisibility</i> spell). Thus, sequester can mask a secret door, a treasure vault, or anything similar. The spell does not prevent the subject from being discovered through tactile means or through the use of devices (such as a <i>robe of eyes</i> or a <i>gem of seeing</i>). Creatures affected by <i>sequester</i> become comatose and are effectively in a state of suspended animation until the spell wears off or is dispelled. <p class=sub><i>Note</i>: The Will save prevents an attended or magical object from being <i>sequestered</i>. There is no save to see the <i>sequestered</i> creature or object or to detect it with a divination spell. <p class=sub><i>Material Component</i>: A basilisk eyelash, gum arabic, and a dram of whitewash."
@@ -8466,7 +8466,7 @@ spells = [{
     phb: "276", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>shadow conjuration</i>, except that it mimics sorcerer and wizard conjuration spells of 8th level or lower. The illusory conjurations created deal four-fifths (80%) damage to nonbelievers, and nondamaging effects are 80% likely to work against nonbelievers."
@@ -8485,7 +8485,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You use material from the Plane of Shadow to shape quasi-real illusions of one or more creatures, objects, or forces. Shadow conjuration can mimic any sorcerer or wizard conjuration (summoning) or conjuration (creation) spell of 3rd level or lower. <i>Shadow conjurations</i> are actually one-fifth (20%) as strong as the real things, though creatures who believe the <i>shadow conjurations</i> to be real are affected by them at full strength. <p class=sub>Any creature that interacts with the conjured object, force, or creature can make a Will save to recognize its true nature. <p class=sub>Spells that deal damage, such as <i>Melf's acid arrow</i>, have normal effects unless the affected creature succeeds on a Will save. Each disbelieving creature takes only one-fifth (20%) damage from the attack. If the disbelieved attack has a special effect other than damage, that effect is only 20% likely to occur. Regardless of the result of the save to disbelieve, an affected creature is also allowed any save that the spell being simulated allows, but the save DC is set according to <i>shadow conjuration</i>'s level (5th) rather than the spell's normal level. In addition, any effect created by <i>shadow conjuration</i> allows spell resistance, even if the spell it is simulating does not. <p class=sub>Shadow objects or substances, such as <i>obscuring mist</i>, have normal effects except against those who disbelieve them. Against disbelievers, they are 20% likely to work. <p class=sub>A shadow creature has one-fifth the hit points of a normal creature of its kind (regardless of whether it's recognized as shadowy). It deals normal damage and has all normal abilities and weaknesses. Against a creature that recognizes it as a shadow creature, however, the shadow creature's damage is one-fifth (20%) normal, and all special abilities that do not deal lethal damage are only 20% likely to work. (Roll for each use and each affected character separately.) Furthermore, the shadow creature's AC bonuses are one-fifth as large (so a +7 bonus resulting in AC 17 would change to a +1 total bonus for a new AC of 11). <p class=sub>A creature that succeeds on its save sees the <i>shadow conjurations</i> as transparent images superimposed on vague, shadowy forms. <p class=sub>Objects automatically succeed on their Will saves against this spell."
@@ -8503,7 +8503,7 @@ spells = [{
     phb: "276", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>shadow conjuration</i>, except that it can duplicate any sorcerer or wizard conjuration (summoning) or conjuration (creation) spell of 6th level or lower. The illusory conjurations created deal three-fifths (60%) damage to non-believers, and nondamaging effects are 60% likely to work against nonbelievers."
@@ -8522,7 +8522,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You tap energy from the Plane of Shadow to cast a quasi-real, illusory version of a sorcerer or wizard evocation spell of 4th level or lower. (For a spell with more than one level, use the best one applicable to you.) <p class=sub>Spells that deal damage, such as <i>lightning bolt</i>, have normal effects unless an affected creature succeeds on a Will save. Each disbelieving creature takes only one-fifth damage from the attack. If the disbelieved attack has a special effect other than damage, that effect is one-fifth as strong (if applicable) or only 20% likely to occur. If recognized as a <i>shadow evocation</i>, a damaging spell deals only one-fifth (20%) damage. Regardless of the result of the save to disbelieve, an affected creature is also allowed any save (or spell resistance) that the spell being simulated allows, but the save DC is set according to <i>shadow evocation</i>'s level (5th) rather than the spell's normal level. <p class=sub>Nondamaging effects, such as <i>gust of wind</i>, have normal effects except against those who disbelieve them. Against disbelievers, they have no effect. <p class=sub>Objects automatically succeed on their Will saves against this spell."
@@ -8540,7 +8540,7 @@ spells = [{
     phb: "277", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>shadow evocation</i>, except that it enables you to create partially real, illusory versions of sorcerer or wizard evocation spells of 7th level or lower. If recognized as a <i>greater shadow evocation</i>, a damaging spell deals only three-fifths (60%) damage."
@@ -8559,7 +8559,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "To use the <i>shadow walk</i> spell, you must be in an area of shadowy illumination. You and any creature you touch are then transported along a coiling path of shadowstuff to the edge of the Material Plane where it borders the Plane of Shadow. The effect is largely illusory, but the path is quasi-real. You can take more than one creature along with you (subject to your level limit), but all must be touching each other. <p class=sub>In the region of shadow, you move at a rate of 50 miles per hour, moving normally on the borders of the Plane of Shadow but much more rapidly relative to the Material Plane. Thus, you can use this spell to travel rapidly by stepping onto the Plane of Shadow, moving the desired distance, and then stepping back onto the Material Plane. <p class=sub>Because of the blurring of reality between the Plane of Shadow and the Material Plane, you can't make out details of the terrain or areas you pass over during transit, nor can you predict perfectly where your travel will end. It's impossible to judge distances accurately, making the spell virtually useless for scouting or spying. Furthermore, when the spell effect ends, you are shunted 1d10Ã—100 feet in a random horizontal direction from your desired endpoint. If this would place you within a solid object, you are shunted 1d10Ã—1,000 feet in the same direction. If this would still place you within a solid object, you (and any creatures with you) are shunted to the nearest empty space available, but the strain of this activity renders each creature fatigued (no save). <p class=sub><i>Shadow walk</i> can also be used to travel to other planes that border on the Plane of Shadow, but this usage requires the transit of the Plane of Shadow to arrive at a border with another plane of reality. The transit of the Plane of Shadow requires 1d4 hours. <p class=sub>Any creatures touched by you when shadow walk is cast also make the transition to the borders of the Plane of Shadow. They may opt to follow you, wander off through the plane, or stumble back into the Material Plane (50% chance for either of the latter results if they are lost or abandoned by you). Creatures unwilling to accompany you into the Plane of Shadow receive a Will saving throw, negating the effect if successful."
@@ -8592,7 +8592,7 @@ spells = [{
     phb: "277", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>polymorph</i>, except that it enables you to assume the form of any single nonunique creature (of any type) from Fine to Colossal size. The assumed form cannot have more than your caster level in Hit Dice (to a maximum of 25 HD). Unlike <i>polymorph</i>, this spell allows incorporeal or gaseous forms to be assumed. <p class=sub>You gain all extraordinary and supernatural abilities (both attacks and qualities) of the assumed form, but you lose your own supernatural abilities. You also gain the type of the new form (for example, dragon or magical beast) in place of your own. The new form does not disorient you. Parts of your body or pieces of equipment that are separated from you do not revert to their original forms. <p class=sub>You can become just about anything you are familiar with. You can change form once each round as a free action. The change takes place either immediately before your regular action or immediately after it, but not during the action. For example, you are in combat and assume the form of a will-o'-wisp. When this form is no longer useful, you change into a stone golem and walk away. When pursued, you change into a flea, which hides on a horse until it can hop off. From there, you can become a dragon, an orc, or just about anything else yo are familiar with. <p class=sub>If you use this spell to create a disguise, you get a +10 bonus on your Disguise check. <p class=sub><i>Focus</i>: A jade circlet worth no less than 1,500 gp, which you must place on your head when casting the spell. (The focus melds into your new form when you change shape.)"
@@ -8612,7 +8612,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "<i>Shatter</i> creates a loud, ringing noise that breaks brittle, nonmagical objects; sunders a single solid, nonmagical object; or damages a crystalline creature. <p class=sub>Used as an area attack, <i>shatter</i> destroys nonmagical objects of crystal, glass, ceramic, or porcelain, such as vials, bottles, flasks, jugs, windows, mirrors, and so forth. All such objects within a 5-foot radius of the point of origin are smashed into dozens of pieces by the spell. Objects weighing more than 1 pound per your level are not affected, but all other objects of the appropriate composition are shattered. <p class=sub>Alternatively, you can target <i>shatter</i> against a single solid object, regardless of composition, weighing up to 10 pounds per caster level. <p class=sub>Targeted against a crystalline creature (of any weight), <i>shatter</i> deals 1d6 points of sonic damage per caster level (maximum 10d6), with a Fortitude save for half damage. <p class=sub><i>Arcane Material Component</i>: A chip of mica."
@@ -8630,7 +8630,7 @@ spells = [{
     phb: "278", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "<i>Shield</i> creates an invisible, tower shield-sized mobile disk of force that hovers in front of you. It negates magic missile attacks directed at you. The disk also provides a +4 shield bonus to AC. This bonus applies against incorporeal touch attacks, since it is a force effect. The <i>shield</i> has no armor check penalty or arcane spell failure chance. Unlike with a normal tower shield, you can't use the <i>shield</i> spell for cover."
@@ -8717,7 +8717,7 @@ spells = [{
     phb: "279", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "Your successful melee touch attack deals 1d6 points of electricity damage per caster level (maximum 5d6). When delivering the jolt, you gain a +3 bonus on attack rolls if the opponent is wearing metal armor (or made out of metal, carrying a lot of metal, or the like)."
@@ -8736,7 +8736,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You emit an ear-splitting yell that deafens and damages creatures in its path. Any creature within the area is deafened for 2d6 rounds and takes 5d6 points of sonic damage. A successful save negates the deafness and reduces the damage by half. Any exposed brittle or crystalline object or crystalline creature takes 1d6 points of sonic damage per caster level (maximum 15d6). An affected creature is allowed a Fortitude save to reduce the damage by half, and a creature holding fragile objects can negate damage to them with a successful Reflex save. <p class=sub>A <i>shout</i> spell cannot penetrate a <i>silence</i> spell."
@@ -8755,7 +8755,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>shout</i>, except that the cone deals 10d6 points of sonic damage (or 1d6 points of sonic damage per caster level, maximum 20d6, against exposed brittle or crystalline objects or crystalline creatures). It also causes creatures to be stunned for 1 round and deafened for 4d6 rounds. A creature in the area of the cone can negate the stunning and halve both the damage and the duration of the deafness with a successful Fortitude save. A creature holding vulnerable objects can attempt a Reflex save to negate the damage to those objects. <p class=sub><i>Arcane Focus</i>: A small metal or ivory horn."
@@ -8773,7 +8773,7 @@ spells = [{
     phb: "279", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You are able to shrink one nonmagical item (if it is within the size limit) to 1/16 of its normal size in each dimension (to about 1/4,000 the original volume and mass). This change effectively reduces the object's size by four categories (for instance, from Large to Diminutive). Optionally, you can also change its now-shrunken composition to a clothlike one. Objects changed by a <i>shrink item</i> spell can be returned to normal composition and size merely by tossing them onto any solid surface or by a word of command from the original caster. Even a burning fire and its fuel can be shrunk by this spell. Restoring the shrunken object to its normal size and composition ends the spell. <p class=sub><i>Shrink item</i> can be made permanent with a <i>permanency</i> spell, in which case the affected object can be shrunk and expanded an indefinite number of times, but only by the original caster."
@@ -8810,7 +8810,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell creates the visual illusion of an object, creature, or force, as visualized by you. The illusion does not create sound, smell, texture, or temperature. You can move the image within the limits of the size of the effect. <p class=sub><i>Focus</i>: A bit of fleece."
@@ -8828,7 +8828,7 @@ spells = [{
     phb: "279", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "<i>Simulacrum</i> creates an illusory duplicate of any creature. The duplicate creature is partially real and formed from ice or snow. It appears to be the same as the original, but it has only one-half of the real creature's levels or Hit Dice (and the appropriate hit points, feats, skill ranks, and special abilities for a creature of that level or HD). You can't create a simulacrum of a creature whose Hit Dice or levels exceed twice your caster level. You must make a Disguise check when you cast the spell to determine how good the likeness is. A creature familiar with the original might detect the ruse with a successful Spot check (opposed by the caster's Disguise check) or a DC 20 Sense Motive check. <p class=sub>At all times the simulacrum remains under your absolute command. No special telepathic link exists, so command must be exercised in some other manner. A simulacrum has no ability to become more powerful. It cannot increase its level or abilities. If reduced to 0 hit points or otherwise destroyed, it reverts to snow and melts instantly into nothingness. A complex process requiring at least 24 hours, 100 gp per hit point, and a fully equipped magical laboratory can repair damage to a simulacrum. <p class=sub><i>Material Component</i>: The spell is cast over the rough snow or ice form, and some piece of the creature to be duplicated (hair, nail, or the like) must be placed inside the snow or ice. Additionally, the spell requires powdered ruby worth 100 gp per HD of the simulacrum to be created. <p class=sub><i>XP Cost</i>: 100 XP per HD of the simulacrum to be created (minimum 1,000 XP)."
@@ -8864,7 +8864,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "A <i>sleep</i> spell causes a magical slumber to come upon 4 Hit Dice of creatures. Creatures with the fewest HD are affected first. Among creatures with equal HD, those who are closest to the spell's point of origin are affected first. Hit Dice that are not sufficient to affect a creature are wasted. <p class=sub>For example, Mialee casts <i>sleep</i> at one rat (1/4 HD), one kobold (1 HD), two gnolls (2 HD), and an ogre (4 HD). The rat, the kobold, and one gnoll are affected (1/4 + 1 + 2 = 3-1/4 HD). The remaining 3/4 HD is not enough to affect the last gnoll or the ogre. Mialee can't choose to have sleep affect the ogre or the two gnolls. <p class=sub>Sleeping creatures are helpless. Slapping or wounding awakens an affected creature, but normal noise does not. Awakening a creature is a standard action (an application of the aid another action). <p class=sub>Sleep does not target unconscious creatures, constructs, or undead creatures. <p class=sub><i>Material Component</i>: A pinch of fine sand, rose petals, or a live cricket."
@@ -8883,7 +8883,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "Driving sleet blocks all sight (even darkvision) within it and causes the ground in the area to be icy. A creature can walk within or through the area of sleet at half normal speed with a DC 10 Balance check. Failure means it can't move in that round, while failure by 5 or more means it falls (see the Balance skill for details). <p class=sub>The sleet extinguishes torches and small fires. <p class=sub><i>Arcane Material Component</i>: A pinch of dust and a few drops of water."
@@ -8902,7 +8902,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "An affected creature moves and attacks at a drastically slowed rate. A slowed creature can take only a single move action or standard action each turn, but not both (nor may it take full-round actions). Additionally, it takes a '1 penalty on attack rolls, AC, and Reflex saves. A <i>slowed</i> creature moves at half its normal speed (round down to the next 5-foot increment), which affects the creature's jumping distance as normal for decreased speed. <p class=sub>Multiple <i>slow</i> effects don't stack. <i>Slow</i> counters and dispels <i>haste</i>. <p class=sub><i>Material Component</i>: A drop of molasses."
@@ -8955,7 +8955,7 @@ spells = [{
     phb: "281", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>fog cloud</i>, but in addition to obscuring sight, the <i>solid fog</i> is so thick that any creature attempting to move through it progresses at a speed of 5 feet, regardless of its normal speed, and it takes a '2 penalty on all melee attack and melee damage rolls. The vapors prevent effective ranged weapon attacks (except for magic rays and the like). A creature or object that falls into <i>solid fog</i> is slowed, so that each 10 feet of vapor that it passes through reduces falling damage by 1d6. A creature can't take a 5-foot step while in <i>solid fog</i>. <p class=sub>However, unlike normal fog, only a severe wind (31+ mph) disperses these vapors, and it does so in 1 round. <p class=sub><i>Solid fog</i> can be made permanent with a <i>permanency</i> spell. A permanent <i>solid fog</i> dispersed by wind reforms in 10 minutes. <p class=sub><i>Material Component</i>: A pinch of dried, powdered peas combined with powered animal hoof."
@@ -8991,7 +8991,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 10,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "You draw the soul from a newly dead body and imprison it in a black sapphire gem. The subject must have been dead no more than 1 round per caster level. The soul, once trapped in the gem, cannot be returned through <i>clone</i>, <i>raise dead</i>, <i>reincarnation</i>, <i>resurrection</i>, <i>true resurrection</i>, or even a <i>miracle</i> or a <i>wish</i>. Only by destroying the gem or dispelling the spell on the gem can one free the soul (which is then still dead). <p class=sub><i>Focus</i>: A black sapphire of at least 1,000 gp value for every Hit Die possessed by the creature whose soul is to be bound. If the gem is not valuable enough, it shatters when the binding is attempted. (While creatures have no concept of level or Hit Dice as such, the value of the gem needed to trap an individual can be researched. Remember that this value can change over time as creatures gain more Hit Dice.)"
@@ -9082,7 +9082,7 @@ spells = [{
     phb: "282", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "A ghostly, glowing hand shaped from your life force materializes and moves as you desire, allowing you to deliver low-level, touch range spells at a distance. On casting the spell, you lose 1d4 hit points that return when the spell ends (even if it is dispelled), but not if the hand is destroyed. (The hit points can be healed as normal.) For as long as the spell lasts, any touch range spell of 4th level or lower that you cast can be delivered by the <i>spectral hand</i>. The spell gives you a +2 bonus on your melee touch attack roll, and attacking with the hand counts normally as an attack. The hand always strikes from your direction. The hand cannot flank targets like a creature can. After it delivers a spell, or if the hand goes beyond the spell range, goes out of your sight, the hand returns to you and hovers. <p class=sub>The hand is incorporeal and thus cannot be harmed by normal weapons. It has improved evasion (half damage on a failed Reflex save and no damage on a successful save), your save bonuses, and an AC of at least 22. Your Intelligence modifier applies to the hand's AC as if it were the hand's Dexterity modifier. The hand has 1 to 4 hit points, the same number that you lost in creating it."
@@ -9168,7 +9168,7 @@ spells = [{
     phb: "282", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "Spells and spell-like effects targeted on you are turned back upon the original caster. The abjuration turns only spells that have you as a target. Effect and area spells are not affected. <i>Spell turning</i> also fails to stop touch range spells. Thus, a <i>charm person</i> spell cast at you could be turned back upon the caster and possibly enable you to use the <i>charm</i> effect on that individual, but a <i>fireball</i> could not be turned back, and neither could inflict critical wounds. <p class=sub>From seven to ten (1d4+6) spell levels are affected by the turning. The DM secretly rolls the exact number. When a spell is turned, the DM subtracts its level from the amount of spell turning left. <p class=sub>When you are targeted by a spell of higher level than the amount of spell turning you have left, that spell is partially turned. The subtract the amount of spell turning left from the spell level of the incoming spell, then divide the result by the spell level of the incoming spell to see what fraction of the effect gets through. <p class=sub>For damaging spells, you and the caster each take a fraction of the damage. For nondamaging spells, each of you has a proportional chance to be affected. For example, if you had three levels of spell turning left and were targeted by an <i>inflict critical wounds</i> spell (a 4th-level spell), you would turn three-fourths of the spell back at the caster. You would take one-forth of the damage, while the caster takes three-fourths of the damage. If you were targeted by a wizard's fear spell (also a 4th-level spell) in the same situation, you would have a one in four (25%) chance to be affected by the spell, while the caster would have a three in four (75%) chance to be affected. <p class=sub>Roll randomly to determine the result. <table class=box><tr class=header><td>d%</td><td>Effect</td></tr> <tr><td>01'70</td> <td>Spell drains away without effect.</td></tr> <tr><td>71'80</td><td>Spell affects both of you equally at full effect.</td></tr> <tr><td>81'97</td><td>Both turning effects are rendered nonfunctional for 1d4 minutes.</td></tr> <tr><td>98'100</td><td>Both of you go through a rift into another plane.</td></tr> </table> <p class=sub><i>Arcane Material Component</i>: A small silver mirror."
@@ -9187,7 +9187,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "The subject can climb and travel on vertical surfaces or even traverse ceilings as well as a spider does. The affected creature must have its hands free to climb in this manner. The subject gains a climb speed of 20 feet; furthermore, it need not make Climb checks to traverse a vertical or horizontal surface (even upside down). A <i>spider climbing</i> creature retains its Dexterity bonus to Armor Class (if any) while climbing, and opponents get no special bonus to their attacks against it. It cannot, however, use the run action while climbing. <p class=sub><i>Material Component</i>: A drop of bitumen and a live spider, both of which must be eaten by the subject."
@@ -9257,7 +9257,7 @@ spells = [{
     phb: "284", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "A <i>statue</i> spell turns the subject to solid stone, along with any garments and equipment worn or carried. In statue form, the subject gains hardness 8. The subject retains its own hit points. <p class=sub>The subject can see, hear, and smell normally, but it does not need to eat or breathe. Feeling is limited to those sensations that can affect the granite-hard substance of the individual's body. Chipping is equal to a mere scratch, but breaking off one of the statue's arms constitutes serious damage. <p class=sub>The subject of a statue spell can return to its normal state, act, and then return instantly to the statue state (a free action) if it so desires, as long as the spell duration is in effect. <p class=sub><i>Material Component</i>: Lime, sand, and a drop of water stirred by an iron bar, such as a nail or spike."
@@ -9292,7 +9292,7 @@ spells = [{
     phb: "284", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "<i>Stinking cloud</i> creates a bank of fog like that created by <i>fog cloud</i>, except that the vapors are nauseating. Living creatures in the cloud become nauseated. This condition lasts as long as the creature is in the cloud and for 1d4+1 rounds after it leaves. (Roll separately for each nauseated character.) Any creature that succeeds on its save but remains in the cloud must continue to save each round on your turn. <p class=sub><i>Stinking cloud</i> can be made permanent with a <i>permanency</i> spell. A permanent stinking cloud dispersed by wind reforms in 10 minutes. <p class=sub><i>Material Component</i>: A rotten egg or several skunk cabbage leaves."
@@ -9312,7 +9312,7 @@ spells = [{
     classes: {
         "Cleric": 4,
         "Druid": 4,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "You can form an existing piece of stone into any shape that suits your purpose. For example, you can make a stone weapon, a special trapdoor, or a crude idol. <i>Stone shape</i> also permits you to reshape a stone door to make an exit where one didn't exist or to seal a door shut. While it's possible to make crude coffers, doors, and so forth with <i>stone shape</i>, fine detail isn't possible. There is a 30% chance that any shape including moving parts simply doesn't work. <p class=sub><i>Arcane Material Component</i>: Soft clay, which must be worked into roughly the desired shape of the stone object and then touched to the stone while the verbal component is uttered."
@@ -9331,7 +9331,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 6,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "The warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains damage reduction 10/adamantine. (It ignores the first 10 points of damage each time it takes damage from a weapon, though an adamantine weapon bypasses the reduction.) Once the spell has prevented a total of 10 points of damage per caster level (maximum 150 points), it is discharged. <p class=sub><i>Material Component</i>: Granite and 250 gp worth of diamond dust sprinkled on the target's skin."
@@ -9366,7 +9366,7 @@ spells = [{
     phb: "285", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell restores a petrified creature to its normal state, restoring life and goods. The creature must make a DC 15 Fortitude save to survive the process. Any petrified creature, regardless of size, can be restored. <p class=sub>The spell also can convert a mass of stone into a fleshy substance. Such flesh is inert and lacking a vital life force unless a life force or magical energy is available. (For example, this spell would turn a stone golem into a flesh golem, but an ordinary statue would become a corpse.) You can affect an object that fits within a cylinder from 1 foot to 3 feet in diameter and up to 10 feet long or a cylinder of up to those dimensions in a larger mass of stone. <p class=sub><i>Material Component</i>: A pinch of earth and a drop of blood."
@@ -9402,7 +9402,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You influence the actions of the target creature by suggesting a course of activity (limited to a sentence or two). The suggestion must be worded in such a manner as to make the activity sound reasonable. Asking the creature to stab itself, throw itself onto a spear, immolate itself, or do some other obviously harmful act automatically negates the effect of the spell. However, a <i>suggestion</i> that a pool of acid is actually pure water and that a quick dip would be refreshing is another matter. Urging a red dragon to stop attacking your party so that the dragon and party could jointly loot a rich treasure elsewhere is a likewise reasonable use of the spell's power. <p class=sub>The suggested course of activity can continue for the entire duration, such as in the case of the red dragon mentioned above. If the suggested activity can be completed in a shorter time, the spell ends when the subject finishes what it was asked to do. You can instead specify conditions that will trigger a special activity during the duration. For example, you might suggest that a noble knight give her warhorse to the first beggar she meets. If the condition is not met before the spell duration expires, the activity is not performed. <p class=sub>A very reasonable <i>suggestion</i> causes the save to be made with a penalty (such as -1 or -2) at the discretion of the DM. <p class=sub><i>Material Component</i>: A snake's tongue and either a bit of honeycomb or a drop of sweet oil."
@@ -9421,7 +9421,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 6,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>suggestion</i>, except that it can affect more creatures. The same <i>suggestion</i> applies to all these creatures."
@@ -9458,7 +9458,7 @@ spells = [{
     classes: {
         "Bard": 2,
         "Cleric": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "This spell summons an extraplanar creature (typically an outsider, elemental, or magical beast native to another plane). It appears where you designate and acts immediately, on your turn. It attacks your opponents to the best of its ability. If you can communicate with the creature, you can direct it not to attack, to attack particular enemies, or to perform other actions. <p class=sub>The spell conjures one of the creatures from the 1st-level list on the accompanying Summon Monster table. You choose which kind of creature to summon, and you can change that choice each time you cast the spell. Information on these creatures can be found in the <i>Monster Manual</i>. <p class=sub>A summoned monster cannot summon or otherwise conjure another creature, nor can it use any teleportation or planar travel abilities. Creatures cannot be summoned into an environment that cannot support them. For instance, a celestial porpoise may only be summoned in an aquatic environment. <p class=sub>When you use a summoning spell to summon an air, chaotic, earth, evil, fire, good, lawful, or water creature, it is a spell of that type. For example, a <i>summon monster I</i> is a lawful and evil spell when cast to summon a fiendish dire rat. <p class=sub><i>Arcane Focus</i>: A tiny bag and a small (not necessarily lit) candle.<table><tr><td colspan=2><b>1st Level</b></td></tr> <tr><td>Celestial dog</td><td>LG</td></tr> <tr><td>Celestial owl</td><td>LG</td></tr> <tr><td>Celestial giant fire beetle</td><td>NG</td></tr> <tr><td>Celestial porpoise<sup>1</sup></td><td>NG</td></tr> <tr><td>Celestial badger</td><td>CG</td></tr> <tr><td>Celestial monkey</td><td>CG</td></tr> <tr><td>Fiendish dire rat</td><td>LE</td></tr> <tr><td>Fiendish raven</td><td>LE</td></tr> <tr><td>Fiendish monstrous centipede, Medium</td><td>NE</td></tr> <tr><td>Fiendish monstrous scorpion, Small</td><td>NE</td></tr> <tr><td>Fiendish hawk</td><td>CE</td></tr> <tr><td>Fiendish monstrous spider, Small</td><td>CE</td></tr> <tr><td>Fiendish octopus<sup>1</sup></td><td>CE</td></tr> <tr><td>Fiendish snake, Small viper</td><td>CE</td></tr> <tr><td colspan=2><b>2nd Level</b></td></tr> <tr><td>Celestial giant bee</td><td>LG</td></tr> <tr><td>Celestial giant bombardier beetle</td><td>NG</td></tr> <tr><td>Celestial riding dog</td><td>NG</td></tr> <tr><td>Celestial eagle</td><td>CG</td></tr> <tr><td>Lemure (devil)</td><td>LE</td></tr> <tr><td>Fiendish squid<sup>1</sup></td><td>LE</td></tr> <tr><td>Fiendish wolf</td><td>LE</td></tr> <tr><td>Fiendish monstrous centipede, Large</td><td>NE</td></tr> <tr><td>Fiendish monstrous scorpion, Medium</td><td>NE</td></tr> <tr><td>Fiendish shark, Medium<sup>1</sup></td><td>NE</td></tr> <tr><td>Fiendish monstrous spider, Medium</td><td>CE</td></tr> <tr><td>Fiendish snake, Medium viper</td><td>CE</td></tr> <tr><td colspan=2><b>3rd Level</b></td></tr> <tr><td>Celestial black bear</td><td>LG</td></tr> <tr><td>Celestial bison</td><td>NG</td></tr> <tr><td>Celestial dire badger</td><td>CG</td></tr> <tr><td>Celestial hippogriff</td><td>CG</td></tr> <tr><td>Elemental, Small (any)</td><td>N </td></tr><tr><td>Fiendish ape</td><td>LE</td></tr> <tr><td>Fiendish dire weasel</td><td>LE</td></tr> <tr><td>Hell hound</td><td>LE</td></tr> <tr><td>Fiendish snake, constrictor</td><td>LE</td></tr> <tr><td>Fiendish boar</td><td>NE</td></tr> <tr><td>Fiendish dire bat</td><td>NE</td></tr> <tr><td>Fiendish monstrous centipede, Huge</td><td>NE</td></tr> <tr><td>Fiendish crocodile</td><td>CE</td></tr> <tr><td>Dretch (demon)</td><td>CE</td></tr><tr><td>Fiendish snake, Large viper</td><td>CE</td></tr> <tr><td>Fiendish wolverine</td><td>CE</td></tr> <tr><td colspan=2><b>4th Level</b></td></tr> <tr><td>Archon, lantern</td><td>LG</td></tr> <tr><td>Celestial giant owl</td><td>LG</td></tr> <tr><td>Celestial giant eagle</td><td>CG</td></tr> <tr><td>Celestial lion</td><td>CG</td></tr> <tr><td>Mephit (any)</td><td>N </td></tr><tr><td>Fiendish dire wolf</td><td>LE</td></tr> <tr><td>Fiendish giant wasp</td><td>LE</td></tr> <tr><td>Fiendish giant praying mantis</td><td>NE</td></tr> <tr><td>Fiendish shark, Large<sup>1</sup></td><td>NE</td></tr> <tr><td>Yeth hound</td><td>NE</td></tr> <tr><td>Fiendish monstrous spider, Large</td><td>CE</td></tr> <tr><td>Fiendish snake, Huge viper</td><td>CE</td></tr> <tr><td>Howler</td><td>CE</td></tr> <tr><td colspan=2><b>5th Level</b></td></tr> <tr><td>Archon, hound</td><td>LG</td></tr> <tr><td>Celestial brown bear</td><td>LG</td></tr> <tr><td>Celestial giant stag beetle</td><td>NG</td></tr> <tr><td>Celestial sea cat<sup>1</sup></td><td>NG</td></tr> <tr><td>Celestial griffon</td><td>CG</td></tr> <tr><td>Elemental, Medium (any)</td><td>N </td></tr><tr><td>Achaierai</td><td>LE</td></tr> <tr><td>Devil, bearded</td><td>LE</td></tr> <tr><td>Fiendish deinonychus</td><td>LE</td></tr> <tr><td>Fiendish dire ape</td><td>LE</td></tr> <tr><td>Fiendish dire boar</td><td>NE</td></tr> <tr><td>Fiendish shark, Huge</td><td>NE</td></tr> <tr><td>Fiendish monstrous scorpion, Large</td><td>NE</td></tr> <tr><td>Shadow mastiff</td><td>NE</td></tr> <tr><td>Fiendish dire wolverine</td><td>CE</td></tr> <tr><td>Fiendish giant crocodile</td><td>CE</td></tr> <tr><td>Fiendish tiger</td><td>CE</td></tr> <tr><td colspan=2><b>6th Level</b></td></tr> <tr><td>Celestial polar bear</td><td>LG</td></tr> <tr><td>Celestial orca whale<sup>1</sup></td><td>NG</td></tr> <tr><td>Bralani (eladrin)</td><td>CG</td></tr> <tr><td>Celestial dire lion</td><td>CG</td></tr> <tr><td>Elemental, Large (any)</td><td>N </td></tr><tr><td>Janni (genie)</td><td>N </td></tr><tr><td>Chaos beast</td><td>CN</td></tr> <tr><td>Devil, chain</td><td>LE</td></tr> <tr><td>Xill</td><td>LE</td></tr> <tr><td>Fiendish monstrous centipede, Gargantuan</td><td>NE</td></tr> <tr><td>Fiendish rhinoceros</td><td>NE</td></tr> <tr><td>Fiendish elasmosaurus<sup>1</sup></td><td>CE</td></tr><tr><td>Fiendish monstrous spider, Huge</td><td>CE</td></tr> <tr><td>Fiendish snake, giant constrictor</td><td>CE</td></tr> <tr><td colspan=2><b>7th Level</b></td></tr> <tr><td>Celestial elephant</td><td>LG</td></tr> <tr><td>Avoral (guardinal)</td><td>NG</td></tr> <tr><td>Celestial baleen whale<sup>1</sup></td><td>NG</td></tr> <tr><td>Djinni (genie)</td><td>CG</td></tr> <tr><td>Elemental, Huge (any)</td><td>N </td></tr><tr><td>Invisible stalker</td><td>N </td></tr><tr><td>Slaad, red</td><td>CN</td></tr> <tr><td>Devil, bone</td><td>LE</td></tr> <tr><td>Fiendish megaraptor</td><td>LE</td></tr> <tr><td>Fiendish monstrous scorpion, Huge</td><td>NE</td></tr> <tr><td>Babau (demon)</td><td>CE</td></tr> <tr><td>Fiendish giant octopus<sup>1</sup></td><td>CE</td></tr> <tr><td>Fiendish girallon</td><td>CE</td></tr> <tr><td colspan=2><b>8th Level</b></td></tr> <tr><td>Celestial dire bear</td><td>LG</td></tr> <tr><td>Celestial cachalot whale<sup>1</sup></td><td>NG</td></tr> <tr><td>Celestial triceratops</td><td>NG</td></tr> <tr><td>Lillend</td><td>CG</td></tr> <tr><td>Elemental, greater (any)</td><td>N </td></tr><tr><td>Slaad, blue</td><td>CN</td></tr> <tr><td>Fiendish giant squid<sup>1</sup></td><td>LE</td></tr> <tr><td>Hellcat</td><td>LE</td></tr> <tr><td>Fiendish monstrous centipede, Colossal</td><td>NE</td></tr> <tr><td>Fiendish dire tiger</td><td>CE</td></tr> <tr><td>Fiendish monstrous spider, Gargantuan</td><td>CE</td></tr> <tr><td>Fiendish tyrannosaurus</td><td>CE</td></tr> <tr><td>Vrock (demon)</td><td>CE</td></tr> <tr><td colspan=2><b>9th Level</b></td></tr> <tr><td>Couatl</td><td>LG</td></tr> <tr><td>Leonal (guardinal)</td><td>NG</td></tr> <tr><td>Celestial roc</td><td>CG</td></tr> <tr><td>Elemental, elder (any)</td><td>N </td></tr><tr><td>Slaad, green</td><td>CN</td></tr> <tr><td>Devil, barbed</td><td>LE</td></tr> <tr><td>Fiendish dire shark<sup>1</sup></td><td>NE</td></tr> <tr><td>Fiendish monstrous scorpion, Gargantuan</td><td>NE</td></tr> <tr><td>Night hag</td><td>NE</td></tr> <tr><td>Bebilith (demon)</td><td>CE</td></tr> <tr><td>Fiendish monstrous spider, Colossal</td><td>CE</td></tr> <tr><td>Hezrou (demon)</td><td>CE</td></tr> </table> <p><sup>1</sup> May be summoned only into an aquatic or watery environment."
@@ -9478,7 +9478,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 2nd-level list or 1d3 creatures of the same kind from the 1st-level list. <p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9498,7 +9498,7 @@ spells = [{
     classes: {
         "Bard": 4,
         "Cleric": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 3rd-level list, 1d3 creatures of the same kind from the 2nd-level list, or 1d4+1 creatures of the same kind from the 1st-level list. <p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9518,7 +9518,7 @@ spells = [{
     classes: {
         "Bard": 5,
         "Cleric": 5,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 4th-level list, 1d3 creatures of the same kind from the 3rd-level list, or 1d4+1 creatures of the same kind from a lower-level list.<p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9538,7 +9538,7 @@ spells = [{
     classes: {
         "Bard": 6,
         "Cleric": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 5th-level list, 1d3 creatures of the same kind from the 4th-level list, or 1d4+1 creatures of the same kind from a lower-level list. <p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9558,7 +9558,7 @@ spells = [{
     classes: {
         "Bard": 7,
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>summon monster I</i>, except you can summon one creature from the 6th-level list, 1d3 creatures of the same kind from the 5th-level list, or 1d4+1 creatures of the same kind from a lower-level list. <p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9577,7 +9577,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 8,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 7th-level list, 1d3 creatures of the same kind from the 6th-level list, or 1d4+1 creatures of the same kind from a lower-level list<p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9596,7 +9596,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 8th-level list, 1d3 creatures of the same kind from the 7th-level list, or 1d4+1 creatures of the same kind from a lower-level list. <p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9615,7 +9615,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 10,
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>summon monster I</i>, except that you can summon one creature from the 9th-level list, 1d3 creatures of the same kind from the 8th-level list, or 1d4+1 creatures of the same kind from a lower-level list. <p class=sub>See <i>summon monster I</i> for the complete list of monsters."
@@ -9792,7 +9792,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Druid": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You summon a swarm of bats, rats, or spiders (your choice), which attacks all other creatures within its area. (You may summon the swarm so that it shares the area of other creatures.) If no living creatures are within its area, the swarm attacks or pursues the nearest creature as best it can. The caster has no control over its target or direction of travel. <p class=sub>See the <i>Monster Manual</i> for details of bat, rat, and spider swarms. <p class=sub><i>Arcane Material Component</i>: A square of red cloth."
@@ -9827,7 +9827,7 @@ spells = [{
     phb: "289", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "<i>Sunburst</i> causes a globe of searing radiance to explode silently from a point you select. All creatures in the globe are blinded and take 6d6 points of damage. A creature to which sunlight is harmful or unnatural takes double damage. A successful Reflex save negates the blindness and reduces the damage by half. <p class=sub>An undead creature caught within the globe takes 1d6 points of damage per caster level (maximum 25d6), or half damage if a Reflex save is successful. In addition, the burst results in the destruction of any undead creature specifically harmed by bright light (such as a vampire) if it fail its save. <p class=sub>The ultraviolet light generated by the spell deals damage to fungi, mold, oozes, and slimes just as if they were undead creatures. <p class=sub><i>Sunburst</i> dispels any <i>darkness</i> spells of lower than 9th level within its area.<p class=sub><i>Arcane Material Component</i>: A piece of sunstone and a naked flame."
@@ -9846,7 +9846,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell allows you to scribe a potent rune of power upon a surface. When triggered, a <i>symbol of death</i> slays one or more creatures within 60 feet of the symbol (treat as a burst) whose combined total current hit points do not exceed 150. The <i>symbol of death</i> affects the closest creatures first, skipping creatures with too many hit points to affect. Once triggered, the symbol becomes active and glows, lasting for 10 minutes per caster level or until it has affected 150 hit points' worth of creatures, whichever comes first. Any creature that enters the area while the <i>symbol of death</i> is active is subject to its effect, whether or not that creature was in the area when it was triggered. A creature need save against the symbol only once as long as it remains within the area, though if it leaves the area and returns while the symbol is still active, it must save again. <p class=sub>Until it is triggered, the <i>symbol of death</i> is inactive (though visible and legible at a distance of 60 feet). To be effective, a <i>symbol of death</i> must always be placed in plain sight and in a prominent location. Covering or hiding the rune renders the symbol of death ineffective, unless a creature removes the covering, in which case the symbol of death works normally. <p class=sub><i>As a default, a <i>symbol of death</i> is triggered whenever a creature does one or more of the following, as you select</i>: looks at the rune; reads the rune; touches the rune; passes over the rune; or passes through a portal bearing the rune. Regardless of the trigger method or methods chosen, a creature more than 60 feet from a <i>symbol of death</i> can't trigger it (even if it meets one or more of the triggering conditions, such as reading the rune). Once the spell is cast, a <i>symbol of death</i>'s triggering conditions cannot be changed. <p class=sub>In this case, â€œreadingâ€ the rune means any attempt to study it, identify it, or fathom its meaning. Throwing a cover over a <i>symbol of death</i> to render it inoperative triggers it if the symbol reacts to touch. You can't use a <i>symbol of death</i> offensively; for instance, a touch-triggered symbol of death remains untriggered if an item bearing the <i>symbol of death</i> is used to touch a creature. Likewise, a <i>symbol of death</i> cannot be placed on a weapon and set to activate when the weapon strikes a foe. <p class=sub>You can also set special triggering limitations of your own. These can be as simple or elaborate as you desire. Special conditions for triggering a <i>symbol of death</i> can be based on a creature's name, identity, or alignment, but otherwise must be based on observable actions or qualities. Intangibles such as level, class, Hit Dice, and hit points don't qualify. For example, a <i>symbol of death</i> can be set to activate when a lawful good creature approaches, but not when a paladin approaches. <p class=sub>When scribing a <i>symbol of death</i>, you can specify a password or phrase that prevents a creature using it from triggering the effect. Anyone using the password remains immune to that particular rune's effects so long as the creature remains within 60 feet of the rune. If the creature leaves the radius and returns later, it must use the password again. <p class=sub>You also can attune any number of creatures to the <i>symbol of death</i>, but doing this can extend the casting time. Attuning one or two creatures takes negligible time, and attuning a small group (as many as ten creatures) extends the casting time to 1 hour. Attuning a large group (as many as twenty-five creatures) takes 24 hours. Attuning larger groups takes proportionately longer, as the DM sees fit. Any creature attuned to a <i>symbol of death</i> cannot trigger it and is immune to its effects, even if within its radius when triggered. You are automatically considered attuned to your own symbols of death, and thus always ignore the effects and cannot inadvertently trigger them. <p class=sub><i>Read magic</i> allows you to identify a <i>symbol of death</i> with a DC 19 Spellcraft check. Of course, if the <i>symbol of death</i> is set to be triggered by reading it, this will trigger the symbol. <p class=sub>A <i>symbol of death</i> can be removed by a successful <i>dispel magic</i> targeted solely on the rune. An <i>erase</i> spell has no effect on a <i>symbol of death</i>. Destruction of the surface where a <i>symbol of death</i> is inscribed destroys the symbol but also triggers it. <p class=sub>Symbol of death can be made permanent with a <i>permanency</i> spell. A permanent <i>symbol of death</i> that is disabled or that has affected its maximum number of hit points becomes inactive for 10 minutes, then can be triggered again as normal. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of death</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a <i>symbol of death</i> and Disable Device to thwart it. The DC in each case is 25 + spell level, or 33 for <i>symbol of death</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 5,000 gp each."
@@ -9865,7 +9865,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>symbol of death</i>, except that all creatures within 60 feet of the symbol of fear instead become panicked for 1 round per caster level. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of fear</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a symbol of fear and Disable Device to thwart it. The DC in each case is 25 + spell level, or 31 for <i>symbol of fear</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 1,000 gp."
@@ -9884,7 +9884,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 9,
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "This spell functions like <i>symbol of death</i>, except that all creatures within the radius of the <i>symbol of insanity</i> instead become permanently insane (as the <i>insanity</i> spell). Unlike <i>symbol of death</i>, <i>symbol of insanity</i> has no hit point limit; once triggered, a <i>symbol of insanity</i> simply remains active for 10 minutes per caster level. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of insanity</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a <i>symbol of insanity</i> and Disable Device to thwart it. The DC in each case is 25 + spell level, or 33 for <i>symbol of insanity</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 5,000 gp."
@@ -9903,7 +9903,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>symbol of death</i>, except that each creature within the radius of a <i>symbol of pain</i> instead suffers wracking pains that impose a -4 penalty on attack rolls, skill checks, and ability checks. These effects last for 1 hour after the creature moves farther than 60 feet from the symbol. <p class=sub>Unlike <i>symbol of death</i>, <i>symbol of pain</i> has no hit point limit; once triggered, a <i>symbol of pain</i> simply remains active for 10 minutes per caster level. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of pain</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a symbol of pain and Disable Device to thwart it. The DC in each case is 25 + spell level, or 30 for <i>symbol of pain</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 1,000 gp."
@@ -9922,7 +9922,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>symbol of death</i>, except that all creatures within the radius of a <i>symbol of persuasion</i> instead become charmed by the caster (as the <i>charm monster</i> spell) for 1 hour per caster level. Unlike <i>symbol of death</i>, <i>symbol of persuasion</i> has no hit point limit; once triggered, a <i>symbol of persuasion</i> simply remains active for 10 minutes per caster level. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of persuasion</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a symbol of persuasion and Disable Device to thwart it. The DC in each case is 25 + spell level, or 31 for <i>symbol of persuasion</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 5,000 gp."
@@ -9941,7 +9941,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell functions like <i>symbol of death</i>, except that all creatures of 10 HD or less within 60 feet of the symbol of sleep instead fall into a catatonic slumber for 3d6Ã—10 minutes. Unlike with the <i>sleep</i> spell, sleeping creatures cannot be awakened by nonmagical means before this time expires. <p class=sub>Unlike <i>symbol of death</i>, <i>symbol of sleep</i> has no hit point limit; once triggered, a <i>symbol of sleep</i> simply remains active for 10 minutes per caster level. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of sleep</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a symbol of sleep and Disable Device to thwart it. The DC in each case is 25 + spell level, or 30 for <i>symbol of sleep</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 1,000 gp."
@@ -9960,7 +9960,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 8,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>symbol of death</i>, except that all creatures within 60 feet of a <i>symbol of stunning</i> instead become stunned for 1d6 rounds. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of stunning</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a <i>symbol of stunning</i> and Disable Device to thwart it. The DC in each case is 25 + spell level, or 32 for <i>symbol of stunning</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 5,000 gp."
@@ -9979,7 +9979,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 8,
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>symbol of death</i>, except that every creature within 60 feet of a <i>symbol of weakness</i> instead suffers crippling weakness that deals 3d6 points of Strength damage. <p class=sub>Unlike <i>symbol of death</i>, <i>symbol of weakness</i> has no hit point limit; once triggered, a <i>symbol of weakness</i> simply remains active for 10 minutes per caster level. <p class=sub><i>Note</i>: Magic traps such as <i>symbol of weakness</i> are hard to detect and disable. A rogue (only) can use the Search skill to find a symbol of weakness and Disable Device to thwart it. The DC in each case is 25 + spell level, or 32 for <i>symbol of weakness</i>. <p class=sub><i>Material Component</i>: Mercury and phosphorus, plus powdered diamond and opal with a total value of at least 5,000 gp."
@@ -10014,7 +10014,7 @@ spells = [{
     phb: "292", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "You cause an object or location to emanate magical vibrations that attract either a specific kind of intelligent creature or creatures of a particular alignment, as defined by you. The particular kind of creature to be affected must be named specifically–for example, red dragons, hill giants, wererats, lammasus, or vampires. A creature subtype (such as goblinoid) is not specific enough. Likewise, the specific alignment must be named–for example, chaotic evil, chaotic good, lawful neutral, or neutral. <p class=sub>Creatures of the specified kind or alignment feel elated and pleased to be in the area or desire to touch or to possess the object. The compulsion to stay in the area or touch the object is overpowering. If the save is successful, the creature is released from the enchantment, but a subsequent save must be made 1d6Ã—10 minutes later. If this save fails, the affected creature attempts to return to the area or object. <p class=sub><i>Sympathy</i> counters and dispels <i>antipathy</i>. <p class=sub><i>Material Component</i>: 1,500 gp worth of crushed pearls and a drop of honey."
@@ -10033,7 +10033,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "This spell afflicts the subject with uncontrollable laughter. It collapses into gales of manic laughter, falling prone. The subject can take no actions while laughing, but is not considered helpless. After the spell ends, it can act normally. <p class=sub>A creature with an Intelligence score of 2 or lower is not affected. A creature whose type (such as humanoid or dragon) is different from the caster's receives a +4 bonus on its saving throw, because humor doesn't \"translate\" well. <p class=sub><i>Material Component</i>: Tiny tarts that are thrown at the target and a feather that is waved in the air."
@@ -10051,7 +10051,7 @@ spells = [{
     phb: "292", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "You move objects or creatures by concentrating on them. Depending on the version selected, the spell can provide a gentle, sustained force, perform a variety of combat maneuvers, or exert a single short, violent thrust.<p class=sub><i><p class=sub><i>Sustained Force</i>: </i>A sustained force moves an object weighing no more than 25 pounds per caster level (maximum 375 pounds at 15th level) up to 20 feet per round. A creature can negate the effect on an object it possesses with a successful Will save or with spell resistance.<p class=sub><p class=sub>This version of the spell can last 1 round per caster level, but it ends if you cease concentration. The weight can be moved vertically, horizontally, or in both directions. An object cannot be moved beyond your range. The spell ends if the object is forced beyond the range. If you cease concentration for any reason, the object falls or stops.<p class=sub><p class=sub>An object can be telekinetically manipulated as if with one hand. For example, a lever or rope can be pulled, a key can be turned, an object rotated, and so on, if the force required is within the weight limitation. You might even be able to untie simple knots, though delicate activities such as these require Intelligence checks.<p class=sub><i><p class=sub><i>Combat Maneuver</i>: </i>Alternatively, once per round, you can use <i>telekinesis </i>to perform a bull rush, disarm, grapple (including pin), or trip. Resolve these attempts as normal, except that they don't provoke attacks of opportunity, you use your caster level in place of your base attack bonus (for disarm and grapple), you use your Intelligence modifier (if a wizard) or Charisma modifier (if a sorcerer) in place of your Strength or Dexterity modifier, and a failed attempt doesn't allow a reactive attempt by the target (such as for disarm or trip). No save is allowed against these attempts, but spell resistance applies normally. This version of the spell can last 1 round per caster level, but it ends if you cease concentration.<p class=sub><i><p class=sub><i>Violent Thrust</i>: </i>Alternatively, the spell energy can be spent in a single round. You can hurl one object or creature per caster level (maximum 15) that are within range and all within 10 feet of each other toward any target within 10 feet per level of all the objects. You can hurl up to a total weight of 25 pounds per caster level (maximum 375 pounds at 15th level).<p class=sub><p class=sub>You must succeed on attack rolls (one per creature or object thrown) to hit the target with the items, using your base attack bonus + your Intelligence modifier (if a wizard) or Charisma modifier (if a sorcerer). Weapons cause standard damage (with no Strength bonus; note that arrows or bolts deal damage as daggers of their size when used in this manner). Other objects cause damage ranging from 1 point per 25 pounds (for less dangerous objects) to 1d6 points of damage per 25 pounds (for hard, dense objects).<p class=sub><p class=sub>Creatures who fall within the weight capacity of the spell can be hurled, but they are allowed Will saves (and spell resistance) to negate the effect, as are those whose held possessions are targeted by the spell. If a telekinesed creature is hurled against a solid surface, it takes damage as if it had fallen 10 feet (1d6 points)."
@@ -10069,7 +10069,7 @@ spells = [{
     phb: "292", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell instantly transports you to a designated destination, which may be as distant as 100 miles per caster level. Interplanar travel is not possible. You can bring along objects as long as their weight doesn't exceed your maximum load. You may also bring one additional willing Medium or smaller creature (carrying gear or objects up to its maximum load) or its equivalent (see below) per three caster levels. A Large creature counts as two Medium creatures, a Huge creature counts as two Large creatures, and so forth. All creatures to be transported must be in contact with one another, and at least one of those creatures must be in contact with you. As with all spells where the range is personal and the target is you, you need not make a saving throw, nor is spell resistance applicable to you. Only objects held or in use (attended) by another person receive saving throws and spell resistance. <p class=sub>You must have some clear idea of the location and layout of the destination. Youcan't simply teleport to the warlord's tent if you don't know where that tent is, what it looks like, or what's in it. The clearer your mental image, the more likely the teleportation works. Areas of strong physical or magical energy may make teleportation more hazardous or even impossible. <p class=sub>To see how well the teleportation works, roll d% and consult the Teleport table. Refer to the following information for definitions of the terms on the table. <p class=sub><i>Familiarity</i>: â€œVery familiarâ€ is a place where you have been very often and where you feel at home. â€œStudied carefullyâ€ is a place you know well, either because you can currently see it, you've been there often, or you have used other means (such as scrying) to study the place for at least one hour. â€œSeen casuallyâ€ is a place that you have seen more than once but with which you are not very familiar. â€œViewed onceâ€ is a place that you have seen once, possibly using magic. <p class=sub>â€œFalse destinationâ€ is a place that does not truly exist, such as if you scryed on a enemy's sanctum but instead viewed a <i>false vision</i>, or if you are teleporting to an otherwise familiar location that no longer exists as such or has been so completely altered as to no longer be familiar to you (for instance, a home that has burned to the ground). When traveling to a false destination, roll 1d20+80 to obtain results on the table, rather than rolling d%, since there is no real destination for you to hope to arrive at or even be off target from. <p class=sub><i>On Target</i>: You appear where you want to be. <p class=sub><i>Off Target</i>: You appear safely a random distance away from the destination in a random direction. Distance off target is 1d10Ã—1d10% of the distance that was to be traveled. For example, if you tried to travel 120 miles, landed off target, and rolled 5 and 3 on the two d10s, then you would be 15% off target. That's 18 miles, in this case. The DM determines the direction off target randomly, such as by rolling 1d8 and designating 1 as north, 2 as northeast, and so forth. If you were teleporting to a coastal city and would up 18 miles out at sea, you could be in trouble. <p class=sub><i>Similar Area</i>: You wind up in an area that's visually or thematically similar to the target area. A wizard heading for her home laboratory might wind up in another wizard's laboratory or in an alchemy supply shop that has many of the same tools and implements as in her laboratory. Generally, you appear in the closest similar place within range. If the DM determines no such area exists within the spell's range, the spell simply fails instead. <p class=sub><i>Mishap</i>: You and anyone else teleporting with you have gotten â€œscrambled.â€ You each take 1d10 points of damage, and you reroll on the chart to see where you wind up. For these rerolls, roll 1d20+80. Each time â€œMishapâ€ comes up, the characters take more damage and must reroll.<table><tr class=header><td>Familiarity</td><td>On Target</td><td>Off Target</td><td>Similar Area</td><td>Mishap</td></tr> <tr><td>Very familiar</td><td>01'97</td><td>98'99</td><td>100 –</td></tr> <tr><td>Studied carefully</td><td>01'94</td><td>95'97</td><td>98'99</td> <td>100</td></tr> <tr><td>Seen casually</td><td>01'88</td><td>89'94</td><td>95'98</td><td>99'100</td></tr> <tr><td>Viewed once</td><td>01'76</td><td>77'88</td><td>89'96</td><td> 97'100</td></tr> <tr><td>False destination</td><td>(1d20+80)</td><td>–</td><td>–</td><td>81'92</td><td>93'100</td></tr></table>"
@@ -10087,7 +10087,7 @@ spells = [{
     phb: "293", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>teleport</i>, except that it teleports an object, not you. Creadtures and magical forces (such as a delayed blast fireball bead) cannot be teleported. <p class=sub>If desired, the target object can be sent to a distant location on the Ethereal Plane. In this case, the point from which the object was teleported remains faintly magical until the item is retrieved. A successful targeted <i>dispel magic</i> spell cast on that point brings the vanished item back from the Ethereal Plane<p class=sub>See <i>teleport</i> for a table of chances for success."
@@ -10105,7 +10105,7 @@ spells = [{
     phb: "293", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>teleport</i>, except that there is no range limit and there is no chance you arrive off target. In addition, you need not have seen the destination, but in that case you must have at least a reliable description of the place to which you are teleporting (such as a detailed description from someone else or a particularly precise map). If you attempt to teleport with insufficient information (or with misleading information), you disappear and simply reappear in your original location. Interplanar travel is not possible."
@@ -10123,7 +10123,7 @@ spells = [{
     phb: "293", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "You create a circle on the floor or other horizontal surface that teleports, as greater teleport, any creature who stands on it to a designated spot. Once you designate the destination for the circle, you can't change it. The spell fails if you attempt to set the circle to teleport creatures into a solid object, to a place with which you are not familiar and have no clear description, or to another plane. <p class=sub>The circle itself is subtle and nearly impossible to notice. If you intend to keep creatures from activating it accidentally, you need to mark the circle in some way, such as by placing it on a raised platform. <p class=sub><i>Teleportation circle</i> can be made permanent with a <i>permanency</i> spell. A permanent teleportation circle that is disabled becomes inactive for 10 minutes, then can be triggered again as normal. <p class=sub><i>Note</i>: Magic traps such as <i>teleportation circle</i> are hard to detect and disable. A rogue (only) can use the Search skill to find the circle and Disable Device to thwart it. The DC in each case is 25 + spell level, or 34 in the case of <i>teleportation circle</i>. <p class=sub><i>Material Component</i>: Amber dust to cover the area of the circle (cost 1,000 gp)."
@@ -10141,7 +10141,7 @@ spells = [{
     phb: "293", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "<p class=sub>You must succeed on a melee touch attack. You place the subject into a state of suspended animation. For the creature, time ceases to flow and its condition becomes fixed. The creature does not grow older. Its body functions virtually cease, and no force or effect can harm it. This state persists until the magic is removed (such as by a successful <i>dispel magic</i> spell or a <i>freedom</i> spell). <p class=sub><i>Material Component</i>: A powder composed of diamond, emerald, ruby, and sapphire dust with a total value of at least 5,000 gp."
@@ -10159,7 +10159,7 @@ spells = [{
     phb: "294", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You create a slightly concave, circular plane of force that follows you about and carries loads for you. The disk is 3 feet in diameter and 1 inch deep at its center. It can hold 100 pounds of weight per caster level. (If used to transport a liquid, its capacity is 2 gallons.) The disk floats approximately 3 feet above the ground at all times and remains level. It floats along horizontally within spell range and will accompany you at a rate of no more than your normal speed each round. If not otherwise directed, it maintains a constant interval of 5 feet between itself and you. The disk winks out of existence when the spell duration expires. The disk also winks out if you move beyond range (by moving too fast or by such means as a teleport spell) or try to take the disk more than 3 feet away from the surface beneath it. When the disk winks out, whatever it was supporting falls to the surface beneath it. <p class=sub><i>Material Component</i>: A drop of mercury."
@@ -10177,7 +10177,7 @@ spells = [{
     phb: "294", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You become a virtual fighting machine– stronger, tougher, faster, and more skilled in combat. Your mindset changes so that you relish combat and you can't cast spells, even from magic items. <p class=sub>You gain a +4 enhancement bonus to Strength, Dexterity, and Constitution, a +4 natural armor bonus to AC, a +5 competence bonus on Fortitude saves, and proficiency with all simple and martial weapons. Your base attack bonus equals your character level (which may give you multiple attacks). <p class=sub>You lose your spellcasting ability, including your ability to use spell activation or spell completion magic items, just as if the spells were no longer on your class list. <p class=sub><i>Material Component</i>: A <i>potion of bull's strength</i>, which you drink (and whose effects are subsumed by the spell effects)."
@@ -10195,7 +10195,7 @@ spells = [{
     phb: "294", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell seems to make time cease to flow for everyone but you. In fact, you speed up so greatly that all other creatures seem frozen, though they are actually still moving at their normal speeds. You are free to act for 1d4+1 rounds of apparent time. Normal and magical fire, cold, gas, and the like can still harm you. While the <i>time stop</i> is in effect, other creatures are invulnerable to your attacks and spells; you cannot target such creatures with any attack or spell. A spell that affects an area and has a duration longer than the remaining duration of the time stop (such as <i>cloudkill</i>) have their normal effects on other creatures once the <i>time stop</i> ends. Most spellcasters use the additional time to improve their defenses, summon allies, or flee from combat. <p class=sub>You cannot move or harm items held, carried, or worn by a creature stuck in normal time, but you can affect any item that is not in another creature's possession. <p class=sub>You are undetectable while <i>time stop</i> lasts. You cannot enter an area protected by an <i>antimagic field</i> while under the effect of <i>time stop</i>."
@@ -10215,7 +10215,7 @@ spells = [{
     classes: {
         "Bard": 3,
         "Cleric": 5,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "This spell grants the creature touched the ability to speak and understand the language of any intelligent creature, whether it is a racial tongue or a regional dialect. The subject can speak only one language at a time, although it may be able to understand several languages. <i>Tongues</i> does not enable the subject to speak with creatures who don't speak. The subject can make itself understood as far as its voice carries. This spell does not predispose any creature addressed toward the subject in any way. <p class=sub><i>Tongues</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Arcane Material Component</i>: A small clay model of a ziggurat, which shatters when the verbal component is pronounced."
@@ -10233,7 +10233,7 @@ spells = [{
     phb: "294", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 1,
+        "Sorcerer": 1,
         "Wizard": 1
     },
     detail: "You channel negative energy through your touch, fatiguing the target. You must succeed on a touch attack to strike a target. <p class=sub>The subject is immediately fatigued for the spell's duration. <p class=sub>This spell has no effect on a creature that is already fatigued. Unlike with normal fatigue, the effect ends as soon as the spell's duration expires. <p class=sub><i>Material Component</i>: A drop of sweat."
@@ -10251,7 +10251,7 @@ spells = [{
     phb: "294", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "With a touch, you reduce the target's mental faculties. Your successful melee touch attack applies a 1d6 penalty to the target's Intelligence, Wisdom, and Charisma scores. This penalty can't reduce any of these scores below 1. <p class=sub>This spell's effect may make it impossible for the target to cast some or all of its spells, if the requisite ability score drops below the minimum required to cast spells of that level."
@@ -10287,7 +10287,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell transforms normal mud or quicksand of any depth into soft stone (sandstone or a similar mineral) permanently. Any creature in the mud is allowed a Reflex save to escape before the area is hardened to stone. <p class=sub><i>Transmute mud to rock</i> counters and dispels <i>transmute rock to mud</i>. <p class=sub><i>Arcane Material Component</i>: Sand, lime, and water."
@@ -10306,7 +10306,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 6,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell turns natural, uncut or unworked rock of any sort into an equal volume of mud. If the spell is cast upon a boulder, for example, the boulder collapses into mud. Magical stone is not affected by the spell. The depth of the mud created cannot exceed 10 feet. A creature unable to levitate, fly, or otherwise free itself from the mud sinks until hip- or chest-deep, reducing its speed to 5 feet and causing a -2 penalty on attack rolls and AC. Brush thrown atop the mud can support creatures able to climb on top of it. Creatures large enough to walk on the bottom can wade through the area at a speed of 5 feet. <p class=sub>If <i>transmute rock to mud</i> is cast upon the ceiling of a cavern or tunnel, the mud falls to the floor and spreads out in a pool at a depth of 5 feet. For example, a 10th-level caster could convert twenty 10-foot cubes into mud. Pooling on the floor, this mud would cover an area of forty 10-foot squares to a depth of 5 feet. The falling mud and the ensuing cave-in deal 8d6 points of bludgeoning damage to anyone caught directly beneath the area, or half damage to those who succeed on Reflex saves. <p class=sub>Castles and large stone buildings are generally immune to the effect of the spell, since <i>transmute rock to mud</i> can't affect worked stone and doesn't reach deep enough to undermine such buildings' foundations. However, small buildings or structures often rest upon foundations shallow enough to be damaged or even partially toppled by this spell. <p class=sub>The mud remains until a successful <i>dispel magic</i> or <i>transmute mud to rock</i> spell restores its substance–but not necessarily its form. Evaporation turns the mud to normal dirt over a period of days. The exact time depends on exposure to the sun, wind, and normal drainage. <p class=sub><i>Arcane Material Component</i>: Clay and water."
@@ -10341,7 +10341,7 @@ spells = [{
     phb: "295", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 9,
+        "Sorcerer": 9,
         "Wizard": 9
     },
     detail: "<i>Trap the soul</i> forces a creature's life force (and its material body) into a gem. <p class=sub>The gem holds the trapped entity indefinitely or until the gem is broken and the life force is released, which allows the material body to reform. If the trapped creature is a powerful creature from another plane (which could mean a character trapped by an inhabitant of another plane when the character is not on the Material Plane), it can be required to perform a service immediately upon being freed. Otherwise, the creature can go free once the gem imprisoning it is broken. <p class=sub>Depending on the version selected, the spell can be triggered in one of two ways. <p class=sub><i>Spell Completion</i>: First, the spell can be completed by speaking its final word as a standard action as if you were casting a regular spell at the subject. This allows spell resistance (if any) and a Will save to avoid the effect. If the creature's name is spoken as well, any spell resistance is ignored and the save DC increases by 2. If the save or spell resistance is successful, the gem shatters. <p class=sub><i>Trigger Object</i>: The second method is far more insidious, for it tricks the subject into accepting a trigger object inscribed with the final spell word, automatically placing the creature's soul in the trap. To use this method, both the creature's name and the trigger word must be inscribed on the trigger object when the gem is enspelled. A <i>sympathy</i> spell can also be placed on the trigger object. As soon as the subject picks up or accepts the trigger object, its life force is automatically transferred to the gem without the benefit of spell resistance or a save. <p class=sub><i>Material Component</i>: Before the actual casting of trap the soul, you must procure a gem of at least 1,000 gp value for every Hit Die possessed by the creature to be trapped (for example, it requires a gem of 10,000 gp value to trap a 10 HD creature). If the gem is not valuable enough, it shatters when the entrapment is attempted. (While creatures have no concept of level or Hit Dice as such, the value of the gem needed to trap an individual can be researched. Remember that this value can change over time as creatures gain more Hit Dice.) <p class=sub><i>Focus (Trigger Object Only)</i>: If the trigger object method is used, a special trigger object, prepared as described above, is needed."
@@ -10414,7 +10414,7 @@ spells = [{
     classes: {
         "Cleric": 6,
         "Druid": 8,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You confer on the subject the ability to see all things as they actually are. The subject sees through normal and magical darkness, notices secret doors hidden by magic, sees the exact locations of creatures or objects under <i>blur</i> or <i>displacement</i> effects, sees invisible creatures or objects normally, sees through illusions, and sees the true form of polymorphed, changed, or transmuted things. Further, the subject can focus its vision to see into the Ethereal Plane (but not into extradimensional spaces). The range of true seeing conferred is 120 feet. <p class=sub><i>True seeing</i>, however, does not penetrate solid objects. It in no way confers X-ray vision or its equivalent. It does not negate concealment, including that caused by fog and the like. <i>True seeing</i> does not help the viewer see through mundane disguises, spot creatures who are simply hiding, or notice secret doors hidden by mundane means. In addition, the spell effects cannot be further enhanced with known magic, so one cannot use true seeing through a <i>crystal ball</i> or in conjunction with <i>clairaudience/ clairvoyance</i>. <p class=sub><i>Material Component</i>: An ointment for the <p class=sub>eyes that costs 250 gp and is made from <p class=sub>mushroom powder, saffron, and fat."
@@ -10432,7 +10432,7 @@ spells = [{
     phb: "296", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You gain temporary, intuitive insight into the immediate future during your next attack. Your next single attack roll (if it is made before the end of the next round) gains a +20 insight bonus. Additionally, you are not affected by the miss chance that applies to attackers trying to strike a concealed target. <p class=sub><i>Focus</i>: A small wooden replica of an archery target."
@@ -10451,7 +10451,7 @@ spells = [{
     type: "spell",
     classes: {
         "Cleric": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "This spell functions like <i>circle of death</i>, except that it destroys undead creatures as noted above. <p class=sub><i>Material Component</i>: The powder of a crushed diamond worth at least 500 gp."
@@ -10541,7 +10541,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "An <i>unseen servant</i> is an invisible, mindless, shapeless force that performs simple tasks at your command. It can run and fetch things, open unstuck doors, and hold chairs, as well as clean and mend. The servant can perform only one activity at a time, but it repeats the same activity over and over again if told to do so, thus allowing you to command it to clean the floor and then turn your attention elsewhere as long as you remain within range. It can open only normal doors, drawers, lids, and the like. It has an effective Strength score of 2 (so it can lift 20 pounds or drag 100 pounds). It can trigger traps and such, but it can exert only 20 pounds of force, which is not enough to activate certain pressure plates and other devices. It can't perform any task that requires a skill check with a DC higher than 10 or that requires a check using a skill that can't be used untrained. Its speed is 15 feet. <p class=sub>The servant cannot attack in any way; it is never allowed an attack roll. It cannot be killed, but it dissipates if it takes 6 points of damage from area attacks. (It gets no saves against attacks.) If you attempt to send it beyond the spell's range (measured from your current position), the servant ceases to exist. <p class=sub><i>Material Component</i>: A piece of string and a bit of wood."
@@ -10559,7 +10559,7 @@ spells = [{
     phb: "298", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "You must succeed on a melee touch attack. Your touch deals 1d6 points of damage per two caster levels (maximum 10d6). You gain temporary hit points equal to the damage you deal. However, you can't gain more than the subject's current hit points +10, which is enough to kill the subject. The temporary hit points disappear 1 hour later."
@@ -10578,7 +10578,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 7,
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You instantly change the appearance of the subjects and then maintain that appearance for the spell's duration. You can make the subjects appear to be anything you wish. A party might be made to resemble a mixed band of sprites led by a treant. The subjects look, feel, and smell just like the creatures the spell makes them resemble. Affected creatures resume their normal appearances if slain. You must succeed on a Disguise check to duplicate the appearance of a specific individual. This spell gives you a +10 bonus on the check. <p class=sub>Unwilling targets can negate the spell's effect on them by making Will saves or with spell resistance. Those who interact with the subjects can attempt Will disbelief saves to see through the glamer, but spell resistance doesn't help."
@@ -10597,7 +10597,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 2,
-        "Sorceror": 2,
+        "Sorcerer": 2,
         "Wizard": 2
     },
     detail: "You can make your voice (or any sound that you can normally make vocally) seem to issue from someplace else, such as from another creature, a statue, from behind a door, down a passage, etc. You can speak in any language you know. With respect to such voices and sounds, anyone who hears the sound and rolls a successful save recognizes it as illusory (but still hears it). <p class=sub><i>Focus</i>: A parchment rolled up into a small cone."
@@ -10634,7 +10634,7 @@ spells = [{
     phb: "298", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "This spell functions like <i>legend lore</i>, except that it works more quickly but produces some strain on you. You pose a question about some person, place, or object, then cast the spell. If the person or object is at hand or if you are in the place in question, you receive a vision about it by succeeding on a caster level check (1d20 +1 per caster level; maximum +25) against DC 20. If only detailed information on the person, place, or object is known, the DC is 25, and the information gained is incomplete. If only rumors are known, the DC is 30, and the information gained is vague. <p class=sub><i>XP Cost</i>: 100 XP."
@@ -10652,7 +10652,7 @@ spells = [{
     phb: "298", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "You emit a terrible scream that kills creatures that hear it (except for yourself). Creatures closest to the point of origin are affected first."
@@ -10671,7 +10671,7 @@ spells = [{
     type: "spell",
     classes: {
         "Druid": 6,
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "An immobile, blazing curtain of shimmering violet fire springs into existence. One side of the wall, selected by you, sends forth waves of heat, dealing 2d4 points of fire damage to creatures within 10 feet and 1d4 points of fire damage to those past 10 feet but within 20 feet. The wall deals this damage when it appears and on your turn each round to all creatures in the area. In addition, the wall deals 2d6 points of fire damage +1 point of fire damage per caster level (maximum +20) to any creature passing through it. The wall deals double damage to undead creatures. <p class=sub>If you evoke the wall so that it appears where creatures are, each creature takes damage as if passing through the wall. <p class=sub>If any 5-foot length of wall takes 20 points of cold damage or more in 1 round, that length goes out. (Do not divide cold damage by 4, as normal for objects.) <p class=sub><i>Wall of fire</i> can be made permanent with a <i>permanency</i> spell. A permanent wall of fire that is extinguished by cold damage becomes inactive for 10 minutes, then reforms at normal strength. <p class=sub><i>Arcane Material Component</i>: A small piece of phosphorus."
@@ -10689,7 +10689,7 @@ spells = [{
     phb: "298", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "A <i>wall of force</i> spell creates an invisible wall of force. The wall cannot move, it is immune to damage of all kinds, and it is unaffected by most spells, including <i>dispel magic</i>. However, <i>disintegrate</i> immediately destroys it, as does a <i>rod of cancellation</i>, a <i>sphere of annihilation</i>, or a <i>Mordenkainen's disjunction</i> spell. Breath weapons and spells cannot pass through the wall in either direction, although <i>dimension door</i>, <i>teleport</i>, and similar effects can bypass the barrier. It blocks ethereal creatures as well as material ones (though ethereal creatures can usually get around the wall by floating under or over it through material floors and ceilings). Gaze attacks can operate through a <i>wall of force</i>. <p class=sub>The caster can form the wall into a flat, vertical plane whose area is up to one 10- foot square per level. The wall must be continuous and unbroken when formed. If its surface is broken by any object or creature, the spell fails. <p class=sub><i>Wall of force</i> can be made permanent with a <i>permanency</i> spell. <p class=sub><i>Material Component</i>: A pinch of powder made from a clear gem."
@@ -10707,7 +10707,7 @@ spells = [{
     phb: "299", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 5,
+        "Sorcerer": 5,
         "Wizard": 5
     },
     detail: "This spell creates an anchored plane of ice or a hemisphere of ice, depending on the version selected. A <i>wall of ice</i> cannot form in an area occupied by physical objects or creatures. Its surface must be smooth and unbroken when created. Any creature adjacent to the wall when it is created may attempt a Reflex save to disrupt the wall as it is being formed. A successful save indicates that the spell automatically fails. Fire, including a <i>fireball</i> spell and red dragon breath, can melt a wall of ice, and it deals full damage to the wall (instead of the normal half damage taken by objects). Suddenly melting a <i>wall of ice</i> creates a great cloud of steamy fog that lasts for 10 minutes. <p class=sub><i>Ice Plane</i>: A sheet of strong, hard ice appears. The wall is 1 inch thick per caster level. It covers up to a 10-foot-square area per caster level (so a 10th-level wizard can create a wall of ice 100 feet long and 10 feet high, a wall 50 feet long and 20 feet high, or some other combination of length and height that does not exceed 1,000 square feet). The plane can be oriented in any fashion as long as it is anchored. A vertical wall need only be anchored on the floor, while a horizontal or slanting wall must be anchored on two opposite sides. <p class=sub>The wall is primarily defensive in nature and is used to stop pursuers from following you and the like. Each 10-foot square of wall has 3 hit points per inch of thickness. Creatures can hit the wall automatically. A section of wall whose hit points drop to 0 is breached. If a creature tries to break through the wall with a single attack, the DC for the Strength check is 15 + caster level. <p class=sub>Even when the ice has been broken through, a sheet of frigid air remains. Any creature stepping through it (including the one who broke through the wall) takes 1d6 points of cold damage +1 point per caster level (no save). <p class=sub><i>Hemisphere</i>: The wall takes the form of a hemisphere whose maximum radius is 3 feet + 1 foot per caster level. Thus, a 7th-level caster can create a hemisphere 10 feet in radius. The hemisphere is as hard to break through as the <i>ice plane</i> form, but it does not deal damage to those who go through a breach. <p class=sub><i>Material Component</i>: A small piece of quartz or similar rock crystal."
@@ -10725,7 +10725,7 @@ spells = [{
     phb: "299", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 7,
+        "Sorcerer": 7,
         "Wizard": 7
     },
     detail: "You cause a flat, vertical iron wall to spring into being. This wall can be used to seal off a passage or close a breach, for the wall inserts itself into any surrounding nonliving material if its area is sufficient to do so. The wall cannot be conjured so that it occupies the same space as a creature or another object. It must always be a flat plane, though you can shape its edges to fit the available space. <p class=sub>A <i>wall of iron</i> is 1 inch thick per four caster levels. You can double the wall's area by halving its thickness. Each 5-foot square of the wall has 30 hit points per inch of thickness and hardness 10. A section of wall whose hit points drop to 0 is breached. If a creature tries to break through the wall with a single attack, the DC for the Strength check is 25 + 2 per inch of thickness. <p class=sub>If you desire, the wall can be created vertically resting on a flat surface but not attached to the surface, so that it can be tipped over to fall on and crush creatures beneath it. The wall is 50% likely to tip in either direction if left unpushed. Creatures can push the wall in one direction rather than letting it fall randomly. A creature must make a DC 40 Strength check to push the wall over. Creatures with room to flee the falling wall may do so by making successful Reflex saves. Any Large or smaller creature that fails takes 10d6 points of damage. The wall cannot crush Huge and larger creatures. <p class=sub>Like any iron wall, this wall is subject to rust, perforation, and other natural phenomena. <p class=sub><i>Material Component</i>: A small piece of sheet iron plus gold dust worth 50 gp (1 pound of gold dust)."
@@ -10745,7 +10745,7 @@ spells = [{
     classes: {
         "Cleric": 6,
         "Druid": 7,
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "This spell creates a wall of rock that merges into adjoining rock surfaces. It is typically employed to close passages, portals, and breaches against opponents. A wall of stone is 1 inch thick per four caster levels and composed of up to one 5-foot square per level. You can double the wall's area by halving its thickness. The wall cannot be conjured so that it occupies the same space as a creature or another object. <p class=sub>Unlike a <i>wall of iron</i>, you can create a <i>wall of stone</i> in almost any shape you desire. The wall created need not be vertical, nor rest upon any firm foundation; however, it must merge with and be solidly supported by existing stone. It can be used to bridge a chasm, for instance, or as a ramp. For this use, if the span is more than 20 feet, the wall must be arched and buttressed. This requirement reduces the spell's area by half. Thus, a 20th-level caster can create span with a surface area of ten 5-foot squares. The wall can be crudely shaped to allow crenellations, battlements, and so forth by likewise reducing the area. <p class=sub>Like any other stone wall, this one can be destroyed by a <i>disintegrate</i> spell or by normal means such as breaking and chipping. Each 5-foot square of the wall has 15 hit points per inch of thickness and hardness 8. A section of wall whose hit points drop to 0 is breached. If a creature tries to break through the wall with a single attack, the DC for the Strength check is 20 + 2 per inch of thickness. <p class=sub>It is possible, but difficult, to trap mobile opponents within or under a <i>wall of stone</i>, provided the wall is shaped so it can hold the creatures. Creatures can avoid entrapment with successful Reflex saves. <p class=sub><i>Arcane Material Component</i>: A small block of granite."
@@ -10799,7 +10799,7 @@ spells = [{
     classes: {
         "Cleric": 4,
         "Druid": 4,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "The transmuted creatures can breathe water freely. Divide the duration evenly among all the creatures you touch. <p class=sub>The spell does not make creatures unable to breathe air. <p class=sub><i>Arcane Material Component</i>: A short reed or piece of straw."
@@ -10835,7 +10835,7 @@ spells = [{
     phb: "301", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 8,
+        "Sorcerer": 8,
         "Wizard": 8
     },
     detail: "Waves of negative energy cause all living creatures in the spell's area to become exhausted. This spell has no effect on a creature that is already exhausted."
@@ -10853,7 +10853,7 @@ spells = [{
     phb: "301", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 6,
+        "Sorcerer": 6,
         "Wizard": 6
     },
     detail: "Waves of negative energy render all living creatures in the spell's area fatigued. This spell has no effect on a creature that is already fatigued."
@@ -10871,7 +10871,7 @@ spells = [{
     phb: "301", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "<i>Web</i> creates a many-layered mass of strong, sticky strands. These strands trap those caught in them. The strands are similar to spider webs but far larger and tougher. These masses must be anchored to two or more solid and diametrically opposed points–floor and ceiling, opposite walls, or the like–or else the web collapses upon itself and disappears. Creatures caught within a web become entangled among the gluey fibers. Attacking a creature in a web won't cause you to become entangled. <p class=sub>Anyone in the effect's area when the spell is cast must make a Reflex save. If this save succeeds, the creature is entangled, but not prevented from moving, though moving is more difficult than normal for being entangled (see below). If the save fails, the creature is entangled and can't move from its space, but can break loose by spending 1 round and making a DC 20 Strength check or a DC 25 Escape Artist check. Once loose (either by making the initial Reflex save or a later Strength check or Escape Artist check), a creature remains entangled, but may move through the <i>web</i> very slowly. Each round devoted to moving allows the creature to make a new Strength check or Escape Artist check. The creature moves 5 feet for each full 5 points by which the check result exceeds 10. <p class=sub>If you have at least 5 feet of web between you and an opponent, it provides cover. If you have at least 20 feet of web between you, it provides total cover (see Cover, page 150). <p class=sub>The strands of a <i>web</i> spell are flammable. <p class=sub>A magic <i>flaming</i> sword can slash them away as easily as a hand brushes away cobwebs. Any fire–a torch, burning oil, a flaming sword, and so forth–can set the webs alight and burn away 5 square feet in 1 round. All creatures within flaming webs take 2d4 points of fire damage from the flames. <p class=sub><i>Web</i> can be made permanent with a <i>permanency</i> spell. A permanent web that is damaged (but not destroyed) regrows in 10 minutes. <p class=sub><i>Material Component</i>: A bit of spider web."
@@ -10889,7 +10889,7 @@ spells = [{
     phb: "301", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "This spell functions like <i>phantasmal killer</i>, except it can affect more than one creature. Only the affected creatures see the phantasmal creatures attacking them, though you see the attackers as shadowy shapes. <p class=sub>If a subject's Fortitude save succeeds, it still takes 3d6 points of damage and is stunned for 1 round. The subject also takes 1d4 points of temporary Strength damage."
@@ -10923,7 +10923,7 @@ spells = [{
     type: "spell",
     classes: {
         "Bard": 3,
-        "Sorceror": 3,
+        "Sorcerer": 3,
         "Wizard": 3
     },
     detail: "You send a message or sound on the wind to a designated spot. The <i>whispering wind</i> travels to a specific location within range that is familiar to you, provided that it can find a way to the location. (It can't pass through walls, for instance.) A <i>whispering wind</i> is as gentle and unnoticed as a zephyr until it reaches the location. It then delivers its whisper-quiet message or other sound. Note that the message is delivered regardless of whether anyone is present to hear it. The wind then dissipates. You can prepare the spell to bear a message of no more than twenty-five words, cause the spell to deliver other sounds for 1 round, or merely have the <i>whispering wind</i> seem to be a faint stirring of the air. You can likewise cause the <i>whispering wind</i> to move as slowly as 1 mile per hour or as quickly as 1 mile per 10 minutes. When the spell reaches its objective, it swirls and remains in place until the message is delivered. As with <i>magic mouth</i>, <i>whispering wind</i> cannot speak verbal components, use command words, or activate magical effects."
@@ -10962,7 +10962,7 @@ spells = [{
         "Cleric": 4,
         "Druid": 4,
         "Ranger": 2,
-        "Sorceror": 4,
+        "Sorcerer": 4,
         "Wizard": 4
     },
     detail: "An invisible vertical curtain of wind appears. It is 2 feet thick and of considerable strength. It is a roaring blast sufficient to blow away any bird smaller than an eagle, or tear papers and similar materials from unsuspecting hands. (A Reflex save allows a creature to maintain its grasp on an object.) Tiny and Small flying creatures cannot pass through the barrier. Loose materials and cloth garments fly upward when caught in a wind wall. Arrows and bolts are deflected upward and miss, while any other normal ranged weapon passing through the wall has a 30% miss chance. (A giant-thrown boulder, a siege engine projectile, and other massive ranged weapons are not affected.) Gases, most gaseous breath weapons, and creatures in gaseous form cannot pass through the wall (although it is no barrier to incorporeal creatures). <p class=sub>While the wall must be vertical, you can shape it in any continuous path along the ground that you like. It is possible to create cylindrical or square wind walls to enclose specific points. A 5th-level caster can create a wall up to 50 feet long and up to 25 feet high, sufficient to form a cylinder of wind 15 feet in diameter. <p class=sub><i>Arcane Material Component</i>: A tiny fan and a feather of exotic origin."
@@ -10980,7 +10980,7 @@ spells = [{
     phb: "302", tags: ["phb"], 
     type: "spell",
     classes: {
-        "Sorceror": 10,
+        "Sorcerer": 10,
         "Wizard": 10
     },
     detail: "<i>Wish</i> is the mightiest spell a wizard or sorcerer can cast. By simply speaking aloud, you can alter reality to better suit you. Even <i>wish</i>, however, has its limits. <p class=sub>A <i>wish</i> can produce any one of the following effects. <p class=sub><ul><p class=sub><li>Duplicate any wizard or sorcerer spell of 8th level or lower, provided the spell is not of a school prohibited to you. <p class=sub><li>Duplicate any other spell of 6th level or lower, provided the spell is not of a school prohibited to you. <p class=sub><li>Duplicate any wizard or sorcerer spell of 7th level or lower even if it's of a prohibited school. <p class=sub><li>Duplicate any other spell of 5th level or lower even if it's of a prohibited school. <p class=sub><li>Undo the harmful effects of many other spells, such as <i>geas/quest</i> or <i>insanity</i>. <p class=sub><li>Create a nonmagical item of up to 25,000 gp in value. <p class=sub><li>Create a magic item, or add to the powers of an existing magic item. <p class=sub><i><li>Grant a creature a +1 inherent bonus to an ability score. Two to five wish spells cast in immediate succession can grant a creature a +2 to +5 inherent bonus to an ability score (two wishes for a +2 inherent bonus, three for a +3 inherent bonus, and so on). Inherent bonuses are instantaneous, so they cannot be dispelled. Note</i>: An inherent bonus may not exceed +5 for a single ability score, and inherent bonuses to a particular ability score do not stack, so only the best one applies. <p class=sub><li>Remove injuries and afflictions. A single wish can aid one creature per caster level, and all subjects are cured of the same kind of affliction. For example, you could heal all the damage you and your companions have taken, or remove all poison effects from everyone in the party, but not do both with the same wish. A wish can never restore the experience point loss from casting a spell or the level or Constitution loss from being raised from the dead. <p class=sub><li>Revive the dead. A <i>wish</i> can bring a dead creature back to life by duplicating a resurrection spell. A <i>wish</i> can revive a dead creature whose body has been destroyed, but the task takes two wishes, one to recreate the body and another to infuse the body with life again. A <i>wish</i> cannot prevent a character who was brought back to life from losing an experience level. <p class=sub><li>Transport travelers. A wish can lift one creature per caster level from anywhere on any plane and place those creatures anywhere else on any plane regardless of local conditions. An unwilling target gets a Will save to negate the effect, and spell resistance (if any) applies. <p class=sub><li>Undo misfortune. A <i>wish</i> can undo a single recent event. The <i>wish</i> forces a reroll of any roll made within the last round (including your last turn). Reality reshapes itself to accommodate the new result. For example, a wish could undo an opponent's successful save, a foe's successful critical hit (either the attack roll or the critical roll), a friend's failed save, and so on. The reroll, however, may be as bad as or worse than the original roll. An unwilling target gets a Will save to negate the effect, and spell resistance (if any) applies. <p class=sub></ul> <p class=sub>You may try to use a <i>wish</i> to produce greater effects than these, but doing so is dangerous. Such a <i>wish</i> gives the DM the opportunity to fulfil your request without fulfilling it completely. (The <i>wish</i> may pervert your intent into a literal but undesirable fulfillment or only a partial fulfillment.) For example, wishing for a <i>staff of the magi</i> might get you instantly transported to the presence of the staff's current owner. Wishing to be immortal could get you imprisioned in a hidden extradimensional space (as by an <i>imprisonment</i> spell), where you could â€œliveâ€ indefinitely. <p class=sub>Duplicated spells allow saves and spell resistance as normal (but save DCs are for 9th-level spells). <p class=sub><i>Material Component</i>: When a <i>wish</i> duplicates a spell with a material component that costs more than 10,000 gp, you must provide that component. <p class=sub><i>XP Cost</i>: The minimum XP cost for casting <i>wish</i> is 5,000 XP. When a <i>wish</i> duplicates a spell that has an XP cost, you must pay 5,000 XP or that cost, whichever is more. When a wish creates or improves a magic item, you must pay twice the normal XP cost for crafting or improving the item, plus an additional 5,000 XP."

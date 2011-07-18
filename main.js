@@ -309,7 +309,7 @@ function build_main_page() {
 						// domain spells added 1st through 9th
 						for (var domain in char_domains) { 								
 							if(clazz_spells.indexOf(char_domains[domain].spells[level - 1]) == -1) {
-									clazz_spells.push(spells.first({name: char_domains[domain].spells[level - 1]}).name);
+								clazz_spells.push(spells.first({name: char_domains[domain].spells[level - 1]}).name);
 							}
 						}
 					}
