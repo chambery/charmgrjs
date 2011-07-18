@@ -1700,6 +1700,19 @@ feats = new TAFFY ([
 			description : "You are trained in the use of basic weapons. <p class=sub><b>Benefit: </b>You make attack rolls with simple weapons without penalty. <p class=sub><b>Normal: </b>When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls. <p class=sub><b>Special: </b>All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat.",
 			prereqs : {},
 			benefit : {},
+			attack: "if(weapon.category == 'simple') { attacks.weapon_proficiency = 0; } return attacks;",
+			classes: {
+				"Barbarian": 1,
+				"Bard": 1,
+				"Cleric": 1,
+				"Fighter": 1,
+				"Paladin": 1,
+				"Ranger": 1
+			},
+			collection: {
+				db: "weapons",
+				filter: { category: "simple" }
+			},
 			tags : [ "pathfinder" ],
 			type: "feat", _id: "1c6b"
 		},

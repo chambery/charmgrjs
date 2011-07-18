@@ -11,7 +11,8 @@ function import_character() {
 		} else {
 			var char_name = data;
 			chardata = $.getJSON("character/" + chardata.options.owner + "/" + char_name);
-			parse_taffy_data(chardata);
+			parse_taffy_data(chardata, "skills");
+			parse_taffy_data(chardata, "feats");
 		}
 		if(chardata != null) {
 			// save last used character
@@ -139,14 +140,9 @@ function get_cookie_data(cookie_name) {
 
 }
 
-function parse_taffy_data(data) {
-	if(data != null) {
-		if (data.skills != null) {
-			data.skills = TAFFY(data.skills);
-		}
-		if (data.feats != null) {
-			data.feats = TAFFY(data.feats);
-		}
+function parse_taffy_data(data, type) {
+	if(data && data[type]) {
+		data[type] = TAFFY(data[type]);
 	}
 }
 
@@ -154,11 +150,17 @@ function load_static_data() {
 	spells.forEach(function(spell, n) {
 		for(classname in spell.classes) {
 			var clazz = classes.first({ name: classname });
-			clazz.spells[spell.classes[classname]].push(spell.name);
+			// level listed starting from 1
+			clazz.spells[spell.classes[classname]-1].push(spell.name);
 		}
 	});
 	
 	feats.forEach(function(feat, n) {
+		for(classname in feat.classes) {
+			var clazz = classes.first({ name: classname });
+			clazz.feats[feat.classes[classname]-1].push(feat.name);
+		}
+		
 		if(feat.multi) {
 			feat.multi.db = eval(feat.multi.db);
 			feat.multi.type = eval(feat.multi.type);
