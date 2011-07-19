@@ -3,7 +3,7 @@ grapple_size_mod = { "colossal": 16, "gargantuan": 12, "huge": 8, "large": 4, "m
 function load() {
 	session={};
 	// console.group("load");
-	chardata = {};
+	chardata = { log: [] };
 	players_companion = TAFFY.JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
 	if (players_companion.last_character) {
 		lod(players_companion.last_character);

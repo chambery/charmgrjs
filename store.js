@@ -141,8 +141,13 @@ function get_cookie_data(cookie_name) {
 }
 
 function parse_taffy_data(data, type) {
-	if(data && data[type]) {
-		data[type] = TAFFY(data[type]);
+	if(data != null) {
+		if (data.skills != null) {
+			data.skills = TAFFY(data.skills);
+		}
+		if (data.feats != null) {
+			data.feats = TAFFY(data.feats);
+		}
 	}
 }
 
@@ -155,12 +160,7 @@ function load_static_data() {
 		}
 	});
 	
-	feats.forEach(function(feat, n) {
-		for(classname in feat.classes) {
-			var clazz = classes.first({ name: classname });
-			clazz.feats[feat.classes[classname]-1].push(feat.name);
-		}
-		
+	feats.forEach(function(feat, n) {		
 		if(feat.multi) {
 			feat.multi.db = eval(feat.multi.db);
 			feat.multi.type = eval(feat.multi.type);
@@ -194,6 +194,11 @@ function load_static_data() {
 		}
 		if(feat.mobility) {
 			feat.mobility = new Function("acp", feat.mobility); 
+		}
+
+		for(classname in feat.classes) {
+			var clazz = classes.first({ name: classname });
+			clazz.feats[feat.classes[classname]-1].push(feat.name);
 		}
 		
 		return feat;

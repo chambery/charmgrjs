@@ -1146,7 +1146,7 @@ function calc_cmb(base_attack_bonuses, other_mod) {
 	other_mod = other_mod ? parseInt(other_mod) : 0;
 	var babs = base_attack_bonuses.map(function(x) { return x + calc_ability_modifier(chardata.abilities["Str"]) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod('Att'); });
 	for(var i=0; i<babs.length; i++) {
-		cmb += i + 1 < babs.length ? "/" : "";
+		cmb += pos(babs[i]) + (i + 1 < babs.length ? "/" : "");
 	}
 	return cmb;
 }
@@ -1156,7 +1156,7 @@ function calc_cmd(base_attack_bonuses, other_mod) {
 	other_mod = other_mod ? parseInt(other_mod) : 0;
 	var babs = base_attack_bonuses.map(function(x) { return x + calc_ability_modifier(chardata.abilities["Str"]) + calc_ability_modifier(chardata.abilities["Dex"]) + calc_size_mod(chardata.race_name) + other_mod + 10; });
 	for(var i=0; i<babs.length; i++) {
-		cmd += i + 1 < babs.length ? "/" : "";
+		cmd += pos(babs[i]) + (i + 1 < babs.length ? "/" : "");
 	}
-	return cmd
+	return cmd;
 }
