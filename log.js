@@ -132,16 +132,15 @@ function sync_logs() {
 			var remote = {};
 			$.getJSON("log/" + chardata.options.owner + "/" + chardata.name + "/" + chardata.log[i], function(data) {remote = data;});
 			var local = get_log_entry(chardata.log[i]);
-			
-			if((!remote.id && local) || (local && remote.last_mod < local.last_mod)) {
+			if(!local && !remote.id) {
+				console.log("Log " + chardata.log[i] + " not found.");
+			} else if((!remote.id && local) || (local && remote.last_mod < local.last_mod)) {
 				console.log("Saving log " + chardata.log[i] + " to remote");
 				save_remote(local, local.id);
 			} else if((!local && remote.id) || (local && remote && remote.last_mod > local.last_mod)) {
 				console.log("Saving log " + chardata.log[i] + " to local");
 				save_local(remote, "log_" + chardata.name + "_" + remote.id);
-			} else {
-				console.log("Log " + chardata.log[i] + " not found.");
-			}
+			} 
 		}
 	}
 }

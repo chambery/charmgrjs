@@ -277,3 +277,29 @@ legend.fake_link:hover {
 .temp_entry_box {
 	border: medium solid #C0C0C0;
 }
+
+table.pftable {
+	border-spacing: 0px;
+}
+
+th.pftable {
+	border-bottom: 2px solid tan;
+	padding-right: 4px; 
+	padding-left: 4px;
+}
+
+td.pftable {
+	border-bottom: 1px solid wheat;
+	padding-right: 4px; 
+	padding-left: 4px;
+}
+
+tr:last-child td.pftable {
+	border-bottom: 2px solid tan;
+	padding-right: 4px; 
+	padding-left: 4px;
+}
+
+td.number {
+	text-align: center;
+}
