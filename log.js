@@ -73,7 +73,7 @@ function populate_log_history() {
         // var path = window.location.pathname.split( '/' );
         // path = path.slice(0, path.length-2);
         if(chardata.options && chardata.options.owner && chardata.options.owner.length > 0 && chardata.name && chardata.name.length > 0) {
-        	history += "<a href='" + window.location.protocol + "//" + window.location.host + "/logs/" + chardata.options.owner + "/" + chardata.name + "/" + entries[i].id + "' target='_blank' style='color: #B4B5B5; text-decoration: none;')\">link &nbsp;</a> ";
+        	history += "<a href='" + window.location.protocol + "//" + window.location.host + "/log/" + chardata.options.owner + "/" + chardata.name + "/" + entries[i].id + "' target='_blank' style='color: #B4B5B5; text-decoration: none;')\">link &nbsp;</a> ";
         }
         history += "<a class='fake_link' onclick=\"edit_log_entry('" + entries[i].id + "')\")\">edit</a> ";
         history += "<a class='fake_link' onclick=\"delete_log_entry('" + entries[i].id + "')\">delete</a></td></tr>";
