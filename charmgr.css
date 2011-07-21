@@ -280,6 +280,7 @@ legend.fake_link:hover {
 
 table.pftable {
 	border-spacing: 0px;
+	margin: 5px;
 }
 
 th.pftable {
