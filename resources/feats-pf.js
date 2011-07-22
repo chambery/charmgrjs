@@ -134,6 +134,11 @@ feats = new TAFFY([{
     detail: "You are skilled at wearing heavy armor.<p class=sub><b>Prerequisites: </b>Armor Proficiency, Medium<p class=sub><b>Benefit: </b>See Armor Proficiency, Light. <p class=sub><b>Normal: </b>See Armor Proficiency, Light. <p class=sub><b>Special: </b>Fighters and paladins automatically have Heavy Armor Proficiency as a bonus feat. They need not select it.",
     attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
     mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; ",
+	classes: {
+		"Cleric": 2,
+		"Fighter": 2,
+		"Paladin": 1
+	},
     collection: {
         db: "armors",
         filter: {
@@ -178,6 +183,13 @@ feats = new TAFFY([{
     detail: "You are skilled at wearing medium armor.<p class=sub><b>Prerequisites: </b>Armor Proficiency, Light<p class=sub><b>Benefit: </b>See Armor Proficiency, Light. <p class=sub><b>Normal: </b>See Armor Proficiency, Light. <p class=sub><b>Special: </b>Fighters, paladins, and rangers automatically have Medium Armor Proficiency as a bonus feat. They need not select it.",
     attack: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
     mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;",
+	classes: {
+		"Barbarian": 1,
+		"Cleric": 1,
+		"Druid": 1,
+		"Fighter": 1,
+		"Paladin": 1
+	},
     collection: {
         db: "armors",
         filter: {

@@ -21,7 +21,8 @@ damage_types = new TAFFY([]);
 simple_weapons = [];
 martial_weapons = [];
 exotic_weapons = [];
-// TODO - export                             
+// TODO - export
+show_detail_ignore = ["_id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells"];
 spellcasters = ["Bard","Cleric","Druid","Paladin","Ranger","Sorceror","Wizard"];
 natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
 spellpickers = ["Bard", "Sorceror", "Wizard"];
@@ -631,7 +632,7 @@ function show_item_detail(table, obj_id) {
 	var content = '';
 	var title = obj.name;
 	jQuery.each(obj, function(name, value) {
-		if (value == null || value.toString().length == 0 || name == "_id" || name == "_rev" || name ==  "classes" || name ==  "type" || name ==  "prereqs" || name ==  "benefit" || name ==  "conditional" || name == "multi" || name == "inform" || name == "abbrev" || name == "skill_classes" || name == "attack" || name == "damage" || name == "spells") {
+		if (value == null || value.toString().length == 0 || show_detail_ignore.indexOf(name) > -1) {
 			return;
 		} else if (name != 'detail' && name != 'name' && name != 'class_data' && name != 'description' && name != 'op') {
 			if (name == 'ability_id') {
