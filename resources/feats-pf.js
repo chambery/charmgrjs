@@ -514,7 +514,7 @@ feats = new TAFFY([{
     detail: "You can make exceptionally deadly ranged attacks by pinpointing a foe?s weak spot, at the expense of making the attack less likely to succeed.<p class=sub><b>Prerequisites: </b>Dex 13, base attack bonus +1<p class=sub><b>Benefit: </b>You can choose to take a ?1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by ?1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.",
     prereqs: {
         abilities: {
-            "Dex": 13
+            Dex: 13
         },
         base_attack_bonus: 1
     },
@@ -894,7 +894,10 @@ feats = new TAFFY([{
     name: "Greater Disarm",
     summary: "Disarmed weapons are knocked away from your enemy",
     detail: "You can knock weapons far from an enemy&apos;s grasp. <p class=sub><b>Prerequisites: </b>Combat Expertise, Improved Disarm, base attack bonus +6, Int 13. <p class=sub><b>Benefit: </b>You receive a +2 bonus on checks made to disarm a foe. This bonus stacks with the bonus granted by Improved Disarm. Whenever you successfully disarm an opponent, the weapon lands 15 feet away from its previous wielder, in a random direction. <p class=sub><b>Normal: </b>Disarmed weapons and gear land at the feet of the disarmed creature.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Improved Disarm"],
+    	base_attack_bonus: 6
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -903,7 +906,10 @@ feats = new TAFFY([{
     name: "Greater Feint",
     summary: "Enemies you feint lose their Dex bonus for 1 round",
     detail: "You are skilled at making foes overreact to your attacks. <p class=sub><b>Prerequisites: </b>Combat Expertise, Improved Feint, base attack bonus +6, Int 13. <p class=sub><b>Benefit: </b>Whenever you use feint to cause an opponent to lose his Dexterity bonus, he loses that bonus until the beginning of your next turn, in addition to losing his Dexterity bonus against your next attack. <p class=sub><b>Normal: </b>A creature you feint loses its Dexterity bonus against your next attack.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Improved Feint"],
+    	base_attack_bonus: 6
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -973,7 +979,10 @@ feats = new TAFFY([{
     name: "Greater Trip",
     summary: "Enemies you trip provoke attacks of opportunity ",
     detail: "You can make free attacks on foes that you knock down. <p class=sub><b>Prerequisites: </b>Combat Expertise, Improved Trip, base attack bonus +6, Int 13. <p class=sub><b>Benefit: </b>You receive a +2 bonus on checks made to trip a foe. This bonus stacks with the bonus granted by Improved Trip. Whenever you successfully trip an opponent, that opponent provokes attacks of opportunity. <p class=sub><b>Normal: </b>Creatures do not provoke attacks of opportunity from being tripped.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Improved Trip"],
+    	base_attack_bonus: 6
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1061,7 +1070,9 @@ feats = new TAFFY([{
     name: "Improved Disarm",
     summary: "+2 bonus on disarm attempts, no attack of opportunity",
     detail: "You are skilled at knocking weapons from a foe&apos;s grasp. <p class=sub><b>Prerequisite: </b>Int 13, Combat Expertise <p class=sub><b>Benefit: </b>You do not provoke an attack of opportunity when performing a disarm combat maneuver. In addition, you receive a +2 bonus on checks made to disarm a foe. You also receive a +2 bonus to your Combat Maneuver Defense whenever an opponent tries to disarm you. <p class=sub><b>Normal: </b>You provoke an attack of opportunity when performing a disarm combat maneuver.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Combat Expertise"]
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1078,7 +1089,9 @@ feats = new TAFFY([{
     name: "Improved Feint",
     summary: "Feint as a move action",
     detail: "You are skilled at fooling your opponents in combat. <p class=sub><b>Prerequisites: </b>Int 13, Combat Expertise <p class=sub><b>Benefit: </b>You can make a Bluff check to feint in combat as a move action. <p class=sub><b>Normal: </b>Feinting in combat is a standard action.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Combat Expertise"]
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1165,7 +1178,9 @@ feats = new TAFFY([{
     name: "Improved Trip",
     summary: "+2 bonus on trip attempts, no attack of opportunity",
     detail: "You are skilled at sending your opponents to the ground. <p class=sub><b>Prerequisite: </b>Int 13, Combat Expertise <p class=sub><b>Benefit: </b>You do not provoke an attack of opportunity when performing a trip combat maneuver. In addition, you receive a +2 bonus on checks made to trip a foe. You also receive a +2 bonus to your Combat Maneuver Defense whenever an opponent tries to trip you. <p class=sub><b>Normal: </b>You provoke an attack of opportunity when performing a trip combat maneuver.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Combat Expertise"]
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1564,7 +1579,10 @@ feats = new TAFFY([{
     name: "Sickening Critical",
     summary: "Whenever you score a critical hit, the target is sickened",
     detail: "Your critical hits cause opponents to become sickened. <p class=sub><b>Prerequisites: </b>Critical Focus, base attack bonus +11 <p class=sub><b>Benefit: </b>Whenever you score a critical hit, your opponent becomes sickened for 1 minute. The effects of this feat do not stack. Additional hits instead add to the effect&apos;s duration. <p class=sub><b>Special: </b>You can only apply the effects of one critical feat to a given critical hit unless you possess Critical Mastery.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Critical Focus"],
+    	base_attack_bonus: 11
+    },
     groups: ["Critical", "Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1673,7 +1691,10 @@ feats = new TAFFY([{
     name: "Staggering Critical",
     summary: "Whenever you score a critical hit, the target is staggered",
     detail: "Your critical hits cause opponents to slow down. <p class=sub><b>Prerequisites: </b>Critical Focus, base attack bonus +13 <p class=sub><b>Benefit: </b>Whenever you score a critical hit, your opponent becomes staggered for 1d4+1 rounds. A successful Fortitude save reduces the duration to 1 round. The DC of this Fortitude save is equal to 10 + your base attack bonus. The effects of this feat do not stack. Additional hits instead add to the duration. <p class=sub><b>Special: </b>You can only apply the effects of one critical feat to a given critical hit unless you possess Critical Mastery.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Critical Focus"],
+    	base_attack_bonus: 13
+    },
     groups: ["Critical", "Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1682,7 +1703,9 @@ feats = new TAFFY([{
     name: "Stand Still",
     summary: "Stop enemies from moving past you",
     detail: "You can stop foes that try to move past you. <p class=sub><b>Prerequisites: </b>Combat reflexes <p class=sub><b>Benefit: </b>When a foe provokes an attack of opportunity due to moving through your adjacent squares, you can make a combat maneuver check as your attack of opportunity. If successful, the enemy cannot move for the rest of his turn. An enemy can still take the rest of his action, but cannot move. This feat also applies to any creature that attempts to move from a square that is adjacent to you if such movement provokes an attack of opportunity",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Combat Reflexes"]
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1726,7 +1749,10 @@ feats = new TAFFY([{
     name: "Stunning Critical",
     summary: "Whenever you score a critical hit, the target is stunned",
     detail: "Your critical hits cause opponents to become stunned. <p class=sub><b>Prerequisites: </b>Critical Focus, Staggering Critical, base attack bonus +17. <p class=sub><b>Benefit: </b>Whenever you score a critical hit, your opponent becomes stunned for 1d4 rounds. A successful Fortitude save reduces this to staggered for 1d4 rounds. The DC of this Fortitude save is equal to 10 + your base attack bonus. The effects of this feat do not stack. Additional hits instead add to the duration. <p class=sub><b>Special: </b>You can only apply the effects of one critical feat to a given critical hit unless you possess Critical Mastery.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Staggering Critical"],
+    	base_attack_bonus: 17
+    },
     groups: ["Critical", "Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1886,7 +1912,13 @@ feats = new TAFFY([{
     name: "Whirlwind Attack",
     summary: "Make one melee attack against all foes within reach",
     detail: "You can strike out at every foe within reach. <p class=sub><b>Prerequisites: </b>Dex 13, Int 13, Combat Expertise, Dodge, Mobility, Spring Attack, base attack bonus +4. <p class=sub><b>Benefit: </b>When you use the full-attack action, you can give up your regular attacks and instead make one melee attack at your highest base attack bonus against each opponent within reach. You must make a separate attack roll against each opponent. When you use the Whirlwind Attack feat, you also forfeit any bonus or extra attacks granted by other feats, spells, or abilities.",
-    prereqs: {},
+    prereqs: {
+    	feats: ["Combat Expertise", "Spring Attack"],
+    	abilities: {
+    		Dex: 13
+    	},
+    	base_attack_bonus: 4
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
