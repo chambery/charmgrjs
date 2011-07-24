@@ -1,7 +1,7 @@
 views = new TAFFY([{
 	id: 0,
 	name: "main",
-	title: "D&D Player's Companion"
+	title: "Pathfinder Player's Companion"
 }, {
 	id: 1,
 	name: "edit",

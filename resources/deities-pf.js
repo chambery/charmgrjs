@@ -3,19 +3,19 @@ function get_deities_for_alignment(align, good) {
 	if(align && good) {
 		var align_range = [align];
 		var goodness_range = [good]
-		var good_idx = goodness.indexOf(good);
-		var align_idx = alignments.indexOf(align);
+		var good_idx = goodness.find(good);
+		var align_idx = alignments.find(align);
 		if(align_idx+1 < 3) {
-			align_range.push(alignments[align_idx + 1]);
+			align_range.push(alignments.get()[align_idx + 1]);
 		}
 		if(align_idx-1 > -1) { 
-			align_range.push(alignments[align_idx - 1]);
+			align_range.push(alignments.get()[align_idx - 1]);
 		}
 		if(good_idx+1 < 3) {
-			goodness_range.push(goodness[good_idx + 1]);
+			goodness_range.push(goodness.get()[good_idx + 1]);
 		}
 		if(good_idx-1 > -1) {
-			goodness_range.push(goodness[good_idx - 1]);				
+			goodness_range.push(goodness.get()[good_idx - 1]);				
 		}
 		criteria = { alignment: align_range, goodness: goodness_range }
 	} 

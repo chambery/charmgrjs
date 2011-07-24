@@ -5488,7 +5488,7 @@ spells = new TAFFY([{
 	detail: "All magical effects and magic items within the radius of the  spell, except for those that you carry or touch, are disjoined.  That is, spells and spell-like effects are unraveled and destroyed  completely (ending the effect as a <i>dispel magic</i> spell does), and  each permanent magic item must make a successful Will save  or be turned into a normal item for the duration of this spell.  An item in a creatures possession uses its own Will save bonus  or its possessor's Will save bonus, whichever is higher. If an  item's saving throw results in a natural 1 on the die, the item is  destroyed instead of being suppressed. <p class=sub>You also have a 1% chance per caster level of destroying an  <i>antimagic field</i>. If the <i>antimagic field</i> survives the disjunction, no  items within it are disjoined. <p class=sub>You can also use this spell to target a single item. The item gets a  Will save at a -5 penalty to avoid being permanently destroyed. Even  artifacts are subject to <i>mage's disjunction</i>, though there is only a 1%  chance per caster level of actually affecting such powerful items. If  successful, the artifact's power unravels, and it is destroyed (with no  save). If an artifact is destroyed, you must make a DC 25 Will save  or permanently lose all spellcasting abilities. These abilities cannot  be recovered by mortal magic, not even <i>miracle</i> or <i>wish</i>. Destroying  artifacts is a dangerous business, and it is 95% likely to attract  the attention of some powerful being who has an interest in or  connection with the device.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "62c6"
 }, {
-	name: "Mage&apos;s Faithful Hound",
+	name: "Mage\'s Faithful Hound",
 	school: "Conj (creation)",
 	classes: {
 		Sorcerer: 5,
@@ -5504,7 +5504,7 @@ spells = new TAFFY([{
 	detail: "You conjure up a phantom watchdog that is invis ble to everyone  but yourself. It then guards the area where it was conjured (it does  not move). The hound immediately starts barking loudly if any  Small or larger creature approaches within 30 feet of it. (Those  within 30 feet of the hound when it is conjured may move about  in the area, but if they leave and return, they activate the barking.)  The hound sees invisible and ethereal creatures. It does not react  to figments, but it does react to shadow illusions. <p class=sub>If an intruder approaches to within 5 feet of the hound, the dog  stops barking and delivers a vicious bite (+10 attack bonus, 2d6+3  points of piercing damage) once per round. The dog also gets the  bonuses appropriate to an invisible creature (see <i>invisibility</i>). <p class=sub>The dog is considered ready to bite intruders, so it delivers its  first bite on the intruder&apos;s turn. Its bite is the equivalent of a magic  weapon for the purpose of damage reduction. The hound cannot be  attacked, but it can be dispelled. <p class=sub>The spell lasts for 1 hour per caster level, but once the hound  begins barking, it lasts only 1 round per caster level. If you are ever  more than 100 feet distant from the hound, the spell ends.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "c8cd"	
 }, {
-	name: "Mage&apos;s Lucubration",
+	name: "Mage\'s Lucubration",
 	school: "Trans",
 	classes: {
 		Wizard: 6

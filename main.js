@@ -191,7 +191,7 @@ function build_main_page() {
 			var checkbox = (conditional_feats[i].op != null ? 
 					["<input id='feat_", conditional_feats[i]._id, "_conditional' type='checkbox' onclick=\"", conditional_feats[i].op, "\"/>"].join('')  : 
 					"") ;
-			$('#conditional_feats').append(["<tr id='feat_", conditional_feats[i]._id, "'><td>", checkbox, "</td><td valign='top'><a id='feat_", conditional_feats[i]._id, "'class='fake_link'>", conditional_feats[i].name, "</a></td><td style='width: 100%'>", conditional_feats[i].benefit, "</td></tr>"].join(''));
+			$('#conditional_feats').append(["<tr id='feat_", conditional_feats[i]._id, "'><td>", checkbox, "</td><td valign='top'><a id='feat_", conditional_feats[i]._id, "'class='fake_link'>", conditional_feats[i].name, "</a></td><td style='width: 100%'>", conditional_feats[i].summary, "</td></tr>"].join(''));
 			$("a[id='feat_" + conditional_feats[i]._id + "']").bind('click', { id: conditional_feats[i]._id }, function(e) { return show_item_detail(feats, e.data.id); });
 		}
 	} else {
@@ -329,7 +329,7 @@ function build_main_page() {
 							// TODO - this does not come close to handling the general case
 							// don't print the spell if the descriptor is counter to alignment
 							for ( var j in spell.descriptors) {
-								if (spell.descriptors[j] != chardata.alignment && goodness.indexOf(spell.descriptors[j]) != chardata.goodness) {
+								if (spell.descriptors[j] != chardata.alignment && goodness.find(spell.descriptors[j]) != chardata.goodness) {
 									continue class_spells_loop;
 								}
 							}

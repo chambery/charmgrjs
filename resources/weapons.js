@@ -12,7 +12,7 @@ weapons = new TAFFY([ {
 	range: "-",
 	weight: "25 lb.",
 	damage_type: "slashing",
-	type: "weapon",
+	type: "Axe",
 	tags: ["pathfinder"], _id: "3a88"
 }, {
 	id: 1,
@@ -24,7 +24,7 @@ weapons = new TAFFY([ {
 	range: "10 ft.",
 	weight: "4 lb.",
 	damage_type: "slashing",
-	type: "weapon",
+	type: "Axe",
 	tags: ["pathfinder"], _id: "62a8"
 }, {
 	id: 2,
@@ -36,7 +36,7 @@ weapons = new TAFFY([ {
 	range: "-",
 	weight: "7 lb.",
 	damage_type: "slashing",
-	type: "weapon",
+	type: "Axe",
 	tags: ["pathfinder"], _id: "d1bd"
 }, {
 	id: 3,
@@ -72,7 +72,7 @@ weapons = new TAFFY([ {
 	range: "30 ft.",
 	weight: "3 lb.",
 	damage_type: "piercing",
-	type: "weapon",
+	type: "Crossbow",
 	tags: ["pathfinder"], _id: "281"
 }, {
 	id: 6,
@@ -84,7 +84,7 @@ weapons = new TAFFY([ {
 	range: "120 ft.",
 	weight: "9 lb.",
 	damage_type: "piercing",
-	type: "weapon",
+	type: "Crossbow",
 	tags: ["pathfinder"], _id: "8328"
 }, {
 	id: 7,

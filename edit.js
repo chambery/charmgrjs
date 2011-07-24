@@ -42,9 +42,9 @@ function build_edit_page() {
 	$("#race_select").html(race_html);
 	// alignment and deity
 	var align_html = [];
-	for ( var i in alignments) {
-		for ( var j in goodness) {
-			align_html.push(["<option id='alignment_option_", alignments[i], "_", goodness[j], "' data_id='", i, ",", j, "' value='", alignments[i], ",", goodness[j], "'>", alignments[i], " ", goodness[j], "</option>"].join(''));
+	for ( var i in alignments.get()) {
+		for ( var j in goodness.get()) {
+			align_html.push(["<option id='alignment_option_", alignments[i].name, "_", goodness[j].name, "' data_id='", i, ",", j, "' value='", alignments[i].name, ",", goodness[j].name, "'>", alignments[i].name, " ", goodness[j].name, "</option>"].join(''));
 		}
 	}
 	$("#alignment").html(align_html.join(''));

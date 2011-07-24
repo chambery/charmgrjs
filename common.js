@@ -31,6 +31,8 @@ shield_edit_data =  [ "bon", "acp", "note" ];
 curr_xp = 0;
 char_classes = [];
 equipment_benefits = [];
+alignments = new TAFFY([ {name: 'Lawful'}, {name: 'Neutral'}, {name: 'Chaotic'} ]);
+goodness = new TAFFY([ {name: 'Good'}, {name: 'Neutral'}, {name: 'Evil'} ]);
 
 $.extend({
     keys: function(obj){
@@ -226,8 +228,7 @@ abilities = {
 		detail: "Wisdom describes a character's willpower, common sense, perception, and intuition. While Intelligence  represents one's ability to analyze information, Wisdom represents being in tune with and aware of one's surroundings. Wisdom is the most important ability for clerics and druids, and it is also important for paladins and rangers. If you want your character to have acute senses, put a high score in Wisdom. Every creature has a Wisdom score.<p class=sub>You apply your character's Wisdom modifier to:<ul><li>Will saving throws (for negating the effect of charm person and other spells).</li><li>Heal, Listen, Profession, Sense Motive, Spot, and Survival checks. These are the skills that have Wisdom as their key ability.</li></ul></p><p class=sub>Clerics, druids, paladins, and rangers get bonus spells based on their Wisdom scores. The minimum Wisdom score needed to cast a cleric, druid, paladin, or ranger spell is 10 + the spell's level.</p><p class=sub>Any creature that can perceive its environment in any fashion has at least 1 point of Wisdom. Anything with no Wisdom score is an object, not a creature. Anything without a Wisdom score also has no Charisma score.</p>"
 	}
 };
-alignments = [ 'Lawful', 'Neutral', 'Chaotic' ];
-goodness = [ 'Good', 'Neutral', 'Evil' ];
+
 function calc_ability_score(ability, race_name) {
 	var race = races.first( {
 		name : race_name

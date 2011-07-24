@@ -28,43 +28,45 @@ function build_feats_page() {
 					+ "<span id='feats_available' style='float: right'>Feats available: <span id='feats_remaining'></span></span>Feats</td></tr></table>"
 					+ "<table id='feats_table' style='border: 1px solid #D0D0D0; border-collapse: collapse; width: 100%;'></table>");
 
-	allfeats = feats.get();
-	allfeats.sort(function(a, b) {
-	return (a.prereqs == null || a.prereqs.feats == null) && (a.name < b.name) ? -1 : 1;
+	allfeats = new TAFFY(feats.get());
+	allfeats.orderBy(function(a, b) {
+		return (a.prereqs == null || a.prereqs.feats == null) && (a.name < b.name) ? -1 : 1;
 	});
-
-	for ( var i in allfeats) {
+	var temp_feats = allfeats.get();
+	for ( var i in temp_feats) {
+		var removed = false;
 		// weed out the impossible feats
 		// class features, eg "Channel Energy"
-		var prereqs = allfeats[i].prereqs;
+		var prereqs = temp_feats[i].prereqs;
 		if(prereqs && prereqs.class_features) {
 			for(var classname in chardata.classes) {
+				if(removed) { break; }
 				var clazz = classes.first({ name: classname });
 				for(var l in prereqs.class_features) {
 					if(!clazz.class_features.indexOf(prereqs.class_features[l]) > -1) {
-						remove(allfeats, i);
+						allfeats.remove({ name: temp_feats[i].name })
+						removed = true;
+						break;
 					}
 				}
 			}
 		}
-		if (prereqs && prereqs.classes) {
-			var remove_me = true;
+		// remove class-restricted feats
+		if (!removed && prereqs && prereqs.classes) {
 			for (var classname in chardata.classes) {
-				if (allfeats[i].prereqs.classes && allfeats[i].prereqs.classes[classname]) {
-					remove_me = false;
+				if (!prereqs.classes[classname]) {
+					allfeats.remove({ name: temp_feats[i].name })
 					break;
-				}
-				if (remove_me) {
-					remove(allfeats, i);
 				}
 			}
 		} 
 	}
-	for ( var i in allfeats) {
-		if (!allfeats[i].hidden) {
-			create_feat_listing(allfeats[i], 1);
+
+	allfeats.forEach( function(feat, n) {
+		if (!feat.hidden) {
+			create_feat_listing(feat, 1);
 		}
-	}
+	});
 	// // console.groupEnd();
 }
 
@@ -74,10 +76,13 @@ function create_feat_listing(feat, indent) {
 	indent = indent == null ? 0 : indent;
 	var count = indent;
 	if (feat.prereqs && feat.prereqs.feats) {
-		var prereq = feats.first( {
+		var prereq = allfeats.first( {
+			// if there are multiple prereqs, nest it under the first one
 			name : feat.prereqs.feats[0]
 		});
-		indent = create_feat_listing(prereq, indent + 1);
+		if(prereq) {
+			indent = create_feat_listing(prereq, indent + 1);
+		}
 	}
 	var html = "<tr id='" + feat._id + "' class='feat'><td class='feat'><input id='" + feat._id + "' type='checkbox' class='feat' /><td id='" + feat._id + "' class='feat' valign='top'><a id='"
 			+ feat._id + "' class='fake_link'>" + feat.name + "</a></td><td class='feat' valign='top'>" + feat.summary + "</td></tr>";
@@ -148,8 +153,7 @@ function populate_feats_page() {
 	}		
 	
 	// TODO - before looping set up all class feats
-	for ( var i in allfeats) {
-		var feat = allfeats[i];
+	allfeats.forEach( function(feat, i) {
 		// // console.log(feat.name);
 		if (feat.multi) {
 			var char_feat = false;
@@ -180,10 +184,10 @@ function populate_feats_page() {
 			}) == false ? false : true);
 
 			//  class feats (something more efficient)
-			if(is_class_feat(allfeats[i].name)) {
+			if(is_class_feat(feat.name)) {
 				checked = true;
 				// prevent unchecking since an auto-added class feat
-				disable_feat(allfeats[i], true);
+				disable_feat(feat, true);
 			}
 
 			$("input[id='" + feat._id + "']").attr('checked', checked);
@@ -192,7 +196,7 @@ function populate_feats_page() {
 				$("tr#" + feat._id).addClass('class_feat');
 			}
 		}
-	}
+	});
 
 	// TODO - Rogue Special Abilities
 	// var level = calc_current_level();
@@ -242,22 +246,22 @@ function calc_prereqs() {
 	// var allfeats = feats.get();
 	// TODO - move to recalc (don't loop over all)?
 	// // console.group("calc_prereqs");
-	for ( var i in allfeats) {
+	allfeats.forEach( function( feat, i ) {
 		// // console.log(allfeats[i].name);
 		var prereqs_met = false;
 
-		if(!is_class_feat(allfeats[i].name) && allfeats[i].prereqs != null) {
+		if(!is_class_feat(feat.name) && feat.prereqs != null) {
 		// // // console.group("is_prereqs_met");
-			prereqs_met = is_prereqs_met(allfeats[i]._id, allfeats[i].prereqs) || prereqs_met;
+			prereqs_met = is_prereqs_met(feats._id, feat.prereqs) || prereqs_met;
 		// // // console.groupEnd();
 		}
-		disable_feat(allfeats[i], !prereqs_met);
+		disable_feat(feat, !prereqs_met);
 
 		// if(allfeats[i].multi && allfeats[i].multi != "count") {
 		// repopulate_multi(allfeats[i]);
 		// }
 
-	}
+	});
 	// // console.groupEnd();
 }
 
@@ -295,8 +299,7 @@ function is_prereqs_met(feat_id, prereqs) {
 
     if (prereqs.classes) {
         for (var clazz in chardata.classes) {
-            var classs = $.extend(keys, prereqs.classes);
-            if (classs.indexOf(clazz) == -1 || classs[clazz] < chardata.classes[clazz].level) {
+            if (prereqs.classes[clazz] > chardata.classes[clazz].level) {
                 return false;
             }
         }
@@ -565,6 +568,7 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
 	calc_prereqs();
 }
 
+// TODO - should be a callback
 function inform_dependents(feat) {
 	// // console.group("inform_dependents");
 	// // console.log(feat.name);
