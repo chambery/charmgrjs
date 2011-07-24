@@ -6,16 +6,16 @@ function get_deities_for_alignment(align, good) {
 		var good_idx = goodness.find(good);
 		var align_idx = alignments.find(align);
 		if(align_idx+1 < 3) {
-			align_range.push(alignments.get()[align_idx + 1]);
+			align_range.push(alignments.get()[align_idx + 1].name);
 		}
 		if(align_idx-1 > -1) { 
-			align_range.push(alignments.get()[align_idx - 1]);
+			align_range.push(alignments.get()[align_idx - 1].name);
 		}
 		if(good_idx+1 < 3) {
-			goodness_range.push(goodness.get()[good_idx + 1]);
+			goodness_range.push(goodness.get()[good_idx + 1].name);
 		}
 		if(good_idx-1 > -1) {
-			goodness_range.push(goodness.get()[good_idx - 1]);				
+			goodness_range.push(goodness.get()[good_idx - 1].name);				
 		}
 		criteria = { alignment: align_range, goodness: goodness_range }
 	} 
@@ -107,6 +107,7 @@ var deities = new TAFFY([ {
 }, {
 	name: "Gozreh",
 	alignment: "Neutral",
+	goodness: "Neutral",
 	portfolios: [ "nature", "weather", "the sea" ],
 	domains: [ "Air", "Animal", "Plant", "Water", "Weather" ],
 	weapon: "Trident",
@@ -115,6 +116,7 @@ var deities = new TAFFY([ {
 }, {
 	name: "Pharasma",
 	alignment: "Neutral",
+	goodness: "Neutral",
 	portfolios: [ "fate", "death", "prophecy", "birth" ],
 	domains: [ "Death", "Healing", "Knowledge", "Repose", "Water" ],
 	weapon: "Dagger",
@@ -123,6 +125,7 @@ var deities = new TAFFY([ {
 }, {
 	name: "Nethys",
 	alignment: "Neutral",
+	goodness: "Neutral",
 	portfolios: [ "magic" ],
 	domains: [ "Destruction", "Knowledge", "Magic", "Protection", "Rune" ],
 	weapon: "Quarterstaff ",

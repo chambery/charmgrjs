@@ -505,15 +505,17 @@ function calc_armor_bonus(char_armor, db, dammit) {
 	var armor_bonus = 0;
 	if (char_armor != null) {
 		for (i in char_armor) {
-			armordata = db.first( {
-				name : char_armor[i][dammit + "_name"]
-			});
-
-			if(armordata.bon != '-') {
-				armor_bonus += parseInt(armordata.bon);
-			}
-			if(armordata.max_dex_bonus != '-') {
-				max_dex_bonus = (max_dex_bonus == null ? parseInt(armordata.max_dex_bonus) : Math.min(max_dex_bonus, parseInt(armordata.max_dex_bonus)));
+			if(session['armor'][i]['is_worn']) {
+				armordata = db.first( {
+					name : char_armor[i][dammit + "_name"]
+				});
+	
+				if(armordata.bon != '-') {
+					armor_bonus += parseInt(armordata.bon);
+				}
+				if(armordata.max_dex_bonus != '-') {
+					max_dex_bonus = (max_dex_bonus == null ? parseInt(armordata.max_dex_bonus) : Math.min(max_dex_bonus, parseInt(armordata.max_dex_bonus)));
+				}
 			}
 		}
 	}
