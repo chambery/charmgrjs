@@ -1164,3 +1164,10 @@ function calc_cmd(base_attack_bonuses, other_mod) {
 	}
 	return cmd;
 }
+
+/**
+ * Returns whether the supplied object is (or can be parsed as) a number.
+ */
+function is_number(o) {
+	return ! isNaN(o-0);
+}

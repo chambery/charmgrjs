@@ -1,8 +1,9 @@
 function import_character() {
-	if(!chardata.options || !chardata.options.owner) {
+	while(!chardata.options || !chardata.options.owner) {
 		chardata.options = {};
-		update_options("Owner string is required to load character data.");
+		chardata.options.owner = prompt("Owner string is required to load character data.");
 	}
+	
 	var data = prompt("Enter character name (owner: " + chardata.options.owner + ") :");
 	if (data != null && jQuery.trim(data).length > 0) {
 		var curr_char = chardata;
@@ -11,6 +12,7 @@ function import_character() {
 			chardata = parse_character_data(data);
 		} else {
 			var char_name = data;
+			// TODO - move to lod
 			$.ajax({
 				type: "GET",
 				url: "character/" + chardata.options.owner + "/" + char_name,
@@ -54,13 +56,24 @@ function import_character() {
 function lod(char_name) {
 	if(char_name) {
 		// TODO - refactor for scoping issues
+		// TODO - call import_character()
 		var cookie_data = get_cookie_data("ch_" + char_name);
 		if(cookie_data) {
 			chardata = parse_character_data(cookie_data);
 		}
-		var owner = chardata.options ? chardata.options.owner : null;
-		if(owner) {
-			var remote_data = $.getJSON("character/" + owner + "/" + char_name);
+		if(chardata.options && chardata.options.owner) {
+			$.ajax({
+				type: "GET",
+				url: "character/" + chardata.options.owner + "/" + char_name,
+				dataType: "json",
+				success: function(cdata, status) {
+					chardata = cdata;
+					console.log(status);
+				},
+				data: {},
+				async: false
+			});
+			
 			if(remote_data && remote_data.last_mod > chardata.last_mod) {
 				chardata = parse_character_data(remote_data);
 			}

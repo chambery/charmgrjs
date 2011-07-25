@@ -83,7 +83,9 @@ function add_bene(index) {
 }
 
 function add_benefit(id, name, bene) {
-	$('#benefits_table_edit').append("<tr id='" + (id + "_" + bene) + "' onclick=\"$('#" + (id + "_" + bene) + "').remove()\"><td style='width: 100%'><input type='hidden' value='" + id + "' benefit_type='" + id + "' benefit_mod='" + bene + "' />" + name + "</td><td style='text-align: right;'>" + pos(bene) + "</td></tr>");
+	if(bene && is_number(bene)) {
+		$('#benefits_table_edit').append("<tr id='" + (id + "_" + bene) + "' onclick=\"$('#" + (id + "_" + bene) + "').remove()\"><td style='width: 100%'><input type='hidden' value='" + id + "' benefit_type='" + id + "' benefit_mod='" + bene + "' />" + name + "</td><td style='text-align: right;'>" + pos(bene) + "</td></tr>");
+	}
 }
 
 function save_equipment(close_after_save) {

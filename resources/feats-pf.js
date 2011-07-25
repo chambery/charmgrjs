@@ -123,6 +123,7 @@ feats = new TAFFY([{
     prereqs: {
         class_features: ["Cast Arcane"]
     },
+    conditional: true,
     arcane: true,
     groups: ["Combat"],
     tags: ["pathfinder"],
