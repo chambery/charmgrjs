@@ -1,5 +1,6 @@
 function import_character() {
-	if(chardata.options.owner == null) {
+	if(!chardata.options || !chardata.options.owner) {
+		chardata.options = {};
 		update_options("Owner string is required to load character data.");
 	}
 	var data = prompt("Enter character name (owner: " + chardata.options.owner + ") :");
@@ -10,7 +11,18 @@ function import_character() {
 			chardata = parse_character_data(data);
 		} else {
 			var char_name = data;
-			chardata = $.getJSON("character/" + chardata.options.owner + "/" + char_name);
+			$.ajax({
+				type: "GET",
+				url: "character/" + chardata.options.owner + "/" + char_name,
+				dataType: "json",
+				success: function(cdata, status) {
+					chardata = cdata;
+					console.log(status);
+				},
+				data: {},
+				async: false
+			});
+			console.log("parsing taffy data");
 			parse_taffy_data(chardata, "skills");
 			parse_taffy_data(chardata, "feats");
 		}

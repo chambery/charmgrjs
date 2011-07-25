@@ -226,7 +226,7 @@ function build_main_page() {
 		var weapon_data = weapons.first( {
 			name : chardata.weapons[j]['weapon_name']
 		});
-		html.push(["<table width='100%' border='0' margin='0'><tr><td id='weapon_", j, "_name' weapon_id='", weapon_data._id, "' colspan='4' bgcolor='#C5C6F6'></td></tr><tr><td>Att</td><td id='weapon_", j, "_att' class='box' width='50%'></td><td>Crit</td><td id='weapon_", j, "_crit' class='box' width='50%'></td></tr><tr><td>Dam</td><td id='weapon_", j, "_dam' class='box' width='50%'></td><td>Bon</td><td id='weapon_", j, "_bon' class='box'></td></tr><tr id='weapon_", j, "_note'><td valign='top'>Note</td><td id='weapon_", j, "_note' colspan='3' width='100%'></td></tr></table>"].join(''));
+		html.push(["<table width='100%' border='0' margin='0'><tr><td id='weapon_", j, "_name' weapon_id='", weapon_data._id, "' colspan='4' bgcolor='#C5C6F6'></td></tr><tr><td>Att</td><td id='weapon_", j, "_att' class='box'></td><td>Crit</td><td id='weapon_", j, "_crit' class='box'></td></tr><tr><td>Dam</td><td id='weapon_", j, "_dam' class='box'></td><td>Bon</td><td id='weapon_", j, "_bon' class='box'></td></tr><tr id='weapon_", j, "_note'><td valign='top'>Note</td><td id='weapon_", j, "_note' colspan='3' width='100%'></td></tr></table>"].join(''));
 	}
 	$('#weaponspart').html(html.join(''));
 	$('#weaponspart').css('margin-top', '5px');
