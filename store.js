@@ -25,8 +25,8 @@ function import_character() {
 				async: false
 			});
 			console.log("parsing taffy data");
-			parse_taffy_data(chardata, "skills");
-			parse_taffy_data(chardata, "feats");
+			parse_taffy_data(chardata.skills, "skills");
+			parse_taffy_data(chardata.feats, "feats");
 		}
 		if(chardata != null) {
 			// save last used character
@@ -61,13 +61,14 @@ function lod(char_name) {
 		if(cookie_data) {
 			chardata = parse_character_data(cookie_data);
 		}
+		var remote_data = undefined;
 		if(chardata.options && chardata.options.owner) {
 			$.ajax({
 				type: "GET",
 				url: "character/" + chardata.options.owner + "/" + char_name,
 				dataType: "json",
 				success: function(cdata, status) {
-					chardata = cdata;
+					remote_data = cdata;
 					console.log(status);
 				},
 				data: {},
@@ -110,6 +111,10 @@ function save_remote(data, name) {
 		  type: "POST",
 		  url: "/" + data.type + "/" + chardata.options.owner + "/" + name,
 		  data: JSON.stringify(data),
+		  success: function(data, status) {
+		  	  console.log(data);
+		  	  console.log("status");
+		  },
 		  contentType: "application/json; charset=utf-8",
 		  dataType: "json"
 		});
@@ -162,18 +167,12 @@ function get_cookie_data(cookie_name) {
 	}
 	
 	return data;
-
 }
 
 function parse_taffy_data(data, type) {
-	if(data != null) {
-		if (data.skills != null) {
-			data.skills = TAFFY(data.skills);
-		}
-		if (data.feats != null) {
-			data.feats = TAFFY(data.feats);
-		}
-	}
+	var copy = klone(data);		
+	chardata[type] = new TAFFY();
+	chardata[type].insert(copy);
 }
 
 function load_static_data() {
