@@ -235,10 +235,10 @@ function disable_feat(feat, disabled) {
 function update_feats_remaining() {
 	// // console.group("update_feats_remaining");
 	var count = calc_feats_remaining();
-	is_fighter = false;
-	for (var classname in chardata.classes) { if(classname == "Fighter") { is_fighter = true; break; } }
-	var feats_remaining_text = char_classes.indexOf("Fighter") > -1 ? (count.base_feats_remaining + " | " + count.class_feats_remaining) : (count.base_feats_remaining + count.class_feats_remaining);
-	$('#feats_remaining').text(feats_remaining_text);
+	$('#feats_remaining').text(count.base_feats_remaining);
+	// if(count.bonus_feats.groups.length == 0 && count.bonus_feats.feats.length == 0) {
+	// } else 
+	$('#bonus_feats_remaining').text(count.bonus_feats.count);	
 	// // console.groupEnd();
 }
 
@@ -374,50 +374,60 @@ function is_prereqs_met(feat_id, prereqs) {
 }
 
 function calc_feats_remaining() {
-	
-	var is_fighter = chardata.classes["Fighter"] != null;
+	var bonus = {
+		count: 0,
+		groups: [],
+		feats: []
+	};
+	// collect the number and constraints of the bonus feats
+	for (var classname in chardata.classes) {
+		var clazz = classes.first({ name: classname });
+		if (clazz.custom && clazz.custom.feats) {
+			for (var level in clazz.custom.feats) {
+				if (calc_current_level() >= level) {
+					eval(clazz.custom.feats[level].script);
+						// $.merge(bonus_feats.groups, bonus.groups);
+					// }
+					// if (bonus.feats) {
+					// }
+				} else {
+					break;
+				}
+			}
+		}
+	}
+
 	var char_feats = chardata.feats == null ? [] : chardata.feats.get();
 	var base_feats_remaining = calc_total_base_feats_count(chardata.race_name, chardata.xp);
-	var class_feats_remaining = calc_total_class_feats_count(chardata.class_name, chardata.xp);
-	var combat_feats = feats.get({ group: { has: "Combat" } });
 
-	
-	for ( var i in char_feats) {
-		var feat = feats.first( {
-			name : char_feats[i].feat_name
+	for (var i in char_feats) {
+		var feat = feats.first({
+			name: char_feats[i].feat_name
 		});
-		if (char_feats[i].multi && jQuery.isArray(char_feats[i].multi)) {
-			// selectable
-			if (is_fighter) {
-				for ( var j in char_feats[i].multi) {
-					if (combat_feats.indexOf(feat.name) > -1 && class_feats_remaining > 0) {
-						class_feats_remaining -= 1;
-					} else {
-						base_feats_remaining -= 1;
+		if (char_feats[i].multi) {
+			if (jQuery.isArray(char_feats[i].multi)) {
+				// selectable
+				if (is_bonus_eligible(feat, bonus)) {
+					bonus.count -= char_feats[i].multi.length;
+					if (bonus.count < 0) {
+						base_feats_remaining += bonus.count;
+						bonus.count = 0;
 					}
+				} else {
+					base_feats_remaining -= char_feats[i].multi.length;
 				}
 			} else {
-				base_feats_remaining -= char_feats[i].multi.length;
-			}
-		} else if (char_feats[i].multi) {
-			// stackable count
-			if (is_fighter) {
-				if (combat_feats.indexOf(feat.name) > -1 && class_feats_remaining > 0) {
-					class_feats_remaining -= parseInt(char_feats[i].multi);
+				// stackable count
+				if (is_bonus_eligible(feat, bonus)) {
+					bonus.count -= parseInt(char_feats[i].multi);
 				} else {
 					base_feats_remaining -= parseInt(char_feats[i].multi);
 				}
-			} else {
-				base_feats_remaining -= parseInt(char_feats[i].multi);
 			}
 		} else {
 			// single
-			if (is_fighter) {
-				if (combat_feats.indexOf(feat.name) > -1 && class_feats_remaining > 0) {
-					class_feats_remaining -= 1;
-				} else {
-					base_feats_remaining -= 1;
-				}
+			if (is_bonus_eligible(feat, bonus)) {
+				bonus.count -= 1;
 			} else {
 				base_feats_remaining -= 1;
 			}
@@ -425,11 +435,11 @@ function calc_feats_remaining() {
 	}
 
 	return {
-		base_feats_remaining : base_feats_remaining,
-		class_feats_remaining : class_feats_remaining
+		base_feats_remaining: base_feats_remaining,
+		bonus_feats: bonus
 	};
 }
-
+		
 function filter_options(feat, options_db) {
 	// // console.group("filter_options");
 	// // console.log("feat: " + feat.name);
@@ -493,13 +503,7 @@ function filter_options(feat, options_db) {
 
 function update_count(feat) {
 	var count = calc_feats_remaining();
-	var is_fighter = chardata.classes["Fighter"] == null;
-	var fighter_bonus_feats = classes.first( {
-		name : "Fighter"
-	}).bonus_feats;
-
-	// if fighter with no base feats remaining and feat is not fighter bonus feats bail
-	if ((count.base_feats_remaining == 0 && is_fighter && !combat_feats.indexOf(feat.name) > -1) || (!is_fighter && (count.base_feats_remaining == 0 + count.class_feats_remaining) == 0)) {
+	if (count.base_feats_remaining == 0 &&  !is_bonus_eligible(feat, count.bonus_feats)) {
 		alert('No feat selections remaining.');
 		return;
 	}
@@ -517,7 +521,7 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
 		name : multi_item
 	})._id : "";
 	var count = calc_feats_remaining();
-	var total_feats_remaining = count.class_feats_remaining + count.base_feats_remaining;
+	var total_feats_remaining = count.bonus_feats.count + count.base_feats_remaining;
 	var char_feat = chardata.feats.first( {
 		feat_name : feat.name
 	});
@@ -658,4 +662,19 @@ function handle_pick(group, count) {
 	if (matches < count) {
 		return false;
 	}
+}
+
+function find_match(arr1, arr2) {
+	for(var i=0; i<arr1.length; i++) {
+		for(var j=0; j<arr2.length; j++) {
+			if(arr1[i] == arr2[j]) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function is_bonus_eligible(feat, bonus_feats) {
+	return bonus_feats.count > 0 && (bonus_feats.feats.indexOf(feat.name) > -1 || find_match(bonus_feats.groups, feat.groups));
 }

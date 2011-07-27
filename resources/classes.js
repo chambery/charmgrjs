@@ -185,22 +185,20 @@ classes = new TAFFY([{
 			},
 		main: [
 			"for (var i in chardata.favored_enemies) {var f_e = favored_enemies.first({ name : chardata.favored_enemies[i].name }); $('#specials').append('<tr id=\"special_favored_enemy_' + f_e._id	+ '\"><td><input id=\"favored_enemy_' + f_e._id + '\" type=\"checkbox\"/></td><td>' + chardata.favored_enemies[i].name + ' ' + pos(chardata.favored_enemies[i].val) + ' (Fav. Enemy)</td></tr>'); $('input[id=\"favored_enemy_' + f_e._id + '\"]').bind('click', { mod : chardata.favored_enemies[i].val }, function(e) { if ($(this).attr('checked')) { for ( var j in chardata.weapons) { update_weapon_attack(j, e.data.mod);	update_weapon_damage(j, e.data.mod); } update_skill_ranks( [ 'Bluff', 'Knowledge (arcana)', 'Knowledge (architecture and engineering)',	'Knowledge (dungeoneering)','Knowledge (geography)', 'Knowledge (history)',	'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility and royalty)', 'Knowledge (religion)', 'Knowledge (the planes)', 'Perception', 'Sense Motive', 'Survival' ]);	} else { recalc_main_page(); } }); }",
+			// TODO - generalize, maybe put "class feat" in the char_feats
 			"if (chardata.weapon_style) { var ranger = classes.first({ name: 'Ranger'}); var weapon_style_feat = (chardata.weapon_style == 'Archery' ? 'Rapid Shot' : 'Two-Weapon Fighting'); if (ranger.feats[1].indexOf(weapon_style_feat) == -1) { ranger.feats[1].push(weapon_style_feat); } }"
 		],
-		feats: [
-			{
-				// TODO - hard code the modifications based on weapon style
+		feats: {
 				1: {
-					script: ["Far Shot", "Point Blank Shot", "Precise Shot", "Rapid Shot"]
+					script: "bonus.count +=  1; if(chardata.weapon_style == 'Archery') { $.merge(bonus.feats, ['Far Shot', 'Point Blank Shot', 'Precise Shot', 'Rapid Shot']) } else { $.merge(bonus.feats, ['Double Slice', 'Improved Shield Bash', 'Quick Draw', 'Two-Weapon Fighting']) }"
 				},
 				5: {
-					script: ["Improved Precise Shot", "Manyshot"]
+					script: "bonus.count += 1; if(chardata.weapon_style == 'Archery') {$.merge(bonus.feats, ['Improved Precise Shot', 'Manyshot'])} else { $.merge(bonus.feats, ['Improved Two-Weapon Fighting', 'Two-Weapon Defense'])}"
 				},
 				9: {
-					script: ["Pinpoint Targeting", "Shot on the Run"]
+					script: "bonus.count += 1; if(chardata.weapon_style == 'Archery') { $.merge(bonus.feats, ['Pinpoint Targeting', 'Shot on the Run']) } else { $.merge(bonus.feats, ['Greater Two-Weapon Fighting', 'Two-Weapon Rend'])}"
 				}
 			}
-		]
     },
 	class_features: ["Cast Divine"]
 }, {
