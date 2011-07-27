@@ -126,7 +126,7 @@ function get_log_name(entry_id) {
 }
 
 function sync_logs() {
-	if(chardata.options && chardata.options.owner && chardata.options.owner.length > 0 && chardata.name && chardata.name.length > 0) {
+	if(chardata.log && chardata.options && chardata.options.owner && chardata.options.owner.length > 0 && chardata.name && chardata.name.length > 0) {
 		var logs = {}
 		for(var i=0; i<chardata.log.length; i++) {
 			var remote = {};

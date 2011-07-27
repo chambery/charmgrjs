@@ -721,7 +721,8 @@ function parse_character_data(data) {
 		} 
 		data = TAFFY.JSON.parse(unescape(data)) || {};
 	}
-	parse_taffy_data(data);
+	data.skills = parse_taffy_data(data.skills);
+	data.feats = parse_taffy_data(data.feats);
 	// all arrays have to be reconstituted manually
 	// armor
 	if (data.armors) {
