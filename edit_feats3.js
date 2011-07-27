@@ -25,7 +25,7 @@ function build_feats_page() {
 	$('#content').html(feats_page_layout);
 	$('#feats').html(
 			"<table width=100% style='border: 1px solid #8DC3E9; border-collapse: collapse;'><tr style='background: #8DC3E9;'><td style='text-align: left'>"
-					+ "<span id='feats_available' style='float: right'>Feats available: <span id='feats_remaining'></span></span>Feats</td></tr></table>"
+			+ "<span id='feats_available' style='float: right'>Available: <span id='feats_remaining'></span> Bonus: <span id='bonus_feats_remaining'></span></span>Feats</td></tr></table>"
 					+ "<table id='feats_table' style='border: 1px solid #D0D0D0; border-collapse: collapse; width: 100%;'></table>");
 
 	allfeats = new TAFFY(feats.get());
@@ -374,6 +374,7 @@ function is_prereqs_met(feat_id, prereqs) {
 }
 
 function calc_feats_remaining() {
+	
 	var is_fighter = chardata.classes["Fighter"] != null;
 	var char_feats = chardata.feats == null ? [] : chardata.feats.get();
 	var base_feats_remaining = calc_total_base_feats_count(chardata.race_name, chardata.xp);

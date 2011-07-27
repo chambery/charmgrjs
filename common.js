@@ -10,9 +10,7 @@ weapons = new TAFFY([]);
 armors = new TAFFY([]);
 skills = new TAFFY([]);
 languages = new TAFFY([]);
-deitys = new TAFFY([]);
 specials = new TAFFY([]);
-favored_enemys = new TAFFY([]);
 
 shield_types = new TAFFY([]);
 shields = new TAFFY([]);
@@ -815,7 +813,7 @@ function parse_character_data(data) {
 		data.favored_enemies = favored_enemies;
 	}
  
-	// favored enemies
+	// domains
 	if (data.domains) {
 		var char_domains = [];
 		for (var domain_idx in data.domains) {

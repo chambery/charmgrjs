@@ -1,4 +1,4 @@
-favored_enemies = new TAFFY ([{
+var favored_enemies = new TAFFY ([{
 	name: "Aberration",
 	type: "favored_enemy",
 	tags: ["pathfinder"], _id: "6d58"

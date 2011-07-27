@@ -281,10 +281,11 @@ function build_main_page() {
 		if (spells_per_day != null && spells_per_day.length > 0) {
 				var spells_html = ["<table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'><tr bgcolor='#8DC3E9'><td colspan='", (spells_per_day.length), "'><span id='turn' style='float: right'></span>Spells per day (",clazz.shortname,") &nbsp;"];
 				if(classname == "Cleric") {
-						spells_html.push("+1 ");
+					spells_html.push("<span style='float: right; padding-right: 3px;'>+1 ");
 						for (var domain in char_domains) {
 								spells_html.push(["<i><a class='fake_link' onclick=\"show_item_detail(domains, '", char_domains[domain]._id, "')\">", char_domains[domain].name, "</a></i> "].join(''));
 						}
+					spells_html.push("</span>");
 				} 
 			spells_html.push("</td></tr></table><table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'><tr>");
 			for (var i in spells_per_day) {

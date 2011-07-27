@@ -61,11 +61,13 @@ classes = new TAFFY([{
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     custom: {
     	edit: {
-				0: [{
-						ui: "<table id='domains' style='width: 100%;'><tr><td>Domains</td></tr><tr><td><table id='domain_selector' style='width: 100%'></table></td></tr></table>",
-					script: "var set_domain = function(item, checked) { if(checked) {chardata.domains.push(item.name);} else {remove(chardata.domains, chardata.domains.indexOf(item.name));}}; if(chardata.domains == null) { chardata.domains = []; } var available_domains = domains.get(); if(chardata.deity) { var deity = deitys.first({ name: chardata.deity }); available_domains = domains.get({ name: deity.domains }); } else { available_domains = []; } create_selector_grid(available_domains, 'table#domains', set_domain, chardata.domains, 4);"
-				}]
+    		0: { 
+    			domains: {
+					ui: "<table id='domains' style='width: 100%;'><tr><td>Domains</td></tr><tr><td><table id='domain_selector' style='width: 100%'></table></td></tr></table>",
+					script: "var set_domain = function(item, checked) { if(checked) {chardata.domains.push(item.name);} else {remove(chardata.domains, chardata.domains.indexOf(item.name));}}; if(chardata.domains == null) { chardata.domains = []; } var available_domains = domains.get(); if(chardata.deity) { var deity = deities.first({ name: chardata.deity }); console.log(deity.name); available_domains = domains.get({ name: deity.domains }); } else { available_domains = []; } console.log(available_domains); create_selector_grid(available_domains, 'table#domains', set_domain, chardata.domains, 4);"
+				}
 			}
+		}
     },
 	class_features: ["Channel Energy", "Cast Divine"]
 }, {
@@ -167,28 +169,38 @@ classes = new TAFFY([{
     custom: {
 		edit: {
 			0: [{
-    			ui: "<table id='favored_enemies' style='width: 100%;'><tr><td>Favored Enemies</td></tr></table>", 
-    			script: "if(!chardata.favored_enemies){ chardata.favored_enemies = []; } var favored_enemy = favored_enemys.first({ name: chardata.favored_enemies.length > 0 ? chardata.favored_enemies[0].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_0', favored_enemys.get(), \"chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_0_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_0_bonus').val(chardata.favored_enemies[0] ? chardata.favored_enemies[0].val : 0); $('#favored_enemy_0_bonus').blur(function() { chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character(); });" 
-    		}],
-    	1: [{
-    			ui: "<table style='width: 100%;'><tr><td>Weapon Style</td><td id='weapon_style'></td></tr></table>",
-    			script: "update_weapon_style = function () { var ranger = classes.first({ name: 'Ranger'}); remove(ranger.feats[1], ranger.feats[1].indexOf('Rapid Shot'));	remove(ranger.feats[1], ranger.feats[1].indexOf('Two-Weapon Fighting')); chardata.weapon_style = $('#weapon_style_select').val(); var weapon_style_feat = (chardata.weapon_style == 'Archery' ? 'Rapid Shot' : 'Two-Weapon Fighting'); ranger.feats[1].push(weapon_style_feat); chardata.weapon_style = $('#weapon_style_select').val(); save_character(); }; var select = create_select('weapon_style_select', [{_id: 0, name: 'Two-handed fighting'}, {_id: 1, name: 'Archery'}], \"update_weapon_style()\" , false, \"style='width: 100%;'\", null, (chardata.weapon_style == 'Archery' ? 1 : 0)); $('#weapon_style').append('<tr><td>' + select + '</td></tr>');"
-    		}],
-    	4: [{
-    			script: "var favored_enemy = favored_enemys.first({ name: chardata.favored_enemies.length > 1 ? chardata.favored_enemies[1].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_1', favored_enemys.get(), \"chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_1_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_1_bonus').val(chardata.favored_enemies[1] ? chardata.favored_enemies[1].val : 0); $('#favored_enemy_1_bonus').blur(function() { chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character(); });" 
-    		}],
-   		9: [{
-    			script: "var favored_enemy = favored_enemys.first({ name: chardata.favored_enemies.length > 2 ? chardata.favored_enemies[2].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_2', favored_enemys.get(), \"chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_2_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_2_bonus').val(chardata.favored_enemies[2] ? chardata.favored_enemies[2].val : 0); $('#favored_enemy_2_bonus').blur(function() { chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character(); });" 
-    		}]
-		},
+					ui: "<table id='favored_enemies' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>", 
+    			script: "if(!chardata.favored_enemies){ chardata.favored_enemies = []; } var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 0 ? chardata.favored_enemies[0].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_0', favored_enemies.get(), \"chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_0_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_0_bonus').val(chardata.favored_enemies[0] ? chardata.favored_enemies[0].val : 0); $('#favored_enemy_0_bonus').blur(function() { chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character(); });" 
+    			}],
+			1: [{
+					ui: "<table style='width: 100%;'><tr><td>Weapon Style</td><td id='weapon_style'></td></tr></table>",
+					script: "update_weapon_style = function () { var ranger = classes.first({ name: 'Ranger'}); remove(ranger.feats[1], ranger.feats[1].indexOf('Rapid Shot'));	remove(ranger.feats[1], ranger.feats[1].indexOf('Two-Weapon Fighting')); chardata.weapon_style = $('#weapon_style_select').val(); var weapon_style_feat = (chardata.weapon_style == 'Archery' ? 'Rapid Shot' : 'Two-Weapon Fighting'); ranger.feats[1].push(weapon_style_feat); chardata.weapon_style = $('#weapon_style_select').val(); save_character(); }; var select = create_select('weapon_style_select', [{_id: 0, name: 'Two-handed fighting'}, {_id: 1, name: 'Archery'}], \"update_weapon_style()\" , false, \"style='width: 100%;'\", null, (chardata.weapon_style == 'Archery' ? 1 : 0)); $('#weapon_style').append('<tr><td>' + select + '</td></tr>');"
+				}],
+			4: [{
+					script: "var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 1 ? chardata.favored_enemies[1].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_1', favored_enemies.get(), \"chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_1_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_1_bonus').val(chardata.favored_enemies[1] ? chardata.favored_enemies[1].val : 0); $('#favored_enemy_1_bonus').blur(function() { chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character(); });" 
+				}],
+			9: [{
+					script: "var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 2 ? chardata.favored_enemies[2].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_2', favored_enemies.get(), \"chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_2_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_2_bonus').val(chardata.favored_enemies[2] ? chardata.favored_enemies[2].val : 0); $('#favored_enemy_2_bonus').blur(function() { chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character(); });" 
+				}]
+			},
 		main: [
-			"for (var i in chardata.favored_enemies) {var f_e = favored_enemys.first({ name : chardata.favored_enemies[i].name }); $('#specials').append('<tr id=\"special_favored_enemy_' + f_e._id	+ '\"><td><input id=\"favored_enemy_' + f_e._id + '\" type=\"checkbox\"/></td><td>' + chardata.favored_enemies[i].name + ' ' + pos(chardata.favored_enemies[i].val) + ' (Fav. Enemy)</td></tr>'); $('input[id=\"favored_enemy_' + f_e._id + '\"]').bind('click', { mod : chardata.favored_enemies[i].val }, function(e) { if ($(this).attr('checked')) { for ( var j in chardata.weapons) { update_weapon_attack(j, e.data.mod);	update_weapon_damage(j, e.data.mod); } update_skill_ranks( [ 'Bluff', 'Knowledge (arcana)', 'Knowledge (architecture and engineering)',	'Knowledge (dungeoneering)','Knowledge (geography)', 'Knowledge (history)',	'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility and royalty)', 'Knowledge (religion)', 'Knowledge (the planes)', 'Perception', 'Sense Motive', 'Survival' ]);	} else { recalc_main_page(); } }); }",
+			"for (var i in chardata.favored_enemies) {var f_e = favored_enemies.first({ name : chardata.favored_enemies[i].name }); $('#specials').append('<tr id=\"special_favored_enemy_' + f_e._id	+ '\"><td><input id=\"favored_enemy_' + f_e._id + '\" type=\"checkbox\"/></td><td>' + chardata.favored_enemies[i].name + ' ' + pos(chardata.favored_enemies[i].val) + ' (Fav. Enemy)</td></tr>'); $('input[id=\"favored_enemy_' + f_e._id + '\"]').bind('click', { mod : chardata.favored_enemies[i].val }, function(e) { if ($(this).attr('checked')) { for ( var j in chardata.weapons) { update_weapon_attack(j, e.data.mod);	update_weapon_damage(j, e.data.mod); } update_skill_ranks( [ 'Bluff', 'Knowledge (arcana)', 'Knowledge (architecture and engineering)',	'Knowledge (dungeoneering)','Knowledge (geography)', 'Knowledge (history)',	'Knowledge (local)', 'Knowledge (nature)', 'Knowledge (nobility and royalty)', 'Knowledge (religion)', 'Knowledge (the planes)', 'Perception', 'Sense Motive', 'Survival' ]);	} else { recalc_main_page(); } }); }",
 			"if (chardata.weapon_style) { var ranger = classes.first({ name: 'Ranger'}); var weapon_style_feat = (chardata.weapon_style == 'Archery' ? 'Rapid Shot' : 'Two-Weapon Fighting'); if (ranger.feats[1].indexOf(weapon_style_feat) == -1) { ranger.feats[1].push(weapon_style_feat); } }"
+		],
+		feats: [
+			{
+				// TODO - hard code the modifications based on weapon style
+				1: {
+					script: ["Far Shot", "Point Blank Shot", "Precise Shot", "Rapid Shot"]
+				},
+				5: {
+					script: ["Improved Precise Shot", "Manyshot"]
+				},
+				9: {
+					script: ["Pinpoint Targeting", "Shot on the Run"]
+				}
+			}
 		]
-		
-		// feats: [
-		// 		"if(chardata.weapon_style) { var weapon_style = (chardata.weapon_style == 'Archery' ? 'Rapid Shot' : 'Two-Weapon Fighting'); var feat = feats.first({ name: weapon_style });\n$('input#' + feat._id).attr('checked', true);\n disable_feat(feat, true);\n$('tr#' + feat._id).addClass('class_feat'); }"
-		// ]
     },
 	class_features: ["Cast Divine"]
 }, {

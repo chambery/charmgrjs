@@ -659,7 +659,7 @@ feats = new TAFFY([{
         feats: ["Two-Weapon Fighting"]
     },
     conditional: true,
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "693f"
@@ -841,7 +841,7 @@ feats = new TAFFY([{
     prereqs: {
     	feats: ["Point-Blank Shot"]
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "4d5"
@@ -1035,7 +1035,7 @@ feats = new TAFFY([{
     	feats: ["Improved Two-Weapon Fighting"],
     	base_attack_bonus: 11
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 3"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "707"
@@ -1240,7 +1240,7 @@ feats = new TAFFY([{
     	feats: ["Precise Shot"],
     	base_attack_bonus: 11
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 2"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "5ff0"
@@ -1251,7 +1251,7 @@ feats = new TAFFY([{
     prereqs: {
     	feats: ["Shield Proficiency"]
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "5e60"
@@ -1288,7 +1288,7 @@ feats = new TAFFY([{
     	feats: ["Two-Weapon Fighting"],
     	base_attack_bonus: 6
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 2"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "1eca"
@@ -1409,7 +1409,7 @@ feats = new TAFFY([{
     	base_attack_bonus: 6
     },
     op: "if ($(this).attr('checked')) {if ($('#feat_54_conditional').attr('checked')) {$('#feat_54_conditional').removeAttr('checked');recalc_main_page();}for ( var i in chardata.weapons) {var weapon = weapons.first({ id: chardata.weapons[i].weapon_id });if (weapon.subcategory == 'ranged') { var attacks = $('#weapon_' + i + '_att').text().split('/');var base_attack_bonus = parseInt(attacks[0]);var arrows = Math.min(Math.ceil(Math.abs(base_attack_bonus - 6) / 5), 4) + 1;var manyshot_penalty = (arrows * 2);var many_shot_atts = '';for (var j=0; j<arrows; j++) {many_shot_atts += pos(base_attack_bonus - manyshot_penalty);many_shot_atts += ((j+1) < arrows ? '/' : '');}$('#weapon_' + i + '_att').text(many_shot_atts);}}} else {recalc_main_page();}",
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 2"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "6b98"
@@ -1566,7 +1566,7 @@ feats = new TAFFY([{
     	feats: ["Improved Precise Shot"],
     	base_attack_bonus: 16
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 3"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "ad5c"
@@ -1577,7 +1577,7 @@ feats = new TAFFY([{
     prereqs: {},
 	conditional: true,
 	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons.first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "7da6"
@@ -1602,7 +1602,7 @@ feats = new TAFFY([{
     prereqs: {
     	feats: ["Point-Blank Shot"]
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "dec"
@@ -1613,7 +1613,7 @@ feats = new TAFFY([{
     prereqs: {
     	base_attack_bonus: 1
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "3961"
@@ -1652,7 +1652,7 @@ feats = new TAFFY([{
     	feats: ["Point-Blank Shot"]
     },
 	op: "if($(this).attr('checked')) { if($('#feat_45_conditional').attr('checked')) { $('#feat_45_conditional').removeAttr('checked'); recalc_main_page(); } for (var i in chardata.weapons) { var weapon = weapons.first({ name: chardata.weapons[i].weapon_name });if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); attacks.push(attacks[0]); var rapid_shot_atts = ''; for(j in attacks) { rapid_shot_atts += pos(parseInt(attacks[j]) - 2);	rapid_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); }	$('#weapon_' + i + '_att').text(rapid_shot_atts); } } } else { recalc_main_page(); }",    
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 1"],
 	conditional: true,    
     tags: ["pathfinder"],
     type: "feat",
@@ -1782,7 +1782,7 @@ feats = new TAFFY([{
     	feats: ["Mobility", "Point-Blank Shot"],
     	base_attack_bonus: 4
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Archery Style 3"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "d4ba"
@@ -2071,7 +2071,7 @@ feats = new TAFFY([{
     prereqs: {
     	feats: ["Two-Weapon Fighting"]
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 2"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "c1ce"
@@ -2080,7 +2080,7 @@ feats = new TAFFY([{
     summary: "Reduce two-weapon fighting penalties",
     detail: "You can fight with a weapon wielded in each of your hands. You can make one extra attack each round with the secondary weapon. <p class=sub><b>Prerequisite: </b>Dex 15 <p class=sub><b>Benefit: </b>Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6. See Two-Weapon Fighting in Chapter 8. <p class=sub><b>Normal: </b>If you wield a second weapon in your off hand, you can get one extra attack per round with that weapon. When fighting in this way you suffer a -6 penalty with your regular attack or attacks with your primary hand and a -10 penalty to the attack with your off hand. If your offhand weapon is light, the penalties are reduced by 2 each. An unarmed strike is always considered light.",
     prereqs: {},
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 1"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "a305"
@@ -2092,7 +2092,7 @@ feats = new TAFFY([{
     	feats: ["Double Slice", "Improved Two-Weapon Fighting"],
     	base_attack_bonus: 11
     },
-    groups: ["Combat"],
+    groups: ["Combat", "Two-Weapon Style 3"],
     tags: ["pathfinder"],
     type: "feat",
     _id: "e339"

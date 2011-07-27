@@ -120,15 +120,14 @@ function build_edit_page() {
 	// move to classes.js
 	// $('#abilitiespart').append(domain_select);
 
-	// skills
-	var allskills = skills.get().sort();
 	// language
 	$("#language_table").html(create_languages());
 	$('#languages').hide();
+	// skills
 	var skill_html = [];
-	for (skill in allskills) {
-		skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", allskills[skill]._id, "' class='fake_link' onclick='show_item_detail(skills, \"", allskills[skill]._id, "\")'>", allskills[skill].name,"</a></td><td style='vertical-align: top;'><input id='skill_", allskills[skill]._id, "_input' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", allskills[skill].ability, "<br><span id='", allskills[skill]._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));
-	}
+	skills.forEach(function(skill, i) {
+		skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name,"</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));
+	});
 	$('#skills_table').append(skill_html.join(''));
 
 	// weapons
@@ -208,15 +207,14 @@ function populate_edit_page() {
 
 	// TODO - move to recalc_edit_page()?
 	if (chardata.skills != null) {
-		var allskills = skills.get().sort();
-		for ( var skill in allskills) {
+		skills.forEach(function(skill, i) {
 			var char_skill = chardata.skills.first( {
-				skill_name : allskills[skill].name
+				skill_name : skill.name
 			});
 			if (char_skill != false) {
-				$('#skill_' + allskills[skill]._id + "_input").val(char_skill.ranks);
+				$('#skill_' + skill._id + "_input").val(char_skill.ranks);
 			}
-		}
+		});
 	}
 }
 
@@ -308,64 +306,63 @@ function recalc_edit_page() {
 		}	
 	}
 
-	var all_skills = skills.get().sort();
-	for(var i=0, len=all_skills.length; i<len; i++) {
+	skills.forEach(function(skill, i) {
 		var is_class_skill = false;
 		for (var classname in chardata.classes) {
-			if(all_skills[i].skill_classes.indexOf(classname) > -1) {
+			if(skill.skill_classes.indexOf(classname) > -1) {
 				is_class_skill = true;
 				break;
 			}
 		}
 		// TODO - factor out? calc skill poitns
-		var race_mod = (race.skills[all_skills[i].name] != null ? race.skills[all_skills[i].name] : 0);
+		var race_mod = (race.skills[skill.name] != null ? race.skills[skill.name] : 0);
 		var mods = race_mod > 0 ? "r:" + pos(race_mod) : "";
 		var feat_mod = 0;
 		get_all_char_feats().forEach( function(char_feat, j) {
 			var feat = feats.first({ name: char_feat.feat_name });
-			if(feat.skills && feat.skills[all_skills[i].name]) {
-				feat_mod += feat.skills[all_skills[i].name];
+			if(feat.skills && feat.skills[skill.name]) {
+				feat_mod += feat.skills[skill.name];
 			}
 			// iterate over all mobility feats and undo the above negatives
-			if(all_skills[i].mobility && feat.mobility) {
+			if(skill.mobility && feat.mobility) {
 				acp = feat.mobility(acp);
 			}
 		});
-		feat_mod += calc_equip_mod(all_skills[i].name);
+		feat_mod += calc_equip_mod(skill.name);
 		mods += feat_mod > 0 ? " o:" + pos(feat_mod) : "";
-		var skill_ability_score = $("input#ability_" + all_skills[i].ability).val();
+		var skill_ability_score = $("input#ability_" + skill.ability).val();
 		var ability_mod = calc_ability_modifier(parseInt(skill_ability_score));
 		mods += ability_mod != 0 ? " a:" + pos(ability_mod) : "";
 		
-		$("#" + all_skills[i]._id + "_mods").text(mods);
+		$("#" + skill._id + "_mods").text(mods);
 		
-		$("a#skill_" + all_skills[i]._id).attr("style", (is_class_skill ? 'font-weight: bold' : ''));
-		var skill_text = $("input[id='skill_" + all_skills[i]._id + "_input']");
+		$("a#skill_" + skill._id).attr("style", (is_class_skill ? 'font-weight: bold' : ''));
+		var skill_text = $("input[id='skill_" + skill._id + "_input']");
 		if (skill_text.val() != '' && parseInt(skill_text.val()) > 0) {
 			// TODO - ugly, need a "save()" function
 			if (chardata.skills == null) {
 				chardata.skills = new TAFFY( [ {
-					skill_name : all_skills[i].name,
+					skill_name : skill.name,
 					ranks : skill_text.val()
 				} ]);
 			}
 			var char_skill = chardata.skills.first( {
-				skill_name : all_skills[i].name
+				skill_name : skill.name
 			});
 			if (!char_skill) {
 				chardata.skills.insert( {
-					skill_name : all_skills[i].name,
+					skill_name : skill.name,
 					ranks : skill_text.val()
 				});
 			} else {
 				chardata.skills.update( {
 					ranks : skill_text.val()
 				}, {
-					skill_name : all_skills[i].name
+					skill_name : skill.name
 				});
 			}
 		}
-	}
+	});
 	
 	var skill_pts = calc_skill_points();
 	$('#skill_pts_remaining').html(skill_pts < 0 ? ["<span class='alarm'>", skill_pts, "</span>"].join('') : skill_pts);
