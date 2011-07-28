@@ -1,11 +1,11 @@
-specials = [
+var specials = new TAFFY([
 {
 	name: "Fast movement",
 	detail: "A %class%'s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the %class%'s speed because of any load carried or armor worn. For example, a human %class% has a speed of 40 feet, rather than 30 feet, when wearing light or no armor. When wearing medium armor or carrying a medium load, his speed drops to 30 feet. A halfling %class% has a speed of 30 feet, rather than 20 feet, in light or no armor. When wearing medium armor or carrying a medium load, his speed drops to 20 feet.", 
 	type: "special", 
 	tags: ["pathfinder"], _id: "634c",
 	classes: {
-		"Barbarian": [{level: 1}]
+		"Barbarian": [{level: 0}]
 	}
 }, {
 	name: "Illiteracy",
@@ -13,7 +13,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "a564",
 	classes: {
-		"Barbarian": [{level: 1}]
+		"Barbarian": [{level: 0}]
 	}
 }, {
 	name: "Rage",
@@ -21,7 +21,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "c05b",
 	classes: {
-		"Barbarian": [{level: 1, mod: "1/day"}, {level: 4, mod: "2/day"}, {level: 8, mod: "3/day"}, {level: 12, mod: "4/day"}, {level: 16, mod: "5/day"}, {level: 20, mod: "6/day"}]
+		"Barbarian": [{level: 0, mod: "1/day"}, {level: 3, mod: "2/day"}, {level: 7, mod: "3/day"}, {level: 11, mod: "4/day"}, {level: 15, mod: "5/day"}, {level: 19, mod: "6/day"}]
 	},
 	//+4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a â€“2 penalty to Armor Class.  The increase in Constitution increases the %class%â€™s hit points by 2 points per level
 	op: "if ($(this).attr('checked')) { var specials = get_special_abilities(chardata.class_id, chardata.xp); var ability_mod = 4; var will_mod = 2; if(specials[10]) {  ability_mod = 8;  will_mod = 4; } else if (specials[7]) {  ability_mod = 6;  will_mod = 3; } var str_score = parseInt($('#ability_Str_score').val()); $('#ability_Str_score').val(str_score + ability_mod); var con_score = parseInt($('#ability_Con_score').val()); $('#ability_Con_score').val(con_score + ability_mod);  recalc_main_page();  var ac = parseInt($('#ac').text()); $('#ac').text(ac - 2); var will = parseInt($('#will').text()); $('#will').text(will + will_mod); } else { var str_score = parseInt($('#ability_score_full0').text()); $('#ability_Str_score').val(str_score); var con_score = parseInt($('#ability_score_full3').text()); $('#ability_Con_score').val(con_score); recalc_main_page(); }"
@@ -31,7 +31,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "6f7a",
 	classes: {
-		"Barbarian": [{level: 2 }]
+		"Barbarian": [{level: 1}]
 	}
 }, {
 	name: "Trap Sense",
@@ -39,8 +39,8 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "12e3",
 	classes: {
-		"Barbarian": [{level: 3, mod: '1' }, {level: 6, mod: '2' }, {level: 9, mod: '3' }, {level: 12, mod: '4' }, {level: 15, mod: '5' }, {level: 18, mod: '6' }],
-	    "Rogue": [{level: 3, mod: '1' }, {level: 6, mod: '2' }, {level: 9, mod: '3' }, {level: 12, mod: '4' }, {level: 15, mod: '5' }, {level: 18, mod: '6' }]
+		"Barbarian": [{level: 2, mod: '1' }, {level: 5, mod: '2' }, {level: 8, mod: '3' }, {level: 11, mod: '4' }, {level: 14, mod: '5' }, {level: 17, mod: '6' }],
+	    "Rogue": [{level: 2, mod: '1' }, {level: 5, mod: '2' }, {level: 8, mod: '3' }, {level: 11, mod: '4' }, {level: 14, mod: '5' }, {level: 17, mod: '6' }]
 	}
 }, {
 	name: "Improved Uncanny Dodge",
@@ -49,8 +49,8 @@ specials = [
 	tags: ["pathfinder"], _id: "664",
 	supersedes: ["Uncanny Dodge"],
 	classes: {
-		"Barbarian": [{level: 5}],
-		"Rogue": [{level: 4}]
+		"Barbarian": [{level: 4}],
+		"Rogue": [{level: 3}]
 	}
 }, {
 	name: "Damage Reduction",
@@ -58,7 +58,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "2359", 
 	classes: {
-		"Barbarian": [{level: 7, mod: "1/-"}, {level: 10, mod: "2/-"}, {level: 13, mod: "3/-" }, {level: 16, mod: "4/-" }, {level: 19, mod: "5/-" }]
+		"Barbarian": [{level: 6, mod: "1/-"}, {level: 9, mod: "2/-"}, {level: 12, mod: "3/-" }, {level: 15, mod: "4/-" }, {level: 18, mod: "5/-" }]
 	}
 }, {
 	name: "Greater Rage",
@@ -66,7 +66,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "5e9c",
 	classes: {
-		"Barbarian": [{level: 11}]
+		"Barbarian": [{level: 10}]
 	}
 }, {
 	id: 8, 
@@ -75,7 +75,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "f10c",
 	classes: {
-		"Barbarian": [{level: 14}]
+		"Barbarian": [{level: 13}]
 	}
 }, {
 	name: "Tireless Rage",
@@ -84,7 +84,7 @@ specials = [
 	tags: ["pathfinder"], _id: "212a",
 	supersedes: ["Greater Rage"],
 	classes: {
-		"Barbarian": [{level: 17}]
+		"Barbarian": [{level: 16}]
 	}
 }, {
 	name: "Mighty Rage",
@@ -93,7 +93,7 @@ specials = [
 	tags: ["pathfinder"], _id: "13c8",
 	supersedes: ["Greater Rage", "Tireless Rage"],
 	classes: {
-		"Barbarian": [{level: 20 }]
+		"Barbarian": [{level: 19}]
 	}
 }, {
 	name: "Bardic Music",
@@ -101,7 +101,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "30e5",
 	classes: {
-		"Bard": [{level: 1}]
+		"Bard": [{level: 0}]
 	}	
 }, {
 	name: "Bardic Knowledge",
@@ -109,7 +109,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "dbd4",
 	classes: {
-		"Bard": [{level: 1}]
+		"Bard": [{level: 0}]
 	}
 }, {
 	name: "Countersong",
@@ -117,7 +117,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "369f",
 	classes: {
-		"Bard": [{level: 1}]
+		"Bard": [{level: 0}]
 	}
 }, {
 	name: "Fascinate",
@@ -125,7 +125,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "8a26",
 	classes: {
-		"Bard": [{level: 1}]
+		"Bard": [{level: 0}]
 	}
 }, {
 	name: "Inspire Courage",
@@ -133,7 +133,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "9c60",
 	classes: {
-		"Bard": [{level: 1, mod: 1},{level: 8, mod: 2}, {level: 14, mod: 3}, {level: 20, mod: 4}]
+		"Bard": [{level: 0, mod: 1},{level: 7, mod: 2}, {level: 13, mod: 3}, {level: 19, mod: 4}]
 	}
 }, {
 	name: "Inspire Competence",
@@ -141,7 +141,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "764c",
 	classes: {
-		"Bard": [{level: 3}]
+		"Bard": [{level: 2}]
 	}
 }, {
 	name: "Inspire Greatness",
@@ -150,7 +150,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "e2b6",
 	classes: {
-		"Bard": [{level: 9}]
+		"Bard": [{level: 8}]
 	}
 }, {
 	name: "Song of Freedom",
@@ -159,7 +159,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "c196",
 	classes: {
-		"Bard": [{level: 12}]
+		"Bard": [{level: 11}]
 	}
 }, {
 	name: "Inspire Heroics",
@@ -168,7 +168,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "3299",
 	classes: {
-		"Bard": [{level: 15}]
+		"Bard": [{level: 14}]
 	}
 }, {
 	name: "Mass Suggestion",
@@ -176,7 +176,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "8d55",
 	classes: {
-		"Bard": [{level: 18}]
+		"Bard": [{level: 17}]
 	}
 }, {
 	name: "Animal Companion",
@@ -185,8 +185,8 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "8312",
 	classes: {
-		"Druid": [{level: 1}],
-		"Ranger": [{level: 4}]
+		"Druid": [{level: 0}],
+		"Ranger": [{level: 3}]
 	}
 }, {
 	name: "Nature Sense",
@@ -195,7 +195,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "6ed8",
 	classes: {
-		"Druid": [{level: 1}]
+		"Druid": [{level: 0}]
 	}
 }, {
 	name: "Wild Empathy",
@@ -204,8 +204,8 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "e7ab",
 	classes: {
-		"Druid": [{level: 1}],
-		"Ranger": [{level: 1}]
+		"Druid": [{level: 0}],
+		"Ranger": [{level: 0}]
 	}
 }, {
 	name: "Woodland Stride",
@@ -214,8 +214,8 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "d5d7",
 	classes: {
-		"Druid": [{level: 2}],
-	  	"Ranger": [{level: 7}]
+		"Druid": [{level: 1}],
+	  	"Ranger": [{level: 6}]
 	}
 }, {
 	name: "Trackless Step",
@@ -224,7 +224,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "73fe",
 	classes: {
-		"Druid": [{level: 3}]
+		"Druid": [{level: 2}]
 	}
 }, {
 	name: "Resist Nature's Lure",
@@ -233,7 +233,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "32ca",
 	classes: {
-		"Druid": [{level: 4}]
+		"Druid": [{level: 3}]
 	}
 }, {
 	name: "Wild Shape",
@@ -242,7 +242,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "25ef",
 	classes: {
-		"Druid": [{level: 5, mod: "1/day"}, {level: 6, mod: "2/day"}, {level: 7, mod: "3/day"},{level: 8, mod: "Large"},{level: 10, mod: "4/day"},{level: 11, mod: "Tiny"},{level: 12, mod: "plant"},{level: 14, mod: "5/day"},{level: 15, mod: "Huge"},{level: 16, mod: "elemental 1/day"},{level: 18, mod: "6/day, elemental 2/day"},{level: 20, mod: "elemental 3/day, Huge elemental"}] 
+		"Druid": [{level: 4, mod: "1/day"}, {level: 5, mod: "2/day"}, {level: 6, mod: "3/day"},{level: 7, mod: "Large"},{level: 9, mod: "4/day"},{level: 10, mod: "Tiny"},{level: 11, mod: "plant"},{level: 13, mod: "5/day"},{level: 14, mod: "Huge"},{level: 15, mod: "elemental 1/day"},{level: 17, mod: "6/day, elemental 2/day"},{level: 19, mod: "elemental 3/day, Huge elemental"}] 
 	}
 }, {
 	name: "Venom Immunity",
@@ -251,7 +251,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "3120",
 	classes: {
-		"Druid": [{level: 9}]
+		"Druid": [{level: 8}]
 	}
 }, {
 	name: "A Thousand Faces",
@@ -260,7 +260,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "134e",
 	classes: {
-		"Druid": [{level: 13}]
+		"Druid": [{level: 12}]
 	}
 }, {
 	name: "Timeless body",
@@ -269,7 +269,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "3f4a",
 	classes: {
-		"Druid": [{level: 15}]
+		"Druid": [{level: 14}]
 	}
 }, {
 	name: "Flurry of Blows",
@@ -277,7 +277,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "84e0",
 	classes: {
-		"Monk": [{level: 1}]
+		"Monk": [{level: 0}]
 	},
 	op: "if ($(this).attr('checked')) {var level = calc_level(chardata.xp);var clazz = classes.first( {name : chardata.class_name});var size = races.first( {name : chardata.race_name}).size;var temp = clazz.base_attack_bonus[level];var base_attack_bonus = temp.split('/')[0];var flurry_attack = clazz.flurry_of_blows[level];var attacks = flurry_attack.split('/');var flurry_atts = '';for ( var j in attacks) {flurry_atts += pos(parseInt(attacks[j]) + parseInt(base_attack_bonus));flurry_atts += (parseInt(j) + 1 < attacks.length ? '/' : '');}for ( var i in chardata.weapons) {var weapon = weapons.first( {id : chardata.weapons[i].weapon_id});if (jQuery.inArray(weapon.id, clazz.flurry_weapons) > -1) {var att = $('#weapon_' + i + '_att').text();$('#weapon_' + i + '_att').text(calc_attack(flurry_atts, weapon, chardata.weapons[i], chardata));if (weapon.id == 60 || weapon.id == 61) {var damage = clazz.flurry_damage[level][size];$('#weapon_' + i + '_dam').text(damage + pos(calc_ability_modifier(chardata.abilities[0])));}}}} else {recalc_main_page();}"
 }, {
@@ -286,7 +286,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "ba6e",
 	classes: {
-		"Monk": [{level: 1}]
+		"Monk": [{level: 0}]
 	}
 }, {
 	name: "Evasion",
@@ -294,8 +294,8 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "18f9",
 	classes: {
-		"Monk": [{level: 2}],
-		"Rogue": [{level: 2}]
+		"Monk": [{level: 1}],
+		"Rogue": [{level: 1}]
 	}
 }, {
 	name: "Still Mind",
@@ -303,7 +303,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "5fa2",
 	classes: {
-		"Monk": [{level: 3}]
+		"Monk": [{level: 2}]
 	}
 }, {
 	name: "Ki Strike",
@@ -311,7 +311,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "9e4c",
 	classes: {
-		"Monk": [{level: 4, mod: "(magic)"}, {level: 10, mod: "(magic, lawful)"}, {level: 16, mod: "(magic, lawful, adamantine)"}]
+		"Monk": [{level: 3, mod: "(magic)"}, {level: 9, mod: "(magic, lawful)"}, {level: 15, mod: "(magic, lawful, adamantine)"}]
 	}
 }, {
 	name: "Slow Fall",
@@ -319,7 +319,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "7efa",
 	classes: {
-		"Monk": [{level: 4, mod: "20 ft."},{level: 6, mod: "30 ft."},{level: 8, mod: "40 ft."},{level: 10, mod: "50 ft."},{level: 12, mod: "60 ft."},{level: 14, mod: "70 ft."},{level: 16, mod: "80 ft."},{level: 18, mod: "90 ft."},{level: 20, mod: "any distance"},]
+		"Monk": [{level: 3, mod: "20 ft."},{level: 5, mod: "30 ft."},{level: 7, mod: "40 ft."},{level: 9, mod: "50 ft."},{level: 11, mod: "60 ft."},{level: 13, mod: "70 ft."},{level: 15, mod: "80 ft."},{level: 17, mod: "90 ft."},{level: 19, mod: "any distance"},]
 	}
 }, {
 	name: "Purity of Body",
@@ -327,7 +327,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "3d80",
 	classes: {
-		"Monk": [{level: 5}]
+		"Monk": [{level: 4}]
 	}
 }, {
 	name: "Wholeness of Body",
@@ -335,7 +335,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "d7dd",
 	classes: {
-		"Monk": [{level: 7}]
+		"Monk": [{level: 6}]
 	}
 }, {
 	name: "Improved Evasion",
@@ -343,7 +343,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "28e8",
 	classes: {
-		"Monk": [{level: 9}]
+		"Monk": [{level: 8}]
 	}
 }, {
 	name: "Diamond Body",
@@ -351,7 +351,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "e7df",
 	classes: {
-		"Monk": [{level: 11}]
+		"Monk": [{level: 10}]
 	}
 }, {
 	name: "Greater Flurry of Blows",
@@ -359,7 +359,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "566b",
 	classes: {
-		"Monk": [{level: 11}]
+		"Monk": [{level: 10}]
 	}
 }, {
 	name: "Diamond Soul",
@@ -367,7 +367,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "d8a7",
 	classes: {
-		"Monk": [{level: 13}]
+		"Monk": [{level: 12}]
 	}
 }, {
 	name: "Abundant Step",
@@ -375,7 +375,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "73be",
 	classes: {
-		"Monk": [{level: 12}]
+		"Monk": [{level: 11}]
 	}
 }, {
 	name: "Quivering Palm",
@@ -383,7 +383,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "8bc8",
 	classes: {
-		"Monk": [{level: 15}]
+		"Monk": [{level: 14}]
 	}
 }, {
 	name: "Tongue of the Sun and Moon",
@@ -391,7 +391,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "97f",
 	classes: {
-		"Monk": [{level: 17}]
+		"Monk": [{level: 16}]
 	}
 }, {
 	name: "Empty Body",
@@ -399,7 +399,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "979d",
 	classes: {
-		"Monk": [{level: 19}]
+		"Monk": [{level: 18}]
 	}
 }, {
 	name: "Perfect Self",
@@ -407,7 +407,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "9a37",
 	classes: {
-		"Monk": [{level: 20}]
+		"Monk": [{level: 19}]
 	}
 }, {
 	name: "Aura of Good",
@@ -415,7 +415,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "544c",
 	classes: {
-		"Paladin": [{level: 1}]
+		"Paladin": [{level: 0}]
 	}
 }, {
 	name: "Detect Evil",
@@ -423,7 +423,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "f76b",
 	classes: {
-		"Paladin": [{level: 1}]
+		"Paladin": [{level: 0}]
 	}
 }, {
 	name: "Smite Evil",
@@ -431,7 +431,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "7626",
 	classes: {
-		"Paladin": [{level: 1, mod: "1/day"},{level: 5, mod: "2/day"},{level: 10, mod: "3/day"},{level: 15, mod: "4/day"},{level: 20, mod: "5/day"}]
+		"Paladin": [{level: 0, mod: "1/day"},{level: 4, mod: "2/day"},{level: 9, mod: "3/day"},{level: 14, mod: "4/day"},{level: 19, mod: "5/day"}]
 	}
 }, {
 	name: "Divine Grace",
@@ -439,7 +439,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "4c9d",
 	classes: {
-		"Paladin": [{level: 2}]
+		"Paladin": [{level: 1}]
 	}
 }, {
 	name: "Lay on Hands",
@@ -447,7 +447,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "a141",
 	classes: {
-		"Paladin": [{level: 2}]
+		"Paladin": [{level: 1}]
 	}
 }, {
 	name: "Aura of Courage",
@@ -455,7 +455,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "c714",
 	classes: {
-		"Paladin": [{level: 3}]
+		"Paladin": [{level: 2}]
 	}
 }, {
 	name: "Divine Health",
@@ -463,7 +463,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "347",
 	classes: {
-		"Paladin": [{level: 3}]
+		"Paladin": [{level: 2}]
 	}
 }, {
 	name: "Turn Undead",
@@ -471,7 +471,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "d553",
 	classes: {
-		"Paladin": [{level: 4}]
+		"Paladin": [{level: 3}]
 	}
 }, {
 	name: "Special Mount",
@@ -479,7 +479,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "5a93",
 	classes: {
-		"Paladin": [{level: 5}]
+		"Paladin": [{level: 4}]
 	}
 }, {
 	name: "Remove Disease",
@@ -487,7 +487,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "cab8",
 	classes: {
-		"Paladin": [{level: 6, mod: "1/week"},{level: 9, mod: "2/week"},{level: 12, mod: "3/week"},{level: 15, mod: "4/week"},{level: 18, mod: "5/week"}]
+		"Paladin": [{level: 5, mod: "1/week"},{level: 8, mod: "2/week"},{level: 11, mod: "3/week"},{level: 14, mod: "4/week"},{level: 17, mod: "5/week"}]
 	}
 }, {
 	name: "Swift Tracker",
@@ -495,7 +495,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "f01",
 	classes: {
-		"Ranger": [{level: 8}]
+		"Ranger": [{level: 7}]
 	}
 }, {
 	name: "Camouflage",
@@ -503,7 +503,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "1739",
 	classes: {
-		"Ranger": [{level: 13}]
+		"Ranger": [{level: 12}]
 	}
 }, {
 	name: "Hide in plain sight",
@@ -511,7 +511,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "af49",
 	classes: {
-		"Ranger": [{level: 17}]
+		"Ranger": [{level: 16}]
 	}
 }, {
 	name: "Sneak Attack",
@@ -519,7 +519,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "1092",
 	classes: {
-		"Rogue": [{level: 1, mod: "1d6"},{level: 3, mod: "2d6"},{level: 5, mod: "3d6"},{level: 7, mod: "4d6"},{level: 9, mod: "5d6"},{level: 11, mod: "6d6"},{level: 13, mod: "7d6"},{level: 15, mod: "8d6"},{level: 17, mod: "9d6"},{level: 19, mod: "10d6"}]
+		"Rogue": [{level: 0, mod: "1d6"},{level: 2, mod: "2d6"},{level: 4, mod: "3d6"},{level: 6, mod: "4d6"},{level: 8, mod: "5d6"},{level: 10, mod: "6d6"},{level: 12, mod: "7d6"},{level: 14, mod: "8d6"},{level: 16, mod: "9d6"},{level: 18, mod: "10d6"}]
 	}
 }, {
 	name: "Trapfinding",
@@ -527,7 +527,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "7830",
 	classes: {
-		"Rogue": [{level: 1}]
+		"Rogue": [{level: 0}]
 	}
 }, {
 	name: "Summon Familiar",
@@ -535,8 +535,8 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "9ddb",
 	classes: {
-		"Sorceror": [{level: 1}],
-		"Wizard": [{level: 1}]
+		"Sorcerer": [{level: 0}],
+		"Wizard": [{level: 0}]
 	}
 }, {
 	name: "Scribe Scroll",
@@ -544,7 +544,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "96db",
 	classes: {
-		"Wizard": [{level: 1}]
+		"Wizard": [{level: 0}]
 	}
 }, {
 	name: "Suggestion",
@@ -558,7 +558,7 @@ specials = [
 	type: "special", 
 	tags: ["pathfinder"], _id: "90c3",
 	classes: {
-		"Ranger": [{level: 1}]
+		"Ranger": [{level: 0}]
 	}
 }, {
 	name: "Crippling Strike",
@@ -580,4 +580,4 @@ specials = [
 	name: "Slippery Mind",
 	description: "Escape magical control",
 	detail: "This ability represents the %class%'s ability to wriggle free from magical effects that would otherwise control or compel her. If a %class% with slippery mind is affected by an enchantment spell or effect and fails her saving throw, she can attempt it again 1 round later at the same DC. She gets only this one extra chance to succeed on her saving throw.", type: "special", tags: ["pathfinder"]
-}];
+}]);

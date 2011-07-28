@@ -176,13 +176,22 @@ function parse_taffy_data(data) {
 
 function load_static_data() {
 	spells.forEach(function(spell, n) {
-		for(classname in spell.classes) {
+		for(var classname in spell.classes) {
 			var clazz = classes.first({ name: classname });
 			// level listed starting from 1
 			clazz.spells[spell.classes[classname]-1].push(spell.name);
 		}
 	});
-	
+	// TODO - maybe move to the classes
+	specials.forEach(function(special, n) {
+		for(var classname in special.classes) {
+			var clazz = classes.first({ name: classname });
+			for(var i=0; i<special.classes[classname].length; i++) {
+				clazz.specials[special.classes[classname][i].level].push({special_name: special.name, mod: special.mod});
+			}
+		}
+	});
+
 	feats.forEach(function(feat, n) {		
 		if(feat.multi) {
 			feat.multi.db = eval(feat.multi.db);

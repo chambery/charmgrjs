@@ -690,7 +690,9 @@ feats = new TAFFY([{
     name: "Endurance",
     summary: "+4 bonus on checks to avoid nonlethal damage",
     detail: "Harsh conditions or long exertions do not easily tire you.<p class=sub><b>Benefit: </b>All variable, numeric effects of an empowered spell are increased by half. <p class=sub>Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell?s actual level.You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold your breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.<p class=sub>You may sleep in light or medium armor without becoming fatigued.<p class=sub><b>Normal: </b>A character without this feat who sleeps in medium or heavier armor is fatigued the next day.",
-
+    classes: {
+    	Ranger: 2
+    },
     conditional: true,
     tags: ["pathfinder"],
     type: "feat",

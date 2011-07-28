@@ -304,3 +304,8 @@ tr:last-child td.pftable {
 td.number {
 	text-align: center;
 }
+
+td.seamless {
+	padding-left: 3px; 
+	padding-right: 3px;
+}

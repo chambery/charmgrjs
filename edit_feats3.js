@@ -250,12 +250,17 @@ function calc_prereqs() {
 		// // console.log(allfeats[i].name);
 		var prereqs_met = false;
 
-		if(!is_class_feat(feat.name) && feat.prereqs != null) {
+		if(!is_class_feat(feat.name)) {
+			if(feat.prereqs) {
 		// // // console.group("is_prereqs_met");
-			prereqs_met = is_prereqs_met(feats._id, feat.prereqs) || prereqs_met;
+				prereqs_met = is_prereqs_met(feats._id, feat.prereqs) || prereqs_met;
+			} else {
+				prereqs_met = true;
+			}
 		// // // console.groupEnd();
-		}
-		disable_feat(feat, !prereqs_met);
+			disable_feat(feat, !prereqs_met);
+		} 
+		
 
 		// if(allfeats[i].multi && allfeats[i].multi != "count") {
 		// repopulate_multi(allfeats[i]);
