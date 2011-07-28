@@ -96,7 +96,8 @@ function save_equipment(close_after_save) {
 	if($('#equipment_index').val().length > 0) {
 		chardata.equipment[$('#equipment_index').val()] = { id: $('#equipment_id').val(), name: $('#equipment_name').val(), notes: htmlize($('#equipment_notes').val()), benefits: benefits };
 	} else {
-		chardata.equipment.push({ id: generate_id(), name: $('#equipment_name').val(), notes: $('#equipment_notes').val(), benefits: benefits });
+		var id = generate_id();
+		chardata.equipment[id] = { id: id, name: $('#equipment_name').val(), notes: $('#equipment_notes').val(), benefits: benefits };
 	}
 	save_character();
 	recalc_equipment_page();
