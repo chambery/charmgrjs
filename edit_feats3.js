@@ -179,9 +179,9 @@ function populate_feats_page() {
 			}
 		} else {
 
-			var checked = chardata.feats != null && (chardata.feats.first( {
+			var checked = chardata.feats != null && chardata.feats.first( {
 				feat_name : feat.name
-			}) == false ? false : true);
+			});
 
 			//  class feats (something more efficient)
 			if(is_class_feat(feat.name)) {
@@ -376,8 +376,8 @@ function is_prereqs_met(feat_id, prereqs) {
 function calc_feats_remaining() {
 	var bonus = {
 		count: 0,
-		groups: [],
-		feats: []
+		groups: {},
+		feats: {}
 	};
 	// collect the number and constraints of the bonus feats
 	for (var classname in chardata.classes) {
@@ -664,17 +664,15 @@ function handle_pick(group, count) {
 	}
 }
 
-function find_match(arr1, arr2) {
-	for(var i=0; i<arr1.length; i++) {
-		for(var j=0; j<arr2.length; j++) {
-			if(arr1[i] == arr2[j]) {
-				return true;
-			}
+function find_match(o1, o2) {
+	for(var prop in o1) {
+		if(o2[prop]) {
+			return true;
 		}
 	}
 	return false;
 }
 
 function is_bonus_eligible(feat, bonus_feats) {
-	return bonus_feats.count > 0 && (bonus_feats.feats.indexOf(feat.name) > -1 || find_match(bonus_feats.groups, feat.groups));
+	return bonus_feats.count > 0 && (bonus_feats.feats[feat.name] || find_match(bonus_feats.groups, feat.groups));
 }
