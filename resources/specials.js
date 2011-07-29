@@ -5,7 +5,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "634c",
 	classes: {
-		"Barbarian": [{level: 0}]
+		Barbarian: [{level: 0}]
 	}
 }, {
 	name: "Illiteracy",
@@ -13,7 +13,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "a564",
 	classes: {
-		"Barbarian": [{level: 0}]
+		Barbarian: [{level: 0}]
 	}
 }, {
 	name: "Rage",
@@ -21,7 +21,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "c05b",
 	classes: {
-		"Barbarian": [{level: 0, mod: "1/day"}, {level: 3, mod: "2/day"}, {level: 7, mod: "3/day"}, {level: 11, mod: "4/day"}, {level: 15, mod: "5/day"}, {level: 19, mod: "6/day"}]
+		Barbarian: [{level: 0, mod: "1/day"}, {level: 3, mod: "2/day"}, {level: 7, mod: "3/day"}, {level: 11, mod: "4/day"}, {level: 15, mod: "5/day"}, {level: 19, mod: "6/day"}]
 	},
 	//+4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a â€“2 penalty to Armor Class.  The increase in Constitution increases the %class%â€™s hit points by 2 points per level
 	op: "if ($(this).attr('checked')) { var specials = get_special_abilities(chardata.class_id, chardata.xp); var ability_mod = 4; var will_mod = 2; if(specials[10]) {  ability_mod = 8;  will_mod = 4; } else if (specials[7]) {  ability_mod = 6;  will_mod = 3; } var str_score = parseInt($('#ability_Str_score').val()); $('#ability_Str_score').val(str_score + ability_mod); var con_score = parseInt($('#ability_Con_score').val()); $('#ability_Con_score').val(con_score + ability_mod);  recalc_main_page();  var ac = parseInt($('#ac').text()); $('#ac').text(ac - 2); var will = parseInt($('#will').text()); $('#will').text(will + will_mod); } else { var str_score = parseInt($('#ability_score_full0').text()); $('#ability_Str_score').val(str_score); var con_score = parseInt($('#ability_score_full3').text()); $('#ability_Con_score').val(con_score); recalc_main_page(); }"
@@ -31,7 +31,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "6f7a",
 	classes: {
-		"Barbarian": [{level: 1}]
+		Barbarian: [{level: 1}]
 	}
 }, {
 	name: "Trap Sense",
@@ -39,8 +39,8 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "12e3",
 	classes: {
-		"Barbarian": [{level: 2, mod: '1' }, {level: 5, mod: '2' }, {level: 8, mod: '3' }, {level: 11, mod: '4' }, {level: 14, mod: '5' }, {level: 17, mod: '6' }],
-	    "Rogue": [{level: 2, mod: '1' }, {level: 5, mod: '2' }, {level: 8, mod: '3' }, {level: 11, mod: '4' }, {level: 14, mod: '5' }, {level: 17, mod: '6' }]
+		Barbarian: [{level: 2, mod: '1' }, {level: 5, mod: '2' }, {level: 8, mod: '3' }, {level: 11, mod: '4' }, {level: 14, mod: '5' }, {level: 17, mod: '6' }],
+	    Rogue: [{level: 2, mod: '1' }, {level: 5, mod: '2' }, {level: 8, mod: '3' }, {level: 11, mod: '4' }, {level: 14, mod: '5' }, {level: 17, mod: '6' }]
 	}
 }, {
 	name: "Improved Uncanny Dodge",
@@ -49,8 +49,8 @@ var specials = new TAFFY([
 	tags: ["pathfinder"], _id: "664",
 	supersedes: ["Uncanny Dodge"],
 	classes: {
-		"Barbarian": [{level: 4}],
-		"Rogue": [{level: 3}]
+		Barbarian: [{level: 4}],
+		Rogue: [{level: 3}]
 	}
 }, {
 	name: "Damage Reduction",
@@ -58,7 +58,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "2359", 
 	classes: {
-		"Barbarian": [{level: 6, mod: "1/-"}, {level: 9, mod: "2/-"}, {level: 12, mod: "3/-" }, {level: 15, mod: "4/-" }, {level: 18, mod: "5/-" }]
+		Barbarian: [{level: 6, mod: "1/-"}, {level: 9, mod: "2/-"}, {level: 12, mod: "3/-" }, {level: 15, mod: "4/-" }, {level: 18, mod: "5/-" }]
 	}
 }, {
 	name: "Greater Rage",
@@ -66,7 +66,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "5e9c",
 	classes: {
-		"Barbarian": [{level: 10}]
+		Barbarian: [{level: 10}]
 	}
 }, {
 	id: 8, 
@@ -75,7 +75,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "f10c",
 	classes: {
-		"Barbarian": [{level: 13}]
+		Barbarian: [{level: 13}]
 	}
 }, {
 	name: "Tireless Rage",
@@ -84,7 +84,7 @@ var specials = new TAFFY([
 	tags: ["pathfinder"], _id: "212a",
 	supersedes: ["Greater Rage"],
 	classes: {
-		"Barbarian": [{level: 16}]
+		Barbarian: [{level: 16}]
 	}
 }, {
 	name: "Mighty Rage",
@@ -93,7 +93,7 @@ var specials = new TAFFY([
 	tags: ["pathfinder"], _id: "13c8",
 	supersedes: ["Greater Rage", "Tireless Rage"],
 	classes: {
-		"Barbarian": [{level: 19}]
+		Barbarian: [{level: 19}]
 	}
 }, {
 	name: "Bardic Music",
@@ -101,7 +101,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "30e5",
 	classes: {
-		"Bard": [{level: 0}]
+		Bard: [{level: 0}]
 	}	
 }, {
 	name: "Bardic Knowledge",
@@ -109,7 +109,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "dbd4",
 	classes: {
-		"Bard": [{level: 0}]
+		Bard: [{level: 0}]
 	}
 }, {
 	name: "Countersong",
@@ -117,7 +117,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "369f",
 	classes: {
-		"Bard": [{level: 0}]
+		Bard: [{level: 0}]
 	}
 }, {
 	name: "Fascinate",
@@ -125,7 +125,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "8a26",
 	classes: {
-		"Bard": [{level: 0}]
+		Bard: [{level: 0}]
 	}
 }, {
 	name: "Inspire Courage",
@@ -133,7 +133,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "9c60",
 	classes: {
-		"Bard": [{level: 0, mod: 1},{level: 7, mod: 2}, {level: 13, mod: 3}, {level: 19, mod: 4}]
+		Bard: [{level: 0, mod: 1},{level: 7, mod: 2}, {level: 13, mod: 3}, {level: 19, mod: 4}]
 	}
 }, {
 	name: "Inspire Competence",
@@ -141,7 +141,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "764c",
 	classes: {
-		"Bard": [{level: 2}]
+		Bard: [{level: 2}]
 	}
 }, {
 	name: "Inspire Greatness",
@@ -150,7 +150,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "e2b6",
 	classes: {
-		"Bard": [{level: 8}]
+		Bard: [{level: 8}]
 	}
 }, {
 	name: "Song of Freedom",
@@ -159,7 +159,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "c196",
 	classes: {
-		"Bard": [{level: 11}]
+		Bard: [{level: 11}]
 	}
 }, {
 	name: "Inspire Heroics",
@@ -168,7 +168,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "3299",
 	classes: {
-		"Bard": [{level: 14}]
+		Bard: [{level: 14}]
 	}
 }, {
 	name: "Mass Suggestion",
@@ -176,7 +176,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "8d55",
 	classes: {
-		"Bard": [{level: 17}]
+		Bard: [{level: 17}]
 	}
 }, {
 	name: "Animal Companion",
@@ -185,8 +185,8 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "8312",
 	classes: {
-		"Druid": [{level: 0}],
-		"Ranger": [{level: 3}]
+		Druid: [{level: 0}],
+		Ranger: [{level: 3}]
 	}
 }, {
 	name: "Nature Sense",
@@ -195,7 +195,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "6ed8",
 	classes: {
-		"Druid": [{level: 0}]
+		Druid: [{level: 0}]
 	}
 }, {
 	name: "Wild Empathy",
@@ -204,8 +204,8 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "e7ab",
 	classes: {
-		"Druid": [{level: 0}],
-		"Ranger": [{level: 0}]
+		Druid: [{level: 0}],
+		Ranger: [{level: 0}]
 	}
 }, {
 	name: "Woodland Stride",
@@ -214,8 +214,8 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "d5d7",
 	classes: {
-		"Druid": [{level: 1}],
-	  	"Ranger": [{level: 6}]
+		Druid: [{level: 1}],
+	  	Ranger: [{level: 6}]
 	}
 }, {
 	name: "Trackless Step",
@@ -224,7 +224,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "73fe",
 	classes: {
-		"Druid": [{level: 2}]
+		Druid: [{level: 2}]
 	}
 }, {
 	name: "Resist Nature's Lure",
@@ -233,7 +233,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "32ca",
 	classes: {
-		"Druid": [{level: 3}]
+		Druid: [{level: 3}]
 	}
 }, {
 	name: "Wild Shape",
@@ -242,7 +242,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "25ef",
 	classes: {
-		"Druid": [{level: 4, mod: "1/day"}, {level: 5, mod: "2/day"}, {level: 6, mod: "3/day"},{level: 7, mod: "Large"},{level: 9, mod: "4/day"},{level: 10, mod: "Tiny"},{level: 11, mod: "plant"},{level: 13, mod: "5/day"},{level: 14, mod: "Huge"},{level: 15, mod: "elemental 1/day"},{level: 17, mod: "6/day, elemental 2/day"},{level: 19, mod: "elemental 3/day, Huge elemental"}] 
+		Druid: [{level: 4, mod: "1/day"}, {level: 5, mod: "2/day"}, {level: 6, mod: "3/day"},{level: 7, mod: "Large"},{level: 9, mod: "4/day"},{level: 10, mod: "Tiny"},{level: 11, mod: "plant"},{level: 13, mod: "5/day"},{level: 14, mod: "Huge"},{level: 15, mod: "elemental 1/day"},{level: 17, mod: "6/day, elemental 2/day"},{level: 19, mod: "elemental 3/day, Huge elemental"}] 
 	}
 }, {
 	name: "Venom Immunity",
@@ -251,7 +251,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "3120",
 	classes: {
-		"Druid": [{level: 8}]
+		Druid: [{level: 8}]
 	}
 }, {
 	name: "A Thousand Faces",
@@ -260,7 +260,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "134e",
 	classes: {
-		"Druid": [{level: 12}]
+		Druid: [{level: 12}]
 	}
 }, {
 	name: "Timeless body",
@@ -269,7 +269,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "3f4a",
 	classes: {
-		"Druid": [{level: 14}]
+		Druid: [{level: 14}]
 	}
 }, {
 	name: "Flurry of Blows",
@@ -277,7 +277,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "84e0",
 	classes: {
-		"Monk": [{level: 0}]
+		Monk: [{level: 0}]
 	},
 	op: "if ($(this).attr('checked')) {var level = calc_level(chardata.xp);var clazz = classes.first( {name : chardata.class_name});var size = races.first( {name : chardata.race_name}).size;var temp = clazz.base_attack_bonus[level];var base_attack_bonus = temp.split('/')[0];var flurry_attack = clazz.flurry_of_blows[level];var attacks = flurry_attack.split('/');var flurry_atts = '';for ( var j in attacks) {flurry_atts += pos(parseInt(attacks[j]) + parseInt(base_attack_bonus));flurry_atts += (parseInt(j) + 1 < attacks.length ? '/' : '');}for ( var i in chardata.weapons) {var weapon = weapons.first( {id : chardata.weapons[i].weapon_id});if (jQuery.inArray(weapon.id, clazz.flurry_weapons) > -1) {var att = $('#weapon_' + i + '_att').text();$('#weapon_' + i + '_att').text(calc_attack(flurry_atts, weapon, chardata.weapons[i], chardata));if (weapon.id == 60 || weapon.id == 61) {var damage = clazz.flurry_damage[level][size];$('#weapon_' + i + '_dam').text(damage + pos(calc_ability_modifier(chardata.abilities[0])));}}}} else {recalc_main_page();}"
 }, {
@@ -286,7 +286,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "ba6e",
 	classes: {
-		"Monk": [{level: 0}]
+		Monk: [{level: 0}]
 	}
 }, {
 	name: "Evasion",
@@ -294,8 +294,9 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "18f9",
 	classes: {
-		"Monk": [{level: 1}],
-		"Rogue": [{level: 1}]
+		Monk: [{level: 1}],
+		Rogue: [{level: 1}]
+		Ranger: [{level: 8}]
 	}
 }, {
 	name: "Still Mind",
@@ -303,7 +304,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "5fa2",
 	classes: {
-		"Monk": [{level: 2}]
+		Monk: [{level: 2}]
 	}
 }, {
 	name: "Ki Strike",
@@ -311,7 +312,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "9e4c",
 	classes: {
-		"Monk": [{level: 3, mod: "(magic)"}, {level: 9, mod: "(magic, lawful)"}, {level: 15, mod: "(magic, lawful, adamantine)"}]
+		Monk: [{level: 3, mod: "(magic)"}, {level: 9, mod: "(magic, lawful)"}, {level: 15, mod: "(magic, lawful, adamantine)"}]
 	}
 }, {
 	name: "Slow Fall",
@@ -319,7 +320,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "7efa",
 	classes: {
-		"Monk": [{level: 3, mod: "20 ft."},{level: 5, mod: "30 ft."},{level: 7, mod: "40 ft."},{level: 9, mod: "50 ft."},{level: 11, mod: "60 ft."},{level: 13, mod: "70 ft."},{level: 15, mod: "80 ft."},{level: 17, mod: "90 ft."},{level: 19, mod: "any distance"},]
+		Monk: [{level: 3, mod: "20 ft."},{level: 5, mod: "30 ft."},{level: 7, mod: "40 ft."},{level: 9, mod: "50 ft."},{level: 11, mod: "60 ft."},{level: 13, mod: "70 ft."},{level: 15, mod: "80 ft."},{level: 17, mod: "90 ft."},{level: 19, mod: "any distance"},]
 	}
 }, {
 	name: "Purity of Body",
@@ -327,7 +328,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "3d80",
 	classes: {
-		"Monk": [{level: 4}]
+		Monk: [{level: 4}]
 	}
 }, {
 	name: "Wholeness of Body",
@@ -335,7 +336,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "d7dd",
 	classes: {
-		"Monk": [{level: 6}]
+		Monk: [{level: 6}]
 	}
 }, {
 	name: "Improved Evasion",
@@ -343,7 +344,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "28e8",
 	classes: {
-		"Monk": [{level: 8}]
+		Monk: [{level: 8}]
 	}
 }, {
 	name: "Diamond Body",
@@ -351,7 +352,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "e7df",
 	classes: {
-		"Monk": [{level: 10}]
+		Monk: [{level: 10}]
 	}
 }, {
 	name: "Greater Flurry of Blows",
@@ -359,7 +360,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "566b",
 	classes: {
-		"Monk": [{level: 10}]
+		Monk: [{level: 10}]
 	}
 }, {
 	name: "Diamond Soul",
@@ -367,7 +368,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "d8a7",
 	classes: {
-		"Monk": [{level: 12}]
+		Monk: [{level: 12}]
 	}
 }, {
 	name: "Abundant Step",
@@ -375,7 +376,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "73be",
 	classes: {
-		"Monk": [{level: 11}]
+		Monk: [{level: 11}]
 	}
 }, {
 	name: "Quivering Palm",
@@ -383,7 +384,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "8bc8",
 	classes: {
-		"Monk": [{level: 14}]
+		Monk: [{level: 14}]
 	}
 }, {
 	name: "Tongue of the Sun and Moon",
@@ -391,7 +392,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "97f",
 	classes: {
-		"Monk": [{level: 16}]
+		Monk: [{level: 16}]
 	}
 }, {
 	name: "Empty Body",
@@ -399,7 +400,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "979d",
 	classes: {
-		"Monk": [{level: 18}]
+		Monk: [{level: 18}]
 	}
 }, {
 	name: "Perfect Self",
@@ -407,7 +408,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "9a37",
 	classes: {
-		"Monk": [{level: 19}]
+		Monk: [{level: 19}]
 	}
 }, {
 	name: "Aura of Good",
@@ -415,7 +416,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "544c",
 	classes: {
-		"Paladin": [{level: 0}]
+		Paladin: [{level: 0}]
 	}
 }, {
 	name: "Detect Evil",
@@ -423,7 +424,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "f76b",
 	classes: {
-		"Paladin": [{level: 0}]
+		Paladin: [{level: 0}]
 	}
 }, {
 	name: "Smite Evil",
@@ -431,7 +432,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "7626",
 	classes: {
-		"Paladin": [{level: 0, mod: "1/day"},{level: 4, mod: "2/day"},{level: 9, mod: "3/day"},{level: 14, mod: "4/day"},{level: 19, mod: "5/day"}]
+		Paladin: [{level: 0, mod: "1/day"},{level: 4, mod: "2/day"},{level: 9, mod: "3/day"},{level: 14, mod: "4/day"},{level: 19, mod: "5/day"}]
 	}
 }, {
 	name: "Divine Grace",
@@ -439,7 +440,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "4c9d",
 	classes: {
-		"Paladin": [{level: 1}]
+		Paladin: [{level: 1}]
 	}
 }, {
 	name: "Lay on Hands",
@@ -447,7 +448,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "a141",
 	classes: {
-		"Paladin": [{level: 1}]
+		Paladin: [{level: 1}]
 	}
 }, {
 	name: "Aura of Courage",
@@ -455,7 +456,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "c714",
 	classes: {
-		"Paladin": [{level: 2}]
+		Paladin: [{level: 2}]
 	}
 }, {
 	name: "Divine Health",
@@ -463,7 +464,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "347",
 	classes: {
-		"Paladin": [{level: 2}]
+		Paladin: [{level: 2}]
 	}
 }, {
 	name: "Turn Undead",
@@ -471,7 +472,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "d553",
 	classes: {
-		"Paladin": [{level: 3}]
+		Paladin: [{level: 3}]
 	}
 }, {
 	name: "Special Mount",
@@ -479,7 +480,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "5a93",
 	classes: {
-		"Paladin": [{level: 4}]
+		Paladin: [{level: 4}]
 	}
 }, {
 	name: "Remove Disease",
@@ -487,7 +488,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "cab8",
 	classes: {
-		"Paladin": [{level: 5, mod: "1/week"},{level: 8, mod: "2/week"},{level: 11, mod: "3/week"},{level: 14, mod: "4/week"},{level: 17, mod: "5/week"}]
+		Paladin: [{level: 5, mod: "1/week"},{level: 8, mod: "2/week"},{level: 11, mod: "3/week"},{level: 14, mod: "4/week"},{level: 17, mod: "5/week"}]
 	}
 }, {
 	name: "Swift Tracker",
@@ -495,7 +496,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "f01",
 	classes: {
-		"Ranger": [{level: 7}]
+		Ranger: [{level: 7}]
 	}
 }, {
 	name: "Camouflage",
@@ -503,7 +504,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "1739",
 	classes: {
-		"Ranger": [{level: 12}]
+		Ranger: [{level: 12}]
 	}
 }, {
 	name: "Hide in plain sight",
@@ -511,15 +512,32 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "af49",
 	classes: {
-		"Ranger": [{level: 16}]
+		Ranger: [{level: 16}]
 	}
+}, {
+	name: "Hunter\'s Bond",
+	detail: "At 4th level, a ranger forms a bond with his hunting companions. This bond can take one of two forms. Once the form is chosen, it cannot be changed. The first is a bond to his companions. This bond allows him to spend a move action to grant half his favored enemy bonus against a single target of the appropriate type to all allies within 30 feet who can see or hear him. This bonus lasts for a number of rounds equal to the ranger&apos;s Wisdom modifier (minimum 1). This bonus does not stack with any favored enemy bonuses possessed by his allies; they use whichever bonus is higher.<p class=sub>The second option is to form a close bond with an animal companion. A ranger who selects an animal companion can choose from the following list: badger, bird, camel, cat (small), dire rat, dog, horse, pony, snake (viper or constrictor), or wolf. If the campaign takes place wholly or partly in an aquatic environment, the ranger may choose a shark instead. This animal is a loyal companion that accompanies the ranger on his adventures as appropriate for its kind. A ranger&apos;s animal companion shares his favored enemy and favored terrain bonuses.<p class=sub>This ability functions like the druid animal companion ability (which is part of the Nature Bond class feature), except that the ranger&apos;s effective druid level is equal to his ranger level – 3.",
+	type: "special", 
+	tags: ["pathfinder"], _id: "109f",
+	classes: {
+		Ranger: [{level: 3}]
+	}
+}, {
+	name: "Quarry",
+	detail: "At 11th level, a ranger can, as a standard action, denote one target within his line of sight as his quarry. Whenever he is following the tracks of his quarry, a ranger can take 10 on his Survival skill checks while moving at normal speed, without penalty. In addition, he receives a +2 insight bonus on attack rolls made against his quarry, and all critical threats are automatically confirmed. A ranger can have no more than one quarry at a time and the creature's type must correspond to one of his favored enemy types. He can dismiss this effect at any time as a free action, but he cannot select a new quarry for 24 hours. If the ranger sees proof that his quarry is dead, he can select a new quarry after waiting 1 hour."
+	classes: {
+		Ranger: [{level: 10}]
+	},
+	op: "", // +2 to attack
+	type: "special", 
+	tags: ["pathfinder"], _id: "18fa"
 }, {
 	name: "Sneak Attack",
 	detail: "If a %class% can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage. Basically, the %class%'s attack deals extra damage any time her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the %class% flanks her target. This extra damage is 1d6 at 1st level, and it increases by 1d6 every two %class% levels thereafter. Should the %class% score a critical hit with a sneak attack, this extra damage is not multiplied. (See Table 8-5: Attack Roll Modifiers and Table 8-6: Armor Class Modifiers, page 151, for combat situations in which the %class% flanks an opponent or the opponent loses his Dexterity bonus to AC.) <p class=sub>Ranged attacks can count as sneak attacks only if the target is within 30 feet. A %class% can't strike with deadly accuracy from beyond that range. With a sap (blackjack) or an unarmed strike, a %class% can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual -4 penalty, because she must make optimal use of her weapon in order to execute a sneak attack. (See Nonlethal Damage, page 146.) <p class=sub>A %class% can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The %class% must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A %class% cannot sneak attack while striking a creature with concealment (see page 152) or striking the limbs of a creature whose vitals are beyond reach.", 
 	type: "special", 
 	tags: ["pathfinder"], _id: "1092",
 	classes: {
-		"Rogue": [{level: 0, mod: "1d6"},{level: 2, mod: "2d6"},{level: 4, mod: "3d6"},{level: 6, mod: "4d6"},{level: 8, mod: "5d6"},{level: 10, mod: "6d6"},{level: 12, mod: "7d6"},{level: 14, mod: "8d6"},{level: 16, mod: "9d6"},{level: 18, mod: "10d6"}]
+		Rogue: [{level: 0, mod: "1d6"},{level: 2, mod: "2d6"},{level: 4, mod: "3d6"},{level: 6, mod: "4d6"},{level: 8, mod: "5d6"},{level: 10, mod: "6d6"},{level: 12, mod: "7d6"},{level: 14, mod: "8d6"},{level: 16, mod: "9d6"},{level: 18, mod: "10d6"}]
 	}
 }, {
 	name: "Trapfinding",
@@ -527,7 +545,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "7830",
 	classes: {
-		"Rogue": [{level: 0}]
+		Rogue: [{level: 0}]
 	}
 }, {
 	name: "Summon Familiar",
@@ -535,8 +553,8 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "9ddb",
 	classes: {
-		"Sorcerer": [{level: 0}],
-		"Wizard": [{level: 0}]
+		Sorcerer: [{level: 0}],
+		Wizard: [{level: 0}]
 	}
 }, {
 	name: "Scribe Scroll",
@@ -544,7 +562,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "96db",
 	classes: {
-		"Wizard": [{level: 0}]
+		Wizard: [{level: 0}]
 	}
 }, {
 	name: "Suggestion",
@@ -558,7 +576,7 @@ var specials = new TAFFY([
 	type: "special", 
 	tags: ["pathfinder"], _id: "90c3",
 	classes: {
-		"Ranger": [{level: 0}]
+		Ranger: [{level: 0}]
 	}
 }, {
 	name: "Crippling Strike",
