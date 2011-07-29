@@ -112,6 +112,10 @@ function save_remote(data, name) {
 		  type: "POST",
 		  url: "/" + data.type + "/" + chardata.options.owner + "/" + name,
 		  data: JSON.stringify(data),
+		  success: function(data, status) {
+		  	  console.log(data);
+		  	  console.log("status");
+		  },
 		  contentType: "application/json; charset=utf-8",
 		  dataType: "json"
 		});

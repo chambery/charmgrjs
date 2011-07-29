@@ -9,60 +9,22 @@
 	google.load("jquery", "1.4");
 	google.load("jqueryui", "1.8");
 </script>
-<script type="text/javascript" src="resources/armors.js"></script>
-<script type="text/javascript" src="resources/classes.js"></script>
-<script type="text/javascript" src="resources/deities-pf.js"></script>
-<script type="text/javascript" src="resources/domains.js"></script>
-<script type="text/javascript" src="resources/favored_enemies.js"></script>
-<script type="text/javascript" src="resources/feats-pf.js"></script>
-<script type="text/javascript" src="resources/languages.js"></script>
-<script type="text/javascript" src="resources/races.js"></script>
-<script type="text/javascript" src="resources/schools.js"></script>
-<script type="text/javascript" src="resources/shields.js"></script>
-<script type="text/javascript" src="resources/skills-pf.js"></script>
-<script type="text/javascript" src="resources/sorceror_bloodlines.js"></script>
-<script type="text/javascript" src="resources/specials.js"></script>
-<script type="text/javascript" src="resources/spells-pf.js"></script>
-<script type="text/javascript" src="resources/weapons.js"></script>
+<script type="text/javascript" src="taffy.js"></script>
 <script>
 function load() {
-	chardata = {
-		name: "name",
-		race: "race",
-		logs: [{
-				name: "battle1",
-				xp: 123455,
-				hp: 48,
-				date: 982347028973402,
-				"Suspendisse quis porta erat. Phasellus quam felis, pharetra nec lacinia ac, tempus eu felis. Duis bibendum, neque et ullamcorper aliquam, ligula mauris faucibus tellus, vel laoreet leo eros ut justo. Nulla quis augue arcu. Aliquam sagittis massa et tortor faucibus venenatis. Ut mattis quam eu massa congue sed gravida massa sagittis. Sed ac convallis purus. Nam a tellus eu massa tristique auctor. Nulla rhoncus pretium dapibus. Proin magna nibh, euismod non semper eget, volutpat ut sem. Mauris semper cursus ligula nec cursus. In pretium vehicula odio, id varius dui faucibus a. Etiam fringilla tincidunt tortor, a tristique tortor porttitor et. Nullam auctor porttitor lacus eu scelerisque. In dapibus enim vitae est venenatis ac lacinia sapien vestibulum. Ut non dignissim lectus. Nulla facilisi. Nullam auctor tortor libero, quis placerat urna. In egestas elementum odio nec commodo."
-		}, {
-				name: "battle2",
-				xp: 128855,
-				hp: 52,
-				date: 982349028979902,
-				note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur massa ligula, porttitor at dapibus a, aliquam at metus. Sed vel magna molestie velit aliquet sagittis. Sed euismod, justo vitae hendrerit mollis, ligula quam pulvinar nibh, vitae elementum nulla sapien sed lorem. Suspendisse ornare tincidunt interdum. Praesent rhoncus vehicula ante, in semper risus mattis non. Proin nec magna eget sapien accumsan tincidunt quis quis dolor. Proin ut nunc non dui malesuada lobortis quis sit amet orci. Ut tincidunt nisi ut nisi eleifend congue. Fusce vehicula est ut diam elementum convallis. Donec aliquet cursus dolor id mollis. Donec vel tellus quis magna dictum consectetur vitae quis metus. Fusce vel magna eu leo hendrerit sodales at et diam. Aliquam et ipsum quam, in sodales libero. Suspendisse volutpat ullamcorper libero sed scelerisque. Donec vel nisi nisi, a laoreet felis. Nulla neque nisl, ultrices vitae sodales vitae, porttitor eu sem. Donec quis elit leo. Proin ullamcorper vestibulum arcu. Nullam id nisl sed ipsum eleifend accumsan a ac enim. Mauris at nunc eu nunc tristique pharetra id tempor dolor."
-		}]
+	chardata = {};
+	chardata.feats = new TAFFY([]);
+	chardata.feats.insert({
+			feat_name: "Acrobatic"
+	});
+	chardata.feats.insert({
+			feat_name: "Knowledge"
+	});
+	var feats = chardata.feats.get();
+	for( i in feats) {
+		console.log(feats[i]);
 	}
 
-	$("form#foo").submit(function () {
-			$.post('/character/' + $('#owner').val() + '/' + $('#name').val(), chardata);
-		return false;
-	});
-	$.getJSON('character/foo/bar', process_json)
-}
-
-function process_json(data) {
-		console.log("data" + data);
-        var items = [];
-
-        $.each(data, function (key, val) {
-            items.push('<li id="' + key + '">' + val + '</li>');
-        });
-
-        $('<ul/>', {
-            'class': 'my-new-list',
-            html: items.join('')
-        }).appendTo('body');
 }
 
 </script>

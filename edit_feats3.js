@@ -538,7 +538,7 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
 			alert('No feat selections remaining.');
 		} else {
 			if (!char_feat) {
-				chardata.feats.insert( {
+				var count = chardata.feats.insert( {
 					feat_name : feat.name
 				});
 				char_feat = chardata.feats.first( {
