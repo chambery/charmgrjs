@@ -28,7 +28,7 @@ gte,lte
 
 if (typeof TAFFY=="undefined"||!TAFFY) {
 
-exports.TAFFY = function (obj) {
+TAFFY = function (obj) {
 	var conf = {
 		template:null
 	}, T = TAFFY, raw = (T.isString(obj)) ? T.JSON.parse(obj) : obj, TOb = raw, TIA = [], t = true, f=false;

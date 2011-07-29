@@ -163,3 +163,51 @@ var favored_enemies = new TAFFY ([{
 	type: "favored_enemy",
 	tags: ["pathfinder"], _id: "ddff"
 }]);
+
+var favored_terrains = new TAFFY([
+{
+	name: "Cold",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "644e"
+}, {
+	name: "Desert",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "cb99"
+}, {
+	name: "Forest",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "f073"
+}, {
+	name: "Jungle",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "b261"
+}, {
+	name: "Mountain",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "f2e"
+}, {
+	name: "Plains",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "5f0b"
+}, {
+	name: "Planes",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "e587"
+}, {
+	name: "Swamp",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "941c"
+}, {
+	name: "Underground",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "a0f0"
+}, {
+	name: "Urban",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "cdf8"
+}, {	
+	name: "Water",
+	type: "favored_terrain",
+	tags: ["pathfinder"], _id: "117c"
+}
+]);

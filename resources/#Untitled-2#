@@ -1,3 +1,1 @@
-https://www6.bankofamerica.com/backgroundscreening/index.do?state=null&entityId=35130182&entityContextId=101465504&eevCaseId=200543594&jsCheck=true
-
-
+for (var i in chardata.favored_terrains) { var f_t = favored_terrains.first({ name: chardata.favored_terrains[i].name }); $('#specials').append('<tr id=\"special_favored_terrain_' + f_t._id + '\"><td><input id=\"favored_terrain_' + f_t._id + '\" type=\"checkbox\"/></td><td>' + chardata.favored_terrains[i].name + ' ' + pos(chardata.favored_terrains[i].val) + ' (Fav. Terrain)</td></tr>'); $('input[id=\"favored_terrain_' + f_t._id + '\"]').bind('click', { mod: chardata.favored_terrains[i].val }, function (e) { if ($(this).attr('checked')) { for (var j in chardata.weapons) { update_weapon_attack(j, e.data.mod); update_weapon_damage(j, e.data.mod); } update_skill_ranks(['Knowledge', 'Perception', 'Stealth', 'Survival']); } else { recalc_main_page(); } }); }
