@@ -202,10 +202,10 @@ function build_main_page() {
 	
 	// class special abilities
 	var class_specials = get_special_abilities();
-	if (count_attrs(class_specials) > 0 || (chardata.favored_enemies && chardata.favored_enemies.length > 0)) {
+	if (count_attrs(class_specials) > 0) {
 		$('#specials_heading').bind('click', function(e) { return toggle_visible('specials'); });
 		for (var i in class_specials) {
-			if(class_specials[i]) {
+			if(class_specials[i] && !class_specials[i].hide) {
 				var checkbox = (class_specials[i].op != null ? 
 						["<input id='special_", class_specials[i]._id, "' type='checkbox' onclick=\"", class_specials[i].op, "\"/>"].join('')  : "");
 				$("#specials").append(["<tr id='special_", class_specials[i]._id, "'><td style='padding: 3px 0px;'>", checkbox, "</td><td class='seamless' valign='top' style='width: 100%;'><a class='fake_link' onclick='show_item_detail(specials, \"" + class_specials[i]._id + "\")'>", class_specials[i].name, (class_specials[i].mod == null ? "" : [" ", class_specials[i].mod, "</a></td></tr>"].join(''))].join(''));

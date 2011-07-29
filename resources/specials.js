@@ -295,7 +295,7 @@ var specials = new TAFFY([
 	tags: ["pathfinder"], _id: "18f9",
 	classes: {
 		Monk: [{level: 1}],
-		Rogue: [{level: 1}]
+		Rogue: [{level: 1}],
 		Ranger: [{level: 8}]
 	}
 }, {
@@ -516,7 +516,7 @@ var specials = new TAFFY([
 	}
 }, {
 	name: "Hunter\'s Bond",
-	detail: "At 4th level, a ranger forms a bond with his hunting companions. This bond can take one of two forms. Once the form is chosen, it cannot be changed. The first is a bond to his companions. This bond allows him to spend a move action to grant half his favored enemy bonus against a single target of the appropriate type to all allies within 30 feet who can see or hear him. This bonus lasts for a number of rounds equal to the ranger&apos;s Wisdom modifier (minimum 1). This bonus does not stack with any favored enemy bonuses possessed by his allies; they use whichever bonus is higher.<p class=sub>The second option is to form a close bond with an animal companion. A ranger who selects an animal companion can choose from the following list: badger, bird, camel, cat (small), dire rat, dog, horse, pony, snake (viper or constrictor), or wolf. If the campaign takes place wholly or partly in an aquatic environment, the ranger may choose a shark instead. This animal is a loyal companion that accompanies the ranger on his adventures as appropriate for its kind. A ranger&apos;s animal companion shares his favored enemy and favored terrain bonuses.<p class=sub>This ability functions like the druid animal companion ability (which is part of the Nature Bond class feature), except that the ranger&apos;s effective druid level is equal to his ranger level – 3.",
+	detail: "At 4th level, a %class% forms a bond with his hunting companions. This bond can take one of two forms. Once the form is chosen, it cannot be changed. The first is a bond to his companions. This bond allows him to spend a move action to grant half his favored enemy bonus against a single target of the appropriate type to all allies within 30 feet who can see or hear him. This bonus lasts for a number of rounds equal to the ranger&apos;s Wisdom modifier (minimum 1). This bonus does not stack with any favored enemy bonuses possessed by his allies; they use whichever bonus is higher.<p class=sub>The second option is to form a close bond with an animal companion. A ranger who selects an animal companion can choose from the following list: badger, bird, camel, cat (small), dire rat, dog, horse, pony, snake (viper or constrictor), or wolf. If the campaign takes place wholly or partly in an aquatic environment, the ranger may choose a shark instead. This animal is a loyal companion that accompanies the ranger on his adventures as appropriate for its kind. A ranger&apos;s animal companion shares his favored enemy and favored terrain bonuses.<p class=sub>This ability functions like the druid animal companion ability (which is part of the Nature Bond class feature), except that the ranger&apos;s effective druid level is equal to his ranger level – 3.",
 	type: "special", 
 	tags: ["pathfinder"], _id: "109f",
 	classes: {
@@ -524,7 +524,7 @@ var specials = new TAFFY([
 	}
 }, {
 	name: "Quarry",
-	detail: "At 11th level, a ranger can, as a standard action, denote one target within his line of sight as his quarry. Whenever he is following the tracks of his quarry, a ranger can take 10 on his Survival skill checks while moving at normal speed, without penalty. In addition, he receives a +2 insight bonus on attack rolls made against his quarry, and all critical threats are automatically confirmed. A ranger can have no more than one quarry at a time and the creature's type must correspond to one of his favored enemy types. He can dismiss this effect at any time as a free action, but he cannot select a new quarry for 24 hours. If the ranger sees proof that his quarry is dead, he can select a new quarry after waiting 1 hour."
+	detail: "At 11th level, a ranger can, as a standard action, denote one target within his line of sight as his quarry. Whenever he is following the tracks of his quarry, a ranger can take 10 on his Survival skill checks while moving at normal speed, without penalty. In addition, he receives a +2 insight bonus on attack rolls made against his quarry, and all critical threats are automatically confirmed. A ranger can have no more than one quarry at a time and the creature's type must correspond to one of his favored enemy types. He can dismiss this effect at any time as a free action, but he cannot select a new quarry for 24 hours. If the ranger sees proof that his quarry is dead, he can select a new quarry after waiting 1 hour.",
 	classes: {
 		Ranger: [{level: 10}]
 	},
@@ -541,7 +541,7 @@ var specials = new TAFFY([
 	}
 }, {
 	name: "Trapfinding",
-	detail: "%class%s (and only %class%s) can use the Search skill to locate traps when the task has a Difficulty Class higher than 20. Finding a nonmagical trap has a DC of at least 20, or higher if it is well hidden. Finding a magic trap has a DC of 25 + the level of the spell used to create it. %class%s (and only %class%s) can use the Disable Device skill to disarm magic traps. A magic trap generally has a DC of 25 + the level of the spell used to create it. <p class=sub>A %class% who beats a trap's DC by 10 or more with a Disable Device check can study a trap, figure out how it works, and bypass it (with her party) without disarming it.", 
+	detail: "%class%s (and only %class%s) can use thle Search skill to locate traps when the task has a Difficulty Class higher than 20. Finding a nonmagical trap has a DC of at least 20, or higher if it is well hidden. Finding a magic trap has a DC of 25 + the level of the spell used to create it. %class%s (and only %class%s) can use the Disable Device skill to disarm magic traps. A magic trap generally has a DC of 25 + the level of the spell used to create it. <p class=sub>A %class% who beats a trap's DC by 10 or more with a Disable Device check can study a trap, figure out how it works, and bypass it (with her party) without disarming it.", 
 	type: "special", 
 	tags: ["pathfinder"], _id: "7830",
 	classes: {
@@ -574,7 +574,15 @@ var specials = new TAFFY([
 	name: "Favored Enemy",
 	detail: "A %class% may select a type of creature from among those given on Table 3-14: %class% Favored Enemies. Due to his extensive study on his chosen type of foe and training in the proper techniques for combating such creatures, the %class% gains a +2 bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks when using these skills against creatures of this type. Likewise, he gets a +2 bonus on weapon damage rolls against such creatures. <p class=sub>At 5th level and every five levels thereafter (10th, 15th, and 20th level), the %class% may select an additional favored enemy from those given on the table. In addition, at each such interval, the bonus against any one favored enemy (including the one just selected, if so desired) increases by 2. For example, a 5th-level %class% has two favored enemies; against one he gains a +4 bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks and weapon damage rolls, and against the other he has a +2 bonus. At 10th level, he has three favored enemies, and he gains an additional +2 bonus, which he can allocate to the bonus against any one of his three favored enemies. Thus, his bonuses could be either +4, +4, +2 or +6, +2, +2. If the %class% chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table. <p class=sub>If a specific creature falls into more than one category of favored enemy (for instance, devils are both evil outsiders and lawful outsiders), the %class%'s bonuses do not stack; he simply uses whichever bonus is higher. See the <i>Monster Manual</i> for more information on types of creatures.", 
 	type: "special", 
-	tags: ["pathfinder"], _id: "90c3",
+	tags: ["pathfinder"], _id: "90c3", hide: true,
+	classes: {
+		Ranger: [{level: 0}]
+	}
+}, {
+	name: "Favored Terrain",
+	detail: "At 3rd level, a ranger may select a type of terrain from the Favored Terrains table. The ranger gains a +2 bonus on initiative checks and Knowledge (geography), Perception, Stealth, and Survival skill checks when he is in this terrain. A ranger traveling through his favored terrain normally leaves no trail and cannot be tracked (though he may leave a trail if he so chooses).<p class=sub>At 8th level and every five levels thereafter, the ranger may select an additional favored terrain. In addition, at each such interval, the skill bonus and initiative bonus in any one favored terrain (including the one just selected, if so desired), increases by +2.<p class=sub>If a specific terrain falls into more than one category of favored terrain, the ranger's bonuses do not stack; he simply uses whichever bonus is higher", 
+	type: "special", 
+	tags: ["pathfinder"], _id: "9dc3", hide: true,
 	classes: {
 		Ranger: [{level: 0}]
 	}
