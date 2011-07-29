@@ -792,13 +792,13 @@ function parse_character_data(data) {
 	if(data.equipment) {
 		var char_equipment = [];
 		for(var i in data.equipment) {
-			char_equipment.push(data.equipment[i]);
+			char_equipment[data.equipment[i].id] = data.equipment[i];
 			if(data.equipment[i].benefits) {
 				var benefits = [];
 				for(var j in data.equipment[i].benefits) {
 					benefits.push(data.equipment[i].benefits[j]);
 				}
-				char_equipment[i].benefits = benefits;
+				char_equipment[data.equipment[i].id].benefits = benefits;
 			}
 		}
 		data.equipment = char_equipment;
