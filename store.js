@@ -20,6 +20,7 @@ function import_character() {
 				success: function(cdata, status) {
 					chardata = cdata;
 					console.log(status);
+					console.log(cdata);
 				},
 				data: {},
 				async: false
@@ -140,7 +141,7 @@ function save_character() {
 	players_companion.last_character = name;
 	save_local(players_companion, "players_companion");
 	
-	var save_data = klone(chardata);
+	var save_data = jQuery.extend(true, {}, chardata);
 	if (save_data.skills != null) {
 		save_data.skills = save_data.skills.get();
 	}
