@@ -36,7 +36,7 @@ function create_benefits_table(equipment, index) {
 function recalc_equipment_page() {
 	$('#equipment').html("<table id='equipment_table' width='100%' margin='0'><tbody><tr style='background-color: #8DC3E9'><td colspan='5'><a class='fake_link' onclick='add_bene()' style='float: right'>add</a><b>Equipment</b></td></tr></table>");
 	if(chardata.equipment == undefined) {
-		chardata.equipment = [];
+		chardata.equipment = {};
 	}	
 	
 	for(var i in chardata.equipment) {
