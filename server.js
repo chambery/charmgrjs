@@ -39,6 +39,30 @@ app.get('/log/:owner/:name/:entry_id', function (req, res) {
     });
 });
 
+app.get('/delete/:owner/:name', function (req, res) {
+    console.log("in delete character");
+    var chardata = "No character found with the name " + req.params.name + " (owner: " + req.params.owner + ")";
+    fs.readFile("users/" + req.params.owner + "/" + req.params.name + "/chardata", encoding = 'utf8', function (err, data) {
+        if (err) {
+        	res.send(err);
+            console.log(err);
+        } else {
+            chardata = data;
+            console.log(data);
+        }
+    });
+
+    fs.unlink("users/" + req.params.owner + "/" + req.params.name + "/chardata", function (err) {
+        if (err) {
+        	res.send(err);
+            console.log(err);
+        } else {
+            res.send(chardata);
+            console.log(chardata);
+        }
+  	});
+});
+
 app.post('/character/:owner/:name', function (req, res) {
     console.log(req.body);
     make_dir("users/");

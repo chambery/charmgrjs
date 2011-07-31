@@ -123,20 +123,16 @@ function save_remote(data, name) {
 	}
 }
 
-function save_local(data, name) {
+function save_local(data, name, expires) {
+	expires = expires | (new Date(2020, 02, 02)).toUTCString();
 	data = escape(TAFFY.JSON.stringify(data));
-	document.cookie = name + "=" + data + ";expires=" + (new Date(2020, 02, 02)).toUTCString();
+	document.cookie = name + "=" + data + ";expires=" + expires;
 }
 
 function save_character() {
 	var name = chardata.name;
 	if(name == null || name.length == 0) {
-		var race_name = races.first({ name: chardata.race_name }).shortname;
-		var class_name = "";
-		for(var classname in chardata.classes) {
-			class_name += classes.first({ name: classname }).shortname + "_";
-		}
-		name = race_name + "_" + class_name;
+		name = create_default_name();
 	}
 	players_companion.last_character = name;
 	save_local(players_companion, "players_companion");
@@ -255,4 +251,36 @@ function load_static_data() {
 	// deitys.orderBy({name:"logical"});
 	// specials.orderBy({name:"logical"});
 	// favored_enemys.orderBy({name:"logical"});	
+}
+
+function delete_character() {
+	var prompt_name = chardata.name ? chardata.name : "the current character";
+	var answer = confirm("Are you sure you want to delete " + prompt_name + "?");
+	if(answer) {
+		var name = chardata.name ? chardata.name : ("ch_" + create_default_name());
+		save_local({}, name, "Thu, 01-Jan-1970 00:00:01 GMT");
+		if(chardata.options.owner && chardata.name) {
+			$.ajax({
+			  type: "GET",
+			  url: "/delete/" + chardata.options.owner + "/" + name,
+			  data: {},
+			  success: function(data, status) {
+				  console.log(data);
+				  console.log("status");
+			  },
+			  contentType: "application/json; charset=utf-8",
+			  async: false
+			});		
+		}
+		create_new_character();
+	}
+}
+
+function create_default_name() {
+	var race_name = races.first({ name: chardata.race_name }).shortname;
+	var class_name = "";
+	for(var classname in chardata.classes) {
+		class_name += classes.first({ name: classname }).shortname + "_";
+	}
+	return race_name + "_" + class_name;	
 }

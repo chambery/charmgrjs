@@ -1,21 +1,5 @@
 loaded_static_data_tags = [];
 // static data
-spells = new TAFFY([]);
-feats = new TAFFY([]);
-races = new TAFFY([]);
-domains = new TAFFY([]);
-classes = new TAFFY([]);
-schools = new TAFFY([]);
-weapons = new TAFFY([]);
-armors = new TAFFY([]);
-skills = new TAFFY([]);
-languages = new TAFFY([]);
-specials = new TAFFY([]);
-
-shield_types = new TAFFY([]);
-shields = new TAFFY([]);
-damage_types = new TAFFY([]);
-
 simple_weapons = [];
 martial_weapons = [];
 exotic_weapons = [];
@@ -325,15 +309,7 @@ function set_links_part(page_id) {
 
 	$("#new").bind("click", function(e){
 		// document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString()
-		char_classes = [];
-		equipment_benefits = [];
-		chardata = {
-			options: {}
-		};
-		players_companion.last_character = "";
-		chardata.options.owner = players_companion.owner;
-		sav(players_companion, 'players_companion');
-		do_edit();	
+		create_new_character();
 	});
 	$("#log").bind("click", function(e){
 		return update_log();
@@ -829,7 +805,7 @@ function update_options(message) {
 		}
 		content += "</table>";
 	}
-	content += "</table><hr style='width: 0px'/><center style='font-size: xx-small;'><fieldset>If you enjoy this tool, please leave a comment on the blog (bugs + feature requests most welcome)</fieldset></center><br>";
+	content += "</table><center><a class=fake_link onclick=\"delete_character()\">Delete this character</a></center><hr style='width: 0px'/><center style='font-size: xx-small;'><fieldset>If you enjoy this tool, please leave a comment on the blog (bugs + feature requests most welcome)</fieldset></center><br>";
 	content += "<a href='http://charactermanager.blogspot.com/' target='_blank' style='float: right;font-size: xx-small;'>Player's Companion Blog</a><a href='http://code.google.com/p/charactermanager/issues' target='_blank' style='font-size: xx-small;'>Project Page</a><span style='font-size: xx-small;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v0.7</span>";
 	show_dialog(title, content, true);
 	return false;
@@ -1051,4 +1027,16 @@ function calc_cmd(base_attack_bonuses, other_mod) {
  */
 function is_number(o) {
 	return ! isNaN(o-0);
+}
+
+function create_new_character() {
+	char_classes = [];
+	equipment_benefits = [];
+	chardata = {
+		options: {}
+	};
+	players_companion.last_character = "";
+	chardata.options.owner = players_companion.owner;
+	sav(players_companion, 'players_companion');
+	do_edit();		
 }

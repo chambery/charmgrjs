@@ -13,7 +13,7 @@ function load() {
 		}
 		do_main();
 	} else {
-		chardata.options = {};
+		chardata.options = chardata.options ? chardata.options : {};
 		load_static_data();
 		chardata.options.owner = players_companion.owner;
 		do_edit();
