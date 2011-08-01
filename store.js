@@ -6,31 +6,37 @@ function import_character() {
 	
 	var data = prompt("Enter character name (owner: " + chardata.options.owner + ") :");
 	if (data != null && jQuery.trim(data).length > 0) {
-		var curr_char = chardata;
-		if(data.charAt(0) == "{") {
-			// data is a cookie string
-			chardata = parse_character_data(data);
-		} else {
-			var char_name = data;
-			// TODO - move to lod
-			$.ajax({
-				type: "GET",
-				url: "character/" + chardata.options.owner + "/" + char_name,
-				dataType: "json",
-				success: function(cdata, status) {
-					chardata = cdata;
-					console.log(status);
-					console.log(cdata);
-				},
-				data: {},
-				async: false
-			});
-			console.log("parsing taffy data");
-			chardata.skills = parse_taffy_data(chardata.skills);
-			chardata.feats = parse_taffy_data(chardata.feats);
-		}
-		if(chardata != null) {
-			// save last used character
+		try {
+			if(data.charAt(0) == "{") {
+				// data is a cookie string
+				chardata = parse_character_data(data);
+			} else {
+				var char_name = data;
+				// TODO - move to lod
+				$.ajax({
+					type: "GET",
+					url: "character/" + chardata.options.owner + "/" + char_name,
+					dataType: "json",
+					success: function(cdata, status) {
+						chardata = cdata;
+						console.log(status);
+						console.log(cdata);
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert(data + " not found on the server.");
+						console.log(jqXHR);
+						console.log(textStatus);
+						console.log(errorThrown);
+						throw "Not found";
+					},
+					data: {},
+					async: false
+				});
+				console.log("parsing taffy data");
+				chardata.skills = parse_taffy_data(chardata.skills);
+				chardata.feats = parse_taffy_data(chardata.feats);
+			}
+
 			save_character();
 			// don't reload all the static_data if the character data req is the same
 			var need_new_data = false;
@@ -46,10 +52,10 @@ function import_character() {
 			} else {
 				switch_content(0, chardata);
 			}
-		} else {
+
+		} catch(e) {
 			var owner = (players_companion && players_companion.owner) ? players_companion.owner : null;
 			alert("No character data found for " + data + (owner ? " with owner " + owner + "." : ". You must specify an owner in opt->owner to store and retrieve character data from the server."));
-			chardata = curr_char;
 		}
 	}
 }
@@ -266,7 +272,8 @@ function delete_character() {
 			  data: {},
 			  success: function(data, status) {
 				  console.log(data);
-				  console.log("status");
+				  console.log("status: " + status);
+				  alert("Deleted character data: " + data);
 			  },
 			  contentType: "application/json; charset=utf-8",
 			  async: false
