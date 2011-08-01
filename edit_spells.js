@@ -24,7 +24,7 @@ function build_spells_page() {
 					if (clazz.spells_known[chardata.classes[classname].level][spell_level] != '-') {
 						// wizards don't have known spells
 						var curr_spells_chosen_count = chardata.classes[classname].spells[spell_level] == null ? 0 : chardata.classes[classname].spells[spell_level].length;
-						var spell_selections_remaining = clazz.name == "Sorceror" || clazz.name == "Bard" ? "Spell selections remaining: "
+						var spell_selections_remaining = clazz.name == "Sorcerer" || clazz.name == "Bard" ? "Spell selections remaining: "
 								+ (clazz.spells_known[chardata.classes[classname].level][spell_level] - curr_spells_chosen_count) : "";
 	
 						$("table#spell_selection_" + classname).append(
@@ -81,7 +81,7 @@ function populate_spells_page() {
 				name : classname
 			});
 			for ( var level in chardata.classes[classname].spells) {
-				if (classname == "Sorceror" || classname == "Bard") {
+				if (classname == "Sorcerer" || classname == "Bard") {
 					// hide sorceror level selections if they're used up
 					var curr_spells_chosen_count = chardata.classes[classname].spells[level] == null ? 0 : chardata.classes[classname].spells[level].length;
 					$("td[id='" + classname + "_level_" + level + "_sub_']").toggle(clazz.spells_known[chardata.classes[classname].level][level] - curr_spells_chosen_count > 0);
@@ -109,7 +109,7 @@ function recalc_spells_page(level, spell_name, classname) {
 	var spells_remaining_text = $("#" + classname + "_spells_remaining_" + level).text();
 	var spells_remaining = parseInt(spells_remaining_text.substring(spells_remaining_text.indexOf(":") + 2));
 	// wizards don't have known spells
-	if (clazz.name == "Sorceror" || clazz.name == "Bard") {
+	if (clazz.name == "Sorcerer" || clazz.name == "Bard") {
 		if (!checked || spells_remaining > 0) {
 			$("#" + classname + "_spells_remaining_" + level).text("Spell selections remaining: " + (spells_remaining + (checked ? -1 : 1)));
 		} else {

@@ -589,7 +589,7 @@ feats2 = [{
 	prereqs: {
 		feats: ["Combat Familiar"],
 		classes: {
-			"Sorceror": 6,
+			"Sorcerer": 6,
 			"Wizard": 6
 		}
 	},
@@ -922,7 +922,7 @@ feats2 = [{
 	description: "Detect magic at will, use Sense Motive to determine foe's highest-level spell",
 	prereqs: {
 		classes: {
-			"Sorceror": 9,
+			"Sorcerer": 9,
 			"Wizard": 9
 		}
 	},
@@ -1263,14 +1263,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Celestial Sorceror Aura",
+	name: "Celestial Sorcerer Aura",
 	benefit: "The power of your sorcerous heritage shines through, allowing you to infuse the area around you with a menacing aura.",
 	detail: "The power of your sorcerous heritage shines through, allowing you to infuse the area around you with a menacing aura.<p class=sub><b>Prerequisites:</b> Celestial Sorcerer Heritage, sorcerer level 1st<p class=sub><b>Benefit:</b> As a standard action, you can expend a spell slot to generate a righteous aura of menace that affects all hostile creatures in a 20-foot radius around you. All your opponents within this area must make a Will save (DC 10 + the level of the spell slot expended + your Cha modifier). On a failed save, a creature takes a -2 penalty on attack rolls, checks, and saves for 24 hours or until it successfully hits you. A creature that resists or breaks this effect cannot be affected by it again for 24 hours. This is a supernatural ability",
 	description: "Expend spell slot to create righteous aura",
 	prereqs: {
-		feats: ["Celestial Sorceror Heritage"],
+		feats: ["Celestial Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1278,13 +1278,13 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Celestial Sorceror Heritage",
+	name: "Celestial Sorcerer Heritage",
 	benefit: "Your ancestry manifests in the form of several special abilities. You gain access to abilities similar to those of an archon.",
 	detail: "Your ancestry manifests in the form of several special abilities. You gain access to abilities similar to those of an archon.<p class=sub><b>Prerequisites:</b> Sorcerer level 1st<p class=sub><b>Benefit:</b> You gain a bonus on saves against electricity and petrification equal to the number of celestial sorcerer feats you possess. You also add protection from evil to your list of 1st-level sorcerer spells known. This spell is in addition to the spells you gain normally based on your sorcerer level.",
 	description: "Gain bonus spell and a bonus on saves against electricity and petrification",
 	prereqs: {
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1292,14 +1292,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Celestial Sorceror Lance",
+	name: "Celestial Sorcerer Lance",
 	benefit: "You can channel your arcane energy into a bolt of power that is baneful to evil creatures.",
 	detail: "You can channel your arcane energy into a bolt of power that is baneful to evil creatures.<p class=sub><b>Prerequisites:</b> Celestial Sorcerer Heritage, sorcerer level 1st<p class=sub><b>Benefit:</b> As a standard action, you can expend a spell slot to create a 60-foot line of energy that deals damage only against creatures with an evil alignment. The bolt deals 1d8 points of damage per level of the spell slot spent to activate this ability. A Reflex save (DC 10 + the level of the spell slot expended + your Cha modifier) halves this damage. This is a supernatural ability.",
 	description: "Expend spell slot to create energy bolt that harms evil creatures",
 	prereqs: {
-		feats: ["Celestial Sorceror Heritage"],
+		feats: ["Celestial Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1307,14 +1307,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Celestial Sorceror Lore",
+	name: "Celestial Sorcerer Lore",
 	benefit: "The power of your ancestry grants you access to a variety of new spells.",
 	detail: "The power of your ancestry grants you access to a variety of new spells.<p class=sub><b>Prerequisites:</b> <p class=sub><b>Benefit:</b> You add <i>magic circle against evil</i>, <i>tongues</i>, and <i>teleport</i> to your list of spells known. You gain these spells when you gain access to spells of the appropriate level. These spells are in addition to the spells you gain normally based on your sorcerer level.",
 	description: "Add <i>magic circle against evil</i>, <i>tongues</i>, <i>teleport</i> to list of spells known",
 	prereqs: {
-		feats: ["Celestial Sorceror Heritage"],
+		feats: ["Celestial Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1322,14 +1322,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Celestial Sorceror Wings",
+	name: "Celestial Sorcerer Wings",
 	benefit: "You channel your inborn magical abilities to spawn a pair of spectral, magical wings that glow with majestic power.",
 	detail: "You channel your inborn magical abilities to spawn a pair of spectral, magical wings that glow with majestic power.<p class=sub><b>Prerequisites:</b>  Celestial Sorcerer Heritage, any two other celestial sorcerer heritage feats, sorcerer level 1st<p class=sub><b>Benefit:</b> You can expend a spell slot as a standard action to gain the ability to fly. You fly at a speed equal to twice your base land speed with good maneuverability. This benefit lasts for 1 round per level of the spell slot used to activate it. This is a supernatural ability.",
 	description: "Expend spell slot to ﬂ  y for short period of time",
 	prereqs: {
-		feats: ["Celestial Sorceror Heritage"],
+		feats: ["Celestial Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1337,14 +1337,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Infernal Sorceror Eyes",
+	name: "Infernal Sorcerer Eyes",
 	benefit: "Your eyes glow with infernal fire, allowing you to see through magical darkness.",
 	detail: "Your eyes glow with infernal fire, allowing you to see through magical darkness.<p class=sub><b>Prerequisites:</b> Infernal Sorcerer Heritage, sorcerer level 1st<p class=sub><b>Benefit:</b> As a swift action, you can expend a spell slot to cause your eyes to emit a spectral red glow. You gain the ability to see perfectly in darkness of any kind, out to the limit of your line of sight. You ignore the concealment provided by darkness spells and effects. This benefit lasts for 10 minutes per level of the spell slot used to activate it.",
 	description: "Expend spell slot to see in darkness",
 	prereqs: {
-		feats: ["Infernal Sorceror Heritage"],
+		feats: ["Infernal Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1352,13 +1352,13 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Infernal Sorceror Heritage",
+	name: "Infernal Sorcerer Heritage",
 	benefit: "Your innate magic derives from infernal ancestors. Your blood is thick with their power, allowing you to exhibit a variety of abilities.",
 	detail: "Your innate magic derives from infernal ancestors. Your blood is thick with their power, allowing you to exhibit a variety of abilities.<p class=sub><b>Prerequisites:</b> Sorcerer level 1st<p class=sub><b>Benefit:</b> You gain a bonus on saves against fire and poison equal to the number of infernal sorcerer heritage feats you possess. When you use a conjuration (summoning) spell to summon an evil outsider, you gain a +2 bonus to your caster level.",
 	description: "Gain bonus against fire and poison, +2 caster level with conjuration (summoning)",
 	prereqs: {
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1366,14 +1366,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Infernal Sorceror Howl",
+	name: "Infernal Sorcerer Howl",
 	benefit: "You channel the fury of your infernal ancestors into a thun-derous roar that blasts your enemies with sonic power.",
 	detail: "You channel the fury of your infernal ancestors into a thun-derous roar that blasts your enemies with sonic power.<p class=sub><b>Prerequisites:</b> Infernal Sorcerer Heritage, sorcerer level 1st<p class=sub><b>Benefit:</b> You channel the fury of your infernal ancestors into a thun-derous roar that blasts your enemies with sonic power.",
 	description: "Expend spell slot to create cone of sonic energy",
 	prereqs: {
-		feats: ["Infernal Sorceror Heritage"],
+		feats: ["Infernal Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",
@@ -1381,14 +1381,14 @@ feats2 = [{
 	spell_related: true,
 	conditional: true
 },{
-	name: "Infernal Sorceror Resistance",
+	name: "Infernal Sorcerer Resistance",
 	benefit: "You are as tough and resilient as an infernal monstrosity, allowing you to shrug off acid and cold damage",
 	detail: "You are as tough and resilient as an infernal monstrosity, allowing you to shrug off acid and cold damage<p class=sub><b>Prerequisites:</b> Infernal Sorcerer Heritage, sorcerer level 1st<p class=sub><b>Benefit:</b> You gain resistance to acid and resistance to cold equal to the total number of infernal sorcerer heritage feats you have.",
 	description: "Gain acid and cold resistance",
 	prereqs: {
-		feats: ["Infernal Sorceror Heritage"],
+		feats: ["Infernal Sorcerer Heritage"],
 		classes: {
-			"Sorceror": 1
+			"Sorcerer": 1
 		}
 	},
 	type: "feat",

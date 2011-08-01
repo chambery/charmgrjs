@@ -256,17 +256,17 @@ classes = new TAFFY([{
     custom: {
 		edit: {
 			0: [{
-				ui: "<table style='width: 100%;'><tr><td>Bloodline</td><td id='bloodline'></td></tr></table>",
+					ui: "<table style='width: 100%;'><tr><td>Bloodline: </td><td id='bloodline'></td></tr></table>",
 				script: "var char_bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); update_bloodline = function () { chardata.bloodline = $('#bloodline_select').val(); save_character(); }; var select = create_select('bloodline_select', sorcerer_bloodlines.get(), \"update_bloodline(); recalc_edit_page();\" , false, \"style='width: 100%;'\", null, (char_bloodline ? char_bloodline._id : '')); $('#bloodline').append('<tr><td>' + select + '</td></tr>'); "
     			}
     		]
     	}, 
     	main: {
     		before_spells: [
-    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { classes.first({ name: 'Sorcerer' })[level].push(bloodline.spells[level]); } } }"
+    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { var spell = spells.first({ name: bloodline.spells[level]}); if(chardata.classes['Sorcerer'].level >= level && clazz_spells[spell.classes['Sorcerer']].indexOf(bloodline.spells[level]) == -1) { clazz_spells[spell.classes['Sorcerer']].push(bloodline.spells[level]); } } }"
     		],
     		after_spells: [
-    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); $('#spell_' + spell._id).wrap('<i />'); } } }"
+    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); $('#spell_' + spell._id).wrap('<i />'); } } $('#etc').append('<i>Bloodline &nbsp;</i>'); }"
     		]
     	},
 		feats: {
@@ -279,7 +279,17 @@ classes = new TAFFY([{
 				18: {
 					script: "bonus.count += 1;"
 				}
-			}
+			},
+		spells: {
+			before_spells: [
+				"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); } } }"
+			],
+			after_spells: [
+				"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); $('#' + spell._id + '_spell').wrap('<i />'); $('#Sorceror_' + spell._id).attr('disabled', 'disabled'); } } }"
+			]
+		}
+			
+		
     },
 	class_features: ["Cast Arcane"]
 }, {

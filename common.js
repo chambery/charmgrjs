@@ -5,9 +5,9 @@ martial_weapons = [];
 exotic_weapons = [];
 // TODO - export
 show_detail_ignore = ["_id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells"];
-spellcasters = ["Bard","Cleric","Druid","Paladin","Ranger","Sorceror","Wizard"];
+spellcasters = ["Bard","Cleric","Druid","Paladin","Ranger","Sorcerer","Wizard"];
 natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
-spellpickers = ["Bard", "Sorceror", "Wizard"];
+spellpickers = ["Bard", "Sorcerer", "Wizard"];
 armor_edit_data =  [ "bon", "acp", "note" ];
 shield_edit_data =  [ "bon", "acp", "note" ];
 curr_xp = 0;

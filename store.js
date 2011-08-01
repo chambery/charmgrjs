@@ -186,7 +186,7 @@ function load_static_data() {
 		for(var classname in spell.classes) {
 			var clazz = classes.first({ name: classname });
 			// level listed starting from 1
-			clazz.spells[spell.classes[classname]-1].push(spell.name);
+			clazz.spells[spell.classes[classname]].push(spell.name);
 		}
 	});
 	// TODO - maybe move to the classes

@@ -4,55 +4,55 @@ sorcerer_bloodlines = new TAFFY([
 			description: "There is a taint in your blood, one that is alien and bizarre. You tend to think in odd ways, approaching problems from an angle that most would not expect. Over time, this taint manifests itself in your physical form.",
 			skill: "Knowledge (dungeoneering)",
 			spells: {
-				3: "Enlarge Person",
-				5: "See Invisibility",
-				7: "Tongues",
-				9: "Black Tentacles",
-				11: "Feeblemind",
-				13: "Veil",
-				15: "Plane Shift",
-				17: "Mind Blank",
-				19: "Shapechange"
+				2: "Enlarge Person",
+				4: "See Invisibility",
+				6: "Tongues",
+				8: "Black Tentacles",
+				10: "Feeblemind",
+				12: "Veil",
+				14: "Plane Shift",
+				16: "Mind Blank",
+				18: "Shapechange"
 			},
 			feats: [ "Combat Casting", "Improved Disarm", "Improved Grapple", " Improved Initiative", " Improved Unarmed Strike", " Iron Will", " Silent Spell",
 					"Skill Focus (Knowledge [dungeoneering])" ],
 			arcana: "Whenever you cast a spell of the polymorph subschool, increase the duration of the spell by 50% (minimum 1 round). This bonus does not stack with the increase granted by the Extend Spell feat.",
 			powers: {
 				"Acidic Ray": {
-					1: "You can fire an acidic ray as a standard action, targeting any foe within 30 feet as a ranged touch attack. The acidic ray deals 1d6 points of acid damage + 1 for every two sorcerer levels you possess. You can use this ability a number of times per day equal to 3 + your Charisma modifier."
+					0: "You can fire an acidic ray as a standard action, targeting any foe within 30 feet as a ranged touch attack. The acidic ray deals 1d6 points of acid damage + 1 for every two sorcerer levels you possess. You can use this ability a number of times per day equal to 3 + your Charisma modifier."
 				},
 				"Long Limbs": {
 					description: "Your reach increases by _$0 feet whenever you are making a melee touch attack. This ability does not otherwise increase your threatened area.",
-					3: {
+					2: {
 						vals: [ "5" ]
 					},
-					11: {
+					10: {
 						vals: [ "10" ]
 					},
-					17: {
+					16: {
 						vals: [ "15" ]
 					}
 				},
 				"Unusual Anatomy": {
 					description: "Your anatomy changes, giving you a _$0 chance to ignore any critical hit or sneak attack scored against you.",
-					9: {
+					8: {
 						vals: [ "25%" ]
 					},
-					13: {
+					12: {
 						vals: [ "50%" ]
 					}
 				},
 				"Alien Resistance": {
 					description: "You gain spell resistance equal to your sorcerer level + 10.",
 					levels: {
-						15: {
-							sr: "return (chardata.classes['Sorceror'].level + 1) + 10"
+						14: {
+							sr: "return (chardata.classes['Sorcerer'].level + 1) + 10"
 						}
 					}
 				},
 				"Aberrant Form": {
 					description: "Your body becomes truly unnatural. You are immune to critical hits and sneak attacks. In addition, you gain blindsight with a range of 60 feet and damage reduction 5/-.",
-					10: {}
+					9: {}
 				}
 			},
 			_id: "qw33"
@@ -62,22 +62,22 @@ sorcerer_bloodlines = new TAFFY([
 			description: "Generations ago, a demon spread its filth into your heritage. While it does not manifest in all of your kin, for you it is particularly strong. You might sometimes have urges to chaos or evil, but your destiny (and alignment) is up to you.",
 			skill: "Knowledge (planes)",
 			spells: {
-				3: "Cause Fear",
-				5: "Bull's Strength",
-				7: "Rage",
-				9: "Stoneskin",
-				11: "Dismissal",
-				13: "Transformation",
-				15: "Greater Teleport",
-				17: "Unholy Aura",
-				19: "Summon Monster IX"
+				2: "Cause Fear",
+				4: "Bull's Strength",
+				6: "Rage",
+				8: "Stoneskin",
+				10: "Dismissal",
+				12: "Transformation",
+				14: "Greater Teleport",
+				16: "Unholy Aura",
+				18: "Summon Monster IX"
 			},
 			feats: [ "Augment Summoning", "Cleave", "Empower Spell", "Great Fortitude", "Improved Bull Rush", "Improved Sunder", "Power Attack", "Skill Focus (Knowledge [planes])" ],
 			arcana: "Whenever you cast a spell of the summoning subschool, the creatures summoned gain DR/good equal to 1/2 your sorcerer level (minimum 1). This does not stack with any DR the creature might have.",
 			powers: {
 				"Claws": {
 					levels: {
-						1: {
+						0: {
 							description: "You can grow claws as a free action. These claws are treated as natural weapons, allowing you to make two claw attacks as a full attack action using your full base attack bonus. These attacks deal 1d4 points of damage each (1d3 if you are Small) plus your Strength modifier.",
 							weapons: [ {
 								name: "Claws",
@@ -85,10 +85,10 @@ sorcerer_bloodlines = new TAFFY([
 								notes: "You can use your claws for a number of rounds per day equal to 3 + your Charisma modifier."
 							} ]
 						},
-						5: {
+						4: {
 							description: "Your claws are considered magic weapons for the purpose of overcoming DR."
 						},
-						7: {
+						6: {
 							description: "Claw damage increases by one step to 1d6 points of damage (1d4 if you are Small).",
 							weapons: [ {
 								name: "Claws",
@@ -97,7 +97,7 @@ sorcerer_bloodlines = new TAFFY([
 
 							} ]
 						},
-						11: {
+						10: {
 							description: "Your claws become flaming weapons, each dealing an additional 1d6 points of fire damage on a successful hit. This is a supernatural ability. You can use your claws for a number of rounds per day equal to 3 + your Charisma modifier.",
 							weapons: [ {
 								name: "Claws",
@@ -110,10 +110,10 @@ sorcerer_bloodlines = new TAFFY([
 				"Demon Resistances": {
 					description: "You gain resist electricity _$0 and a +_$1 bonus on saving throws made against poison.",
 					levels: {
-						3: {
+						2: {
 							vals: [ "5", "2" ]
 						},
-						9: {
+						8: {
 							vals: [ "10", "4" ]
 						}
 					}
@@ -121,13 +121,13 @@ sorcerer_bloodlines = new TAFFY([
 				"Strength of the Abyss": {
 					description: "You gain a +_$0 inherent bonus to your Strength.",
 					levels: {
-						9: {
+						8: {
 							vals: [ "2" ]
 						},
-						13: {
+						12: {
 							vals: [ "4" ]
 						},
-						17: {
+						16: {
 							vals: [ "6" ]
 						}
 					}
@@ -135,13 +135,13 @@ sorcerer_bloodlines = new TAFFY([
 				"Added Summoning": {
 					description: "Whenever you summon a creature with the demon subtype or the fiendish template using a summon monster spell, you summon one additional creature of the same kind.",
 					levels: {
-						15: {}
+						14: {}
 					}
 				},
 				"Demonic Might": {
 					description: "The power of the Abyss flows through you. You gain immunity to electricity and poison. You also gain resistance to acid 10, cold 10, and fire 10, and gain telepathy with a range of 60 feet (allowing you to communicate with any creature that can speak a language).",
 					levels: {
-						20: {}
+						19: {}
 					}
 				}
 			},
@@ -152,43 +152,43 @@ sorcerer_bloodlines = new TAFFY([
 			description: "Your family has always been skilled in the eldritch art of magic. While many of your relatives were accomplished wizards, your powers developed without the need for study and practice.",
 			skill: "Knowledge (any one)",
 			spells: {
-				3: "Identify",
-				5: "Invisibility",
-				7: "Dispel Magic",
-				9: "Dimension Door",
-				11: "Overland Flight",
-				13: "True Seeing",
-				15: "Greater Teleport",
-				17: "Power Word Stun",
-				19: "Wish"
+				2: "Identify",
+				4: "Invisibility",
+				6: "Dispel Magic",
+				8: "Dimension Door",
+				10: "Overland Flight",
+				12: "True Seeing",
+				14: "Greater Teleport",
+				16: "Power Word Stun",
+				18: "Wish"
 			},
 			feats: [ "Combat Casting", "Improved Counterspell", "Improved Initiative", "Iron Will", "Scribe Scroll", "Skill Focus (Knowledge [arcana])", "Spell Focus", "Still Spell" ],
 			arcana: "Whenever you apply a metamagic feat to a spell that increases the slot used by at least one level, increase the spell&apos;s DC by +1. This bonus does not stack with itself and does not apply to spells modified by the Heighten Spell feat.",
 			powers: {
 				"Arcane Bond": {
-					1: "You gain an arcane bond, as a wizard equal to your sorcerer level. Your sorcerer levels stack with any wizard levels you possess when determining the powers of your familiar or bonded object. This ability does not allow you to have both a familiar and a bonded item. Rules for arcane bonds appear on page 78."
+					0: "You gain an arcane bond, as a wizard equal to your sorcerer level. Your sorcerer levels stack with any wizard levels you possess when determining the powers of your familiar or bonded object. This ability does not allow you to have both a familiar and a bonded item. Rules for arcane bonds appear on page 78."
 				},
 				"Metamagic Adept": {
-					3: "You can apply any one metamagic feat you know to a spell you are about to cast without increasing the casting time. You must still expend a higher-level spell slot to cast this spell. You can use this ability once per day at 3rd level and one additional time per day for every four sorcerer levels you possess beyond 3rd, up to five times per day at 19th level.",
-					20: "Metamagic adept is replaced by arcane apotheosis."
+					2: "You can apply any one metamagic feat you know to a spell you are about to cast without increasing the casting time. You must still expend a higher-level spell slot to cast this spell. You can use this ability once per day at 3rd level and one additional time per day for every four sorcerer levels you possess beyond 3rd, up to five times per day at 19th level.",
+					19: "Metamagic adept is replaced by arcane apotheosis."
 				},
 				"New Arcana": {
 					description: "You can add any one spell from the sorcerer/wizard spell list to your list of spells known. This spell must be of a level that you are capable of casting. You can also add one additional spell at 13th level and 17th level.",
-					9: {
+					8: {
 						spells_known: 1
 					},
-					13: {
+					12: {
 						spells_known: 1
 					},
-					17: {
+					16: {
 						spells_known: 1
 					}
 				},
 				"School Power": {
-					15: "pick one school of magic. The DC for any spells you cast from that school increases by +2. This bonus stacks with the bonus granted by Spell Focus."
+					14: "pick one school of magic. The DC for any spells you cast from that school increases by +2. This bonus stacks with the bonus granted by Spell Focus."
 				},
 				"Arcane Apotheosis": {
-					20: "Your body surges with arcane power. You can add any metamagic feats that you know to your spells without increasing their casting time, although you must still expend higher-level spell slots. Whenever you use magic items that require charges, you can instead expend spell slots to power the item. For every three levels of spell slots that you expend, you consume one less charge when using a magic item that expends charges."
+					19: "Your body surges with arcane power. You can add any metamagic feats that you know to your spells without increasing their casting time, although you must still expend higher-level spell slots. Whenever you use magic items that require charges, you can instead expend spell slots to power the item. For every three levels of spell slots that you expend, you consume one less charge when using a magic item that expends charges."
 				}
 			},
 			_id: "qq33"
@@ -198,15 +198,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "Your bloodline is blessed by a celestial power, either from a celestial ancestor or through divine intervention. Although this power drives you along the path of good, your fate (and alignment) is your own to determine.",
 			skill: "Heal",
 			spells: {
-				3: "Bless",
-				5: "Resist Energy",
-				7: "Magic Circle Against Evil",
-				9: "Remove Curse",
-				11: "Flame Strike",
-				13: "Greater Dispel Magic",
-				15: "Banishment",
-				17: "Sunburst",
-				19: "Gate"
+				2: "Bless",
+				4: "Resist Energy",
+				6: "Magic Circle Against Evil",
+				8: "Remove Curse",
+				10: "Flame Strike",
+				12: "Greater Dispel Magic",
+				14: "Banishment",
+				16: "Sunburst",
+				18: "Gate",
 			},
 			feats: [ "Dodge", " Extend Spell", " Iron Will", " Mobility", " Mounted Combat", " Ride-By Attack", " Skill Focus (Knowledge [religion])", "Weapon Finesse" ],
 			arcana: "Whenever you cast a spell of the summoning subschool, the creatures summoned gain DR/evil equal to 1/2 your sorcerer level (minimum 1). This does not stack with any DR the creature might have.Bloodline Powers: Your celestial heritage grants you a great many powers, but they come at a price. The lords of the higher planes are watching you and your actions closely.",
@@ -216,21 +216,21 @@ sorcerer_bloodlines = new TAFFY([
 				},
 				"Celestial Resistances": {
 					description: "You gain resist acid $_0 and resist cold $_0.",
-					3: {
+					2: {
 						vals: [ "5" ]
 					},
-					9: {
+					8: {
 						vals: [ "10" ]
 					}
 				},
 				"Wings of Heaven": {
-					9: "You can sprout feathery wings and fly for a number of minutes per day equal to your sorcerer level, with a speed of 60 feet and good maneuverability. This duration does not need to be consecutive, but it must be used in 1 minute increments."
+					8: "You can sprout feathery wings and fly for a number of minutes per day equal to your sorcerer level, with a speed of 60 feet and good maneuverability. This duration does not need to be consecutive, but it must be used in 1 minute increments."
 				},
 				"Conviction": {
-					15: "You can reroll any one ability check, attack roll, skill check, or saving throw you just made. You must decide to use this ability after the die is rolled, but before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability once per day."
+					14: "You can reroll any one ability check, attack roll, skill check, or saving throw you just made. You must decide to use this ability after the die is rolled, but before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability once per day."
 				},
 				"Ascension": {
-					20: "You become infused with the power of the heavens. You gain immunity to acid, cold, and petrification. You also gain resist electricity 10, resist fire 10, and a +4 racial bonus on saves against poison. Finally, you gain unlimited use of the wings of heaven ability. Finally, you gain the ability to speak with any creature that has a language (as per the tongues spell)."
+					19: "You become infused with the power of the heavens. You gain immunity to acid, cold, and petrification. You also gain resist electricity 10, resist fire 10, and a +4 racial bonus on saves against poison. Finally, you gain unlimited use of the wings of heaven ability. Finally, you gain the ability to speak with any creature that has a language (as per the tongues spell)."
 				}
 			},
 			_id: "qw61"
@@ -240,15 +240,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "Your family is destined for greatness in some way. Your birth could have been foretold in prophecy, or perhaps it occurred during an especially auspicious event, such as a solar eclipse. Regardless of your bloodline's origin, you have a great future ahead.",
 			skill: "Knowledge (history)",
 			spells: {
-				3: "Alarm",
-				5: "Blur",
-				7: "Protection from Energy",
-				9: "Freedom of Movement",
-				11: "Break Enchantment",
-				13: "Mislead",
-				15: "Spell Turning",
-				17: "Moment of Prescience",
-				19: "Foresight"
+				2: "Alarm",
+				4: "Blur",
+				6: "Protection from Energy",
+				8: "Freedom of Movement",
+				10: "Break Enchantment",
+				12: "Mislead",
+				14: "Spell Turning",
+				16: "Moment of Prescience",
+				18: "Foresight",
 			},
 			feats: [ "Arcane Strike", "Diehard", "Endurance", "Leadership", "Lightning Reflexes", "Maximize Spell", "Skill Focus (Knowledge [history])", "Weapon Focus" ],
 			arcana: "Whenever you cast a spell with a range of &quot;personal&quot;, you gain a luck bonus equal to the spell&apos;s level on all your saving throws for 1 round.",
@@ -266,15 +266,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "At some point in your family's history, a dragon interbred with your bloodline, and now its ancient power flows through your veins.",
 			skill: "Perception",
 			spells: {
-				3: "Mage Armor",
-				5: "Resist Energy",
-				7: "Fly",
-				9: "Fear",
-				11: "Spell Resistance",
-				13: "Form of the Dragon I",
-				15: "Form of the Dragon II",
-				17: "Form of the Dragon III",
-				19: "Wish"
+				2: "Mage Armor",
+				4: "Resist Energy",
+				6: "Fly",
+				8: "Fear",
+				10: "Spell Resistance",
+				12: "Form of the Dragon I",
+				14: "Form of the Dragon II",
+				16: "Form of the Dragon III",
+				18: "Wish",
 			},
 			feats: [ "Blind-Fight", "Great Fortitude", "Improved Initiative", "Power Attack", "Quicken Spell", "Skill Focus (Fly)", "Skill Focus (Knowledge [arcana])", "Toughness" ],
 			arcana: "Whenever you cast a spell with an energy descriptor that matches your draconic bloodline's energy type, that spell deals +1 point of damage per die rolled.",
@@ -282,7 +282,7 @@ sorcerer_bloodlines = new TAFFY([
 				"Dragon Type": "The power of dragons flows through you and manifests in a number of ways. At 1st level, you must select one of the chromatic or metallic dragon types (see the Pathfinder RPG Bestiary). This choice cannot be changed. A number of your abilities grant resistances and deal damage based on your dragon type, as noted on the following table.<table><tr><th>Dragon Type </th><th>Energy Type </th><th>Breath Shape</th></tr><tr><td>Black </td><td>Acid </td><td>60-foot line</td></tr><tr><td>Blue </td><td>Electricity </td><td>60-foot line</td></tr><td>Green </td><td>Acid </td><td>30-foot cone</td><td>Red </td><td>Fire </td><td>30-foot cone</td><tr><td>White </td><td>Cold </td><td>30-foot cone</td></tr><tr><td>Brass </td><td>Fire </td><td>60-foot line</td></tr><tr><td>Bronze </td><td>Electricity </td><td>60-foot line</td></tr><tr><td>Copper </td><td>Acid </td><td>60-foot line</td></tr><tr><td>Gold </td><td>Fire </td><td>30-foot cone</td></tr><tr><td>Silver </td><td>Cold </td><td>30-foot cone</td></tr></table>",
 				"Claws": {
 					levels: {
-						1: {
+						0: {
 							description: "You can grow claws as a free action. These claws are treated as natural weapons, allowing you to make two claw attacks as a full attack action using your full base attack bonus. These attacks deal 1d4 points of damage each (1d3 if you are Small) plus your Strength modifier.",
 							weapons: [ {
 								name: "Claws",
@@ -290,10 +290,10 @@ sorcerer_bloodlines = new TAFFY([
 								notes: "You can use your claws for a number of rounds per day equal to 3 + your Charisma modifier."
 							} ]
 						},
-						5: {
+						4: {
 							description: "Your claws are considered magic weapons for the purpose of overcoming DR."
 						},
-						7: {
+						6: {
 							description: "Claw damage increases by one step to 1d6 points of damage (1d4 if you are Small).",
 							weapons: [ {
 								name: "Claws",
@@ -302,7 +302,7 @@ sorcerer_bloodlines = new TAFFY([
 
 							} ]
 						},
-						11: {
+						10: {
 							description: "Your claws become flaming weapons, each dealing an additional 1d6 points of fire damage on a successful hit. This is a supernatural ability. You can use your claws for a number of rounds per day equal to 3 + your Charisma modifier.",
 							weapons: [ {
 								name: "Claws",
@@ -324,15 +324,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "The power of the elements resides in you, and at times you can hardly control its fury. This influence comes from an elemental outsider in your family history or a time when you or your relatives were exposed to a powerful elemental force.",
 			skill: "Knowledge (planes)",
 			spells: {
-				3: "Burning hands*",
-				5: "Scorching ray*",
-				7: "Protection from Energy",
-				9: "Elemental Body I",
-				11: "Elemental Body II",
-				13: "Elemental body III",
-				15: "Elemental body IV",
-				17: "Summon Monster VIII (elementals only)",
-				19: "Elemental Swarm"
+				2: "Burning hands*",
+				4: "Scorching ray*",
+				6: "Protection from Energy",
+				8: "Elemental Body I",
+				10: "Elemental Body II",
+				12: "Elemental body III",
+				14: "Elemental body IV",
+				16: "Summon Monster VIII (elementals only)",
+				18: "Elemental Swarm",
 			},
 			feats: [ "Dodge", "Empower Spell", "Great Fortitude", "Improved Initiative", "Lightning Reflexes", "Power Attack", "Skill Focus (Knowledge [planes])", "Weapon Finesse" ],
 			arcana: "Whenever you cast a spell that deals energy damage, you can change the type of damage tomatch the type of your bloodline. This also changes the spell's type to match the type of your bloodline.",
@@ -351,15 +351,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "The capricious nature of the fey runs in your family due to some intermingling of fey blood or magic. You are more emotional than most, prone to bouts of joy and rage.",
 			skill: "Knowledge (nature)",
 			spells: {
-				3: "Entangle",
-				5: "Hideous Laughter",
-				7: "Deep Slumber",
-				9: "Poison",
-				11: "Tree Stride",
-				13: "Mislead",
-				15: "Phase Door",
-				17: "Irresistible Dance",
-				19: "Shapechange"
+				2: "Entangle",
+				4: "Hideous Laughter",
+				6: "Deep Slumber",
+				8: "Poison",
+				10: "Tree Stride",
+				12: "Mislead",
+				14: "Phase Door",
+				16: "Irresistible Dance",
+				18: "Shapechange",
 			},
 			feats: [ "Dodge", "Improved Initiative", "Lightning Reflexes", "Mobility", "Point Blank Shot", "Precise Shot", "Quicken Spell", "Skill Focus (Knowledge [nature])" ],
 			arcana: "Whenever you cast a spell of the compulsion subschool, increase the spell's DC by +2.",
@@ -377,15 +377,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "Somewhere in your family's history, a relative made a deal with a devil, and that pact has influenced your family line ever since. In you, it manifests in direct and obvious ways, granting you powers and abilities. While your fate is still your own, you can't help but wonder if your ultimate reward is bound to the Pit.",
 			skill: "Diplomacy",
 			spells: {
-				3: "Protection from Good",
-				5: "Scorching Ray",
-				7: "Suggestion",
-				9: "Charm Monster",
-				11: "Dominate Person",
-				13: "Planar Pinding (devils and creatures with the fiendish template only)",
-				15: "Greater Teleport",
-				17: "Power Word Stun",
-				19: "Meteor Swarm"
+				2: "Protection from Good",
+				4: "Scorching Ray",
+				6: "Suggestion",
+				8: "Charm Monster",
+				10: "Dominate Person",
+				12: "Planar Pinding (devils and creatures with the fiendish template only)",
+				14: "Greater Teleport",
+				16: "Power Word Stun",
+				18: "Meteor Swarm",
 			},
 			feats: [ "Blind-Fight", "Combat Expertise", "Deceitful", "Extend Spell", "Improved Disarm", "Iron Will", "Skill Focus (Knowledge [planes])", "Spell Penetration" ],
 			arcana: "Whenever you cast a spell of the charm subschool, increase the spell's DC by +2.",
@@ -403,15 +403,15 @@ sorcerer_bloodlines = new TAFFY([
 			description: "The taint of the grave runs through your family. Perhaps one of your ancestors became a powerful lich or vampire, or maybe you were born dead before suddenly returning to life. Either way, the forces of death move through you and touch your every action.",
 			skill: "Knowledge (religion)",
 			spells: {
-				3: "Chill Touch",
-				5: "False Life",
-				7: "Vampiric Touch",
-				9: "Animate Dead",
-				11: "Waves of Fatigue",
-				13: "Undeath to Death",
-				15: "Finger of Death",
-				17: "Horrid Wilting",
-				19: "Energy Drain"
+				2: "Chill Touch",
+				4: "False Life",
+				6: "Vampiric Touch",
+				8: "Animate Dead",
+				10: "Waves of Fatigue",
+				12: "Undeath to Death",
+				14: "Finger of Death",
+				16: "Horrid Wilting",
+				18: "Energy Drain",
 			},
 			feats: [ "Combat Casting", "Diehard", "Endurance", "Iron Will", "Skill Focus (Knowledge [religion])", "Spell Focus", "Still Spell", "Toughness" ],
 			arcana: "Some undead are susceptible to your mind-affecting spells. Corporeal undead that were once humanoids are treated as humanoids for the purposes of determining which spells affect them.",

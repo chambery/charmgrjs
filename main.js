@@ -271,11 +271,6 @@ function build_main_page() {
 	
 	for (var classname in chardata.classes) {
 		var clazz = classes.first({ name : classname });
-		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
-			for (var script in clazz.custom.main.before_spells) {
-				eval(clazz.custom.main.before_spells[script]);
-			}
-		}
 	}	
 
 	// TODO - what's the modifier for SPD?
@@ -289,7 +284,7 @@ function build_main_page() {
 		var all_spells = clazz.spells;
 		var spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
 		if (spells_per_day != null && spells_per_day.length > 0) {
-				var spells_html = ["<table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'><tr bgcolor='#8DC3E9'><td colspan='", (spells_per_day.length), "'><span id='turn' style='float: right'></span>Spells per day (",clazz.shortname,") &nbsp;"];
+				var spells_html = ["<table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'><tr bgcolor='#8DC3E9'><td colspan='", (spells_per_day.length), "'><span id='etc' style='float: right'></span>Spells per day (",clazz.shortname,") &nbsp;"];
 				if(classname == "Cleric") {
 					spells_html.push("<span style='float: right; padding-right: 3px;'>+1 ");
 						for (var domain in char_domains) {
@@ -325,6 +320,12 @@ function build_main_page() {
 						}
 					}
 					clazz_spells.sort();
+					if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
+						for (var script in clazz.custom.main.before_spells) {
+							eval(clazz.custom.main.before_spells[script]);
+						}
+					}
+
 					class_spells_loop:
 					// loop over all class spells
 					for ( var i in clazz_spells) {
@@ -333,7 +334,7 @@ function build_main_page() {
 						// list of spells
 						if ((clazz.name == "Cleric" || clazz.name == "Druid" || clazz.name == "Paladin" || clazz.name == "Ranger")
 								|| ((chardata.classes[classname] != null) && (chardata.classes[classname].spells && chardata.classes[classname].spells[level])
-										&& (clazz.name == "Sorceror" || clazz.name == "Wizard" || clazz.name == "Bard") && chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1)) {
+										&& (clazz.name == "Sorcerer" || clazz.name == "Wizard" || clazz.name == "Bard") && chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1)) {
 							var spell = spells.first( {
 								name : clazz_spells[i]
 							});
