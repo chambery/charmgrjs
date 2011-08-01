@@ -1,4 +1,4 @@
-sorceror_bloodlines = new TAFFY([
+sorcerer_bloodlines = new TAFFY([
 		{
 			name: "Aberrant",
 			description: "There is a taint in your blood, one that is alien and bizarre. You tend to think in odd ways, approaching problems from an angle that most would not expect. Over time, this taint manifests itself in your physical form.",
@@ -54,7 +54,8 @@ sorceror_bloodlines = new TAFFY([
 					description: "Your body becomes truly unnatural. You are immune to critical hits and sneak attacks. In addition, you gain blindsight with a range of 60 feet and damage reduction 5/-.",
 					10: {}
 				}
-			}
+			},
+			_id: "qw33"
 		},
 		{
 			name: "Abyssal",
@@ -143,8 +144,8 @@ sorceror_bloodlines = new TAFFY([
 						20: {}
 					}
 				}
-			}
-
+			},
+			_id: "qw32"
 		},
 		{
 			name: "Arcane",
@@ -189,8 +190,8 @@ sorceror_bloodlines = new TAFFY([
 				"Arcane Apotheosis": {
 					20: "Your body surges with arcane power. You can add any metamagic feats that you know to your spells without increasing their casting time, although you must still expend higher-level spell slots. Whenever you use magic items that require charges, you can instead expend spell slots to power the item. For every three levels of spell slots that you expend, you consume one less charge when using a magic item that expends charges."
 				}
-			}
-
+			},
+			_id: "qq33"
 		},
 		{
 			name: "Celestial",
@@ -231,7 +232,8 @@ sorceror_bloodlines = new TAFFY([
 				"Ascension": {
 					20: "You become infused with the power of the heavens. You gain immunity to acid, cold, and petrification. You also gain resist electricity 10, resist fire 10, and a +4 racial bonus on saves against poison. Finally, you gain unlimited use of the wings of heaven ability. Finally, you gain the ability to speak with any creature that has a language (as per the tongues spell)."
 				}
-			}
+			},
+			_id: "qw61"
 		},
 		{
 			name: "Destined",
@@ -256,7 +258,8 @@ sorceror_bloodlines = new TAFFY([
 				"It Was Meant To Be": "At 9th level, you may reroll any one attack roll, critical hit confirmation roll, or level check made to overcome spell resistance. You must decide to use this ability after the first roll is made but before the results are revealed by the GM. You must take the second result, even if it is worse. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day.",
 				"Within Reach": "At 15th level, your ultimate destiny is drawing near. Once per day, when an attack or spell that causes damage would result in your death, you may attempt a DC 20 Will save. If successful, you are instead reduced to '1 hit points and are automatically stabilized. The bonus from your fated ability applies to this save.",
 				"Destiny Realized": "At 20th level, your moment of destiny is at hand. Any critical threats made against you only confirm if the second roll results in a natural 20 on the die. Any critical threats you score with a spell are automatically confirmed. Once per day, you can automatically succeed at one caster level check made to overcome spell resistance. You must use this ability before making the roll."
-			}
+			},
+			_id: "qw63"
 		},
 		{
 			name: "Draconic",
@@ -313,7 +316,8 @@ sorceror_bloodlines = new TAFFY([
 				"Breath Weapon": "At 9th level, you gain a breath weapon. This breath weapon deals 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The shape of the breath weapon depends on your dragon type (as indicated on the above chart). At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day.",
 				"Wings": "At 15th level, leathery dragon wings grow from your back as a standard action, giving you a fly speed of 60 feet with average maneuverability. You can dismiss the wings as a free action.",
 				"Power of Wyrms": "At 20th level, your draconic heritage becomes manifest. You gain immunity to paralysis, sleep, and damage of your energy type. You also gain blindsense 60 feet."
-			}
+			},
+			_id: "qa33"
 		},
 		{
 			name: "Elemental",
@@ -339,7 +343,8 @@ sorceror_bloodlines = new TAFFY([
 				"Elemental Blast": "At 9th level, you can unleash a blast of elemental power once per day. This 20-foot-radius burst does 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Creatures that fail their saves gain vulnerability to your energy type until the end of your next turn. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
 				"Elemental Movement": "At 15th level, you gain a special movement type or bonus. This ability is based on your chosen element, as indicated on the above chart.",
 				"Elemental Body": "At 20th level, elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage from your energy type."
-			}
+			},
+			_id: "2w33"
 		},
 		{
 			name: "Fey",
@@ -364,7 +369,8 @@ sorceror_bloodlines = new TAFFY([
 				"Fleeting Glance": "At 9th level, you can turn invisible for a number of rounds per day equal to your sorcerer level. This ability functions as greater invisibility. These rounds need not be consecutive.",
 				"Fey Magic": "At 15th level, you may reroll any caster level check made to overcome spell resistance. You must decide to use this ability before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability at will.",
 				"Soul of the Fey": "At 20th level, your soul becomes one with the world of the fey. You gain immunity to poison and DR 10/cold iron. Creatures of the animal type do not attack you unless compelled to do so through magic. Once per day, you can cast shadow walk as a spell-like ability using your sorcerer level as your caster level."
-			}
+			},
+			_id: "7w33"
 		},
 		{
 			name: "Infernal",
@@ -389,7 +395,8 @@ sorceror_bloodlines = new TAFFY([
 				"Hellfire": "At 9th level, you can call down a column of hellfire. This 10-foot-radius burst does 1d6 points of fire damage per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Good creatures that fail their saves are shaken for a number of rounds equal to your sorcerer level. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
 				"On Dark Wings": "At 15th level, you can grow fearsome bat wings as a standard action, giving you a fly speed of 60 feet with average maneuverability. The wings can be dismissed as a free action.",
 				"Power of the Pit": "At 20th level, your form becomes infused with vil power. You gain immunity to fire and poison. You also gain resistance to acid 10 and cold 10, and the ability to see perfectly in darkness of any kind to a range of 60 feet."
-			}
+			},
+			_id: "7233"
 		},
 		{
 			name: "Undead",
@@ -414,5 +421,6 @@ sorceror_bloodlines = new TAFFY([
 				"Grasp of the Dead": " At 9th level, you can cause a swarm of skeletal arms to burst from the ground to rip and tear at your foes. The skeletal arms erupt from the ground in a 20-foot-radius burst. Anyone in this area takes 1d6 points of slashing damage per sorcerer level. Those caught in the area receive a Reflex save for half damage. Those who fail the save are unable to move for 1 round. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The skeletal arms disappear after 1 round. The arms must burst up from a solid surface. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
 				"Incorporeal Form": " At 15th level, you can become incorporeal for 1 round per sorcerer level. While in this form, you gain the incorporeal subtype. You only take half damage from corporeal sources as long as they are magic (you take no damage from non-magic weapons and objects). Likewise, your spells deal only half damage to corporeal creatures. Spells and other effects that do not deal damage function normally. You can use this ability once per day.",
 				"One of Us": " At 20th level, your form begins to rot (the appearance of this decay is up to you) and undead see you as one of them. You gain immunity to cold, nonlethal damage, paralysis, and sleep. You also gain DR 5/&mdash;. Unintelligent undead do not notice you unless you attack them. You receive a +4 morale bonus on saving throws made against spells and spell-like abilities cast by undead."
-			}
+			},
+			_id: "1w33"
 		} ]);

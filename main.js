@@ -170,8 +170,8 @@ function build_main_page() {
 	// custom class features
 	for (var classname in chardata.classes) {
 		var clazz = classes.first({ name : classname });
-		if (clazz.custom && clazz.custom.main) {
-			for (var script in clazz.custom.main) {
+		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_specials) {
+			for (var script in clazz.custom.main.before_specials) {
 				eval(clazz.custom.main[script]);
 			}
 		}
@@ -208,7 +208,7 @@ function build_main_page() {
 			if(class_specials[i] && !class_specials[i].hide) {
 				var checkbox = (class_specials[i].op != null ? 
 						["<input id='special_", class_specials[i]._id, "' type='checkbox' onclick=\"", class_specials[i].op, "\"/>"].join('')  : "");
-				$("#specials").append(["<tr id='special_", class_specials[i]._id, "'><td style='padding: 3px 0px;'>", checkbox, "</td><td class='seamless' valign='top' style='width: 100%;'><a class='fake_link' onclick='show_item_detail(specials, \"" + class_specials[i]._id + "\")'>", class_specials[i].name, (class_specials[i].mod == null ? "" : [" ", class_specials[i].mod, "</a></td></tr>"].join(''))].join(''));
+				$("#specials").append(["<tr id='special_", class_specials[i]._id, "'><td style='padding: 3px 0px;'>", checkbox, "</td><td class='seamless' style='width: 100%;'><a class='fake_link' onclick='show_item_detail(specials, \"" + class_specials[i]._id + "\")'>", class_specials[i].name, (class_specials[i].mod == null ? "" : [" ", class_specials[i].mod, "</a></td></tr>"].join(''))].join(''));
 				$("a[id='special_" + class_specials[i]._id + "']").bind('click', { id: class_specials[i]._id }, function(e) { return show_item_detail(specials, e.data.id); });				
 			}
 		}
@@ -268,6 +268,16 @@ function build_main_page() {
 		});
 		char_domains.push(domain);
 	}
+	
+	for (var classname in chardata.classes) {
+		var clazz = classes.first({ name : classname });
+		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
+			for (var script in clazz.custom.main.before_spells) {
+				eval(clazz.custom.main.before_spells[script]);
+			}
+		}
+	}	
+
 	// TODO - what's the modifier for SPD?
 	$('#spellspart').css('margin-top', '10px');
 	$('#spellspart').html("");
@@ -357,7 +367,14 @@ function build_main_page() {
 
 		}
 	}
-	
+	for (var classname in chardata.classes) {
+		var clazz = classes.first({ name : classname });
+		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
+			for (var script in clazz.custom.main.after_spells) {
+				eval(clazz.custom.main.after_spells[script]);
+			}
+		}
+	}	
 	// console.groupEnd();
 }
 
@@ -398,7 +415,7 @@ function populate_main_page() {
 		var weapon_data = weapons.first( {
 			name : chardata.weapons[j].weapon_name
 		});
-		$('#weapon_' + j + '_name').text(chardata.weapons[j].name != null ? chardata.weapons[j].name + " (" + weapon_data.name + ")" : weapon_data.name);
+		$('#weapon_' + j + '_name').text(chardata.weapons[j].name != null ? chardata.weapons[j].name + (chardata.weapons[j].name.indexOf(weapon_data.name) == -1 ? " (" + weapon_data.name + ")" : "") : weapon_data.name);
 		$('#weapon_' + j + '_crit').text(calc_critical(weapon_data.crit, chardata.weapons[j], chardata.feats));
 		$('#weapon_' + j + '_bon').text(chardata.weapons[j].att != null ? chardata.weapons[j].att : "");
 		$("td[id='weapon_" + j + "_note']").text(chardata.weapons[j].note);
@@ -411,7 +428,7 @@ function populate_main_page() {
 		var armor_data = armors.first( {
 			name : chardata.armors[j]['armor_name']
 		});
-		$('#armor_' + j + '_name').text(armor_data.name);
+		$('#armor_' + j + '_name').text(chardata.armors[j].name != null ? chardata.armors[j].name + (chardata.armors[j].name.indexOf(armor_data.name) == -1 ? " (" + armor_data.name + ")" : "") : armor_data.name);
 		// populate with char overrides
 		$('#armor_' + j + '_bon').text(armor_data.bon);
 		$('#armor_' + j + '_acp').text(armor_data.acp);
@@ -424,7 +441,7 @@ function populate_main_page() {
 		var shield_data = shields.first( {
 			name : chardata.shields[j]['shield_name']
 		});
-		$('#shield_' + j + '_name').text(shield_data.name);
+		$('#shield_' + j + '_name').text(chardata.shields[j].name != null ? chardata.shields[j].name + (chardata.shields[j].name.indexOf(shield_data.name) == -1 ? " (" + shield_data.name + ")" : "") : shield_data.name);
 		// populate with char overrides
 		$('#shield_' + j + '_bon').text(shield_data.bon);
 		$('#shield_' + j + '_acp').text(shield_data.acp);

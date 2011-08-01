@@ -237,7 +237,7 @@ function load_static_data() {
 
 		for(classname in feat.classes) {
 			var clazz = classes.first({ name: classname });
-			clazz.feats[feat.classes[classname]-1].push(feat.name);
+			clazz.feats[feat.classes[classname]].push(feat.name);
 		}
 		
 		return feat;

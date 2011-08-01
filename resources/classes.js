@@ -197,10 +197,12 @@ classes = new TAFFY([{
 				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 3 ? chardata.favored_terrains[3].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_3', favored_terrains.get(), \"chardata.favored_terrains[3] = { name: $('#favored_terrain_3').val(), val: (parseInt($('#favored_terrain_3_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_3_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_3_bonus').val(chardata.favored_terrains[3] ? chardata.favored_terrains[3].val : 0); $('#favored_terrain_3_bonus').blur(function() { chardata.favored_terrains[3] = { name: $('#favored_terrain_3').val(), val: (parseInt($('#favored_terrain_3_bonus').val()) | 0) }; save_character(); });" 
 				}]
 			},
-		main: [
-			"for (var i in chardata.favored_enemies) {var f_e = favored_enemies.first({ name : chardata.favored_enemies[i].name }); $('#specials').append('<tr id=\"special_favored_enemy_' + f_e._id	+ '\"><td><input id=\"favored_enemy_' + f_e._id + '\" type=\"checkbox\"/></td><td><a class=fake_link onclick=\"show_item_detail(specials, \\'90c3\\')\">' + chardata.favored_enemies[i].name + ' ' + pos(chardata.favored_enemies[i].val) + ' (Fav. Enemy)</a></td></tr>'); $('input[id=\"favored_enemy_' + f_e._id + '\"]').bind('click', { mod : chardata.favored_enemies[i].val }, function(e) { if ($(this).attr('checked')) { for ( var j in chardata.weapons) { update_weapon_attack(j, e.data.mod);	update_weapon_damage(j, e.data.mod); } update_skill_ranks( [ 'Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival' ]);	} else { recalc_main_page(); } }); }",
-			"for (var i in chardata.favored_terrains) { var f_t = favored_terrains.first({ name: chardata.favored_terrains[i].name }); $('#specials').append('<tr id=\"special_favored_terrain_' + f_t._id + '\"><td><input id=\"favored_terrain_' + f_t._id + '\" type=\"checkbox\"/></td><td><a class=fake_link onclick=\"show_item_detail(specials, \\'9dc3\\')\">' + chardata.favored_terrains[i].name + ' ' + pos(chardata.favored_terrains[i].val) + ' (Fav. Terrain)</a></td></tr>'); $('input[id=\"favored_terrain_' + f_t._id + '\"]').bind('click', { mod: chardata.favored_terrains[i].val }, function (e) { if ($(this).attr('checked')) { for (var j in chardata.weapons) { update_weapon_attack(j, e.data.mod); update_weapon_damage(j, e.data.mod); } update_skill_ranks(['Knowledge', 'Perception', 'Stealth', 'Survival']); } else { recalc_main_page(); } }); }"
-		],
+		main: {
+			before_specials: [
+				"for (var i in chardata.favored_enemies) {var f_e = favored_enemies.first({ name : chardata.favored_enemies[i].name }); $('#specials').append('<tr id=\"special_favored_enemy_' + f_e._id	+ '\"><td><input id=\"favored_enemy_' + f_e._id + '\" type=\"checkbox\"/></td><td><a class=fake_link onclick=\"show_item_detail(specials, \\'90c3\\')\">' + chardata.favored_enemies[i].name + ' ' + pos(chardata.favored_enemies[i].val) + ' (Fav. Enemy)</a></td></tr>'); $('input[id=\"favored_enemy_' + f_e._id + '\"]').bind('click', { mod : chardata.favored_enemies[i].val }, function(e) { if ($(this).attr('checked')) { for ( var j in chardata.weapons) { update_weapon_attack(j, e.data.mod);	update_weapon_damage(j, e.data.mod); } update_skill_ranks( [ 'Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival' ]);	} else { recalc_main_page(); } }); }",
+				"for (var i in chardata.favored_terrains) { var f_t = favored_terrains.first({ name: chardata.favored_terrains[i].name }); $('#specials').append('<tr id=\"special_favored_terrain_' + f_t._id + '\"><td><input id=\"favored_terrain_' + f_t._id + '\" type=\"checkbox\"/></td><td><a class=fake_link onclick=\"show_item_detail(specials, \\'9dc3\\')\">' + chardata.favored_terrains[i].name + ' ' + pos(chardata.favored_terrains[i].val) + ' (Fav. Terrain)</a></td></tr>'); $('input[id=\"favored_terrain_' + f_t._id + '\"]').bind('click', { mod: chardata.favored_terrains[i].val }, function (e) { if ($(this).attr('checked')) { for (var j in chardata.weapons) { update_weapon_attack(j, e.data.mod); update_weapon_damage(j, e.data.mod); } update_skill_ranks(['Knowledge', 'Perception', 'Stealth', 'Survival']); } else { recalc_main_page(); } }); }"
+			]
+		},
 		feats: {
 				1: {
 					script: "bonus.count +=  1; if(chardata.weapon_style == 'Archery') { bonus.feats['Far Shot'] = true; bonus.feats['Point-Blank Shot'] = true; bonus.feats['Precise Shot'] = true; bonus.feats['Rapid Shot'] = true ; } else { bonus.feats['Double Slice'] = true; bonus.feats['Improved Shield Bash'] = true; bonus.feats['Quick Draw'] = true; bonus.feats['Two-Weapon Fighting'] = true; }"
@@ -251,6 +253,34 @@ classes = new TAFFY([{
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    custom: {
+		edit: {
+			0: [{
+				ui: "<table style='width: 100%;'><tr><td>Bloodline</td><td id='bloodline'></td></tr></table>",
+				script: "var char_bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); update_bloodline = function () { chardata.bloodline = $('#bloodline_select').val(); save_character(); }; var select = create_select('bloodline_select', sorcerer_bloodlines.get(), \"update_bloodline(); recalc_edit_page();\" , false, \"style='width: 100%;'\", null, (char_bloodline ? char_bloodline._id : '')); $('#bloodline').append('<tr><td>' + select + '</td></tr>'); "
+    			}
+    		]
+    	}, 
+    	main: {
+    		before_spells: [
+    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { classes.first({ name: 'Sorcerer' })[level].push(bloodline.spells[level]); } } }"
+    		],
+    		after_spells: [
+    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); $('#spell_' + spell._id).wrap('<i />'); } } }"
+    		]
+    	},
+		feats: {
+				6: {
+					script: "bonus.count +=  1; var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var feat in bloodline.feats) { bonus.feats[feat] = true; } }"
+				},
+				12: {
+					script: "bonus.count += 1;"
+				},
+				18: {
+					script: "bonus.count += 1;"
+				}
+			}
+    },
 	class_features: ["Cast Arcane"]
 }, {
     name: "Wizard",

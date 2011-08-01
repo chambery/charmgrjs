@@ -725,6 +725,9 @@ feats = new TAFFY([{
             class_features: ["Cast Divine"]
         }]
     },
+    classes: {
+    	Sorcerer: 1
+    },
     conditional: true,
     groups: ["Metamagic"],
     tags: ["pathfinder"],
@@ -1816,12 +1819,13 @@ feats = new TAFFY([{
     prereqs: {},
     attack: "if(weapon.category == 'simple') { attacks.weapon_proficiency = 0; } return attacks;",
     classes: {
-        "Barbarian": 1,
-        "Bard": 1,
-        "Cleric": 1,
-        "Fighter": 1,
-        "Paladin": 1,
-        "Ranger": 1
+        Barbarian: 0,
+        Bard: 0,
+        Cleric: 0,
+        Fighter: 0,
+        Paladin: 0,
+        Ranger: 0,
+        Sorcerer: 0
     },
     collection: {
         db: "weapons",
