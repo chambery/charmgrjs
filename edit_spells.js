@@ -39,6 +39,7 @@ function build_spells_page() {
 						$("table#spell_selection_" + classname).append(
 								"<tr id='" + classname + "_level_" + spell_level + "_sub'><td id='" + classname + "_level_" + spell_level + "_sub_' style='border: 1px solid #D0D0D0'><table id='"
 										+ classname + "_level_" + spell_level + "_sub_' width='100%' border='0' margin='0'></table></td></tr>");
+						
 						for ( var j in clazz.spells[spell_level].sort()) {
 							if (j % 3 == 0) {
 								$("table[id='" + classname + "_level_" + spell_level + "_sub_']").before("<tr id='" + classname + "_level_" + spell_level + "_sub_" + ((j / 3) | 0) + "'></tr>");
@@ -71,6 +72,11 @@ function build_spells_page() {
 			}
 		}
 		$("#content").append("<div>&nbsp;</div>");
+		if(clazz.custom && clazz.custom.spells && clazz.custom.spells.after_spells) {
+			for(var i in clazz.custom.spells.after_spells) {
+				eval(clazz.custom.spells.after_spells[i]);
+			}	
+		}
 	}
 }
 

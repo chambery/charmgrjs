@@ -64,7 +64,7 @@ function get_rogue_skill_selections() {
 			skill_selections = skill_selections.concat(rogue_special_abilities[i].multi);
 		}
 	}
-	
+
 	return skill_selections;
 }
 
@@ -76,18 +76,18 @@ function reset_ability_score(e) {
 }
 
 function recalc_ability_mod(e) {
-	if(!isNaN($(this).val())) { 
+	if(!isNaN($(this).val())) {
 		chardata.abilities["temp_" + e.data.ability] = $(this).val();
 	}
 	save_character();
 	return recalc_main_page();
 }
-		
+
 function show_skill_detail(e) {
 	return show_item_detail(skills, e.data.skill_id);
 }
 
-function recalc_favored_enemy(e) { 
+function recalc_favored_enemy(e) {
 	if ($(this).attr('checked')) {
 		for (var j in chardata.weapons) {
 			update_weapon_attack(j, e.data.mod);
@@ -96,7 +96,7 @@ function recalc_favored_enemy(e) {
 		update_skill_ranks(["Bluff", "Knowledge (arcana)", "Knowledge (architecture and engineering)", "Knowledge (dungeoneering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility and royalty)", "Knowledge (religion)", "Knowledge (the planes)", "Perception", "Sense Motive", "Survival"]);
 	} else {
 		recalc_main_page();
-	} 
+	}
 }
 
 function build_main_page() {
@@ -117,17 +117,17 @@ function build_main_page() {
 		session["armor"][i] = {};
 		session["armor"][i]["is_worn"] = true;
 	}
-	
+
 	session["shield"] = [];
 	for(var i in chardata.shields) {
 		session["shield"][i] = {};
 		session["shield"][i]["is_worn"] = true;
 	}
-	
+
 	set_links_part( 0);
 	// build the div structure
 	$('#content').html("<div id='topline'></div> <div id='topleceilft' class='dp66'> <div id='abilitiespart' class='dp40' style='float: left'> <table border=0 id='abilities_table'> <tr> <td id='char_name' colspan='4' style='font-weight: bold; color: blue'></td> </tr> <tr> <td><b>Str</b></td> <td id='ability_score_full_Str' nowrap></td> <td><input ability='Str' id='ability_Str_score' class='two_digit' value='' type='text'></td> <td id='ability_Str_mod' align='right' nowrap></td> </tr> <tr> <td><b>Dex</b></td> <td id='ability_score_full_Dex' nowrap></td> <td><input ability='Dex' id='ability_Dex_score' class='two_digit' value='' type='text'></td> <td id='ability_Dex_mod' align='right' nowrap></td> </tr> <tr> <td><b>Int</b></td> <td id='ability_score_full_Int' nowrap></td> <td><input ability='Int' id='ability_Int_score' class='two_digit' value='' type='text'></td> <td id='ability_Int_mod' align='right' nowrap></td> </tr> <tr> <td><b>Con</b></td> <td id='ability_score_full_Con' nowrap></td> <td><input ability='Con' id='ability_Con_score' class='two_digit' value='' type='text'></td> <td id='ability_Con_mod' align='right' nowrap></td> </tr> <tr> <td><b>Cha</b></td> <td id='ability_score_full_Cha' nowrap></td> <td><input ability='Cha' id='ability_Cha_score' class='two_digit' value='' type='text'></td> <td id='ability_Cha_mod' align='right' nowrap></td> </tr> <tr> <td><b>Wis</b></td> <td id='ability_score_full_Wis' nowrap></td> <td><input ability='Wis' id='ability_Wis_score' class='two_digit' value='' type='text'></td> <td id='ability_Wis_mod' align='right' nowrap></td> </tr><tr><td colspan=3>Speed: <span id='speed'></span></td></tr> </table> </div> <div id='middlepart' class='dp60' style='float: left;'> <table id='middle_table' style='table-layout: fixed; width: 100%'> <tr> <td colspan=4 style='padding: 0px;'> <table border=0 style='padding: 0px; width: 100%;'> <tr> <td align='left'>HP</td> <td id='hp' align='right'></td> <td align='right'><input id='temp_hp' style='width: 2em;text-align: center;' type='text' value='' /></td> <td align='right'>SD <input id='subdual_hp' style='width: 15px; text-align: center' type='text' value='' /></td> </tr> </table> </td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Fort</td> <td id='fort' class='box numeric' style='width: 30px;' nowrap></td> <td>AC</td> <td id='ac' class='box numeric' style='width: 30px;'></td> </tr> <tr> <td>Ref</td> <td id='ref' class='box numeric' nowrap></td> <td>Tch</td> <td id='touch' class='box numeric' nowrap></td> </tr> <tr> <td>Will</td> <td id='will' class='box numeric' nowrap></td> <td>Flat</td> <td id='flat' class='box numeric' nowrap></td> </tr> <tr> <td>SR</td> <td id='spell_resistance' class='box numeric' nowrap></td> <td>Init</td> <td id='init' class='box numeric'></td> </tr> <tr> <td>CMB</td> <td id='cmb' class='box' colspan=3></td> </tr><tr> <td>CMD</td> <td id='cmd' class='box' colspan=3></td> </tr> <tr> <td>BAB</td> <td id='base_attack_bonus' class='box' colspan=3></td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Att</td> <td id='attack_mod'>0</td> <td><a id='plus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> <tr> <td>Dam</td> <td id='damage_mod'>0</td> <td><a id='plus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> </table> </div> <div id='featspart' class='dp100'> <table style='width: 100%; margin: 0px 0px 5px 0px; border-collapse: collapse;' border='0'> <tbody> <tr onclick=\"toggle_visible('conditional_feats')\"> <td colspan='3' bgcolor='#8DC3E9'><span id='conditional_feats_expand_flag' style='float: right; vertical-align: middle'><img src='images/collapsed.png' /></span><a class='fake_link'>Feats</a></td> </tr> </tbody> <tbody id='conditional_feats'></tbody> </table> </div> <div id='specialpart' class='dp100'> <table id='specials_table' style='width: 100%; border: 0px; margin: 0px 0px 5px 0px; border-collapse: collapse;'> <tr id='specials_heading' style='background-color: #8DC3E9'> <td colspan='2'><span id='specials_expand_flag' style='float: right'><img src='images/collapsed.png' /></span><a class='fake_link'>Special Abilities</a></td> </tr> <tbody id='specials'></tbody> </table> </div> <div id='weaponspart' class='dp100'></div> <div id='armorpart' class='dp100'></div> <div id='shieldspart' class='dp100'></div> <div id='spellspart' class='dp100'></div> </div> <div id='skillspart' class='dp33'> <table border='0' id='skills_table'></table> </div>");
-   
+
 	// ability scores
 	$("#ability_score_full0").bind('click', { ability: "Str", id: 0 }, function(e) { return reset_ability_score(e); });
 	$("input[id='ability_Str_score']").bind('blur', { ability: "Str" }, function(e) { return recalc_ability_mod(e) });
@@ -141,7 +141,7 @@ function build_main_page() {
 	$("input[id='ability_Cha_score']").bind('blur', { ability: "Cha" }, function(e) { return recalc_ability_mod(e) });
 	$("#ability_score_full5").bind('click', { ability: "Wis", id: 5 }, function(e) { return reset_ability_score(e); });
 	$("input[id='ability_Wis_score']").bind('blur', { ability: "Wis" }, function(e) { return recalc_ability_mod(e) });
-	
+
 	// TODO - add utility
 	// skills
 	var allskills = skills.get();
@@ -161,23 +161,23 @@ function build_main_page() {
 	$("#minus_att").bind('click', function() { return adjust_mod('attack', -1) });
 	$("#plus_dam").bind('click', function() { return adjust_mod('damage', 1) });
 	$("#minus_dam").bind('click', function() { return adjust_mod('damage', -1) });
-	
+
 	// conditional feats
 	var feats_html = "";
 	var conditional_feats = [];
 
-	
+
 	// custom class features
 	for (var classname in chardata.classes) {
 		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_specials) {
 			for (var script in clazz.custom.main.before_specials) {
-				eval(clazz.custom.main[script]);
+				eval(clazz.custom.main.before_specials[script]);
 			}
 		}
-	}	
-	
-	var char_feats = get_char_feats().get();	
+	}
+
+	var char_feats = get_char_feats().get();
 	for (var i =0; i < char_feats.length; i++) {
 		var feat = feats.first({
 			name: char_feats[i].name
@@ -188,8 +188,8 @@ function build_main_page() {
 	}
 	if (conditional_feats.length > 0) {
 		for ( var i in conditional_feats) {
-			var checkbox = (conditional_feats[i].op != null ? 
-					["<input id='feat_", conditional_feats[i]._id, "_conditional' type='checkbox' onclick=\"", conditional_feats[i].op, "\"/>"].join('')  : 
+			var checkbox = (conditional_feats[i].op != null ?
+					["<input id='feat_", conditional_feats[i]._id, "_conditional' type='checkbox' onclick=\"", conditional_feats[i].op, "\"/>"].join('')  :
 					"") ;
 			$('#conditional_feats').append(["<tr id='feat_", conditional_feats[i]._id, "'><td>", checkbox, "</td><td class='seamless' valign='top'><a id='feat_", conditional_feats[i]._id, "'class='fake_link'>", conditional_feats[i].name, "</a></td><td  class='seamless' style='width: 100%'>", conditional_feats[i].summary, "</td></tr>"].join(''));
 			$("a[id='feat_" + conditional_feats[i]._id + "']").bind('click', { id: conditional_feats[i]._id }, function(e) { return show_item_detail(feats, e.data.id); });
@@ -199,29 +199,29 @@ function build_main_page() {
 	}
 	$("tr[id^='feat']:odd").css("background-color", "#EFF1F1");
 	$('#conditional_feats').hide();
-	
+
 	// class special abilities
 	var class_specials = get_special_abilities();
 	if (count_attrs(class_specials) > 0) {
 		$('#specials_heading').bind('click', function(e) { return toggle_visible('specials'); });
 		for (var i in class_specials) {
 			if(class_specials[i] && !class_specials[i].hide) {
-				var checkbox = (class_specials[i].op != null ? 
+				var checkbox = (class_specials[i].op != null ?
 						["<input id='special_", class_specials[i]._id, "' type='checkbox' onclick=\"", class_specials[i].op, "\"/>"].join('')  : "");
 				$("#specials").append(["<tr id='special_", class_specials[i]._id, "'><td style='padding: 3px 0px;'>", checkbox, "</td><td class='seamless' style='width: 100%;'><a class='fake_link' onclick='show_item_detail(specials, \"" + class_specials[i]._id + "\")'>", class_specials[i].name, (class_specials[i].mod == null ? "" : [" ", class_specials[i].mod, "</a></td></tr>"].join(''))].join(''));
-				$("a[id='special_" + class_specials[i]._id + "']").bind('click', { id: class_specials[i]._id }, function(e) { return show_item_detail(specials, e.data.id); });				
+				$("a[id='special_" + class_specials[i]._id + "']").bind('click', { id: class_specials[i]._id }, function(e) { return show_item_detail(specials, e.data.id); });
 			}
 		}
 	} else {
 		$("#specialpart").hide();
 	}
-	
+
 	$("tr[id^='special']:odd").css("background-color", "#EFF1F1");
 	$('#specials').hide();
-	
+
 	// weapons
 	// base attack information
-	var html = [];	
+	var html = [];
 	for (var j in chardata.weapons) {
 		var weapon_data = weapons.first( {
 			name : chardata.weapons[j]['weapon_name']
@@ -255,7 +255,7 @@ function build_main_page() {
 	$("#shieldspart").html(html.join(""));
 	$("#shieldspart").css("margin-top", "5px");
 	// $("tr[id^='shield_']").click(function() {
-		// session["shield"][this.shield_idx]["is_worn"] =! session["shield"][this.shield_idx]["is_worn"]; 
+		// session["shield"][this.shield_idx]["is_worn"] =! session["shield"][this.shield_idx]["is_worn"];
 		// $(this.id).attr("src", (session["shield"][this.shield_idx]["is_worn"] ? "checked" : "unchecked") + ".png");
 		// recalc_main_page();
 		// alert($(this.id).attr("src"));
@@ -268,10 +268,10 @@ function build_main_page() {
 		});
 		char_domains.push(domain);
 	}
-	
+
 	for (var classname in chardata.classes) {
 		var clazz = classes.first({ name : classname });
-	}	
+	}
 
 	// TODO - what's the modifier for SPD?
 	$('#spellspart').css('margin-top', '10px');
@@ -281,7 +281,12 @@ function build_main_page() {
 			name : classname
 		});
 
-		var all_spells = clazz.spells;
+		var all_spells = $.merge([], (chardata.classes[classname].spells ? chardata.classes[classname].spells : clazz.spells));
+		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
+			for (var script in clazz.custom.main.before_spells) {
+				eval(clazz.custom.main.before_spells[script]);
+			}
+		}
 		var spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
 		if (spells_per_day != null && spells_per_day.length > 0) {
 				var spells_html = ["<table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'><tr bgcolor='#8DC3E9'><td colspan='", (spells_per_day.length), "'><span id='etc' style='float: right'></span>Spells per day (",clazz.shortname,") &nbsp;"];
@@ -291,7 +296,7 @@ function build_main_page() {
 								spells_html.push(["<i><a class='fake_link' onclick=\"show_item_detail(domains, '", char_domains[domain]._id, "')\">", char_domains[domain].name, "</a></i> "].join(''));
 						}
 					spells_html.push("</span>");
-				} 
+				}
 			spells_html.push("</td></tr></table><table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'><tr>");
 			for (var i in spells_per_day) {
 				spells_html.push(["<td id='spd_level_",clazz.shortname, i, "' align='center'>", i, "</td>"].join(''));
@@ -300,7 +305,7 @@ function build_main_page() {
 			for (var i in spells_per_day) {
 				spells_html.push(["<td id='spd_count_",clazz.shortname,i, "' align='center'></td>"].join(''));
 			}
-	
+
 			// selected spells do not change
 			spells_html.push("</tr></table><table style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'>");
 			// this gives us the level of spells available
@@ -310,21 +315,16 @@ function build_main_page() {
 				if (spells_per_day[level] != '-') {
 					spells_html.push(["<tr onclick=\"toggle_visible('spell_lvl_", clazz.shortname, level, "')\"><td bgcolor='#8DC3E9' colspan='2'><span id='spell_lvl_", clazz.shortname, level, "_expand_flag' style='float: right'><img src='images/expanded.png'/></span>", level, "</td></tr><tbody id='spell_lvl_",clazz.shortname, level, "'><tr>"].join(''));
 					// insert the current level domain spell into the list, if it doesn't exist
-					var clazz_spells = clazz.spells[level].slice(0);
+					var clazz_spells = all_spells[level].slice(0);
 					if (level > 0) {
 						// domain spells added 1st through 9th
-						for (var domain in char_domains) { 								
+						for (var domain in char_domains) {
 							if(clazz_spells.indexOf(char_domains[domain].spells[level - 1]) == -1) {
 								clazz_spells.push(spells.first({name: char_domains[domain].spells[level - 1]}).name);
 							}
 						}
 					}
 					clazz_spells.sort();
-					if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
-						for (var script in clazz.custom.main.before_spells) {
-							eval(clazz.custom.main.before_spells[script]);
-						}
-					}
 
 					class_spells_loop:
 					// loop over all class spells
@@ -332,9 +332,7 @@ function build_main_page() {
 						// clerics, druids and related have 0 spells_known
 						// wizards print it if the spell id is in their character
 						// list of spells
-						if ((clazz.name == "Cleric" || clazz.name == "Druid" || clazz.name == "Paladin" || clazz.name == "Ranger")
-								|| ((chardata.classes[classname] != null) && (chardata.classes[classname].spells && chardata.classes[classname].spells[level])
-										&& (clazz.name == "Sorcerer" || clazz.name == "Wizard" || clazz.name == "Bard") && chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1)) {
+						if(chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1) {
 							var spell = spells.first( {
 								name : clazz_spells[i]
 							});
@@ -347,7 +345,7 @@ function build_main_page() {
 							}
 							// TODO - should I be doing the filtering a lot earlier?
 							var domain_highlight = false;
-							for (var domain in char_domains) { 								
+							for (var domain in char_domains) {
 								if((classname == "Paladin" || classname == "Cleric") && spell.name == char_domains[domain].spells[level - 1]) {
 									domain_highlight = true;
 									break
@@ -375,7 +373,7 @@ function build_main_page() {
 				eval(clazz.custom.main.after_spells[script]);
 			}
 		}
-	}	
+	}
 	// console.groupEnd();
 }
 
@@ -400,7 +398,7 @@ function populate_main_page() {
 	$('#level').text(calc_level() + 1);
 //	$('#attack_mod').spinner();
 //	$('#damage_mod').spinner();
-	
+
 	// ability scores
 	var allabilities = chardata.abilities;
 	for (var ability in abilities) {
@@ -420,7 +418,7 @@ function populate_main_page() {
 		$('#weapon_' + j + '_crit').text(calc_critical(weapon_data.crit, chardata.weapons[j], chardata.feats));
 		$('#weapon_' + j + '_bon').text(chardata.weapons[j].att != null ? chardata.weapons[j].att : "");
 		$("td[id='weapon_" + j + "_note']").text(chardata.weapons[j].note);
-		
+
 		$("tr[id='weapon_" + j + "_note']").toggle(chardata.weapons[j].note != null && chardata.weapons[j].note.length > 0);
 	}
 
@@ -436,7 +434,7 @@ function populate_main_page() {
 		$('#armor_' + j + '_note').text(chardata.armors[j]['notes']);
 		$("tr[id='armor_" + j + "_note']").toggle(chardata.armors[j].note != null && chardata.armors[j].note.length > 0);
 	}
-	
+
 	// shield
 	for (var j in chardata.shields) {
 		var shield_data = shields.first( {
@@ -536,9 +534,9 @@ function recalc_main_page() {
 	$('#touch').text(calc_touch_ac(dex_score, chardata.race_id, chardata.feats));
 	$('#flat').text(calc_flat_footed_ac(chardata.armors));
 	$('#cmb').text(calc_cmb(calc_base_attack_bonus()));
-	$('#cmd').text(calc_cmd(calc_base_attack_bonus()));	
+	$('#cmd').text(calc_cmd(calc_base_attack_bonus()));
 //	$('#spell_resistance').text(calc_spell_resistance());
-	
+
 	// TODO - refactor to consolidate with calc_attack
 	// recompose with modifiers thrown in
 	for (var i in base_attack_bonuses) {
@@ -551,7 +549,7 @@ function recalc_main_page() {
 	for (var classname in chardata.classes) {
 		var clazz = classes.first({ name: classname });
 		var spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
-		
+
 		for (var i in spells_per_day) {
 			$('#spd_count_' + clazz.shortname + i).text(spells_per_day[i]);
 		}
@@ -597,7 +595,7 @@ function calc_spell_resistance() {
 	return 0;
 }
 function calc_flat_footed_ac(char_armor) {
-	// TODO - what else goes here 
+	// TODO - what else goes here
 	// TODO - make 0 armor bonus constant
 	return 10 + calc_armor_bonus(char_armor, armors, "armor").bonus;
 }
@@ -615,7 +613,7 @@ function get_char_feats() {
 		});
 	}
 	char_feats.insert(get_class_feats());
-	
+
 	return char_feats;
 }
 
@@ -627,7 +625,7 @@ function calc_hp(hp, char_feats) {
 		feat_mod = feat.hp(feat_mod);
 		return feat_mod;
 		});
-	
+
 	return parseInt(hp) + feat_mod;
 }
 
@@ -640,7 +638,7 @@ function calc_critical(weapon_critical, char_weapon, char_feats) {
 		critical = feat.critical(critical);
 		return critical;
 	});
-	
+
 	return critical;
 }
 
@@ -667,7 +665,7 @@ function update_weapon_damage(weapon_idx, mod) {
 		var weapon_mod = dam_components.length > 1 ? parseInt((pos_neg != -1 ? pos_neg : "")+ dam_components[1]) : 0;
 		damage += die + pos(mod + weapon_mod);
 		damage += (parseInt(i) + 1 < weapon_damage.length ? '/' : '');
-	}	
+	}
 	$('#weapon_' + weapon_idx + '_dam').text(damage);
 }
 
@@ -684,7 +682,7 @@ function calc_grapple() {
 	var race = races.first({ name: chardata.race_name });
 	var str_score = calc_ability_modifier(parseInt($('#ability_Str_score').val()));
 	var babs = calc_base_attack_bonus();
-	
+
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
 	// have feats modify the attacks
@@ -693,12 +691,12 @@ function calc_grapple() {
 		feat_mod = feat.grapple(feat_mod);
 		return feat_mod;
 	});
-	
+
 	for(var i=0; i<babs.length; i++) {
 		grapple += pos(str_score + babs[i] + grapple_size_mod[race.size] + feat_mod);
 		grapple += i + 1 < babs.length ? '/' : '';
 	}
-	
+
 	return grapple;
 }
 

@@ -9,8 +9,8 @@ classes = new TAFFY([{
     spells_known: [],
     skill_points_per_level: 4,
     bonus_feats_levels: [6, 12, 18],
-	hd: 12, 
-	type: "class", 
+	hd: 12,
+	type: "class",
 	tags: ["pathfinder"], _id: "2c3d",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -34,8 +34,8 @@ classes = new TAFFY([{
     spells_known: [[4, '-', '-', '-', '-', '-', '-'], [5, 2, '-', '-', '-', '-', '-'], [6, 3, '-', '-', '-', '-', '-'], [6, 3, 2, '-', '-', '-', '-'], [6, 4, 3, '-', '-', '-', '-'], [6, 4, 3, '-', '-', '-', '-'], [6, 4, 4, 2, '-', '-', '-'], [6, 4, 4, 3, '-', '-', '-'], [6, 4, 4, 3, '-', '-', '-'], [6, 4, 4, 4, 2, '-', '-'], [6, 4, 4, 4, 3, '-', '-'], [6, 4, 4, 4, 3, '-', '-'], [6, 4, 4, 4, 4, 2, '-'], [6, 4, 4, 4, 4, 3, '-'], [6, 4, 4, 4, 4, 3, '-'], [6, 5, 4, 4, 4, 4, 2], [6, 5, 5, 4, 4, 4, 3], [6, 5, 5, 5, 4, 4, 3], [6, 5, 5, 5, 5, 4, 4], [6, 5, 5, 5, 5, 5, 4]],
     skill_points_per_level: 6,
     bonus_feats_levels: [5, 10],
-	hd: 6, 
-	type: "class", 
+	hd: 6,
+	type: "class",
 	tags: ["pathfinder"], _id: "246b",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -53,15 +53,15 @@ classes = new TAFFY([{
     skill_points_per_level: 2,
     bonus_feats_levels: [3, 7, 11, 15, 19],
 	languages: [0, 3, 14],
-	hd: 8, 
-	type: "class", 
+	hd: 8,
+	type: "class",
 	tags: ["pathfinder"], _id: "d577",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     custom: {
     	edit: {
-    		0: { 
+    		0: {
     			domains: {
 					ui: "<table id='domains' style='width: 100%;'><tr><td>Domains</td></tr><tr><td><table id='domain_selector' style='width: 100%'></table></td></tr></table>",
 					script: "var set_domain = function(item, checked) { if(checked) {chardata.domains.push(item.name);} else {remove(chardata.domains, chardata.domains.indexOf(item.name));}}; if(chardata.domains == null) { chardata.domains = []; } var available_domains = domains.get(); if(chardata.deity) { var deity = deities.first({ name: chardata.deity }); console.log(deity.name); available_domains = domains.get({ name: deity.domains }); } else { available_domains = []; } console.log(available_domains); create_selector_grid(available_domains, 'table#domains', set_domain, chardata.domains, 4);"
@@ -82,8 +82,8 @@ classes = new TAFFY([{
     skill_points_per_level: 4,
     bonus_feats_levels: [],
     languages: [16],
-	hd: 8, 
-	type: "class", 
+	hd: 8,
+	type: "class",
 	tags: ["pathfinder"], _id: "6041",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -101,8 +101,8 @@ classes = new TAFFY([{
     spells_known: [],
     skill_points_per_level: 2,
     bonus_feats_levels: [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19],
-	hd: 10, 
-	type: "class", 
+	hd: 10,
+	type: "class",
 	tags: ["pathfinder"], _id: "4b8c",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -123,8 +123,8 @@ classes = new TAFFY([{
     spells_known: [],
     skill_points_per_level: 4,
     bonus_feats_levels: [0, 1, 5],
-	hd: 8, 
-	type: "class", 
+	hd: 8,
+	type: "class",
 	tags: ["pathfinder"], _id: "4b46",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -142,8 +142,8 @@ classes = new TAFFY([{
     spells_known: [],
     skill_points_per_level: 2,
     bonus_feats_levels: [4, 9, 15],
-	hd: 1, 
-	type: "class", 
+	hd: 1,
+	type: "class",
 	tags: ["pathfinder"], _id: "487f",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -160,8 +160,8 @@ classes = new TAFFY([{
     spells_known: [],
     skill_points_per_level: 6,
     bonus_feats_levels: [4, 9, 14, 19],
-	hd: 8, 
-	type: "class", 
+	hd: 8,
+	type: "class",
 	tags: ["pathfinder"], _id: "7226",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -169,8 +169,8 @@ classes = new TAFFY([{
     custom: {
 		edit: {
 			0: [{
-					ui: "<table id='favored_enemies' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>", 
-					script: "if(!chardata.favored_enemies){ chardata.favored_enemies = []; } var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 0 ? chardata.favored_enemies[0].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_0', favored_enemies.get(), \"chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_0_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_0_bonus').val(chardata.favored_enemies[0] ? chardata.favored_enemies[0].val : 0); $('#favored_enemy_0_bonus').blur(function() { chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character(); });" 
+					ui: "<table id='favored_enemies' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>",
+					script: "if(!chardata.favored_enemies){ chardata.favored_enemies = []; } var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 0 ? chardata.favored_enemies[0].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_0', favored_enemies.get(), \"chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_0_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_0_bonus').val(chardata.favored_enemies[0] ? chardata.favored_enemies[0].val : 0); $('#favored_enemy_0_bonus').blur(function() { chardata.favored_enemies[0] = { name: $('#favored_enemy_0').val(), val: (parseInt($('#favored_enemy_0_bonus').val()) | 0) }; save_character(); });"
     			}
     		],
 			1: [{
@@ -182,19 +182,19 @@ classes = new TAFFY([{
 				script: "if (!chardata.favored_terrains) { chardata.favored_terrains = []; } var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 0 ? chardata.favored_terrains[0].name : '' }); if (favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_0', favored_terrains.get(), \"chardata.favored_terrains[0] = { name: $('#favored_terrain_0').val(), val: (parseInt($('#favored_terrain_0_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_0_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_0_bonus').val(chardata.favored_terrains[0] ? chardata.favored_terrains[0].val : 0); $('#favored_terrain_0_bonus').blur(function() { chardata.favored_terrains[0] = { name: $('#favored_terrain_0').val(), val: (parseInt($('#favored_terrain_0_bonus').val()) | 0) }; save_character(); });"
 				}],
 			4: [{
-				script: "var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 1 ? chardata.favored_enemies[1].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_1', favored_enemies.get(), \"chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_1_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_1_bonus').val(chardata.favored_enemies[1] ? chardata.favored_enemies[1].val : 0); $('#favored_enemy_1_bonus').blur(function() { chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character(); });" 
+				script: "var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 1 ? chardata.favored_enemies[1].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_1', favored_enemies.get(), \"chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_1_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_1_bonus').val(chardata.favored_enemies[1] ? chardata.favored_enemies[1].val : 0); $('#favored_enemy_1_bonus').blur(function() { chardata.favored_enemies[1] = { name: $('#favored_enemy_1').val(), val: (parseInt($('#favored_enemy_1_bonus').val()) | 0) }; save_character(); });"
 				}],
 			7: [{
-				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 1 ? chardata.favored_terrains[1].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_1', favored_terrains.get(), \"chardata.favored_terrains[1] = { name: $('#favored_terrain_1').val(), val: (parseInt($('#favored_terrain_1_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_1_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_1_bonus').val(chardata.favored_terrains[1] ? chardata.favored_terrains[1].val : 0); $('#favored_terrain_1_bonus').blur(function() { chardata.favored_terrains[1] = { name: $('#favored_terrain_1').val(), val: (parseInt($('#favored_terrain_1_bonus').val()) | 0) }; save_character(); });" 
+				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 1 ? chardata.favored_terrains[1].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_1', favored_terrains.get(), \"chardata.favored_terrains[1] = { name: $('#favored_terrain_1').val(), val: (parseInt($('#favored_terrain_1_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_1_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_1_bonus').val(chardata.favored_terrains[1] ? chardata.favored_terrains[1].val : 0); $('#favored_terrain_1_bonus').blur(function() { chardata.favored_terrains[1] = { name: $('#favored_terrain_1').val(), val: (parseInt($('#favored_terrain_1_bonus').val()) | 0) }; save_character(); });"
 				}],
 			9: [{
-				script: "var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 2 ? chardata.favored_enemies[2].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_2', favored_enemies.get(), \"chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_2_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_2_bonus').val(chardata.favored_enemies[2] ? chardata.favored_enemies[2].val : 0); $('#favored_enemy_2_bonus').blur(function() { chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character(); });" 
+				script: "var favored_enemy = favored_enemies.first({ name: chardata.favored_enemies.length > 2 ? chardata.favored_enemies[2].name : '' }); if(favored_enemy) { favored_enemy = favored_enemy._id; } var select = create_select('favored_enemy_2', favored_enemies.get(), \"chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td><input id=\"favored_enemy_2_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_enemy_2_bonus').val(chardata.favored_enemies[2] ? chardata.favored_enemies[2].val : 0); $('#favored_enemy_2_bonus').blur(function() { chardata.favored_enemies[2] = { name: $('#favored_enemy_2').val(), val: (parseInt($('#favored_enemy_2_bonus').val()) | 0) }; save_character(); });"
 				}],
 			12: [{
-				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 2 ? chardata.favored_terrains[2].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_2', favored_terrains.get(), \"chardata.favored_terrains[2] = { name: $('#favored_terrain_2').val(), val: (parseInt($('#favored_terrain_2_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_2_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_2_bonus').val(chardata.favored_terrains[2] ? chardata.favored_terrains[2].val : 0); $('#favored_terrain_2_bonus').blur(function() { chardata.favored_terrains[2] = { name: $('#favored_terrain_2').val(), val: (parseInt($('#favored_terrain_2_bonus').val()) | 0) }; save_character(); });" 					
+				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 2 ? chardata.favored_terrains[2].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_2', favored_terrains.get(), \"chardata.favored_terrains[2] = { name: $('#favored_terrain_2').val(), val: (parseInt($('#favored_terrain_2_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_2_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_2_bonus').val(chardata.favored_terrains[2] ? chardata.favored_terrains[2].val : 0); $('#favored_terrain_2_bonus').blur(function() { chardata.favored_terrains[2] = { name: $('#favored_terrain_2').val(), val: (parseInt($('#favored_terrain_2_bonus').val()) | 0) }; save_character(); });"
 				}],
 			17: [{
-				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 3 ? chardata.favored_terrains[3].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_3', favored_terrains.get(), \"chardata.favored_terrains[3] = { name: $('#favored_terrain_3').val(), val: (parseInt($('#favored_terrain_3_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_3_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_3_bonus').val(chardata.favored_terrains[3] ? chardata.favored_terrains[3].val : 0); $('#favored_terrain_3_bonus').blur(function() { chardata.favored_terrains[3] = { name: $('#favored_terrain_3').val(), val: (parseInt($('#favored_terrain_3_bonus').val()) | 0) }; save_character(); });" 
+				script: "var favored_terrain = favored_terrains.first({ name: chardata.favored_terrains.length > 3 ? chardata.favored_terrains[3].name : '' }); if(favored_terrain) { favored_terrain = favored_terrain._id; } var select = create_select('favored_terrain_3', favored_terrains.get(), \"chardata.favored_terrains[3] = { name: $('#favored_terrain_3').val(), val: (parseInt($('#favored_terrain_3_bonus').val()) | 0) }; save_character();\", false, \"style='width: 100%;'\", null, favored_terrain); $('#favored_terrains').append('<tr><td>' + select + '</td><td><input id=\"favored_terrain_3_bonus\" type=\"text\" size=\"1\"/></td></tr>'); $('#favored_terrain_3_bonus').val(chardata.favored_terrains[3] ? chardata.favored_terrains[3].val : 0); $('#favored_terrain_3_bonus').blur(function() { chardata.favored_terrains[3] = { name: $('#favored_terrain_3').val(), val: (parseInt($('#favored_terrain_3_bonus').val()) | 0) }; save_character(); });"
 				}]
 			},
 		main: {
@@ -229,8 +229,8 @@ classes = new TAFFY([{
     skill_points_per_level: 8,
     bonus_feats_levels: [4, 9, 14, 19],
     special_abilities_levels: [9, 12, 15, 19],
-	hd: 6, 
-	type: "class", 
+	hd: 6,
+	type: "class",
 	tags: ["pathfinder"], _id: "3410",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -247,8 +247,8 @@ classes = new TAFFY([{
     spells_known: [[4, 2, '-', '-', '-', '-', '-', '-', '-', '-'], [5, 2, '-', '-', '-', '-', '-', '-', '-', '-'], [5, 3, '-', '-', '-', '-', '-', '-', '-', '-'], [6, 3, 1, '-', '-', '-', '-', '-', '-', '-'], [6, 4, 2, '-', '-', '-', '-', '-', '-', '-'], [7, 4, 2, 1, '-', '-', '-', '-', '-', '-'], [7, 5, 3, 2, '-', '-', '-', '-', '-', '-'], [8, 5, 3, 2, 1, '-', '-', '-', '-', '-'], [8, 5, 4, 3, 2, '-', '-', '-', '-', '-'], [9, 5, 4, 3, 2, 1, '-', '-', '-', '-'], [9, 5, 5, 4, 3, 2, '-', '-', '-', '-'], [9, 5, 5, 4, 3, 2, 1, '-', '-', '-'], [9, 5, 5, 4, 4, 3, 2, '-', '-', '-'], [9, 5, 5, 4, 4, 3, 2, 1, '-', '-'], [9, 5, 5, 4, 4, 4, 3, 2, '-', '-'], [9, 5, 5, 4, 4, 4, 3, 2, 1, '-'], [9, 5, 5, 4, 4, 4, 3, 3, 2, '-'], [9, 5, 5, 4, 4, 4, 3, 3, 2, 1], [9, 5, 5, 4, 4, 4, 3, 3, 3, 2], [9, 5, 5, 4, 4, 4, 3, 3, 3, 3]],
     skill_points_per_level: 2,
     bonus_feats_levels: [2, 5, 8, 11, 14, 17],
-	hd: 4, 
-	type: "class", 
+	hd: 4,
+	type: "class",
 	tags: ["pathfinder"], _id: "9c80",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
@@ -260,13 +260,16 @@ classes = new TAFFY([{
 				script: "var char_bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); update_bloodline = function () { chardata.bloodline = $('#bloodline_select').val(); save_character(); }; var select = create_select('bloodline_select', sorcerer_bloodlines.get(), \"update_bloodline(); recalc_edit_page();\" , false, \"style='width: 100%;'\", null, (char_bloodline ? char_bloodline._id : '')); $('#bloodline').append('<tr><td>' + select + '</td></tr>'); "
     			}
     		]
-    	}, 
+    	},
     	main: {
     		before_spells: [
-    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { var spell = spells.first({ name: bloodline.spells[level]}); if(chardata.classes['Sorcerer'].level >= level && clazz_spells[spell.classes['Sorcerer']].indexOf(bloodline.spells[level]) == -1) { clazz_spells[spell.classes['Sorcerer']].push(bloodline.spells[level]); } } }"
+    			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); \nif(bloodline) { \nfor(var level in bloodline.spells) {\n var spell = spells.first({ name: bloodline.spells[level]}); \nif(chardata.classes['Sorcerer'].level >= level && all_spells[spell.classes['Sorcerer']].indexOf(bloodline.spells[level]) == -1) {\n all_spells[spell.classes['Sorcerer']].push(bloodline.spells[level]); \n}\n }\n }"
     		],
     		after_spells: [
     			"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); $('#spell_' + spell._id).wrap('<i />'); } } $('#etc').append('<i>Bloodline &nbsp;</i>'); }"
+    		],
+    		before_specials: [
+    		    "var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline });\n if(bloodline) {\n  for (var i in bloodline.powers) {\n\t var power = bloodline_powers.first({ name : bloodline.powers[i]}); \n\tfor (var level in power.levels) { \n\t\tif (level <= chardata.classes['Sorcerer'].level) {\n\t\t\t $('#specials').append( '<tr><td><input id=\"bloodline_power_' + power._id + '\" type=\"checkbox\"/></td><td><a class=fake_link onclick=\"show_item_detail(bloodline_powers, \\'' + power._id + '\\')\">' + power.name + '</a></td></tr>'); } } } }"
     		]
     	},
 		feats: {
@@ -281,15 +284,15 @@ classes = new TAFFY([{
 				}
 			},
 		spells: {
-			before_spells: [
-				"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); } } }"
-			],
+			// before_spells: [
+			// 	"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); } } }"
+			// ],
 			after_spells: [
-				"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); $('#' + spell._id + '_spell').wrap('<i />'); $('#Sorceror_' + spell._id).attr('disabled', 'disabled'); } } }"
+				"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); \nif(bloodline) {\n for(var level in bloodline.spells) {\n if(chardata.classes['Sorcerer'].level >= level) { \nvar spell = spells.first({ name: bloodline.spells[level] });\n $('#spell_' + spell._id).wrap('<i />'); \n$('#' + spell._id + '_Sorcerer').attr('disabled', true); \nif(chardata.classes['Sorcerer'].spells[spell.classes['Sorcerer']]){\nvar idx = chardata.classes['Sorcerer'].spells[spell.classes['Sorcerer']].indexOf(spell.name);\n if(idx > -1) { remove(chardata.classes['Sorcerer'].spells[spell.classes['Sorcerer']], idx);\n }} \n} \n} }"
 			]
 		}
-			
-		
+
+
     },
 	class_features: ["Cast Arcane"]
 }, {
@@ -304,8 +307,8 @@ classes = new TAFFY([{
     skill_points_per_level: 2,
     bonus_feats_levels: [4, 9, 14, 19],
     languages: [16],
-	hd: 4, 
-	type: "class", 
+	hd: 4,
+	type: "class",
 	tags: ["pathfinder"], _id: "d1b5",
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
