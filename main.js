@@ -280,11 +280,13 @@ function build_main_page() {
 		var clazz = classes.first( {
 			name : classname
 		});
-
-		var all_spells = $.merge([], (chardata.classes[classname].spells ? chardata.classes[classname].spells : clazz.spells));
+		if (clazz.spells_known && !chardata.classes[classname].spells) {
+			chardata.classes[classname].spells = [];
+		}
+		var all_spells = $.merge([], (clazz.spells_known ? chardata.classes[classname].spells : clazz.spells));
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
 			for (var script in clazz.custom.main.before_spells) {
-				eval(clazz.custom.main.before_spells[script]);
+				clazz.custom.main.before_spells[script](all_spells);
 			}
 		}
 		var spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
@@ -315,7 +317,7 @@ function build_main_page() {
 				if (spells_per_day[level] != '-') {
 					spells_html.push(["<tr onclick=\"toggle_visible('spell_lvl_", clazz.shortname, level, "')\"><td bgcolor='#8DC3E9' colspan='2'><span id='spell_lvl_", clazz.shortname, level, "_expand_flag' style='float: right'><img src='images/expanded.png'/></span>", level, "</td></tr><tbody id='spell_lvl_",clazz.shortname, level, "'><tr>"].join(''));
 					// insert the current level domain spell into the list, if it doesn't exist
-					var clazz_spells = all_spells[level].slice(0);
+					var clazz_spells = all_spells[level] ? all_spells[level].slice(0) : [];
 					if (level > 0) {
 						// domain spells added 1st through 9th
 						for (var domain in char_domains) {
@@ -332,7 +334,7 @@ function build_main_page() {
 						// clerics, druids and related have 0 spells_known
 						// wizards print it if the spell id is in their character
 						// list of spells
-						if(chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1) {
+						if(!clazz.spells_known || (chardata.classes[classname].spells && chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1)) {
 							var spell = spells.first( {
 								name : clazz_spells[i]
 							});
@@ -348,7 +350,7 @@ function build_main_page() {
 							for (var domain in char_domains) {
 								if((classname == "Paladin" || classname == "Cleric") && spell.name == char_domains[domain].spells[level - 1]) {
 									domain_highlight = true;
-									break
+									break;
 								}
 							}
 							spells_html.push(["<td><a id='spell_",spell._id, "' class='fake_link' onclick='show_item_detail(spells, \"", spell._id, "\")'>",(domain_highlight ? '<i>' : ''), spell.name, (domain_highlight ? '</i>' : ''), "</a></td>"].join(''));
@@ -370,7 +372,7 @@ function build_main_page() {
 		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
 			for (var script in clazz.custom.main.after_spells) {
-				eval(clazz.custom.main.after_spells[script]);
+				clazz.custom.main.after_spells[script]();
 			}
 		}
 	}

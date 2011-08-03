@@ -16,11 +16,11 @@ function calc_skill_points() {
 		var level_1_points = (class_skills_per_level * 4) + (is_human ? 4 : 0);
 		total_skill_points += level_1_points + ((class_skills_per_level + (is_human ? 1 : 0)) * chardata.classes[classname].level);
 	}
-	
+
 	// used_skill_points = 0
 	$('input[id*=skill]').each( function(i, element) {
 			total_skill_points -= isNaN(parseInt($(element).val())) ? 0 : parseInt($(element).val());
-	}); 
+	});
 
 	// only subtract skill points after int mod languages are used up
 	var char_lang_count = chardata.languages == null ? 0 : chardata.languages.length;
@@ -36,13 +36,13 @@ function build_edit_page() {
 	if(chardata.abilities == null) {
 		chardata.abilities = {};
 	}
-	
+
 	// topline
 	var race_html = create_select('race', races.get(), 'recalc_edit_page()', false, "style='width: 75px;'");
 	$("#race_select").html(race_html);
 	// alignment and deity
 	var align_html = [];
-	alignments.forEach( function(alignment, i) { 
+	alignments.forEach( function(alignment, i) {
 		goodness.forEach( function(good, j) {
 			align_html.push(["<option id='alignment_option_", alignment.name, "_", good.name, "' data_id='", i, ",", j, "' value='", alignment.name, ",", good.name, "'>", alignment.name, " ", good.name, "</option>"].join(''));
 		});
@@ -70,17 +70,17 @@ function build_edit_page() {
 		chardata.goodness = $('#alignment').val().split(' ')[1];
 		console.groupEnd();
 	});
-	
+
 	align_html = [];
 	align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
-	$.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) { 
+	$.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
 			align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
 		});
 	$("#deity").html(align_html.join(''));
-	
+
 	$("#deity").change(function() {
 		chardata.domains = [];
-		return $("#deity").trigger('DEITY_CHANGED');								 
+		return $("#deity").trigger('DEITY_CHANGED');
 	});
 
 	// the misdirection did not work
@@ -92,16 +92,16 @@ function build_edit_page() {
 	// 		if(align_idx+1 < 3) {
 	// 			align_range.push(alignments[align_idx + 1] + " " + chardata.goodness);
 	// 		}
-	// 		if(align_idx-1 > -1) { 
+	// 		if(align_idx-1 > -1) {
 	// 			align_range.push(alignments[align_idx - 1] + " " + chardata.goodness);
 	// 		}
 	// 		if(good_idx+1 < 3) {
 	// 			align_range.push(chardata.alignment + " " + goodness[good_idx + 1]);
 	// 		}
 	// 		if(good_idx-1 > -1) {
-	// 			align_range.push(chardata.alignment + " " + goodness[good_idx - 1]);				
+	// 			align_range.push(chardata.alignment + " " + goodness[good_idx - 1]);
 	// 		}
-			
+
 	// 		for(var foo in align_range) {
 	// 				console.log(align_range[foo]);
 	// 		}
@@ -170,9 +170,9 @@ function populate_edit_page() {
 	$("input[id='hp']").val(chardata.hp || '');
 	$('#xp').val(chardata.xp || '');
 
-	
+
 	$('#weapon_style').selectOptions(chardata.weapon_style || 'two_weapon_combat');
-	
+
 	var alignment_name = chardata.alignment || $('#alignment').val().split(' ')[0];
 	var goodness_name = chardata.goodness || $('#alignment').val().split(' ')[1];
 	$("#alignment option[id='alignment_option_" + alignment_name + "_" + goodness_name + "']").attr("selected", true);
@@ -182,7 +182,7 @@ function populate_edit_page() {
 
 	var domain_name = chardata.domain_name || $('#domain').val();
 	$("#domain option[id='domain_option_" + domain_name + "']").attr("selected", true);
-	
+
 	if(chardata.abilities) {
 		$("#ability_Str").val(chardata.abilities['Str']);
 		$("#ability_Dex").val(chardata.abilities['Dex']);
@@ -197,7 +197,7 @@ function populate_edit_page() {
 //	for ( var i = 0; i < languages.length; i++) {
 //		var is_race_language = (race.languages != null && (race.languages.indexOf(languages[i]) > -1));
 //		var is_class_language = (clazz.languages != null && (clazz.languages.indexOf(languages[i]) > -1));
-//		var checked = (chardata.languages != null && (chardata.languages.indexOf(languages[i]) > -1)) || is_race_language || is_class_language;rdata.xp 
+//		var checked = (chardata.languages != null && (chardata.languages.indexOf(languages[i]) > -1)) || is_race_language || is_class_language;rdata.xp
 //		$('#language_' + i + '_check').attr('checked', checked);
 //		if (is_class_language || is_race_language) {
 //			$('#language_' + i + '_check').attr('disabled', 'disabled');
@@ -265,7 +265,7 @@ function recalc_edit_page() {
 	var race = races.first( {
 		name : chardata.race_name
 	});
-	
+
 	// abilities
 	for (var ability in abilities) {
 		chardata.abilities[ability] = $("#ability_" + ability).val();
@@ -273,12 +273,12 @@ function recalc_edit_page() {
 			$("#race_" + ability + "_mod").val(pos(race.abilities[ability]));
 		}
 	}
-	
+
 //	var ability_mods = {};
 //	for (ability in abilities) {
 //		ability_mods[ability] = calc_ability_modifier(parseInt($("#ability_" + ability).val()));
 //	}
-	
+
 	var langs = languages.get();
 	var char_langs = chardata.languages || [];
 	var class_langs = [];
@@ -291,7 +291,7 @@ function recalc_edit_page() {
 		var is_class_language = class_langs.indexOf(langs[i].name) > -1;
 		var checked = char_langs.indexOf(langs[i].name) > -1 || is_race_language || is_class_language;
 		$('#language_' + langs[i]._id + '_check').attr('checked', checked);
-		
+
 		// TODO - clean up logic
 		$("[id^='language_" + langs[i]._id + "']").toggleClass("disabled class_feat", is_class_language || is_race_language);
 		if (is_class_language || is_race_language) {
@@ -300,10 +300,10 @@ function recalc_edit_page() {
 			if(chardata.languages != null && lang_idx > -1) {
 				// remove previously selected language if it's now free
 				remove(chardata.languages, lang_idx);
-			} 
+			}
 		} else {
 			$('#language_' + langs[i]._id + '_check').removeAttr('disabled');
-		}	
+		}
 	}
 
 	skills.forEach(function(skill, i) {
@@ -333,9 +333,9 @@ function recalc_edit_page() {
 		var skill_ability_score = $("input#ability_" + skill.ability).val();
 		var ability_mod = calc_ability_modifier(parseInt(skill_ability_score));
 		mods += ability_mod != 0 ? " a:" + pos(ability_mod) : "";
-		
+
 		$("#" + skill._id + "_mods").text(mods);
-		
+
 		$("a#skill_" + skill._id).attr("style", (is_class_skill ? 'font-weight: bold' : ''));
 		var skill_text = $("input[id='skill_" + skill._id + "_input']");
 		if (skill_text.val() != '' && parseInt(skill_text.val()) > 0) {
@@ -363,17 +363,17 @@ function recalc_edit_page() {
 			}
 		}
 	});
-	
+
 	var skill_pts = calc_skill_points();
 	$('#skill_pts_remaining').html(skill_pts < 0 ? ["<span class='alarm'>", skill_pts, "</span>"].join('') : skill_pts);
 
 	update_race_mods();
-	
+
 	// update available weapons (for class change)
 	build_data_part( "weapons", "weapon");
 	build_data_part( "armors", "armor");
 	build_data_part( "shields", "shield");
-	
+
 	// clear classes section
 	$("#classespart").html("");
 	// build out classes section
@@ -388,7 +388,7 @@ function recalc_edit_page() {
 					for(var feature in clazz.custom.edit[level]) {
 						feature_count++;
 						$("fieldset[id='" + classname + "']").append(clazz.custom.edit[level][feature].ui);
-						eval(clazz.custom.edit[level][feature].script);
+						clazz.custom.edit[level][feature].script();
 					}
 				} else {
 					break;

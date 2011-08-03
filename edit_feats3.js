@@ -5,7 +5,7 @@ function build_feats_page() {
 	char_classes = []
 	for (var classname in chardata.classes) {
 		char_classes.push(classname);
-	}	
+	}
 	// // console.group("build_feats_page");
 	var is_spellcaster = false;
 	for (var classname in chardata.classes) {
@@ -16,7 +16,7 @@ function build_feats_page() {
 			break;
 		}
 	}
-	
+
 	set_links_part(2);
 	if (chardata.feats == null) {
 		chardata.feats = new TAFFY( []);
@@ -59,7 +59,7 @@ function build_feats_page() {
 					break;
 				}
 			}
-		} 
+		}
 	}
 
 	allfeats.forEach( function(feat, n) {
@@ -91,7 +91,7 @@ function create_feat_listing(feat, indent) {
 	if ($('#' + feat._id).length == 0) {
 		if (feat.prereqs && feat.prereqs.feats) {
 			var prereq = feats.first( {
-				name : feat.prereqs.feats[0]	
+				name : feat.prereqs.feats[0]
 			});
 			var multi = prereq.multi ? "_sub_" : "";
 			$('#' + prereq._id + multi).after(html);
@@ -143,15 +143,15 @@ function create_feat_listing(feat, indent) {
 function populate_feats_page() {
 	// // console.group("populate_feats_page");
 	// apply class customizations
-	for (var classname in chardata.classes) {
-		var clazz = classes.first({ name : classname });
-		if (clazz.custom && clazz.custom.feats) {
-			for(var feature in clazz.custom.feats) {
-				eval(clazz.custom.feats[feature]);
-			}
-		}
-	}		
-	
+//	for (var classname in chardata.classes) {
+//		var clazz = classes.first({ name : classname });
+//		if (clazz.custom && clazz.custom.feats) {
+//			for(var feature in clazz.custom.feats) {
+//				clazz.custom.feats[feature]();
+//			}
+//		}
+//	}
+
 	// TODO - before looping set up all class feats
 	allfeats.forEach( function(feat, i) {
 		// // console.log(feat.name);
@@ -208,7 +208,7 @@ function populate_feats_page() {
 	update_feats_remaining();
 
 	calc_prereqs();
-	
+
 	// // console.groupEnd();
 }
 
@@ -237,8 +237,8 @@ function update_feats_remaining() {
 	var count = calc_feats_remaining();
 	$('#feats_remaining').text(count.base_feats_remaining);
 	// if(count.bonus_feats.groups.length == 0 && count.bonus_feats.feats.length == 0) {
-	// } else 
-	$('#bonus_feats_remaining').text(count.bonus_feats.count);	
+	// } else
+	$('#bonus_feats_remaining').text(count.bonus_feats.count);
 	// // console.groupEnd();
 }
 
@@ -259,8 +259,8 @@ function calc_prereqs() {
 			}
 		// // // console.groupEnd();
 			disable_feat(feat, !prereqs_met);
-		} 
-		
+		}
+
 
 		// if(allfeats[i].multi && allfeats[i].multi != "count") {
 		// repopulate_multi(allfeats[i]);
@@ -293,7 +293,7 @@ function is_prereqs_met(feat_id, prereqs) {
             return false;
         }
     }
-    // level 
+    // level
     if (prereqs.level) {
         for (var k in chardata.classes) {
             if (chardata.classes[k].level < prereqs.level) {
@@ -390,7 +390,7 @@ function calc_feats_remaining() {
 		if (clazz.custom && clazz.custom.feats) {
 			for (var level in clazz.custom.feats) {
 				if (calc_current_level() >= level) {
-					eval(clazz.custom.feats[level].script);
+					clazz.custom.feats[level].script(bonus);
 						// $.merge(bonus_feats.groups, bonus.groups);
 					// }
 					// if (bonus.feats) {
@@ -444,7 +444,7 @@ function calc_feats_remaining() {
 		bonus_feats: bonus
 	};
 }
-		
+
 function filter_options(feat, options_db) {
 	// // console.group("filter_options");
 	// // console.log("feat: " + feat.name);
