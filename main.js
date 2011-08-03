@@ -172,7 +172,7 @@ function build_main_page() {
 		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_specials) {
 			for (var script in clazz.custom.main.before_specials) {
-				eval(clazz.custom.main.before_specials[script]);
+				clazz.custom.main.before_specials[script]();
 			}
 		}
 	}

@@ -257,24 +257,47 @@ classes = new TAFFY([{
         });
 
 	},
+	main_favored : function(favored_name, db, short_name, specials_id) {
+		for ( var i in chardata[favored_name]) {
+			var f_e = db.first({
+				name : chardata[favored_name][i].name
+			});
+			$('#specials').append(
+					'<tr id="special_' + favored_name + '_' + f_e._id + '"><td><input id="' + favored_name + '_' + f_e._id
+							+ '" type="checkbox"/></td><td><a class=fake_link onclick="show_item_detail(specials, \'' + specials_id + '\')">' + chardata[favored_name][i].name + ' '
+							+ pos(chardata[favored_name][i].val) + ' (' + short_name + ')</a></td></tr>');
+			$('input[id="' + favored_name + '_' + f_e._id + '"]').bind('click', {
+				mod : chardata[favored_name][i].val
+			}, function(e) {
+				if ($(this).attr('checked')) {
+					for ( var j in chardata.weapons) {
+						update_weapon_attack(j, e.data.mod);
+						update_weapon_damage(j, e.data.mod);
+					}
+					update_skill_ranks([ 'Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival' ]);
+				} else {
+					recalc_main_page();
+				}
+			});
+		}
+	},
     custom: {
 		edit: {
 			0: [{
 					ui: "<table id='favored_enemys' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>",
-					script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 0) }
+					script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 0); }
 				}
     		],
 			1: [{
 				ui: "<table style='width: 100%;'><tr><td>Weapon Style</td><td id='weapon_style'></td></tr></table>",
                 script : function() {
-                					classes.first({ name : "Ranger" }).update_weapon_style();
-	                                var select = create_select('weapon_style_select', [ {
+                					var select = create_select('weapon_style_select', [ {
 	                                    _id : 0,
 	                                    name : 'Two-handed fighting'
 	                                }, {
 	                                    _id : 1,
 	                                    name : 'Archery'
-	                                } ], "update_weapon_style()", false, "style='width: 100%;'", null, (chardata.weapon_style == 'Archery' ? 1 : 0));
+	                                } ], "classes.first({ name : 'Ranger' }).update_weapon_style()", false, "style='width: 100%;'", null, (chardata.weapon_style == 'Archery' ? 1 : 0));
 	                                $('#weapon_style').append('<tr><td>' + select + '</td></tr>');
                                 }
 				}],
@@ -294,60 +317,21 @@ classes = new TAFFY([{
 			12: [{
 				script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_terrain", favored_terrains, 2); }
 				}],
+			14: [{
+				script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 3); }
+				}],
 			17: [{
 				script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_terrain", favored_terrains, 3); }
-				}]
+				}],
+			19: [{
+				script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 4); }
+				}],
+
 			},
 		main: {
 			before_specials: [
-                                				function() {
-		                                for ( var i in chardata.favored_enemies) {
-			                                var f_e = favored_enemies.first({
-				                                name : chardata.favored_enemies[i].name
-			                                });
-			                                $('#specials').append(
-			                                        '<tr id="special_favored_enemy_' + f_e._id + '"><td><input id="favored_enemy_' + f_e._id
-			                                                + '" type="checkbox"/></td><td><a class=fake_link onclick="show_item_detail(specials, \'90c3\')">' + chardata.favored_enemies[i].name + ' '
-			                                                + pos(chardata.favored_enemies[i].val) + ' (Fav. Enemy)</a></td></tr>');
-			                                $('input[id="favored_enemy_' + f_e._id + '"]').bind('click', {
-				                                mod : chardata.favored_enemies[i].val
-			                                }, function(e) {
-				                                if ($(this).attr('checked')) {
-					                                for ( var j in chardata.weapons) {
-						                                update_weapon_attack(j, e.data.mod);
-						                                update_weapon_damage(j, e.data.mod);
-					                                }
-					                                update_skill_ranks([ 'Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival' ]);
-				                                } else {
-					                                recalc_main_page();
-				                                }
-			                                });
-		                                }
-	                                },
-	                                function() {
-		                                for ( var i in chardata.favored_terrains) {
-			                                var f_t = favored_terrains.first({
-				                                name : chardata.favored_terrains[i].name
-			                                });
-			                                $('#specials').append(
-			                                        '<tr id="special_favored_terrain_' + f_t._id + '"><td><input id="favored_terrain_' + f_t._id
-			                                                + '" type="checkbox"/></td><td><a class=fake_link onclick="show_item_detail(specials, \'9dc3\')">' + chardata.favored_terrains[i].name
-			                                                + ' ' + pos(chardata.favored_terrains[i].val) + ' (Fav. Terrain)</a></td></tr>');
-			                                $('input[id="favored_terrain_' + f_t._id + '"]').bind('click', {
-				                                mod : chardata.favored_terrains[i].val
-			                                }, function(e) {
-				                                if ($(this).attr('checked')) {
-					                                for ( var j in chardata.weapons) {
-						                                update_weapon_attack(j, e.data.mod);
-						                                update_weapon_damage(j, e.data.mod);
-					                                }
-					                                update_skill_ranks([ 'Knowledge', 'Perception', 'Stealth', 'Survival' ]);
-				                                } else {
-					                                recalc_main_page();
-				                                }
-			                                });
-		                                }
-	                                }
+			                  	function() { classes.first({ name : "Ranger" }).main_favored("favored_enemy", favored_enemies, "Fav. Enemy", "90c3"); },
+			                  	function() { classes.first({ name : "Ranger" }).main_favored("favored_terrain", favored_terrains, "Fav. Terr.", "9dc3"); }
 			]
 		},
 		feats: {
@@ -445,6 +429,9 @@ classes = new TAFFY([{
 		                            var select = create_select('bloodline_select', sorcerer_bloodlines.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null,
 		                                    (char_bloodline ? char_bloodline._id : ''));
 		                            $('#bloodline').append('<tr><td>' + select + '</td></tr>');
+		                            if(!chardata.bloodline) {
+		                            	update_bloodline();
+		                            }
 	                            }
     			}
     		]
@@ -460,6 +447,9 @@ classes = new TAFFY([{
 			                            var spell = spells.first({
 				                            name : bloodline.spells[level]
 			                            });
+			                            if(!all_spells[spell.classes['Sorcerer']]) {
+			                            	all_spells[spell.classes['Sorcerer']] = [];
+			                            }
 			                            if (chardata.classes['Sorcerer'].level >= level && all_spells[spell.classes['Sorcerer']].indexOf(bloodline.spells[level]) == -1) {
 				                            all_spells[spell.classes['Sorcerer']].push(bloodline.spells[level]);
 			                            }
@@ -499,7 +489,7 @@ classes = new TAFFY([{
 				                            if (level <= chardata.classes['Sorcerer'].level) {
 					                            $("#specials").append(
 					                                    "<tr><td><input id='bloodline_power_" + power._id
-					                                            + "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, " + power._id + ")'>" + power.name
+					                                            + "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + power._id + "\")'>" + power.name
 					                                            + "</a></td></tr>");
 				                            }
 			                            }
