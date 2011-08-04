@@ -15,11 +15,7 @@ classes = new TAFFY([{
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-    custom: {
-    	edit: {
-    		0: [{
-			            script : function() {
-				                    function update_literacy(language_id) {
+    update_literacy : function(language_id) {
 					                    var checked = $('#literacy_' + language_id + '_check').attr('checked');
 					                    var language = languages.first({
 						                    _id : language_id
@@ -32,7 +28,12 @@ classes = new TAFFY([{
 					                    var skill_pts = calc_skill_points() - (count_attrs(chardata.classes['Barbarian'].literacy) * 2);
 					                    $('#skill_pts_remaining').html(skill_pts < 0 ? [ '<span class="alarm">', skill_pts, '</span>' ].join('') : skill_pts);
 					                    save_character();
-				                    }
+				                    },
+    custom: {
+    	edit: {
+    		0: [{
+			            script : function() {
+				                    
 				                    if (chardata.classes['Barbarian'].literacy == null) {
 					                    chardata.classes['Barbarian'].literacy = [];
 				                    }
@@ -55,7 +56,7 @@ classes = new TAFFY([{
 					                    if ($('#literacy_' + lang._id).length == 0) {
 						                    $('tr#language_' + lang._id).append('<td id="literacy_' + lang._id + '"><input id="literacy_' + lang._id + '_check" type="checkbox" /></td>');
 						                    $('#literacy_' + lang._id + '_check').click(function() {
-							                    return update_literacy(lang._id);
+						                    		return classes.first({ name: "Barbarian" }).update_literacy(lang._id);
 						                    });
 						                    if (chardata.classes['Barbarian'].literacy[lang.name]) {
 							                    $('#literacy_' + lang._id + '_check').attr('checked', 'checked');
