@@ -144,15 +144,23 @@ function build_main_page() {
 
 	// TODO - add utility
 	// skills
-	var allskills = skills.get();
-	var rogue_skill_selections = get_rogue_skill_selections();
-	for (skill_idx in allskills) {
-		var skill = allskills[skill_idx];
-		var skill_selection_ind_html = rogue_skill_selections.indexOf(skill._id) > -1 ? "<sup>+</sup>" : "";
-		var skill_html = ["<tr id='skill_", skill._id, "_row'>", "<td><a id='skill_", skill._id, "' class='fake_link'>", allskills[skill_idx].name, skill_selection_ind_html, "</a></td>", "<td id='skill_", skill._id, "_ranks' align='right' valign='top' skill_id='", skill._id, "' nowrap></td></tr>"];
-		$("#skills_table").append(skill_html.join(''));
-		$("a[id='skill_" + skill._id + "']").bind("click", { skill_id: skill._id }, function(e) { return show_skill_detail(e) });
+	if (chardata.skills == null) {
+		chardata.skills = new TAFFY([]);
 	}
+	var rogue_skill_selections = get_rogue_skill_selections();
+	skills.forEach(function(skill, i) {
+		var skill_selection_ind_html = rogue_skill_selections.indexOf(skill._id) > -1 ? "<sup>+</sup>" : "";
+		if(skill.subtypes) {
+			var char_skill = chardata.skills.first({ skill_name: skill.name });
+			if(char_skill) {
+				for(var subtype in char_skill.subtypes) {
+					build_skill_entry(skill, skill_selection_ind_html, subtype);
+				}
+			}
+		} else {
+			build_skill_entry(skill, skill_selection_ind_html);
+		}
+	});
 
 	// AC, etc
 	$("#temp_hp").bind('blur', function() { if(!isNaN($(this).val())) { chardata.temp_hp = $(this).val(); save_character(); } });
@@ -281,7 +289,7 @@ function build_main_page() {
 			name : classname
 		});
 		if (clazz.spells_known && !chardata.classes[classname].spells) {
-			chardata.classes[classname].spells = [];
+			chardata.classes[classname].spells = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 		}
 		var all_spells = $.merge([], (clazz.spells_known ? chardata.classes[classname].spells : clazz.spells));
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
@@ -334,7 +342,7 @@ function build_main_page() {
 						// clerics, druids and related have 0 spells_known
 						// wizards print it if the spell id is in their character
 						// list of spells
-						if(!clazz.spells_known || (chardata.classes[classname].spells && chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1)) {
+						if(!clazz.spells_known || chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1) {
 							var spell = spells.first( {
 								name : clazz_spells[i]
 							});
@@ -377,6 +385,11 @@ function build_main_page() {
 		}
 	}
 	// console.groupEnd();
+}
+function build_skill_entry(skill, skill_selection_ind_html, subtype) {
+	var skill_html = ["<tr id='skill_", skill._id, "_row'" + (subtype ? " subtype='" + subtype + "'" : "") + ">", "<td><a id='skill_", skill._id, "' class='fake_link'>", skill.name, (subtype ? " (" + subtype + ")" : ""), skill_selection_ind_html, "</a></td>", "<td id='skill_", skill._id, "_ranks' align='right' valign='top' skill_id='", skill._id, "'" + (subtype ? " subtype='" + subtype + "'" : "") + " nowrap></td></tr>"];
+	$("#skills_table").append(skill_html.join(''));
+	$("a[id='skill_" + skill._id + "']").bind("click", { skill_id: skill._id }, function(e) { return show_skill_detail(e); });
 }
 
 function adjust_mod(type, magnitude) {
@@ -518,13 +531,19 @@ function recalc_main_page() {
     acp += calc_shield_acp(chardata.shields);
 
 	// skills
-	var allskills = skills.get().sort();
-	for (var skill in allskills) {
-		var skill_ability_score = $('#ability_' + allskills[skill].ability + '_score').val();
-		var skill_mod = calc_skill_mod(allskills[skill], skill_ability_score, acp);
-		$('#skill_' + allskills[skill]._id + '_ranks').text(pos(skill_mod));
-		$('#skill_' + allskills[skill]._id + '_row').toggle(skill_mod != 0);
-	}
+	skills.forEach(function(skill, i) {
+		if(skill.subtypes) {
+			var char_skill = chardata.skills.first({ skill_name: skill.name });
+			if(char_skill) {
+				for(var subtype in char_skill.subtypes) {
+					populate_skill_entry(skill, acp, subtype);
+				}
+			}
+		} else {
+			populate_skill_entry(skill, acp);
+		}
+	});
+
 
 	// update AC
 	$('#ac').text(calc_ac(dex_score));
@@ -557,6 +576,17 @@ function recalc_main_page() {
 		}
 	}
 	// console.groupEnd();
+}
+
+function populate_skill_entry(skill, acp, subtype) {
+	var subtype_selector = "";
+	if(subtype) {
+		subtype_selector = "][subtype='" + subtype + "'";
+	}
+	var skill_ability_score = $('#ability_' + skill.ability + '_score').val();
+	var skill_mod = calc_skill_mod(skill, skill_ability_score, acp, subtype);
+	$("[id='skill_" + skill._id + "_ranks'" + subtype_selector + "]").text(pos(skill_mod));
+	$("[id='skill_" + skill._id + "_row'" + subtype_selector + "]").toggle(skill_mod != 0);
 }
 
 function update_ability(id) {

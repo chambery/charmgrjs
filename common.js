@@ -42,7 +42,7 @@ function calc_total_base_feats_count(race_name, xp) {
 	// TODO - do this elegantly
 	for(var classname in chardata.classes) {
 		for(var i=0; i <= chardata.classes[classname].level; i++) {
-			base_feat_count += base_feats.indexOf(i) > -1 ? 1 : 0; 
+			base_feat_count += base_feats.indexOf(i) > -1 ? 1 : 0;
 		}
 	}
 	return base_feat_count;
@@ -56,10 +56,10 @@ function calc_total_class_feats_count(xp) {
 		}).bonus_feats_levels;
 		// TODO - do this elegantly
 		for(var i=0; i <= chardata.classes[classname].level; i++) {
-			class_feat_count += class_feats.indexOf(i) > -1 ? 1 : 0; 	
+			class_feat_count += class_feats.indexOf(i) > -1 ? 1 : 0;
 		}
 	}
-	
+
 	return class_feat_count;
 }
 
@@ -68,7 +68,7 @@ function calc_armor_acp(char_armors) {
 	for(var i in char_armors) {
 		var armor = armors.first({ name: char_armors[i].armor_name });
 		acp += armor.acp;
-	}	
+	}
 	return acp;
 }
 
@@ -81,7 +81,7 @@ function calc_shield_acp(char_shields) {
 	return acp;
 }
 
-function calc_skill_mod(skill, skill_ability_score, acp){
+function calc_skill_mod(skill, skill_ability_score, acp, subtype){
 	// console.group("calc_skill_mod");
 	// console.log(skill.name);
 	acp = acp | 0;
@@ -93,17 +93,20 @@ function calc_skill_mod(skill, skill_ability_score, acp){
             skill_name: skill.name
         });
     }
-    
+
     if (char_skill) {
         char_skill_points = char_skill.ranks;
+    	if(subtype && char_skill.subtypes) {
+    		char_skill_points = char_skill.subtypes[subtype]
+    	}
     }
-    
+
     var race = races.first({
         name: chardata.race_name
     });
     var feat_mod = 0;
-    
-        
+
+
 		get_all_char_feats().forEach( function(char_feat, i) {
 			var feat = feats.first({ name: char_feat.feat_name });
 			// console.log(feat.name);
@@ -115,21 +118,21 @@ function calc_skill_mod(skill, skill_ability_score, acp){
 				acp = feat.mobility(acp);
 			}
 		});
-	
+
 		// TODO - move to feat definition
 		if(chardata.feats) {
-			var skill_focus = chardata.feats.first({ feat_name: "Skill Focus"}); 
+			var skill_focus = chardata.feats.first({ feat_name: "Skill Focus"});
 			if(skill_focus && skill_focus.multi && jQuery.inArray(skill.name, skill_focus.multi) > -1) {
 				feat_mod += 3;
 			}
 		}
-    
+
     var race_mod = (race.skills[skill.name] != null ? race.skills[skill.name] : 0);
-    
+
     var ranks = calc_ranks(char_skill_points, skill);
-    
+
     var synergy_mod = calc_synergies(skill);
-        
+
     // level + 1 + 3
     var max_ranks = calc_ranks(calc_level() + 4, skill);
     // console.groupEnd();
@@ -166,7 +169,7 @@ function calc_synergies(skill){
             synergy_mod = (calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 ? 2 : 0);
         }
     }
-    
+
     return synergy_mod;
 }
 
@@ -185,7 +188,7 @@ options = new TAFFY([{
 }]);
 players_companion = {};
 abilities = {
-	"Str": { 
+	"Str": {
 		name: "Strength",
 		detail: "Strength measures your character's muscle and physical power. This ability is especially important for Fighters, barbarians, paladins, rangers, and monks because it helps them prevail in combat. Strength also limits the amount of equipment your character can carry.<p class=sub>You apply your character's Strength modifier to:<ul><li>Melee attack rolls.</li><li>Damage rolls when using a melee weapon or a thrown weapon (including a sling). (<i>Exceptions:</i> Off-hand attacks receive only one-half the character's Strength bonus, while two-handed attacks receive one and a half times the Strength bonus. A Strength penalty, but not a bonus, applies to attacks made with a bow that is not a composite bow.)</li><li>Climb, Jump, and Swim checks. These are the skills that have Strength as their key ability.</li><li>Strength checks (for breaking down doors and the like).</li></ul></p><p class=sub>Any creature that can physically manipulate other objects has at least 1 point of Strength. A creature with no Strength score can't exert force, usually because it has no physical body or because it doesn't move. The creature automatically fails Strength checks. If the creature can attack, it applies its Dexterity modifier to its base attack bonus instead of a Strength modifier.</p>"
 	},
@@ -240,7 +243,7 @@ function generate_id(){return Math.floor(Math.random()*4294967295).toString(16);
 function toggle_visible(section, hide) {
 	$("#" + section).toggle(hide);
 	var hidden = $('#' + section).is(":hidden");
-	$("#" + section + '_expand_flag').html(hidden ? "<img src='images/collapsed.png'/>" : "<img src='images/expanded.png'/>");	
+	$("#" + section + '_expand_flag').html(hidden ? "<img src='images/collapsed.png'/>" : "<img src='images/expanded.png'/>");
 }
 
 function calc_ability_modifier(score) {
@@ -283,15 +286,15 @@ function set_links_part(page_id) {
 	for(var i in characters) {
 		if(characters[i].name != null && characters[i].name.length > 0 && characters[i].name != chardata.name) {
 			// TODO - save selected character as last used and reload
-			existing_chars_html += "<li id='" + characters[i].name + "' onclick=\"players_companion.last_character='" + characters[i].name + "'; sav(players_companion, 'players_companion'); window.location.reload();\" >" + characters[i].name + "</li>";			
+			existing_chars_html += "<li id='" + characters[i].name + "' onclick=\"players_companion.last_character='" + characters[i].name + "'; sav(players_companion, 'players_companion'); window.location.reload();\" >" + characters[i].name + "</li>";
 		}
 	}
 	if(existing_chars_html.length > 0) {
 		existing_chars_html = "<li class='sep'><hr /></li>" + existing_chars_html;
 	}
 	//<a id='save' class='btn box' onclick='import_character()'>&nbsp;load&nbsp;</a></td>
-			// 
-	$('#linkspart').html(links_html	+ "<td class='view'>" + 
+			//
+	$('#linkspart').html(links_html	+ "<td class='view'>" +
 			"<td class='view'><ul id='file'><li class='btn box'>&nbsp;char&nbsp;<ul><li id='load'>load</li><li></li><li id='new'>new</li><li></li><li id='log'>log</li><li></li><li id='options'>options</li><li></li><li id='sheet'>sheet</li><li></li>" + existing_chars_html + "</ul></ul></td>" +
 			"<td class='view' style='color: blue;width: 100%;text-align: right;' nowrap>" + race.shortname + "</td>" +
 			classes_html +
@@ -330,7 +333,7 @@ function set_links_part(page_id) {
 //			var class_name = classes.first({ name: characters[i].class_name }).shortname;
 //			nam = race_name + "_" + class_name;
 
-	
+
 //		}
 //		$("#" + nam).bind("click", {nam: nam}, function(e){
 //			return lod("ch_" + nam);
@@ -399,7 +402,7 @@ function pos(number) {
 function calc_level(xp) {
 	if(xp == null) {
 		xp = chardata.xp == null ? 0 : chardata.xp;
-	} 
+	}
 	// calcluates the "functional" level (for array offsets)
 	var level = (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1;
 	return level;
@@ -417,20 +420,20 @@ function calc_init(dex_score) {
 }
 
 function calc_ref(dex_score, class_name, xp, char_feats) {
-	var class_ref_score = calc_save("ref_save");	
-	
+	var class_ref_score = calc_save("ref_save");
+
 	var ref = 0;
 	var char_feats = get_char_feats();
 	char_feats.get({ ref : { "!is": null } }).forEach( function(feat, i) {
 		ref = feat.ref(ref);
 		return ref;
 	});
-	
+
 	return calc_ability_modifier(dex_score) + class_ref_score + ref + calc_equip_mod('Ref');
 }
 
 function calc_will(wis_score, class_name, xp, char_feats) {
-	var class_will_score = calc_save("will_save");	
+	var class_will_score = calc_save("will_save");
 
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
@@ -438,12 +441,12 @@ function calc_will(wis_score, class_name, xp, char_feats) {
 		feat_mod = feat.will(feat_mod);
 		return feat_mod;
 	});
-	
+
 	return calc_ability_modifier(wis_score) + class_will_score + feat_mod + calc_equip_mod('Will');
 }
 
 function calc_fort(con_score) {
-	var class_fort_score = calc_save("fort_save");	
+	var class_fort_score = calc_save("fort_save");
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
 	char_feats.get({ fort : { "!is": null } }).forEach( function(feat, i) {
@@ -483,7 +486,7 @@ function calc_armor_bonus(char_armor, db, dammit) {
 				armordata = db.first( {
 					name : char_armor[i][dammit + "_name"]
 				});
-	
+
 				if(armordata.bon != '-') {
 					armor_bonus += parseInt(armordata.bon);
 				}
@@ -546,7 +549,7 @@ function calc_damage(weapon, ability_score, char_feats, char_weapon) {
 		var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0;
 		damages.push({ die: die, mod: weapon_mod });
 	}
-	
+
 	var char_feats = get_char_feats();
 	char_feats.get({ damage : { "!is": null } }).forEach( function(feat, i) {
 		// console.log("damage: " + feat.name);
@@ -576,7 +579,7 @@ function show_dialog(title, content, save_on_close, close_fn, opts) {
 		$("#mydialog").bind('dialogclose', function() { save_character(); });
 	}
 	if(close_fn) {
-		$("#mydialog").bind('dialogclose', function() { eval(close_fn); });		
+		$("#mydialog").bind('dialogclose', function() { eval(close_fn); });
 	} else {
 		$("#mydialog").unbind('dialogclose');
 	}
@@ -692,7 +695,7 @@ function parse_character_data(data) {
 		if(log_separator > 0) {
 			log_data = data.substring(data.indexOf('``') + 2);
 			data = data.substring(0, data.indexOf('``'));
-		} 
+		}
 		data = TAFFY.JSON.parse(unescape(data)) || {};
 	}
 	data.skills = parse_taffy_data(data.skills);
@@ -705,7 +708,7 @@ function parse_character_data(data) {
 			sav(entry, "log_" + data.name + "_" + entry.id);
 		}
 	}
-	
+
 	return data;
 }
 
@@ -717,7 +720,7 @@ function reconstitute_array(array_obj, attr_name) {
 			array.push(array_obj[i]);
 		}
 	}
-	return array;		
+	return array;
 }
 
 function export_character() {
@@ -748,15 +751,15 @@ function get_all_characters() {
 			}
 		}
 	}
-	
+
 	return characters;
 }
 /*function save(table, obj, key) {
 	var row = table.first({
 		id: key
 	});
-	
-	if(row) {		
+
+	if(row) {
 		table.update(obj, { id: key });
 	} else {
 		table.insert(obj);
@@ -801,7 +804,7 @@ function update_options(message) {
 	if(boolean_options.length > 0) {
 		content += "<table>";
 		for(var option in boolean_options) {
-			content += "<tr><td><input id='option_" + boolean_options[option].name + "' type='checkbox' onclick='" + boolean_options[option].op + "'" + (chardata['options'] != null && chardata['options'][boolean_options[option].name] == true ? ' checked' : '') + " style='vertical-align: top;'/></td><td>" + boolean_options[option].description + "</td></tr>";			
+			content += "<tr><td><input id='option_" + boolean_options[option].name + "' type='checkbox' onclick='" + boolean_options[option].op + "'" + (chardata['options'] != null && chardata['options'][boolean_options[option].name] == true ? ' checked' : '') + " style='vertical-align: top;'/></td><td>" + boolean_options[option].description + "</td></tr>";
 		}
 		content += "</table>";
 	}
@@ -864,7 +867,7 @@ function get_special_abilities() {
 	for(var i in rogue_special_abilities) {
 		if(rogue_special_abilities[i].special_name != "Skill Mastery") {
 			var class_special = specials.first({ name: rogue_special_abilities[i].special_name });
-			special_abilities[rogue_special_abilities[i].special_name] = class_special; 
+			special_abilities[rogue_special_abilities[i].special_name] = class_special;
 		}
 	}
 	return special_abilities;
@@ -885,13 +888,13 @@ function create_selector_grid(items, anchor_table, click_fn, populate_data, cols
 				$(anchor_table).append("<tr id='" + items[i].type + "_" + ((i / cols) | 0) + "'></tr>");
 			}
 			display_name = use_text_link ? "<a class='fake_link' onclick=\"show_item_detail(" + items[i].type + "s, '" + items[i]._id + "')\">" + items[i].name + "</a>" : "<label for='" + items[i]._id + "'>" + items[i].name + "</label>";
-	
+
 			$("tr#" + items[i].type + "_" + ((i / cols) | 0)).append("<td><input id='" + items[i]._id + "' type='checkbox'/>" + display_name + "</td>");
 			if(populate_data.indexOf(items[i].name) > -1) {
 				$("input#" + items[i]._id).attr("checked", "checked");
 			}
-																														
-			
+
+
 			$("input#" + items[i]._id).bind('click', {
 					item: items[i]
 			}, function(e){
@@ -904,8 +907,8 @@ function create_selector_grid(items, anchor_table, click_fn, populate_data, cols
 function create_selector_group(item, title, all_options, option_db, cols, click_fn){
 	var html = "<tr id='" + item._id + "_sub_'><td colspan='" + cols + "'></td><td><table id='" + item._id + "_sub_'></table></td></tr>";
 	$("#" + item._id + "_sub").after(html);
-	
-	// layout options 2-per-row	
+
+	// layout options 2-per-row
 	for (var i = 0; i < all_options.length; i++) {
 		if (i % cols == 0) {
 			$("table[id='" + item._id + "_sub_']").append("<tr id='" + item._id + "_sub_" + ((i / cols) | 0) + "'></tr>");
@@ -913,9 +916,9 @@ function create_selector_group(item, title, all_options, option_db, cols, click_
 		// use the abbreviation if available
 		//		var display_name = all_options[i].abbrev ? all_options[i].abbrev : all_options[i].name;
 		display_name = "<label for='" + item._id + "_" + all_options[i]._id + "'>" + all_options[i].name + "</label>";
-		
+
 		$("tr#" + item._id + "_sub_" + ((i / cols) | 0)).append("<td><input id='" + item._id + "_" + all_options[i]._id + "' type='checkbox'/>" + display_name + "</td>");
-		
+
 		$("input#" + item._id + "_" + all_options[i]._id).bind('click', {
 			item: item,
 			name: all_options[i].name
@@ -938,7 +941,7 @@ function calc_save(type) {
 	for (var classname in chardata.classes) {
 		save += classes.first({ name: classname })[type][chardata.classes[classname].level];
 	}
-	
+
 	return save;
 }
 
@@ -950,7 +953,7 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, str_score, dex_sc
 	if(char_weapon && char_weapon.att) {
 		attack_override = parseInt(char_weapon.att);
 	}
-		
+
 	// TODO - maybe remove weapon proficiency and just modify the BAB
 	var attacks = {
 		base: base_attack_bonuses,
@@ -964,15 +967,15 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, str_score, dex_sc
 			attacks.ability_score = Math.max(str_score, dex_score);
 		} else {
 			attacks.ability_score = dex_score;
-		}                             
+		}
 	} else {
 		attacks.ability_score = str_score;
 	}
 
-	
+
 	attacks.acp = calc_armor_acp(chardata.armors);
 	attacks.acp += calc_shield_acp(chardata.shields);
-	
+
 	var char_feats = get_char_feats();
 	// have feats modify the attacks
 	char_feats.get({ attack : { "!is": null } }).forEach( function(feat, i) {
@@ -1038,5 +1041,5 @@ function create_new_character() {
 	players_companion.last_character = "";
 	chardata.options.owner = players_companion.owner;
 	sav(players_companion, 'players_companion');
-	do_edit();		
+	do_edit();
 }

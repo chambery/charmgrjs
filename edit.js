@@ -133,20 +133,21 @@ function build_edit_page() {
 			skill_html.push(["<tr onclick=\"toggle_visible('" + skill.name + "')\" bgcolor='#E2F0F9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link' id='skill_", skill._id, "'><span id='", skill.name,"_expand_flag' style='float: right'><img src='images/collapsed.png'/></span>", skill.name ,"</a></td></tr><tr id='",skill.name,"'><td colspan=3><table id='",skill.name,"_table' width='100%'style='border-collapse: collapse;'>"].join(''));
 			for(var i in skill.subtypes) {
 				if(!chardata.skills || !chardata.skills.first({ name: skill.name }) || !chardata.skills.first({ name: skill.name }).subtypes[skill.subtypes[i]]) {
-					skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name," (",skill.subtypes[i],")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='",skill.subtypes[i],"' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));					
+					skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name," (",skill.subtypes[i],")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='",skill.subtypes[i],"' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));
 				}
 			}
 			skill_html.push("</table></td></tr>");
+			// show ranked subtypes outside the expandy
 			if(chardata.skills) {
-				var char_skill = chardata.skills.first({ name: skill.name });
+				var char_skill = chardata.skills.first({ skill_name: skill.name });
 				if(char_skill) {
 					for(var subtype in char_skill.subtypes) {
-						skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name," (",skill.subtypes[i],")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='",skill.subtypes[i],"' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));						
-					}			
+						skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name," (",subtype,")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='",subtype,"' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));
+					}
 				}
 			}
 		} else {
-			skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name,"</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));			
+			skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name,"</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(''));
 		}
 	});
 	$('#skills_table').append(skill_html.join(''));
@@ -236,21 +237,19 @@ function populate_edit_page() {
 				skill_name : skill.name
 			});
 			if (char_skill != false) {
-				var input = $("#skill_" + skill._id + "_input");
 				if(char_skill.subtypes) {
 					for(var subtype in char_skill.subtypes) {
-						
+						$("input[id=skill_" + skill._id + "_input][subtype='" + subtype + "']").val(char_skill.subtypes[subtype]);
 					}
 				} else {
-					.val(char_skill.ranks);					
+					$("#skill_" + skill._id + "_input").val(char_skill.ranks);
 				}
 			}
 		});
 	}
 }
 
-function 
-0() {
+function recalc_edit_page() {
 	chardata.name = $('#charname').val();
 	// change your class, lose your feat, spell selections
 	// if (chardata.class_name != $('#clazz').val()) {
@@ -374,10 +373,7 @@ function
 		if (skill_text.val() != '' && parseInt(skill_text.val()) > 0) {
 			// TODO - ugly, need a "save()" function
 			if (chardata.skills == null) {
-				chardata.skills = new TAFFY( [ {
-					skill_name : skill.name,
-					ranks : skill_text.val()
-				} ]);
+				chardata.skills = new TAFFY([]);
 			}
 			var char_skill = chardata.skills.first( {
 				skill_name : skill.name
@@ -386,22 +382,22 @@ function
 				chardata.skills.insert( {
 					skill_name : skill.name
 				});
-			} 
-			if(subtype) {
-				var char_skill = chardata.skills.first( {
-					skill_name : skill.name
-				});
-				if(char_skill.subtypes == null) {
-					char_skill.subtypes = {};
-				}
-				char_skill.subtypes[subtype] = skill_text.val(); 
-			} else {
-				chardata.skills.update( {
-					ranks : skill_text.val()
-				}, {
-					skill_name : skill.name
-				});				
 			}
+			var updata = {};
+			if(subtype) {
+				var subtypes = chardata.skills.first({ name: skill.name }).subtypes;
+				if(!subtypes) {
+					updata.subtypes = {};
+				}
+				updata.subtypes[subtype] = skill_text.val();
+			} else {
+				updata.ranks = skill_text.val();
+			}
+
+			chardata.skills.update( updata,
+			{
+				skill_name : skill.name
+			});
 		}
 	});
 
