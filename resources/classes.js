@@ -31,6 +31,7 @@ classes = new TAFFY([{
 				                    },
     custom: {
     	edit: {
+    		levels: {
     		0: [{
 			            script : function() {
 				                    
@@ -65,6 +66,7 @@ classes = new TAFFY([{
 				                    }
 			                    }
     		}]
+    		}
     	}
     },
     class_features: []
@@ -284,6 +286,7 @@ classes = new TAFFY([{
 	},
     custom: {
 		edit: {
+			levels : {
 			0: [{
 					ui: "<table id='favored_enemys' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>",
 					script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 0); }
@@ -328,7 +331,8 @@ classes = new TAFFY([{
 				script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 4); }
 				}],
 
-			},
+		}
+		},
 		main: {
 			before_specials: [
 			                  	function() { classes.first({ name : "Ranger" }).main_favored("favored_enemy", favored_enemies, "Fav. Enemy", "90c3"); },
@@ -417,7 +421,7 @@ classes = new TAFFY([{
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     custom: {
 		edit: {
-			0: [{
+				0: [{
 					ui: "<table style='width: 100%;'><tr><td>Bloodline: </td><td id='bloodline'></td></tr></table>",
                     script : function() {
 		                            var char_bloodline = sorcerer_bloodlines.first({
@@ -434,9 +438,18 @@ classes = new TAFFY([{
 		                            	update_bloodline();
 		                            }
 	                            }
-    			}
-    		]
+					}
+				]
     	},
+		skills: [
+					function(class_skills) {
+	                    var char_bloodline = sorcerer_bloodlines.first({
+	                        name : chardata.bloodline
+	                    });
+	
+						class_skills.push(char_bloodline.skill);
+					}
+			],
     	main: {
     		before_spells: [
      			function(all_spells) {

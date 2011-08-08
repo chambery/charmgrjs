@@ -97,7 +97,7 @@ function calc_skill_mod(skill, skill_ability_score, acp, subtype){
     if (char_skill) {
         char_skill_points = char_skill.ranks;
     	if(subtype && char_skill.subtypes) {
-    		char_skill_points = char_skill.subtypes[subtype]
+    		char_skill_points = char_skill.subtypes[subtype];
     	}
     }
 
@@ -107,48 +107,55 @@ function calc_skill_mod(skill, skill_ability_score, acp, subtype){
     var feat_mod = 0;
 
 
-		get_all_char_feats().forEach( function(char_feat, i) {
-			var feat = feats.first({ name: char_feat.feat_name });
-			// console.log(feat.name);
-			if(feat.skills && feat.skills[skill.name]) {
-				feat_mod += feat.skills[skill.name];
-			}
-			// iterate over all mobility feats and undo the above negatives
-			if(skill.mobility && feat.mobility) {
-				acp = feat.mobility(acp);
-			}
-		});
-
-		// TODO - move to feat definition
-		if(chardata.feats) {
-			var skill_focus = chardata.feats.first({ feat_name: "Skill Focus"});
-			if(skill_focus && skill_focus.multi && jQuery.inArray(skill.name, skill_focus.multi) > -1) {
-				feat_mod += 3;
-			}
+	get_all_char_feats().forEach( function(char_feat, i) {
+		var feat = feats.first({ name: char_feat.feat_name });
+		// console.log(feat.name);
+		if(feat.skills && feat.skills[skill.name]) {
+			feat_mod += feat.skills[skill.name];
 		}
+		// iterate over all mobility feats and undo the above negatives
+		if(skill.mobility && feat.mobility) {
+			acp = feat.mobility(acp);
+		}
+	});
+
+	// TODO - move to feat definition
+	if(chardata.feats) {
+		var skill_focus = chardata.feats.first({ feat_name: "Skill Focus"});
+		if(skill_focus && skill_focus.multi && jQuery.inArray(skill.name, skill_focus.multi) > -1) {
+			feat_mod += 3;
+		}
+	}
 
     var race_mod = (race.skills[skill.name] != null ? race.skills[skill.name] : 0);
 
-    var ranks = calc_ranks(char_skill_points, skill);
+    var ranks = calc_ranks(char_skill_points, skill, subtype);
 
     var synergy_mod = calc_synergies(skill);
 
     // level + 1 + 3
-    var max_ranks = calc_ranks(calc_level() + 4, skill);
+    var max_ranks = calc_ranks(calc_level() + 4, skill, subtype);
     // console.groupEnd();
     return Math.min(Math.floor(max_ranks), ranks) + calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (skill.mobility ? acp : 0) + calc_equip_mod(skill.name) | 0;
 }
 
-function calc_ranks(char_skill_points, skill){
-	var class_skill = false;
+function is_class_skill(skill, subtype) {
 	for (var classname in chardata.classes) {
-		if (skill.skill_classes.indexOf(classname) > -1) {
-			class_skill = true;
-			break;
+		if(skill.skill_classes) {
+			if(skill.skill_classes.indexOf(classname) > -1) {
+				return true;
+			}
+		} else 	if(skill.subtypes[subtype].indexOf(classname) > -1) {
+					return true;
 		}
 	}
-  var multiplier = class_skill ? 1 : .5;
-  return multiplier * char_skill_points;
+	return false;
+}
+
+function calc_ranks(char_skill_points, skill, subtype){
+	var class_skill = is_class_skill(skill, subtype);
+	var multiplier = class_skill ? 1 : .5;
+	return multiplier * char_skill_points;
 }
 
 function calc_synergies(skill){
