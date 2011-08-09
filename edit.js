@@ -417,8 +417,11 @@ function update_skills(skill, subtype) {
 	if (skill_text.val() != '' && parseInt(skill_text.val()) > 0) {
 		// TODO - ugly, need a "save()" function
 		if (chardata.skills == null) {
-			chardata.skills = new TAFFY();
+			chardata.skills = new TAFFY([{
+				skill_name : skill.name
+			}]);
 		}
+
 		var char_skill = chardata.skills.first( {
 			skill_name : skill.name
 		});

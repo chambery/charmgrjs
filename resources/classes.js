@@ -31,7 +31,6 @@ classes = new TAFFY([{
 				                    },
     custom: {
     	edit: {
-    		levels: {
     		0: [{
 			            script : function() {
 				                    
@@ -66,7 +65,6 @@ classes = new TAFFY([{
 				                    }
 			                    }
     		}]
-    		}
     	}
     },
     class_features: []
@@ -286,7 +284,6 @@ classes = new TAFFY([{
 	},
     custom: {
 		edit: {
-			levels : {
 			0: [{
 					ui: "<table id='favored_enemys' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>",
 					script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 0); }
@@ -331,7 +328,6 @@ classes = new TAFFY([{
 				script : function() { classes.first({ name : "Ranger" }).edit_favored("favored_enemy", favored_enemies, 4); }
 				}],
 
-		}
 		},
 		main: {
 			before_specials: [

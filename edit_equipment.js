@@ -40,7 +40,7 @@ function recalc_equipment_page() {
 	}	
 	
 	for(var i in chardata.equipment) {
-		var html = "<tr><td colspan='5'><table style='width: 100%;border: 1px solid #D0D0D0' rules='cols'><tr><td colspan='2'><span style='float: right;color: #D0D0D0'><a class='fake_link' onclick=\"add_bene(" + i + ")\" onhover=''>edit</a> &nbsp;<a id='delete_equipment_" + chardata.equipment[i].id + "' class='fake_link' onclick=\"delete_bene('" + chardata.equipment[i].id + "')\">delete</a></span>" + chardata.equipment[i].name + "</td></tr>";
+		var html = "<tr><td colspan='5'><table style='width: 100%;border: 1px solid #D0D0D0' rules='cols'><tr><td colspan='2'><span style='float: right;color: #D0D0D0'><a class='fake_link' onclick=\"add_bene('" + i + "')\" onhover=''>edit</a> &nbsp;<a id='delete_equipment_" + chardata.equipment[i].id + "' class='fake_link' onclick=\"delete_bene('" + chardata.equipment[i].id + "')\">delete</a></span>" + chardata.equipment[i].name + "</td></tr>";
 		if((chardata.equipment[i].notes && chardata.equipment[i].notes.length > 0) || (chardata.equipment[i].benefits && chardata.equipment[i].benefits.length > 0)) {
 			var notes = "<tr style='border: 1px solid #D0D0D0'>";
 			notes += "<td valign='top' style='width: 100%;border: 1px solid #D0D0D0; padding-left: 15px;' " + ((chardata.equipment[i].benefits == null || chardata.equipment[i].benefits.length == 0) ? "colspan=2" : "") + ">" + (chardata.equipment[i].notes ? chardata.equipment[i].notes : '') + "</td>";
