@@ -607,7 +607,7 @@ function show_dialog(title, content, save_on_close, close_fn, opts) {
 	return false;
 }
 
-function show_item_detail(table, obj_id) {
+function show_item_detail(table, obj_id, modify_detail) {
 	var obj = null;
 	if(table.hasOwnProperty("find")) {
 		obj = table.first( {
@@ -656,9 +656,14 @@ function show_item_detail(table, obj_id) {
 			content += '<b>' + capitalize(name).replace(/_/g, ' ') + '</b>: ' + value + '<br/>';
 		}
 	});
-	if(obj.detail != null) {
+	
+	var detail = obj.detail;
+	if(modify_detail) {
+		detail = modify_detail(obj);
+	}
+	if(detail) {
 		// TODO - get a better way
-		content += '<br/>' + obj.detail.replace(/%class%/g, "class");
+		content += '<br/>' + detail.replace(/%class%/g, "class");
 	}
 
 	show_dialog(title, content);

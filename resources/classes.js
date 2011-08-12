@@ -33,7 +33,7 @@ classes = new TAFFY([{
     	edit: {
     		0: [{
 			            script : function() {
-				                    
+
 				                    if (chardata.classes['Barbarian'].literacy == null) {
 					                    chardata.classes['Barbarian'].literacy = [];
 				                    }
@@ -415,6 +415,21 @@ classes = new TAFFY([{
     spells: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     feats: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
     specials: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    modify_bloodline_power_detail : function(power) {
+    									var detail = power.detail;
+			                            var special_level = null;
+			                            for ( var level in power.levels) {
+				                            if (level <= chardata.classes['Sorcerer'].level) {
+				                            	special_level = level;
+				                            }
+			                            }
+			                            if(special_level) {
+			                            	for(var j in power.levels[special_level].vals) {
+			                            		detail = detail.replace("_$" + j, power.levels[special_level].vals[j]);
+			                            	}			                            	
+			                            }
+			                            return detail;
+    },
     custom: {
 		edit: {
 				0: [{
@@ -442,7 +457,7 @@ classes = new TAFFY([{
 	                    var char_bloodline = sorcerer_bloodlines.first({
 	                        name : chardata.bloodline
 	                    });
-	
+
 						class_skills.push(char_bloodline.skill);
 					}
 			],
@@ -495,13 +510,16 @@ classes = new TAFFY([{
 			                            var power = bloodline_powers.first({
 				                            name : bloodline.powers[i]
 			                            });
+			                            var special = null;
 			                            for ( var level in power.levels) {
 				                            if (level <= chardata.classes['Sorcerer'].level) {
-					                            $("#specials").append(
-					                                    "<tr><td><input id='bloodline_power_" + power._id
-					                                            + "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + power._id + "\")'>" + power.name
-					                                            + "</a></td></tr>");
+				                            	special = power;
 				                            }
+			                            }
+			                            if(special) {
+			                            	$("#specials").append(("<tr><td><input id='bloodline_power_" + special._id
+			                            		+ "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name
+		                                            + "</a></td></tr>"));
 			                            }
 		                            }
 	                            }
