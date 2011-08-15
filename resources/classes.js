@@ -496,7 +496,7 @@ classes = new TAFFY([{
 				                            $('#spell_' + spell._id).wrap('<i />');
 			                            }
 		                            }
-		                            $('#etc').append('<i>Bloodline &nbsp;</i>');
+		                            $('#etc').append("<a class=fake_link onclick='show_dialog(\"Bloodline Arcana\", sorcerer_bloodlines.first({ name: chardata.bloodline }).arcana)'><i>" + chardata.bloodline + " &nbsp;</i>");
 	                            }
                             }
     		],
@@ -518,8 +518,8 @@ classes = new TAFFY([{
 			                            }
 			                            if(special) {
 			                            	$("#specials").append(("<tr><td><input id='bloodline_power_" + special._id
-			                            		+ "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name
-		                                            + "</a></td></tr>"));
+			                            		+ "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name 
+                                                + "</a></td></tr>"));
 			                            }
 		                            }
 	                            }
