@@ -67,7 +67,7 @@ function build_spells_page() {
 				}
 				if(spellcaster_count > 1) {
 					$("div#spell_selections_" + classname).wrapAll("<fieldset id='spell_selections_" + classname + "' />");
-					$("fieldset#spell_selections_" + classname).prepend("<legend class='fake_link' onclick=\"$('table#spell_selection_" + classname + "').toggle();\">" + classname + "</legend>");
+					$("fieldset#spell_selections_" + classname).prepend("<legend class='fake_link' onclick=\"$('table#spell_selection_" + classname + "').toggle();\">" + classname + (chardata.bloodline ? "&nbsp;&nbsp;&nbsp;<i>" + chardata.bloodline + "</i>" : "") + "</legend>");
 				}
 			}
 		}
