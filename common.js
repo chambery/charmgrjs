@@ -974,7 +974,7 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, str_score, dex_sc
 	};
 
 	// apply strength score to composite weapons if strength > dex
-	if(weapon.usage == 'ranged') {
+	if(weapon && weapon.usage == 'ranged') {
 		if(weapon.name.indexOf('Composite') > -1) {
 			attacks.ability_score = Math.max(str_score, dex_score);
 		} else {
