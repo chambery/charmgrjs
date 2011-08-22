@@ -99,6 +99,19 @@ function recalc_favored_enemy(e) {
 	}
 }
 
+function do_class_functions(location, array) {
+	var array = $.merge([], array);
+	for(var classname in chardata.classes) {
+		var clazz = classes.first({ name: classname });
+		if (clazz.custom && clazz.custom.main && clazz.custom.main[location]) {
+			for (var script in clazz.custom.main[location]) {
+				clazz.custom.main[location][script](array);
+			}
+		}
+	}
+	return array;
+}
+
 function build_main_page() {
 	// console.group("build_main_page");
 	equipment_benefits = {};
@@ -228,14 +241,19 @@ function build_main_page() {
 	$('#specials').hide();
 
 	// weapons
+	if(!chardata.weapons) {
+		chardata.weapons = [];
+	}
+	var char_weapons = do_class_functions("before_weapons_build", chardata.weapons);
 	// base attack information
 	var html = [];
-	for (var j in chardata.weapons) {
+	for (var j in char_weapons) {
 		var weapon_data = weapons.first( {
-			name : chardata.weapons[j]['weapon_name']
+			name : char_weapons[j]['weapon_name']
 		});
 		html.push(["<table width='100%' border='0' margin='0'><tr><td id='weapon_", j, "_name' weapon_id='", weapon_data._id, "' colspan='4' bgcolor='#C5C6F6'></td></tr><tr><td width='22px'>Att</td><td id='weapon_", j, "_att' class='box'></td><td  width='20px'>Crit</td><td id='weapon_", j, "_crit' class='box' width='50px'></td></tr><tr><td width='22px'>Dam</td><td id='weapon_", j, "_dam' class='box'></td><td width='20px'>Bon</td><td id='weapon_", j, "_bon' class='box'></td></tr><tr id='weapon_", j, "_note'><td valign='top'>Note</td><td id='weapon_", j, "_note' colspan='3' width='100%'></td></tr></table>"].join(''));
 	}
+
 	$('#weaponspart').html(html.join(''));
 	$('#weaponspart').css('margin-top', '5px');
 //	$('#weaponspart').addClass('box');
@@ -394,7 +412,7 @@ function build_skill_entry(skill, skill_selection_ind_html, subtype) {
 
 function adjust_mod(type, magnitude) {
 	var curr_val = parseInt($('#' + type + '_mod').text());
-	$('#' + type + '_mod').text(curr_val + magnitude);
+	$('#' + type + '_mod').text(pos(curr_val + magnitude));
 	recalc_main_page();
 }
 
@@ -425,16 +443,17 @@ function populate_main_page() {
 	}
 
 	// weapons
-	for (var j in chardata.weapons) {
+	var char_weapons = do_class_functions("before_weapons_populate", chardata.weapons);
+	for (var j in char_weapons) {
 		var weapon_data = weapons.first( {
-			name : chardata.weapons[j].weapon_name
+			name : char_weapons[j].weapon_name
 		});
-		$('#weapon_' + j + '_name').text(chardata.weapons[j].name != null ? chardata.weapons[j].name + (chardata.weapons[j].name.indexOf(weapon_data.name) == -1 ? " (" + weapon_data.name + ")" : "") : weapon_data.name);
-		$('#weapon_' + j + '_crit').text(calc_critical(weapon_data.crit, chardata.weapons[j], chardata.feats));
-		$('#weapon_' + j + '_bon').text(chardata.weapons[j].att != null ? chardata.weapons[j].att : "");
-		$("td[id='weapon_" + j + "_note']").text(chardata.weapons[j].note);
+		$('#weapon_' + j + '_name').text(char_weapons[j].name != null ? char_weapons[j].name + (char_weapons[j].name.indexOf(weapon_data.name) == -1 ? " (" + weapon_data.name + ")" : "") : weapon_data.name);
+		$('#weapon_' + j + '_crit').text(calc_critical(weapon_data.crit, char_weapons[j], chardata.feats));
+		$('#weapon_' + j + '_bon').text(char_weapons[j].att != null ? char_weapons[j].att : "");
+		$("td[id='weapon_" + j + "_note']").text(char_weapons[j].note);
 
-		$("tr[id='weapon_" + j + "_note']").toggle(chardata.weapons[j].note != null && chardata.weapons[j].note.length > 0);
+		$("tr[id='weapon_" + j + "_note']").toggle(char_weapons[j].note != null && char_weapons[j].note.length > 0);
 	}
 
 	// armor
@@ -497,8 +516,10 @@ function recalc_main_page() {
 	update_ability("Wis");
 
 	// weapons
+
 	var base_attack_bonuses = calc_base_attack_bonus();
-	for (var j in chardata.weapons) {
+	var char_weapons = do_class_functions("before_weapons_recalce", chardata.weapons);
+	for (var j in char_weapons) {
 		var weapon = weapons.first( {
 			_id : $('#weapon_' + j + '_name').attr('weapon_id')
 		});

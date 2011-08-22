@@ -497,8 +497,11 @@ classes = new TAFFY([{
 									name: power.levels[level].weapons[i].name
 								})) {
 									weapons.insert(power.levels[level].weapons[i])
+								} else {
+									weapons.update(power.levels[level].weapons[i], { 
+											name: power.levels[level].weapons[i].name 
+										});
 								}
-
 							}
 							power_weapons = [];
 							$.merge(power_weapons, power.levels[level].weapons);
