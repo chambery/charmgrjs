@@ -4,7 +4,7 @@ simple_weapons = [];
 martial_weapons = [];
 exotic_weapons = [];
 // TODO - export
-show_detail_ignore = ["_id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells"];
+show_detail_ignore = ["_id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells","levels"];
 spellcasters = ["Bard","Cleric","Druid","Paladin","Ranger","Sorcerer","Wizard"];
 natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
 spellpickers = ["Bard", "Sorcerer", "Wizard"];
