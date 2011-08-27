@@ -613,129 +613,152 @@ var bloodline_powers = new TAFFY([{
 	_id: "c3265"
 }, {
 	name: "Elemental Blast",
-	detail: "You can unleash a blast of elemental power once per day. This 20-foot-radius burst does 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Creatures that fail their saves gain vulnerability to your energy type until the end of your next turn. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
+	detail: "You can unleash a blast of elemental power _$0 per day. This 20-foot-radius burst does 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Creatures that fail their saves gain vulnerability to your energy type until the end of your next turn. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. This power has a range of 60 feet.",
 	levels: {
-		8: {}
+		8: {
+			vals: ["once"]
+		},
+		16: {
+			vals: ["twice"]
+		},
+		19: {
+			vals: ["three times"]
+		}
 	},
 	_id: "d9319"
 }, {
 	name: "Elemental Movement",
-	detail: "At 15th level, you gain a special movement type or bonus. This ability is based on your chosen element, as indicated on the above chart.",
+	detail: "You gain a special movement type or bonus. This ability is based on your chosen element, as indicated on the above chart.",
 	levels: {
 		14: {}
 	},
 	_id: "f6100"
 }, {
 	name: "Elemental Body",
-	detail: "At 20th level, elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage from your energy type.",
+	detail: "Elemental power surges through your body. You gain immunity to sneak attacks, critical hits, and damage from your energy type.",
 	levels: {
 		19: {}
 	},
 	_id: "8fc32"
 }, {
 	name: "Laughing Touch",
-	detail: "At 1st level, you can cause a creature to burst out laughing for 1 round as a melee touch attack. A laughing creature can only take a move action but can defend itself normally. Once a creature has been affected by laughing touch, it is immune to its effects for 24 hours. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
+	detail: "AYou can cause a creature to burst out laughing for 1 round as a melee touch attack. A laughing creature can only take a move action but can defend itself normally. Once a creature has been affected by laughing touch, it is immune to its effects for 24 hours. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
 	levels: {
 		0: {}
 	},
 	_id: "99564"
 }, {
 	name: "Woodland Stride",
-	detail: "At 3rd level, you can move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at your normal speed and without taking damage or suffering any other impairment. Thorns, briars, and overgrown areas that have been magically manipulated to impede motion, however, still affect you.",
+	detail: "You can move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at your normal speed and without taking damage or suffering any other impairment. Thorns, briars, and overgrown areas that have been magically manipulated to impede motion, however, still affect you.",
 	levels: {
 		2: {}
 	},
 	_id: "6e666"
 }, {
 	name: "Fleeting Glance",
-	detail: "At 9th level, you can turn invisible for a number of rounds per day equal to your sorcerer level. This ability functions as greater invisibility. These rounds need not be consecutive.",
+	detail: "You can turn invisible for a number of rounds per day equal to your sorcerer level. This ability functions as greater invisibility. These rounds need not be consecutive.",
 	levels: {
 		8: {}
 	},
 	_id: "99506"
 }, {
 	name: "Fey Magic",
-	detail: "At 15th level, you may reroll any caster level check made to overcome spell resistance. You must decide to use this ability before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability at will.",
+	detail: "You may reroll any caster level check made to overcome spell resistance. You must decide to use this ability before the results are revealed by the GM. You must take the second result, even if it is worse. You can use this ability at will.",
 	levels: {
 		14: {}
 	},
 	_id: "6a0fc"
 }, {
 	name: "Soul of the Fey",
-	detail: "At 20th level, your soul becomes one with the world of the fey. You gain immunity to poison and DR 10/cold iron. Creatures of the animal type do not attack you unless compelled to do so through magic. Once per day, you can cast shadow walk as a spell-like ability using your sorcerer level as your caster level.",
+	detail: "Your soul becomes one with the world of the fey. You gain immunity to poison and DR 10/cold iron. Creatures of the animal type do not attack you unless compelled to do so through magic. Once per day, you can cast shadow walk as a spell-like ability using your sorcerer level as your caster level.",
 	levels: {
-		19: {}
+		19: {} 
 	},
 	_id: "f8956"
 }, {
 	name: "Corrupting Touch",
-	detail: "At 1st level, you can cause a creature to become shaken (see page 568) as a melee touch attack. This effect persists for a number of rounds equal to 1/2 your sorcerer level (minimum 1). Creatures shaken by this ability radiate an aura of evil, as if they were an evil outsider (see detect evil). Multiple touches do not stack, but they do add to the duration. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
+	detail: "You can cause a creature to become shaken (see page 568) as a melee touch attack. This effect persists for a number of rounds equal to 1/2 your sorcerer level (minimum 1). Creatures shaken by this ability radiate an aura of evil, as if they were an evil outsider (see detect evil). Multiple touches do not stack, but they do add to the duration. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
 	levels: {
 		0: {}
 	},
 	_id: "f3eb8"
 }, {
 	name: "Infernal Resistances",
-	detail: "At 3rd level, you gain resist fire 5 and a +2 bonus on saving throws made against poison. At 9th level, your resistance to fire increases to 10 and your bonus on poison saving throws increases to +4.",
+	detail: "You gain resist fire 5 and a +2 bonus on saving throws made against poison. At 9th level, your resistance to fire increases to 10 and your bonus on poison saving throws increases to +4.",
 	levels: {
 		2: {}
 	},
 	_id: "f1437"
 }, {
 	name: "Hellfire",
-	detail: "At 9th level, you can call down a column of hellfire. This 10-foot-radius burst does 1d6 points of fire damage per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Good creatures that fail their saves are shaken for a number of rounds equal to your sorcerer level. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
+	detail: "_$0 per day, you can call down a column of hellfire. This 10-foot-radius burst does 1d6 points of fire damage per sorcerer level. Those caught in the area of your blast receive a Reflex save for half damage. Good creatures that fail their saves are shaken for a number of rounds equal to your sorcerer level. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
 	levels: {
-		8: {}
+		8: {
+			vals: ["once"]
+		},
+		16: {
+			vals: ["twice"]
+		},
+		19: {
+			vals: ["three times"]
+		},
 	},
 	_id: "79297"
 }, {
 	name: "On Dark Wings",
-	detail: "At 15th level, you can grow fearsome bat wings as a standard action, giving you a fly speed of 60 feet with average maneuverability. The wings can be dismissed as a free action.",
+	detail: "You can grow fearsome bat wings as a standard action, giving you a fly speed of 60 feet with average maneuverability. The wings can be dismissed as a free action.",
 	levels: {
 		14: {}
 	},
 	_id: "f571a"
 }, {
 	name: "Power of the Pit",
-	detail: "At 20th level, your form becomes infused with vil power. You gain immunity to fire and poison. You also gain resistance to acid 10 and cold 10, and the ability to see perfectly in darkness of any kind to a range of 60 feet.",
+	detail: "Your form becomes infused with vile power. You gain immunity to fire and poison. You also gain resistance to acid 10 and cold 10, and the ability to see perfectly in darkness of any kind to a range of 60 feet.",
 	levels: {
 		19: {}
 	},
 	_id: "63b42"
 }, {
 	name: "Grave Touch",
-	detail: " Starting at 1st level, you can make a melee touch attack as a standard action that causes a living creature to become shaken for a number of rounds equal to 1/2 your sorcerer level (minimum 1). If you touch a shaken creature with this ability, it becomes frightened  (see page 567) for 1 round if it has fewer Hit Dice than your sorcerer level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
+	detail: " You can make a melee touch attack as a standard action that causes a living creature to become shaken for a number of rounds equal to 1/2 your sorcerer level (minimum 1). If you touch a shaken creature with this ability, it becomes frightened  (see page 567) for 1 round if it has fewer Hit Dice than your sorcerer level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
 	levels: {
 		0: {}
 	},
 	_id: "24c88"
 }, {
 	name: "Death\'s Gift",
-	detail: " At 3rd level, you gain resist cold 5 and DR 5/&mdash; against nonlethal damage. At 9th level, your resistance to cold increases to 10 and your DR increases to 10/&mdash; against nonlethal damage.",
+	detail: " You gain resist cold 5 and DR 5/&mdash; against nonlethal damage. At 9th level, your resistance to cold increases to 10 and your DR increases to 10/&mdash; against nonlethal damage.",
 	levels: {
 		2: {}
 	},
 	_id: "597c"
 }, {
 	name: "Grasp of the Dead",
-	detail: " At 9th level, you can cause a swarm of skeletal arms to burst from the ground to rip and tear at your foes. The skeletal arms erupt from the ground in a 20-foot-radius burst. Anyone in this area takes 1d6 points of slashing damage per sorcerer level. Those caught in the area receive a Reflex save for half damage. Those who fail the save are unable to move for 1 round. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The skeletal arms disappear after 1 round. The arms must burst up from a solid surface. At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day. This power has a range of 60 feet.",
-	levels: {
-		8: {}
-	},
+	detail: "_$0 you can cause a swarm of skeletal arms to burst from the ground to rip and tear at your foes. The skeletal arms erupt from the ground in a 20-foot-radius burst. Anyone in this area takes 1d6 points of slashing damage per sorcerer level. Those caught in the area receive a Reflex save for half damage. Those who fail the save are unable to move for 1 round. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The skeletal arms disappear after 1 round. The arms must burst up from a solid surface. This power has a range of 60 feet.",
+		levels: {
+			8: {
+				vals: ["once"]
+			},
+			16: {
+				vals: ["twice"]
+			},
+			19: {
+				vals: ["three times"]
+			},
+		},
 	_id: "4b5f4"
 }, {
 	name: "Incorporeal Form",
-	detail: " At 15th level, you can become incorporeal for 1 round per sorcerer level. While in this form, you gain the incorporeal subtype. You only take half damage from corporeal sources as long as they are magic (you take no damage from non-magic weapons and objects). Likewise, your spells deal only half damage to corporeal creatures. Spells and other effects that do not deal damage function normally. You can use this ability once per day.",
+	detail: "You can become incorporeal for 1 round per sorcerer level. While in this form, you gain the incorporeal subtype. You only take half damage from corporeal sources as long as they are magic (you take no damage from non-magic weapons and objects). Likewise, your spells deal only half damage to corporeal creatures. Spells and other effects that do not deal damage function normally. You can use this ability once per day.",
 	levels: {
 		14: {}
 	},
 	_id: "9739f"
 }, {
 	name: "One of Us",
-	detail: " At 20th level, your form begins to rot (the appearance of this decay is up to you) and undead see you as one of them. You gain immunity to cold, nonlethal damage, paralysis, and sleep. You also gain DR 5/&mdash;. Unintelligent undead do not notice you unless you attack them. You receive a +4 morale bonus on saving throws made against spells and spell-like abilities cast by undead.",
+	detail: "Your form begins to rot (the appearance of this decay is up to you) and undead see you as one of them. You gain immunity to cold, nonlethal damage, paralysis, and sleep. You also gain DR 5/&mdash;. Unintelligent undead do not notice you unless you attack them. You receive a +4 morale bonus on saving throws made against spells and spell-like abilities cast by undead.",
 	levels: {
 		19: {}
 	},
 	_id: "8939e"
 }]);
-
