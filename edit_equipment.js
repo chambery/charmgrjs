@@ -75,7 +75,7 @@ function add_bene(index) {
 	var equipment = (index != undefined ? chardata.equipment[index] : false);
 	var dialog_html = "<table><tr><td>Name:</td><td colspan='4'><input id='equipment_id' type='hidden' value='" + (equipment ? equipment.id : '') + "'/><input id='equipment_index' type='hidden' value='" + (index != undefined ? index : '') + "'/>";
 	dialog_html += "<input id='equipment_name' type='text' style='width: 95%' value='" + (equipment ? equipment.name : '') + "'/></td><td style='text-align: right'><a class='box btn' style='width: 30px;' onclick='save_equipment(" + (index != undefined ? true : '') + ")'>save</a></td></tr><tr><td colspan=6><hr width='80%'/></td></tr>";
-	var type = create_select('benefit_type', [{name: 'Skills', id: 'skill_id'},{name: "Abilities", id: 'ability_id'}, {name: 'Other', id: 'other' }], "update_bene_detail($('#benefit_type').val())");
+	var type = create_select('benefit_type', [{name: 'Skills', id: 'skill_id'},{name: "Abilities", id: 'ability_id'}, {name: 'Other', id: 'other' }, {name: "DR", id: "dr"}], "update_bene_detail($('#benefit_type').val())");
 	dialog_html += "<tr><td>Benefit:</td><td colspan='2'>" + type + "</td><td id='benefit_detail' colspan='3'>" + create_select('benefit_detail', skills.get(), '', false, "") + "</td>";
 	dialog_html += "<tr><td valign='bottom' colspan='3'>Notes:</td><td valign='bottom'>Bonus:</td><td><input id='benefit_mod' class='three_digit' type='text'/></td><td style='text-align: right' nowrap><a class='box btn' style='width: 30px; padding: 1px 2px;' onclick=\"add_benefit($('select[id=benefit_detail]').val(), $('select[id=benefit_detail] option:selected').text(), $('#benefit_mod').val() )\">add&darr;</a></td></tr>";
 	dialog_html += "<tr><td colspan='3' valign='top'><textarea id='equipment_notes' style='width: 95%'>" + (equipment ? equipment.notes : '') + "</textarea></td><td colspan='3' valign='top' style='border: 1px solid #D0D0D0;'><div id='equipment_benefits' >" + create_benefits_table(equipment, index) + "</div></td></tr></table>";
@@ -127,6 +127,13 @@ function update_bene_detail(type) {
 		items[3] = { name: 'Attack', id: 'Att' };		
 		items[4] = { name: 'Damage', id: 'Dam'};		
 		items[5] = { name: 'AC', id: 'AC' };		
+	} else if(type == 'DR') {
+		items[0] = { name: 'Base', id: 'base' };
+		items[1] = { name: 'Cold', id: 'cold' };
+		items[2] = { name: 'Fire', id: 'fire' };		
+		items[3] = { name: 'Electricity', id: 'elec' };		
+		items[4] = { name: 'Acid', id: 'acid'};		
+		items[5] = { name: 'Poison', id: 'pois' };				
 	}
 	$('#benefit_detail').html(create_select('benefit_detail', items, '', false, "'style='width: 55px'"));
 }

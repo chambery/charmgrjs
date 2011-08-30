@@ -38,7 +38,7 @@ classes = new TAFFY([{
 						chardata.classes['Barbarian'].literacy = [];
 					}
 					if ($('#literacy_header').length == 0) {
-						$('#language_table').prepend('<tr><td id="literacy_header" colspan=2></td><td>Lit</td>');
+						$('#language_table').prepend('<td id="literacy_header" colspan=2></td><td>Lit</td>');
 					}
 					var langs = [];
 					for (var classname in chardata.classes) {
@@ -602,7 +602,7 @@ classes = new TAFFY([{
 							$('#spell_' + spell._id).wrap('<i />');
 						}
 					}
-					$('#etc').append("<a class=fake_link onclick='show_dialog(\"Bloodline Arcana\", sorcerer_bloodlines.first({ name: chardata.bloodline }).arcana)'><i>" + chardata.bloodline + " &nbsp;</i>");
+					$('#etc').append("<i>" + chardata.bloodline + " &nbsp;</i>");
 				}
 			}
 			],
@@ -624,6 +624,29 @@ classes = new TAFFY([{
 						}
 						if (special) {
 							$("#specials").append("<tr><td><input id='bloodline_power_" + special._id + "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>");
+						}
+					}
+				}
+			}
+			],
+			damage_reduction: [
+				function(dr) {
+				var bloodline = sorcerer_bloodlines.first({
+					name: chardata.bloodline
+				});
+				if (bloodline) {
+					for (var i in bloodline.powers) {
+						var power = bloodline_powers.first({
+							name: bloodline.powers[i]
+						});
+						var dr_fn = null;
+						for(var level in power.levels) {
+							if (level <= chardata.classes['Sorcerer'].level && power.levels[level].dr) {
+								dr_fn = power.levels[level].dr;
+							}				
+						}
+						if(dr_fn) {
+							dr_fn(dr);
 						}
 					}
 				}
