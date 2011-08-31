@@ -62,17 +62,17 @@ sorcerer_bloodlines = new TAFFY([{
 	spells : {
 		2 : "Bless",
 		4 : "Resist Energy",
-		6 : "Magic Circle Against Evil",
+		6 : "Magic Circle against Evil",
 		8 : "Remove Curse",
 		10 : "Flame Strike",
-		12 : "Greater Dispel Magic",
+		12 : "Dispel Magic, Greater",
 		14 : "Banishment",
 		16 : "Sunburst",
 		18 : "Gate",
 	},
 	feats : ["Dodge", " Extend Spell", " Iron Will", " Mobility", " Mounted Combat", " Ride-By Attack", " Skill Focus (Knowledge [religion])", "Weapon Finesse"],
 	arcana : "Whenever you cast a spell of the summoning subschool, the creatures summoned gain DR/evil equal to 1/2 your sorcerer level (minimum 1). This does not stack with any DR the creature might have.Bloodline Powers: Your celestial heritage grants you a great many powers, but they come at a price. The lords of the higher planes are watching you and your actions closely.",
-	powers : ["Heavenly Fire", "Wings of Heaven", "Conviction", "Ascension"],
+	powers : ["Celestial Resistances", "Heavenly Fire", "Wings of Heaven", "Conviction", "Ascension"],
 	_id : "qw61"
 }, {
 	name : "Destined",
@@ -351,11 +351,11 @@ var bloodline_powers = new TAFFY([{
 	levels : {
 		19 : {
 			dr : function(dr) {
-				dr["acid"] += 10;
-				dr["cold"] += 10;
-				dr["fire"] += 10;
-				dr["elec"] = -1;
+				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 10;
+				dr["fire"] = (dr["fire"] ? dr["fire"] : 0) + 10;
+				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 10;
 				dr["pois"] = -1;
+				dr["elec"] = -1;
 			}
 		}
 	},
@@ -370,15 +370,15 @@ var bloodline_powers = new TAFFY([{
 	levels : {
 		2 : {
 			dr : function(dr) {
-				dr["acid"] += 5;
-				dr["cold"] += 5;
+				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 5;	
+				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 5;	
 			},
 			vals : ["5"]
 		},
 		8 : {
 			dr : function(dr) {
-				dr["acid"] += 10;
-				dr["cold"] += 10;
+				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 10;	
+				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 10;	
 			},
 			vals : ["10"]
 		}
@@ -404,10 +404,10 @@ var bloodline_powers = new TAFFY([{
 	levels : {
 		19 : {
 			dr : function(dr) {
-				dr["elec"] += 10;
-				dr["fire"] += 10;
-				dr["acid"] = -1;
+				dr["elec"] = (dr["elec"] ? dr["elec"] : 0) + 10;
+				dr["fire"] = (dr["fire"] ? dr["fire"] : 0) + 10;
 				dr["cold"] = -1;
+				dr["acid"] = -1;
 				dr["petr"] = -1;
 			}
 		}

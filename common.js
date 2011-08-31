@@ -375,7 +375,7 @@ function count_attrs(obj) {
 }
 
 // TODO - this is a mess, as you knew it would be
-function create_select(name, items, onchange_action, include_empty, extra_data, category_filter, selected_value) {
+function create_select(name, items, onchange_action, include_empty, extra_data, category_filter, selected_value, id_as_value) {
 	var html = "<select id='" + name + "' onchange=\"" + onchange_action + "\" " + (extra_data || "") + ">";
 	if (include_empty) {
 		html += "<option id='add_new' value='-1'>Add new " + name.substring(0, name.indexOf('_')) + "</option>";
@@ -383,7 +383,7 @@ function create_select(name, items, onchange_action, include_empty, extra_data, 
 	for (var i in items) {
 		if(category_filter == null || items[i].category == category_filter) {
 			var selected = (selected_value != null && selected_value == items[i]._id ? " selected" : "");
-			html += "<option id='" + name + "_option_" + items[i]._id + "' value='" + items[i].name + "'" + selected + ">" + items[i].name + "</option>";
+			html += "<option id='" + name + "_option_" + items[i]._id + "' value='" + (id_as_value ? items[i].id : items[i].name) + "'" + selected + ">" + items[i].name + "</option>";
 		}
 	}
 	html += "</select>";
@@ -461,6 +461,10 @@ function calc_fort(con_score) {
 		return feat_mod;
 	});
 	return calc_ability_modifier(con_score) + class_fort_score + feat_mod + calc_equip_mod('Fort');
+}
+
+function calc_dr(dr) {
+	return equipment_benefits[dr] ? equipment_benefits[dr] : 0;
 }
 
 function calc_ac(dex_score) {

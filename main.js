@@ -1,5 +1,5 @@
 grapple_size_mod = { "colossal": 16, "gargantuan": 12, "huge": 8, "large": 4, "medium": 0, "small": -4, "tiny": -8, "diminutive": -12, "fine": -16 };
-
+damage_reductions = ["fire", "cold", "acid", "pois", "elec", "base"];
 function load() {
 	session={};
 	// console.group("load");
@@ -488,28 +488,37 @@ function populate_main_page() {
 	}
 	
 	var drs = do_class_functions("damage_reduction", chardata.dr);
+	
 	var dr_count = count_attrs(drs);
-	if(dr_count) {
-		var row_cnt = 0;
-		$("#dr").append("<tr id='dr_0'>");
-		for(var dr in drs) {
-			$("#dr_" +  row_cnt).append("<td>" + dr + "</td><td id='" + dr + "' style='width: 20px;' class='box numeric' nowrap>" + drs[dr] + "</td>");
-			if(row_cnt % 2 == 0) {
+	var row_cnt = 0;
+	var col_cnt = 0;	
+	$("#dr").append("<tr id='dr_0'>");
+	for(var dr in damage_reductions) {
+		console.log(damage_reductions[dr] + ": " + drs[damage_reductions[dr]] + " ____  " + equipment_benefits[damage_reductions[dr]]);
+		if(drs[damage_reductions[dr]] || equipment_benefits[damage_reductions[dr]]) {
+			console.log(row_cnt + ": " + $("#dr"+row_cnt));
+			$("#dr_" +  row_cnt).append("<td style='width: 25%;'>" + capitalize(damage_reductions[dr]) + "</td><td id='" + damage_reductions[dr] + "' style='width: 25%;' class='box numeric' nowrap>" + pos((drs[damage_reductions[dr]] ? drs[damage_reductions[dr]] : 0) + calc_dr(damage_reductions[dr])) + "</td>");
+			if(col_cnt && col_cnt % 1 == 0) {
 				$("#dr").append("</tr>");
 				row_cnt++;
-				if(dr_count / 2 > row_cnt) {
+				// if(dr_count / 2 > row_cnt) {
 					$("#dr").append("<tr id='dr_" + (row_cnt) + "'>");
-				}
+				// }
 			}
+			col_cnt++
 		}
-		if(row_cnt % 2 > 0) {
-			$("#dr_" + (row_cnt-1)).append("<td style='width: 20px'>&nbsp;</td><td style='width: 20px'>&nbsp;</td>");
-		}
-		$("#dr").append("</tr>");		
-	} else {
+	}
+	if(col_cnt % 2 > 0) {
+		$("#dr_" + (row_cnt-1)).append("<td style='width: 25%'>&nbsp;</td><td style='width: 25%'>&nbsp;</td>");
+	}
+	$("#dr").append("</tr>");		
+	
+	if(!row_cnt) {
 		$("#dr").hide();
 	}
-
+	if($("#dr_" + row_cnt + ":empty")) {
+		$("#dr_" + row_cnt).remove();
+	}
 	do_class_functions("save", chardata.save);
 
 	// speed

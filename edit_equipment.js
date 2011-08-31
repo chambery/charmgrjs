@@ -135,5 +135,5 @@ function update_bene_detail(type) {
 		items[4] = { name: 'Acid', id: 'acid'};		
 		items[5] = { name: 'Poison', id: 'pois' };				
 	}
-	$('#benefit_detail').html(create_select('benefit_detail', items, '', false, "'style='width: 55px'"));
+	$('#benefit_detail').html(create_select('benefit_detail', items, '', false, "'style='width: 55px'", null, null, true));
 }
