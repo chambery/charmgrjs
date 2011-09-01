@@ -522,6 +522,27 @@ classes = new TAFFY([{
 			}
 		}
 	},
+	calc_dr_saves: function(save, type) {
+				var bloodline = sorcerer_bloodlines.first({
+					name: chardata.bloodline
+				});
+				if (bloodline) {
+					for (var i in bloodline.powers) {
+						var power = bloodline_powers.first({
+							name: bloodline.powers[i]
+						});
+						var dr_fn = null;
+						for(var level in power.levels) {
+							if (level <= chardata.classes['Sorcerer'].level && power.levels[level][type]) {
+								dr_fn = power.levels[level][type];
+							}				
+						}
+						if(dr_fn) {
+							dr_fn(save);
+						}
+					}
+				}
+			},
 
 	custom: {
 		edit: {
@@ -630,27 +651,10 @@ classes = new TAFFY([{
 			}
 			],
 			damage_reduction: [
-				function(dr) {
-				var bloodline = sorcerer_bloodlines.first({
-					name: chardata.bloodline
-				});
-				if (bloodline) {
-					for (var i in bloodline.powers) {
-						var power = bloodline_powers.first({
-							name: bloodline.powers[i]
-						});
-						var dr_fn = null;
-						for(var level in power.levels) {
-							if (level <= chardata.classes['Sorcerer'].level && power.levels[level].dr) {
-								dr_fn = power.levels[level].dr;
-							}				
-						}
-						if(dr_fn) {
-							dr_fn(dr);
-						}
-					}
-				}
-			}
+				function(dr) { classes.first({ name: "Sorcerer" }).calc_dr_saves(dr, "dr"); }
+			],
+			save: [
+				function(save) { classes.first({ name: "Sorcerer" }).calc_dr_saves(save, "save"); }				
 			]
 		},
 		feats: {

@@ -354,8 +354,8 @@ var bloodline_powers = new TAFFY([{
 				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 10;
 				dr["fire"] = (dr["fire"] ? dr["fire"] : 0) + 10;
 				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 10;
-				dr["pois"] = -1;
-				dr["elec"] = -1;
+				dr["pois"] = "imm";
+				dr["elec"] = "imm";
 			}
 		}
 	},
@@ -406,9 +406,11 @@ var bloodline_powers = new TAFFY([{
 			dr : function(dr) {
 				dr["elec"] = (dr["elec"] ? dr["elec"] : 0) + 10;
 				dr["fire"] = (dr["fire"] ? dr["fire"] : 0) + 10;
-				dr["cold"] = -1;
-				dr["acid"] = -1;
-				dr["petr"] = -1;
+				dr["cold"] = "imm";
+				dr["acid"] = "imm";
+			}, 
+			save : function(save) {
+				save["petr"] = "imm";				
 			}
 		}
 	},
@@ -581,11 +583,13 @@ var bloodline_powers = new TAFFY([{
 	levels : {
 		19 : {
 			dr : function(dr) {
-				dr["paralysis"] = -1;
-				dr["sleep"] = -1;
 				if(draconic_energy_type) {
 					dr[draconic_energy_type] = -1;
 				}
+			}, 
+			save : function(save) {
+				save["para"] = "imm";
+				save["sleep"] = "imm";
 			}
 		}
 	},
