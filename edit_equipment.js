@@ -1,4 +1,8 @@
-function build_equipment_page() {
+function edit_equipment() {
+	
+}
+
+edit_equipment.build_equipment_page = function() {
 	set_links_part( 4);
 	$('#content').html("<div id='equipment' style='border: 1px solid #8DC3E9;'></div>");
 	
@@ -8,11 +12,11 @@ function build_equipment_page() {
     }
 }
 
-function populate_equipment_page() {
+edit_equipment.populate_equipment_page = function() {
 	
 }
 
-function get_benefit_name(id) {
+edit_equipment.get_benefit_name = function(id) {
 	var name = id;
 	// only skills are translated
 	if(id.match('^[0-9]+')) {
@@ -22,7 +26,7 @@ function get_benefit_name(id) {
 	return name;
 }
 
-function create_benefits_table(equipment, index) {
+edit_equipment.create_benefits_table = function(equipment, index) {
 	var html = "<table id='benefits_table_edit' style='width: 100%;'>";
 	for(var j in equipment.benefits) {
 		html += "<tr id='edit_" + equipment.benefits[j].id + "' onclick=\"$('#edit_" + equipment.benefits[j].id + "').remove()\">";
@@ -33,7 +37,7 @@ function create_benefits_table(equipment, index) {
 	return html;
 }
 
-function recalc_equipment_page() {
+edit_equipment.recalc_equipment_page = function() {
 	$('#equipment').html("<table id='equipment_table' width='100%' margin='0'><tbody><tr style='background-color: #8DC3E9'><td colspan='5'><a class='fake_link' onclick='add_bene()' style='float: right'>add</a><b>Equipment</b></td></tr></table>");
 	if(chardata.equipment == undefined) {
 		chardata.equipment = {};
@@ -64,31 +68,31 @@ function recalc_equipment_page() {
 	}
 }
 
-function delete_bene(id) {
+edit_equipment.delete_bene = function(id) {
 	delete chardata.equipment[id];
 	save_character();
 	
 	recalc_equipment_page();
 }
 
-function add_bene(index) {
+edit_equipment.add_bene = function(index) {
 	var equipment = (index != undefined ? chardata.equipment[index] : false);
 	var dialog_html = "<table><tr><td>Name:</td><td colspan='4'><input id='equipment_id' type='hidden' value='" + (equipment ? equipment.id : '') + "'/><input id='equipment_index' type='hidden' value='" + (index != undefined ? index : '') + "'/>";
 	dialog_html += "<input id='equipment_name' type='text' style='width: 95%' value='" + (equipment ? equipment.name : '') + "'/></td><td style='text-align: right'><a class='box btn' style='width: 30px;' onclick='save_equipment(" + (index != undefined ? true : '') + ")'>save</a></td></tr><tr><td colspan=6><hr width='80%'/></td></tr>";
-	var type = create_select('benefit_type', [{name: 'Skills', id: 'skill_id'},{name: "Abilities", id: 'ability_id'}, {name: 'Other', id: 'other' }, {name: "DR", id: "dr"}], "update_bene_detail($('#benefit_type').val())");
+	var type = create_select('benefit_type', [{name: 'Skills', id: 'skill_id'},{name: "Abilities", id: 'ability_id'}, {name: 'Other', id: 'other' }, {name: "DR", id: "dr"}, {name: "Save", id: "save"}], "update_bene_detail($('#benefit_type').val())");
 	dialog_html += "<tr><td>Benefit:</td><td colspan='2'>" + type + "</td><td id='benefit_detail' colspan='3'>" + create_select('benefit_detail', skills.get(), '', false, "") + "</td>";
 	dialog_html += "<tr><td valign='bottom' colspan='3'>Notes:</td><td valign='bottom'>Bonus:</td><td><input id='benefit_mod' class='three_digit' type='text'/></td><td style='text-align: right' nowrap><a class='box btn' style='width: 30px; padding: 1px 2px;' onclick=\"add_benefit($('select[id=benefit_detail]').val(), $('select[id=benefit_detail] option:selected').text(), $('#benefit_mod').val() )\">add&darr;</a></td></tr>";
 	dialog_html += "<tr><td colspan='3' valign='top'><textarea id='equipment_notes' style='width: 95%'>" + (equipment ? equipment.notes : '') + "</textarea></td><td colspan='3' valign='top' style='border: 1px solid #D0D0D0;'><div id='equipment_benefits' >" + create_benefits_table(equipment, index) + "</div></td></tr></table>";
 	show_dialog((index == undefined ? 'Add' : 'Edit') + ' Equipment', dialog_html, true, null);
 }
 
-function add_benefit(id, name, bene) {
+edit_equipment.add_benefit = function(id, name, bene) {
 	if(bene && is_number(bene)) {
 		$('#benefits_table_edit').append("<tr id='" + (id + "_" + bene) + "' onclick=\"$('#" + (id + "_" + bene) + "').remove()\"><td style='width: 100%'><input type='hidden' value='" + id + "' benefit_type='" + id + "' benefit_mod='" + bene + "' />" + name + "</td><td style='text-align: right;'>" + pos(bene) + "</td></tr>");
 	}
 }
 
-function save_equipment(close_after_save) {
+edit_equipment.save_equipment = function(close_after_save) {
 	var benefits = [];
 	$("#equipment_benefits input").each(function() {
 		benefits.push({ id: this.getAttribute('benefit_type'), mod: this.getAttribute('benefit_mod') });
@@ -112,7 +116,7 @@ function save_equipment(close_after_save) {
 	}
 }
 
-function update_bene_detail(type) {
+edit_equipment.update_bene_detail = function(type) {
 	var items = [];
 	if(type=='Skills') {
 		items = skills.get();
@@ -134,6 +138,9 @@ function update_bene_detail(type) {
 		items[3] = { name: 'Electricity', id: 'elec' };		
 		items[4] = { name: 'Acid', id: 'acid'};		
 		items[5] = { name: 'Poison', id: 'pois' };				
+	} else if(type == 'Save') {
+		items[0] = { name: 'Poison', id: 'pois' };
+		items[1] = { name: 'Petrification', id: 'petr' };
 	}
 	$('#benefit_detail').html(create_select('benefit_detail', items, '', false, "'style='width: 55px'", null, null, true));
 }

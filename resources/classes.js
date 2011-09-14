@@ -584,7 +584,7 @@ classes = new TAFFY([{
 					classes.first({ name: "Sorcerer" }).merge_bloodline_weapons(char_weapons);
 				}
 			],
-			before_weapons_recalce: [
+			before_weapons_recalc: [
 				function(char_weapons) {
 					classes.first({ name: "Sorcerer" }).merge_bloodline_weapons(char_weapons);
 				}
@@ -655,6 +655,9 @@ classes = new TAFFY([{
 			],
 			save: [
 				function(save) { classes.first({ name: "Sorcerer" }).calc_dr_saves(save, "save"); }				
+			],
+			Str: [
+				function(mod) { classes.first({ name: "Sorcerer" }).calc_dr_saves(mod, "Str"); }
 			]
 		},
 		feats: {
@@ -683,9 +686,29 @@ classes = new TAFFY([{
 			}
 		},
 		spells: {
-			// before_spells: [
-			// 	"var bloodline = sorcerer_bloodlines.first({ name: chardata.bloodline }); if(bloodline) { for(var level in bloodline.spells) { if(chardata.classes['Sorcerer'].level >= level) { var spell = spells.first({ name: bloodline.spells[level] }); } } }"
-			// ],
+			before_build: [
+				function (spells_known) {
+					var bloodline = sorcerer_bloodlines.first({
+						name: chardata.bloodline
+					});
+					if (bloodline) {
+						for (var i in bloodline.powers) {
+							var power = bloodline_powers.first({
+								name: bloodline.powers[i]
+							});
+							var spells_known_fn = null;
+							for (var level in power.levels) {
+								if (level <= chardata.classes['Sorcerer'].level && power.levels[level].spells_known) {
+									spells_known_fn = power.levels[level].spells_known;
+								}
+							}
+							if(spells_known_fn) {
+								spells_known_fn(spells_known);
+							}
+						}
+					}
+				}
+			],
 			after_spells: [
 				function () {
 				var bloodline = sorcerer_bloodlines.first({

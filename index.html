@@ -63,6 +63,9 @@
 <script type="text/javascript" src="resources/specials.js"></script>
 <script type="text/javascript" src="resources/spells-pf.js"></script>
 <script type="text/javascript" src="resources/weapons.js"></script>
+<script>
+	$(document).ready(main.load);
+</script>
 
 <style type="text/css" media="all">
 @import "charmgr.css";
@@ -76,7 +79,7 @@
 <link rel="SHORTCUT ICON" href="logo.ico"/>
 <title>Pathfinder Player's Companion</title>
 </head>
-<body onload='javascript:load()'>
+<body>
 <div id='root_container' style='width: 320px'>
 <div class='links' id='linkspart' style='font: xx-small;'></div>
 <div id='content'><span id='loading_throbber' style='position: absolute; top: 50%; left: 50%;'><img src='images/ajax-loader.gif' alt='Loading...'/> Loading (this can take some time)....</span></div>

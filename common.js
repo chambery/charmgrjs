@@ -10,6 +10,10 @@ natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
 spellpickers = ["Bard", "Sorcerer", "Wizard"];
 armor_edit_data =  [ "bon", "acp", "note" ];
 shield_edit_data =  [ "bon", "acp", "note" ];
+grapple_size_mod = { "colossal": 16, "gargantuan": 12, "huge": 8, "large": 4, "medium": 0, "small": -4, "tiny": -8, "diminutive": -12, "fine": -16 };
+damage_reductions = ["fire", "cold", "acid", "pois", "elec", "base"];
+save_against = ["pois", "petr"];
+
 curr_xp = 0;
 char_classes = [];
 equipment_benefits = [];
@@ -350,16 +354,17 @@ function set_links_part(page_id) {
 }
 
 function switch_content(view_id, chardata) {
+	// TODO - dependency on main.js
 	if (view_id == 0) {
-		do_main();
+		main.do_main();
 	} else if (view_id == 1) {
-		do_edit();
+		main.do_edit();
 	} else if (view_id == 2) {
-		do_feats();
+		main.do_feats();
 	} else if (view_id == 3) {
-		do_spells();
+		main.do_spells();
 	} else if (view_id == 4) {
-		do_equipment();
+		main.do_equipment();
 	}
 }
 
@@ -1058,4 +1063,58 @@ function create_new_character() {
 	chardata.options.owner = players_companion.owner;
 	sav(players_companion, 'players_companion');
 	do_edit();
+}
+
+function do_class_functions(page, location, obj) {
+  if(obj instanceof Array) {
+    obj = $.merge([], obj);
+  } else {
+    obj = $.extend({}, obj);
+  }
+  for(var classname in chardata.classes) {
+	var clazz = classes.first({ name: classname });
+	if (clazz.custom && clazz.custom[page] && clazz.custom[page][location]) {
+      for (var script in clazz.custom[page][location]) {
+        clazz.custom[page][location][script](obj);
+      }
+    }
+  }
+  
+  return obj;
+}
+
+function get_char_feats() {
+	// get the class feats + char feats
+	var char_feats = new TAFFY([]);
+	if(chardata.feats) {
+		chardata.feats.get().forEach( function(feat, i) {
+			char_feats.insert(feats.first({ name: feat.feat_name }));
+		});
+	}
+	char_feats.insert(get_class_feats());
+
+	return char_feats;
+}
+
+function calc_touch_ac(dex_score, race_name, char_feats) {
+	// TODO - include feats
+	return 10 + calc_ability_modifier(dex_score) + calc_size_mod(race_name);
+}
+
+function calc_flat_footed_ac(char_armor) {
+	// TODO - what else goes here
+	// TODO - make 0 armor bonus constant
+	return 10 + calc_armor_bonus(char_armor, armors, "armor").bonus;
+}
+
+function calc_base_attack_bonus() {
+	var bab = [];
+	for (var classname in chardata.classes) {
+		var class_babs = classes.first({ name: classname }).base_attack_bonus;
+		var attacks = class_babs[chardata.classes[classname].level].split("/");
+		for (var i=0; i<attacks.length; i++) {
+			bab[i] = (bab[i] | 0) + parseInt(attacks[i]);
+		}
+	}
+	return bab;
 }

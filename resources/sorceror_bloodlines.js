@@ -47,8 +47,8 @@ sorcerer_bloodlines = new TAFFY([{
 		8 : "Dimension Door",
 		10 : "Overland Flight",
 		12 : "True Seeing",
-		14 : "Greater Teleport",
-		16 : "Power Word Stun",
+		14 : "Teleport, Greater",
+		16 : "Power Word, Stun",
 		18 : "Wish"
 	},
 	feats : ["Combat Casting", "Improved Counterspell", "Improved Initiative", "Iron Will", "Scribe Scroll", "Skill Focus (Knowledge [arcana])", "Spell Focus", "Still Spell"],
@@ -117,8 +117,8 @@ sorcerer_bloodlines = new TAFFY([{
 	detail : "The power of the elements resides in you, and at times you can hardly control its fury. This influence comes from an elemental outsider in your family history or a time when you or your relatives were exposed to a powerful elemental force.One of the four elements infuses your being, and you can draw upon its power in times of need. At first level, you must select one of the four elements: air, earth, fire, or water. This choice cannot be changed. A number of your abilities grant resistances and deal damage based on your element, as noted below.<table><tr><th>Element </th><th>Energy Type </th><th>Elemental Movement</th></tr><tr><td>Air </td><td>Electricity </td><td>Fly 60 feet (average)</td></tr><tr><td>Earth </td><td>Acid </td><td>Burrow 30 feet</td></tr><tr><td>Fire </td><td>Fire </td><td>+30 feet base speed</td></tr><tr><td>Water </td><td>Cold </td><td>Swim 60 feet</td></tr></table>",
 	skill : "Knowledge (planes)",
 	spells : {
-		2 : "Burning hands*",
-		4 : "Scorching ray*",
+		2 : "Burning Hands",
+		4 : "Scorching Ray",
 		6 : "Protection from Energy",
 		8 : "Elemental Body I",
 		10 : "Elemental Body II",
@@ -319,20 +319,20 @@ var bloodline_powers = new TAFFY([{
 	detail : "You gain a +_$0 inherent bonus to your Strength.",
 	levels : {
 		8 : {
-			str : function(str) {
-				return str + 2;
+			Str : function(mod) {
+				mod["Str"] += 2;
 			},
 			vals : ["2"]
 		},
 		12 : {
-			str : function(str) {
-				return str + 4;
+			Str : function(mod) {
+				mod["Str"] += 4;
 			},
 			vals : ["4"]
 		},
 		16 : {
-			str : function(str) {
-				return str + 6;
+			Str : function(mod) {
+				mod["Str"] += 6;
 			},
 			vals : ["6"]
 		}
@@ -418,43 +418,49 @@ var bloodline_powers = new TAFFY([{
 }, {
 	name : "Arcane Bond",
 	detail : "You gain an arcane bond, as a wizard equal to your sorcerer level. Your sorcerer levels stack with any wizard levels you possess when determining the powers of your familiar or bonded object. This ability does not allow you to have both a familiar and a bonded item. Rules for arcane bonds appear on page 78.",
-	level : {
+	levels : {
 		0 : {}
 	},
 	_id : "bd95a"
 }, {
 	name : "Metamagic Adept",
 	detail : "You can apply any one metamagic feat you know to a spell you are about to cast without increasing the casting time. You must still expend a higher-level spell slot to cast this spell. You can use this ability once per day at 3rd level and one additional time per day for every four sorcerer levels you possess beyond 3rd, up to five times per day at 19th level.",
-	level : {
+	levels : {
 		2 : {}
 	},
 	_id : "5146b"
 }, {
 	name : "New Arcana",
 	detail : "You can add any one spell from the sorcerer/wizard spell list to your list of spells known. This spell must be of a level that you are capable of casting.",
-	level : {
+	levels : {
 		8 : {
-			spells_known : 1
+			spells_known : function(spells_known) {
+				spells_known.push(1);
+			}
 		},
 		12 : {
-			spells_known : 1
+			spells_known : function(spells_known) {
+				spells_known.push(2);
+			}
 		},
 		16 : {
-			spells_known : 1
+			spells_known : function(spells_known) {
+				spells_known.push(3);
+			}
 		}
 	},
 	_id : "a5c4"
 }, {
 	name : "School Power",
 	detail : "Your body surges with arcane power. You can add any metamagic feats that you know to your spells without increasing their casting time, although you must still expend higher-level spell slots. Whenever you use magic items that require charges, you can instead expend spell slots to power the item. For every three levels of spell slots that you expend, you consume one less charge when using a magic item that expends charges. Pick one school of magic. The DC for any spells you cast from that school increases by +2. This bonus stacks with the bonus granted by Spell Focus.",
-	level : {
+	levels : {
 		14 : {}
 	},
 	_id : "961c0"
 }, {
 	name : "Arcane Apotheosis",
 	detail : "Your body surges with arcane power. You can add any metamagic feats that you know to your spells without increasing their casting time, although you must still expend higher-level spell slots. Whenever you use magic items that require charges, you can instead expend spell slots to power the item. For every three levels of spell slots that you expend, you consume one less charge when using a magic item that expends charges.",
-	level : {
+	levels : {
 		19 : {
 			supersedes : "Metamagic Adept"
 		}
