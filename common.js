@@ -523,42 +523,14 @@ function calc_size_mod(race_name) {
 	return (size == "small" ? 1 : 0);
 }
 
-function calc_damage(weapon, ability_score, char_feats, char_weapon) {
+function calc_damage(weapon, char_feats, char_weapon) {
 	// console.group("calc_damage");
-	/*
-	 * When your attack succeeds, you deal damage. The type of weapon used (see
-	 * Table 7-5: Weapons, page 116) determines the amount of damage you deal.
-	 * Effects that modify weapon damage apply to unarmed strikes and the
-	 * natural physical attack forms of creatures. Damage reduces a target's
-	 * current hit points. Minimum Damage: If penalties reduce the damage result
-	 * to less than 1, a hit still deals 1 point of damage. Strength Bonus: When
-	 * you hit with a melee or thrown weapon, including a sling, add your
-	 * Strength modifier to the damage result. A Strength penalty, but not a
-	 * bonus, applies on attacks made with a bow that is not a composite bow.
-	 * Off-Hand Weapon: When you deal damage with a weapon in your off hand, you
-	 * add only 1/2 your Strength bonus. Wielding a Weapon Two-Handed: When you
-	 * deal damage with a weapon that you are wielding two-handed, you add 1-1/2
-	 * times your Strength bonus. However, you don't get this higher Strength
-	 * bonus when using a light weapon with two hands (see Light, One-Handed,
-	 * and Two-Handed Melee Weapons, page 113). Multiplying Damage: Sometimes
-	 * you multiply damage by some factor, such as on a critical hit. Roll the
-	 * damage (with all modifiers) multiple times and total the results. Note:
-	 * When you multiply damage more than once, each multiplier works off the
-	 * original, unmultiplied damage (see Multiplying, page 304). Exception:
-	 * Extra damage dice over and above a weapon's normal damage, such as that
-	 * dealt by a sneak attack or the special ability of a flaming sword, are
-	 * never multiplied. For example, Krusk the half-orc barbarian has a
-	 * Strength bonus of +3. That means he gets a +3 bonus on damage rolls when
-	 * using a longsword, a +4 bonus on damage when using a greataxe (two-
-	 * handed), and a +1 bonus to damage when using a weapon in his off hand.
-	 * His critical multiplier with a greataxe is -3, so if he scores a critical
-	 * hit with that weapon, he would roll 1d12+4 points of damage three times
-	 * (the same as rolling 3d12+12). Ability Damage: Certain creatures and
-	 * magical effects can cause temporary ability damage (a reduction to an
-	 * ability score). The Dungeon Master's Guide has details on ability damage.
-	 */
 	var damages = [];
-	var weapon_damage = (char_weapon != null && char_weapon.dam != null ? char_weapon.dam.toString() : weapon.dam.toString()).split('/');
+	weapon = $.extend({}, weapon, char_weapon);
+	if($.isFunction(weapon.dam)) {
+		weapon.dam = weapon.dam();
+	} 
+	weapon_damage = weapon.dam.split('/');
 	for(var i in weapon_damage) {
 		var dam_components = weapon_damage[i].split(/\+|-/);
 		var die = dam_components[0];
@@ -574,14 +546,20 @@ function calc_damage(weapon, ability_score, char_feats, char_weapon) {
 	});
 
 	var damage = '';
-	var strength_damage = calc_ability_modifier(ability_score);
+	var ability_mod = 0;
+	if(!weapon.ability) {
+		weapon.ability = "Str";
+	} 
+	if(weapon.ability != "none") {
+		ability_mod = calc_ability_modifier(chardata.abilities[weapon.ability]);	
+	}
 	// Strength penalty, but not a bonus, applies on attacks made with a bow that is not a composite bow.
 	if(weapon.name == "Shortbow" || weapon.name == "Longbow") {
-		strength_damage = Math.min(strength_damage, 0);
+		ability_mod = Math.min(ability_mod, 0);
 	}
 	for(var i in damages) {
-		var foo = pos(Math.max(strength_damage + damages[i].mod + parseInt($('#damage_mod').text()) + calc_equip_mod('Dam')), 1);
-		damage += damages[i].die + (foo > 0 ? foo : "");
+		var foo = pos(Math.max(ability_mod + damages[i].mod + parseInt($('#damage_mod').text()) + calc_equip_mod('Dam')), 1);
+		damage += damages[i].die + (foo ? foo : "");
 		damage += (parseInt(i) + 1 < damages.length ? '/' : '');
 	}
 	// console.groupEnd();

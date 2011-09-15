@@ -52,9 +52,9 @@ main.do_spells = function() {
 }
 
 main.do_equipment = function() {
-	build_equipment_page();
-	populate_equipment_page();
-	recalc_equipment_page();
+	edit_equipment.build_equipment_page();
+	edit_equipment.populate_equipment_page();
+	edit_equipment.recalc_equipment_page();
 }
 
 main.get_rogue_skill_selections = function() {
@@ -393,6 +393,7 @@ main.build_main_page = function() {
 	}
 	// console.groupEnd();
 }
+
 main.build_skill_entry = function(skill, skill_selection_ind_html, subtype) {
 	var skill_html = ["<tr id='skill_", skill._id, "_row'" + (subtype ? " subtype='" + subtype + "'" : "") + ">", "<td><a id='skill_", skill._id, "' class='fake_link'>", skill.name, (subtype ? " (" + subtype + ")" : ""), skill_selection_ind_html, "</a></td>", "<td id='skill_", skill._id, "_ranks' align='right' valign='top' skill_id='", skill._id, "'" + (subtype ? " subtype='" + subtype + "'" : "") + " nowrap></td></tr>"];
 	$("#skills_table").append(skill_html.join(''));
@@ -438,11 +439,14 @@ main.populate_main_page = function() {
 			name : char_weapons[j].weapon_name
 		});
 		$('#weapon_' + j + '_name').text(char_weapons[j].name != null ? char_weapons[j].name + (char_weapons[j].name.indexOf(weapon_data.name) == -1 ? " (" + weapon_data.name + ")" : "") : weapon_data.name);
-		$('#weapon_' + j + '_crit').text(calc_critical(weapon_data.crit, char_weapons[j], chardata.feats));
+		$('#weapon_' + j + '_crit').text(main.calc_critical(weapon_data.crit, char_weapons[j], chardata.feats));
 		$('#weapon_' + j + '_bon').text(char_weapons[j].att != null ? char_weapons[j].att : "");
 		$("td[id='weapon_" + j + "_note']").text(char_weapons[j].note);
-
-		$("tr[id='weapon_" + j + "_note']").toggle(char_weapons[j].note != null && char_weapons[j].note.length > 0);
+		var note = char_weapons[j].note;
+		if($.isFunction(note)) {
+			note = note();
+		}
+		$("tr[id='weapon_" + j + "_note']").toggle(note && note.length > 0);
 	}
 
 	// armor
@@ -551,7 +555,6 @@ main.populate_main_page = function() {
 	// $("#speed").text(speed + " ft");
 }
 
-
 main.recalc_main_page = function() {
 	// console.group("recalc_main_page");
 	var str_score = $('#ability_Str_score').val();
@@ -579,7 +582,7 @@ main.recalc_main_page = function() {
 		});
 
 		$('#weapon_' + j + '_att').text(calc_attack(base_attack_bonuses, weapon, chardata.weapons[j], parseInt($('#ability_Str_score').val()), parseInt($('#ability_Dex_score').val()), parseInt($('#attack_mod').text())));
-		$('#weapon_' + j + '_dam').text(calc_damage(weapon, str_score, chardata.feats, chardata.weapons[j]));
+		$('#weapon_' + j + '_dam').text(calc_damage(weapon, chardata.feats, chardata.weapons[j]));
 	}
 
 	// armor

@@ -193,7 +193,16 @@ var bloodline_powers = new TAFFY([{
 	name : "Acidic Ray",
 	detail : "You can fire an acidic ray as a standard action, targeting any foe within 30 feet as a ranged touch attack. The acidic ray deals 1d6 points of acid damage + 1 for every two sorcerer levels you possess. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
 	levels : {
-		0 : {}
+		0 : {
+			weapons : [{
+				_id : "80b72",
+				name : "Acidic Ray",
+				weapon_name : "Acidic Ray",
+				dam : function() { return "1d6" + pos(Math.round((chardata.classes["Sorcerer"].level + 1) / 2)); },
+				note : function() { var times = (3 + (calc_ability_modifier(chardata.abilities["Cha"]))); return times > 0 ? times + " times/day" : null },
+				ability : "none"
+			}]
+		}
 	},
 	_id : "338a"
 }, {
