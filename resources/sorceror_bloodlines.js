@@ -263,7 +263,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : "1d4/1d4",
+				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : "You can grow claws as a free action. "
 			}]
 		},
@@ -272,7 +272,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : "1d4/1d4",
+				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : "Your claws are considered magic weapons for the purpose of overcoming DR."
 			}]
 		},
@@ -282,7 +282,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : "1d6/1d6",
+				dam : function() { var dam = "1d4/1d4"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d6/1d6"; } return dam; },
 				note : "Your claws are considered magic weapons for the purpose of overcoming DR."
 			}]
 		},
@@ -292,8 +292,8 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : "1d6/1d6",
-				note : "Your claws become flaming weapons, each dealing an additional 1d6 points of fire damage on a successful hit. This is a supernatural ability. You can use your claws for a number of rounds per day equal to 3 + your Charisma modifier."
+				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
+				note : function() { return "+1d6 fire " + (3 + calc_ability_modifier(chardata.abilities["Cha"])) + " rounds/day" }
 			}]
 		}
 	},
@@ -545,7 +545,7 @@ var bloodline_powers = new TAFFY([{
 	_id : "bb33d"
 }, {
 	name : "Breath Weapon",
-	detail : "_$0, you can use youar breath weapon for 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The shape of the breath weapon depends on your dragon type (as indicated on the above chart). At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day.",
+	detail : "_$0, you can use your breath weapon for 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The shape of the breath weapon depends on your dragon type (as indicated on the above chart). At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day.",
 	levels : {
 		8 : {
 			vals : ["Once per day"],
@@ -553,11 +553,9 @@ var bloodline_powers = new TAFFY([{
 				_id : "be924",
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
-				dam : "1d6",
-				note : ""
+				dam : function() { return (chardata["Sorcerer"].level + 1) + "d6"; },
+				note : "1 time/day"
 			}]
-			// scripts to modify above weapon for description parameters
-
 		},
 		16 : {
 			vals : ["Twice per day"],
@@ -565,8 +563,8 @@ var bloodline_powers = new TAFFY([{
 				_id : "be924",
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
-				dam : "1d6",
-				note : ""
+				dam : function() { return (chardata["Sorcerer"].level + 1) + "d6"; },
+				note : "2 times/day"
 			}]
 			// scripts to modify above weapon for description parameters
 
@@ -577,8 +575,8 @@ var bloodline_powers = new TAFFY([{
 				_id : "be924",
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
-				dam : "1d6",
-				note : ""
+				dam : function() { return (chardata["Sorcerer"].level + 1) + "d6"; },
+				note : "3 times/day"
 			}]
 			// scripts to modify above weapon for description parameters
 

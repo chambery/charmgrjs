@@ -4,7 +4,7 @@ simple_weapons = [];
 martial_weapons = [];
 exotic_weapons = [];
 // TODO - export
-show_detail_ignore = ["_id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells","levels"];
+show_detail_ignore = ["id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells","levels"];
 spellcasters = ["Bard","Cleric","Druid","Paladin","Ranger","Sorcerer","Wizard"];
 natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
 spellpickers = ["Bard", "Sorcerer", "Wizard"];
@@ -13,6 +13,7 @@ shield_edit_data =  [ "bon", "acp", "note" ];
 grapple_size_mod = { "colossal": 16, "gargantuan": 12, "huge": 8, "large": 4, "medium": 0, "small": -4, "tiny": -8, "diminutive": -12, "fine": -16 };
 damage_reductions = ["fire", "cold", "acid", "pois", "elec", "base"];
 save_against = ["pois", "petr"];
+sizes = [ "fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal" ];
 
 curr_xp = 0;
 char_classes = [];
