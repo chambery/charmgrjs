@@ -14,6 +14,7 @@ grapple_size_mod = { "colossal": 16, "gargantuan": 12, "huge": 8, "large": 4, "m
 damage_reductions = ["fire", "cold", "acid", "pois", "elec", "base"];
 save_against = ["pois", "petr"];
 sizes = [ "fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal" ];
+draconic_types = new TAFFY([{ name: "Black", _id: "xxca1", },{ name: "Blue", _id: "xxca2", },{ name: "Green", _id: "xxca3", },{ name: "Red", _id: "xxca4", },{ name: "White", _id: "xxca5", },{ name: "Brass", _id: "xxca6", },{ name: "Bronze", _id: "xxca7", },{ name: "Copper", _id: "xxca8", },{ name: "Gold", _id: "xxca9", },{ name: "Silver", _id: "xxcaa", }]);
 
 curr_xp = 0;
 char_classes = [];
@@ -679,6 +680,7 @@ function htmlize(text)  {
 	}
 	return replacement_text || "";
 }
+
 function dehtmlize(text)  {
 	if(text) {
 		var replacement_text = text.replace(/<br\/>/g,'\n');
@@ -813,6 +815,7 @@ function update_options(message) {
 	show_dialog(title, content, true);
 	return false;
 }
+
 function is_class_feat(feat_name) {
 	return get_class_feat_names().indexOf(feat_name) > -1;
 }

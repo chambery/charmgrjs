@@ -547,17 +547,27 @@ classes = new TAFFY([{
 	custom: {
 		edit: {
 			0: [{
-				ui: "<table style='width: 100%;'><tr><td>Bloodline: </td><td id='bloodline'></td></tr></table>",
+				ui: "<table style='width: 100%;'><tr><td valign=top>Bloodline: </td><td id='bloodline'></td></tr></table>",
 				script: function () {
 					var char_bloodline = sorcerer_bloodlines.first({
 						name: chardata.bloodline
 					});
+					var char_draconic_type = null
+					if(chardata.draconic_type) {
+						char_draconic_type = draconic_types.first({
+							name: chardata.draconic_type
+						});						
+					}
 					update_bloodline = function () {
 						chardata.bloodline = $('#bloodline_select').val();
+						$('#draconic_type').toggle(chardata.bloodline == "Draconic");						
+						chardata.draconic_type = chardata.bloodline == "Draconic" ? $("#draconic_select").val() : null;  
 						save_character();
 					};
 					var select = create_select('bloodline_select', sorcerer_bloodlines.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_bloodline ? char_bloodline._id : ''));
-					$('#bloodline').append('<tr><td>' + select + '</td></tr>');
+					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));							
+					$('#bloodline').append('<tr><td></td><td>' + select + '</td></tr>');
+					$('#bloodline').append('<tr id="draconic_type"><td>type:</td><td>' + draconic_select + '</td></tr>');
 					if (!chardata.bloodline) {
 						update_bloodline();
 					}
