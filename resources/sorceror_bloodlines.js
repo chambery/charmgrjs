@@ -200,7 +200,7 @@ var bloodline_powers = new TAFFY([{
 				weapon_name : "Acidic Ray",
 				dam : function() { return "1d6" + pos(Math.round((chardata.classes["Sorcerer"].level + 1) / 2)); },
 				note : function() { var times = (3 + (calc_ability_modifier(chardata.abilities["Cha"]))); return times > 0 ? times + " times/day" : null },
-				ability : "none"
+				usage : "ranged"
 			}]
 		}
 	},
@@ -293,7 +293,7 @@ var bloodline_powers = new TAFFY([{
 				name : "Claws",
 				weapon_name : "Claws",
 				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
-				note : function() { return "+1d6 fire " + (3 + calc_ability_modifier(chardata.abilities["Cha"])) + " rounds/day" }
+				note : function() { var rounds = (3 + calc_ability_modifier(chardata.abilities["Cha"])); return rounds > 0 ? "+1d6 fire " + rounds + " rounds/day" : "" }
 			}]
 		}
 	},
@@ -531,7 +531,7 @@ var bloodline_powers = new TAFFY([{
 	_id : "6ae8b"
 }, {
 	name : "Dragon Type",
-	detail : "The power of dragons flows through you and manifests in a number of ways. You must select one of the chromatic or metallic dragon types (see the Pathfinder RPG Bestiary). This choice cannot be changed. A number of your abilities grant resistances and deal damage based on your dragon type, as noted on the following table.<table><tr><th>Dragon Type </th><th>Energy Type </th><th>Breath Shape</th></tr><tr><td>Black </td><td>Acid </td><td>60-foot line</td></tr><tr><td>Blue </td><td>Electricity </td><td>60-foot line</td></tr><td>Green </td><td>Acid </td><td>30-foot cone</td><td>Red </td><td>Fire </td><td>30-foot cone</td><tr><td>White </td><td>Cold </td><td>30-foot cone</td></tr><tr><td>Brass </td><td>Fire </td><td>60-foot line</td></tr><tr><td>Bronze </td><td>Electricity </td><td>60-foot line</td></tr><tr><td>Copper </td><td>Acid </td><td>60-foot line</td></tr><tr><td>Gold </td><td>Fire </td><td>30-foot cone</td></tr><tr><td>Silver </td><td>Cold </td><td>30-foot cone</td></tr></table>",
+	detail : "The power of dragons flows through you and manifests in a number of ways. You must select one of the chromatic or metallic dragon types (see the Pathfinder RPG Bestiary). This choice cannot be changed. A number of your abilities grant resistances and deal damage based on your dragon type, as noted on the following table.<p><table class=pftable><tr class=pftable><th class=pftable>Dragon Type </th><th class=pftable>Energy Type </th><th class=pftable>Breath Shape</th></tr><tr class=pftable><td class=pftable>Black </td><td class=pftable>Acid </td><td class=pftable>60-foot line</td></tr><tr class=pftable><td class=pftable>Blue </td><td class=pftable>Electricity </td><td class=pftable>60-foot line</td></tr><td class=pftable>Green </td><td class=pftable>Acid </td><td class=pftable>30-foot cone</td><tr class=pftable><td class=pftable>Red </td><td class=pftable>Fire </td><td class=pftable>30-foot cone</td></tr><tr class=pftable><td class=pftable>White </td><td class=pftable>Cold </td><td class=pftable>30-foot cone</td></tr><tr class=pftable><td class=pftable>Brass </td><td class=pftable>Fire </td><td class=pftable>60-foot line</td></tr><tr class=pftable><td class=pftable>Bronze </td><td class=pftable>Electricity </td><td class=pftable>60-foot line</td></tr><tr class=pftable><td class=pftable>Copper </td><td class=pftable>Acid </td><td class=pftable>60-foot line</td></tr><tr class=pftable><td class=pftable>Gold </td><td class=pftable>Fire </td><td class=pftable>30-foot cone</td></tr><tr class=pftable><td class=pftable>Silver </td><td class=pftable>Cold </td><td class=pftable>30-foot cone</td></tr></table>",
 	levels : {
 		0 : {}
 	},
@@ -545,7 +545,7 @@ var bloodline_powers = new TAFFY([{
 	_id : "bb33d"
 }, {
 	name : "Breath Weapon",
-	detail : "_$0, you can use your breath weapon for 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The shape of the breath weapon depends on your dragon type (as indicated on the above chart). At 9th level, you can use this ability once per day. At 17th level, you can use this ability twice per day. At 20th level, you can use this ability three times per day.",
+	detail : "_$0, you can use your breath weapon for 1d6 points of damage of your energy type per sorcerer level. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your sorcerer level + your Charisma modifier. The shape of the breath weapon depends on your dragon type (as indicated on the above chart).",
 	levels : {
 		8 : {
 			vals : ["Once per day"],
@@ -553,8 +553,9 @@ var bloodline_powers = new TAFFY([{
 				_id : "be924",
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
-				dam : function() { return (chardata["Sorcerer"].level + 1) + "d6"; },
-				note : "1 time/day"
+				dam : function() { return (chardata.classes["Sorcerer"].level + 1) + "d6"; },
+				note : function() { return (draconic_types.first({ name: chardata.draconic_type }).breath + ", 1 time/day"); },
+				usage: "ranged"
 			}]
 		},
 		16 : {
@@ -563,11 +564,10 @@ var bloodline_powers = new TAFFY([{
 				_id : "be924",
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
-				dam : function() { return (chardata["Sorcerer"].level + 1) + "d6"; },
-				note : "2 times/day"
+				dam : function() { return (chardata.classes["Sorcerer"].level + 1) + "d6"; },
+				note : function() { return (draconic_types.first({ name: chardata.draconic_type }).breath + ", 2 times/day"); },
+				usage: "ranged"
 			}]
-			// scripts to modify above weapon for description parameters
-
 		},
 		19 : {
 			vals : ["Three times per day"],
@@ -575,11 +575,10 @@ var bloodline_powers = new TAFFY([{
 				_id : "be924",
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
-				dam : function() { return (chardata["Sorcerer"].level + 1) + "d6"; },
-				note : "3 times/day"
+				dam : function() { return (chardata.classes["Sorcerer"].level + 1) + "d6"; },
+				note : function() { return (draconic_types.first({ name: chardata.draconic_type }).breath + ", 3 times/day"); },
+				usage: "ranged"
 			}]
-			// scripts to modify above weapon for description parameters
-
 		},
 	},
 	_id : "be924"

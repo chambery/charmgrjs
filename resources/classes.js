@@ -547,7 +547,7 @@ classes = new TAFFY([{
 	custom: {
 		edit: {
 			0: [{
-				ui: "<table style='width: 100%;'><tr><td valign=top>Bloodline: </td><td id='bloodline'></td></tr></table>",
+				ui: "<table style='width: 100%;border-collapse: collapse;'><tr style='background-color: #E2F0F9'><td>Bloodline: </td><td id='bloodline'></td></tr></table>",
 				script: function () {
 					var char_bloodline = sorcerer_bloodlines.first({
 						name: chardata.bloodline
@@ -568,6 +568,7 @@ classes = new TAFFY([{
 					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));							
 					$('#bloodline').append('<tr><td></td><td>' + select + '</td></tr>');
 					$('#bloodline').append('<tr id="draconic_type"><td>type:</td><td>' + draconic_select + '</td></tr>');
+					$('#draconic_type').toggle(chardata.bloodline == "Draconic");						
 					if (!chardata.bloodline) {
 						update_bloodline();
 					}
@@ -605,6 +606,8 @@ classes = new TAFFY([{
 					name: chardata.bloodline
 				});
 				if (bloodline) {
+					// some bloodline spells are not "naturally" available to Sorcerers (eg Spell Resistance)
+					var i = 0;
 					for (var level in bloodline.spells) {
 						var spell = spells.first({
 							name: bloodline.spells[level]
@@ -613,8 +616,9 @@ classes = new TAFFY([{
 							all_spells[spell.classes['Sorcerer']] = [];
 						}
 						if (chardata.classes['Sorcerer'].level >= level && all_spells[spell.classes['Sorcerer']].indexOf(bloodline.spells[level]) == -1) {
-							all_spells[spell.classes['Sorcerer']].push(bloodline.spells[level]);
+							all_spells[i].push(bloodline.spells[level]);
 						}
+						i++;
 					}
 				}
 			}
@@ -654,7 +658,7 @@ classes = new TAFFY([{
 							}
 						}
 						if (special) {
-							$("#specials").append("<tr><td><input id='bloodline_power_" + special._id + "' type='checkbox'/></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>");
+							$("#specials").append("<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>");
 						}
 					}
 				}

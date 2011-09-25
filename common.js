@@ -4,7 +4,7 @@ simple_weapons = [];
 martial_weapons = [];
 exotic_weapons = [];
 // TODO - export
-show_detail_ignore = ["id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells","levels"];
+show_detail_ignore = ["id","_rev","classes","type","prereqs","mobility","conditional","multi","inform","abbrev","skill_classes","attack","damage","spells","levels","tags","id","_id"];
 spellcasters = ["Bard","Cleric","Druid","Paladin","Ranger","Sorcerer","Wizard"];
 natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
 spellpickers = ["Bard", "Sorcerer", "Wizard"];
@@ -14,7 +14,7 @@ grapple_size_mod = { "colossal": 16, "gargantuan": 12, "huge": 8, "large": 4, "m
 damage_reductions = ["fire", "cold", "acid", "pois", "elec", "base"];
 save_against = ["pois", "petr"];
 sizes = [ "fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal" ];
-draconic_types = new TAFFY([{ name: "Black", _id: "xxca1", },{ name: "Blue", _id: "xxca2", },{ name: "Green", _id: "xxca3", },{ name: "Red", _id: "xxca4", },{ name: "White", _id: "xxca5", },{ name: "Brass", _id: "xxca6", },{ name: "Bronze", _id: "xxca7", },{ name: "Copper", _id: "xxca8", },{ name: "Gold", _id: "xxca9", },{ name: "Silver", _id: "xxcaa", }]);
+draconic_types = new TAFFY([{ name: "Black", _id: "xxca1", breath: "Acid - 60ft line" },{ name: "Blue", _id: "xxca2", breath: "Electricity - 60ft line" },{ name: "Green", _id: "xxca3", breath: "Acid - 30ft cone" },{ name: "Red", _id: "xxca4", breath: "Fire - 30ft cone" },{ name: "White", _id: "xxca5", breath: "Cold - 30ft cone" },{ name: "Brass", _id: "xxca6", breath: "Fire - 60ft line" },{ name: "Bronze", _id: "xxca7", breath: "Electricity - 60ft line" },{ name: "Copper", _id: "xxca8", breath: "Acid - 60ft line" },{ name: "Gold", _id: "xxca9", breath: "Fire - 30ft cone" },{ name: "Silver", _id: "xxcaa", breath: "Cold - 30ft cone" }]);
 
 curr_xp = 0;
 char_classes = [];
@@ -626,10 +626,6 @@ function show_item_detail(table, obj_id, modify_detail) {
 					count++;
 				}
 				value = related_feats;
-			} else if (name == "tags") {
-				if (value.length > 0) {
-					value = value.join(", ");
-				}
 			} else if (name == "skills") {
 				var skill_data = "";
 				var i=0;
@@ -950,7 +946,7 @@ function calc_save(type) {
 
 function is_empty(object) { for(var i in object) { return false; } return true; }
 
-function calc_attack(base_attack_bonuses, weapon, char_weapon, str_score, dex_score, other_mod) {
+function calc_attack(base_attack_bonuses, weapon, char_weapon, other_mod) {
 	// console.group("calc_attack");
 	var attack_override = 0;
 	if(char_weapon && char_weapon.att) {
@@ -967,12 +963,12 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, str_score, dex_sc
 	// apply strength score to composite weapons if strength > dex
 	if(weapon && weapon.usage == 'ranged') {
 		if(weapon.name.indexOf('Composite') > -1) {
-			attacks.ability_score = Math.max(str_score, dex_score);
+			attacks.ability_score = Math.max(chardata.abilities["Str_curr"], chardata.abilities["Dex_curr"]);
 		} else {
-			attacks.ability_score = dex_score;
+			attacks.ability_score = chardata.abilities["Dex_curr"];
 		}
 	} else {
-		attacks.ability_score = str_score;
+		attacks.ability_score = chardata.abilities["Str_curr"];
 	}
 
 

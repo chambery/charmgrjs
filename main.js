@@ -73,7 +73,7 @@ main.reset_ability_score = function(e) {
 	$("input[id='ability_" + e.data.ability + "_score']").val($("#ability_score_full" + id).text());
 	chardata.abilities["temp_" + e.data.ability] = parseInt($("#ability_score_full" + id).text());
 	save_character();
-	return recalc_main_page();
+	return main.recalc_main_page();
 }
 
 main.recalc_ability_mod = function(e) {
@@ -81,7 +81,7 @@ main.recalc_ability_mod = function(e) {
 		chardata.abilities["temp_" + e.data.ability] = $(this).val();
 	}
 	save_character();
-	return recalc_main_page();
+	return main.recalc_main_page();
 }
 
 main.show_skill_detail = function(e) {
@@ -130,18 +130,18 @@ main.build_main_page = function() {
 	$('#content').html("<div id='topline'></div> <div id='topleceilft' class='dp66'> <div id='abilitiespart' class='dp40' style='float: left'> <table border=0 id='abilities_table'> <tr> <td id='char_name' colspan='4' style='font-weight: bold; color: blue'></td> </tr> <tr> <td><b>Str</b></td> <td id='ability_score_full_Str' nowrap></td> <td><input ability='Str' id='ability_Str_score' class='two_digit' value='' type='text'></td> <td id='ability_Str_mod' align='right' nowrap></td> </tr> <tr> <td><b>Dex</b></td> <td id='ability_score_full_Dex' nowrap></td> <td><input ability='Dex' id='ability_Dex_score' class='two_digit' value='' type='text'></td> <td id='ability_Dex_mod' align='right' nowrap></td> </tr> <tr> <td><b>Int</b></td> <td id='ability_score_full_Int' nowrap></td> <td><input ability='Int' id='ability_Int_score' class='two_digit' value='' type='text'></td> <td id='ability_Int_mod' align='right' nowrap></td> </tr> <tr> <td><b>Con</b></td> <td id='ability_score_full_Con' nowrap></td> <td><input ability='Con' id='ability_Con_score' class='two_digit' value='' type='text'></td> <td id='ability_Con_mod' align='right' nowrap></td> </tr> <tr> <td><b>Cha</b></td> <td id='ability_score_full_Cha' nowrap></td> <td><input ability='Cha' id='ability_Cha_score' class='two_digit' value='' type='text'></td> <td id='ability_Cha_mod' align='right' nowrap></td> </tr> <tr> <td><b>Wis</b></td> <td id='ability_score_full_Wis' nowrap></td> <td><input ability='Wis' id='ability_Wis_score' class='two_digit' value='' type='text'></td> <td id='ability_Wis_mod' align='right' nowrap></td> </tr><tr><td colspan=3>Speed: <span id='speed'></span></td></tr> </table> </div> <div id='middlepart' class='dp60' style='float: left;'> <table id='middle_table' style='table-layout: fixed; width: 100%'> <tr> <td colspan=4 style='padding: 0px;'> <table border=0 style='padding: 0px; width: 100%;'> <tr> <td align='left'>HP</td> <td id='hp' align='right'></td> <td align='right'><input id='temp_hp' style='width: 2em;text-align: center;' type='text' value='' /></td> <td align='right'>SD <input id='subdual_hp' style='width: 15px; text-align: center' type='text' value='' /></td> </tr> </table> </td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Fort</td> <td id='fort' class='box numeric' style='width: 30px;' nowrap></td> <td>AC</td> <td id='ac' class='box numeric' style='width: 30px;'></td> </tr> <tr> <td>Ref</td> <td id='ref' class='box numeric' nowrap></td> <td>Tch</td> <td id='touch' class='box numeric' nowrap></td> </tr> <tr> <td>Will</td> <td id='will' class='box numeric' nowrap></td> <td>Flat</td> <td id='flat' class='box numeric' nowrap></td> </tr> <tr> <td>SR</td> <td id='spell_resistance' class='box numeric' nowrap></td> <td>Init</td> <td id='init' class='box numeric'></td> </tr><tr><td colspan=4><table id='dr' style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;'></table></td></tr><tr><td colspan=4><table id='saves' style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;'></table></td></tr><tr> <td>CMB</td> <td id='cmb' class='box' colspan=3></td> </tr><tr> <td>CMD</td> <td id='cmd' class='box' colspan=3></td> </tr> <tr> <td>BAB</td> <td id='base_attack_bonus' class='box' colspan=3></td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Att</td> <td id='attack_mod'>0</td> <td><a id='plus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> <tr> <td>Dam</td> <td id='damage_mod'>0</td> <td><a id='plus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> </table> </div> <div id='featspart' class='dp100'> <table style='width: 100%; margin: 0px 0px 5px 0px; border-collapse: collapse;' border='0'> <tbody> <tr onclick=\"toggle_visible('conditional_feats')\"> <td colspan='3' bgcolor='#8DC3E9'><span id='conditional_feats_expand_flag' style='float: right; vertical-align: middle'><img src='images/collapsed.png' /></span><a class='fake_link'>Feats</a></td> </tr> </tbody> <tbody id='conditional_feats'></tbody> </table> </div> <div id='specialpart' class='dp100'> <table id='specials_table' style='width: 100%; border: 0px; margin: 0px 0px 5px 0px; border-collapse: collapse;'> <tr id='specials_heading' style='background-color: #8DC3E9'> <td colspan='2'><span id='specials_expand_flag' style='float: right'><img src='images/collapsed.png' /></span><a class='fake_link'>Special Abilities</a></td> </tr> <tbody id='specials'></tbody> </table> </div> <div id='weaponspart' class='dp100'></div> <div id='armorpart' class='dp100'></div> <div id='shieldspart' class='dp100'></div> <div id='spellspart' class='dp100'></div> </div> <div id='skillspart' class='dp33'> <table border='0' id='skills_table'></table> </div>");
 
 	// ability scores
-	$("#ability_score_full0").bind('click', { ability: "Str", id: 0 }, function(e) { return reset_ability_score(e); });
-	$("input[id='ability_Str_score']").bind('blur', { ability: "Str" }, function(e) { return recalc_ability_mod(e) });
-	$("#ability_score_full1").bind('click', { ability: "Dex", id: 1 }, function(e) { return reset_ability_score(e); });
-	$("input[id='ability_Dex_score']").bind('blur', { ability: "Dex" }, function(e) { return recalc_ability_mod(e) });
-	$("#ability_score_full2").bind('click', { ability: "Int", id: 2 }, function(e) { return reset_ability_score(e); });
-	$("input[id='ability_Int_score']").bind('blur', { ability: "Int" }, function(e) { return recalc_ability_mod(e) });
-	$("#ability_score_full3").bind('click', { ability: "Con", id: 3 }, function(e) { return reset_ability_score(e); });
-	$("input[id='ability_Con_score']").bind('blur', { ability: "Con" }, function(e) { return recalc_ability_mod(e) });
-	$("#ability_score_full4").bind('click', { ability: "Cha", id: 4 }, function(e) { return reset_ability_score(e); });
-	$("input[id='ability_Cha_score']").bind('blur', { ability: "Cha" }, function(e) { return recalc_ability_mod(e) });
-	$("#ability_score_full5").bind('click', { ability: "Wis", id: 5 }, function(e) { return reset_ability_score(e); });
-	$("input[id='ability_Wis_score']").bind('blur', { ability: "Wis" }, function(e) { return recalc_ability_mod(e) });
+	$("#ability_score_full0").bind('click', { ability: "Str", id: 0 }, function(e) { return main.reset_ability_score(e); });
+	$("input[id='ability_Str_score']").bind('blur', { ability: "Str" }, function(e) { return main.recalc_ability_mod(e) });
+	$("#ability_score_full1").bind('click', { ability: "Dex", id: 1 }, function(e) { return main.reset_ability_score(e); });
+	$("input[id='ability_Dex_score']").bind('blur', { ability: "Dex" }, function(e) { return main.recalc_ability_mod(e) });
+	$("#ability_score_full2").bind('click', { ability: "Int", id: 2 }, function(e) { return main.reset_ability_score(e); });
+	$("input[id='ability_Int_score']").bind('blur', { ability: "Int" }, function(e) { return main.recalc_ability_mod(e) });
+	$("#ability_score_full3").bind('click', { ability: "Con", id: 3 }, function(e) { return main.reset_ability_score(e); });
+	$("input[id='ability_Con_score']").bind('blur', { ability: "Con" }, function(e) { return main.recalc_ability_mod(e) });
+	$("#ability_score_full4").bind('click', { ability: "Cha", id: 4 }, function(e) { return main.reset_ability_score(e); });
+	$("input[id='ability_Cha_score']").bind('blur', { ability: "Cha" }, function(e) { return main.recalc_ability_mod(e) });
+	$("#ability_score_full5").bind('click', { ability: "Wis", id: 5 }, function(e) { return main.reset_ability_score(e); });
+	$("input[id='ability_Wis_score']").bind('blur', { ability: "Wis" }, function(e) { return main.recalc_ability_mod(e) });
 
 	// TODO - add utility
 	// skills
@@ -397,7 +397,7 @@ main.build_main_page = function() {
 main.build_skill_entry = function(skill, skill_selection_ind_html, subtype) {
 	var skill_html = ["<tr id='skill_", skill._id, "_row'" + (subtype ? " subtype='" + subtype + "'" : "") + ">", "<td><a id='skill_", skill._id, "' class='fake_link'>", skill.name, (subtype ? " (" + subtype + ")" : ""), skill_selection_ind_html, "</a></td>", "<td id='skill_", skill._id, "_ranks' align='right' valign='top' skill_id='", skill._id, "'" + (subtype ? " subtype='" + subtype + "'" : "") + " nowrap></td></tr>"];
 	$("#skills_table").append(skill_html.join(''));
-	$("a[id='skill_" + skill._id + "']").bind("click", { skill_id: skill._id }, function(e) { return show_skill_detail(e); });
+	$("a[id='skill_" + skill._id + "']").bind("click", { skill_id: skill._id }, function(e) { return main.show_skill_detail(e); });
 }
 
 main.adjust_mod = function(type, magnitude) {
@@ -557,12 +557,12 @@ main.populate_main_page = function() {
 
 main.recalc_main_page = function() {
 	// console.group("recalc_main_page");
-	var str_score = $('#ability_Str_score').val();
-	var dex_score = $('#ability_Dex_score').val();
-	var int_score = $('#ability_Int_score').val();
-	var con_score = $('#ability_Con_score').val();
-	var cha_score = $('#ability_Cha_score').val();
-	var wis_score = $('#ability_Wis_score').val();
+	var str_score = chardata.abilities["Str_curr"] = $('#ability_Str_score').val();
+	var dex_score = chardata.abilities["Dex_curr"] = $('#ability_Dex_score').val();
+	var int_score = chardata.abilities["Int_curr"] = $('#ability_Int_score').val();
+	var con_score = chardata.abilities["Con_curr"] = $('#ability_Con_score').val();
+	var cha_score = chardata.abilities["Cha_curr"] = $('#ability_Cha_score').val();
+	var wis_score = chardata.abilities["Wis_curr"] = $('#ability_Wis_score').val();
 	var level = calc_level();
 	
 	main.update_ability("Str");
@@ -581,7 +581,7 @@ main.recalc_main_page = function() {
 			_id : $('#weapon_' + j + '_name').attr('weapon_id')
 		});
 
-		$('#weapon_' + j + '_att').text(calc_attack(base_attack_bonuses, weapon, chardata.weapons[j], parseInt($('#ability_Str_score').val()), parseInt($('#ability_Dex_score').val()), parseInt($('#attack_mod').text())));
+		$('#weapon_' + j + '_att').text(calc_attack(base_attack_bonuses, weapon, chardata.weapons[j], parseInt($('#attack_mod').text())));
 		$('#weapon_' + j + '_dam').text(calc_damage(weapon, chardata.feats, chardata.weapons[j]));
 	}
 
