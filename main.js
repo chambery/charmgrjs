@@ -634,9 +634,8 @@ main.recalc_main_page = function() {
 	$('#flat').text(calc_flat_footed_ac(chardata.armors));
 	$('#cmb').text(calc_cmb(calc_base_attack_bonus()));
 	$('#cmd').text(calc_cmd(calc_base_attack_bonus()));
-	// damage reduction
-	
-//	$('#spell_resistance').text(calc_spell_resistance());
+//	$("#dr").text();
+-	$('#spell_resistance').text(calc_spell_resistance() + "%");
 
 	// TODO - refactor to consolidate with calc_attack
 	// recompose with modifiers thrown in
@@ -704,10 +703,6 @@ main.calc_turn = function( cha_score) {
 	var cha_score = $('#ability_4_score').val();
 
 	return Math.max(3 + calc_ability_modifier(cha_score) + skill_bonus + feat_mod, 0);
-}
-
-main.calc_spell_resistance = function() {
-	return 0;
 }
 
 main.calc_hp = function(hp, char_feats) {

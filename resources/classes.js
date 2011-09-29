@@ -545,6 +545,13 @@ classes = new TAFFY([{
 			},
 
 	custom: {
+		all: {
+			calc_sr: [
+				function(save) {
+					classes.first({ name: "Sorcerer" }).calc_dr_saves(save, "sr");
+				}
+			]
+		},
 		edit: {
 			0: [{
 				ui: "<table style='width: 100%;border-collapse: collapse;'><tr style='background-color: #E2F0F9'><td>Bloodline: </td><td id='bloodline'></td></tr></table>",
@@ -607,18 +614,19 @@ classes = new TAFFY([{
 				});
 				if (bloodline) {
 					// some bloodline spells are not "naturally" available to Sorcerers (eg Spell Resistance)
-					var i = 0;
-					for (var level in bloodline.spells) {
+					var class_spell_lvl = 0;
+					for (var bloodline_level in bloodline.spells) {
 						var spell = spells.first({
-							name: bloodline.spells[level]
+							name: bloodline.spells[bloodline_level]
 						});
 						if (!all_spells[spell.classes['Sorcerer']]) {
 							all_spells[spell.classes['Sorcerer']] = [];
 						}
-						if (chardata.classes['Sorcerer'].level >= level && all_spells[spell.classes['Sorcerer']].indexOf(bloodline.spells[level]) == -1) {
-							all_spells[i].push(bloodline.spells[level]);
+						if (chardata.classes['Sorcerer'].level >= bloodline_level && 
+								all_spells[class_spell_lvl].indexOf(bloodline.spells[bloodline_level]) == -1) {
+							all_spells[class_spell_lvl].push(bloodline.spells[bloodline_level]);
 						}
-						i++;
+						class_spell_lvl++;
 					}
 				}
 			}
@@ -729,10 +737,10 @@ classes = new TAFFY([{
 					name: chardata.bloodline
 				});
 				if (bloodline) {
-					for (var level in bloodline.spells) {
-						if (chardata.classes['Sorcerer'].level >= level) {
+					for (var bloodline_level in bloodline.spells) {
+						if (chardata.classes['Sorcerer'].level >= bloodline_level) {
 							var spell = spells.first({
-								name: bloodline.spells[level]
+								name: bloodline.spells[bloodline_level]
 							});
 							$('#spell_' + spell._id).wrap('<i />');
 							$('#' + spell._id + '_Sorcerer').attr('disabled', true);

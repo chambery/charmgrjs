@@ -238,7 +238,7 @@ var bloodline_powers = new TAFFY([{
 	levels : {
 		14 : {
 			sr : function(sr) {
-				return ( sr ? sr : 0) + (chardata.classes['Sorcerer'].level + 1) + 10;
+				sr.sr = ( sr.sr | 0) + (chardata.classes['Sorcerer'].level + 1) + 10;
 			}
 		}
 	},

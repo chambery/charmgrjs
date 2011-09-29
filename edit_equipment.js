@@ -88,7 +88,9 @@ edit_equipment.add_bene = function(index) {
 
 edit_equipment.add_benefit = function(id, name, bene) {
 	if(bene && is_number(bene)) {
-		$('#benefits_table_edit').append("<tr id='" + (id + "_" + bene) + "' onclick=\"$('#" + (id + "_" + bene) + "').remove()\"><td style='width: 100%'><input type='hidden' value='" + id + "' benefit_type='" + id + "' benefit_mod='" + bene + "' />" + name + "</td><td style='text-align: right;'>" + pos(bene) + "</td></tr>");
+		// spell resistance has no posification
+		var display = (name == "SR" ? (bene.indexOf("%") > -1 ? bene : bene + "%") : pos(bene));
+		$('#benefits_table_edit').append("<tr id='" + (id + "_" + bene) + "' onclick=\"$('#" + (id + "_" + bene) + "').remove()\"><td style='width: 100%'><input type='hidden' value='" + id + "' benefit_type='" + id + "' benefit_mod='" + bene + "' />" + name + "</td><td style='text-align: right;'>" + display + "</td></tr>");
 	}
 }
 
@@ -131,6 +133,7 @@ edit_equipment.update_bene_detail = function(type) {
 		items[3] = { name: 'Attack', id: 'Att' };		
 		items[4] = { name: 'Damage', id: 'Dam'};		
 		items[5] = { name: 'AC', id: 'AC' };		
+		items[5] = { name: 'SR', id: 'SR' };		
 	} else if(type == 'DR') {
 		items[0] = { name: 'Base', id: 'base' };
 		items[1] = { name: 'Cold', id: 'cold' };
