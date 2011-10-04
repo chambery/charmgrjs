@@ -31,20 +31,20 @@ edit_equipment.create_benefits_table = function(equipment, index) {
 	for(var j in equipment.benefits) {
 		html += "<tr id='edit_" + equipment.benefits[j].id + "' onclick=\"$('#edit_" + equipment.benefits[j].id + "').remove()\">";
 		html += "<td><input type='hidden' value='" + equipment.benefits[j].id + "' benefit_type='" + equipment.benefits[j].id + "' benefit_mod='" + equipment.benefits[j].mod + "' />"; 
-		html += get_benefit_name(equipment.benefits[j].id) + "</td><td style='text-align: right;'>" + pos(equipment.benefits[j].mod) + "</td></tr>";
+		html += edit_equipment.get_benefit_name(equipment.benefits[j].id) + "</td><td style='text-align: right;'>" + pos(equipment.benefits[j].mod) + "</td></tr>";
 	}
 	html += "</table>";
 	return html;
 }
 
 edit_equipment.recalc_equipment_page = function() {
-	$('#equipment').html("<table id='equipment_table' width='100%' margin='0'><tbody><tr style='background-color: #8DC3E9'><td colspan='5'><a class='fake_link' onclick='add_bene()' style='float: right'>add</a><b>Equipment</b></td></tr></table>");
+	$('#equipment').html("<table id='equipment_table' width='100%' margin='0'><tbody><tr style='background-color: #8DC3E9'><td colspan='5'><a class='fake_link' onclick='edit_equipment.add_bene()' style='float: right'>add</a><b>Equipment</b></td></tr></table>");
 	if(chardata.equipment == undefined) {
 		chardata.equipment = {};
 	}	
 	
 	for(var i in chardata.equipment) {
-		var html = "<tr><td colspan='5'><table style='width: 100%;border: 1px solid #D0D0D0' rules='cols'><tr><td colspan='2'><span style='float: right;color: #D0D0D0'><a class='fake_link' onclick=\"add_bene('" + i + "')\" onhover=''>edit</a> &nbsp;<a id='delete_equipment_" + chardata.equipment[i].id + "' class='fake_link' onclick=\"delete_bene('" + chardata.equipment[i].id + "')\">delete</a></span>" + chardata.equipment[i].name + "</td></tr>";
+		var html = "<tr><td colspan='5'><table style='width: 100%;border: 1px solid #D0D0D0' rules='cols'><tr><td colspan='2'><span style='float: right;color: #D0D0D0'><a class='fake_link' onclick=\"edit_equipment.add_bene('" + i + "')\" onhover=''>edit</a> &nbsp;<a id='edit_equipment.delete_equipment_" + chardata.equipment[i].id + "' class='fake_link' onclick=\"edit_equipment.delete_bene('" + chardata.equipment[i].id + "')\">delete</a></span>" + chardata.equipment[i].name + "</td></tr>";
 		if((chardata.equipment[i].notes && chardata.equipment[i].notes.length > 0) || (chardata.equipment[i].benefits && chardata.equipment[i].benefits.length > 0)) {
 			var notes = "<tr style='border: 1px solid #D0D0D0'>";
 			notes += "<td valign='top' style='width: 100%;border: 1px solid #D0D0D0; padding-left: 15px;' " + ((chardata.equipment[i].benefits == null || chardata.equipment[i].benefits.length == 0) ? "colspan=2" : "") + ">" + (chardata.equipment[i].notes ? chardata.equipment[i].notes : '') + "</td>";
@@ -52,9 +52,9 @@ edit_equipment.recalc_equipment_page = function() {
 				notes += "<td valign='top' style='padding: 0px'>";
 				notes += "<table id='benefits_table' style='width: 100%;'>";
 				for(var j in chardata.equipment[i].benefits) {
-					notes += "<tr onclick=\"remove(chardata.equipment[" + i + "].benefits, " + j + ");$('#equipment_benefits').html(create_benefits_table(chardata.equipment[" + i + "]))\">";
+					notes += "<tr onclick=\"edit_equipment.remove(chardata.equipment[" + i + "].benefits, " + j + ");$('#equipment_benefits').html(edit_equipment.create_benefits_table(chardata.equipment[" + i + "]))\">";
 					notes += "<td><input type='hidden' value='" + chardata.equipment[i].benefits[j].id + "' benefit_type='" + chardata.equipment[i].benefits[j].id + "' benefit_mod='" + chardata.equipment[i].benefits[j].mod + "' />"; 
-					notes += get_benefit_name(chardata.equipment[i].benefits[j].id) + "</td><td style='text-align: right;'>" + pos(chardata.equipment[i].benefits[j].mod) + "</td></tr>";
+					notes += edit_equipment.get_benefit_name(chardata.equipment[i].benefits[j].id) + "</td><td style='text-align: right;'>" + pos(chardata.equipment[i].benefits[j].mod) + "</td></tr>";
 				}
 				notes += "</table>";
 				notes += "</td>";
@@ -72,17 +72,17 @@ edit_equipment.delete_bene = function(id) {
 	delete chardata.equipment[id];
 	save_character();
 	
-	recalc_equipment_page();
+	edit_equipment.recalc_equipment_page();
 }
 
 edit_equipment.add_bene = function(index) {
 	var equipment = (index != undefined ? chardata.equipment[index] : false);
 	var dialog_html = "<table><tr><td>Name:</td><td colspan='4'><input id='equipment_id' type='hidden' value='" + (equipment ? equipment.id : '') + "'/><input id='equipment_index' type='hidden' value='" + (index != undefined ? index : '') + "'/>";
-	dialog_html += "<input id='equipment_name' type='text' style='width: 95%' value='" + (equipment ? equipment.name : '') + "'/></td><td style='text-align: right'><a class='box btn' style='width: 30px;' onclick='save_equipment(" + (index != undefined ? true : '') + ")'>save</a></td></tr><tr><td colspan=6><hr width='80%'/></td></tr>";
-	var type = create_select('benefit_type', [{name: 'Skills', id: 'skill_id'},{name: "Abilities", id: 'ability_id'}, {name: 'Other', id: 'other' }, {name: "DR", id: "dr"}, {name: "Save", id: "save"}], "update_bene_detail($('#benefit_type').val())");
+	dialog_html += "<input id='equipment_name' type='text' style='width: 95%' value='" + (equipment ? equipment.name : '') + "'/></td><td style='text-align: right'><a class='box btn' style='width: 30px;' onclick='edit_equipment.save_equipment(" + (index != undefined ? true : '') + ")'>save</a></td></tr><tr><td colspan=6><hr width='80%'/></td></tr>";
+	var type = create_select('benefit_type', [{name: 'Skills', id: 'skill_id'},{name: "Abilities", id: 'ability_id'}, {name: 'Other', id: 'other' }, {name: "DR", id: "dr"}, {name: "Save", id: "save"}], "edit_equipment.update_bene_detail($('#benefit_type').val())");
 	dialog_html += "<tr><td>Benefit:</td><td colspan='2'>" + type + "</td><td id='benefit_detail' colspan='3'>" + create_select('benefit_detail', skills.get(), '', false, "") + "</td>";
-	dialog_html += "<tr><td valign='bottom' colspan='3'>Notes:</td><td valign='bottom'>Bonus:</td><td><input id='benefit_mod' class='three_digit' type='text'/></td><td style='text-align: right' nowrap><a class='box btn' style='width: 30px; padding: 1px 2px;' onclick=\"add_benefit($('select[id=benefit_detail]').val(), $('select[id=benefit_detail] option:selected').text(), $('#benefit_mod').val() )\">add&darr;</a></td></tr>";
-	dialog_html += "<tr><td colspan='3' valign='top'><textarea id='equipment_notes' style='width: 95%'>" + (equipment ? equipment.notes : '') + "</textarea></td><td colspan='3' valign='top' style='border: 1px solid #D0D0D0;'><div id='equipment_benefits' >" + create_benefits_table(equipment, index) + "</div></td></tr></table>";
+	dialog_html += "<tr><td valign='bottom' colspan='3'>Notes:</td><td valign='bottom'>Bonus:</td><td><input id='benefit_mod' class='three_digit' type='text'/></td><td style='text-align: right' nowrap><a class='box btn' style='width: 30px; padding: 1px 2px;' onclick=\"edit_equipment.add_benefit($('select[id=benefit_detail]').val(), $('select[id=benefit_detail] option:selected').text(), $('#benefit_mod').val() )\">add&darr;</a></td></tr>";
+	dialog_html += "<tr><td colspan='3' valign='top'><textarea id='equipment_notes' style='width: 95%'>" + (equipment ? equipment.notes : '') + "</textarea></td><td colspan='3' valign='top' style='border: 1px solid #D0D0D0;'><div id='equipment_benefits' >" + edit_equipment.create_benefits_table(equipment, index) + "</div></td></tr></table>";
 	show_dialog((index == undefined ? 'Add' : 'Edit') + ' Equipment', dialog_html, true, null);
 }
 
@@ -106,7 +106,7 @@ edit_equipment.save_equipment = function(close_after_save) {
 		chardata.equipment[id] = { id: id, name: $('#equipment_name').val(), notes: $('#equipment_notes').val(), benefits: benefits };
 	}
 	save_character();
-	recalc_equipment_page();
+	edit_equipment.recalc_equipment_page();
 	// clear the dialog
 	$('#equipment_index').val('');
 	$('#equipment_id').val('');

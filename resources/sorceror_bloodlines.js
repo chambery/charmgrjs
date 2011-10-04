@@ -328,20 +328,20 @@ var bloodline_powers = new TAFFY([{
 	detail : "You gain a +_$0 inherent bonus to your Strength.",
 	levels : {
 		8 : {
-			Str : function(mod) {
-				mod["Str"] += 2;
+			Str : function(abilities) {
+				abilities["Str"].base += 2;
 			},
 			vals : ["2"]
 		},
 		12 : {
-			Str : function(mod) {
-				mod["Str"] += 4;
+			Str : function(abilities) {
+				abilities["Str"].base += 4;
 			},
 			vals : ["4"]
 		},
 		16 : {
-			Str : function(mod) {
-				mod["Str"] += 6;
+			Str : function(abilities) {
+				abilities["Str"].base += 6;
 			},
 			vals : ["6"]
 		}

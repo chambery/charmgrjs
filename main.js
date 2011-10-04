@@ -669,11 +669,14 @@ main.populate_skill_entry = function(skill, acp, subtype) {
 }
 
 main.update_ability = function(id) {
-	var ability_val = $('#ability_' + id + '_score').val();
-	var mod = {};
-	mod[id] = calc_ability_modifier(ability_val);
-	mod = do_class_functions("main", id, mod);
-	$('#ability_' + id + '_mod').text(pos(mod[id]));
+	var class_val = {};
+	class_val[id] = { base: 0 };
+	class_val = do_class_functions("main", id, class_val);
+	var ability_val = parseInt($('#ability_' + id + '_score').val());
+	var mod = calc_ability_modifier(ability_val + (class_val[id].base | 0)) + (class_val[id].mod | 0);
+	$('#ability_' + id + '_mod').text(pos(mod));
+//	$('#ability_' + id + '_score').val(ability_val + (class_val[id].base | 0));
+	$('#ability_score_full_' + id).text((chardata.abilities[id]| 0) + (class_val[id].base | 0));
 }
 
 main.calc_turn = function( cha_score) {

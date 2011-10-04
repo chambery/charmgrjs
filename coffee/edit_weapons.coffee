@@ -88,7 +88,7 @@ update_override = (item_index, data_name, id_name) ->
 		})
 		edit_attr_name = window["#{id_name}_edit_data"][i]
 		value = $("##{id_name}_" + item_index + edit_attr_name).val()
-		if value and $.trim(value).length > 0 and value != item[edit_attr_name]
+		if value and $.trim(VALUE).length > 0 and value != item[edit_attr_name]
 			chardata[data_name][item_index][edit_attr_name] = value
 		else
 			delete chardata[data_name][item_index][edit_attr_name]
