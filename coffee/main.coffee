@@ -1,6 +1,7 @@
+main = exports ? this
 load = ->
 	session = {}
-	chardata = log: []
+	window.chardata = log: []
 	players_companion = TAFFY.JSON.parse(unescape(get_cookie_data("players_companion"))) or {}
 	if players_companion.last_character
 		lod players_companion.last_character
