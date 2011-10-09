@@ -1,4 +1,5 @@
-function calc_skill_points() {
+edit = function() {}
+edit.calc_skill_points = function() {
 	// total skill points
 	var int_score = $('#ability_Int').val();
 	var int_mod = calc_ability_modifier(int_score);
@@ -29,7 +30,7 @@ function calc_skill_points() {
 	return total_skill_points;
 }
 
-function build_edit_page() {
+edit.build_edit_page = function() {
 	set_links_part( 1);
 
 	$('#content').html("<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' onblur='recalc_edit_page()' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' onchange='recalc_edit_page()' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;' onchange='recalc_edit_page()'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table border='0'><tbody><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Str')\">Str</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Strscore'class='two_digit' id='ability_Str'></td><td align='center' id='race_Str_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Dex')\">Dex</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Dexscore'class='two_digit' id='ability_Dex'></td><td align='center' id='race_Dex_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Int</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Intscore'class='two_digit' id='ability_Int'></td><td align='center' id='race_Int_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Con')\">Con</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Conscore'class='two_digit' id='ability_Con'></td><td align='center' id='race_Con_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Cha</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Chascore'class='two_digit' id='ability_Cha'></td><td align='center' id='race_Cha_mod'></td></tr>	<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Wis')\">Wis</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Wisscore'class='two_digit' id='ability_Wis'></td><td align='center' id='race_Wis_mod'></td></tr></tbody></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>");
@@ -124,7 +125,7 @@ function build_edit_page() {
 	// $('#abilitiespart').append(domain_select);
 
 	// language
-	$("#language_table").html(create_languages());
+	$("#language_table").html(edit.create_languages());
 	$('#languages').hide();
 	// skills
 	var skill_html = [];
@@ -171,7 +172,7 @@ function build_edit_page() {
 	}
 }
 
-function create_languages() {
+edit.create_languages = function() {
 	var language_html = [];
 	var langs = languages.get();
 	for(var i=0, len=langs.length; i<len; i++) {
@@ -182,7 +183,7 @@ function create_languages() {
 }
 
 // Populates the form from char data. SHOULD ONLY BE CALLED ON load().
-function populate_edit_page() {
+edit.populate_edit_page = function() {
 	if (chardata.name) {
 		$('#charname').val(chardata.name);
 	}
@@ -249,7 +250,7 @@ function populate_edit_page() {
 	}
 }
 
-function recalc_edit_page() {
+edit.recalc_edit_page = function() {
 	chardata.name = $('#charname').val();
 	// change your class, lose your feat, spell selections
 	// if (chardata.class_name != $('#clazz').val()) {
@@ -410,7 +411,7 @@ function recalc_edit_page() {
 	set_links_part(1);
 }
 
-function update_skills(skill, subtype) {
+edit.update_skills = function(skill, subtype) {
 	var class_skill = is_class_skill(skill, subtype);
 
 	var skill_text = $("input[id='skill_" + skill._id + "_input']" + (subtype ? "[subtype='" + subtype +"']" : ""));
@@ -450,7 +451,7 @@ function update_skills(skill, subtype) {
 
 }
 
-function update_race_mods() {
+edit.update_race_mods = function() {
 	var race = races.first( {
 		name : $('#race').val()
 	});
@@ -462,7 +463,7 @@ function update_race_mods() {
 	}
 }
 
-//function create_selector(part_id, name, table, onchange_action, addl_data, include_empty) {
+//edit.create_selector = function(part_id, name, table, onchange_action, addl_data, include_empty) {
 //	var addl_data = (addl_data == null ? [] : addl_data);
 // var table_html = "<table id='" + name + "' style='display: none'
 // border='0'><tr>";
@@ -479,7 +480,7 @@ function update_race_mods() {
 // $('table#' + name).show();
 // }
 
-function update_language(language_id) {
+edit.update_language = function(language_id) {
 	var checked = $('#language_' + language_id + '_check').attr('checked');
 	var language = languages.first({ _id: language_id });
 	var char_lang_idx = chardata.languages.indexOf(language.name);

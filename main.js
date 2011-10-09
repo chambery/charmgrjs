@@ -29,14 +29,14 @@ main.do_main = function() {
 		main.populate_main_page();
 		main.recalc_main_page();
 	} else {
-		do_edit();
+		main.do_edit();
 	}
 }
 
 main.do_edit = function() {
-	build_edit_page();
-	populate_edit_page();
-	recalc_edit_page();
+	edit.build_edit_page();
+	edit.populate_edit_page();
+	edit.recalc_edit_page();
 }
 
 main.do_feats = function() {
