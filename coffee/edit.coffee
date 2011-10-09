@@ -1,5 +1,5 @@
-
-edit.calc_skill_points = ->
+edit = exports ? this
+calc_skill_points =  ->
 	int_score = $("#ability_Int").val()
 	int_mod = calc_ability_modifier(int_score)
 	is_human = races.first(name: "Human").name == $("#race").val()
@@ -16,7 +16,7 @@ edit.calc_skill_points = ->
 	total_skill_points -= Math.abs(Math.min(int_mod - char_lang_count, 0))
 	total_skill_points
 
-edit.build_edit_page = ->
+build_edit_page =  ->
 	set_links_part 1
 	$("#content").html "
 		<div class='dp100' style='padding-bottom: 5px;'>
@@ -56,12 +56,12 @@ edit.build_edit_page = ->
 	chardata.abilities = {}	unless chardata.abilities?
 	race_html = create_select("race", races.get(), "recalc_edit_page()", false, "style='width: 75px;'")
 	$("#race_select").html race_html
-	align_html = []
+	align_html = ""
 	alignments.forEach (alignment, i) ->
 		goodness.forEach (good, j) ->
 			align_html += "<option id='alignment_option_#{alignment.name}_#{good.name}' data_id='#{i},#{j}' value='#{alignment.name},#{good.name}'>#{alignment.name} #{good.name}</option>"
 	
-	$("#alignment").html align_html.join("")
+	$("#alignment").html align_html
 	$("#alignment").change ->
 		console.group "deity - ALIGNMENT_CHANGED"
 		align_html = []
@@ -80,25 +80,25 @@ edit.build_edit_page = ->
 		chardata.goodness = $("#alignment").val().split(" ")[1]
 		console.groupEnd()
 	
-	align_html = []
-	align_html.push "<option id='deity_option_-1' data_id='' value=''></option>"
+	align_html = ""
+	align_html += "<option id='deity_option_-1' data_id='' value=''></option>"
 	$.each get_deities_for_alignment(chardata.alignment, chardata.goodness), (i, deity) ->
 		align_html += "<option id='deity_option_#{deity.name}' data_id='#{deity._id}' value='#{deity.name}'>#{deity.name}</option>"
 	
-	$("#deity").html align_html.join("")
+	$("#deity").html align_html
 	$("#deity").change ->
 		chardata.domains = []
 		$("#deity").trigger "DEITY_CHANGED"
 	
 	$("#language_table").html create_languages()
 	$("#languages").hide()
-	skill_html = []
+	skill_html = ""
 	skills.forEach (skill, i) ->
 		if skill.subtypes
 			skill_html += "<tr onclick=\"toggle_visible('#{skill.name}')\" bgcolor='#E2F0F9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link' id='skill_#{skill._id}'><span id='#{skill.name}_expand_flag' style='float: right'><img src='images/collapsed.png'/></span>#{skill.name}</a></td></tr><tr id='#{skill.name}'><td colspan=3><table id='#{skill.name}_table' width='100%'style='border-collapse: collapse;'>"
 			for subtype of skill.subtypes
 				skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")' subtype='#{subtype}'>#{skill.name} (#{subtype})</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' subtype='#{subtype}' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"	if not chardata.skills or not chardata.skills.first(skill_name: skill.name) or not chardata.skills.first(skill_name: skill.name).subtypes[subtype]
-			skill_html.push "</table></td></tr>"
+			skill_html += "</table></td></tr>"
 			if chardata.skills
 				char_skill = chardata.skills.first(skill_name: skill.name)
 				if char_skill
@@ -107,7 +107,7 @@ edit.build_edit_page = ->
 		else
 			skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")'>#{skill.name}</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"
 	
-	$("#skills_table").append skill_html.join("")
+	$("#skills_table").append skill_html
 	skills.get(subtypes: "!is": null).forEach (skill, i) ->
 		$("#" + skill.name).hide()
 	
@@ -119,18 +119,13 @@ edit.build_edit_page = ->
 		level = (if $("#xp").val() == "" then 0 else parseInt($("#xp").val()))
 		show_class_dialog calc_level(level) + 1, 0
 
-edit.create_languages = ->
-	language_html = []
-	langs = languages.get()
-	i = 0
-	len = langs.length
-	
-	while i < len
-		language_html += "<tr id='language_#{langs[i]._id}'><td><input id='language_#{langs[i]._id}_check' onclick='update_language(\"#{langs[i]._id}\"); recalc_edit_page();' type='checkbox'/></td><td><label for='language_#{langs[i]._id}_check'>#{langs[i].name}</label></td>"
-		i++
-	language_html.join ""
+create_languages =  ->
+	language_html = ""
+	for i, lang of languages.get()
+		language_html += "<tr id='language_#{lang._id}'><td><input id='language_#{lang._id}_check' onclick='update_language(\"#{lang._id}\"); recalc_edit_page();' type='checkbox'/></td><td><label for='language_#{lang._id}_check'>#{lang.name}</label></td>"
+	language_html
 
-edit.populate_edit_page = ->
+populate_edit_page =  ->
 	$("#charname").val chardata.name	if chardata.name
 	race_name = chardata.race_name or $("#race").val()
 	race = races.first(name: race_name)
@@ -163,7 +158,7 @@ edit.populate_edit_page = ->
 				else
 					$("#skill_#{skill._id}_input").val char_skill.ranks
 
-edit.recalc_edit_page = ->
+recalc_edit_page =  ->
 	chardata.name = $("#charname").val()
 	curr_level = calc_level(chardata.xp)
 	new_level = calc_level($("#xp").val())
@@ -252,7 +247,7 @@ edit.recalc_edit_page = ->
 	save_character()
 	set_links_part 1
 
-edit.update_skills = (skill, subtype) ->
+update_skills =  (skill, subtype) ->
 	class_skill = is_class_skill(skill, subtype)
 	skill_text = $("input[id='skill_#{skill._id}_input']#{if subtype then "[subtype='#{subtype}']" else ""}")
 	if skill_text.val() != "" and parseInt(skill_text.val()) > 0
@@ -269,14 +264,14 @@ edit.update_skills = (skill, subtype) ->
 	skill_link = $("a[id='skill_#{skill._id}']#{if subtype then "[subtype='#{subtype}']" else ""}")
 	skill_link.attr "style", "font-weight: bold;"	if skill_link and class_skill
 
-edit.update_race_mods = ->
+update_race_mods =  ->
 	race = races.first(name: $("#race").val())
 	if race
 		for ability of abilities
 			mod = (if not race.abilities[ability]? then " " else race.abilities[ability])
 			$("#race_#{ability}_mod").text pos(mod)
 
-edit.update_language = (language_id) ->
+update_language =  (language_id) ->
 	checked = $("#language_#{language_id}_check").attr("checked")
 	language = languages.first(_id: language_id)
 	char_lang_idx = chardata.languages.indexOf(language.name)
