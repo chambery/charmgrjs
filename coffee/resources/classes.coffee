@@ -411,8 +411,8 @@ classes = new TAFFY([
 					chardata.draconic_type = (if chardata.bloodline == "Draconic" then $("#draconic_select").val() else null)
 					save_character()
 				
-				select = create_select("bloodline_select", sorcerer_bloodlines.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
-				draconic_select = create_select("draconic_select", draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
+				select = create_select("bloodline_select", sorcerer_bloodlines.get(), "update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
+				draconic_select = create_select("draconic_select", draconic_types.get(), "update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
 				$("#bloodline").append "<tr><td></td><td>" + select + "</td></tr>"
 				$("#bloodline").append "<tr id=\"draconic_type\"><td>type:</td><td>" + draconic_select + "</td></tr>"
 				$("#draconic_type").toggle chardata.bloodline == "Draconic"

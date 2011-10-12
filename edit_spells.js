@@ -32,7 +32,7 @@ edit_spells.build_spells_page = function() {
 					if(clazz.spells_known[chardata.classes[classname].level][spell_level] != '-') {
 						// wizards don't have known spells
 						var curr_spells_chosen_count = chardata.classes[classname].spells[spell_level] == null ? 0 : chardata.classes[classname].spells[spell_level].length;
-						var spell_selections_remaining = clazz.name == "Sorcerer" || clazz.name == "Bard" ? "Spell selections remaining: " + edit_spells.calc_spells_remaining(clazz, spell_level, curr_spells_chosen_count, bonus_spells) + ( bonus_spells ? " <span id=bonus_spells>Bonus Spells: <span id=" + classname + "_bonus_spells_remaining_" + spell_level + ">" + bonus_spells[0] + "</span></span>" : "") : "";
+						var spell_selections_remaining = clazz.name == "Sorcerer" || clazz.name == "Bard" ? "Spell selections remaining: " + edit_spells.calc_spells_remaining(clazz, spell_level, curr_spells_chosen_count, bonus_spells) + ( bonus_spells ? " <span id=bonus_spells>Bonus Spells: <span id=" + classname + "_bonus_spells_remaining_" + spell_level + ">" + bonus_spells + "</span></span>" : "") : "";
 
 						$("table#spell_selection_" + classname).append("<tr id='" + classname + "_level_" + spell_level + "' style='font-size: x-small; background-color: #8DC3E9'><td colspan=3 ><span id='" + classname + "_spells_remaining_" + spell_level + "' style='float: right;'>" + spell_selections_remaining + " </span>Level " + spell_level + "</td></tr>");
 						$("tr#" + classname + "_level_" + spell_level).bind('click', {
@@ -88,6 +88,9 @@ edit_spells.populate_spells_page = function() {
 			var clazz = classes.first({
 				name : classname
 			});
+			if(chardata.classes[classname].spells == null) {
+				chardata.classes[classname].spells = [[],[],[],[],[],[],[],[],[]];
+			}
 			for(var level in chardata.classes[classname].spells) {
 				if(classname == "Sorcerer" || classname == "Bard") {
 					// hide sorceror level selections if they're used up

@@ -20,19 +20,19 @@ build_edit_page =  ->
 	set_links_part 1
 	$("#content").html "
 		<div class='dp100' style='padding-bottom: 5px;'>
-			<span style='float: right;'>XP&nbsp;&nbsp;<input type='text' onblur='recalc_edit_page()' size='5' value='' name='xp' id='xp'></span>
+			<span style='float: right;'>XP&nbsp;&nbsp;<input type='text' onblur='edit.recalc_edit_page()' size='5' value='' name='xp' id='xp'></span>
 			<input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div>
 		<div id='moralitypart' class='dp100' style='padding-bottom: 5px;'>
-			<select id='alignment' onchange='recalc_edit_page()' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;' onchange='recalc_edit_page()'></select></div>
+			<select id='alignment' onchange='edit.recalc_edit_page()' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;' onchange='edit.recalc_edit_page()'></select></div>
 		<div id='middlepart'>
 			<div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'>
 				<table border='0'><tbody>
-					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Str')\">Str</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Strscore'class='two_digit' id='ability_Str'></td><td align='center' id='race_Str_mod'></td></tr>
-					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Dex')\">Dex</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Dexscore'class='two_digit' id='ability_Dex'></td><td align='center' id='race_Dex_mod'></td></tr>
-					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Int</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Intscore'class='two_digit' id='ability_Int'></td><td align='center' id='race_Int_mod'></td></tr>
-					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Con')\">Con</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Conscore'class='two_digit' id='ability_Con'></td><td align='center' id='race_Con_mod'></td></tr>
-					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Cha</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Chascore'class='two_digit' id='ability_Cha'></td><td align='center' id='race_Cha_mod'></td></tr>
-					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Wis')\">Wis</a></b></td><td align='center'><input type='text'onblur='recalc_edit_page()' value='' name='Wisscore'class='two_digit' id='ability_Wis'></td><td align='center' id='race_Wis_mod'></td></tr></tbody></table></div>
+					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Str')\">Str</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Strscore'class='two_digit' id='ability_Str'></td><td align='center' id='race_Str_mod'></td></tr>
+					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Dex')\">Dex</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Dexscore'class='two_digit' id='ability_Dex'></td><td align='center' id='race_Dex_mod'></td></tr>
+					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Int</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Intscore'class='two_digit' id='ability_Int'></td><td align='center' id='race_Int_mod'></td></tr>
+					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Con')\">Con</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Conscore'class='two_digit' id='ability_Con'></td><td align='center' id='race_Con_mod'></td></tr>
+					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Cha</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Chascore'class='two_digit' id='ability_Cha'></td><td align='center' id='race_Cha_mod'></td></tr>
+					<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Wis')\">Wis</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Wisscore'class='two_digit' id='ability_Wis'></td><td align='center' id='race_Wis_mod'></td></tr></tbody></table></div>
 			<div id='classespart' class='dp75'></div></div>
 		<br style='clear: both' />
 		<div class='dp100'>
@@ -54,7 +54,7 @@ build_edit_page =  ->
 				<div class='clear'></div>"
 				
 	chardata.abilities = {}	unless chardata.abilities?
-	race_html = create_select("race", races.get(), "recalc_edit_page()", false, "style='width: 75px;'")
+	race_html = create_select("race", races.get(), "edit.recalc_edit_page()", false, "style='width: 75px;'")
 	$("#race_select").html race_html
 	align_html = ""
 	alignments.forEach (alignment, i) ->
@@ -97,15 +97,15 @@ build_edit_page =  ->
 		if skill.subtypes
 			skill_html += "<tr onclick=\"toggle_visible('#{skill.name}')\" bgcolor='#E2F0F9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link' id='skill_#{skill._id}'><span id='#{skill.name}_expand_flag' style='float: right'><img src='images/collapsed.png'/></span>#{skill.name}</a></td></tr><tr id='#{skill.name}'><td colspan=3><table id='#{skill.name}_table' width='100%'style='border-collapse: collapse;'>"
 			for subtype of skill.subtypes
-				skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")' subtype='#{subtype}'>#{skill.name} (#{subtype})</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' subtype='#{subtype}' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"	if not chardata.skills or not chardata.skills.first(skill_name: skill.name) or not chardata.skills.first(skill_name: skill.name).subtypes[subtype]
+				skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")' subtype='#{subtype}'>#{skill.name} (#{subtype})</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' subtype='#{subtype}' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"	if not chardata.skills or not chardata.skills.first(skill_name: skill.name) or not chardata.skills.first(skill_name: skill.name).subtypes[subtype]
 			skill_html += "</table></td></tr>"
 			if chardata.skills
 				char_skill = chardata.skills.first(skill_name: skill.name)
 				if char_skill
 					for subtype of char_skill.subtypes
-						skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")' subtype='#{subtype}'>#{skill.name} (#{subtype})</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' subtype='#{subtype}' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"
+						skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")' subtype='#{subtype}'>#{skill.name} (#{subtype})</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' subtype='#{subtype}' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"
 		else
-			skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")'>#{skill.name}</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' class='two_digit' value='' onblur='recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"
+			skill_html += "<tr><td style='vertical-align: top;'><a id='skill_#{skill._id}' class='fake_link' onclick='show_item_detail(skills, \"#{skill._id}\")'>#{skill.name}</a></td><td style='vertical-align: top;'><input id='skill_#{skill._id}_input' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>#{skill.ability}<br><span id='#{skill._id}_mods' style='font-size: xx-small;'></span></td></tr>"
 	
 	$("#skills_table").append skill_html
 	skills.get(subtypes: "!is": null).forEach (skill, i) ->
@@ -122,7 +122,7 @@ build_edit_page =  ->
 create_languages =  ->
 	language_html = ""
 	for i, lang of languages.get()
-		language_html += "<tr id='language_#{lang._id}'><td><input id='language_#{lang._id}_check' onclick='update_language(\"#{lang._id}\"); recalc_edit_page();' type='checkbox'/></td><td><label for='language_#{lang._id}_check'>#{lang.name}</label></td>"
+		language_html += "<tr id='language_#{lang._id}'><td><input id='language_#{lang._id}_check' onclick='update_language(\"#{lang._id}\"); edit.recalc_edit_page();' type='checkbox'/></td><td><label for='language_#{lang._id}_check'>#{lang.name}</label></td>"
 	language_html
 
 populate_edit_page =  ->

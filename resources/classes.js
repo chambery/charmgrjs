@@ -571,8 +571,8 @@ classes = new TAFFY([{
 						chardata.draconic_type = chardata.bloodline == "Draconic" ? $("#draconic_select").val() : null;  
 						save_character();
 					};
-					var select = create_select('bloodline_select', sorcerer_bloodlines.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_bloodline ? char_bloodline._id : ''));
-					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));							
+					var select = create_select('bloodline_select', sorcerer_bloodlines.get(), "update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (char_bloodline ? char_bloodline._id : ''));
+					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));							
 					$('#bloodline').append('<tr><td></td><td>' + select + '</td></tr>');
 					$('#bloodline').append('<tr id="draconic_type"><td>type:</td><td>' + draconic_select + '</td></tr>');
 					$('#draconic_type').toggle(chardata.bloodline == "Draconic");						
@@ -581,7 +581,7 @@ classes = new TAFFY([{
 					}
 				}
 			}
-				           ]
+				]
 		},
 		skills: [
 			function (class_skills) {
@@ -619,8 +619,8 @@ classes = new TAFFY([{
 						var spell = spells.first({
 							name: bloodline.spells[bloodline_level]
 						});
-						if (!all_spells[spell.classes['Sorcerer']]) {
-							all_spells[spell.classes['Sorcerer']] = [];
+						if (!all_spells[class_spell_lvl]) {
+							all_spells[class_spell_lvl] = [];
 						}
 						if (chardata.classes['Sorcerer'].level >= bloodline_level && 
 								all_spells[class_spell_lvl].indexOf(bloodline.spells[bloodline_level]) == -1) {

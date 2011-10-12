@@ -296,9 +296,9 @@ abilities = {
 	}
 };
 
-function calc_ability_score(ability, race_name) {
+function calc_ability_score(ability) {
 	var race = races.first({
-		name : race_name
+		name : chardata.race_name
 	});
 	var race_mod = race.abilities[ability];
 	var ability_score = chardata['abilities'] != null && chardata['abilities'][ability] != null && chardata['abilities'][ability].length > 0 ? chardata['abilities'][ability] : 0;
@@ -700,7 +700,7 @@ function show_dialog(title, content, save_on_close, close_fn, opts) {
 		modal : true,
 		autoOpen : false,
 		title : title,
-		position : [50, 50],
+		offset : [50, 50],
 		width : 320
 	};
 	$.extend(options, opts)
@@ -1186,7 +1186,7 @@ function create_new_character() {
 	players_companion.last_character = "";
 	chardata.options.owner = players_companion.owner;
 	sav(players_companion, 'players_companion');
-	edit.do_edit();
+	main.do_edit();
 }
 
 function do_class_functions(page, location, obj) {

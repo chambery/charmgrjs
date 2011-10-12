@@ -672,11 +672,11 @@ main.update_ability = function(id) {
 	var class_val = {};
 	class_val[id] = { base: 0 };
 	class_val = do_class_functions("main", id, class_val);
-	var ability_val = parseInt($('#ability_' + id + '_score').val());
+	var ability_val = calc_ability_score(id);
 	var mod = calc_ability_modifier(ability_val + (class_val[id].base | 0)) + (class_val[id].mod | 0);
 	$('#ability_' + id + '_mod').text(pos(mod));
 //	$('#ability_' + id + '_score').val(ability_val + (class_val[id].base | 0));
-	$('#ability_score_full_' + id).text((chardata.abilities[id]| 0) + (class_val[id].base | 0));
+	$('#ability_score_full_' + id).text(ability_val + (class_val[id].base | 0));
 }
 
 main.calc_turn = function( cha_score) {
