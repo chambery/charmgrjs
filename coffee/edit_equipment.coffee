@@ -1,3 +1,4 @@
+edit_equipment = ->
 edit_equipment.build_equipment_page = ->
   set_links_part 4
   $("#content").html "<div id='equipment' style='border: 1px solid #8DC3E9;'></div>"

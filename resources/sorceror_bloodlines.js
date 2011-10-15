@@ -262,6 +262,7 @@ var bloodline_powers = new TAFFY([{
 			weapons : [{
 				_id : "a389d",
 				name : "Claws",
+				category : "simple",
 				weapon_name : "Claws",
 				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : "You can grow claws as a free action. "
@@ -271,6 +272,7 @@ var bloodline_powers = new TAFFY([{
 			weapons : [{
 				_id : "a389d",
 				name : "Claws",
+				category : "simple",
 				weapon_name : "Claws",
 				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : "Your claws are considered magic weapons for the purpose of overcoming DR."
@@ -281,6 +283,7 @@ var bloodline_powers = new TAFFY([{
 			weapons : [{
 				_id : "a389d",
 				name : "Claws",
+				category : "simple",
 				weapon_name : "Claws",
 				dam : function() { var dam = "1d4/1d4"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d6/1d6"; } return dam; },
 				note : "Your claws are considered magic weapons for the purpose of overcoming DR."
@@ -291,6 +294,7 @@ var bloodline_powers = new TAFFY([{
 			weapons : [{
 				_id : "a389d",
 				name : "Claws",
+				category : "simple",
 				weapon_name : "Claws",
 				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : function() { var rounds = (3 + calc_ability_modifier(chardata.abilities["Cha"])); return rounds > 0 ? "+1d6 fire " + rounds + " rounds/day" : "" }
