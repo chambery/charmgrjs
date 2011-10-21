@@ -239,13 +239,14 @@ classes = new TAFFY([
 			1: [ 
 				ui: "<table style='width: 100%;'><tr><td>Weapon Style</td><td id='weapon_style'></td></tr></table>"
 				script: ->
+					selected = if chardata.weapon_style == "Archery" then 1 else 0
 					select = create_select("weapon_style_select", [ 
 						_id: 0
 						name: "Two-handed fighting"
 					, 
 						_id: 1
 						name: "Archery"
-					 ], "classes.first({ name : 'Ranger' }).update_weapon_style()", false, "style='width: 100%;'", null, (if chardata.weapon_style == "Archery" then 1 else 0))
+					 ], "classes.first({ name : 'Ranger' }).update_weapon_style()", false, "style='width: 100%;'", null, selected)
 					$("#weapon_style").append "<tr><td>" + select + "</td></tr>"
 			 ]
 			2: [ 
@@ -350,6 +351,12 @@ classes = new TAFFY([
 	spells: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
+	update_bloodline: () ->
+		chardata.bloodline = $("#bloodline_select").val()
+		$("#draconic_type").toggle chardata.bloodline == "Draconic"
+		chardata.draconic_type = (if chardata.bloodline == "Draconic" then $("#draconic_select").val() else null)
+		save_character()
+
 	modify_bloodline_power_detail: (power) ->
 		detail = power.detail
 		special_level = null
@@ -363,27 +370,33 @@ classes = new TAFFY([
 	merge_bloodline_weapons: (char_weapons) ->
 		bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
 		if bloodline
-			bloodlines_weapons = undefined
+			bloodline_weapons = undefined
 			for i of bloodline.powers
 				power = bloodline_powers.first(name: bloodline.powers[i])
 				if power
 					power_weapons = undefined
 					for level of power.levels
 						if level <= chardata.classes["Sorcerer"].level and power.levels[level].weapons
-							for i of power.levels[level].weapons
-								console.log power.levels[level].weapons[i].name
-								unless weapons.first(name: power.levels[level].weapons[i].name)
-									weapons.insert power.levels[level].weapons[i]
+# 						# add or update weapons to current values of the bloodline weapon
+							for name, weapon of power.levels[level].weapons
+								unless weapons.first(name: name)
+									process.stdout.write "Adding "
+									weapons.insert weapon
 								else
-									weapons.update power.levels[level].weapons[i], name: power.levels[level].weapons[i].name
-							power_weapons = []
-							$.merge power_weapons, power.levels[level].weapons
+									process.stdout.write "Updating "
+									weapons.update weapon, name: weapon.name
+									
+							console.log weapon.name	
+							# over
+							$.extend power_weapons, power.levels[level].weapons
 						else
 							break
 					if power_weapons
-						bloodlines_weapons = []	unless bloodlines_weapons
-						$.merge bloodlines_weapons, power_weapons
-			$.merge char_weapons, bloodlines_weapons	if bloodlines_weapons
+						bloodline_weapons = []	unless bloodline_weapons
+						$.merge bloodline_weapons, power_weapons
+			$.merge char_weapons, bloodline_weapons	if bloodline_weapons
+			
+			return
 	
 	calc_dr_saves: (save, type) ->
 		bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
@@ -396,32 +409,32 @@ classes = new TAFFY([
 				dr_fn save	if dr_fn
 	
 	custom: 
-		all: calc_sr: [ (save) ->
-			classes.first(name: "Sorcerer").calc_dr_saves save, "sr"
-		 ]
-		edit: 0: [ 
-			ui: "<table style='width: 100%;border-collapse: collapse;'><tr style='background-color: #E2F0F9'><td>Bloodline: </td><td id='bloodline'></td></tr></table>"
-			script: ->
-				char_bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
-				char_draconic_type = null
-				char_draconic_type = draconic_types.first(name: chardata.draconic_type)	if chardata.draconic_type
-				update_bloodline = ->
-					chardata.bloodline = $("#bloodline_select").val()
+		all: 
+			calc_sr: [ 
+				(save) ->
+					classes.first(name: "Sorcerer").calc_dr_saves save, "sr"
+			]
+		edit: 
+			0: [ 
+				ui: "<table style='width: 100%;border-collapse: collapse;'><tr style='background-color: #E2F0F9'><td>Bloodline: </td><td id='bloodline'></td></tr></table>"
+				script: ->
+					char_bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
+					char_draconic_type = null
+					char_draconic_type = draconic_types.first(name: chardata.draconic_type)	if chardata.draconic_type
+					
+					select = create_select("bloodline_select", sorcerer_bloodlines.get(), "classes.first({name: 'Sorcerer'}).update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
+					draconic_select = create_select("draconic_select", draconic_types.get(), "classes.first({name: 'Sorcerer'}).update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
+					$("#bloodline").append "<tr><td></td><td>" + select + "</td></tr>"
+					$("#bloodline").append "<tr id=\"draconic_type\"><td>type:</td><td>" + draconic_select + "</td></tr>"
 					$("#draconic_type").toggle chardata.bloodline == "Draconic"
-					chardata.draconic_type = (if chardata.bloodline == "Draconic" then $("#draconic_select").val() else null)
-					save_character()
-				
-				select = create_select("bloodline_select", sorcerer_bloodlines.get(), "update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
-				draconic_select = create_select("draconic_select", draconic_types.get(), "update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
-				$("#bloodline").append "<tr><td></td><td>" + select + "</td></tr>"
-				$("#bloodline").append "<tr id=\"draconic_type\"><td>type:</td><td>" + draconic_select + "</td></tr>"
-				$("#draconic_type").toggle chardata.bloodline == "Draconic"
-				update_bloodline()	unless chardata.bloodline
-		 ]
-		skills: [ (class_skills) ->
-			char_bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
-			class_skills.push char_bloodline.skill
-		 ]
+					classes.first({name: "Sorcerer"}).update_bloodline()	unless chardata.bloodline
+			]
+		skills: 
+			[ 
+				(class_skills) ->
+					char_bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
+					class_skills.push char_bloodline.skill
+			]
 		main: 
 			before_weapons_build: [ (char_weapons) ->
 				classes.first(name: "Sorcerer").merge_bloodline_weapons char_weapons
@@ -438,7 +451,7 @@ classes = new TAFFY([
 					class_spell_lvl = 0
 					for bloodline_level of bloodline.spells
 						spell = spells.first(name: bloodline.spells[bloodline_level])
-						all_spells[spell.classes["Sorcerer"]] = []	unless all_spells[spell.classes["Sorcerer"]]
+						all_spells[class_spell_lvl] = []	unless all_spells[class_spell_lvl]
 						all_spells[class_spell_lvl].push bloodline.spells[bloodline_level]	if chardata.classes["Sorcerer"].level >= bloodline_level and all_spells[class_spell_lvl].indexOf(bloodline.spells[bloodline_level]) == -1
 						class_spell_lvl++
 			 ]
@@ -460,6 +473,7 @@ classes = new TAFFY([
 						for level of power.levels
 							special = power	if level <= chardata.classes["Sorcerer"].level
 						$("#specials").append "<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>"	if special
+				return
 			 ]
 			damage_reduction: [ (dr) ->
 				classes.first(name: "Sorcerer").calc_dr_saves dr, "dr"
