@@ -1,5 +1,8 @@
-var classes;
-classes = new TAFFY([
+var TAFFY;
+
+if (typeof exports === 'object') TAFFY = require('../../lib/taffy').taffy;
+
+this.classes = new TAFFY([
   {
     name: "Barbarian",
     shortname: "Brb",
@@ -59,11 +62,21 @@ classes = new TAFFY([
                 lang = languages.first({
                   name: langs[i]
                 });
-                _results.push($("#literacy_" + lang._id).length === 0 ? ($("tr#language_" + lang._id).append("<td id=\"literacy_" + lang._id + "\"><input id=\"literacy_" + lang._id + "_check\" type=\"checkbox\" /></td>"), $("#literacy_" + lang._id + "_check").click(function() {
-                  return classes.first({
-                    name: "Barbarian"
-                  }).update_literacy(lang._id);
-                }), chardata.classes["Barbarian"].literacy[lang.name] ? $("#literacy_" + lang._id + "_check").attr("checked", "checked") : void 0) : void 0);
+                if ($("#literacy_" + lang._id).length === 0) {
+                  $("tr#language_" + lang._id).append("<td id=\"literacy_" + lang._id + "\"><input id=\"literacy_" + lang._id + "_check\" type=\"checkbox\" /></td>");
+                  $("#literacy_" + lang._id + "_check").click(function() {
+                    return classes.first({
+                      name: "Barbarian"
+                    }).update_literacy(lang._id);
+                  });
+                  if (chardata.classes["Barbarian"].literacy[lang.name]) {
+                    _results.push($("#literacy_" + lang._id + "_check").attr("checked", "checked"));
+                  } else {
+                    _results.push(void 0);
+                  }
+                } else {
+                  _results.push(void 0);
+                }
               }
               return _results;
             }
@@ -123,9 +136,7 @@ classes = new TAFFY([
                   return remove(chardata.domains, chardata.domains.indexOf(item.name));
                 }
               };
-              if (chardata.domains == null) {
-                chardata.domains = [];
-              }
+              if (chardata.domains == null) chardata.domains = [];
               available_domains = domains.get();
               if (chardata.deity) {
                 deity = deities.first({
@@ -246,15 +257,11 @@ classes = new TAFFY([
     },
     edit_favored: function(favored_name, db, index) {
       var favored, select;
-      if (!chardata[favored_name]) {
-        chardata[favored_name] = [];
-      }
+      if (!chardata[favored_name]) chardata[favored_name] = [];
       favored = db.first({
         name: (chardata[favored_name].length > index ? chardata[favored_name][index].name : "")
       });
-      if (favored) {
-        favored = favored._id;
-      }
+      if (favored) favored = favored._id;
       select = create_select(favored_name + "_" + index, db.get(), "chardata." + favored_name + "[" + index + "] = { name: $('#" + favored_name + "_" + index + "').val(), val: (parseInt($('#" + favored_name + "_" + index + "_bonus').val()) | 0) }; save_character();", false, "style='width: 100%;'", null, favored);
       $("#" + favored_name + "s").append("<tr><td>" + select + "</td><td><input id=\"" + favored_name + "_" + index + "_bonus\" type=\"text\" size=\"1\"/></td></tr>");
       $("#" + favored_name + "_" + index + "_bonus").val((chardata[favored_name][index] ? chardata[favored_name][index].val : 0));
@@ -501,9 +508,7 @@ classes = new TAFFY([
       detail = power.detail;
       special_level = null;
       for (level in power.levels) {
-        if (level <= chardata.classes["Sorcerer"].level) {
-          special_level = level;
-        }
+        if (level <= chardata.classes["Sorcerer"].level) special_level = level;
       }
       if (special_level) {
         for (j in power.levels[special_level].vals) {
@@ -580,7 +585,11 @@ classes = new TAFFY([
               dr_fn = power.levels[level][type];
             }
           }
-          _results.push(dr_fn ? dr_fn(save) : void 0);
+          if (dr_fn) {
+            _results.push(dr_fn(save));
+          } else {
+            _results.push(void 0);
+          }
         }
         return _results;
       }
@@ -668,9 +677,7 @@ classes = new TAFFY([
                 spell = spells.first({
                   name: bloodline.spells[bloodline_level]
                 });
-                if (!all_spells[class_spell_lvl]) {
-                  all_spells[class_spell_lvl] = [];
-                }
+                if (!all_spells[class_spell_lvl]) all_spells[class_spell_lvl] = [];
                 if (chardata.classes["Sorcerer"].level >= bloodline_level && all_spells[class_spell_lvl].indexOf(bloodline.spells[bloodline_level]) === -1) {
                   all_spells[class_spell_lvl].push(bloodline.spells[bloodline_level]);
                 }
@@ -712,9 +719,7 @@ classes = new TAFFY([
                 });
                 special = null;
                 for (level in power.levels) {
-                  if (level <= chardata.classes["Sorcerer"].level) {
-                    special = power;
-                  }
+                  if (level <= chardata.classes["Sorcerer"].level) special = power;
                 }
                 if (special) {
                   $("#specials").append("<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>");
@@ -792,7 +797,11 @@ classes = new TAFFY([
                     spells_known_fn = power.levels[level].spells_known;
                   }
                 }
-                _results.push(spells_known_fn ? spells_known_fn(spells_known) : void 0);
+                if (spells_known_fn) {
+                  _results.push(spells_known_fn(spells_known));
+                } else {
+                  _results.push(void 0);
+                }
               }
               return _results;
             }
@@ -807,9 +816,25 @@ classes = new TAFFY([
             if (bloodline) {
               _results = [];
               for (bloodline_level in bloodline.spells) {
-                _results.push(chardata.classes["Sorcerer"].level >= bloodline_level ? (spell = spells.first({
-                  name: bloodline.spells[bloodline_level]
-                }), $("#spell_" + spell._id).wrap("<i />"), $("#" + spell._id + "_Sorcerer").attr("disabled", true), chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]] ? (idx = chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]].indexOf(spell.name), idx > -1 ? remove(chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]], idx) : void 0) : void 0) : void 0);
+                if (chardata.classes["Sorcerer"].level >= bloodline_level) {
+                  spell = spells.first({
+                    name: bloodline.spells[bloodline_level]
+                  });
+                  $("#spell_" + spell._id).wrap("<i />");
+                  $("#" + spell._id + "_Sorcerer").attr("disabled", true);
+                  if (chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]]) {
+                    idx = chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]].indexOf(spell.name);
+                    if (idx > -1) {
+                      _results.push(remove(chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]], idx));
+                    } else {
+                      _results.push(void 0);
+                    }
+                  } else {
+                    _results.push(void 0);
+                  }
+                } else {
+                  _results.push(void 0);
+                }
               }
               return _results;
             }

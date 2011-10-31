@@ -1,4 +1,7 @@
-views = new TAFFY([ 
+if typeof(exports) == 'object'
+  TAFFY = require('../lib/taffy').taffy
+
+this.views = new TAFFY([ 
   id: 0
   name: "main"
   title: "Pathfinder Player's Companion"
@@ -19,4 +22,5 @@ views = new TAFFY([
   name: "equip"
   title: "Edit Equipment"
  ])
-views.orderBy id: "logical"
+ 
+this.views.sort "id"

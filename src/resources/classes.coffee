@@ -1,4 +1,7 @@
-classes = new TAFFY([ 
+if typeof(exports) == 'object'
+  TAFFY = require('../../lib/taffy').taffy
+  
+this.classes = new TAFFY([ 
 	name: "Barbarian"
 	shortname: "Brb"
 	base_attack_bonus: [ "1", "2", "3", "4", "5", "6/1", "7/2", "8/3", "9/4", "10/5", "11/6/1", "12/7/2", "13/8/3", "14/9/4", "15/10/5", "16/11/6/1", "17/12/7/2", "18/13/8/3", "19/14/9/4", "20/15/10/5" ]
