@@ -1,6 +1,6 @@
-if typeof(exports) == 'object'
-  TAFFY = require('../../lib/taffy').taffy
-  
+if typeof(exports) == "object"
+	TAFFY = require("../../lib/taffy").taffy
+
 this.classes = new TAFFY([ 
 	name: "Barbarian"
 	shortname: "Brb"

@@ -1,4 +1,7 @@
-feats = new TAFFY([ 
+if typeof(exports) == "object"
+	TAFFY = require("../../lib/taffy").taffy
+	
+this.feats = new TAFFY([ 
   name: "Acrobatic"
   summary: "+2 bonus on Acrobatics and Fly checks"
   detail: "You are skilled at leaping, jumping, and flying. <p class=sub><b>Benefit: </b>You get a +2 bonus on all Acrobatics and Fly skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill."

@@ -1,7 +1,11 @@
 if typeof(exports) == "object"
-  TAFFY = require("../lib/taffy").taffy
-  $ = require("jquery")
-  classes = require("./resources/classes")
+	TAFFY = require("../lib/taffy").taffy
+	$ = require("jquery")
+	classes = require("./resources/classes").classes
+	armors = require("./resources/armors").armors
+	shields = require("./resources/shields").shields
+	feats = require("./resources/feats").feats
+	skills = require("./resources/skills").skills
   
 # TODO - inline
 this.update_weapon = (name, index) ->
@@ -22,7 +26,6 @@ this.calc_total_base_feats_count = (race_name, char_classes) ->
 
 # TODO - now broken in main
 this.calc_total_class_feats_count = (char_classes) ->
-	console.log(classes)
 	class_feat_count = 0
 	for classname, classdata of char_classes
 		class_feats = classes(name: classname).first().bonus_feats_levels
@@ -34,23 +37,22 @@ this.calc_total_class_feats_count = (char_classes) ->
 
 this.calc_armor_acp = (char_armors) ->
 	acp = 0
-	for i of char_armors
-		armor = armors.first(name: char_armors[i].armor_name)
-		acp += armor.acp
+	for i, armor of char_armors
+		acp += armors(name: armor.armor_name).first().acp
 	acp
 
 this.calc_shield_acp = (char_shields) ->
 	acp = 0
-	for i of char_shields
-		shield = shields.first(name: char_shields[i].shield_name)
-		acp += shield.acp
+	for i, shield of char_shields
+		acp += shields(name: shield.shield_name).first().acp
 	acp
 
+# TODO - broken in main
 this.calc_skill_mod = (skill, skill_ability_score, acp, subtype) ->
 	acp = acp | 0
 	char_skill_points = 0
 	char_skill = false
-	char_skill = chardata.skills.first(skill_name: skill.name)	if chardata.skills?
+	char_skill = char_skills({ skill_name: skill.name }).first()	if chardata.skills?
 	if char_skill
 		char_skill_points = char_skill.ranks
 		char_skill_points = char_skill.subtypes[subtype]	if subtype and char_skill.subtypes
@@ -504,12 +506,12 @@ this.update_options = (message) ->
 this.is_class_feat = (feat_name) ->
 	get_class_feat_names().indexOf(feat_name) > -1
 
-this.get_class_feat_names = ->
+this.get_class_feat_names = (char_classes) ->
 	class_feats = []
-	for classname of chardata.classes
+	for classname, char_class of char_classes
 		clazz = classes.first(name: classname)
-		for level of clazz.feats
-			class_feats = class_feats.concat(clazz.feats[level])	if chardata.classes[classname].level >= level
+		for level, class_feats of clazz.feats
+			class_feats = class_feats.concat(class_feats)	if char_class.level >= level
 	class_feats
 
 this.get_class_feats = ->
@@ -519,8 +521,8 @@ this.get_class_feats = ->
 		class_feats = class_feats.concat(feats.first(name: feat_names[i]))
 	class_feats
 
-this.get_all_char_feats = ->
-	(if chardata.feats then chardata.feats.get().concat(get_class_feats()) else get_class_feats())
+this.get_all_char_feats = (char_feats) ->
+	(if char_feats then char_feats.get().concat(get_class_feats()) else get_class_feats())
 
 this.get_special_abilities = ->
 	special_abilities = []

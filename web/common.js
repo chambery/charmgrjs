@@ -1,9 +1,13 @@
-var $, TAFFY, classes;
+var $, TAFFY, armors, classes, feats, shields, skills;
 
 if (typeof exports === "object") {
   TAFFY = require("../lib/taffy").taffy;
   $ = require("jquery");
-  classes = require("./resources/classes");
+  classes = require("./resources/classes").classes;
+  armors = require("./resources/armors").armors;
+  shields = require("./resources/shields").shields;
+  feats = require("./resources/feats").feats;
+  skills = require("./resources/skills").skills;
 }
 
 this.update_weapon = function(name, index) {
@@ -30,7 +34,6 @@ this.calc_total_base_feats_count = function(race_name, char_classes) {
 
 this.calc_total_class_feats_count = function(char_classes) {
   var class_feat_count, class_feats, classdata, classname, level, _ref;
-  console.log(classes);
   class_feat_count = 0;
   for (classname in char_classes) {
     classdata = char_classes[classname];
@@ -48,10 +51,10 @@ this.calc_armor_acp = function(char_armors) {
   var acp, armor, i;
   acp = 0;
   for (i in char_armors) {
-    armor = armors.first({
-      name: char_armors[i].armor_name
-    });
-    acp += armor.acp;
+    armor = char_armors[i];
+    acp += armors({
+      name: armor.armor_name
+    }).first().acp;
   }
   return acp;
 };
@@ -60,10 +63,10 @@ this.calc_shield_acp = function(char_shields) {
   var acp, i, shield;
   acp = 0;
   for (i in char_shields) {
-    shield = shields.first({
-      name: char_shields[i].shield_name
-    });
-    acp += shield.acp;
+    shield = char_shields[i];
+    acp += shields({
+      name: shield.shield_name
+    }).first().acp;
   }
   return acp;
 };
@@ -74,9 +77,9 @@ this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype) {
   char_skill_points = 0;
   char_skill = false;
   if (chardata.skills != null) {
-    char_skill = chardata.skills.first({
+    char_skill = char_skills({
       skill_name: skill.name
-    });
+    }).first();
   }
   if (char_skill) {
     char_skill_points = char_skill.ranks;
@@ -747,17 +750,18 @@ this.is_class_feat = function(feat_name) {
   return get_class_feat_names().indexOf(feat_name) > -1;
 };
 
-this.get_class_feat_names = function() {
-  var class_feats, classname, clazz, level;
+this.get_class_feat_names = function(char_classes) {
+  var char_class, class_feats, classname, clazz, level, _ref;
   class_feats = [];
-  for (classname in chardata.classes) {
+  for (classname in char_classes) {
+    char_class = char_classes[classname];
     clazz = classes.first({
       name: classname
     });
-    for (level in clazz.feats) {
-      if (chardata.classes[classname].level >= level) {
-        class_feats = class_feats.concat(clazz.feats[level]);
-      }
+    _ref = clazz.feats;
+    for (level in _ref) {
+      class_feats = _ref[level];
+      if (char_class.level >= level) class_feats = class_feats.concat(class_feats);
     }
   }
   return class_feats;
@@ -775,9 +779,9 @@ this.get_class_feats = function() {
   return class_feats;
 };
 
-this.get_all_char_feats = function() {
-  if (chardata.feats) {
-    return chardata.feats.get().concat(get_class_feats());
+this.get_all_char_feats = function(char_feats) {
+  if (char_feats) {
+    return char_feats.get().concat(get_class_feats());
   } else {
     return get_class_feats();
   }
