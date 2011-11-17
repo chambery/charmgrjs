@@ -1,5 +1,5 @@
 if typeof(exports) == "object"
-	TAFFY = require("../../lib/taffy").taffy
+	TAFFY = require("taffy").taffy
 
 this.armors = new TAFFY([ 
 	name: "Padded"

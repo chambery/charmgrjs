@@ -1,6 +1,6 @@
 if typeof(exports) == "object"
-  TAFFY = require("../../lib/taffy").taffy
-  common = require("../common")
+	TAFFY = require("../../lib/taffy").taffy
+	common = require("../common")
 
 this.sorcerer_bloodlines = new TAFFY([ 
 	name: "Aberrant"
@@ -521,7 +521,7 @@ this.bloodline_powers = new TAFFY([
 		
 		19: 
 			vals: [ "Three times per day" ]
-			weapons:  
+			weapons:	
 				"Breath Weapon":
 					note: ->
 						draconic_types.first(name: chardata.draconic_type).breath + ", 3 times/day"

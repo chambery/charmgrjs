@@ -1,4 +1,4 @@
-var $, TAFFY, armors, classes, feats, shields, skills;
+var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills;
 
 if (typeof exports === "object") {
   TAFFY = require("../lib/taffy").taffy;
@@ -8,6 +8,9 @@ if (typeof exports === "object") {
   shields = require("./resources/shields").shields;
   feats = require("./resources/feats").feats;
   skills = require("./resources/skills").skills;
+  races = require("./resources/races").races;
+  alignments = require("./resources/alignments").alignments;
+  goodness = require("./resources/alignments").goodness;
 }
 
 this.update_weapon = function(name, index) {
@@ -71,13 +74,13 @@ this.calc_shield_acp = function(char_shields) {
   return acp;
 };
 
-this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype) {
+this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype, chardata) {
   var char_skill, char_skill_points, feat_mod, max_ranks, race, race_mod, ranks, skill_focus, synergy_mod;
   acp = acp | 0;
   char_skill_points = 0;
   char_skill = false;
   if (chardata.skills != null) {
-    char_skill = char_skills({
+    char_skill = chardata.skills({
       skill_name: skill.name
     }).first();
   }
@@ -87,11 +90,11 @@ this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype) {
       char_skill_points = char_skill.subtypes[subtype];
     }
   }
-  race = races.first({
+  race = races({
     name: chardata.race_name
-  });
+  }).first();
   feat_mod = 0;
-  get_all_char_feats().forEach(function(char_feat, i) {
+  this.get_all_char_feats().forEach(function(char_feat, i) {
     var feat;
     feat = feats.first({
       name: char_feat.feat_name
@@ -102,18 +105,18 @@ this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype) {
     if (skill.mobility && feat.mobility) return acp = feat.mobility(acp);
   });
   if (chardata.feats) {
-    skill_focus = chardata.feats.first({
+    skill_focus = chardata.feats({
       feat_name: "Skill Focus"
-    });
-    if (skill_focus && skill_focus.multi && jQuery.inArray(skill.name, skill_focus.multi) > -1) {
+    }).first();
+    if (skill_focus && skill_focus.multi && ~$.inArray(skill.name, skill_focus.multi)) {
       feat_mod += 3;
     }
   }
   race_mod = (race.skills[skill.name] != null ? race.skills[skill.name] : 0);
-  ranks = calc_ranks(char_skill_points, skill, subtype);
-  synergy_mod = calc_synergies(skill);
-  max_ranks = calc_ranks(calc_level() + 4, skill, subtype);
-  return Math.min(Math.floor(max_ranks), ranks) + calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (skill.mobility ? acp : 0) + calc_equip_mod(skill.name) | 0;
+  ranks = this.calc_ranks(char_skill_points, skill, subtype);
+  synergy_mod = this.calc_synergies(skill);
+  max_ranks = this.calc_ranks(calc_level() + 4, skill, subtype);
+  return Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (skill.mobility ? acp : 0) + calc_equip_mod(skill.name) | 0;
 };
 
 this.is_class_skill = function(skill, subtype) {
@@ -751,17 +754,19 @@ this.is_class_feat = function(feat_name) {
 };
 
 this.get_class_feat_names = function(char_classes) {
-  var char_class, class_feats, classname, clazz, level, _ref;
+  var char_class, class_feats, classname, clazz, level, these_class_feats, _ref;
   class_feats = [];
   for (classname in char_classes) {
     char_class = char_classes[classname];
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
     _ref = clazz.feats;
     for (level in _ref) {
-      class_feats = _ref[level];
-      if (char_class.level >= level) class_feats = class_feats.concat(class_feats);
+      these_class_feats = _ref[level];
+      if (char_class.level >= level) {
+        class_feats = class_feats.concat(these_class_feats);
+      }
     }
   }
   return class_feats;
@@ -770,11 +775,11 @@ this.get_class_feat_names = function(char_classes) {
 this.get_class_feats = function() {
   var class_feats, feat_names, i;
   class_feats = [];
-  feat_names = get_class_feat_names();
+  feat_names = this.get_class_feat_names();
   for (i in feat_names) {
-    class_feats = class_feats.concat(feats.first({
+    class_feats = class_feats.concat(feats({
       name: feat_names[i]
-    }));
+    }).first());
   }
   return class_feats;
 };
@@ -783,7 +788,7 @@ this.get_all_char_feats = function(char_feats) {
   if (char_feats) {
     return char_feats.get().concat(get_class_feats());
   } else {
-    return get_class_feats();
+    return this.get_class_feats();
   }
 };
 
@@ -1146,26 +1151,6 @@ this.curr_xp = 0;
 this.char_classes = [];
 
 this.equipment_benefits = [];
-
-this.alignments = new TAFFY([
-  {
-    name: "Lawful"
-  }, {
-    name: "Neutral"
-  }, {
-    name: "Chaotic"
-  }
-]);
-
-this.goodness = new TAFFY([
-  {
-    name: "Good"
-  }, {
-    name: "Neutral"
-  }, {
-    name: "Evil"
-  }
-]);
 
 $.extend({
   keys: function(obj) {

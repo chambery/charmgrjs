@@ -1,6 +1,22 @@
-var create_default_name, delete_character, get_cookie_data, import_character, load_static_data, lod, parse_taffy_data, sav, save_character, save_local, save_remote;
+var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills, specials, spells, weapons;
 
-import_character = function() {
+if (typeof exports === "object") {
+  TAFFY = require("taffy").taffy;
+  $ = require("jquery");
+  classes = require("./resources/classes").classes;
+  armors = require("./resources/armors").armors;
+  shields = require("./resources/shields").shields;
+  feats = require("./resources/feats").feats;
+  skills = require("./resources/skills").skills;
+  races = require("./resources/races").races;
+  spells = require("./resources/spells-pf").spells;
+  specials = require("./resources/specials").specials;
+  alignments = require("./resources/alignments").alignments;
+  goodness = require("./resources/alignments").goodness;
+  weapons = require("./resources/weapons").weapons;
+}
+
+this.import_character = function() {
   var char_name, chardata, data, i, need_new_data, owner;
   while (!chardata.options || !chardata.options.owner) {
     chardata.options = {};
@@ -57,7 +73,7 @@ import_character = function() {
   }
 };
 
-lod = function(char_name) {
+this.lod = function(char_name) {
   var chardata, cookie_data, remote_data;
   if (char_name) {
     cookie_data = get_cookie_data("ch_" + char_name);
@@ -85,7 +101,7 @@ lod = function(char_name) {
   return load_static_data();
 };
 
-sav = function(data, local_name, remote_name) {
+this.sav = function(data, local_name, remote_name) {
   if (local_name && local_name.length > 0) {
     data.last_mod = (new Date()).getTime();
     save_local(data, local_name);
@@ -96,7 +112,7 @@ sav = function(data, local_name, remote_name) {
   }
 };
 
-save_remote = function(data, name) {
+this.save_remote = function(data, name) {
   if (data != null) {
     return $.ajax({
       type: "POST",
@@ -112,13 +128,13 @@ save_remote = function(data, name) {
   }
 };
 
-save_local = function(data, name, expires) {
+this.save_local = function(data, name, expires) {
   expires = expires | (new Date(2020, 02, 02)).toUTCString();
   data = escape(TAFFY.JSON.stringify(data));
   return document.cookie = name + "=" + data + ";expires=" + expires;
 };
 
-save_character = function() {
+this.save_character = function() {
   var name, save_data;
   name = chardata.name;
   if (!(name != null) || name.length === 0) name = create_default_name();
@@ -131,7 +147,7 @@ save_character = function() {
   return sav(save_data, "ch_" + name, name);
 };
 
-get_cookie_data = function(cookie_name) {
+this.get_cookie_data = function(cookie_name) {
   var c_end, c_start, data;
   data = null;
   if (cookie_name && cookie_name.length > 0 && document.cookie.length > 0) {
@@ -146,30 +162,32 @@ get_cookie_data = function(cookie_name) {
   return data;
 };
 
-parse_taffy_data = function(data) {
+this.parse_taffy_data = function(data) {
   if (data == null) data = [];
   return new TAFFY(data);
 };
 
-load_static_data = function() {
-  spells.forEach(function(spell, n) {
+this.load_static_data = function() {
+  console.log("loading spells...");
+  spells().each(function(spell, n) {
     var classname, clazz, _results;
     _results = [];
     for (classname in spell.classes) {
-      clazz = classes.first({
+      clazz = classes({
         name: classname
-      });
+      }).first();
       _results.push(clazz.spells[spell.classes[classname]].push(spell.name));
     }
     return _results;
   });
-  specials.forEach(function(special, n) {
+  console.log("loading specials...");
+  specials().each(function(special, n) {
     var classname, clazz, i, _results;
     _results = [];
     for (classname in special.classes) {
-      clazz = classes.first({
+      clazz = classes({
         name: classname
-      });
+      }).first();
       i = 0;
       _results.push((function() {
         var _results2;
@@ -186,7 +204,8 @@ load_static_data = function() {
     }
     return _results;
   });
-  feats.forEach(function(feat, n) {
+  console.log("loading feats...");
+  feats().each(function(feat, n) {
     var classname, clazz;
     if (feat.multi) {
       feat.multi.db = eval(feat.multi.db);
@@ -203,31 +222,22 @@ load_static_data = function() {
     if (feat.ac) feat.ac = new Function("ac", feat.ac);
     if (feat.mobility) feat.mobility = new Function("acp", feat.mobility);
     for (classname in feat.classes) {
-      clazz = classes.first({
+      clazz = classes({
         name: classname
-      });
+      }).first();
       clazz.feats[feat.classes[classname]].push(feat.name);
     }
     return feat;
   });
-  races.orderBy({
-    name: "logical"
-  });
-  classes.orderBy({
-    name: "logical"
-  });
-  weapons.orderBy({
-    name: "logical"
-  });
-  armors.orderBy({
-    name: "logical"
-  });
-  return skills.orderBy({
-    name: "logical"
-  });
+  console.log("sorting data...");
+  races.sort("name");
+  classes.sort("name");
+  weapons.sort("name");
+  armors.sort("name");
+  return skills.sort("name");
 };
 
-delete_character = function() {
+this.delete_character = function() {
   var answer, name, prompt_name;
   prompt_name = (chardata.name ? chardata.name : "the current character");
   answer = confirm("Are you sure you want to delete " + prompt_name + "?");
@@ -252,7 +262,7 @@ delete_character = function() {
   }
 };
 
-create_default_name = function() {
+this.create_default_name = function() {
   var class_name, classname, race_name;
   race_name = races.first({
     name: chardata.race_name

@@ -6,7 +6,10 @@ if typeof(exports) == "object"
 	shields = require("./resources/shields").shields
 	feats = require("./resources/feats").feats
 	skills = require("./resources/skills").skills
-  
+	races = require("./resources/races").races
+	alignments = require("./resources/alignments").alignments
+	goodness = require("./resources/alignments").goodness
+	
 # TODO - inline
 this.update_weapon = (name, index) ->
 	weapon = weapons.first(name: name)
@@ -48,29 +51,29 @@ this.calc_shield_acp = (char_shields) ->
 	acp
 
 # TODO - broken in main
-this.calc_skill_mod = (skill, skill_ability_score, acp, subtype) ->
+this.calc_skill_mod = (skill, skill_ability_score, acp, subtype, chardata) ->
 	acp = acp | 0
 	char_skill_points = 0
 	char_skill = false
-	char_skill = char_skills({ skill_name: skill.name }).first()	if chardata.skills?
+	char_skill = chardata.skills({ skill_name: skill.name }).first()	if chardata.skills?
 	if char_skill
 		char_skill_points = char_skill.ranks
 		char_skill_points = char_skill.subtypes[subtype]	if subtype and char_skill.subtypes
-	race = races.first(name: chardata.race_name)
+	race = races(name: chardata.race_name).first()
 	feat_mod = 0
-	get_all_char_feats().forEach (char_feat, i) ->
+	this.get_all_char_feats().forEach (char_feat, i) ->
 		feat = feats.first(name: char_feat.feat_name)
 		feat_mod += feat.skills[skill.name]	if feat.skills and feat.skills[skill.name]
 		acp = feat.mobility(acp)	if skill.mobility and feat.mobility
 	
 	if chardata.feats
-		skill_focus = chardata.feats.first(feat_name: "Skill Focus")
-		feat_mod += 3	if skill_focus and skill_focus.multi and jQuery.inArray(skill.name, skill_focus.multi) > -1
+		skill_focus = chardata.feats(feat_name: "Skill Focus").first()
+		feat_mod += 3	if skill_focus and skill_focus.multi and ~$.inArray(skill.name, skill_focus.multi)
 	race_mod = (if race.skills[skill.name]? then race.skills[skill.name] else 0)
-	ranks = calc_ranks(char_skill_points, skill, subtype)
-	synergy_mod = calc_synergies(skill)
-	max_ranks = calc_ranks(calc_level() + 4, skill, subtype)
-	Math.min(Math.floor(max_ranks), ranks) + calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (if skill.mobility then acp else 0) + calc_equip_mod(skill.name) | 0
+	ranks = this.calc_ranks(char_skill_points, skill, subtype)
+	synergy_mod = this.calc_synergies(skill)
+	max_ranks = this.calc_ranks(calc_level() + 4, skill, subtype)
+	Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (if skill.mobility then acp else 0) + calc_equip_mod(skill.name) | 0
 
 this.is_class_skill = (skill, subtype) ->
 	for classname of chardata.classes
@@ -509,20 +512,21 @@ this.is_class_feat = (feat_name) ->
 this.get_class_feat_names = (char_classes) ->
 	class_feats = []
 	for classname, char_class of char_classes
-		clazz = classes.first(name: classname)
-		for level, class_feats of clazz.feats
-			class_feats = class_feats.concat(class_feats)	if char_class.level >= level
+		clazz = classes(name: classname).first()
+		for level, these_class_feats of clazz.feats
+			# console.log "#{level} : #{class_feats}"
+			class_feats = class_feats.concat(these_class_feats)	if char_class.level >= level
 	class_feats
 
 this.get_class_feats = ->
 	class_feats = []
-	feat_names = get_class_feat_names()
+	feat_names = this.get_class_feat_names()
 	for i of feat_names
-		class_feats = class_feats.concat(feats.first(name: feat_names[i]))
+		class_feats = class_feats.concat(feats(name: feat_names[i]).first())
 	class_feats
 
 this.get_all_char_feats = (char_feats) ->
-	(if char_feats then char_feats.get().concat(get_class_feats()) else get_class_feats())
+	(if char_feats then char_feats.get().concat(get_class_feats()) else this.get_class_feats())
 
 this.get_special_abilities = ->
 	special_abilities = []
@@ -793,18 +797,6 @@ this.curr_xp = 0
 this.char_classes = []
 
 this.equipment_benefits = []
-
-this.alignments = new TAFFY([ 
-	{ name: "Lawful" },
-	{ name: "Neutral" },
-	{ name: "Chaotic" } 
-])
-
-this.goodness = new TAFFY([ 
-	{ name: "Good" }, 
-	{ name: "Neutral" }, 
-	{ name: "Evil" }
-])
 
 $.extend keys: (obj) ->
 	a = []

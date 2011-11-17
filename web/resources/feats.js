@@ -704,12 +704,12 @@ this.feats = new TAFFY([
     summary: "+4 bonus on checks to avoid nonlethal damage",
     detail: "Harsh conditions or long exertions do not easily tire you.<p class=sub><b>Benefit: </b>All variable, numeric effects of an empowered spell are increased by half. <p class=sub>Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell?s actual level.You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage from exhaustion; Constitution checks made to continue running; Constitution checks made to avoid nonlethal damage from a forced march; Constitution checks made to hold your breath; Constitution checks made to avoid nonlethal damage from starvation or thirst; Fortitude saves made to avoid nonlethal damage from hot or cold environments; and Fortitude saves made to resist damage from suffocation.<p class=sub>You may sleep in light or medium armor without becoming fatigued.<p class=sub><b>Normal: </b>A character without this feat who sleeps in medium or heavier armor is fatigued the next day.",
     classes: {
-      Ranger: 2,
-      conditional: true,
-      tags: ["pathfinder"],
-      type: "feat",
-      _id: "7b92"
-    }
+      Ranger: 2
+    },
+    conditional: true,
+    tags: ["pathfinder"],
+    type: "feat",
+    _id: "7b92"
   }, {
     name: "Enlarge Spell",
     summary: "Double spell range",
@@ -1227,7 +1227,7 @@ this.feats = new TAFFY([
     }
   }, {
     name: "Improved Lightning Reflexes",
-    summary: "Once per day, you may reroll a Reflex save  ",
+    summary: "Once per day, you may reroll a Reflex save	",
     detail: "You have a knack for avoiding danger all around you. <p class=sub><b>Prerequisites: </b>Lightning reflexes <p class=sub><b>Benefit: </b>Once per day, you may reroll a reflex save. You must decide to use this ability before the results are revealed. You must take the second roll, even if it is worse.",
     prereqs: {
       feats: ["Lightning Reflexes"],
@@ -1349,7 +1349,7 @@ this.feats = new TAFFY([
     _id: "aaa1"
   }, {
     name: "Intimidating Prowess",
-    summary: "Add Str to Intimidate  in addition to Cha",
+    summary: "Add Str to Intimidate	in addition to Cha",
     detail: "Your physical might is intimidating to others. <p class=sub><b>Benefit: </b>Add your Strength modifier to Intimidate skill checks in addition to your Charisma modifier. Iron Will You are more resistant to mental effects. <p class=sub><b>Benefit: </b>You get a +2 bonus on all Will saving throws.",
     prereqs: {},
     groups: ["Combat"],
@@ -1408,7 +1408,7 @@ this.feats = new TAFFY([
     _id: "dac8"
   }, {
     name: "Magical Aptitude",
-    summary: "+2 bonus on Spellcraft  and Use Magic Device checks ",
+    summary: "+2 bonus on Spellcraft	and Use Magic Device checks ",
     detail: "You are skilled at spellcasting and using magic items. <p class=sub><b>Benefit: </b>You get a +2 bonus on all Spellcraft checks and Use Magic Device checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
     prereqs: {},
     tags: ["pathfinder"],
@@ -1518,7 +1518,7 @@ this.feats = new TAFFY([
     }
   }, {
     name: "Mounted Combat",
-    summary: "Avoid attacks on mount with Ride  check ",
+    summary: "Avoid attacks on mount with Ride	check ",
     detail: "You are adept at guiding your mount through combat. <p class=sub><b>Prerequisite: </b>Ride 1 rank <p class=sub><b>Benefit: </b>Once per round when your mount is hit in combat, you may attempt a Ride check (as an immediate action) to negate the hit. The hit is negated if your Ride check result is greater than the opponent&apos;s attack roll.",
     prereqs: {
       skills: {
@@ -1594,7 +1594,7 @@ this.feats = new TAFFY([
     detail: "You are especially accurate when making ranged attacks against close targets. <p class=sub><b>Benefit: </b>You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet.",
     prereqs: {},
     conditional: true,
-    op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons.first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
+    op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons.first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);	var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
     groups: ["Combat", "Archery Style 1"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1725,7 +1725,7 @@ this.feats = new TAFFY([
     }
   }, {
     name: "Self-Sufficient",
-    summary: "+2 bonus on Heal and Survival  checks ",
+    summary: "+2 bonus on Heal and Survival	checks ",
     detail: "You know how to get along in the wild and how to effectively treat wounds. <p class=sub><b>Benefit: </b>You get a +2 bonus on all Heal checks and Survival checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
     prereqs: {},
     tags: ["pathfinder"],
@@ -2140,7 +2140,7 @@ this.feats = new TAFFY([
     summary: "Use Dex instead of Str on attack rolls with light weapons",
     detail: "You are trained in using your agility in melee combat, as opposed to brute strength. <p class=sub><b>Benefit: </b>With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls. <p class=sub><b>Special: </b>Natural weapons are considered light weapons.",
     prereqs: {},
-    attack: "if (weapon.usage == 'light' || weapon.name == 'Whip' || weapon.name == 'Chain, spiked' || weapon.name == 'Rapier') {  var dex_score = calc_ability_modifier(chardata.abilities['Dex']);  var str_score = calc_ability_modifier(chardata.abilities['Str']);  if ($('#ability_Str_score')) {   str_score = parseInt($('#ability_Str_score').val());  } if ($('#ability_Dex_score')) {  dex_score = parseInt($('#ability_Dex_score').val()); } attacks.ability_score = Math.max(str_score, dex_score); } return attacks;",
+    attack: "if (weapon.usage == 'light' || weapon.name == 'Whip' || weapon.name == 'Chain, spiked' || weapon.name == 'Rapier') {	var dex_score = calc_ability_modifier(chardata.abilities['Dex']);	var str_score = calc_ability_modifier(chardata.abilities['Str']);	if ($('#ability_Str_score')) {	 str_score = parseInt($('#ability_Str_score').val());	} if ($('#ability_Dex_score')) {	dex_score = parseInt($('#ability_Dex_score').val()); } attacks.ability_score = Math.max(str_score, dex_score); } return attacks;",
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",

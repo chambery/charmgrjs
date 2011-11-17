@@ -57,7 +57,7 @@ calc_shield_acp = function(char_shields) {
   }
   return acp;
 };
-calc_skill_mod = function(skill, skill_ability_score, acp, subtype) {
+calc_skill_mod = function(skill, skill_ability_score, acp, subtype, chardata) {
   var char_skill, char_skill_points, feat_mod, max_ranks, race, race_mod, ranks, skill_focus, synergy_mod;
   acp = acp | 0;
   char_skill_points = 0;
