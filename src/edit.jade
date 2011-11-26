@@ -1,0 +1,91 @@
+.dp100(style='padding-bottom: 5px;')
+	span(style='float: right;')
+	| XP
+	input#xp(type='text', onblur='edit.recalc_edit_page()', size='5', value='', name='xp')
+	input#charname(value='', size='12', type='text')
+	span#race_select
+#moralitypart.dp100(style='padding-bottom: 5px;')
+	select#alignment(onchange='edit.recalc_edit_page()', style='float: right;')
+	| HP
+	input#hp(value='', type='text', style='width: 25px;')
+	select#deity(style='width: 105px; vertical-align: top;', onchange='edit.recalc_edit_page()')
+#middlepart
+	#abilitiespart.dp25(style='padding-bottom: 5px; float: left;')
+	table(border='0')
+		tbody
+		tr
+			td(align='center')
+			b
+				a.fake_link(onclick='\"show_item_detail(abilities,\'Str\')\"') Str
+			td(align='center')
+			input#ability_Str.two_digit(type='text', onblur='edit.recalc_edit_page()', value='', name='Strscore')
+			td#race_Str_mod(align='center')
+		tr
+			td(align='center')
+			b
+				a.fake_link(onclick='\"show_item_detail(abilities,\'Dex\')\"') Dex
+			td(align='center')
+			input#ability_Dex.two_digit(type='text', onblur='edit.recalc_edit_page()', value='', name='Dexscore')
+			td#race_Dex_mod(align='center')
+		tr
+			td(align='center')
+			b
+				a.fake_link(onclick='\"show_item_detail(abilities,\'Int\')\"') Int
+			td(align='center')
+			input#ability_Int.two_digit(type='text', onblur='edit.recalc_edit_page()', value='', name='Intscore')
+			td#race_Int_mod(align='center')
+		tr
+			td(align='center')
+			b
+				a.fake_link(onclick='\"show_item_detail(abilities,\'Con\')\"') Con
+			td(align='center')
+			input#ability_Con.two_digit(type='text', onblur='edit.recalc_edit_page()', value='', name='Conscore')
+			td#race_Con_mod(align='center')
+		tr
+			td(align='center')
+			b
+				a.fake_link(onclick='\"show_item_detail(abilities,\'Int\')\"') Cha
+			td(align='center')
+			input#ability_Cha.two_digit(type='text', onblur='edit.recalc_edit_page()', value='', name='Chascore')
+			td#race_Cha_mod(align='center')
+		tr
+			td(align='center')
+			b
+				a.fake_link(onclick='\"show_item_detail(abilities,\'Wis\')\"') Wis
+			td(align='center')
+			input#ability_Wis.two_digit(type='text', onblur='edit.recalc_edit_page()', value='', name='Wisscore')
+			td#race_Wis_mod(align='center')
+	#classespart.dp75
+br(style='clear: both;')
+.dp100
+	#skillspart.dp45(style='float: right;')
+	table#skills_table(border='0')
+		tr
+		td(colspan='3')
+			span(style='float: right;')
+			| Pts left:
+			span#skill_pts_remaining 0
+			| Max ranks:
+			span#max_ranks
+		tr(onclick='\"toggle_visible(\'languages\')\"', bgcolor='#8DC3E9')
+		td(colspan='3', style='vertical-align: middle;')
+			a.fake_link
+			span#languages_expand_flag(style='float: right;')
+				img(src='images/collapsed.png')
+			| Languages
+		tr#languages
+		td(colspan='3')
+			table#language_table(width='100%', style='border-collapse: collapse;')
+	#waspart.dp50
+	#weaponspart.dp100
+		#char_weapons
+		#new_weapon.new_weapon
+		hr(width='80%')
+	#armorpart.dp100
+		#char_armors
+		#new_armor.new_weapon
+		hr(width='80%')
+	#shieldpart.dp100
+		#char_shields
+		#new_shield.new_weapon
+.clear

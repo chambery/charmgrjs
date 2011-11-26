@@ -1,5 +1,5 @@
 if typeof(exports) == "object"
-	TAFFY = require("../lib/taffy").taffy
+	TAFFY = require("taffy").taffy
 	$ = require("jquery")
 	classes = require("./resources/classes").classes
 	armors = require("./resources/armors").armors
@@ -51,49 +51,63 @@ this.calc_shield_acp = (char_shields) ->
 	acp
 
 # TODO - broken in main
-this.calc_skill_mod = (skill, skill_ability_score, acp, subtype, chardata) ->
+this.calc_skill_mod = (skill, skill_ability_score, acp, subtype, char_skills, race, char_feats) ->
+	mods  = {}
 	acp = acp | 0
 	char_skill_points = 0
 	char_skill = false
-	char_skill = chardata.skills({ skill_name: skill.name }).first()	if chardata.skills?
+	char_skill = char_skills({ skill_name: skill.name }).first()	if char_skills?
 	if char_skill
 		char_skill_points = char_skill.ranks
 		char_skill_points = char_skill.subtypes[subtype]	if subtype and char_skill.subtypes
-	race = races(name: chardata.race_name).first()
+	race = races(name: race).first()
 	feat_mod = 0
-	this.get_all_char_feats().forEach (char_feat, i) ->
+	$.each this.get_all_char_feats(), (char_feat, undef) ->
 		feat = feats.first(name: char_feat.feat_name)
 		feat_mod += feat.skills[skill.name]	if feat.skills and feat.skills[skill.name]
 		acp = feat.mobility(acp)	if skill.mobility and feat.mobility
 	
-	if chardata.feats
-		skill_focus = chardata.feats(feat_name: "Skill Focus").first()
+	if char_feats
+		skill_focus = char_feats(feat_name: "Skill Focus").first()
 		feat_mod += 3	if skill_focus and skill_focus.multi and ~$.inArray(skill.name, skill_focus.multi)
 	race_mod = (if race.skills[skill.name]? then race.skills[skill.name] else 0)
 	ranks = this.calc_ranks(char_skill_points, skill, subtype)
 	synergy_mod = this.calc_synergies(skill)
-	max_ranks = this.calc_ranks(calc_level() + 4, skill, subtype)
+	max_ranks = this.calc_ranks(this.calc_level() + 4, skill, subtype)
 	Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (if skill.mobility then acp else 0) + calc_equip_mod(skill.name) | 0
 
-this.is_class_skill = (skill, subtype) ->
-	for classname of chardata.classes
-		if skill.skill_classes
-			return true	if skill.skill_classes.indexOf(classname) > -1
-		else return true	if skill.subtypes[subtype].indexOf(classname) > -1
+###
+Returns true if the supplied skill (or subtype, if applicable) contains any of the supplied character classes.
+###
+this.is_class_skill = (skill, subtype, char_classes) ->
+	for classname of char_classes 
+		if skill?.skill_classes?.indexOf(classname) > -1
+			# console.log "\t#{skill.name} #{skill.skill_classes} : #{classname}"
+			return true	
+		if skill?.subtypes?[subtype]?.indexOf(classname) > -1
+			# console.log "\t#{skill.name} (#{subtype}) #{skill.subtypes[subtype]} : #{classname}"
+			return true	
+	
 	false
 
-this.calc_ranks = (char_skill_points, skill, subtype) ->
-	class_skill = is_class_skill(skill, subtype)
-	multiplier = (if class_skill then 1 else .5)
+###
+Returns the class-modified ranks for the supplied skill and skill points
+###
+this.calc_ranks = (char_skill_points, skill, subtype, char_classes) ->
+	is_class_skill = this.is_class_skill(skill, subtype, char_classes)
+	multiplier = (if is_class_skill then 1 else .5)
+	
 	multiplier * char_skill_points
 
-this.calc_synergies = (skill) ->
+###
+Returns the modifier for skill synergies ()
+###
+this.calc_synergies = (skill, char_skills) ->
 	synergy_mod = 0
-	for i of skill.synergies
-		char_synergy_skill = false
-		char_synergy_skill = chardata.skills.first(skill_id: skill.synergies[i])	if chardata.skills
+	for i, synergy of skill.synergies
+		char_synergy_skill = chardata.skills(skill_id: skill.synergy).first()	if chardata.skills
 		if char_synergy_skill
-			synergy_skill = skills.first(id: skill.synergies[i])
+			synergy_skill = skills(id: skill.synergy).first()
 			synergy_mod = (if calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 then 2 else 0)
 	synergy_mod
 
@@ -145,7 +159,7 @@ this.set_links_part = (page_id) ->
 		existing_chars_html += "<li id='" + characters[i].name + "' onclick=\"players_companion.last_character='" + characters[i].name + "'; sav(players_companion, 'players_companion'); window.location.reload();\" >" + characters[i].name + "</li>"	if characters[i].name? and characters[i].name.length > 0 and characters[i].name != chardata.name
 	existing_chars_html = "<li class='sep'><hr /></li>" + existing_chars_html	if existing_chars_html.length > 0
 	$("#linkspart").html links_html + "<td class='view'>" + "<td class='view'><ul id='file'><li class='btn box'>&nbsp;char&nbsp;<ul><li id='load'>load</li><li></li><li id='new'>new</li><li></li><li id='log'>log</li><li></li><li id='options'>options</li><li></li><li id='sheet'>sheet</li><li></li>" + existing_chars_html + "</ul></ul></td>" + "<td class='view' style='color: blue;width: 100%;text-align: right;' nowrap>" + race.shortname + "</td>" + classes_html + "</tr></table>"
-	if calc_level() - calc_current_level() > 0
+	if this.calc_level() - calc_current_level() > 0
 		$("td[id^='view_class']").css "font-weight", "bold"
 	else
 		$("td[id^='view_class']").css "font-weight", ""
@@ -509,24 +523,42 @@ this.update_options = (message) ->
 this.is_class_feat = (feat_name) ->
 	get_class_feat_names().indexOf(feat_name) > -1
 
+###
+Returns a set of feat names (as Object keys) collected from class feats of the supplied character classes.
+###
 this.get_class_feat_names = (char_classes) ->
-	class_feats = []
+	class_feats = {}
 	for classname, char_class of char_classes
 		clazz = classes(name: classname).first()
 		for level, these_class_feats of clazz.feats
 			# console.log "#{level} : #{class_feats}"
-			class_feats = class_feats.concat(these_class_feats)	if char_class.level >= level
+			$.each(these_class_feats, (i, feat_name) ->
+				class_feats[feat_name] = undefined	if char_class.level >= level
+			)
 	class_feats
 
-this.get_class_feats = ->
-	class_feats = []
-	feat_names = this.get_class_feat_names()
-	for i of feat_names
-		class_feats = class_feats.concat(feats(name: feat_names[i]).first())
+###
+Returns a set of the class feats (as Object keys) collected from the supplied character classes.
+###
+this.get_class_feats = (char_classes) ->
+	class_feats = {}
+	feat_names = this.get_class_feat_names(char_classes)
+	# key is the value (Set)
+	$.each(feat_names, (feat_name, undef) ->
+		class_feats[feats(name: feat_name).first()] = undefined
+	)
+
 	class_feats
 
-this.get_all_char_feats = (char_feats) ->
-	(if char_feats then char_feats.get().concat(get_class_feats()) else this.get_class_feats())
+###
+Returns a set (as Object keys) of the class feats collected from the supplied character classes and character-selected feats.
+###
+this.get_all_char_feats = (char_feats, char_classes) ->
+	all_char_feats = this.get_class_feats(char_classes)
+	char_feats?().each (feat_name, i) ->
+		$.extend all_char_feats, feats(name: feat_name).first()
+	
+	all_char_feats
 
 this.get_special_abilities = ->
 	special_abilities = []

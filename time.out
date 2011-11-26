@@ -1,0 +1,15 @@
+
+node.js:134
+        throw e; // process.nextTick error, or 'error' event on first tick
+        ^
+TypeError: undefined is not a function
+    at CALL_NON_FUNCTION_AS_CONSTRUCTOR (native)
+    at Object.<anonymous> (/Users/chambery/Documents/projects/charmgrjs/lib/set.js:126:17)
+    at Module._compile (module.js:411:26)
+    at Object..js (module.js:417:10)
+    at Module.load (module.js:343:31)
+    at Function._load (module.js:302:12)
+    at require (module.js:355:19)
+    at Object.<anonymous> (/Users/chambery/Documents/projects/charmgrjs/test/test.coffee:4:9)
+    at Object.<anonymous> (/Users/chambery/Documents/projects/charmgrjs/test/test.coffee:9:4)
+    at Module._compile (module.js:411:26)
