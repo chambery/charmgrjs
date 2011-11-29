@@ -10,10 +10,6 @@ TAFFY = require("taffy").taffy
 $ = require("jquery")
 # Set = require("../lib/set").set
 
-start = new Date().getTime()
-store.load_static_data
-load_time = new Date().getTime() - start
-
 # console.log "\n require ('taffy').taffy"
 # npm = require ("taffy")["taffy"]
 # console.log(npm)
@@ -118,7 +114,6 @@ exports["get_class_feat_names"] = (test) ->
 		'Martial Weapon Proficiency' : undefined,
 		'Armor Proficiency, Heavy' : undefined
 
-	console.log common.get_class_feat_names(char_classes) 
 	test.deepEqual common.get_class_feat_names(char_classes), class_feat_names
 
 	test.done()
@@ -139,9 +134,6 @@ exports["get_class_feats"] = (test) ->
 	class_feats[feats(name: "Armor Proficiency, Heavy").first()] = undefined
 
 	my_feats = common.get_class_feats(char_classes)
-	$.each(my_feats, (feat, undef) ->
-		console.log feat
-	)
 	test.deepEqual my_feats, class_feats
 
 	test.done()	
@@ -153,9 +145,6 @@ exports["get_all_char_feats"] = (test) ->
 		{ feat_name: "Elemental Channel" }
 	])
 
-	char_feats().each (feat, i) ->
-		console.log "#{i} : #{feat.name}"
-		 
 	char_classes = {
 		"Fighter": 
 			"level": 17
@@ -236,33 +225,43 @@ exports["calc_ranks"] = (test) ->
 		"Wizard":
 			"level": 7
 	}
-	test.equal (common.is_class_skill knowledge, "Engineering", char_classes), 4 "Knowledge (Engineering) is a Fighter or Wizard class skill"
+	test.equal (common.calc_ranks 4, knowledge, "Engineering", char_classes), 4, "Knowledge (Engineering) is a Fighter or Wizard class skill"
 
 	test.done()
 
 
 exports["calc_level"] = (test) ->
-
-	test.done()
-
-exports["calc_synergies"] = (test) ->
-	end = new Date().getTime() - start
-
-	console.log "load time: #{load_time / 1000}s\ntotal time: #{end / 1000}s"
+	test.equal common.calc_level(1200), 1, "Should return level 1 for 1200 xp (this would level 2 by the book)"
+	test.equal common.calc_level(100), 0, "Should return level 0 for 100 xp (this would level 1 by the book)"
 	test.done()
 
 
-console.log "load time: #{load_time / 1000}s\ntotal time: #{end / 1000}s"
-
-	test.done()
 
 exports["calc_skill_mod"] = (test) ->
 	chardata = {}
-	chardata.feats = TAFFY([{ feat_name: "Skill Focus"}])
-	chardata.skills = TAFFY([{ skill_name: "Knowledge", subtype: "Dungeoneering", ranks: 4 }])
+	chardata.abilities = {
+		"Str" : 10,
+		"Int" : 10,
+		"Dex" : 10,
+		"Cha" : 10,
+		"Con" : 10,
+		"Wis" : 10,
+	}
+	chardata.classes = {
+		"Fighter": 
+			"level": 3
+		"Wizard":
+			"level": 4
+	}		
+	chardata.feats = TAFFY([{ feat_name: "Skill Focus", multi: ["Knowledge (Dungeoneering)"]}])
+	chardata.skills = TAFFY([
+		{ skill_name: "Disguise", ranks: 7 },
+		{ skill_name: "Knowledge", subtype: "Dungeoneering", ranks: 2 },
+		{ skill_name: "Knowledge", subtype: "Engineering", ranks: 4 },		
+	])
 	chardata.race_name = "Dwarf"
 	skill = skills({ name: "Knowledge" }).first()
-	test.equal common.calc_skill_mod(skill, 1, null, "Dungeoneering", chardata.skills, chardata.race_name, chardata.feats), 1
+	test.equal common.calc_skill_mod(skill, 10, null, "Dungeoneering", chardata.skills, chardata.race_name, chardata.feats), 2
 
 	test.done()
 

@@ -1,5 +1,7 @@
 if typeof(exports) == "object"
-	TAFFY = require("../../lib/taffy").taffy
+	TAFFY = require("taffy").taffy
+	feats = require("./feats")
+	$ = require "jquery"
 	
 this.feats = new TAFFY([ 
 	name: "Acrobatic"
@@ -1607,7 +1609,15 @@ this.feats = new TAFFY([
 	name: "Skill Focus"
 	summary: "+3 bonus on one skill (+6 at 10 ranks)"
 	detail: "Choose a skill. You are particularly adept at that skill. <p class=sub><b>Benefit: </b>You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill."
-	prereqs: {}
+	prereqs: {},
+	skills: 
+		mod: (skill, ranks, mod, subtype, char_skill_focus) ->
+			skill_focus_skill = "#{skill.name}#{if subtype? then " (" + subtype + ")"}"
+			if char_skill_focus?.multi and ~$.inArray(skill_focus_skill, char_skill_focus.multi)
+				mod += (if ranks < 10 then 3 else 6)
+			
+			mod
+
 	tags: [ "pathfinder" ]
 	type: "feat"
 	_id: "b3d6"
@@ -1944,3 +1954,8 @@ this.feats = new TAFFY([
 	type: "feat"
 	_id: "13c1"
  ])
+
+this.modify_skill = (skill, mod) ->
+	console.log "modify_skill"
+	mod += feat.skills[skill.name]	if feat.skills and feat.skills[skill.name]
+	mod

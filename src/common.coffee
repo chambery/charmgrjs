@@ -1,6 +1,7 @@
 if typeof(exports) == "object"
 	TAFFY = require("taffy").taffy
 	$ = require("jquery")
+	_ = require("underscore")
 	classes = require("./resources/classes").classes
 	armors = require("./resources/armors").armors
 	shields = require("./resources/shields").shields
@@ -9,7 +10,7 @@ if typeof(exports) == "object"
 	races = require("./resources/races").races
 	alignments = require("./resources/alignments").alignments
 	goodness = require("./resources/alignments").goodness
-	
+
 # TODO - inline
 this.update_weapon = (name, index) ->
 	weapon = weapons.first(name: name)
@@ -64,17 +65,25 @@ this.calc_skill_mod = (skill, skill_ability_score, acp, subtype, char_skills, ra
 	feat_mod = 0
 	$.each this.get_all_char_feats(), (char_feat, undef) ->
 		feat = feats.first(name: char_feat.feat_name)
-		feat_mod += feat.skills[skill.name]	if feat.skills and feat.skills[skill.name]
+		feat_mod = feat?.skills?.mod?(skill, char_skill_points, feat_mod)
+
 		acp = feat.mobility(acp)	if skill.mobility and feat.mobility
 	
+	# can we move this to the feat?  Yes we can!
 	if char_feats
 		skill_focus = char_feats(feat_name: "Skill Focus").first()
-		feat_mod += 3	if skill_focus and skill_focus.multi and ~$.inArray(skill.name, skill_focus.multi)
 	race_mod = (if race.skills[skill.name]? then race.skills[skill.name] else 0)
 	ranks = this.calc_ranks(char_skill_points, skill, subtype)
-	synergy_mod = this.calc_synergies(skill)
 	max_ranks = this.calc_ranks(this.calc_level() + 4, skill, subtype)
-	Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (if skill.mobility then acp else 0) + calc_equip_mod(skill.name) | 0
+	console.log """
+		\tskill - #{skill.name} #{if subtype then "(" + subtype + ")"}
+		\tskill points - #{char_skill_points} : #{ranks}
+		\trace - #{race.name} : #{race_mod}
+		\tmax ranks - #{max_ranks}
+		\tfeat mod : #{feat_mod}
+		\tability mod : #{this.calc_ability_modifier(parseInt(skill_ability_score))}
+		"""
+	Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + race_mod + feat_mod + (if skill.mobility then acp else 0) + this.calc_equip_mod(skill.name) | 0
 
 ###
 Returns true if the supplied skill (or subtype, if applicable) contains any of the supplied character classes.
@@ -99,18 +108,6 @@ this.calc_ranks = (char_skill_points, skill, subtype, char_classes) ->
 	
 	multiplier * char_skill_points
 
-###
-Returns the modifier for skill synergies ()
-###
-this.calc_synergies = (skill, char_skills) ->
-	synergy_mod = 0
-	for i, synergy of skill.synergies
-		char_synergy_skill = chardata.skills(skill_id: skill.synergy).first()	if chardata.skills
-		if char_synergy_skill
-			synergy_skill = skills(id: skill.synergy).first()
-			synergy_mod = (if calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 then 2 else 0)
-	synergy_mod
-
 this.calc_ability_score = (ability) ->
 	race = races.first(name: chardata.race_name)
 	race_mod = race.abilities[ability]
@@ -118,7 +115,10 @@ this.calc_ability_score = (ability) ->
 	parseInt(ability_score) + parseInt((if race != false and race_mod? then race_mod else 0)) + calc_equip_mod(ability)
 
 this.calc_equip_mod = (key) ->
-	parseInt (if not equipment_benefits[key]? then 0 else equipment_benefits[key])
+	mod = parseInt (equipment_benefits?[key] | 0)
+	console.log mod
+
+	mod
 
 this.remove = (arr, index) ->
 	if index > -1
@@ -224,10 +224,13 @@ this.create_select1 = (name, items, onchange_action, selected_value, extra_data)
 this.pos = (number) ->
 	(if (isFinite(number)) and (number > 0) then "+" + number else number)
 
+###
+Returns the 0-based level for the supplied xp.  Eg. xp = 100 -> 0, xp = 1200 -> 1
+###
 this.calc_level = (xp) ->
-	xp = (if not chardata.xp? then 0 else chardata.xp)	unless xp?
-	level = (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1
-	level
+	xp = xp | 0
+	
+	(Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1
 
 this.calc_init = (dex_score) ->
 	init = 0

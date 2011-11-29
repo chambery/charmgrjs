@@ -1,8 +1,9 @@
-var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills;
+var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills, _;
 
 if (typeof exports === "object") {
   TAFFY = require("taffy").taffy;
   $ = require("jquery");
+  _ = require("underscore");
   classes = require("./resources/classes").classes;
   armors = require("./resources/armors").armors;
   shields = require("./resources/shields").shields;
@@ -75,7 +76,7 @@ this.calc_shield_acp = function(char_shields) {
 };
 
 this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype, char_skills, race, char_feats) {
-  var char_skill, char_skill_points, feat_mod, max_ranks, mods, race_mod, ranks, skill_focus, synergy_mod;
+  var char_skill, char_skill_points, feat_mod, max_ranks, mods, race_mod, ranks, skill_focus;
   mods = {};
   acp = acp | 0;
   char_skill_points = 0;
@@ -96,28 +97,23 @@ this.calc_skill_mod = function(skill, skill_ability_score, acp, subtype, char_sk
   }).first();
   feat_mod = 0;
   $.each(this.get_all_char_feats(), function(char_feat, undef) {
-    var feat;
+    var feat, _ref;
     feat = feats.first({
       name: char_feat.feat_name
     });
-    if (feat.skills && feat.skills[skill.name]) {
-      feat_mod += feat.skills[skill.name];
-    }
+    feat_mod = feat != null ? (_ref = feat.skills) != null ? typeof _ref.mod === "function" ? _ref.mod(skill, char_skill_points, feat_mod) : void 0 : void 0 : void 0;
     if (skill.mobility && feat.mobility) return acp = feat.mobility(acp);
   });
   if (char_feats) {
     skill_focus = char_feats({
       feat_name: "Skill Focus"
     }).first();
-    if (skill_focus && skill_focus.multi && ~$.inArray(skill.name, skill_focus.multi)) {
-      feat_mod += 3;
-    }
   }
   race_mod = (race.skills[skill.name] != null ? race.skills[skill.name] : 0);
   ranks = this.calc_ranks(char_skill_points, skill, subtype);
-  synergy_mod = this.calc_synergies(skill);
   max_ranks = this.calc_ranks(this.calc_level() + 4, skill, subtype);
-  return Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (skill.mobility ? acp : 0) + calc_equip_mod(skill.name) | 0;
+  console.log("\tskill - " + skill.name + " " + (subtype ? "(" + subtype + ")" : void 0) + "\n\tskill points - " + char_skill_points + " : " + ranks + "\n\trace - " + race.name + " : " + race_mod + "\n\tmax ranks - " + max_ranks + "\n\tfeat mod : " + feat_mod + "\n\tability mod : " + (this.calc_ability_modifier(parseInt(skill_ability_score))));
+  return Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + race_mod + feat_mod + (skill.mobility ? acp : 0) + this.calc_equip_mod(skill.name) | 0;
 };
 
 /*
@@ -148,31 +144,6 @@ this.calc_ranks = function(char_skill_points, skill, subtype, char_classes) {
   return multiplier * char_skill_points;
 };
 
-/*
-Returns the modifier for skill synergies ()
-*/
-
-this.calc_synergies = function(skill, char_skills) {
-  var char_synergy_skill, i, synergy, synergy_mod, synergy_skill, _ref;
-  synergy_mod = 0;
-  _ref = skill.synergies;
-  for (i in _ref) {
-    synergy = _ref[i];
-    if (chardata.skills) {
-      char_synergy_skill = chardata.skills({
-        skill_id: skill.synergy
-      }).first();
-    }
-    if (char_synergy_skill) {
-      synergy_skill = skills({
-        id: skill.synergy
-      }).first();
-      synergy_mod = (calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 ? 2 : 0);
-    }
-  }
-  return synergy_mod;
-};
-
 this.calc_ability_score = function(ability) {
   var ability_score, race, race_mod;
   race = races.first({
@@ -184,7 +155,10 @@ this.calc_ability_score = function(ability) {
 };
 
 this.calc_equip_mod = function(key) {
-  return parseInt((!(equipment_benefits[key] != null) ? 0 : equipment_benefits[key]));
+  var mod;
+  mod = parseInt((typeof equipment_benefits !== "undefined" && equipment_benefits !== null ? equipment_benefits[key] : void 0) | 0);
+  console.log(mod);
+  return mod;
 };
 
 this.remove = function(arr, index) {
@@ -334,11 +308,13 @@ this.pos = function(number) {
   }
 };
 
+/*
+Returns the 0-based level for the supplied xp.  Eg. xp = 100 -> 0, xp = 1200 -> 1
+*/
+
 this.calc_level = function(xp) {
-  var level;
-  if (xp == null) xp = (!(chardata.xp != null) ? 0 : chardata.xp);
-  level = (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1;
-  return level;
+  xp = xp | 0;
+  return (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1;
 };
 
 this.calc_init = function(dex_score) {

@@ -1,6 +1,10 @@
-var TAFFY;
+var $, TAFFY, feats;
 
-if (typeof exports === "object") TAFFY = require("../../lib/taffy").taffy;
+if (typeof exports === "object") {
+  TAFFY = require("taffy").taffy;
+  feats = require("./feats");
+  $ = require("jquery");
+}
 
 this.feats = new TAFFY([
   {
@@ -1852,6 +1856,16 @@ this.feats = new TAFFY([
     summary: "+3 bonus on one skill (+6 at 10 ranks)",
     detail: "Choose a skill. You are particularly adept at that skill. <p class=sub><b>Benefit: </b>You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill.",
     prereqs: {},
+    skills: {
+      mod: function(skill, ranks, mod, subtype, char_skill_focus) {
+        var skill_focus_skill;
+        skill_focus_skill = "" + skill.name + (subtype != null ? " (" + subtype + ")" : void 0);
+        if ((char_skill_focus != null ? char_skill_focus.multi : void 0) && ~$.inArray(skill_focus_skill, char_skill_focus.multi)) {
+          mod += (ranks < 10 ? 3 : 6);
+        }
+        return mod;
+      }
+    },
     tags: ["pathfinder"],
     type: "feat",
     _id: "b3d6"
@@ -2221,3 +2235,9 @@ this.feats = new TAFFY([
     _id: "13c1"
   }
 ]);
+
+this.modify_skill = function(skill, mod) {
+  console.log("modify_skill");
+  if (feat.skills && feat.skills[skill.name]) mod += feat.skills[skill.name];
+  return mod;
+};
