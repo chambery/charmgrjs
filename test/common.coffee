@@ -1,15 +1,20 @@
-nodeunit = require "nodeunit"
-testCase = nodeunit.testCase
-assert = require "assert"
+# nodeunit = require "nodeunit"
+# testCase = nodeunit.testCase
+# assert = require "assert"
+start = new Date()
+console.log "before requires"
 common = require "../web/common"
 store = require "../web/store"
 skills = require("../web/resources/skills").skills
 races = require("../web/resources/races").races
 feats = require("../web/resources/feats").feats
-TAFFY = require("taffy").taffy
+TAFFY = require("taffydb")
 $ = require("jquery")
-# Set = require("../lib/set").set
-
+end_requires = new Date()
+console.log "after requires: #{end_requires - start}"
+store.load_static_data()
+end_load_static = new Date()
+console.log "store.load_static_data: #{end_load_static - end_requires}"
 # console.log "\n require ('taffy').taffy"
 # npm = require ("taffy")["taffy"]
 # console.log(npm)
@@ -46,60 +51,24 @@ exports["calc_shield_acp"] = (test) ->
 	
 	test.done()
 	
-
-# exports.calc_skill_mod = testCase(
-	# { 
-		# setUp: (callback) ->
-			# load_static_data()
-# 			
-			# callback();
-# 
-		# get_class_feat_names: (test) ->
-			# { "Ranger" : { level: 0 } }
-			# # { "Ranger" : { level: 4 } }
-			# # { "Sorcerer" : { level: 0 } }
-			# # { "Sorcerer" : { level: 4 } }
-			# test.equal common.get_class_feat_names({ "Ranger" : { level: 0 } }), ["Simple Weapon Proficiency"]
-			# test.done()
-	# })
-
-# exports.calc_skill_mod = testCase({
-		# suite.setUp:
-# 			
-		# suite.tearDown: (test) ->
-			# // your stuff
-		# })
-		# suite.
-# 		
-# 		
-		# return testCase.super_.call(this, suite);
-	# }
-	# sys.inherits(testCase, nodeunit.testCase);
-# 	io
-	# exports["get_all_char_feats"] = (test) ->
-# 		
-		# test.done()
-# 	
-	# exports["get_class_feats"] = (test) ->
-# 		
-		# test.done()
-		
 exports["get_class_feat_names"] = (test) ->
-	store.load_static_data()
 	char_classes = {
 		"Ranger": 
 			"level": 2
 		"Sorcerer":
 			"level": 7
 	}
-	class_feat_names = 
-		'Simple Weapon Proficiency' : undefined,
-		'Armor Proficiency, Light' : undefined, 
-		'Martial Weapon Proficiency' : undefined, 
-		'Endurance' : undefined, 
-		'Simple Weapon Proficiency' : undefined
+	class_feat_names = [
+		'Simple Weapon Proficiency',
+		'Armor Proficiency, Light',
+		'Martial Weapon Proficiency',
+		'Endurance'
+	]
 
 	test.deepEqual common.get_class_feat_names(char_classes), class_feat_names
+	my_feat_names = common.get_class_feat_names char_classes
+	for i, feat_name of my_feat_names
+		test.ok class_feat_names.indexOf(feat_name) > -1
 
 	char_classes = {
 		"Fighter": 
@@ -107,14 +76,17 @@ exports["get_class_feat_names"] = (test) ->
 		"Rogue":
 			"level": 7
 	}
-	class_feat_names = 
-		'Simple Weapon Proficiency' : undefined,
-		'Armor Proficiency, Light' : undefined,
-		'Armor Proficiency, Medium' : undefined,
-		'Martial Weapon Proficiency' : undefined,
-		'Armor Proficiency, Heavy' : undefined
+	class_feat_names = [
+		'Simple Weapon Proficiency',
+		'Armor Proficiency, Light',
+		'Armor Proficiency, Medium',
+		'Martial Weapon Proficiency',
+		'Armor Proficiency, Heavy'
+	]
 
-	test.deepEqual common.get_class_feat_names(char_classes), class_feat_names
+	my_feat_names = common.get_class_feat_names char_classes
+	for i, feat_name of my_feat_names
+		test.ok class_feat_names.indexOf(feat_name) > -1
 
 	test.done()
 		
@@ -125,15 +97,23 @@ exports["get_class_feats"] = (test) ->
 		"Rogue":
 			"level": 7
 	}
-	class_feats = {}
+	class_feats = []
 
-	class_feats[feats(name: "Simple Weapon Proficiency").first()] = undefined
-	class_feats[feats(name: "Armor Proficiency, Light").first()] = undefined
-	class_feats[feats(name: "Armor Proficiency, Medium").first()] = undefined
-	class_feats[feats(name: "Martial Weapon Proficiency").first()] = undefined
-	class_feats[feats(name: "Armor Proficiency, Heavy").first()] = undefined
+	class_feats.push feats(name: "Simple Weapon Proficiency").first()
+	class_feats.push feats(name: "Armor Proficiency, Light").first()
+	class_feats.push feats(name: "Armor Proficiency, Medium").first()
+	class_feats.push feats(name: "Martial Weapon Proficiency").first()
+	class_feats.push feats(name: "Armor Proficiency, Heavy").first()
 
 	my_feats = common.get_class_feats(char_classes)
+	console.log "get_class_feats - test"
+	console.log "\n\tmy_feats length: #{my_feats.length}"
+	for i, feat of my_feats
+		console.log "\t#{i} : #{feat.name}"
+	console.log "\n\tclass_feats"
+	for i, feat of class_feats
+		console.log "\t#{i} : #{feat.name}"
+
 	test.deepEqual my_feats, class_feats
 
 	test.done()	
@@ -153,18 +133,22 @@ exports["get_all_char_feats"] = (test) ->
 	}
 
 	all_char_feats = common.get_all_char_feats(char_feats, char_classes)
-	expected_feats = {}
-	expected_feats[feats(name: "Acrobatic Steps").first()] = undefined
-	expected_feats[feats(name: "Command Undead").first()] = undefined
-	expected_feats[feats(name: "Elemental Channel").first()] = undefined
-	expected_feats[feats(name: "Simple Weapon Proficiency").first()] = undefined
-	expected_feats[feats(name: "Armor Proficiency, Light").first()] = undefined
-	expected_feats[feats(name: "Armor Proficiency, Medium").first()] = undefined
-	expected_feats[feats(name: "Martial Weapon Proficiency").first()] = undefined
-	expected_feats[feats(name: "Acrobatic Steps").first()] = undefined
+	expected_feats = []
+	expected_feats.push feats(name: "Acrobatic Steps").first()
+	expected_feats.push feats(name: "Command Undead").first()
+	expected_feats.push feats(name: "Elemental Channel").first()
+	expected_feats.push feats(name: "Simple Weapon Proficiency").first()
+	expected_feats.push feats(name: "Armor Proficiency, Light").first()
+	expected_feats.push feats(name: "Armor Proficiency, Medium").first()
+	expected_feats.push feats(name: "Martial Weapon Proficiency").first()
+	expected_feats.push feats(name: "Acrobatic Steps").first()
+	expected_feats.push feats(name: "Armor Proficiency, Heavy").first()
 
 	test_feats = common.get_all_char_feats(char_feats, char_classes)
-	test.deepEqual common.get_all_char_feats(char_feats, char_classes), expected_feats
+	console.log "test_feats length: #{test_feats.length}"
+	for i, feat of test_feats
+		test.ok expected_feats.indexOf(feat) > -1
+
 	test.done()
 
 exports["is_class_skill"] = (test) ->
@@ -195,6 +179,8 @@ exports["is_class_skill"] = (test) ->
 			"level": 7
 	}
 	test.ok (common.is_class_skill knowledge, "Engineering", char_classes), "Fighter or Wizard should have Knowledge (Engineering) as a class skill"
+
+	test.ok (common.is_class_skill knowledge, "Dungeoneering", char_classes), "Fighter or Wizard should have Knowledge (Dungeoneering) as a class skill"
 	
 	test.done()
 
@@ -235,33 +221,68 @@ exports["calc_level"] = (test) ->
 	test.equal common.calc_level(100), 0, "Should return level 0 for 100 xp (this would level 1 by the book)"
 	test.done()
 
+exports["calc_ability_modifier"] = (test) ->
+	test.equal common.calc_ability_modifier(0), -5
+	test.equal common.calc_ability_modifier(9), -1
+	test.equal common.calc_ability_modifier(10), 0
+	test.equal common.calc_ability_modifier(20), 5
+	test.equal common.calc_ability_modifier(21), 5
+	test.equal common.calc_ability_modifier(22), 6
 
+	test.done()
+
+exports["calc_equip_mod"] = (test) ->
+	equip_bene = {
+		poison: 4
+	}
+
+	test.equal common.calc_equip_mod(equip_bene, "poison"), 4
+	test.done()
 
 exports["calc_skill_mod"] = (test) ->
 	chardata = {}
+	chardata.skills = TAFFY([
+		skill_name: "Disguise"
+		ranks: 12
+	,
+		skill_name: "Knowledge"
+		subtypes: [
+			"Dungeoneering" : 2
+			"Engineering" : 4
+		]
+	])
+
+	chardata.xp = 35000
+
 	chardata.abilities = {
 		"Str" : 10,
 		"Int" : 10,
 		"Dex" : 10,
 		"Cha" : 10,
 		"Con" : 10,
-		"Wis" : 10,
+		"Wis" : 10
 	}
 	chardata.classes = {
 		"Fighter": 
 			"level": 3
 		"Wizard":
 			"level": 4
-	}		
-	chardata.feats = TAFFY([{ feat_name: "Skill Focus", multi: ["Knowledge (Dungeoneering)"]}])
-	chardata.skills = TAFFY([
-		{ skill_name: "Disguise", ranks: 7 },
-		{ skill_name: "Knowledge", subtype: "Dungeoneering", ranks: 2 },
-		{ skill_name: "Knowledge", subtype: "Engineering", ranks: 4 },		
+	}
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)" 
+			"Disguise"
+		]
 	])
+
 	chardata.race_name = "Dwarf"
+
+	skill = skills({ name: "Disguise" }).first()
+	test.equal common.calc_skill_mod(skill, null, chardata), 11, "Disguise has 12 points, max ranks of 5 (for Fighter/Wizard cross-class), + 6 for Skill Focus"
 	skill = skills({ name: "Knowledge" }).first()
-	test.equal common.calc_skill_mod(skill, 10, null, "Dungeoneering", chardata.skills, chardata.race_name, chardata.feats), 2
+	test.equal common.calc_skill_mod(skill, "Dungeoneering", chardata), 5, "Knowledge (Dungeoneering) has 2 points, max ranks of 10 (for Fighter/Wizard), + 3 for Skill Focus"
+	test.equal common.calc_skill_mod(skill, "Engineering", chardata), 4, "Knowledge (Engineering) has 4 points, max ranks of 10 (for Fighter/Wizard)"
 
 	test.done()
 

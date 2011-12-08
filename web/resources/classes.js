@@ -2,7 +2,7 @@ var TAFFY;
 
 if (typeof exports === "object") TAFFY = require("../../lib/taffy").taffy;
 
-this.classes = new TAFFY([
+this.classes = TAFFY([
   {
     name: "Barbarian",
     shortname: "Brb",

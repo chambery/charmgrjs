@@ -145,7 +145,7 @@ main.build_main_page = ->
 	$("input[id='ability_Wis_score']").bind "blur", ability: "Wis", (e) ->
 		main.recalc_ability_mod e
 	
-	window.chardata.skills = new TAFFY([])	unless window.chardata.skills?
+	window.chardata.skills = TAFFY([])	unless window.chardata.skills?
 	rogue_skill_selections = main.get_rogue_skill_selections()
 	skills.forEach (skill, i) ->
 		skill_html = []

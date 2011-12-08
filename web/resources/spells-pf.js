@@ -1,8 +1,8 @@
 var TAFFY;
 
-if (typeof exports === "object") TAFFY = require("taffy").taffy;
+if (typeof exports === "object") TAFFY = require("taffydb");
 
-this.spells = new TAFFY([
+this.spells = TAFFY([
   {
     name: "Acid Arrow",
     School: "Conj",
@@ -680,7 +680,10 @@ this.spells = new TAFFY([
     duration: "10 min/lvl",
     save: "-",
     sr: "Yes",
-    classes: {},
+    classes: {
+      Druid: 1,
+      Ranger: 1
+    },
     detail: "<i>Barkskin</i> toughens a creature's skin. The effect grants a +2 enhancement bonus tothe creature's existing natural armorbonus. This enhancement bonus increasesby 1 for every three caster levels above 3rd,to a maximum of +5 at caster level 12th. <p class=sub>The enhancement bonus provided bybarkskin stacks with the target's naturalarmor bonus, but not with other enhance-ment bonuses to natural armor. A creaturewithout natural armor has an effectivenatural armor bonus of +0, much as acharacter wearing only normal clothinghas an armor bonus of +0.",
     type: "spell",
     phb: "196",
@@ -1325,7 +1328,9 @@ this.spells = new TAFFY([
     duration: "Instantaneous",
     save: "Will part",
     sr: "Yes",
-    classes: {},
+    classes: {
+      Cleric: 3
+    },
     detail: "You unleash chaotic power to smite your enemies. The power takes the form of a multicolored explosion of leaping, ricocheting energy. Only lawful and neutral (not chaotic) creatures are harmed by the spell. <p class=sub>The spell deals 1d8 points of damage per two caster levels (maximum 5d8) to lawful creatures (or 1d6 points of damage per caster level, maximum 10d6, to lawful outsiders) and slows them for 1d6 rounds. A slowed creature can take only a single standard action or move action on each of its turns, plus free actions as normal. In addition, it takes a -2 penalty to AC, attack rolls, damage rolls, and Reflex saves. A successful Will save reduces the damage by half and negates the slow effect. <p class=sub>The spell deals only half damage against creatures who are neither lawful nor chaotic, and they are not slowed. Such a creature can reduce the damage by half again (down to one-quarter) with a successful Will save.",
     type: "spell",
     phb: "196",
@@ -5483,7 +5488,9 @@ this.spells = new TAFFY([
     duration: "Instantaneous",
     save: "Will part",
     sr: "Yes",
-    classes: {},
+    classes: {
+      Cleric: 3
+    },
     detail: "You draw down holy power to smite your enemies. Only evil and neutral creatures are harmed by the spell; good creatures are unaffected. <p class=sub>The spell deals 1d8 points of damage per two caster levels (maximum 5d8) to each evil creature in the area (or 1d6 points of damage per caster level, maximum 10d6, to an evil outsider) and causes it to become blinded for 1 round. A successful Will saving throw reduces damage to half and negates the blinded effect. <p class=sub>The spell deals only half damage to creatures who are neither good nor evil, and they are not blinded. Such a creature can reduce that damage by half (down to one-quarter of the roll) with a successful Will save.",
     type: "spell",
     phb: "196",
@@ -7476,7 +7483,9 @@ this.spells = new TAFFY([
     duration: "Instantaneous",
     save: "Will part",
     sr: "Yes",
-    classes: {},
+    classes: {
+      Cleric: 3
+    },
     detail: "You channel lawful power to smite enemies. The power takes the form of a three-dimensional grid of energy. Only chaotic and neutral (not lawful) creatures are harmed by the spell. <p class=sub>The spell deals 1d8 points of damage per two caster levels (maximum 5d8) to chaotic creatures (or 1d6 points of damage per caster level, maximum 10d6, to chaotic outsiders) and causes them to be dazed for 1 round. A successful Will save reduces the damage to half and negates the daze effect. <p class=sub>The spell deals only half damage to creatures who are neither chaotic nor lawful, and they are not dazed. They can reduce the damage in half again (down to one-quarter of the roll) with a successful Will save.",
     type: "spell",
     phb: "196",
@@ -9651,7 +9660,9 @@ this.spells = new TAFFY([
     duration: "7 days/months (D)",
     save: "-",
     sr: "-",
-    classes: {},
+    classes: {
+      Druid: 8
+    },
     detail: "The <i>shambler</i> spell creates 1d4+2 shambling mounds with 11 HD each. (See the <i>Monster Manual </i>for descriptions about shambling mounds.) The creatures willingly aid you in combat or battle, perform a specific mission, or serve as bodyguards. The creatures remain with you for seven days unless you dismiss them. If the shamblers are created only for guard duty, however, the duration of the spell is seven months. In this case, the shamblers can only be ordered to guard a specific site or location. Shamblers summoned to guard duty cannot move outside the spell's range, which is measured from the point where each first appeared. <p class=sub>The shamblers have resistance to fire as normal shambling mounds do only if the terrain is rainy, marshy, or damp.",
     type: "spell",
     phb: "196",
@@ -12270,7 +12281,9 @@ this.spells = new TAFFY([
     duration: "1 rnd/lvl (D)",
     save: "Ref negs",
     sr: "Yes",
-    classes: {},
+    classes: {
+      Druid: 7
+    },
     detail: "This spell creates a powerful cyclone of raging wind that moves through the air, along the ground, or over water at a speed of 60 feet per round. You can concentrate on controlling the cyclone's every movement or specify a simple program., such as move straight ahead, zigzag, circle, or the like. Directing the cyclone's movement or changing its programmed movement is a standard action for you. The cyclone always moves during your turn. If the cyclone exceeds the spell's range, it moves in a random, uncontrolled fashion for 1d3 rounds&emdash;possibly endangering you or your allies&emdash;and then dissipates. (You can't regain control of the cyclone, even if comes back within range.) <p class=sub>Any Large or smaller creature that comes in contact with the spell effect must succeed on a Reflex save or take 3d6 points of damage. A Medium or smaller creature that fails its first save must succeed on a second one or be picked up bodily by the cyclone and held suspended in its powerful winds, taking 1d8 points of damage each round on your turn with no save allowed. You may direct the cyclone to eject any carried creatures whenever you wish, depositing the hapless souls wherever the cyclone happens to be when they are released.",
     type: "spell",
     phb: "196",

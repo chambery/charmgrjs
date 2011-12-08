@@ -1,4 +1,4 @@
-domains = new TAFFY([ 
+domains = TAFFY([ 
 	name: "Air"
 	deities: [ "Shelyn", "Gozreh" ]
 	detail: "Turn or destroy earth creatures as a good cleric turns undead. Rebuke, command, or bolster air creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability."

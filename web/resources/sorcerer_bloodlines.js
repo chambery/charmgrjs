@@ -5,7 +5,7 @@ if (typeof exports === "object") {
   common = require("../common");
 }
 
-this.sorcerer_bloodlines = new TAFFY([
+this.sorcerer_bloodlines = TAFFY([
   {
     name: "Aberrant",
     description: "There is a taint in your blood, one that is alien and bizarre. You tend to think in odd ways, approaching problems from an angle that most would not expect. Over time, this taint manifests itself in your physical form.",
@@ -199,7 +199,7 @@ this.sorcerer_bloodlines = new TAFFY([
   }
 ]);
 
-this.bloodline_powers = new TAFFY([
+this.bloodline_powers = TAFFY([
   {
     name: "Acidic Ray",
     detail: "You can fire an acidic ray as a standard action, targeting any foe within 30 feet as a ranged touch attack. The acidic ray deals 1d6 points of acid damage + 1 for every two sorcerer levels you possess. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",

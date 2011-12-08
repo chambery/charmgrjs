@@ -1,7 +1,7 @@
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
 
-this.damage_types = new TAFFY([ 
+this.damage_types = TAFFY([ 
 	name: "bludgeoning"
 	tags: [ "pathfinder" ]
 	_id: "b0fe"
@@ -18,7 +18,7 @@ this.damage_types = new TAFFY([
 	type: "damage_type"
  ])
  
-this.weapons = new TAFFY([ 
+this.weapons = TAFFY([ 
 	id: 0
 	name: "Axe, orc double"
 	category: "exotic"

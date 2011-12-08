@@ -307,7 +307,7 @@ edit.update_skills = function(skill, subtype) {
   skill_text = $("input[id='skill_" + skill._id + "_input']" + (subtype ? "[subtype='" + subtype + "']" : ""));
   if (skill_text.val() !== "" && parseInt(skill_text.val()) > 0) {
     if (chardata.skills == null) {
-      chardata.skills = new TAFFY([
+      chardata.skills = TAFFY([
         {
           skill_name: skill.name
         }

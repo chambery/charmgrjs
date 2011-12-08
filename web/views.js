@@ -2,7 +2,7 @@ var TAFFY;
 
 if (typeof exports === 'object') TAFFY = require('../lib/taffy').taffy;
 
-this.views = new TAFFY([
+this.views = TAFFY([
   {
     id: 0,
     name: "main",

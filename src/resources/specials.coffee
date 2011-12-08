@@ -1,7 +1,7 @@
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
 
-this.specials = new TAFFY([ 
+this.specials = TAFFY([ 
 	name: "Fast movement"
 	detail: "A %class%'s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the %class%'s speed because of any load carried or armor worn. For example, a human %class% has a speed of 40 feet, rather than 30 feet, when wearing light or no armor. When wearing medium armor or carrying a medium load, his speed drops to 30 feet. A halfling %class% has a speed of 30 feet, rather than 20 feet, in light or no armor. When wearing medium armor or carrying a medium load, his speed drops to 20 feet."
 	type: "special"

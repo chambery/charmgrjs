@@ -1,5 +1,5 @@
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
 	$ = require("jquery")
 	classes = require("./resources/classes").classes
 	armors = require("./resources/armors").armors
@@ -130,7 +130,7 @@ this.get_cookie_data = (cookie_name) ->
 
 this.parse_taffy_data = (data) ->
 	data = []	unless data?
-	new TAFFY(data)
+	TAFFY(data)
 
 this.load_static_data = ->
 	console.log "loading spells..."

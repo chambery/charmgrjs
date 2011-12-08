@@ -3,23 +3,275 @@
 	{
 		"selected_items":
 		[
+			[
+				"load_",
+				"load_static_data"
+			],
+			[
+				"log",
+				"log: log"
+			],
+			[
+				"end",
+				"end_requires"
+			],
+			[
+				"l",
+				"log: log"
+			],
+			[
+				"lo",
+				"log: log"
+			],
+			[
+				"fea",
+				"feat_names"
+			],
+			[
+				"feat_nam",
+				"feat_name"
+			],
+			[
+				"get_cl",
+				"get_class_feat_names"
+			],
+			[
+				"feat_n",
+				"feat_name"
+			],
+			[
+				"fe",
+				"feats"
+			],
+			[
+				"char",
+				"char_feats"
+			],
+			[
+				"all",
+				"all_char_feats"
+			],
+			[
+				"char_f",
+				"char_feats"
+			],
+			[
+				"get",
+				"get_char_feats"
+			],
+			[
+				"Disg",
+				"Disguise"
+			],
+			[
+				"sk",
+				"skill_focus_skill"
+			],
+			[
+				"Dis",
+				"Disguise"
+			],
+			[
+				"Kno",
+				"Knowledge"
+			],
+			[
+				"re",
+				"req: require"
+			],
+			[
+				"di",
+				"disguise"
+			],
+			[
+				"skill_focu",
+				"skill_focus"
+			],
+			[
+				"feat",
+				"feat_mod"
+			],
+			[
+				"skill_f",
+				"skill_focus_skill"
+			],
+			[
+				"rac",
+				"race_mod"
+			],
+			[
+				"skill_a",
+				"skill_ability_score"
+			],
+			[
+				"wind",
+				"window"
+			],
+			[
+				"calc",
+				"calc_level"
+			],
+			[
+				"eq",
+				"equal"
+			],
+			[
+				"dis",
+				"disguise"
+			],
+			[
+				"cha",
+				"char_classes"
+			],
+			[
+				"classn",
+				"classname"
+			],
+			[
+				"clas",
+				"classname"
+			],
+			[
+				"skill_cl",
+				"skill_classes"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"kno",
+				"knowledge"
+			],
+			[
+				"ch",
+				"char_classes"
+			],
+			[
+				"kn",
+				"knowledge"
+			],
+			[
+				"disg",
+				"disguise"
+			],
+			[
+				"is_",
+				"is_class_skill"
+			],
+			[
+				"all_",
+				"all_char_feats"
+			],
+			[
+				"mer",
+				"merge"
+			],
+			[
+				"exp",
+				"expected_feats"
+			],
+			[
+				"und",
+				"undefined"
+			],
+			[
+				"class_",
+				"class_feats"
+			],
+			[
+				"the",
+				"these_class_feats"
+			],
+			[
+				"these",
+				"these_class_feats"
+			],
+			[
+				"requ",
+				"require"
+			],
+			[
+				"ea",
+				"each"
+			],
+			[
+				"get_all",
+				"get_all_char_feats"
+			],
+			[
+				"ali",
+				"alignments"
+			],
+			[
+				"char_",
+				"char_classes"
+			],
+			[
+				"ct",
+				"ctrl"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "test/common.coffee",
+			"settings":
+			{
+				"buffer_size": 9503,
+				"line_ending": "Unix"
+			}
+		}
 	],
-	"build_system": "",
+	"build_system": "Packages/User/Jade.sublime-build",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"Pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"con",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"Pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 115.0
 	},
 	"distraction_free":
 	{
@@ -32,16 +284,90 @@
 	},
 	"file_history":
 	[
+		"/Users/chambery/Documents/projects/charmgrjs/web/resources/spells-pf.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/specials.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/weapons.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/store.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/test/feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/alignments.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/spells-pf.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/common.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/edit.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/main.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/classes.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/Cakefile",
+		"/Users/chambery/Documents/projects/charmgrjs/web/resources/feats.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/races.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/shields.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/skills.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/sorcerer_bloodlines.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/views.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/armors.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/web/common.js",
+		"/Users/chambery/Documents/projects/charmgrjs/test/test.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/test/common.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/web/resources/armors.js",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/edit_feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/edit_feats3.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/resources/deities-pf.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/resources/domains-pf.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/resources/favored_enemies.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/resources/languages.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/coffee/resources/schools.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/edit.html",
+		"/Users/chambery/.bash_profile",
+		"/Users/chambery/Documents/projects/taffydb/taffy.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/test/common.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/test/chardata_calc_skill_mod.coffee",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Comments.tmPreferences",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.textmate",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.tmLanguage",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.tmlanguage",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/toggleview.py",
+		"/Users/chambery/Documents/projects/charmgrjs/server.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/edit.jade",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/indentation.py",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/SublimeOnSaveBuild/SublimeOnSaveBuild.py",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/goto_line.py",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Jade.sublime-build",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Switch Group.py",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Base File.sublime-settings",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Jade/Jade.tmLanguage",
+		"/Users/chambery/Documents/projects/charmgrjs/lib/taffy.js",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Base File.sublime-settings",
+		"/Users/chambery/Documents/projects/charmgrjs/src/main.jade",
+		"/Users/chambery/Documents/projects/charmgrjs/src/main.html",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/.gitignore",
+		"/Users/chambery/Documents/projects/charmgrjs/lib/map.js",
+		"/Users/chambery/Documents/projects/charmgrjs/lib/set.js",
+		"/Users/chambery/Documents/projects/charmgrjs/web/store.js",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Delete line.sublime-macro",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/IR_Black.tmTheme",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/zenburn.tmTheme",
+		"/Users/chambery/Documents/projects/charmgrjs/charmgr.sublime-project",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/PLEAC.tmTheme",
+		"/Users/chambery/Downloads/IR_Black.tmTheme",
+		"/Users/chambery/Documents/projects/charmgrjs/test/~:Library:Application Support:Sublime Text 2:Packages:CoffeeScript"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 33.0
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/chambery/Documents/projects/charmgrjs,*.coffee",
+			"/Users/chambery/Documents/projects/charmgrjs",
+			"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default",
+			"/Users/chambery/Documents/projects/charmgrjs",
+			"/Users/chambery/Documents/projects/charmgrjs/src",
+			"<open files>",
+			""
 		]
 	},
 	"find_state":
@@ -49,6 +375,67 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"load",
+			"TAFFY = require(\"taffydb\").taffy",
+			"\\{",
+			"\\},\\n\\t",
+			"\\{",
+			"\\},",
+			"\\},\\n\\t",
+			"\\},\\n",
+			"\\},",
+			"\\{",
+			"^\\}, \\{",
+			"new TAFFY(",
+			"(\\S*?$)",
+			"  ",
+			"TAFFY = require(\"taffy\")",
+			"TAFFY = require(\"taffy",
+			"^  ",
+			"  ",
+			"char_feats",
+			"calc_syn",
+			"syn",
+			"synergy",
+			"synerg",
+			"synergies",
+			"calc_level",
+			"find_n",
+			"calc_level",
+			"window",
+			"expected_feats\\[\"(.*?)\"\\]",
+			"\"(.*?)\"",
+			"\"(.*?)\",",
+			"					\"(.*?)\",",
+			",",
+			"app.get",
+			"  ",
+			"buf.push(attrs({",
+			"buf.push(attrs({ ",
+			"chardata.skills",
+			"get_class_feat_names",
+			"get_class_feats",
+			"super+r\n\n\n\n+r",
+			"ctrl+r",
+			"super+r",
+			"find",
+			"$",
+			"(\\S)\\s+$",
+			"ctrl+n",
+			"get_all_char_feats",
+			"Rage",
+			"  ",
+			"load_sta",
+			"(^S)",
+			"focus",
+			"ctrl+f\"",
+			"find",
+			"save",
+			"xml",
+			"+s\"",
+			"+k",
+			"delete_",
+			"ctrl+f"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -56,6 +443,26 @@
 		"regex": false,
 		"replace_history":
 		[
+			"TAFFY = require(\"taffydb\")",
+			"",
+			",",
+			"",
+			",",
+			"TAFFY(",
+			"\"$1\",",
+			"\\t",
+			"TAFFY = require(\"taffydb\")",
+			"\\t",
+			"chardata.feats",
+			"expected_feats[feats(name: \"$1\").first()]",
+			"expected_feats[\"$1\"] = undefined",
+			" : undefined,",
+			" : undefined,\\n",
+			"\\t",
+			"char_skills",
+			"/*",
+			"$1",
+			"\\t"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -66,6 +473,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "test/common.coffee",
+					"settings":
+					{
+						"buffer_size": 9503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								838,
+								838
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
 			"sheets":
 			[
 			]
@@ -73,11 +513,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 32.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 27.0
 	},
 	"layout":
 	{
@@ -88,11 +528,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.46729479338,
 			1.0
 		],
 		"rows":
@@ -104,7 +551,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -117,13 +564,13 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,

@@ -1,12 +1,12 @@
 var $, TAFFY, feats;
 
 if (typeof exports === "object") {
-  TAFFY = require("taffy").taffy;
+  TAFFY = require("taffydb");
   feats = require("./feats");
   $ = require("jquery");
 }
 
-this.feats = new TAFFY([
+this.feats = TAFFY([
   {
     name: "Acrobatic",
     summary: "+2 bonus on Acrobatics and Fly checks",
@@ -1857,13 +1857,19 @@ this.feats = new TAFFY([
     detail: "Choose a skill. You are particularly adept at that skill. <p class=sub><b>Benefit: </b>You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill.",
     prereqs: {},
     skills: {
-      mod: function(skill, ranks, mod, subtype, char_skill_focus) {
-        var skill_focus_skill;
-        skill_focus_skill = "" + skill.name + (subtype != null ? " (" + subtype + ")" : void 0);
-        if ((char_skill_focus != null ? char_skill_focus.multi : void 0) && ~$.inArray(skill_focus_skill, char_skill_focus.multi)) {
-          mod += (ranks < 10 ? 3 : 6);
+      mod: function(skill, subtype, ranks, modifier, char_feats) {
+        var char_skill_focus, skill_focus_skill;
+        char_skill_focus = char_feats({
+          feat_name: "Skill Focus"
+        }).first();
+        subtype = subtype ? " (" + subtype + ")" : "";
+        skill_focus_skill = "" + skill.name + subtype;
+        console.log("\t\tmod (before): " + modifier + "\n\t\tskill_focus_skill: [" + skill_focus_skill + "]\n\t\tchar_skill_focus: " + char_skill_focus.feat_name + " - " + char_skill_focus.multi + "\n\t\t" + (~char_skill_focus.multi.indexOf(skill_focus_skill)));
+        if ((char_skill_focus != null ? char_skill_focus.multi : void 0) && ~char_skill_focus.multi.indexOf(skill_focus_skill)) {
+          modifier += (ranks < 10 ? 3 : 6);
         }
-        return mod;
+        console.log("\t\tmod: " + modifier);
+        return modifier;
       }
     },
     tags: ["pathfinder"],

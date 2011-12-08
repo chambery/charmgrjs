@@ -1,7 +1,7 @@
 var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills, specials, spells, weapons;
 
 if (typeof exports === "object") {
-  TAFFY = require("taffy").taffy;
+  TAFFY = require("taffydb");
   $ = require("jquery");
   classes = require("./resources/classes").classes;
   armors = require("./resources/armors").armors;
@@ -164,7 +164,7 @@ this.get_cookie_data = function(cookie_name) {
 
 this.parse_taffy_data = function(data) {
   if (data == null) data = [];
-  return new TAFFY(data);
+  return TAFFY(data);
 };
 
 this.load_static_data = function() {

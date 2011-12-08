@@ -1,9 +1,9 @@
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
 	feats = require("./feats")
 	$ = require "jquery"
 	
-this.feats = new TAFFY([ 
+this.feats = TAFFY([ 
 	name: "Acrobatic"
 	summary: "+2 bonus on Acrobatics and Fly checks"
 	detail: "You are skilled at leaping, jumping, and flying. <p class=sub><b>Benefit: </b>You get a +2 bonus on all Acrobatics and Fly skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill."
@@ -1611,12 +1611,21 @@ this.feats = new TAFFY([
 	detail: "Choose a skill. You are particularly adept at that skill. <p class=sub><b>Benefit: </b>You get a +3 bonus on all checks involving the chosen skill. If you have 10 or more ranks in that skill, this bonus increases to +6. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill."
 	prereqs: {},
 	skills: 
-		mod: (skill, ranks, mod, subtype, char_skill_focus) ->
-			skill_focus_skill = "#{skill.name}#{if subtype? then " (" + subtype + ")"}"
-			if char_skill_focus?.multi and ~$.inArray(skill_focus_skill, char_skill_focus.multi)
-				mod += (if ranks < 10 then 3 else 6)
+		mod: (skill, subtype, ranks, modifier, char_feats) ->
+			char_skill_focus = char_feats({ feat_name: "Skill Focus"}).first()
+			subtype = if subtype then " (" + subtype + ")" else ""
+			skill_focus_skill = "#{skill.name}#{subtype}"
+			console.log """
+				\t\tmod (before): #{modifier}
+				\t\tskill_focus_skill: [#{skill_focus_skill}]
+				\t\tchar_skill_focus: #{char_skill_focus.feat_name} - #{char_skill_focus.multi}
+				\t\t#{~char_skill_focus.multi.indexOf(skill_focus_skill)}
+				"""
+			if char_skill_focus?.multi and ~char_skill_focus.multi.indexOf(skill_focus_skill)
+				modifier += (if ranks < 10 then 3 else 6)
 			
-			mod
+			console.log "\t\tmod: #{modifier}"
+			modifier
 
 	tags: [ "pathfinder" ]
 	type: "feat"

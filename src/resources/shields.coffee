@@ -23,7 +23,7 @@ this.shield_types = [
 	_id: "9e74"
  ]
  
-this.shields = new TAFFY([ 
+this.shields = TAFFY([ 
 	name: "Buckler"
 	cost: "15 gp"
 	bon: 1

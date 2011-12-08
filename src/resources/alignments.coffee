@@ -1,5 +1,5 @@
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
 
 this.alignments = TAFFY([ 
 	{ name: "Lawful" },

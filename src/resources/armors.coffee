@@ -1,7 +1,8 @@
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
+	# armors = require("./armors")
 
-this.armors = new TAFFY([ 
+this.armors = TAFFY([ 
 	name: "Padded"
 	cost: "5 gp"
 	bon: 1

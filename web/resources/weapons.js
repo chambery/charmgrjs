@@ -1,8 +1,8 @@
 var TAFFY;
 
-if (typeof exports === "object") TAFFY = require("taffy").taffy;
+if (typeof exports === "object") TAFFY = require("taffydb");
 
-this.damage_types = new TAFFY([
+this.damage_types = TAFFY([
   {
     name: "bludgeoning",
     tags: ["pathfinder"],
@@ -21,7 +21,7 @@ this.damage_types = new TAFFY([
   }
 ]);
 
-this.weapons = new TAFFY([
+this.weapons = TAFFY([
   {
     id: 0,
     name: "Axe, orc double",

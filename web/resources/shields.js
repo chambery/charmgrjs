@@ -26,7 +26,7 @@ this.shield_types = [
   }
 ];
 
-this.shields = new TAFFY([
+this.shields = TAFFY([
   {
     name: "Buckler",
     cost: "15 gp",

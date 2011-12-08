@@ -1,6 +1,6 @@
 var TAFFY;
 
-if (typeof exports === "object") TAFFY = require("taffy").taffy;
+if (typeof exports === "object") TAFFY = require("taffydb");
 
 this.alignments = TAFFY([
   {

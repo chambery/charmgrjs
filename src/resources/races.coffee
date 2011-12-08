@@ -1,7 +1,7 @@
 if typeof(exports) == "object"
 	TAFFY = require("../../lib/taffy").taffy
 	
-this.races = new TAFFY([ 
+this.races = TAFFY([ 
 	name: "Halfling"
 	shortname: "Hfg"
 	abilities: 

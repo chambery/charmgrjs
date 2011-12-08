@@ -196,7 +196,7 @@ main.build_main_page = function() {
   }, function(e) {
     return main.recalc_ability_mod(e);
   });
-  if (window.chardata.skills == null) window.chardata.skills = new TAFFY([]);
+  if (window.chardata.skills == null) window.chardata.skills = TAFFY([]);
   rogue_skill_selections = main.get_rogue_skill_selections();
   skills.forEach(function(skill, i) {
     var char_skill, skill_html, skill_selection_ind_html, subtype;

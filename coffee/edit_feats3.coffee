@@ -8,11 +8,11 @@ build_feats_page = ->
       is_spellcaster = true
       break
   set_links_part 2
-  chardata.feats = new TAFFY([])  unless chardata.feats?
+  chardata.feats = TAFFY([])  unless chardata.feats?
   feats_page_layout = "<div id='rogue_special_abilities'></div><div id='feats'></div>"
   $("#content").html feats_page_layout
   $("#feats").html "<table width=100% style='border: 1px solid #8DC3E9; border-collapse: collapse;'><tr style='background: #8DC3E9;'><td style='text-align: left'>" + "<span id='feats_available' style='float: right'>Base: <span id='feats_remaining'></span> Bonus: <span id='bonus_feats_remaining'></span></span>Feats</td></tr></table>" + "<table id='feats_table' style='border: 1px solid #D0D0D0; border-collapse: collapse; width: 100%;'></table>"
-  allfeats = new TAFFY(feats.get())
+  allfeats = TAFFY(feats.get())
   allfeats.orderBy (a, b) ->
     (if (not a.prereqs? or not a.prereqs.feats?) and (a.name < b.name) then -1 else 1)
   

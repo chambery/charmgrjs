@@ -1,8 +1,8 @@
 var TAFFY;
 
-if (typeof exports === "object") TAFFY = require("taffy").taffy;
+if (typeof exports === "object") TAFFY = require("taffydb");
 
-this.armors = new TAFFY([
+this.armors = TAFFY([
   {
     name: "Padded",
     cost: "5 gp",

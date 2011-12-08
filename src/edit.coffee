@@ -223,7 +223,7 @@ edit.update_skills = (skill, subtype) ->
   class_skill = is_class_skill(skill, subtype)
   skill_text = $("input[id='skill_" + skill._id + "_input']" + (if subtype then "[subtype='" + subtype + "']" else ""))
   if skill_text.val() != "" and parseInt(skill_text.val()) > 0
-    chardata.skills = new TAFFY([ skill_name: skill.name ])  unless chardata.skills?
+    chardata.skills = TAFFY([ skill_name: skill.name ])  unless chardata.skills?
     char_skill = chardata.skills.first(skill_name: skill.name)
     chardata.skills.insert skill_name: skill.name  unless char_skill
     updata = {}

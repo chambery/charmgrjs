@@ -1,5 +1,6 @@
+start = new Date()
 if typeof(exports) == "object"
-	TAFFY = require("taffy").taffy
+	TAFFY = require("taffydb")
 	$ = require("jquery")
 	_ = require("underscore")
 	classes = require("./resources/classes").classes
@@ -11,6 +12,7 @@ if typeof(exports) == "object"
 	alignments = require("./resources/alignments").alignments
 	goodness = require("./resources/alignments").goodness
 
+console.log new Date() - start
 # TODO - inline
 this.update_weapon = (name, index) ->
 	weapon = weapons.first(name: name)
@@ -52,37 +54,46 @@ this.calc_shield_acp = (char_shields) ->
 	acp
 
 # TODO - broken in main
-this.calc_skill_mod = (skill, skill_ability_score, acp, subtype, char_skills, race, char_feats) ->
+this.calc_skill_mod = (skill, subtype, chardata) ->
 	mods  = {}
 	acp = acp | 0
 	char_skill_points = 0
-	char_skill = false
-	char_skill = char_skills({ skill_name: skill.name }).first()	if char_skills?
-	if char_skill
+	char_skill = chardata.skills({ skill_name: skill.name }).first()	if chardata?.skills?
+	console.log "\tchar_skill: #{char_skill.skill_name}"
+	if char_skill?.ranks
+		console.log "\t\tranks: #{char_skill.ranks}"
 		char_skill_points = char_skill.ranks
-		char_skill_points = char_skill.subtypes[subtype]	if subtype and char_skill.subtypes
-	race = races(name: race).first()
-	feat_mod = 0
-	$.each this.get_all_char_feats(), (char_feat, undef) ->
-		feat = feats.first(name: char_feat.feat_name)
-		feat_mod = feat?.skills?.mod?(skill, char_skill_points, feat_mod)
+	else if char_skill?.subtypes?.subtype
+		console.log "\t\tsubtype: #{char_skill.subtypes[subtype]}"
+		char_skill_points = char_skill.subtypes[subtype]
 
+	console.log "\tchar_skill_points: #{char_skill_points}"
+	race = races(name: chardata.race_name).first()
+	feat_mod = 0
+	for i, char_feat of this.get_all_char_feats(chardata.feats, chardata.classes)
+		console.log "\tevaluating #{char_feat.name}"
+		feat = feats(name: char_feat.name).first()
+		# we need to check character feats to get the multi selections
+		if feat?.skills?.mod?
+			feat_mod += feat.skills.mod(skill, subtype, char_skill_points, feat_mod, chardata.feats)
+		console.log "\tmod: #{feat_mod}"
 		acp = feat.mobility(acp)	if skill.mobility and feat.mobility
 	
-	# can we move this to the feat?  Yes we can!
-	if char_feats
-		skill_focus = char_feats(feat_name: "Skill Focus").first()
 	race_mod = (if race.skills[skill.name]? then race.skills[skill.name] else 0)
-	ranks = this.calc_ranks(char_skill_points, skill, subtype)
-	max_ranks = this.calc_ranks(this.calc_level() + 4, skill, subtype)
+	ranks = this.calc_ranks(char_skill_points, skill, subtype, chardata.classes)
+	# TODO - move this to calc_ranks
+	max_ranks = this.calc_ranks(this.calc_level(chardata.xp) + 3, skill, subtype, chardata.classes)
+	skill_ability_score = chardata.abilities[skill.ability] | 0
 	console.log """
 		\tskill - #{skill.name} #{if subtype then "(" + subtype + ")"}
 		\tskill points - #{char_skill_points} : #{ranks}
 		\trace - #{race.name} : #{race_mod}
+		\tranks: #{ranks}		
 		\tmax ranks - #{max_ranks}
 		\tfeat mod : #{feat_mod}
 		\tability mod : #{this.calc_ability_modifier(parseInt(skill_ability_score))}
 		"""
+	# TODO - move Math.floor to calc_ranks
 	Math.min(Math.floor(max_ranks), ranks) + this.calc_ability_modifier(parseInt(skill_ability_score)) + race_mod + feat_mod + (if skill.mobility then acp else 0) + this.calc_equip_mod(skill.name) | 0
 
 ###
@@ -91,10 +102,10 @@ Returns true if the supplied skill (or subtype, if applicable) contains any of t
 this.is_class_skill = (skill, subtype, char_classes) ->
 	for classname of char_classes 
 		if skill?.skill_classes?.indexOf(classname) > -1
-			# console.log "\t#{skill.name} #{skill.skill_classes} : #{classname}"
+			console.log "\t#{skill.name} #{skill.skill_classes} : #{classname}"
 			return true	
 		if skill?.subtypes?[subtype]?.indexOf(classname) > -1
-			# console.log "\t#{skill.name} (#{subtype}) #{skill.subtypes[subtype]} : #{classname}"
+			console.log "\t#{skill.name} (#{subtype}) #{skill.subtypes[subtype]} : #{classname}"
 			return true	
 	
 	false
@@ -104,6 +115,7 @@ Returns the class-modified ranks for the supplied skill and skill points
 ###
 this.calc_ranks = (char_skill_points, skill, subtype, char_classes) ->
 	is_class_skill = this.is_class_skill(skill, subtype, char_classes)
+	console.log "#{skill.name} (#{subtype})"
 	multiplier = (if is_class_skill then 1 else .5)
 	
 	multiplier * char_skill_points
@@ -114,7 +126,7 @@ this.calc_ability_score = (ability) ->
 	ability_score = (if chardata["abilities"]? and chardata["abilities"][ability]? and chardata["abilities"][ability].length > 0 then chardata["abilities"][ability] else 0)
 	parseInt(ability_score) + parseInt((if race != false and race_mod? then race_mod else 0)) + calc_equip_mod(ability)
 
-this.calc_equip_mod = (key) ->
+this.calc_equip_mod = (equipment_benefits, key) ->
 	mod = parseInt (equipment_benefits?[key] | 0)
 	console.log mod
 
@@ -527,40 +539,55 @@ this.is_class_feat = (feat_name) ->
 	get_class_feat_names().indexOf(feat_name) > -1
 
 ###
-Returns a set of feat names (as Object keys) collected from class feats of the supplied character classes.
+Returns an array of feat names collected from class feats of the supplied character classes.
 ###
 this.get_class_feat_names = (char_classes) ->
+	console.log "get_class_feat_names - src"
 	class_feats = {}
 	for classname, char_class of char_classes
 		clazz = classes(name: classname).first()
 		for level, these_class_feats of clazz.feats
 			# console.log "#{level} : #{class_feats}"
 			$.each(these_class_feats, (i, feat_name) ->
+				console.log "\t- #{feat_name} : #{i}"
 				class_feats[feat_name] = undefined	if char_class.level >= level
 			)
-	class_feats
+
+	_.keys(class_feats)
 
 ###
-Returns a set of the class feats (as Object keys) collected from the supplied character classes.
+Returns an array of the class feats collected from the supplied character classes.
 ###
 this.get_class_feats = (char_classes) ->
-	class_feats = {}
+	console.log "get_class_feats - src"
+	class_feats = []
 	feat_names = this.get_class_feat_names(char_classes)
-	# key is the value (Set)
-	$.each(feat_names, (feat_name, undef) ->
-		class_feats[feats(name: feat_name).first()] = undefined
-	)
+	console.log feat_names
+	for i, name of feat_names
+		feat = feats(name: name).first()
+		console.log "\t+ #{i} : #{feat.name}"
+		if class_feats.indexOf(feat) == -1
+			class_feats.push feats(name: name).first()
+		console.log "\t+ length: #{class_feats.length}"
 
+	console.log "#{class_feats}"
 	class_feats
 
 ###
-Returns a set (as Object keys) of the class feats collected from the supplied character classes and character-selected feats.
+Returns an array of the class feats collected from the supplied character classes and character-selected feats.
 ###
 this.get_all_char_feats = (char_feats, char_classes) ->
 	all_char_feats = this.get_class_feats(char_classes)
-	char_feats?().each (feat_name, i) ->
-		$.extend all_char_feats, feats(name: feat_name).first()
+	char_feats?().each (char_feat, i) ->
+		feat = feats(name: char_feat.feat_name).first()
+		if all_char_feats.indexOf(feat) == -1
+			console.log "adding \"#{feat.name}\""
+			all_char_feats.push feat
 	
+	console.log "all_char_feats: #{all_char_feats.length}"
+	for i, feat of all_char_feats
+		console.log "\t#{feat.name}"
+
 	all_char_feats
 
 this.get_special_abilities = ->
@@ -623,14 +650,14 @@ this.create_selector_group = (item, title, all_options, option_db, cols, click_f
 
 this.calc_current_level = ->
 	curr_level = 0
-	for classname of chardata.classes
-		curr_level += chardata.classes[classname].level + 1
+	for classname of char_classes
+		curr_level += char_classes[classname].level + 1
 	curr_level
 
 this.calc_save = (type) ->
 	save = 0
 	for classname of chardata.classes
-		save += classes.first(name: classname)[type][chardata.classes[classname].level]	if classes.first(name: classname)[type]
+		save += classes(name: classname).first()[type][chardata.classes[classname].level]	if classes(name: classname).first()[type]
 	save
 
 this.is_empty = (object) ->
@@ -722,7 +749,7 @@ this.do_class_functions = (page, location, obj) ->
 	obj
 
 this.get_char_feats = ->
-	char_feats = new TAFFY([])
+	char_feats = TAFFY([])
 	if chardata.feats
 		chardata.feats.get().forEach (feat, i) ->
 			char_feats.insert feats.first(name: feat.feat_name)
@@ -785,7 +812,7 @@ this.save_against = [ "pois", "petr" ]
 
 this.sizes = [ "fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal" ]
 
-this.draconic_types = new TAFFY([ 
+this.draconic_types = TAFFY([ 
 	name: "Black"
 	_id: "xxca1"
 	breath: "Acid - 60ft line"
@@ -843,7 +870,7 @@ $.extend keys: (obj) ->
 
 this.weapon_edit_data = [ "name", "att", "dam", "crit", "note" ]
 
-this.options = new TAFFY([ 
+this.options = TAFFY([ 
 	name: "owner"
 	description: "Owner"
 	note: "prevents character overwrites"
