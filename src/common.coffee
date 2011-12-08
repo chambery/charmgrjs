@@ -58,14 +58,18 @@ this.calc_skill_mod = (skill, subtype, chardata) ->
 	mods  = {}
 	acp = acp | 0
 	char_skill_points = 0
+	console.log "\n\n\nsubtype: #{chardata.skills("skill_name": "Knowledge").first().subtypes["Engineering"]}"
+
 	char_skill = chardata.skills({ skill_name: skill.name }).first()	if chardata?.skills?
+	console.log "\n\n\nsubtype: #{chardata.skills("skill_name": "Knowledge").first().subtypes["Engineering"]}" if skill.name == "Knowledge"
 	console.log "\tchar_skill: #{char_skill.skill_name}"
-	if char_skill?.ranks
+	if subtype
+		console.log "\t\tsubtype: #{char_skill.subtypes[subtype]}"
+		char_skill_points = char_skill.subtypes?[subtype]
+	else
 		console.log "\t\tranks: #{char_skill.ranks}"
 		char_skill_points = char_skill.ranks
-	else if char_skill?.subtypes?.subtype
-		console.log "\t\tsubtype: #{char_skill.subtypes[subtype]}"
-		char_skill_points = char_skill.subtypes[subtype]
+	
 
 	console.log "\tchar_skill_points: #{char_skill_points}"
 	race = races(name: chardata.race_name).first()

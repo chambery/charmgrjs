@@ -246,12 +246,12 @@ exports["calc_skill_mod"] = (test) ->
 		ranks: 12
 	,
 		skill_name: "Knowledge"
-		subtypes: [
+		subtypes:
 			"Dungeoneering" : 2
 			"Engineering" : 4
-		]
 	])
 
+	console.log "\n\n\nsubtype: #{chardata.skills("skill_name": "Knowledge").first().subtypes["Engineering"]}"
 	chardata.xp = 35000
 
 	chardata.abilities = {
