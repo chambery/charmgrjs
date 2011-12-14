@@ -36,7 +36,7 @@ task 'test', 'Run the test suite (and re-run if anything changes)', ->
 			suite?.kill()
 			suiteNames = [
 				"common"
-				# "feats",
+				"character"
 				# "sorcerer_bloodlines",
 				# "test",
 				# "views"

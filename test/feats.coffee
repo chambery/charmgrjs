@@ -1,3 +1,6 @@
+###
+test/feats.coffee
+###
 nodeunit = require "nodeunit"
 testCase = nodeunit.testCase
 assert = require "assert"
