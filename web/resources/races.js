@@ -11,15 +11,15 @@ this.races = TAFFY([
       Str: -2
     },
     skills: {
-      Listen: 2,
-      size: "small",
-      favored_class: "Rogue",
-      languages: ["Common", "Draconic"],
-      speed: 20,
-      type: "race",
-      tags: ["pathfinder"],
-      _id: "f0e3"
-    }
+      Listen: 2
+    },
+    size: "small",
+    favored_class: "Rogue",
+    languages: ["Common", "Draconic"],
+    speed: 20,
+    type: "race",
+    tags: ["pathfinder"],
+    _id: "f0e3"
   }, {
     name: "Human",
     shortname: "Hum",
@@ -71,15 +71,15 @@ this.races = TAFFY([
       Con: -2
     },
     skills: {
-      Listen: 2,
-      size: "medium",
-      favored_class: "Wizard",
-      languages: ["Common", "Elven"],
-      speed: 30,
-      type: "race",
-      tags: ["pathfinder"],
-      _id: "274c"
-    }
+      Listen: 2
+    },
+    size: "medium",
+    favored_class: "Wizard",
+    languages: ["Common", "Elven"],
+    speed: 30,
+    type: "race",
+    tags: ["pathfinder"],
+    _id: "274c"
   }, {
     name: "Gnome",
     shortname: "Gnm",
@@ -88,14 +88,14 @@ this.races = TAFFY([
       Str: -2
     },
     skills: {
-      Listen: 2,
-      size: "small",
-      favored_class: "Bard",
-      languages: ["Common", "Gnome"],
-      type: "race",
-      tags: ["pathfinder"],
-      _id: "6e46"
-    }
+      Listen: 2
+    },
+    size: "small",
+    favored_class: "Bard",
+    languages: ["Common", "Gnome"],
+    type: "race",
+    tags: ["pathfinder"],
+    _id: "6e46"
   }, {
     name: "Half-Elf",
     shortname: "H-E",

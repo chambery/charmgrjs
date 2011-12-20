@@ -3,7 +3,7 @@
 src/common.coffee
 */
 
-var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills, start, _;
+var $, TAFFY, alignments, armors, classes, common, feats, global, goodness, races, shields, skills, start, _;
 
 start = new Date();
 
@@ -11,6 +11,7 @@ if (typeof exports === "object") {
   TAFFY = require("taffydb");
   $ = require("jquery");
   _ = require("underscore");
+  common = require("./common");
   classes = require("./resources/classes").classes;
   armors = require("./resources/armors").armors;
   shields = require("./resources/shields").shields;
@@ -20,6 +21,8 @@ if (typeof exports === "object") {
   alignments = require("./resources/alignments").alignments;
   goodness = require("./resources/alignments").goodness;
 }
+
+global = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 console.log(new Date() - start);
 
@@ -191,21 +194,6 @@ this.calc_level = function(xp) {
   return (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1;
 };
 
-this.calc_init = function(dex_score) {
-  var char_feats, init;
-  init = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
-    init: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    init = feat.init(init);
-    return init;
-  });
-  return calc_ability_modifier(dex_score) + init;
-};
-
 this.calc_ref = function(dex_score, class_name, xp, char_feats) {
   var class_ref_score, ref;
   class_ref_score = calc_save("ref_save");
@@ -273,67 +261,39 @@ this.calc_spell_resistance = function() {
   return sr + class_sr_score + feat_mod + calc_equip_mod("SR");
 };
 
-this.calc_dr = function(dr) {
-  if (equipment_benefits[dr]) {
-    return equipment_benefits[dr];
-  } else {
-    return 0;
-  }
-};
+/*
+Returns the armor bonus for any "armor-like" object
+*/
 
-this.calc_ac = function(dex_score) {
-  var ac, armor_bonus, char_feats, monk_mod, shield_bonus;
-  ac = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
-    ac: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    ac = feat.ac(ac);
-    return ac;
-  });
-  armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor");
-  shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield");
-  monk_mod = (chardata.classes["Monk"] != null ? classes.first({
-    name: "Monk"
-  }).ac_bonus[calc_level()] : 0);
-  return 10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod("AC") + ac;
-};
-
-this.calc_armor_bonus = function(char_armor, db, dammit) {
-  var armor_bonus, armordata, i, max_dex_bonus;
-  max_dex_bonus = null;
+this.calc_armor_bonus = function(char_armor, db, equip_type) {
+  var armor_bonus, max_dex_bonus;
+  console.log("\ncalc_armor_bonus");
+  max_dex_bonus = "-";
   armor_bonus = 0;
-  if (char_armor != null) {
-    for (i in char_armor) {
-      if (session["armor"][i]["is_worn"]) {
-        armordata = db.first({
-          name: char_armor[i][dammit + "_name"]
-        });
+  if (typeof char_armor === "function") {
+    char_armor().each(function(type) {
+      var armordata;
+      console.log("\t" + type[equip_type + "_name"] + "  " + type.is_worn);
+      if (type.is_worn) {
+        armordata = db({
+          name: type[equip_type + "_name"]
+        }).first();
+        console.log("\tarmordata: " + armordata.max_dex_bonus);
         if (armordata.bon !== "-") armor_bonus += parseInt(armordata.bon);
-        if (armordata.max_dex_bonus !== "-") {
-          max_dex_bonus = (!(max_dex_bonus != null) ? parseInt(armordata.max_dex_bonus) : Math.min(max_dex_bonus, parseInt(armordata.max_dex_bonus)));
+        if (max_dex_bonus === "-" && common.is_number(armordata.max_dex_bonus)) {
+          return max_dex_bonus = armordata.max_dex_bonus;
+        } else {
+          if (armordata.max_dex_bonus !== "-") {
+            return max_dex_bonus = Math.min(parseInt(max_dex_bonus, armordata.max_dex_bonus));
+          }
         }
       }
-    }
+    });
   }
   return {
     bonus: armor_bonus,
-    max_dex_bonus: (!(max_dex_bonus != null) ? 50 : max_dex_bonus)
+    max_dex_bonus: max_dex_bonus
   };
-};
-
-this.calc_size_mod = function(race_name) {
-  var size;
-  size = races.first({
-    name: race_name
-  }).size;
-  if (size === "small") {
-    return 1;
-  } else {
-    return 0;
-  }
 };
 
 this.calc_damage = function(weapon, char_feats, char_weapon) {
@@ -851,28 +811,6 @@ this.do_class_functions = function(page, location, obj) {
   return obj;
 };
 
-this.get_char_feats = function() {
-  var char_feats;
-  char_feats = TAFFY([]);
-  if (chardata.feats) {
-    chardata.feats.get().forEach(function(feat, i) {
-      return char_feats.insert(feats.first({
-        name: feat.feat_name
-      }));
-    });
-  }
-  char_feats.insert(get_class_feats());
-  return char_feats;
-};
-
-this.calc_touch_ac = function(dex_score, race_name, char_feats) {
-  return 10 + calc_ability_modifier(dex_score) + calc_size_mod(race_name);
-};
-
-this.calc_flat_footed_ac = function(char_armor) {
-  return 10 + calc_armor_bonus(char_armor, armors, "armor").bonus;
-};
-
 this.calc_base_attack_bonus = function() {
   var attacks, bab, class_babs, classname, i;
   bab = [];
@@ -888,6 +826,17 @@ this.calc_base_attack_bonus = function() {
     }
   }
   return bab;
+};
+
+this.print = function(o) {
+  var key, value, _results;
+  console.log("print - src");
+  _results = [];
+  for (key in o) {
+    value = o[key];
+    _results.push(console.log("\t\t" + key + " : " + value));
+  }
+  return _results;
 };
 
 this.loaded_static_data_tags = [];

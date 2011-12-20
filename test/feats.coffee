@@ -2,8 +2,8 @@
 test/feats.coffee
 ###
 nodeunit = require "nodeunit"
-testCase = nodeunit.testCase
-assert = require "assert"
+# testCase = nodeunit.testCase
+# assert = require "assert"
 common = require "../web/common"
 store = require "../web/store"
 skills = require("../web/resources/skills").skills
@@ -12,8 +12,10 @@ feats = require("../web/resources/feats").feats
 TAFFY = require("taffydb")
 $ = require("jquery")
 
-exports["skill_focus_skill_mod"] = (test) ->
-	store.load_static_data
+store.load_static_data
+
+exports["Skill Focus - skill mod"] = (test) ->
+
 	skill_focus = feats(name: "Skill Focus").first()
 
 	chardata = {}
@@ -43,3 +45,6 @@ exports["skill_focus_skill_mod"] = (test) ->
 	test.equal mod, 6, "For 10 ranks, the mod for a Skill Focus skill selection Knowledge (Dungeoneering) should be 6"
 
 	test.done()
+
+exports["Improved Initiative - init"] = () ->
+	test.done

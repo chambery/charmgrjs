@@ -1214,7 +1214,10 @@ this.feats = TAFFY([
     summary: "+4 bonus on initiative checks",
     detail: "Your quick reflexes allow you to react rapidly to danger. <p class=sub><b>Benefit: </b>You get a +4 bonus on initiative checks.",
     prereqs: {},
-    init: "init += 4; return init;",
+    init: function(init) {
+      init += 4;
+      return init;
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",

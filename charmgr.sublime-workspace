@@ -4,12 +4,264 @@
 		"selected_items":
 		[
 			[
-				"load_",
-				"load_static_data"
-			],
-			[
 				"log",
 				"log: log"
+			],
+			[
+				"coun",
+				"count"
+			],
+			[
+				"lo",
+				"log: log"
+			],
+			[
+				"arm",
+				"armordata"
+			],
+			[
+				"is",
+				"is_worn"
+			],
+			[
+				"L",
+				"Leather"
+			],
+			[
+				"equ",
+				"equip_type"
+			],
+			[
+				"calc_ar",
+				"calc_armor_bonus"
+			],
+			[
+				"ma",
+				"max_dex_bonus"
+			],
+			[
+				"shi",
+				"shield_bonus"
+			],
+			[
+				"armor",
+				"armor_bonus"
+			],
+			[
+				"equi",
+				"equip_benes"
+			],
+			[
+				"calc",
+				"calc_size_mod"
+			],
+			[
+				"char",
+				"chardata"
+			],
+			[
+				"race",
+				"race_name"
+			],
+			[
+				"feat",
+				"feat_name"
+			],
+			[
+				"ab",
+				"abilities"
+			],
+			[
+				"cai",
+				"calc_init"
+			],
+			[
+				"get",
+				"get_char_feats"
+			],
+			[
+				"fn",
+				"feat_name"
+			],
+			[
+				"fen",
+				"feat_name"
+			],
+			[
+				"calc_ab",
+				"calc_ability_score"
+			],
+			[
+				"char_",
+				"char_skill"
+			],
+			[
+				"su",
+				"tsubtype"
+			],
+			[
+				"sk",
+				"skills"
+			],
+			[
+				"chard",
+				"chardata"
+			],
+			[
+				"skill",
+				"skill_name"
+			],
+			[
+				"skil",
+				"skills"
+			],
+			[
+				"rac",
+				"race_name"
+			],
+			[
+				"lg",
+				"log: log"
+			],
+			[
+				"cr",
+				"cross"
+			],
+			[
+				"feat_",
+				"feat_name"
+			],
+			[
+				"arr",
+				"arr"
+			],
+			[
+				"te",
+				"test"
+			],
+			[
+				"abil",
+				"ability_score"
+			],
+			[
+				"po",
+				"pois"
+			],
+			[
+				"Ac",
+				"Acrobatics"
+			],
+			[
+				"TA",
+				"TAFFY"
+			],
+			[
+				"get_e",
+				"get_equip_benes"
+			],
+			[
+				"e",
+				"equal"
+			],
+			[
+				"max",
+				"max_ranks"
+			],
+			[
+				"char_sk",
+				"char_skill_points"
+			],
+			[
+				"mu",
+				"multiplier"
+			],
+			[
+				"cal",
+				"calc_level"
+			],
+			[
+				"cha",
+				"char_skill"
+			],
+			[
+				"inde",
+				"indexOf"
+			],
+			[
+				"fl",
+				"floor"
+			],
+			[
+				"Mat",
+				"Math"
+			],
+			[
+				"fe",
+				"feat"
+			],
+			[
+				"sub",
+				"subtype"
+			],
+			[
+				"ch",
+				"chardata"
+			],
+			[
+				"Dis",
+				"Disguise"
+			],
+			[
+				"feat_n",
+				"feat_name"
+			],
+			[
+				"my_",
+				"my_feats"
+			],
+			[
+				"test",
+				"test_feats"
+			],
+			[
+				"all",
+				"all_char_feats"
+			],
+			[
+				"all_",
+				"all_char_feats"
+			],
+			[
+				"ind",
+				"index"
+			],
+			[
+				"class_",
+				"class_feats"
+			],
+			[
+				"cla",
+				"class_feats"
+			],
+			[
+				"class",
+				"class_feats"
+			],
+			[
+				"Dru",
+				"Druid"
+			],
+			[
+				"Cler",
+				"Cleric"
+			],
+			[
+				"Cl",
+				"Cleric"
+			],
+			[
+				"load_",
+				"load_static_data"
 			],
 			[
 				"end",
@@ -17,10 +269,6 @@
 			],
 			[
 				"l",
-				"log: log"
-			],
-			[
-				"lo",
 				"log: log"
 			],
 			[
@@ -36,39 +284,11 @@
 				"get_class_feat_names"
 			],
 			[
-				"feat_n",
-				"feat_name"
-			],
-			[
-				"fe",
-				"feats"
-			],
-			[
-				"char",
-				"char_feats"
-			],
-			[
-				"all",
-				"all_char_feats"
-			],
-			[
 				"char_f",
 				"char_feats"
 			],
 			[
-				"get",
-				"get_char_feats"
-			],
-			[
 				"Disg",
-				"Disguise"
-			],
-			[
-				"sk",
-				"skill_focus_skill"
-			],
-			[
-				"Dis",
 				"Disguise"
 			],
 			[
@@ -88,16 +308,8 @@
 				"skill_focus"
 			],
 			[
-				"feat",
-				"feat_mod"
-			],
-			[
 				"skill_f",
 				"skill_focus_skill"
-			],
-			[
-				"rac",
-				"race_mod"
 			],
 			[
 				"skill_a",
@@ -108,20 +320,12 @@
 				"window"
 			],
 			[
-				"calc",
-				"calc_level"
-			],
-			[
 				"eq",
 				"equal"
 			],
 			[
 				"dis",
 				"disguise"
-			],
-			[
-				"cha",
-				"char_classes"
 			],
 			[
 				"classn",
@@ -144,10 +348,6 @@
 				"knowledge"
 			],
 			[
-				"ch",
-				"char_classes"
-			],
-			[
 				"kn",
 				"knowledge"
 			],
@@ -160,10 +360,6 @@
 				"is_class_skill"
 			],
 			[
-				"all_",
-				"all_char_feats"
-			],
-			[
 				"mer",
 				"merge"
 			],
@@ -174,10 +370,6 @@
 			[
 				"und",
 				"undefined"
-			],
-			[
-				"class_",
-				"class_feats"
 			],
 			[
 				"the",
@@ -204,10 +396,6 @@
 				"alignments"
 			],
 			[
-				"char_",
-				"char_classes"
-			],
-			[
 				"ct",
 				"ctrl"
 			]
@@ -219,7 +407,66 @@
 			"file": "test/common.coffee",
 			"settings":
 			{
-				"buffer_size": 9503,
+				"buffer_size": 1645,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/character.coffee",
+			"settings":
+			{
+				"buffer_size": 9223,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/common.coffee",
+			"settings":
+			{
+				"buffer_size": 33507,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "web/common.js",
+			"settings":
+			{
+				"buffer_size": 39329,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/resources/armors.coffee",
+			"settings":
+			{
+				"buffer_size": 3149,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "###\ntest/character.coffee\n###\nCharacter = require(\"../web/character\").Character\nstore = require \"../web/store\"\nskills = require(\"../web/resources/skills\").skills\nraces = require(\"../web/resources/races\").races\nfeats = require(\"../web/resources/feats\").feats\nTAFFY = require(\"taffydb\")\n$ = require(\"jquery\")\nend_requires = new Date()\nstore.load_static_data()\nend_load_static = new Date()\nconsole.log \"+ store.load_static_data: #{end_load_static - end_requires}\"\nglobal = exports ? this\nglobal.session = {}\n\nexports[\"calc_skill_mod\"] = (test) ->\n	chardata = new Character\n	chardata.race_name = \"Dwarf\"\n	chardata.skills = TAFFY([\n		skill_name: \"Disguise\"\n		ranks: 13\n	,\n		skill_name: \"Knowledge\"\n		subtypes:\n			\"Dungeoneering\" : 2\n			\"Engineering\" : 4\n	])\n	chardata.feats = TAFFY([\n		feat_name: \"Skill Focus\"\n		multi: [\n			\"Knowledge (Dungeoneering)\" \n			\"Disguise\"\n		]	\n	])\n	chardata.race_name = \"Dwarf\"\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 3\n		\"Wizard\":\n			\"level\": 4\n	}\n\n	chardata.abilities = {\n		\"Str\" : 10\n		\"Int\" : 10\n		\"Dex\" : 10\n		\"Cha\" : 10\n		\"Con\" : 10\n		\"Wis\" : 10\n	}\n\n	skill = skills({ name: \"Disguise\" }).first()\n	test.equal chardata.calc_skill_mod(skill, null), 12, \"Disguise has 13 points, max ranks of 6 (for Fighter/Wizard cross-class), + 6 for Skill Focus\"\n	skill = skills({ name: \"Perception\" }).first()\n	test.equal chardata.calc_skill_mod(skill, null, chardata), 0, \"Perception has no points assigned\"\n\n	skill = skills({ name: \"Knowledge\" }).first()\n	test.equal chardata.calc_skill_mod(skill, \"Dungeoneering\", chardata), 5, \"Knowledge (Dungeoneering) has 2 points, max ranks of 12 (for Fighter/Wizard), + 3 for Skill Focus\"\n	test.equal chardata.calc_skill_mod(skill, \"Engineering\", chardata), 4, \"Knowledge (Engineering) has 4 points, max ranks of 12 (for Fighter/Wizard)\"\n\n	test.done()\n\nexports[\"calc_ability_score\"] = (test) ->\n	chardata = new Character\n	chardata.race_name = \"Dwarf\"\n	chardata.abilities = {\n		\"Str\" : 10\n		\"Int\" : 10\n		\"Dex\" : 10\n		\"Con\" : 10\n		\"Wis\" : 10\n	}\n	chardata.equip_benes = {\n		\"skill:Acrobatics\" : 10\n		\"save:pois\" : 11\n		\"ability:Int\" : 1\n		\"dr:Ref\" : 3\n		\"skill:Perception\" : -4\n		\"other:ac\" : -3\n	}\n	test.equal chardata.calc_ability_score(\"Str\"), 10, \"Strength should be unmodified for Dwarf\"\n	test.equal chardata.calc_ability_score(\"Int\"), 11, \"Intelligence should be +1 for equipment\"\n	test.equal chardata.calc_ability_score(\"Con\"), 12, \"Constitution should be +2 for Dwarf\"\n	test.equal chardata.calc_ability_score(\"Cha\"), -2, \"Charisma should be -2 for Dwarf\"\n	test.done()\n\nexports[\"calc_ranks\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Rogue\":\n			\"level\": 7\n	}\n	chardata.skills = TAFFY([\n		skill_name: \"Disguise\"\n		ranks: 6\n	,\n		skill_name: \"Knowledge\"\n		subtypes:\n			\"Arcana\" : 4\n			\"Dungeoneering\" : 20\n			\"Engineering\" : 6\n	])\n	disguise = skills(name: \"Disguise\").first()\n	# has subtype\n	knowledge = skills(name: \"Knowledge\").first()\n	test.equal (chardata.calc_ranks disguise, null), 6, \"Disguise is a Rogue class skill\"\n	test.equal (chardata.calc_ranks knowledge, \"Arcana\"), 2, \"Knowledge (Arcana) is a cross-class skill for Fighter or Rogue\"\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 1\n		\"Rogue\":\n			\"level\": 0\n	}\n	test.equal (chardata.calc_ranks knowledge, \"Dungeoneering\"), 6, \"Knowledge (Dungeoneering) is class skill for Fighter or Rogue, max ranks 6 for 3rd level\"\n\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 1\n		\"Wizard\":\n			\"level\": 0\n	}\n	test.equal (chardata.calc_ranks disguise, null), 3, \"Disguise is a cross-class skill for Fighter or Wizard\"\n	\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 1\n		\"Wizard\":\n			\"level\": 0\n	}\n	test.equal (chardata.calc_ranks knowledge, \"Engineering\"), 6, \"Knowledge (Engineering) is a Fighter or Wizard class skill\"\n\n	test.done()\n\nexports[\"calc_total_base_feats_count\"] = (test) ->\n	chardata = new Character\n	chardata.race_name = \"Not Human\"\n	chardata.classes = { \"Ranger\" : { \"level\" : 0 }}\n	test.equal chardata.calc_total_base_feats_count(), 1, \"Non human should have 1 base feat at 1st level\"\n	chardata.race_name = \"Human\"\n	test.equal chardata.calc_total_base_feats_count(), 2, \"Human should have 2 base feat at 1st level\"\n	chardata.classes = { \"Ranger\" : { \"level\" : 5 }}\n	test.equal chardata.calc_total_base_feats_count(), 4, \"Human should have 4 base feats at 6th level\"\n	chardata.race_name = \"Not Human\"\n	test.equal chardata.calc_total_base_feats_count(), 3, \"Non human should have 3 base feats at 6th level\"\n	chardata.classes = { \"Ranger\":	{ level: 16 }}\n	test.equal chardata.calc_total_base_feats_count(), 6, \"Non human should have 6 base feats at 17th level\"\n	chardata.race_name = \"Human\"\n	test.equal chardata.calc_total_base_feats_count(), 7, \"Human should have 7 base feats at 17th level\"\n			\n	test.done()\n\nexports[\"calc_total_class_feats_count\"] = (test) ->\n	chardata = new Character\n	chardata.classes = { \"Barbarian\": { level: 0 }}\n	test.equal chardata.calc_total_class_feats_count(), 0, \"Barbarian should have no class feats at first level\"\n	chardata.classes = { \"Barbarian\": { level: 18 }}\n	test.equal chardata.calc_total_class_feats_count(), 3, \"Barbarian should have 3 class feats at nineteenth level\"\n	chardata.classes = { \"Barbarian\": { level: 18 }, \"Sorcerer\": { level: 3 } }\n	test.equal chardata.calc_total_class_feats_count(), 4, \"Multiclass should have 3 class feats at nineteenth level\"\n	\n	test.done()\n \nexports[\"is_class_skill\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Rogue\":\n			\"level\": 7\n	}	\n	disguise = skills(name: \"Disguise\").first()\n	# has subtype\n	knowledge = skills(name: \"Knowledge\").first()\n	test.ok (chardata.is_class_skill disguise, null), \"Rogue should have Disguise as a class skill\"\n	test.ok not(chardata.is_class_skill knowledge, \"Arcana\"), \"Rogue or Fighter should _not_ have Knowledge (Arcana) as a class skill\"\n\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Wizard\":\n			\"level\": 7\n	}	\n	test.ok not(chardata.is_class_skill disguise, null), \"Fighter or Wizard should _not_ have Disguise as a class skill\"\n	\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Wizard\":\n			\"level\": 7\n	}\n	test.ok (chardata.is_class_skill knowledge, \"Engineering\"), \"Fighter or Wizard should have Knowledge (Engineering) as a class skill\"\n\n	test.ok (chardata.is_class_skill knowledge, \"Dungeoneering\"), \"Fighter or Wizard should have Knowledge (Dungeoneering) as a class skill\"\n	\n	test.done()\n\nexports[\"get_char_feats\"] = (test) ->\n	chardata = new Character\n	chardata.feats = TAFFY([\n		feat_name: \"Skill Focus\"\n		multi: [\n			\"Knowledge (Dungeoneering)\" \n			\"Disguise\"\n		]	\n	,\n		feat_name: \"Martial Weapon Proficiency\"\n	,\n		feat_name: \"Augment Summoning\"\n	,\n		feat_name: \"Animal Affinity\"\n	])\n\n	char_feats = chardata.get_char_feats()\n	test.ok char_feats(name: \"Augment Summoning\").first(), \"'Augment Summoning' should exist as a feat in the array.\"\n	test.equal char_feats(name: \"Augment Summoning\").first()._id, \"97ff\", \"'Augment Summoning' should exist as a feat in the array.\"\n	test.ok not( char_feats(name: \"monkey\").first() ), \"'monkey' should NOT exist as a feat in the array.\"\n\n	test.done()\n\nexports[\"calc_init\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 4\n		\"Wizard\":\n			\"level\": 7\n	}\n\n	chardata.abilities = { Dex : 10 }\n	test.equal chardata.calc_init(), 0, \"Initiative modifier should be 0 for dexterity 10\"\n	chardata.abilities = { Dex : 21 }\n	test.equal chardata.calc_init(), 5, \"Initiative modifier should be 6 for dexterity 21\"\n	chardata.abilities = { Dex : 10 }\n	chardata.feats = TAFFY([\n		feat_name: \"Improved Initiative\"\n	])\n	test.equal chardata.calc_init(), 4, \"Initiative modifier should be 4 for dexterity 10, Improved Initiative feat\"\n	chardata.abilities = { Dex : 21 }\n	test.equal chardata.calc_init(), 9, \"Initiative modifier should be 10 for dexterity 21\"\n\n	test.done()\n\nexports[\"calc_ac\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 4\n		\"Wizard\":\n			\"level\": 7\n	}\n	chardata.feats = TAFFY([\n		feat_name: \"Skill Focus\"\n		multi: [\n			\"Knowledge (Dungeoneering)\" \n			\"Disguise\"\n		]	\n	,\n		feat_name: \"Martial Weapon Proficiency\"\n	])\n	chardata.armors = TAFFY([\n		armor_name: \"Studded leather\"\n		is_worn: true\n	])\n	console.log \"+ is_worn: #{chardata.armors(armor_name: \"Studded Leather\").first().is_worn}\"\n	chardata.abilities = { Dex : 10 }\n	test.equal chardata.calc_ac(), 14, \"Armor class should be 14 for Studded leather, dexterity 10, Dwarf\"\n	chardata.abilities = { Dex : 21 }\n	# test.equal chardata.calc_ac(), 18, \"Armor class should be 8 for Studded Leather and dexterity 21\"\n\n	test.done()\n\n# exports[\"calc_size_mod\"] = (test) ->\n# 	chardata = new Character\n# 	chardata.race_name = \"Dwarf\"\n# 	test.equal chardata.calc_size_mod(), 1, \"Dwarf should have a size mod of +1\"\n# 	chardata.race_name = \"Halfling\"\n# 	test.equal chardata.calc_size_mod(), 1, \"Halfling should have a size mod of +1\"\n# 	chardata.race_name = \"Human\"\n# 	test.equal chardata.calc_size_mod(), 0, \"Human should have a size mod of 0\"\n# 	chardata.race_name = \"Half-Orc\"\n# 	test.equal chardata.calc_size_mod(), 0, \"Half-Orc should have a size mod of 0\"\n\n# 	test.done()\n\ncreate_character = () ->\n	chardata = new Character\n	chardata.skills = TAFFY([\n		skill_name: \"Disguise\"\n		ranks: 12\n	,\n		skill_name: \"Knowledge\"\n		subtypes:\n			\"Dungeoneering\" : 2\n			\"Engineering\" : 4\n	])\n\n	chardata.xp = 35000\n\n	chardata.abilities = {\n		\"Str\" : 10,\n		\"Int\" : 10,\n		\"Dex\" : 10,\n		\"Cha\" : 10,\n		\"Con\" : 10,\n		\"Wis\" : 10\n	}\n\n	# chardata.skills().each (i, j) ->\n		# console.log \"+#{i}, #{j}\"for the \n	# chardata.classes = {\n	# 	\"Fighter\": \n	# 		\"level\": 3\n	# 	\"Wizard\":\n	# 		\"level\": 4\n	# }\n\n	# chardata.feats = TAFFY([\n	# 	feat_name: \"Skill Focus\"\n	# 	multi: [\n	# 		\"Knowledge (Dungeoneering)\" \n	# 		\"Disguise\"\n	# 	]\n	# ])\n\n	chardata.race_name = \"Dwarf\"\n\n	# chardata.equipment = TAFFY([\n	# 	id: \"jh23422k\"\n	# 	name: \"ruby bird\"\n	# 	notes: \"some notes\"\n	# 	benefits: [\n	# 		id: \"skill:Acrobatics\"\n	# 		mod: 10\n	# 	,\n	# 		id: \"save:pois\"\n	# 		mod: 2\n	# 	,\n	# 		id: \"ability:Int\"\n	# 		mod: 1\n	# 	,\n	# 		id: \"dr:Ref\"\n	# 		mod: 3\n	# 	]\n	# ,\n	# 	id: \"asdf333\"\n	# 	name: \"bad ring\"\n	# 	notes: \"some notes\"\n	# 	benefits: [\n	# 		id: \"skill:Perception\"\n	# 		mod: -4\n	# 	,\n	# 		id: \"save:pois\"\n	# 		mod: 9\n	# 	,\n	# 		id: \"other:ac\"\n	# 		mod: -3\n	# 	]\n	# ])\n	\n	# chardata.equip_benes = {\n	# 	\"skill:Acrobatics\" : 10\n	# 	\"save:pois\" : 11\n	# 	\"ability:Int\" : 1\n	# 	\"dr:Ref\" : 3\n	# 	\"skill:Perception\" : -4\n	# 	\"other:ac\" : -3\n	# }\n",
+			"file": "test/character.coffee",
+			"file_size": 10530,
+			"file_write_time": 1324326799000000,
+			"settings":
+			{
+				"buffer_size": 10528,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Cakefile",
+			"settings":
+			{
+				"buffer_size": 2055,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "web/resources/feats.js",
+			"settings":
+			{
+				"buffer_size": 151516,
 				"line_ending": "Unix"
 			}
 		}
@@ -227,9 +474,17 @@
 	"build_system": "Packages/User/Jade.sublime-build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 45.0,
 		"selected_items":
 		[
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: L",
+				"Package Control: List Packages"
+			],
 			[
 				"Pac",
 				"Package Control: Remove Package"
@@ -284,28 +539,35 @@
 	},
 	"file_history":
 	[
-		"/Users/chambery/Documents/projects/charmgrjs/web/resources/spells-pf.js",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Installed Packages/SublimeCodeIntel.sublime-package",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
+		"/Users/chambery/Documents/projects/charmgrjs/web/character.js",
+		"/Users/chambery/Documents/projects/charmgrjs/Cakefile",
+		"/Users/chambery/Documents/projects/charmgrjs/src/store.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/test/test.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/skills.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/edit_equipment.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/main.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/test/feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/web/common.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/test.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/spells-pf.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/web/resources/spells-pf.js",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/specials.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/weapons.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/store.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/test/feats.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/alignments.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/spells-pf.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/common.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/edit.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/main.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/classes.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/Cakefile",
 		"/Users/chambery/Documents/projects/charmgrjs/web/resources/feats.js",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/races.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/shields.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/skills.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/sorcerer_bloodlines.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/views.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/armors.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/web/common.js",
-		"/Users/chambery/Documents/projects/charmgrjs/test/test.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/test/common.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/web/resources/armors.js",
 		"/Users/chambery/Documents/projects/charmgrjs/coffee/edit_feats.coffee",
@@ -320,8 +582,6 @@
 		"/Users/chambery/Documents/projects/taffydb/taffy.js",
 		"/Users/chambery/Documents/projects/charmgrjs/src/test/common.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/test/chardata_calc_skill_mod.coffee",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Comments.tmPreferences",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.textmate",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.tmLanguage",
@@ -375,6 +635,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ctrl+k",
+			"ctrl+f",
+			"console.log \"",
+			"calc_init",
+			"dammit",
+			"chardata.",
+			", char_classes)",
+			"character.",
+			": (",
+			"calc_ability",
+			"= (",
+			"=",
+			"common",
+			"ctrl+c",
+			"chardata.classes",
+			"./resources/classes",
+			"./re",
+			"./resources/classes",
+			"first()] = undefined",
+			"[feats(name:",
+			"classes: detail:",
 			"load",
 			"TAFFY = require(\"taffydb\").taffy",
 			"\\{",
@@ -443,6 +724,20 @@
 		"regex": false,
 		"replace_history":
 		[
+			"console.log \"+",
+			"equip_type",
+			"@",
+			")",
+			"",
+			"chardata.",
+			"= (",
+			": (",
+			":",
+			"character",
+			"char_classes",
+			"../web/re",
+			"first()",
+			".push feats(name:",
 			"TAFFY = require(\"taffydb\")",
 			"",
 			",",
@@ -481,15 +776,124 @@
 					"file": "test/common.coffee",
 					"settings":
 					{
-						"buffer_size": 9503,
+						"buffer_size": 1645,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								838,
-								838
+								1519,
+								1519
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/character.coffee",
+					"settings":
+					{
+						"buffer_size": 9223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6361,
+								6361
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 487.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/common.coffee",
+					"settings":
+					{
+						"buffer_size": 33507,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7564,
+								7564
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 334.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "web/common.js",
+					"settings":
+					{
+						"buffer_size": 39329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 1.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/resources/armors.coffee",
+					"settings":
+					{
+						"buffer_size": 3149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								521,
+								538
 							]
 						],
 						"settings":
@@ -506,8 +910,91 @@
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 5,
+					"file": "test/character.coffee",
+					"settings":
+					{
+						"buffer_size": 10528,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								937,
+								937
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 191.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Cakefile",
+					"settings":
+					{
+						"buffer_size": 2055,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								320,
+								320
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "web/resources/feats.js",
+					"settings":
+					{
+						"buffer_size": 151516,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -539,7 +1026,7 @@
 		"cols":
 		[
 			0.0,
-			0.46729479338,
+			0.425669642857,
 			1.0
 		],
 		"rows":
@@ -573,7 +1060,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_visible": false,
+	"side_bar_width": 122.0,
 	"status_bar_visible": true
 }

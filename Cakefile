@@ -37,6 +37,7 @@ task 'test', 'Run the test suite (and re-run if anything changes)', ->
 			suiteNames = [
 				"common"
 				"character"
+				# "feats"
 				# "sorcerer_bloodlines",
 				# "test",
 				# "views"

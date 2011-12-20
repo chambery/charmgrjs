@@ -1,3 +1,6 @@
+###
+test/character.coffee
+###
 Character = require("../web/character").Character
 store = require "../web/store"
 skills = require("../web/resources/skills").skills
@@ -8,14 +11,16 @@ $ = require("jquery")
 end_requires = new Date()
 store.load_static_data()
 end_load_static = new Date()
-console.log "store.load_static_data: #{end_load_static - end_requires}"
+console.log "+ store.load_static_data: #{end_load_static - end_requires}"
+global = exports ? this
+global.session = {}
 
 exports["calc_skill_mod"] = (test) ->
 	chardata = new Character
 	chardata.race_name = "Dwarf"
 	chardata.skills = TAFFY([
 		skill_name: "Disguise"
-		ranks: 12
+		ranks: 13
 	,
 		skill_name: "Knowledge"
 		subtypes:
@@ -47,7 +52,7 @@ exports["calc_skill_mod"] = (test) ->
 	}
 
 	skill = skills({ name: "Disguise" }).first()
-	test.equal chardata.calc_skill_mod(skill, null), 12, "Disguise has 12 points, max ranks of 6 (for Fighter/Wizard cross-class), + 6 for Skill Focus"
+	test.equal chardata.calc_skill_mod(skill, null), 12, "Disguise has 13 points, max ranks of 6 (for Fighter/Wizard cross-class), + 6 for Skill Focus"
 	skill = skills({ name: "Perception" }).first()
 	test.equal chardata.calc_skill_mod(skill, null, chardata), 0, "Perception has no points assigned"
 
@@ -193,49 +198,130 @@ exports["is_class_skill"] = (test) ->
 	
 	test.done()
 
-
-create_character = () ->
+exports["get_char_feats"] = (test) ->
 	chardata = new Character
-	chardata.skills = TAFFY([
-		skill_name: "Disguise"
-		ranks: 12
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)" 
+			"Disguise"
+		]	
 	,
-		skill_name: "Knowledge"
-		subtypes:
-			"Dungeoneering" : 2
-			"Engineering" : 4
+		feat_name: "Martial Weapon Proficiency"
+	,
+		feat_name: "Augment Summoning"
+	,
+		feat_name: "Animal Affinity"
 	])
 
-	chardata.xp = 35000
+	char_feats = chardata.get_char_feats()
+	test.ok char_feats(name: "Augment Summoning").first(), "'Augment Summoning' should exist as a feat in the array."
+	test.equal char_feats(name: "Augment Summoning").first()._id, "97ff", "'Augment Summoning' should exist as a feat in the array."
+	test.ok not( char_feats(name: "monkey").first() ), "'monkey' should NOT exist as a feat in the array."
 
-	chardata.abilities = {
-		"Str" : 10,
-		"Int" : 10,
-		"Dex" : 10,
-		"Cha" : 10,
-		"Con" : 10,
-		"Wis" : 10
+	test.done()
+
+exports["calc_init"] = (test) ->
+	chardata = new Character
+	chardata.classes = {
+		"Fighter": 
+			"level": 4
+		"Wizard":
+			"level": 7
 	}
 
-	# chardata.skills().each (i, j) ->
-		# console.log "#{i}, #{j}"for the 
-	# chardata.classes = {
-	# 	"Fighter": 
-	# 		"level": 3
-	# 	"Wizard":
-	# 		"level": 4
-	# }
+	chardata.abilities = { Dex : 10 }
+	test.equal chardata.calc_init(), 0, "Initiative modifier should be 0 for dexterity 10"
+	chardata.abilities = { Dex : 21 }
+	test.equal chardata.calc_init(), 5, "Initiative modifier should be 6 for dexterity 21"
+	chardata.abilities = { Dex : 10 }
+	chardata.feats = TAFFY([
+		feat_name: "Improved Initiative"
+	])
+	test.equal chardata.calc_init(), 4, "Initiative modifier should be 4 for dexterity 10, Improved Initiative feat"
+	chardata.abilities = { Dex : 21 }
+	test.equal chardata.calc_init(), 9, "Initiative modifier should be 10 for dexterity 21"
 
-	# chardata.feats = TAFFY([
-	# 	feat_name: "Skill Focus"
-	# 	multi: [
-	# 		"Knowledge (Dungeoneering)" 
-	# 		"Disguise"
-	# 	]
-	# ])
+	test.done()
 
+exports["calc_ac"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter": 
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)" 
+			"Disguise"
+		]	
+	,
+		feat_name: "Martial Weapon Proficiency"
+	])
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	console.log "+ is_worn: #{chardata.armors(armor_name: "Studded Leather").first().is_worn}"
+	chardata.abilities = { Dex : 10 }
+	test.equal chardata.calc_ac(), 14, "Armor class should be 14 for 10 + Studded leather (3), dexterity 10 (0), Halfling (1)"
+	chardata.abilities = { Dex : 21 }
+	test.equal chardata.calc_ac(), 19, "Armor class should be 19 for 10 + Studded Leather (3), dexterity 21 (5), Halfling (1)"
+
+	chardata.shields = TAFFY([
+		shield_name: "Shield, small, wooden"
+		is_worn: true
+	])
+	test.equal chardata.calc_ac(), 20, "Armor class should be 19 for 10 + Studded Leather (3), Shield, small, wooden (1), dexterity 21 (5), Halfling (1)"
+
+	chardata.armors(armor_name: "Studded leather").update(armor_name: "Chainmail")
+	test.equal chardata.calc_ac(), 19, "Armor class should be 19 for 10 + Chainmail (5), Shield, small, wooden (1), dexterity 21 (5), Halfling (1) - max dex (2)"
+	chardata.armors(armor_name: "Chainmail").update(
+		armor_name: "Splint mail"
+	)
+	test.equal chardata.calc_ac(), 18, "Armor class should be 18 for 10 + Splint mail (6), Shield, small, wooden (1), dexterity 21 (5), Halfling (1) - max dex (0)"
+
+	chardata.armors(armor_name: "Splint mail").update(is_worn: false)
+	test.equal chardata.calc_ac(), 17, "Armor class should be 17 for 10 + Shield, small, wooden (1), dexterity 21 (5), Halfling (1)"
+
+	test.done()
+
+exports["calc_size_mod"] = (test) ->
+	chardata = new Character
 	chardata.race_name = "Dwarf"
+	test.equal chardata.calc_size_mod(), 0, "Dwarf should have a size mod of 0"
+	chardata.race_name = "Halfling"
+	test.equal chardata.calc_size_mod(), 1, "Halfling should have a size mod of +1"
+	chardata.race_name = "Human"
+	test.equal chardata.calc_size_mod(), 0, "Human should have a size mod of 0"
+	chardata.race_name = "Half-Orc"
+	test.equal chardata.calc_size_mod(), 0, "Half-Orc should have a size mod of 0"
 
+	test.done()
+
+exports["calc_touch_ac"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter": 
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
+	test.equal chardata.calc_touch_ac(), 11, "Touch ac should be 11 for 10 + dexterity 10 (0) + Halfling (1) -- no feats yet"
+	chardata.abilities = { Dex: 21 }
+	chardata.race_name = "Human"
+	test.equal chardata.calc_touch_ac(), 15[, "Touch ac should be 15 for 10 + dexterity 21 (5) + Human (0) -- no feats yet"
+	
+	test.done()
+
+exports["calc_flat_footed_ac"] = (test) ->
+	test.done()
 	# chardata.equipment = TAFFY([
 	# 	id: "jh23422k"
 	# 	name: "ruby bird"
@@ -277,5 +363,3 @@ create_character = () ->
 	# 	"skill:Perception" : -4
 	# 	"other:ac" : -3
 	# }
-
-	chardata

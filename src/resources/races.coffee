@@ -8,7 +8,8 @@ this.races = TAFFY([
 		Dex: 2
 		Str: -2
 	
-	skills: Listen: 2
+	skills: 
+		Listen: 2
 	size: "small"
 	favored_class: "Rogue"
 	languages: [ "Common", "Draconic" ]
@@ -66,7 +67,8 @@ this.races = TAFFY([
 		Dex: 2
 		Con: -2
 	
-	skills: Listen: 2
+	skills: 
+		Listen: 2
 	size: "medium"
 	favored_class: "Wizard"
 	languages: [ "Common", "Elven" ]
@@ -81,7 +83,8 @@ this.races = TAFFY([
 		Con: 2
 		Str: -2
 	
-	skills: Listen: 2
+	skills: 
+		Listen: 2
 	size: "small"
 	favored_class: "Bard"
 	languages: [ "Common", "Gnome" ]

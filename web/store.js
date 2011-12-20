@@ -215,7 +215,6 @@ this.load_static_data = function() {
     if (feat.attack) feat.attack = new Function("attacks", "weapon", feat.attack);
     if (feat.damage) feat.damage = new Function("damages", "weapon", feat.damage);
     if (feat.critical) feat.critical = new Function("critical", feat.critical);
-    if (feat.init) feat.init = new Function("init", feat.init);
     if (feat.fort) feat.fort = new Function("fort", feat.fort);
     if (feat.ref) feat.ref = new Function("ref", feat.ref);
     if (feat.will) feat.will = new Function("will", feat.will);

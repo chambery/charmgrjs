@@ -6,6 +6,7 @@ if typeof(exports) == "object"
 	TAFFY = require("taffydb")
 	$ = require("jquery")
 	_ = require("underscore")
+	common = require("./common")
 	classes = require("./resources/classes").classes
 	armors = require("./resources/armors").armors
 	shields = require("./resources/shields").shields
@@ -14,6 +15,8 @@ if typeof(exports) == "object"
 	races = require("./resources/races").races
 	alignments = require("./resources/alignments").alignments
 	goodness = require("./resources/alignments").goodness
+
+global = exports ? this
 
 console.log new Date() - start
 # TODO - inline
@@ -138,15 +141,6 @@ this.calc_level = (xp) ->
 	
 	(Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1
 
-this.calc_init = (dex_score) ->
-	init = 0
-	char_feats = get_char_feats()
-	char_feats.get(init: "!is": null).forEach (feat, i) ->
-		init = feat.init(init)
-		init
-	
-	calc_ability_modifier(dex_score) + init
-
 this.calc_ref = (dex_score, class_name, xp, char_feats) ->
 	class_ref_score = calc_save("ref_save")
 	ref = 0
@@ -188,36 +182,27 @@ this.calc_spell_resistance = ->
 	
 	sr + class_sr_score + feat_mod + calc_equip_mod("SR")
 
-this.calc_dr = (dr) ->
-	(if equipment_benefits[dr] then equipment_benefits[dr] else 0)
-
-this.calc_ac = (dex_score) ->
-	ac = 0
-	char_feats = get_char_feats()
-	char_feats.get(ac: "!is": null).forEach (feat, i) ->
-		ac = feat.ac(ac)
-		ac
-	
-	armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor")
-	shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield")
-	monk_mod = (if chardata.classes["Monk"]? then classes.first(name: "Monk").ac_bonus[calc_level()] else 0)
-	10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod("AC") + ac
-
-this.calc_armor_bonus = (char_armor, db, dammit) ->
-	max_dex_bonus = null
+###
+Returns the armor bonus for any "armor-like" object
+###
+this.calc_armor_bonus = (char_armor, db, equip_type) ->
+	console.log "\ncalc_armor_bonus"
+	max_dex_bonus = "-"
 	armor_bonus = 0
-	if char_armor?
-		for i of char_armor
-			if session["armor"][i]["is_worn"]
-				armordata = db.first(name: char_armor[i][dammit + "_name"])
-				armor_bonus += parseInt(armordata.bon)	unless armordata.bon == "-"
-				max_dex_bonus = (if not max_dex_bonus? then parseInt(armordata.max_dex_bonus) else Math.min(max_dex_bonus, parseInt(armordata.max_dex_bonus)))	unless armordata.max_dex_bonus == "-"
-	bonus: armor_bonus
-	max_dex_bonus: (if not max_dex_bonus? then 50 else max_dex_bonus)
+	char_armor?().each (type) ->
+		console.log "\t#{type[equip_type + "_name"]}  #{type.is_worn}"
+		if type.is_worn
+			armordata = db( {name: type[equip_type + "_name"]} ).first()
+			console.log "\tarmordata: #{armordata.max_dex_bonus}"
+			# common.print armordata
+			armor_bonus += parseInt(armordata.bon)	unless armordata.bon == "-"
+			if max_dex_bonus == "-" and common.is_number(armordata.max_dex_bonus)
+				max_dex_bonus =	armordata.max_dex_bonus
+			else
+				max_dex_bonus = Math.min(parseInt(max_dex_bonus, armordata.max_dex_bonus))	unless armordata.max_dex_bonus == "-"
 
-this.calc_size_mod = (race_name) ->
-	size = races.first(name: race_name).size
-	(if size == "small" then 1 else 0)
+	bonus: armor_bonus
+	max_dex_bonus: max_dex_bonus
 
 this.calc_damage = (weapon, char_feats, char_weapon) ->
 	damages = []
@@ -590,20 +575,6 @@ this.do_class_functions = (page, location, obj) ->
 				clazz.custom[page][location][script] obj
 	obj
 
-this.get_char_feats = ->
-	char_feats = TAFFY([])
-	if chardata.feats
-		chardata.feats.get().forEach (feat, i) ->
-			char_feats.insert feats.first(name: feat.feat_name)
-	char_feats.insert get_class_feats()
-	char_feats
-
-this.calc_touch_ac = (dex_score, race_name, char_feats) ->
-	10 + calc_ability_modifier(dex_score) + calc_size_mod(race_name)
-
-this.calc_flat_footed_ac = (char_armor) ->
-	10 + calc_armor_bonus(char_armor, armors, "armor").bonus
-
 this.calc_base_attack_bonus = ->
 	bab = []
 	for classname of chardata.classes
@@ -615,6 +586,11 @@ this.calc_base_attack_bonus = ->
 			bab[i] = (bab[i] | 0) + parseInt(attacks[i])
 			i++
 	bab
+
+this.print = (o) ->
+	console.log "print - src"
+	for key, value of o
+		console.log "\t\t#{key} : #{value}"
 
 this.loaded_static_data_tags = []
 
