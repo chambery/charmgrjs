@@ -42,9 +42,6 @@ this.toggle_visible = (section, hide) ->
 	hidden = $("#" + section).is(":hidden")
 	$("#" + section + "_expand_flag").html (if hidden then "<img src='images/collapsed.png'/>" else "<img src='images/expanded.png'/>")
 
-this.calc_ability_modifier = (score) ->
-	Math.ceil((score - 11) / 2) | 0
-
 this.set_links_part = (page_id) ->
 	classes_html = ""
 	is_spellpicker = false
@@ -141,46 +138,6 @@ this.calc_level = (xp) ->
 	
 	(Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1
 
-this.calc_ref = (dex_score, class_name, xp, char_feats) ->
-	class_ref_score = calc_save("ref_save")
-	ref = 0
-	char_feats = get_char_feats()
-	char_feats.get(ref: "!is": null).forEach (feat, i) ->
-		ref = feat.ref(ref)
-		ref
-	
-	calc_ability_modifier(dex_score) + class_ref_score + ref + calc_equip_mod("Ref")
-
-this.calc_will = (wis_score, class_name, xp, char_feats) ->
-	class_will_score = calc_save("will_save")
-	feat_mod = 0
-	char_feats = get_char_feats()
-	char_feats.get(will: "!is": null).forEach (feat, i) ->
-		feat_mod = feat.will(feat_mod)
-		feat_mod
-	
-	calc_ability_modifier(wis_score) + class_will_score + feat_mod + calc_equip_mod("Will")
-
-this.calc_fort = (con_score) ->
-	class_fort_score = calc_save("fort_save")
-	feat_mod = 0
-	char_feats = get_char_feats()
-	char_feats.get(fort: "!is": null).forEach (feat, i) ->
-		feat_mod = feat.fort(feat_mod)
-		feat_mod
-	
-	calc_ability_modifier(con_score) + class_fort_score + feat_mod + calc_equip_mod("Fort")
-
-this.calc_spell_resistance = ->
-	sr = do_class_functions("all", "calc_sr", sr: 0).sr
-	class_sr_score = calc_save("sr_save")
-	feat_mod = 0
-	char_feats = get_char_feats()
-	char_feats.get(sr: "!is": null).forEach (feat, i) ->
-		feat_mod = feat.fort(feat_mod)
-		feat_mod
-	
-	sr + class_sr_score + feat_mod + calc_equip_mod("SR")
 
 ###
 Returns the armor bonus for any "armor-like" object
@@ -480,12 +437,6 @@ this.calc_current_level = ->
 	for classname of char_classes
 		curr_level += char_classes[classname].level + 1
 	curr_level
-
-this.calc_save = (type) ->
-	save = 0
-	for classname of chardata.classes
-		save += classes(name: classname).first()[type][chardata.classes[classname].level]	if classes(name: classname).first()[type]
-	save
 
 this.is_empty = (object) ->
 	for i of object

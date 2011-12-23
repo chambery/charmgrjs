@@ -56,10 +56,6 @@ this.toggle_visible = function(section, hide) {
   return $("#" + section + "_expand_flag").html((hidden ? "<img src='images/collapsed.png'/>" : "<img src='images/expanded.png'/>"));
 };
 
-this.calc_ability_modifier = function(score) {
-  return Math.ceil((score - 11) / 2) | 0;
-};
-
 this.set_links_part = function(page_id) {
   var allviews, characters, class_shortname, classes_html, classname, existing_chars_html, i, is_spellpicker, k, links_html, race;
   classes_html = "";
@@ -192,73 +188,6 @@ Returns the 0-based level for the supplied xp.  Eg. xp = 100 -> 0, xp = 1200 -> 
 this.calc_level = function(xp) {
   xp = xp | 0;
   return (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1;
-};
-
-this.calc_ref = function(dex_score, class_name, xp, char_feats) {
-  var class_ref_score, ref;
-  class_ref_score = calc_save("ref_save");
-  ref = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
-    ref: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    ref = feat.ref(ref);
-    return ref;
-  });
-  return calc_ability_modifier(dex_score) + class_ref_score + ref + calc_equip_mod("Ref");
-};
-
-this.calc_will = function(wis_score, class_name, xp, char_feats) {
-  var class_will_score, feat_mod;
-  class_will_score = calc_save("will_save");
-  feat_mod = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
-    will: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    feat_mod = feat.will(feat_mod);
-    return feat_mod;
-  });
-  return calc_ability_modifier(wis_score) + class_will_score + feat_mod + calc_equip_mod("Will");
-};
-
-this.calc_fort = function(con_score) {
-  var char_feats, class_fort_score, feat_mod;
-  class_fort_score = calc_save("fort_save");
-  feat_mod = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
-    fort: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    feat_mod = feat.fort(feat_mod);
-    return feat_mod;
-  });
-  return calc_ability_modifier(con_score) + class_fort_score + feat_mod + calc_equip_mod("Fort");
-};
-
-this.calc_spell_resistance = function() {
-  var char_feats, class_sr_score, feat_mod, sr;
-  sr = do_class_functions("all", "calc_sr", {
-    sr: 0
-  }).sr;
-  class_sr_score = calc_save("sr_save");
-  feat_mod = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
-    sr: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    feat_mod = feat.fort(feat_mod);
-    return feat_mod;
-  });
-  return sr + class_sr_score + feat_mod + calc_equip_mod("SR");
 };
 
 /*
@@ -675,21 +604,6 @@ this.calc_current_level = function() {
     curr_level += char_classes[classname].level + 1;
   }
   return curr_level;
-};
-
-this.calc_save = function(type) {
-  var classname, save;
-  save = 0;
-  for (classname in chardata.classes) {
-    if (classes({
-      name: classname
-    }).first()[type]) {
-      save += classes({
-        name: classname
-      }).first()[type][chardata.classes[classname].level];
-    }
-  }
-  return save;
 };
 
 this.is_empty = function(object) {

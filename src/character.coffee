@@ -3,7 +3,7 @@ src/character.coffee
 ###
 if typeof(exports) == "object"
 	TAFFY = require "taffydb"
-	$ = require "jquery" 
+	$ = require "jquery"
 	_ = require "underscore"
 	common = require "./common"
 	classes = require("./resources/classes").classes
@@ -29,18 +29,18 @@ class Character
 		"Wis" : 0
 
 	###
-		"Fighter": 
+		"Fighter":
 			"level": 3
 		"Wizard":
-			"level": 4	
+			"level": 4
 	###
 	# classes : { }
 	# armors : { }
 	# weapons : {	}
 	# shields : {	}
 
-	calc_total_base_feats_count : () ->
-		console.log "\ncalc_total_base_feats_count"
+	total_base_feats_count : () ->
+		console.log "\ntotal_base_feats_count"
 		base_feat_count = (if @race_name == "Human" then 1 else 0)
 		base_feats = [ 0, 2, 5, 8, 11, 14, 17 ]
 
@@ -49,27 +49,27 @@ class Character
 				base_feat_count += (if base_feats.indexOf(level) > -1 then 1 else 0)
 
 		base_feat_count
-	
-	calc_total_class_feats_count : () ->
-		console.log "\ncalc_total_class_feats_count"
+
+	total_class_feats_count : () ->
+		console.log "\ntotal_class_feats_count"
 		class_feat_count = 0
 		for classname, classdata of @classes
 			class_feats = classes(name: classname).first().bonus_feats_levels
-			
+
 			for level in [0..classdata.level]
 				class_feat_count += (if ~class_feats.indexOf(level) then 1 else 0)
-				
+
 		class_feat_count
 
-	calc_armor_acp : (char_armors) ->
-		console.log "\ncalc_armor_acp"
+	armor_acp : (char_armors) ->
+		console.log "\narmor_acp"
 		acp = 0
 		for i, armor of @armors
 			acp += armors(name: armor.armor_name).first().acp
 		acp
 
-	calc_shield_acp : () ->
-		console.log "\ncalc_shield_acp"
+	shield_acp : () ->
+		console.log "\nshield_acp"
 		acp = 0
 		for i, shield of @shields
 			acp += shields(name: shield.shield_name).first().acp
@@ -92,7 +92,7 @@ class Character
 		else
 			console.log "\t\tranks: #{char_skill.ranks}"
 			char_skill_points = char_skill.ranks
-		
+
 
 		console.log "\tchar_skill_points: #{char_skill_points}"
 		race = races(name: @race_name).first()
@@ -105,63 +105,71 @@ class Character
 				feat_mod += feat.skills.mod(skill, subtype, char_skill_points, feat_mod, @feats)
 			console.log "\tmod: #{feat_mod}"
 			acp = feat.mobility(acp)	if skill.mobility and feat.mobility
-		
+
 		race_mod = race.skills[skill.name] | 0
-		ranks = this.calc_ranks(skill, subtype)
-		skill_ability_score = @abilities[skill.ability] | 0
+		ranks = this.ranks(skill, subtype)
 		console.log """
 			\tskill - #{skill.name} #{if subtype then "(" + subtype + ")"}
 			\tskill points - #{char_skill_points} : #{ranks}
 			\trace - #{race.name} : #{race_mod}
-			\tranks: #{ranks}		
+			\tranks: #{ranks}
 			\tfeat mod : #{feat_mod}
-			\tability mod : #{common.calc_ability_modifier(parseInt(skill_ability_score))}
+			\tability mod : #{this.ability_modifier(skill.ability)}
 			"""
-		ranks + common.calc_ability_modifier(parseInt(skill_ability_score)) + race_mod + feat_mod + (if skill.mobility then acp else 0) + parseInt(@equip_benes?["skill:#{skill.name}"] | 0) | 0
+		ranks + this.ability_modifier(skill.ability) + race_mod + feat_mod + (if skill.mobility then acp else 0) + parseInt(@equip_benes?["skill:#{skill.name}"] | 0) | 0
 
 	###
 	Returns the ability score (not mod) modified by race and equipment
 	###
-	calc_ability_score : (ability) ->
-		console.log "\ncalc_ability_score"
+	ability_score : (ability) ->
+		console.log "\nability_score"
 		race = races(name: @race_name).first()
-		race_mod = race.abilities[ability] | 0
+		race_mod = race.abilities?[ability] | 0
 		ability_score = @abilities[ability] | 0
 		equip_bene = @equip_benes?["ability:#{ability}"] | 0
 		console.log "\tequip_benes for #{ability}: #{parseInt(equip_bene)}"
 		console.log "\trace_mod: #{race_mod}   ability_score: #{ability_score}"
+		console.log "\n"
 
 		parseInt ability_score + parseInt race_mod + parseInt equip_bene
 
+	###
+	Returns the modifier for the supplied ability
+	###
+	ability_modifier : (ability) ->
+		console.log "\nability_modifier"
+		console.log "\t#{ability} : #{common.pos(Math.ceil((this.ability_score(ability) - 11) / 2) | 0)}"
+		console.log "\n"
+		Math.ceil((this.ability_score(ability) - 11) / 2) | 0
 	###
 	Returns true if the supplied skill (or subtype, if applicable) contains any of the supplied character classes.
 	###
 	is_class_skill : (skill, subtype) ->
 		console.log "\nis_class_skill"
-		for classname of @classes 
+		for classname of @classes
 			if skill?.skill_classes?.indexOf(classname) > -1
 				console.log "\t#{skill.name} #{skill.skill_classes} : #{classname}"
-				return true	
+				return true
 			if skill?.subtypes?[subtype]?.indexOf(classname) > -1
 				console.log "\t#{skill.name} (#{subtype}) #{skill.subtypes[subtype]} : #{classname}"
-				return true	
-		
+				return true
+
 		false
 
 	###
 	Returns the class-modified ranks for the supplied skill and skill points, or the max ranks for the character's level, whichever is lower.
 	###
-	calc_ranks : (skill, subtype) ->
-		console.log "\ncalc_ranks"
+	ranks : (skill, subtype) ->
+		console.log "\nranks"
 		is_class_skill = this.is_class_skill(skill, subtype)
 		console.log "\t#{skill.name} (#{subtype}) - #{if is_class_skill then "class" else "cross-class"}"
 		multiplier = (if is_class_skill then 1 else .5)
-		
+
 		level = 0
 		for classname, clazz of @classes
 			level += (clazz.level + 1)
 
-		
+
 		points = 0
 		char_skill = @skills(skill_name: skill.name).first()
 		if char_skill
@@ -219,7 +227,7 @@ class Character
 			if all_char_feats.indexOf(feat) == -1
 				console.log "\tadding \"#{feat.name}\""
 				all_char_feats.push feat
-		
+
 		console.log "\tall_char_feats count: #{all_char_feats.length}"
 		for i, feat of all_char_feats
 			console.log "\t#{feat.name}"
@@ -231,17 +239,17 @@ class Character
 		feats
 		dexterity
 	###
-	calc_init : () ->
-		console.log "calc_init"
+	init : () ->
+		console.log "init"
 		init = 0
 		char_feats = this.get_char_feats()
 		console.log "\tinit feats: #{char_feats( "init" : isNull : false ).count()}"
 		char_feats( init : isFunction : true ).each (feat) ->
 			init = feat.init(init)
 			init
-		
-		common.calc_ability_modifier(@abilities["Dex"]) + init
-	
+
+		this.ability_modifier("Dex") + init
+
 	###
 	Returns a TAFFY db of feat objects for this character's chosen feats.
 	###
@@ -251,13 +259,13 @@ class Character
 		if @feats
 			@feats().each (feat) ->
 				char_feats.insert feats(name: feat.feat_name).first()
-		
+
 
 		char_feats.insert this.get_class_feats()
 		char_feats
 
 	# TODO - inline
-	calc_dr : (dr) ->
+	dr : (dr) ->
 		@equip_benes?[dr]| 0
 
 	###
@@ -268,8 +276,8 @@ class Character
 		race
 		abilities
 	###
-	calc_ac : () ->
-		console.log "\ncalc_ac - src"
+	ac : () ->
+		console.log "\nac - src"
 		ac = 0
 		char_feats = this.get_char_feats()
 		char_feats(ac: isFunction: true).each (feat, i) ->
@@ -278,28 +286,28 @@ class Character
 		armor_bonus = common.calc_armor_bonus(@armors, armors, "armor")
 		console.log "\tarmor bonus: #{armor_bonus?.bonus} (#{armor_bonus?.max_dex_bonus})"
 		shield_bonus = common.calc_armor_bonus(@shields, shields, "shield")
-		console.log "\tshield bonus: #{shield_bonus?.bonus}"				
+		console.log "\tshield bonus: #{shield_bonus?.bonus}"
 		# TODO - generalize
-		monk_mod = (if @classes["Monk"]? then classes.first(name: "Monk").ac_bonus[common.calc_level()] else 0)
-		dex_bonus = common.calc_ability_modifier(@abilities["Dex"])
+		monk_mod = (if @classes["Monk"]? then classes.first(name: "Monk").ac_bonus[common.level()] else 0)
+		dex_bonus = this.ability_modifier("Dex")
 		if armor_bonus.max_dex_bonus != "-"
 			dex_bonus = Math.min(armor_bonus.max_dex_bonus, dex_bonus)
 		console.log """
 			\tbase: 10
 			\tarmor bonus: #{armor_bonus?.bonus} (#{armor_bonus?.max_dex_bonus})
 			\tshield bonus: #{shield_bonus?.bonus} (#{shield_bonus?.max_dex_bonus})
-			\tability (Dex): #{common.calc_ability_modifier(@abilities["Dex"])}
-			\tmin(max dex bonus, dex): #{Math.min(common.calc_ability_modifier(@abilities["Dex"]), armor_bonus.max_dex_bonus)}
-			\tsize mod: #{this.calc_size_mod(@race_name)}
+			\tability (Dex): #{this.ability_modifier("Dex")}
+			\tmin(max dex bonus, dex): #{Math.min(this.ability_modifier("Dex"), (common.is_number(armor_bonus.max_dex_bonus) | 0)) }
+			\tsize mod: #{this.size_mod(@race_name)}
 			\tequip bene: #{(@equip_bene?("other:ac") | 0)}
 			\tfeat modified: #{ac}
 			"""
-		10 + 
-		armor_bonus.bonus + 
-		shield_bonus.bonus + 
-		dex_bonus + 
-		this.calc_size_mod(@race_name) + 
-		monk_mod + 
+		10 +
+		armor_bonus.bonus +
+		shield_bonus.bonus +
+		dex_bonus +
+		this.size_mod(@race_name) +
+		monk_mod +
 		(@equip_bene?("other:ac") | 0) +
 		ac
 
@@ -309,8 +317,8 @@ class Character
 		race
 		feats
 	###
-	calc_touch_ac : () ->
-		console.log "\ncalc_touch_ac"
+	touch_ac : () ->
+		console.log "\ntouch_ac"
 		# TODO - need to know what/how feats affect touch ac
 		# ac = 0
 		# for i, char_feat of this.get_all_char_feats()
@@ -321,26 +329,79 @@ class Character
 		# 		feat_mod += feat.ac(feat_mod, @armors, @shields)
 		# 	console.log "\ac: #{ac}"
 		console.log """
-			\tdex mod: #{common.calc_ability_modifier(@abilities["Dex"])}
-			\tsize mod: #{this.calc_size_mod(@race_name) }
+			\tdex mod: #{this.ability_modifier(@abilities["Dex"])}
+			\tsize mod: #{this.size_mod(@race_name) }
 		"""
-		10 + common.calc_ability_modifier(@abilities["Dex"]) + this.calc_size_mod(@race_name)
+		10 + this.ability_modifier("Dex") + this.size_mod(@race_name)
 
 	###
-	Returns the flat-footed ac for all relevant factors: 
+	Returns the flat-footed ac for all relevant factors:
 		armor
 	###
-	calc_flat_footed_ac : () ->
-		10 + common.calc_armor_bonus(char_armor, armors, "armor").bonus
+	flat_footed_ac : () ->
+		10 + common.calc_armor_bonus(@armors, armors, "armor").bonus
 
 	###
 	Returns the modifier for this character's size
 	###
-	calc_size_mod : () ->
-		console.log "\ncalc_size_mod"
+	size_mod : () ->
+		console.log "\nsize_mod"
 		size = races(name: @race_name).first().size
-		console.log "\t#{@race_name} - #{size}"		
+		console.log "\t#{@race_name} - #{size}"
 		(if size == "small" then 1 else 0)
+
+	
+	ref : () ->
+		class_ref_score = this.save("ref")
+		ref = 0
+		this.get_char_feats()( ref: { isFunction: true } ).each (feat) ->
+			ref = feat.ref(ref)
+			ref
+
+		this.ability_modifier("Dex") + class_ref_score + ref + @equip_benes?("Ref")
+
+	will : (wis_score, class_name, xp, char_feats) ->
+		class_will_score = save("will_save")
+		feat_mod = 0
+		char_feats = get_char_feats()
+		char_feats.get(will: "!is": null).forEach (feat, i) ->
+			feat_mod = feat.will(feat_mod)
+			feat_mod
+
+		ability_modifier(wis_score) + class_will_score + feat_mod + equip_mod("Will")
+
+	fort : (con_score) ->
+		class_fort_score = save("fort_save")
+		feat_mod = 0
+		char_feats = get_char_feats()
+		char_feats.get(fort: "!is": null).forEach (feat, i) ->
+			feat_mod = feat.fort(feat_mod)
+			feat_mod
+
+		ability_modifier(con_score) + class_fort_score + feat_mod + equip_mod("Fort")
+
+	spell_resistance : ->
+		sr = do_class_functions("all", "sr", sr: 0).sr
+		class_sr_score = save("sr_save")
+		feat_mod = 0
+		char_feats = get_char_feats()
+		char_feats.get(sr: "!is": null).forEach (feat, i) ->
+			feat_mod = feat.fort(feat_mod)
+			feat_mod
+
+		sr + class_sr_score + feat_mod + equip_mod("SR")
+
+	###
+	Returns the class save DC for the supplied save type
+	###
+	save : (type) ->
+		console.log "\nsave"
+		type = type + "_save"
+		save = 0
+		for classname, clazz of @classes
+			save += classes(name: classname).first()[type][clazz.level]	if classes(name: classname).first()[type]
+		console.log "\n"
+		save
 
 if typeof(exports) == "object"
 	this.Character = Character

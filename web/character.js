@@ -38,15 +38,15 @@ Character = (function() {
   };
 
   /*
-  		"Fighter": 
+  		"Fighter":
   			"level": 3
   		"Wizard":
   			"level": 4
   */
 
-  Character.prototype.calc_total_base_feats_count = function() {
+  Character.prototype.total_base_feats_count = function() {
     var base_feat_count, base_feats, classdata, classname, level, _ref, _ref2;
-    console.log("\ncalc_total_base_feats_count");
+    console.log("\ntotal_base_feats_count");
     base_feat_count = (this.race_name === "Human" ? 1 : 0);
     base_feats = [0, 2, 5, 8, 11, 14, 17];
     _ref = this.classes;
@@ -59,9 +59,9 @@ Character = (function() {
     return base_feat_count;
   };
 
-  Character.prototype.calc_total_class_feats_count = function() {
+  Character.prototype.total_class_feats_count = function() {
     var class_feat_count, class_feats, classdata, classname, level, _ref, _ref2;
-    console.log("\ncalc_total_class_feats_count");
+    console.log("\ntotal_class_feats_count");
     class_feat_count = 0;
     _ref = this.classes;
     for (classname in _ref) {
@@ -76,9 +76,9 @@ Character = (function() {
     return class_feat_count;
   };
 
-  Character.prototype.calc_armor_acp = function(char_armors) {
+  Character.prototype.armor_acp = function(char_armors) {
     var acp, armor, i, _ref;
-    console.log("\ncalc_armor_acp");
+    console.log("\narmor_acp");
     acp = 0;
     _ref = this.armors;
     for (i in _ref) {
@@ -90,9 +90,9 @@ Character = (function() {
     return acp;
   };
 
-  Character.prototype.calc_shield_acp = function() {
+  Character.prototype.shield_acp = function() {
     var acp, i, shield, _ref;
-    console.log("\ncalc_shield_acp");
+    console.log("\nshield_acp");
     acp = 0;
     _ref = this.shields;
     for (i in _ref) {
@@ -109,7 +109,7 @@ Character = (function() {
   */
 
   Character.prototype.calc_skill_mod = function(skill, subtype) {
-    var acp, char_feat, char_skill, char_skill_points, feat, feat_mod, i, mods, race, race_mod, ranks, skill_ability_score, _ref, _ref2, _ref3, _ref4;
+    var acp, char_feat, char_skill, char_skill_points, feat, feat_mod, i, mods, race, race_mod, ranks, _ref, _ref2, _ref3, _ref4;
     console.log("\ncalc_skill_mod");
     mods = {};
     acp = acp | 0;
@@ -144,28 +144,39 @@ Character = (function() {
       if (skill.mobility && feat.mobility) acp = feat.mobility(acp);
     }
     race_mod = race.skills[skill.name] | 0;
-    ranks = this.calc_ranks(skill, subtype);
-    skill_ability_score = this.abilities[skill.ability] | 0;
-    console.log("\tskill - " + skill.name + " " + (subtype ? "(" + subtype + ")" : void 0) + "\n\tskill points - " + char_skill_points + " : " + ranks + "\n\trace - " + race.name + " : " + race_mod + "\n\tranks: " + ranks + "		\n\tfeat mod : " + feat_mod + "\n\tability mod : " + (common.calc_ability_modifier(parseInt(skill_ability_score))));
-    return ranks + common.calc_ability_modifier(parseInt(skill_ability_score)) + race_mod + feat_mod + (skill.mobility ? acp : 0) + parseInt(((_ref4 = this.equip_benes) != null ? _ref4["skill:" + skill.name] : void 0) | 0) | 0;
+    ranks = this.ranks(skill, subtype);
+    console.log("\tskill - " + skill.name + " " + (subtype ? "(" + subtype + ")" : void 0) + "\n\tskill points - " + char_skill_points + " : " + ranks + "\n\trace - " + race.name + " : " + race_mod + "\n\tranks: " + ranks + "\n\tfeat mod : " + feat_mod + "\n\tability mod : " + (this.ability_modifier(skill.ability)));
+    return ranks + this.ability_modifier(skill.ability) + race_mod + feat_mod + (skill.mobility ? acp : 0) + parseInt(((_ref4 = this.equip_benes) != null ? _ref4["skill:" + skill.name] : void 0) | 0) | 0;
   };
 
   /*
   	Returns the ability score (not mod) modified by race and equipment
   */
 
-  Character.prototype.calc_ability_score = function(ability) {
-    var ability_score, equip_bene, race, race_mod, _ref;
-    console.log("\ncalc_ability_score");
+  Character.prototype.ability_score = function(ability) {
+    var ability_score, equip_bene, race, race_mod, _ref, _ref2;
+    console.log("\nability_score");
     race = races({
       name: this.race_name
     }).first();
-    race_mod = race.abilities[ability] | 0;
+    race_mod = ((_ref = race.abilities) != null ? _ref[ability] : void 0) | 0;
     ability_score = this.abilities[ability] | 0;
-    equip_bene = ((_ref = this.equip_benes) != null ? _ref["ability:" + ability] : void 0) | 0;
+    equip_bene = ((_ref2 = this.equip_benes) != null ? _ref2["ability:" + ability] : void 0) | 0;
     console.log("\tequip_benes for " + ability + ": " + (parseInt(equip_bene)));
     console.log("\trace_mod: " + race_mod + "   ability_score: " + ability_score);
+    console.log("\n");
     return parseInt(ability_score + parseInt(race_mod + parseInt(equip_bene)));
+  };
+
+  /*
+  	Returns the modifier for the supplied ability
+  */
+
+  Character.prototype.ability_modifier = function(ability) {
+    console.log("\nability_modifier");
+    console.log("\t" + ability + " : " + (common.pos(Math.ceil((this.ability_score(ability) - 11) / 2) | 0)));
+    console.log("\n");
+    return Math.ceil((this.ability_score(ability) - 11) / 2) | 0;
   };
 
   /*
@@ -192,9 +203,9 @@ Character = (function() {
   	Returns the class-modified ranks for the supplied skill and skill points, or the max ranks for the character's level, whichever is lower.
   */
 
-  Character.prototype.calc_ranks = function(skill, subtype) {
+  Character.prototype.ranks = function(skill, subtype) {
     var char_skill, classname, clazz, is_class_skill, level, max_ranks, multiplier, points, ranks, _ref;
-    console.log("\ncalc_ranks");
+    console.log("\nranks");
     is_class_skill = this.is_class_skill(skill, subtype);
     console.log("\t" + skill.name + " (" + subtype + ") - " + (is_class_skill ? "class" : "cross-class"));
     multiplier = (is_class_skill ? 1 : .5);
@@ -306,9 +317,9 @@ Character = (function() {
   		dexterity
   */
 
-  Character.prototype.calc_init = function() {
+  Character.prototype.init = function() {
     var char_feats, init;
-    console.log("calc_init");
+    console.log("init");
     init = 0;
     char_feats = this.get_char_feats();
     console.log("\tinit feats: " + (char_feats({
@@ -324,7 +335,7 @@ Character = (function() {
       init = feat.init(init);
       return init;
     });
-    return common.calc_ability_modifier(this.abilities["Dex"]) + init;
+    return this.ability_modifier("Dex") + init;
   };
 
   /*
@@ -346,7 +357,7 @@ Character = (function() {
     return char_feats;
   };
 
-  Character.prototype.calc_dr = function(dr) {
+  Character.prototype.dr = function(dr) {
     var _ref;
     return ((_ref = this.equip_benes) != null ? _ref[dr] : void 0) | 0;
   };
@@ -360,9 +371,9 @@ Character = (function() {
   		abilities
   */
 
-  Character.prototype.calc_ac = function() {
+  Character.prototype.ac = function() {
     var ac, armor_bonus, char_feats, dex_bonus, monk_mod, shield_bonus;
-    console.log("\ncalc_ac - src");
+    console.log("\nac - src");
     ac = 0;
     char_feats = this.get_char_feats();
     char_feats({
@@ -379,13 +390,13 @@ Character = (function() {
     console.log("\tshield bonus: " + (shield_bonus != null ? shield_bonus.bonus : void 0));
     monk_mod = (this.classes["Monk"] != null ? classes.first({
       name: "Monk"
-    }).ac_bonus[common.calc_level()] : 0);
-    dex_bonus = common.calc_ability_modifier(this.abilities["Dex"]);
+    }).ac_bonus[common.level()] : 0);
+    dex_bonus = this.ability_modifier("Dex");
     if (armor_bonus.max_dex_bonus !== "-") {
       dex_bonus = Math.min(armor_bonus.max_dex_bonus, dex_bonus);
     }
-    console.log("\tbase: 10\n\tarmor bonus: " + (armor_bonus != null ? armor_bonus.bonus : void 0) + " (" + (armor_bonus != null ? armor_bonus.max_dex_bonus : void 0) + ")\n\tshield bonus: " + (shield_bonus != null ? shield_bonus.bonus : void 0) + " (" + (shield_bonus != null ? shield_bonus.max_dex_bonus : void 0) + ")\n\tability (Dex): " + (common.calc_ability_modifier(this.abilities["Dex"])) + "\n\tmin(max dex bonus, dex): " + (Math.min(common.calc_ability_modifier(this.abilities["Dex"]), armor_bonus.max_dex_bonus)) + "\n\tsize mod: " + (this.calc_size_mod(this.race_name)) + "\n\tequip bene: " + ((typeof this.equip_bene === "function" ? this.equip_bene("other:ac") : void 0) | 0) + "\n\tfeat modified: " + ac);
-    return 10 + armor_bonus.bonus + shield_bonus.bonus + dex_bonus + this.calc_size_mod(this.race_name) + monk_mod + ((typeof this.equip_bene === "function" ? this.equip_bene("other:ac") : void 0) | 0) + ac;
+    console.log("\tbase: 10\n\tarmor bonus: " + (armor_bonus != null ? armor_bonus.bonus : void 0) + " (" + (armor_bonus != null ? armor_bonus.max_dex_bonus : void 0) + ")\n\tshield bonus: " + (shield_bonus != null ? shield_bonus.bonus : void 0) + " (" + (shield_bonus != null ? shield_bonus.max_dex_bonus : void 0) + ")\n\tability (Dex): " + (this.ability_modifier("Dex")) + "\n\tmin(max dex bonus, dex): " + (Math.min(this.ability_modifier("Dex"), common.is_number(armor_bonus.max_dex_bonus) | 0)) + "\n\tsize mod: " + (this.size_mod(this.race_name)) + "\n\tequip bene: " + ((typeof this.equip_bene === "function" ? this.equip_bene("other:ac") : void 0) | 0) + "\n\tfeat modified: " + ac);
+    return 10 + armor_bonus.bonus + shield_bonus.bonus + dex_bonus + this.size_mod(this.race_name) + monk_mod + ((typeof this.equip_bene === "function" ? this.equip_bene("other:ac") : void 0) | 0) + ac;
   };
 
   /*
@@ -395,28 +406,28 @@ Character = (function() {
   		feats
   */
 
-  Character.prototype.calc_touch_ac = function() {
-    console.log("\ncalc_touch_ac");
-    console.log("\tdex mod: " + (common.calc_ability_modifier(this.abilities["Dex"])) + "\n\tsize mod: " + (this.calc_size_mod(this.race_name)));
-    return 10 + common.calc_ability_modifier(this.abilities["Dex"]) + this.calc_size_mod(this.race_name);
+  Character.prototype.touch_ac = function() {
+    console.log("\ntouch_ac");
+    console.log("\tdex mod: " + (this.ability_modifier(this.abilities["Dex"])) + "\n\tsize mod: " + (this.size_mod(this.race_name)));
+    return 10 + this.ability_modifier("Dex") + this.size_mod(this.race_name);
   };
 
   /*
-  	Returns the flat-footed ac for all relevant factors: 
+  	Returns the flat-footed ac for all relevant factors:
   		armor
   */
 
-  Character.prototype.calc_flat_footed_ac = function() {
-    return 10 + common.calc_armor_bonus(char_armor, armors, "armor").bonus;
+  Character.prototype.flat_footed_ac = function() {
+    return 10 + common.calc_armor_bonus(this.armors, armors, "armor").bonus;
   };
 
   /*
   	Returns the modifier for this character's size
   */
 
-  Character.prototype.calc_size_mod = function() {
+  Character.prototype.size_mod = function() {
     var size;
-    console.log("\ncalc_size_mod");
+    console.log("\nsize_mod");
     size = races({
       name: this.race_name
     }).first().size;
@@ -426,6 +437,96 @@ Character = (function() {
     } else {
       return 0;
     }
+  };
+
+  Character.prototype.ref = function() {
+    var class_ref_score, ref;
+    class_ref_score = this.save("ref");
+    ref = 0;
+    this.get_char_feats()({
+      ref: {
+        isFunction: true
+      }
+    }).each(function(feat) {
+      ref = feat.ref(ref);
+      return ref;
+    });
+    return this.ability_modifier("Dex") + class_ref_score + ref + (typeof this.equip_benes === "function" ? this.equip_benes("Ref") : void 0);
+  };
+
+  Character.prototype.will = function(wis_score, class_name, xp, char_feats) {
+    var class_will_score, feat_mod;
+    class_will_score = save("will_save");
+    feat_mod = 0;
+    char_feats = get_char_feats();
+    char_feats.get({
+      will: {
+        "!is": null
+      }
+    }).forEach(function(feat, i) {
+      feat_mod = feat.will(feat_mod);
+      return feat_mod;
+    });
+    return ability_modifier(wis_score) + class_will_score + feat_mod + equip_mod("Will");
+  };
+
+  Character.prototype.fort = function(con_score) {
+    var char_feats, class_fort_score, feat_mod;
+    class_fort_score = save("fort_save");
+    feat_mod = 0;
+    char_feats = get_char_feats();
+    char_feats.get({
+      fort: {
+        "!is": null
+      }
+    }).forEach(function(feat, i) {
+      feat_mod = feat.fort(feat_mod);
+      return feat_mod;
+    });
+    return ability_modifier(con_score) + class_fort_score + feat_mod + equip_mod("Fort");
+  };
+
+  Character.prototype.spell_resistance = function() {
+    var char_feats, class_sr_score, feat_mod, sr;
+    sr = do_class_functions("all", "sr", {
+      sr: 0
+    }).sr;
+    class_sr_score = save("sr_save");
+    feat_mod = 0;
+    char_feats = get_char_feats();
+    char_feats.get({
+      sr: {
+        "!is": null
+      }
+    }).forEach(function(feat, i) {
+      feat_mod = feat.fort(feat_mod);
+      return feat_mod;
+    });
+    return sr + class_sr_score + feat_mod + equip_mod("SR");
+  };
+
+  /*
+  	Returns the class save DC for the supplied save type
+  */
+
+  Character.prototype.save = function(type) {
+    var classname, clazz, save, _ref;
+    console.log("\nsave");
+    type = type + "_save";
+    save = 0;
+    _ref = this.classes;
+    for (classname in _ref) {
+      clazz = _ref[classname];
+      if (classes({
+        name: classname
+      }).first()[type]) {
+        save += classes({
+          name: classname
+        }).first()[type][clazz.level];
+      }
+    }
+    console.log("\n");
+    return save;
   };
 
   return Character;

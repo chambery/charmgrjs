@@ -32,16 +32,6 @@ exports["remove"] = (test) ->
 
 	test.done()
 
-exports["calc_ability_modifier"] = (test) ->
-	test.equal common.calc_ability_modifier(0), -5
-	test.equal common.calc_ability_modifier(9), -1
-	test.equal common.calc_ability_modifier(10), 0
-	test.equal common.calc_ability_modifier(20), 5
-	test.equal common.calc_ability_modifier(21), 5
-	test.equal common.calc_ability_modifier(22), 6
-
-	test.done()
-
 exports["calc_level"] = (test) ->
 	test.equal common.calc_level(1200), 1, "Should return level 1 for 1200 xp (this would level 2 by the book)"
 	test.equal common.calc_level(100), 0, "Should return level 0 for 100 xp (this would level 1 by the book)"
