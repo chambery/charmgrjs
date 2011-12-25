@@ -367,6 +367,52 @@ exports["flat_footed_ac"] = (test) ->
 
 	test.done()
 
+exports["armor_acp"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	test.equal chardata.armor_acp(), -1, "Armor class penalty should be -1 for Studded leather (-1)"
+	chardata.armors(armor_name: "Studded leather").update(armor_name: "Splint mail")
+	chardata.armors.insert( {
+		armor_name: "Half-plate"
+		is_worn: true 
+	} )
+	test.equal chardata.armor_acp(), -14, "Armor class penalty should be -8 for Splint mail (-1) + Half-plate (-7)"
+	chardata.armors(armor_name: "Splint mail").update(is_worn: false)
+	test.equal chardata.armor_acp(), -7, "Armor class penalty should be -7 for Half-plate (-7)"
+
+	test.done()
+
+# exports["shield_acp"] = (test) ->
+# 	chardata = new Character
+# 	chardata.race_name = "Halfling"
+# 	chardata.classes = {
+# 		"Fighter":
+# 			"level": 4
+# 		"Wizard":
+# 			"level": 7
+# 	}
+# 	chardata.abilities = { Dex: 10 }
+# 	chardata.armors = TAFFY([
+# 		armor_name: "Studded leather"
+# 		is_worn: true
+# 	])
+# 	test.equal chardata.armor_acp(), 13, "Flat-footed ac should be 13 for 10 + Studded leather (3)"
+# 	chardata.armors(armor_name: "Studded leather").update(armor_name: "Splint mail")
+# 	test.equal chardata.flat_footed_ac(), 16, "Flat-footed ac should be 16 for 10 + Splint mail (6)"
+
+# 	test.done()
+
 exports["save"] = (test) ->
 	chardata = new Character
 	chardata.classes = {
@@ -393,12 +439,201 @@ exports["ref"] = (test) ->
 			"level": 7
 	}
 	chardata.abilities = { Dex: 10 }
-	chardata.armors = TAFFY([
-		armor_name: "Studded leather"
-		is_worn: true
-	])
-	test.equal chardata.ref(), 13, "Reflex save for dexterity 10 (0) + Fighter level 5 (1) + Wizard level 8 (3)"
-	# test.equal chardata.ref(), 13, "Reflex save for dexterity 10 (0) + Fighter level 5 (1) + Wizard level 8 (3)"
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.equal chardata.ref(), 7, "Reflex save for dexterity 12 [10 + Halfling (2)](1) + Fighter level 5 (1) + Wizard level 8 (2) + equipment (3)"
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Ref"] = undefined
+
+	test.equal chardata.ref(), 3, "Reflex save for dexterity 10 (0) + Human (0) + Fighter level 5 (1) + Wizard level 8 (3)"
+
+	test.done()
+
+exports["will"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Wis: 10 }
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.equal chardata.will(), 7, "Will save for Wisdom 10 (0) + Fighter level 5 (1) + Wizard level 8 (6) "
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Will"] = 3
+
+	test.equal chardata.will(), 10, "Will save for Wisdom 10 (0) + Fighter level 5 (1) + Wizard level 8 (6) + equipment (3)"
+
+	test.done()
+
+exports["fort"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Con: 10 }
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.equal chardata.fort(), 7, "Fort save for Constitution 12 [10 + Gnome(2)] (1) + Fighter level 5 (4) + Wizard level 8 (2) "
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Fort"] = 3
+
+	test.equal chardata.fort(), 9, "Fort save for Constitution 10 (0) + Fighter level 5 (4) + Wizard level 8 (2) + equipment (3)"
+
+	test.done()
+
+exports["base_attack_bonus"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 5
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10 
+	}
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.deepEqual chardata.base_attack_bonus(), [10, 1], "Base attack bonus for Fighter level 6 (6/1) + Wizard level 8 (4)"
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Fort"] = 3
+	chardata.classes = {
+		"Fighter":
+			"level": 5
+	}
+	test.deepEqual chardata.base_attack_bonus(), [6, 1], "Fort save for Constitution 10 (0) + Fighter level 5 (4)"
+
+	test.done()
+
+exports["cmb"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10 
+	}
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+
+	test.equal chardata.cmb(), "+9", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
+	chardata.race_name = "Human"
+	chardata.classes["Fighter"]["level"] = 7
+	test.equal chardata.cmb(), "+12/+3", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+
+	test.done()
+
+exports["cmd"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10 
+	}
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+
+	test.equal chardata.cmd(), "+19", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
+	chardata.race_name = "Human"
+	chardata.classes["Fighter"]["level"] = 7
+	test.equal chardata.cmd(), "+22/+13", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+
+	test.done()
+
+exports["attack"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10 
+	}
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+
+	test.equal chardata.cmd(), "+19", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
+	chardata.race_name = "Human"
+	chardata.classes["Fighter"]["level"] = 7
+	test.equal chardata.cmd(), "+22/+13", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
 
 	test.done()
 

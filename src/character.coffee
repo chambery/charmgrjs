@@ -61,17 +61,18 @@ class Character
 
 		class_feat_count
 
-	armor_acp : (char_armors) ->
+	armor_acp : () ->
 		console.log "\narmor_acp"
 		acp = 0
-		for i, armor of @armors
+		@armors?( is_worn: true ).each (armor) ->
 			acp += armors(name: armor.armor_name).first().acp
+			console.log "\t#{armor.armor_name}: #{armors(name: armor.armor_name).first().acp} (#{armor.is_worn})"
 		acp
 
 	shield_acp : () ->
 		console.log "\nshield_acp"
 		acp = 0
-		for i, shield of @shields
+		@shields?().each (shield) ->
 			acp += shields(name: shield.shield_name).first().acp
 		acp
 
@@ -138,9 +139,9 @@ class Character
 	###
 	ability_modifier : (ability) ->
 		console.log "\nability_modifier"
-		console.log "\t#{ability} : #{common.pos(Math.ceil((this.ability_score(ability) - 11) / 2) | 0)}"
+		console.log "\t#{ability} : #{common.pos(Math.ceil(this.ability_score(ability) - 11) / 2)}"
 		console.log "\n"
-		Math.ceil((this.ability_score(ability) - 11) / 2) | 0
+		Math.ceil((this.ability_score(ability) - 11) / 2)
 	###
 	Returns true if the supplied skill (or subtype, if applicable) contains any of the supplied character classes.
 	###
@@ -350,35 +351,120 @@ class Character
 		console.log "\t#{@race_name} - #{size}"
 		(if size == "small" then 1 else 0)
 
-	
 	ref : () ->
+		console.log "\nref"
 		class_ref_score = this.save("ref")
 		ref = 0
-		this.get_char_feats()( ref: { isFunction: true } ).each (feat) ->
+		equip_mod = @equip_benes["other:Ref"] | 0
+
+		this.get_char_feats()( ref: isFunction: true ).each (feat) ->
 			ref = feat.ref(ref)
 			ref
+		console.log "\tDex mod: #{this.ability_modifier("Dex")}"
+		console.log "\tclass ref: #{class_ref_score}"
+		console.log "\tfeat mod: #{ref}"
+		console.log "\tequip_benes: #{equip_mod} "
+		console.log "\n"
+		this.ability_modifier("Dex") + class_ref_score + ref + equip_mod
 
-		this.ability_modifier("Dex") + class_ref_score + ref + @equip_benes?("Ref")
-
-	will : (wis_score, class_name, xp, char_feats) ->
-		class_will_score = save("will_save")
+	will : () ->
+		class_will_score = this.save("will")
 		feat_mod = 0
-		char_feats = get_char_feats()
-		char_feats.get(will: "!is": null).forEach (feat, i) ->
+		this.get_char_feats()( will: isFunction: true ).each (feat) ->
 			feat_mod = feat.will(feat_mod)
 			feat_mod
 
-		ability_modifier(wis_score) + class_will_score + feat_mod + equip_mod("Will")
+		this.ability_modifier("Wis") + class_will_score + feat_mod + (@equip_benes["other:Will"] | 0)
 
-	fort : (con_score) ->
-		class_fort_score = save("fort_save")
+	fort : () ->
+		class_fort_score = this.save("fort")
 		feat_mod = 0
-		char_feats = get_char_feats()
-		char_feats.get(fort: "!is": null).forEach (feat, i) ->
+		this.get_char_feats()(fort: isFunction: true).each (feat) ->
 			feat_mod = feat.fort(feat_mod)
 			feat_mod
 
-		ability_modifier(con_score) + class_fort_score + feat_mod + equip_mod("Fort")
+		this.ability_modifier("Con") + class_fort_score + feat_mod + (@equip_benes["other:Fort"] | 0)
+
+	###
+	Returns the base attack bonus as an array of integers
+	###
+	base_attack_bonus : () ->
+		console.log "\nbase_attack_bonus"
+		bab = []
+		for classname, clazz of @classes
+			class_babs = classes(name: classname).first().base_attack_bonus
+			console.log "\t#{classname} : #{class_babs}"
+			attacks = class_babs[clazz.level].split("/")
+			i = 0
+			
+			while i < attacks.length
+				bab[i] = (bab[i] | 0) + parseInt(attacks[i])
+				i++
+		bab
+
+	###
+	Returns the Combat M Bonus 
+	###
+	# TODO - should the babs be cached?
+	# TODO - removed other_mod
+	cmb : () ->
+		console.log "\ncmb"
+		# other_mod = (if other_mod then parseInt(other_mod) else 0)
+		console.log "\tbase attack bonus: #{this.base_attack_bonus()}"
+		babs = this.base_attack_bonus().map((x) =>
+			common.pos(x + this.ability_modifier("Str") + this.size_mod() + (@equip_benes["other:Att"] | 0))
+		)
+		console.log "\t#{babs}"
+		babs.join "/"
+
+	###
+	Returns the Combat M Defense 
+	###
+	cmd : (base_attack_bonuses, other_mod) ->
+		console.log "\ncmd"
+		# other_mod = (if other_mod then parseInt(other_mod) else 0)
+		console.log "\tbase attack bonus: #{this.base_attack_bonus()}"
+		babs = this.base_attack_bonus().map((x) =>
+			common.pos(x + this.ability_modifier("Str") + this.ability_modifier("Dex") + this.size_mod() + 10)
+		)
+		
+		console.log "\t#{babs}"
+		babs.join "/"
+
+	
+	# TODO - should the babs be cached?
+	# TODO - removed other_mod
+	attack : (weapon, char_weapon) ->
+		attack_override = 0
+		attack_override = parseInt(char_weapon.att)	if char_weapon and char_weapon.att
+		attacks = 
+			base: base_attack_bonuses
+			weapon_proficiency: -4
+			acp: 0
+		
+		if weapon?.usage == "ranged"
+			if weapon.name.indexOf("Composite") > -1
+				attacks.ability_score = Math.max(@abilities["Str_curr"], @abilities["Dex_curr"])
+			else
+				attacks.ability_score = @abilities["Dex_curr"]
+		else
+			attacks.ability_score = @abilities["Str_curr"]
+		attacks.acp = this.armor_acp(@armors)
+		attacks.acp += this.shield_acp(@shields)
+		get_char_feats()(attack: "!is": null).each (feat) ->
+			attacks = feat.attack(attacks, weapon)
+			attacks
+		
+		attacks.base = this.base_attack(base_attack_bonuses, attacks.ability_score, other_mod)
+		modified_attacks = []
+		for i of attacks.base
+			modified_attacks.push pos(attack_override + parseInt(attacks.base[i]) + attacks.weapon_proficiency + attacks.acp)
+		modified_attacks.join "/"
+
+	base_attack : (base_attack_bonuses, ability_score, other_mod) ->
+		other_mod = (if other_mod then parseInt(other_mod) else 0)
+		base_attack_bonuses.map (x) ->
+			x + calc_ability_modifier(ability_score) + calc_size_mod(@race_name) + other_mod + calc_equip_mod("Att")
 
 	spell_resistance : ->
 		sr = do_class_functions("all", "sr", sr: 0).sr

@@ -443,64 +443,6 @@ this.is_empty = (object) ->
 		return false
 	true
 
-this.calc_attack = (base_attack_bonuses, weapon, char_weapon, other_mod) ->
-	attack_override = 0
-	attack_override = parseInt(char_weapon.att)	if char_weapon and char_weapon.att
-	attacks = 
-		base: base_attack_bonuses
-		weapon_proficiency: -4
-		acp: 0
-	
-	if weapon and weapon.usage == "ranged"
-		if weapon.name.indexOf("Composite") > -1
-			attacks.ability_score = Math.max(chardata.abilities["Str_curr"], chardata.abilities["Dex_curr"])
-		else
-			attacks.ability_score = chardata.abilities["Dex_curr"]
-	else
-		attacks.ability_score = chardata.abilities["Str_curr"]
-	attacks.acp = calc_armor_acp(chardata.armors)
-	attacks.acp += calc_shield_acp(chardata.shields)
-	char_feats = get_char_feats()
-	char_feats.get(attack: "!is": null).forEach (feat, i) ->
-		attacks = feat.attack(attacks, weapon)
-		attacks
-	
-	attacks.base = calc_base_attack(base_attack_bonuses, attacks.ability_score, other_mod)
-	modified_attacks = []
-	for i of attacks.base
-		modified_attacks.push pos(attack_override + parseInt(attacks.base[i]) + attacks.weapon_proficiency + attacks.acp)
-	modified_attacks.join "/"
-
-this.calc_base_attack = (base_attack_bonuses, ability_score, other_mod) ->
-	other_mod = (if other_mod then parseInt(other_mod) else 0)
-	base_attack_bonuses.map (x) ->
-		x + calc_ability_modifier(ability_score) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod("Att")
-
-this.calc_cmb = (base_attack_bonuses, other_mod) ->
-	cmb = ""
-	other_mod = (if other_mod then parseInt(other_mod) else 0)
-	babs = base_attack_bonuses.map((x) ->
-		x + calc_ability_modifier(chardata.abilities["Str"]) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod("Att")
-	)
-	i = 0
-	
-	while i < babs.length
-		cmb += pos(babs[i]) + (if i + 1 < babs.length then "/" else "")
-		i++
-	cmb
-
-this.calc_cmd = (base_attack_bonuses, other_mod) ->
-	cmd = ""
-	other_mod = (if other_mod then parseInt(other_mod) else 0)
-	babs = base_attack_bonuses.map((x) ->
-		x + calc_ability_modifier(chardata.abilities["Str"]) + calc_ability_modifier(chardata.abilities["Dex"]) + calc_size_mod(chardata.race_name) + other_mod + 10
-	)
-	i = 0
-	
-	while i < babs.length
-		cmd += pos(babs[i]) + (if i + 1 < babs.length then "/" else "")
-		i++
-	cmd
 
 this.is_number = (o) ->
 	not isNaN(o - 0)
@@ -526,17 +468,6 @@ this.do_class_functions = (page, location, obj) ->
 				clazz.custom[page][location][script] obj
 	obj
 
-this.calc_base_attack_bonus = ->
-	bab = []
-	for classname of chardata.classes
-		class_babs = classes.first(name: classname).base_attack_bonus
-		attacks = class_babs[chardata.classes[classname].level].split("/")
-		i = 0
-		
-		while i < attacks.length
-			bab[i] = (bab[i] | 0) + parseInt(attacks[i])
-			i++
-	bab
 
 this.print = (o) ->
 	console.log "print - src"
