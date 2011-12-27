@@ -190,6 +190,10 @@ this.calc_level = function(xp) {
   return (Math.floor((1 + Math.sqrt(xp / 125 + 1)) / 2)) - 1;
 };
 
+this.calc_ability_modifier = function(score) {
+  return Math.ceil(score - 11) / 2;
+};
+
 /*
 Returns the armor bonus for any "armor-like" object
 */

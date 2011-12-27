@@ -1,6 +1,9 @@
-var TAFFY;
+var TAFFY, common;
 
-if (typeof exports === "object") TAFFY = require("taffydb");
+if (typeof exports === "object") {
+  TAFFY = require("taffydb");
+  common = require("../../web/common");
+}
 
 this.damage_types = TAFFY([
   {
@@ -33,6 +36,9 @@ this.weapons = TAFFY([
     weight: "25 lb.",
     damage_type: "slashing",
     type: "Axe",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "3a88"
   }, {
@@ -46,6 +52,9 @@ this.weapons = TAFFY([
     weight: "4 lb.",
     damage_type: "slashing",
     type: "Axe",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "62a8"
   }, {
@@ -59,6 +68,9 @@ this.weapons = TAFFY([
     weight: "7 lb.",
     damage_type: "slashing",
     type: "Axe",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "d1bd"
   }, {
@@ -72,6 +84,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "492e"
   }, {
@@ -85,6 +100,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "71fe"
   }, {
@@ -98,6 +116,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "piercing",
     type: "Crossbow",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "281"
   }, {
@@ -111,6 +132,9 @@ this.weapons = TAFFY([
     weight: "9 lb.",
     damage_type: "piercing",
     type: "Crossbow",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "8328"
   }, {
@@ -124,6 +148,9 @@ this.weapons = TAFFY([
     weight: "6 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "257"
   }, {
@@ -137,6 +164,9 @@ this.weapons = TAFFY([
     weight: "16 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "fb3"
   }, {
@@ -150,6 +180,9 @@ this.weapons = TAFFY([
     weight: "1 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "fcd0"
   }, {
@@ -163,6 +196,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "572a"
   }, {
@@ -176,6 +212,9 @@ this.weapons = TAFFY([
     weight: "1/2 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "d733"
   }, {
@@ -189,6 +228,9 @@ this.weapons = TAFFY([
     weight: "16 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "84da"
   }, {
@@ -202,6 +244,9 @@ this.weapons = TAFFY([
     weight: "20 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "2743"
   }, {
@@ -215,6 +260,9 @@ this.weapons = TAFFY([
     weight: "20 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "1693"
   }, {
@@ -228,6 +276,9 @@ this.weapons = TAFFY([
     weight: "5 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "ade0"
   }, {
@@ -241,6 +292,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "6478"
   }, {
@@ -254,6 +308,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "d5eb"
   }, {
@@ -267,6 +324,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "f04"
   }, {
@@ -280,6 +340,9 @@ this.weapons = TAFFY([
     weight: "20 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "2780"
   }, {
@@ -293,6 +356,9 @@ this.weapons = TAFFY([
     weight: "10 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "c20"
   }, {
@@ -306,6 +372,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "1c29"
   }, {
@@ -319,6 +388,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "93c8"
   }, {
@@ -332,6 +404,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "piercing and slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "8045"
   }, {
@@ -345,6 +420,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "402c"
   }, {
@@ -358,6 +436,9 @@ this.weapons = TAFFY([
     weight: "6 lb.",
     damage_type: "bludgeoning and piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "e33e"
   }, {
@@ -371,6 +452,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "9107"
   }, {
@@ -384,6 +468,9 @@ this.weapons = TAFFY([
     weight: "5 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "b98b"
   }, {
@@ -397,6 +484,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "664e"
   }, {
@@ -410,6 +500,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "1ace"
   }, {
@@ -423,6 +516,9 @@ this.weapons = TAFFY([
     weight: "1 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "774e"
   }, {
@@ -436,6 +532,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "3230"
   }, {
@@ -449,6 +548,9 @@ this.weapons = TAFFY([
     weight: "10 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "d17d"
   }, {
@@ -462,6 +564,9 @@ this.weapons = TAFFY([
     weight: "5 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "e99a"
   }, {
@@ -475,6 +580,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "d19b"
   }, {
@@ -488,6 +596,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return Math.max(abilities["Str"], abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "57b9"
   }, {
@@ -501,6 +612,9 @@ this.weapons = TAFFY([
     weight: "9 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "229a"
   }, {
@@ -514,6 +628,9 @@ this.weapons = TAFFY([
     weight: "4 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "6f25"
   }, {
@@ -527,6 +644,9 @@ this.weapons = TAFFY([
     weight: "12 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "2c62"
   }, {
@@ -540,6 +660,9 @@ this.weapons = TAFFY([
     weight: "6 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "290d"
   }, {
@@ -553,6 +676,9 @@ this.weapons = TAFFY([
     weight: "8 lb.",
     damage_type: "bludgeoning and piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "1959"
   }, {
@@ -566,6 +692,9 @@ this.weapons = TAFFY([
     weight: "10 lb.",
     damage_type: "*",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "5916"
   }, {
@@ -579,6 +708,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "9030"
   }, {
@@ -592,6 +724,9 @@ this.weapons = TAFFY([
     weight: "1 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "d9b0"
   }, {
@@ -605,6 +740,9 @@ this.weapons = TAFFY([
     weight: "6 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "514b"
   }, {
@@ -618,6 +756,9 @@ this.weapons = TAFFY([
     weight: "4 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "498b"
   }, {
@@ -631,6 +772,9 @@ this.weapons = TAFFY([
     weight: "4 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "b6f5"
   }, {
@@ -644,6 +788,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "2dc"
   }, {
@@ -657,6 +804,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "4f0a"
   }, {
@@ -670,6 +820,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "cdac"
   }, {
@@ -683,6 +836,9 @@ this.weapons = TAFFY([
     weight: "4 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "4f13"
   }, {
@@ -696,6 +852,9 @@ this.weapons = TAFFY([
     weight: "12 lb.",
     damage_type: "piercing and slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "75df"
   }, {
@@ -709,6 +868,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "f1e7"
   }, {
@@ -722,6 +884,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return Math.max(abilities["Str"], abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "6e34"
   }, {
@@ -735,6 +900,9 @@ this.weapons = TAFFY([
     weight: "5 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "13aa"
   }, {
@@ -748,6 +916,9 @@ this.weapons = TAFFY([
     weight: "1/10 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "f19c"
   }, {
@@ -761,6 +932,9 @@ this.weapons = TAFFY([
     weight: "1 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "d6a7"
   }, {
@@ -774,6 +948,9 @@ this.weapons = TAFFY([
     weight: "1 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "35be"
   }, {
@@ -787,6 +964,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "3dd9"
   }, {
@@ -800,6 +980,9 @@ this.weapons = TAFFY([
     weight: "0 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Dex"]);
+    },
     tags: ["pathfinder"],
     _id: "b31b"
   }, {
@@ -813,6 +996,9 @@ this.weapons = TAFFY([
     weight: "-",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "781d"
   }, {
@@ -826,6 +1012,9 @@ this.weapons = TAFFY([
     weight: "-",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "e305"
   }, {
@@ -839,6 +1028,9 @@ this.weapons = TAFFY([
     weight: "10 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "d6da"
   }, {
@@ -852,6 +1044,9 @@ this.weapons = TAFFY([
     weight: "3 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "176c"
   }, {
@@ -865,6 +1060,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "e2bc"
   }, {
@@ -878,6 +1076,9 @@ this.weapons = TAFFY([
     weight: "5 lb.",
     damage_type: "piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "df7a"
   }, {
@@ -891,6 +1092,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "slashing and piercing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "bf3d"
   }, {
@@ -904,6 +1108,9 @@ this.weapons = TAFFY([
     weight: "15 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "4b6f"
   }, {
@@ -917,6 +1124,9 @@ this.weapons = TAFFY([
     weight: "8 lb.",
     damage_type: "bludgeoning",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "a06e"
   }, {
@@ -930,6 +1140,9 @@ this.weapons = TAFFY([
     weight: "2 lb.",
     damage_type: "slashing",
     type: "weapon",
+    att: function(abilities) {
+      return common.calc_ability_modifier(abilities["Str"]);
+    },
     tags: ["pathfinder"],
     _id: "fcc8"
   }

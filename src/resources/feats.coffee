@@ -1252,8 +1252,13 @@ this.feats = TAFFY([
 		Paladin: 1
 		Ranger: 1
 	
-	prereqs: feats: [ "Simple Weapon Proficiency" ]
-	attack: "if(weapon.category == 'martial') { attacks.weapon_proficiency = 0;\t} return attacks;"
+	prereqs: 
+		feats: [ "Simple Weapon Proficiency" ]
+	attack: (attacks, weapon) ->
+		if weapon.category == 'martial'
+			attacks.weapon_proficiency = 0
+		return attacks
+
 	collection: 
 		db: "weapons"
 		filter: category: "martial"
@@ -1590,7 +1595,11 @@ this.feats = TAFFY([
 	summary: "No penalty on attacks made with simple weapons"
 	detail: "You are trained in the use of basic weapons. <p class=sub><b>Benefit: </b>You make attack rolls with simple weapons without penalty. <p class=sub><b>Normal: </b>When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls. <p class=sub><b>Special: </b>All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat."
 	prereqs: {}
-	attack: "if(weapon.category == 'simple') { attacks.weapon_proficiency = 0; } return attacks;"
+	attack: (attacks, weapon) ->
+		if weapon.category == 'simple'
+			attacks.weapon_proficiency = 0
+		attacks
+
 	classes: 
 		Barbarian: 0
 		Bard: 0

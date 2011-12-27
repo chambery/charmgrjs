@@ -1,14 +1,14 @@
 if typeof(exports) == "object"
 	TAFFY = require("../../lib/taffy").taffy
-	
-this.races = TAFFY([ 
+
+this.races = TAFFY([
 	name: "Halfling"
 	shortname: "Hfg"
-	abilities: 
+	abilities:
 		Dex: 2
 		Str: -2
-	
-	skills: 
+
+	skills:
 		Listen: 2
 	size: "small"
 	favored_class: "Rogue"
@@ -17,7 +17,7 @@ this.races = TAFFY([
 	type: "race"
 	tags: [ "pathfinder" ]
 	_id: "f0e3"
-, 
+,
 	name: "Human"
 	shortname: "Hum"
 	abilities: {}
@@ -28,13 +28,13 @@ this.races = TAFFY([
 	type: "race"
 	tags: [ "pathfinder" ]
 	_id: "7a57"
-, 
+,
 	name: "Dwarf"
 	shortname: "Dwf"
-	abilities: 
+	abilities:
 		Con: 2
 		Cha: -2
-	
+
 	skills: {}
 	favored_class: "Fighter"
 	size: "medium"
@@ -44,14 +44,14 @@ this.races = TAFFY([
 	type: "race"
 	tags: [ "pathfinder" ]
 	_id: "62a2"
-, 
+,
 	name: "Half-Orc"
 	shortname: "H-O"
-	abilities: 
+	abilities:
 		Str: 2
 		Int: -2
 		Cha: -2
-	
+
 	skills: {}
 	size: "medium"
 	favored_class: "Barbarian"
@@ -60,14 +60,14 @@ this.races = TAFFY([
 	type: "race"
 	tags: [ "pathfinder" ]
 	_id: "3f3c"
-, 
+,
 	name: "Elf"
 	shortname: "Elf"
-	abilities: 
+	abilities:
 		Dex: 2
 		Con: -2
-	
-	skills: 
+
+	skills:
 		Listen: 2
 	size: "medium"
 	favored_class: "Wizard"
@@ -76,14 +76,14 @@ this.races = TAFFY([
 	type: "race"
 	tags: [ "pathfinder" ]
 	_id: "274c"
-, 
+,
 	name: "Gnome"
 	shortname: "Gnm"
-	abilities: 
+	abilities:
 		Con: 2
 		Str: -2
-	
-	skills: 
+
+	skills:
 		Listen: 2
 	size: "small"
 	favored_class: "Bard"
@@ -91,14 +91,14 @@ this.races = TAFFY([
 	type: "race"
 	tags: [ "pathfinder" ]
 	_id: "6e46"
-, 
+,
 	name: "Half-Elf"
 	shortname: "H-E"
 	abilities: {}
-	skills: 
+	skills:
 		Diplomacy: 2
 		Listen: 1
-	
+
 	size: "medium"
 	languages: [ "Common", "Elven" ]
 	speed: 30

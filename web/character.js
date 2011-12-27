@@ -3,7 +3,7 @@
 src/character.coffee
 */
 
-var $, Character, TAFFY, alignments, armors, classes, common, feats, goodness, races, shields, skills, _;
+var $, Character, TAFFY, alignments, armors, classes, common, feats, goodness, races, shields, skills, weapons, _;
 
 if (typeof exports === "object") {
   TAFFY = require("taffydb");
@@ -13,6 +13,7 @@ if (typeof exports === "object") {
   classes = require("./resources/classes").classes;
   armors = require("./resources/armors").armors;
   shields = require("./resources/shields").shields;
+  weapons = require("./resources/weapons").weapons;
   feats = require("./resources/feats").feats;
   skills = require("./resources/skills").skills;
   races = require("./resources/races").races;
@@ -100,10 +101,15 @@ Character = (function() {
     console.log("\nshield_acp");
     acp = 0;
     if (typeof this.shields === "function") {
-      this.shields().each(function(shield) {
-        return acp += shields({
+      this.shields({
+        is_worn: true
+      }).each(function(shield) {
+        acp += shields({
           name: shield.shield_name
         }).first().acp;
+        return console.log("\t" + shield.shield_name + ": " + (shields({
+          name: shield.shield_name
+        }).first().acp) + " (" + shield.is_worn + ")");
       });
     }
     return acp;
@@ -181,7 +187,7 @@ Character = (function() {
     console.log("\nability_modifier");
     console.log("\t" + ability + " : " + (common.pos(Math.ceil(this.ability_score(ability) - 11) / 2)));
     console.log("\n");
-    return Math.ceil((this.ability_score(ability) - 11) / 2);
+    return common.calc_ability_modifier(this.ability_score(ability));
   };
 
   /*
@@ -510,7 +516,7 @@ Character = (function() {
       class_babs = classes({
         name: classname
       }).first().base_attack_bonus;
-      console.log("\t" + classname + " : " + class_babs);
+      console.log("\t" + classname + " : " + class_babs[clazz.level]);
       attacks = class_babs[clazz.level].split("/");
       i = 0;
       while (i < attacks.length) {
@@ -541,7 +547,7 @@ Character = (function() {
   	Returns the Combat M Defense
   */
 
-  Character.prototype.cmd = function(base_attack_bonuses, other_mod) {
+  Character.prototype.cmd = function() {
     var babs;
     var _this = this;
     console.log("\ncmd");
@@ -553,48 +559,39 @@ Character = (function() {
     return babs.join("/");
   };
 
-  Character.prototype.attack = function(weapon, char_weapon) {
-    var attack_override, attacks, i, modified_attacks;
-    attack_override = 0;
-    if (char_weapon && char_weapon.att) {
-      attack_override = parseInt(char_weapon.att);
-    }
+  /*
+  	Returns an array of attacks for the supplied
+  */
+
+  Character.prototype.attack = function(char_weapon) {
+    var attack_override, attacks, weapon;
+    var _this = this;
+    console.log("\nattack");
+    attack_override = parseInt(char_weapon.att) | 0;
+    console.log("\toverride: " + attack_override);
+    console.log("\tchar_weapon: " + char_weapon.weapon_name);
+    weapon = weapons({
+      name: char_weapon.weapon_name
+    }).first();
+    console.log("\tweapon: " + weapon.name);
     attacks = {
-      base: base_attack_bonuses,
       weapon_proficiency: -4,
       acp: 0
     };
-    if ((weapon != null ? weapon.usage : void 0) === "ranged") {
-      if (weapon.name.indexOf("Composite") > -1) {
-        attacks.ability_score = Math.max(this.abilities["Str_curr"], this.abilities["Dex_curr"]);
-      } else {
-        attacks.ability_score = this.abilities["Dex_curr"];
-      }
-    } else {
-      attacks.ability_score = this.abilities["Str_curr"];
-    }
-    attacks.acp = this.armor_acp(this.armors);
-    attacks.acp += this.shield_acp(this.shields);
-    get_char_feats()({
+    attacks.weapon = weapon != null ? weapon.att(this.abilities) : void 0;
+    console.log("\tablility mod: " + attacks.weapon);
+    attacks.acp = this.armor_acp() + this.shield_acp();
+    console.log("\tacp: " + attacks.acp);
+    this.get_char_feats()({
       attack: {
-        "!is": null
+        isFunction: true
       }
     }).each(function(feat) {
       attacks = feat.attack(attacks, weapon);
       return attacks;
     });
-    attacks.base = this.base_attack(base_attack_bonuses, attacks.ability_score, other_mod);
-    modified_attacks = [];
-    for (i in attacks.base) {
-      modified_attacks.push(pos(attack_override + parseInt(attacks.base[i]) + attacks.weapon_proficiency + attacks.acp));
-    }
-    return modified_attacks.join("/");
-  };
-
-  Character.prototype.base_attack = function(base_attack_bonuses, ability_score, other_mod) {
-    other_mod = (other_mod ? parseInt(other_mod) : 0);
-    return base_attack_bonuses.map(function(x) {
-      return x + calc_ability_modifier(ability_score) + calc_size_mod(this.race_name) + other_mod + calc_equip_mod("Att");
+    return attacks.base = this.base_attack_bonus().map(function(x) {
+      return x + attack_override + _this.size_mod() + attacks.weapon_proficiency + attacks.acp + (_this.equip_benes["Att"] | 0);
     });
   };
 
