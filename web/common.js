@@ -191,7 +191,7 @@ this.calc_level = function(xp) {
 };
 
 this.calc_ability_modifier = function(score) {
-  return Math.ceil(score - 11) / 2;
+  return Math.ceil((score - 11) / 2);
 };
 
 /*

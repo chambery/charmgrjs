@@ -1902,7 +1902,20 @@ this.feats = TAFFY([
 	summary: "Use Dex instead of Str on attack rolls with light weapons"
 	detail: "You are trained in using your agility in melee combat, as opposed to brute strength. <p class=sub><b>Benefit: </b>With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls. <p class=sub><b>Special: </b>Natural weapons are considered light weapons."
 	prereqs: {}
-	attack: "if (weapon.usage == 'light' || weapon.name == 'Whip' || weapon.name == 'Chain, spiked' || weapon.name == 'Rapier') {	var dex_score = calc_ability_modifier(chardata.abilities['Dex']);	var str_score = calc_ability_modifier(chardata.abilities['Str']);	if ($('#ability_Str_score')) {	 str_score = parseInt($('#ability_Str_score').val());	} if ($('#ability_Dex_score')) {	dex_score = parseInt($('#ability_Dex_score').val()); } attacks.ability_score = Math.max(str_score, dex_score); } return attacks;"
+	attack: (attacks, weapon) ->
+		if ~weapon.usage.indexOf("light") {	
+			var dex_score = calc_ability_modifier(chardata.abilities['Dex']);	
+			var str_score = calc_ability_modifier(chardata.abilities['Str']);	
+			if ($('#ability_Str_score')) {	 
+				str_score = parseInt($('#ability_Str_score').val());	
+			} 
+			if ($('#ability_Dex_score')) {	
+				dex_score = parseInt($('#ability_Dex_score').val()); 
+			} 
+
+			attacks.ability_score = Math.max(str_score, dex_score); 
+		} 
+		return attacks;
 	groups: [ "Combat" ]
 	tags: [ "pathfinder" ]
 	type: "feat"

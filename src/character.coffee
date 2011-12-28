@@ -402,6 +402,7 @@ class Character
 			while i < attacks.length
 				bab[i] = (bab[i] | 0) + parseInt(attacks[i])
 				i++
+		console.log "\n"
 		bab
 
 	###
@@ -443,25 +444,29 @@ class Character
 	# TODO - removed other_mod
 	attack : (char_weapon) ->
 		console.log "\nattack"
-		attack_override = parseInt(char_weapon.att)	| 0
-		console.log "\toverride: #{attack_override}"
 		console.log "\tchar_weapon: #{char_weapon.weapon_name}"
+		weapon_bonus = parseInt(char_weapon.att)	| 0
 		weapon = weapons( name: char_weapon.weapon_name ).first()
-		console.log "\tweapon: #{weapon.name}"
 		attacks =
 			weapon_proficiency: -4
 			acp: 0
 		attacks.weapon = weapon?.att(@abilities)
-		console.log "\tablility mod: #{attacks.weapon}"		
 
 		attacks.acp = this.armor_acp() + this.shield_acp()
-		console.log "\tacp: #{attacks.acp}"
 		this.get_char_feats()( attack: isFunction: true ).each (feat) ->
+			console.log "\t#{feat.name}"
 			attacks = feat.attack(attacks, weapon)
 			attacks
 
 		attacks.base = this.base_attack_bonus().map (x) =>
-			x + attack_override + this.size_mod() + attacks.weapon_proficiency + attacks.acp + (@equip_benes["Att"] | 0)
+			console.log "\tbase: #{x}"
+			console.log "\tability mod: #{attacks.weapon}"		
+			console.log "\toverride: #{weapon_bonus}"
+			console.log "\tsize mod: #{this.size_mod()}"		
+			console.log "\tweapon_proficiency: #{attacks.weapon_proficiency}"
+			console.log "\tacp: #{attacks.acp}"
+			console.log "\tequip_benes: #{(@equip_benes["Att"] | 0)}"
+			x + attacks.weapon + weapon_bonus + this.size_mod() + attacks.weapon_proficiency + attacks.acp + (@equip_benes["Att"] | 0)
 
 		# attacks.base.join "/"
 

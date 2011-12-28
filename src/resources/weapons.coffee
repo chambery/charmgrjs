@@ -23,7 +23,7 @@ this.weapons = TAFFY([
 	id: 0
 	name: "Axe, orc double"
 	category: "exotic"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d8/1d8"
 	crit: "x3"
 	range: "-"
@@ -38,7 +38,7 @@ this.weapons = TAFFY([
 	id: 1
 	name: "Axe, throwing"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x2"
 	range: "10 ft."
@@ -53,7 +53,7 @@ this.weapons = TAFFY([
 	id: 2
 	name: "Battleaxe"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -68,7 +68,7 @@ this.weapons = TAFFY([
 	id: 3
 	name: "Chain, spiked"
 	category: "exotic"
-	usage: "two-handed"
+	usage: ["light","two-handed"]
 	dam: "2d4"
 	crit: "x2"
 	range: "-"
@@ -83,7 +83,7 @@ this.weapons = TAFFY([
 	id: 4
 	name: "Club"
 	category: "simple"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d6"
 	crit: "x2"
 	range: "10 ft."
@@ -98,7 +98,7 @@ this.weapons = TAFFY([
 	id: 5
 	name: "Crossbow, hand"
 	category: "exotic"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d4"
 	crit: "19-20/ x 2"
 	range: "30 ft."
@@ -113,7 +113,7 @@ this.weapons = TAFFY([
 	id: 6
 	name: "Crossbow, heavy"
 	category: "simple"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d10"
 	crit: "19-20/x2"
 	range: "120 ft."
@@ -128,7 +128,7 @@ this.weapons = TAFFY([
 	id: 7
 	name: "Crossbow, light"
 	category: "simple"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d8"
 	crit: "19-20/x2"
 	range: "80 ft."
@@ -143,7 +143,7 @@ this.weapons = TAFFY([
 	id: 8
 	name: "Crossbow, repeating"
 	category: "exotic"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d8"
 	crit: "19-20/ x 2"
 	range: "80 ft."
@@ -158,7 +158,7 @@ this.weapons = TAFFY([
 	id: 9
 	name: "Dagger"
 	category: "simple"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "19-20/x2"
 	range: "10 ft."
@@ -173,7 +173,7 @@ this.weapons = TAFFY([
 	id: 10
 	name: "Dagger, punching"
 	category: "simple"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "x3"
 	range: "-"
@@ -188,7 +188,7 @@ this.weapons = TAFFY([
 	id: 11
 	name: "Dart"
 	category: "simple"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d4"
 	crit: "x2"
 	range: "20 ft."
@@ -203,7 +203,7 @@ this.weapons = TAFFY([
 	id: 12
 	name: "Falchion"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "2d4"
 	crit: "18-20/x2"
 	range: "-"
@@ -218,7 +218,7 @@ this.weapons = TAFFY([
 	id: 13
 	name: "Flail, dire"
 	category: "exotic"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d8/1d8"
 	crit: "x2"
 	range: "-"
@@ -233,7 +233,7 @@ this.weapons = TAFFY([
 	id: 14
 	name: "Flail, heavy"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d10"
 	crit: "19-20/x2"
 	range: "-"
@@ -248,7 +248,7 @@ this.weapons = TAFFY([
 	id: 15
 	name: "Flail, light"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "x2"
 	range: "-"
@@ -263,7 +263,7 @@ this.weapons = TAFFY([
 	id: 16
 	name: "Gauntlet"
 	category: "simple"
-	usage: "unarmed"
+	usage: ["unarmed"]
 	dam: "*"
 	crit: "*"
 	range: "-"
@@ -278,7 +278,7 @@ this.weapons = TAFFY([
 	id: 17
 	name: "Gauntlet, spiked"
 	category: "simple"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -293,7 +293,7 @@ this.weapons = TAFFY([
 	id: 18
 	name: "Glaive"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d10"
 	crit: "x3"
 	range: "-"
@@ -308,7 +308,7 @@ this.weapons = TAFFY([
 	id: 19
 	name: "Greataxe"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d12"
 	crit: "x3"
 	range: "-"
@@ -323,7 +323,7 @@ this.weapons = TAFFY([
 	id: 20
 	name: "Greatclub"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d10"
 	crit: "x2"
 	range: "-"
@@ -338,7 +338,7 @@ this.weapons = TAFFY([
 	id: 21
 	name: "Greatsword"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "2d6"
 	crit: "19-20/x2"
 	range: "-"
@@ -353,7 +353,7 @@ this.weapons = TAFFY([
 	id: 22
 	name: "Guisarme"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "2d4"
 	crit: "x3"
 	range: "-"
@@ -368,7 +368,7 @@ this.weapons = TAFFY([
 	id: 23
 	name: "Halberd"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d10"
 	crit: "x3"
 	range: "-"
@@ -383,7 +383,7 @@ this.weapons = TAFFY([
 	id: 24
 	name: "Halfspear"
 	category: ""
-	usage: ""
+	usage: [""]
 	dam: "1d6"
 	crit: "x3"
 	range: "20 ft."
@@ -398,7 +398,7 @@ this.weapons = TAFFY([
 	id: 25
 	name: "Hammer, gnome hooked"
 	category: "exotic"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d6/1d4"
 	crit: "x3/x4"
 	range: "-"
@@ -413,7 +413,7 @@ this.weapons = TAFFY([
 	id: 26
 	name: "Hammer, light"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "x2"
 	range: "20 ft."
@@ -428,7 +428,7 @@ this.weapons = TAFFY([
 	id: 27
 	name: "Handaxe"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x3"
 	range: "-"
@@ -443,7 +443,7 @@ this.weapons = TAFFY([
 	id: 28
 	name: "Javelin"
 	category: "simple"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d6"
 	crit: "x2"
 	range: "30 ft."
@@ -458,7 +458,7 @@ this.weapons = TAFFY([
 	id: 29
 	name: "Kama"
 	category: "exotic"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -473,7 +473,7 @@ this.weapons = TAFFY([
 	id: 30
 	name: "Kama, halfling"
 	category: ""
-	usage: ""
+	usage: [""]
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -488,7 +488,7 @@ this.weapons = TAFFY([
 	id: 31
 	name: "Kukri"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "18-20/x2"
 	range: "-"
@@ -503,7 +503,7 @@ this.weapons = TAFFY([
 	id: 32
 	name: "Lance, heavy"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -518,7 +518,7 @@ this.weapons = TAFFY([
 	id: 33
 	name: "Lance, light"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d6"
 	crit: "x3"
 	range: "-"
@@ -533,7 +533,7 @@ this.weapons = TAFFY([
 	id: 34
 	name: "Longbow"
 	category: "martial"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d8"
 	crit: "x3"
 	range: "100 ft."
@@ -548,7 +548,7 @@ this.weapons = TAFFY([
 	id: 35
 	name: "Longbow, composite"
 	category: "martial"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d8"
 	crit: "x3"
 	range: "110 ft."
@@ -556,14 +556,14 @@ this.weapons = TAFFY([
 	damage_type: "piercing"
 	type: "weapon"
 	att: (abilities) ->
-		Math.max(abilities["Str"], abilities["Dex"])
+		common.calc_ability_modifier(Math.max(abilities["Str"], abilities["Dex"]))
 	tags: [ "pathfinder" ]
 	_id: "57b9"
 ,
 	id: 36
 	name: "Longspear"
 	category: "simple"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -578,7 +578,7 @@ this.weapons = TAFFY([
 	id: 37
 	name: "Longsword"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "19-20/x2"
 	range: "-"
@@ -593,7 +593,7 @@ this.weapons = TAFFY([
 	id: 38
 	name: "Mace, heavy"
 	category: "simple"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "x2"
 	range: "-"
@@ -608,7 +608,7 @@ this.weapons = TAFFY([
 	id: 39
 	name: "Mace, light"
 	category: "simple"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -623,7 +623,7 @@ this.weapons = TAFFY([
 	id: 40
 	name: "Morningstar"
 	category: "simple"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d8"
 	crit: "x2"
 	range: "-"
@@ -638,7 +638,7 @@ this.weapons = TAFFY([
 	id: 41
 	name: "Net"
 	category: "exotic"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "*"
 	crit: "*"
 	range: "10 ft."
@@ -653,7 +653,7 @@ this.weapons = TAFFY([
 	id: 42
 	name: "Nunchaku"
 	category: "exotic"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -668,7 +668,7 @@ this.weapons = TAFFY([
 	id: 43
 	name: "Nunchaku, halfling"
 	category: ""
-	usage: ""
+	usage: [""]
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -683,7 +683,7 @@ this.weapons = TAFFY([
 	id: 44
 	name: "Pick, heavy"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d6"
 	crit: "x4"
 	range: "-"
@@ -698,7 +698,7 @@ this.weapons = TAFFY([
 	id: 45
 	name: "Pick, light"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "x4"
 	range: "-"
@@ -713,7 +713,7 @@ this.weapons = TAFFY([
 	id: 46
 	name: "Quarterstaff"
 	category: "simple"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d6/1d6"
 	crit: "x2"
 	range: "-"
@@ -728,7 +728,7 @@ this.weapons = TAFFY([
 	id: 47
 	name: "Ranseur"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "2d4"
 	crit: "x3"
 	range: "-"
@@ -743,7 +743,7 @@ this.weapons = TAFFY([
 	id: 48
 	name: "Rapier"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["light","one-handed"]
 	dam: "1d6"
 	crit: "18-20/x2"
 	range: "-"
@@ -758,7 +758,7 @@ this.weapons = TAFFY([
 	id: 49
 	name: "Sap"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -773,7 +773,7 @@ this.weapons = TAFFY([
 	id: 50
 	name: "Scimitar"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d6"
 	crit: "18-20/x2"
 	range: "-"
@@ -788,7 +788,7 @@ this.weapons = TAFFY([
 	id: 51
 	name: "Scythe"
 	category: "martial"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "2d4"
 	crit: "x4"
 	range: "-"
@@ -803,7 +803,7 @@ this.weapons = TAFFY([
 	id: 52
 	name: "Shortbow"
 	category: "martial"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d6"
 	crit: "x3"
 	range: "60 ft."
@@ -818,7 +818,7 @@ this.weapons = TAFFY([
 	id: 53
 	name: "Shortbow, composite"
 	category: "martial"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d6"
 	crit: "x3"
 	range: "70 ft."
@@ -826,14 +826,14 @@ this.weapons = TAFFY([
 	damage_type: "piercing"
 	type: "weapon"
 	att: (abilities) ->
-		Math.max(abilities["Str"], abilities["Dex"])
+		common.calc_ability_modifier(Math.max(abilities["Str"], abilities["Dex"]))
 	tags: [ "pathfinder" ]
 	_id: "6e34"
 ,
 	id: 54
 	name: "Shortspear"
 	category: "simple"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "x3"
 	range: "20 ft."
@@ -848,7 +848,7 @@ this.weapons = TAFFY([
 	id: 55
 	name: "Shuriken"
 	category: "exotic"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: 1
 	crit: "x 2"
 	range: "10 ft."
@@ -863,7 +863,7 @@ this.weapons = TAFFY([
 	id: 56
 	name: "Siangham"
 	category: "exotic"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -878,7 +878,7 @@ this.weapons = TAFFY([
 	id: 57
 	name: "Siangham, halfling"
 	category: "exotic"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -893,7 +893,7 @@ this.weapons = TAFFY([
 	id: 58
 	name: "Sickle"
 	category: "simple"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -908,7 +908,7 @@ this.weapons = TAFFY([
 	id: 59
 	name: "Sling"
 	category: "simple"
-	usage: "ranged"
+	usage: ["ranged"]
 	dam: "1d4"
 	crit: "x2"
 	range: "50 ft."
@@ -923,7 +923,7 @@ this.weapons = TAFFY([
 	id: 60
 	name: "Strike, unarmed (Medium-size being)"
 	category: "simple"
-	usage: "unarmed"
+	usage: ["unarmed"]
 	dam: "1d3"
 	crit: "x2"
 	range: "-"
@@ -938,7 +938,7 @@ this.weapons = TAFFY([
 	id: 61
 	name: "Strike, unarmed (Small being)"
 	category: "simple"
-	usage: "unarmed"
+	usage: ["unarmed"]
 	dam: "1d2"
 	crit: "x2"
 	range: "-"
@@ -953,7 +953,7 @@ this.weapons = TAFFY([
 	id: 62
 	name: "Sword, bastard"
 	category: "exotic"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d10"
 	crit: "19-20/x2"
 	range: "-"
@@ -968,7 +968,7 @@ this.weapons = TAFFY([
 	id: 63
 	name: "Sword, short"
 	category: "martial"
-	usage: "light"
+	usage: ["light"]
 	dam: "1d6"
 	crit: "19-20/x2"
 	range: "-"
@@ -983,7 +983,7 @@ this.weapons = TAFFY([
 	id: 64
 	name: "Sword, two-bladed"
 	category: "exotic"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d8/1d8"
 	crit: "19-20/x2"
 	range: "-"
@@ -998,7 +998,7 @@ this.weapons = TAFFY([
 	id: 65
 	name: "Trident"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "x2"
 	range: "10 ft."
@@ -1013,7 +1013,7 @@ this.weapons = TAFFY([
 	id: 66
 	name: "Urgrosh, dwarven"
 	category: "exotic"
-	usage: "two-handed"
+	usage: ["two-handed"]
 	dam: "1d8/1d6"
 	crit: "x3"
 	range: "-"
@@ -1028,7 +1028,7 @@ this.weapons = TAFFY([
 	id: 67
 	name: "Waraxe, dwarven"
 	category: "exotic"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d10"
 	crit: "x3"
 	range: "-"
@@ -1043,7 +1043,7 @@ this.weapons = TAFFY([
 	id: 68
 	name: "Warhammer"
 	category: "martial"
-	usage: "one-handed"
+	usage: ["one-handed"]
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -1058,7 +1058,7 @@ this.weapons = TAFFY([
 	id: 69
 	name: "Whip"
 	category: "exotic"
-	usage: "one-handed"
+	usage: ["light","one-handed"]
 	dam: "1d2"
 	crit: "x 2"
 	range: "15 ft."
