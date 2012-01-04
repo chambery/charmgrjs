@@ -1,7 +1,8 @@
 if typeof(exports) == "object"
 	TAFFY = require("../../lib/taffy").taffy
-
-this.classes = TAFFY([ 
+	sorcerer_bloodlines = require("./sorcerer_bloodlines").sorcerer_bloodlines
+	bloodline_powers = require("./sorcerer_bloodlines").bloodline_powers
+this.classes = TAFFY([
 	name: "Barbarian"
 	shortname: "Brb"
 	base_attack_bonus: [ "1", "2", "3", "4", "5", "6/1", "7/2", "8/3", "9/4", "10/5", "11/6/1", "12/7/2", "13/8/3", "14/9/4", "15/10/5", "16/11/6/1", "17/12/7/2", "18/13/8/3", "19/14/9/4", "20/15/10/5" ]
@@ -29,7 +30,7 @@ this.classes = TAFFY([
 		skill_pts = calc_skill_points() - (count_attrs(chardata.classes["Barbarian"].literacy) * 2)
 		$("#skill_pts_remaining").html (if skill_pts < 0 then [ "<span class=\"alarm\">", skill_pts, "</span>" ].join("") else skill_pts)
 		save_character()
-	
+
 	custom: edit: 0: [ script: ->
 		chardata.classes["Barbarian"].literacy = []	unless chardata.classes["Barbarian"].literacy?
 		$("#language_table").prepend "<td id=\"literacy_header\" colspan=2></td><td>Lit</td>"	if $("#literacy_header").length == 0
@@ -45,11 +46,11 @@ this.classes = TAFFY([
 				$("tr#language_" + lang._id).append "<td id=\"literacy_" + lang._id + "\"><input id=\"literacy_" + lang._id + "_check\" type=\"checkbox\" /></td>"
 				$("#literacy_" + lang._id + "_check").click ->
 					classes.first(name: "Barbarian").update_literacy lang._id
-				
+
 				$("#literacy_" + lang._id + "_check").attr "checked", "checked"	if chardata.classes["Barbarian"].literacy[lang.name]
 	 ]
 	class_features: []
-, 
+,
 	name: "Bard"
 	shortname: "Brd"
 	base_attack_bonus: [ "0", "1", "2", "3", "3", "4", "5", "6/1", "6/1", "7/2", "8/3", "9/4", "9/4", "10/5", "11/6/1", "12/7/2", "12/7/2", "13/8/3", "14/9/4", "15/10/5" ]
@@ -68,7 +69,7 @@ this.classes = TAFFY([
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: [ "Cast Arcane" ]
-, 
+,
 	name: "Cleric"
 	shortname: "Clr"
 	base_attack_bonus: [ "0", "1", "2", "3", "3", "4", "5", "6/1", "6/1", "7/2", "8/3", "9/4", "9/4", "10/5", "11/6/1", "12/7/2", "12/7/2", "13/8/3", "14/9/4", "15/10/5" ]
@@ -86,7 +87,7 @@ this.classes = TAFFY([
 	spells: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
-	custom: edit: 0: domains: 
+	custom: edit: 0: domains:
 		ui: "<table id='domains' style='width: 100%;'><tr><td>Domains</td></tr><tr><td><table id='domain_selector' style='width: 100%'></table></td></tr></table>"
 		script: ->
 			set_domain = (item, checked) ->
@@ -94,7 +95,7 @@ this.classes = TAFFY([
 					chardata.domains.push item.name
 				else
 					remove chardata.domains, chardata.domains.indexOf(item.name)
-			
+
 			chardata.domains = []	unless chardata.domains?
 			available_domains = domains.get()
 			if chardata.deity
@@ -105,9 +106,9 @@ this.classes = TAFFY([
 				available_domains = []
 			console.log available_domains
 			create_selector_grid available_domains, "table#domains", set_domain, chardata.domains, 4
-	
+
 	class_features: [ "Channel Energy", "Cast Divine" ]
-, 
+,
 	name: "Druid"
 	shortname: "Drd"
 	base_attack_bonus: [ "0", "1", "2", "3", "3", "4", "5", "6/1", "6/1", "7/2", "8/3", "9/4", "9/4", "10/5", "11/6/1", "12/7/2", "12/7/2", "13/8/3", "14/9/4", "15/10/5" ]
@@ -126,7 +127,7 @@ this.classes = TAFFY([
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: [ "Cast Divine" ]
-, 
+,
 	name: "Fighter"
 	shortname: "Ftr"
 	base_attack_bonus: [ "1", "2", "3", "4", "5", "6/1", "7/2", "8/3", "9/4", "10/5", "11/6/1", "12/7/2", "13/8/3", "14/9/4", "15/10/5", "16/11/6/1", "17/12/7/2", "18/13/8/3", "19/14/9/4", "20/15/10/5" ]
@@ -144,7 +145,7 @@ this.classes = TAFFY([
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: []
-, 
+,
 	name: "Monk"
 	shortname: "Mnk"
 	base_attack_bonus: [ "0", "1", "2", "3", "3", "4", "5", "6/1", "6/1", "7/2", "8/3", "9/4", "9/4", "10/5", "11/6/1", "12/7/2", "12/7/2", "13/8/3", "14/9/4", "15/10/5" ]
@@ -166,7 +167,7 @@ this.classes = TAFFY([
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: []
-, 
+,
 	name: "Paladin"
 	shortname: "Pal"
 	base_attack_bonus: [ "1", "2", "3", "4", "5", "6/1", "7/2", "8/3", "9/4", "10/5", "11/6/1", "12/7/2", "13/8/3", "14/9/4", "15/10/5", "16/11/6/1", "17/12/7/2", "18/13/8/3", "19/14/9/4", "20/15/10/5" ]
@@ -184,7 +185,7 @@ this.classes = TAFFY([
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: [ "Channel Energy", "Cast Divine" ]
-, 
+,
 	name: "Ranger"
 	shortname: "Rng"
 	base_attack_bonus: [ "1", "2", "3", "4", "5", "6/1", "7/2", "8/3", "9/4", "10/5", "11/6/1", "12/7/2", "13/8/3", "14/9/4", "15/10/5", "16/11/6/1", "17/12/7/2", "18/13/8/3", "19/14/9/4", "20/15/10/5" ]
@@ -204,7 +205,7 @@ this.classes = TAFFY([
 	update_weapon_style: ->
 		chardata.weapon_style = $("#weapon_style_select").val()
 		save_character()
-	
+
 	edit_favored: (favored_name, db, index) ->
 		chardata[favored_name] = []	unless chardata[favored_name]
 		favored = db.first(name: (if chardata[favored_name].length > index then chardata[favored_name][index].name else ""))
@@ -213,12 +214,12 @@ this.classes = TAFFY([
 		$("#" + favored_name + "s").append "<tr><td>" + select + "</td><td><input id=\"" + favored_name + "_" + index + "_bonus\" type=\"text\" size=\"1\"/></td></tr>"
 		$("#" + favored_name + "_" + index + "_bonus").val (if chardata[favored_name][index] then chardata[favored_name][index].val else 0)
 		$("#" + favored_name + "_" + index + "_bonus").blur ->
-			chardata[favored_name][index] = 
+			chardata[favored_name][index] =
 				name: $("#" + favored_name + "_" + index).val()
 				val: (parseInt($("#" + favored_name + "_" + index + "_bonus").val()) | 0)
-			
+
 			save_character()
-	
+
 	main_favored: (favored_name, db, short_name, specials_id) ->
 		for i of chardata[favored_name]
 			f_e = db.first(name: chardata[favored_name][i].name)
@@ -231,28 +232,28 @@ this.classes = TAFFY([
 					update_skill_ranks [ "Bluff", "Knowledge", "Perception", "Sense Motive", "Survival" ]
 				else
 					recalc_main_page()
-	
-	custom: 
-		edit: 
-			0: [ 
+
+	custom:
+		edit:
+			0: [
 				ui: "<table id='favored_enemys' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>"
 				script: ->
 					classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 0
 			 ]
-			1: [ 
+			1: [
 				ui: "<table style='width: 100%;'><tr><td>Weapon Style</td><td id='weapon_style'></td></tr></table>"
 				script: ->
 					selected = if chardata.weapon_style == "Archery" then 1 else 0
-					select = create_select("weapon_style_select", [ 
+					select = create_select("weapon_style_select", [
 						_id: 0
 						name: "Two-handed fighting"
-					, 
+					,
 						_id: 1
 						name: "Archery"
 					 ], "classes.first({ name : 'Ranger' }).update_weapon_style()", false, "style='width: 100%;'", null, selected)
 					$("#weapon_style").append "<tr><td>" + select + "</td></tr>"
 			 ]
-			2: [ 
+			2: [
 				ui: "<table id='favored_terrains' style='width: 100%;'><tr><td>Favored Terrain <span style='float:right'>Available Bonus: </span></td><td id='ft_bonus'></td></tr></table>"
 				script: ->
 					classes.first(name: "Ranger").edit_favored "favored_terrain", favored_terrains, 0
@@ -278,13 +279,13 @@ this.classes = TAFFY([
 			19: [ script: ->
 				classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 4
 			 ]
-		
+
 		main: before_specials: [ ->
 			classes.first(name: "Ranger").main_favored "favored_enemy", favored_enemies, "Fav. Enemy", "90c3"
 		, ->
 			classes.first(name: "Ranger").main_favored "favored_terrain", favored_terrains, "Fav. Terr.", "9dc3"
 		 ]
-		feats: 
+		feats:
 			1: script: (bonus) ->
 				bonus.count += 1
 				if chardata.weapon_style == "Archery"
@@ -297,7 +298,7 @@ this.classes = TAFFY([
 					bonus.feats["Improved Shield Bash"] = true
 					bonus.feats["Quick Draw"] = true
 					bonus.feats["Two-Weapon Fighting"] = true
-			
+
 			5: script: (bonus) ->
 				bonus.count += 1
 				if chardata.weapon_style == "Archery"
@@ -306,7 +307,7 @@ this.classes = TAFFY([
 				else
 					bonus.feats["Improved Two-Weapon Fighting"] = true
 					bonus.feats["Two-Weapon Defense"] = true
-			
+
 			9: script: (bonus) ->
 				bonus.count += 1
 				if chardata.weapon_style == "Archery"
@@ -315,9 +316,9 @@ this.classes = TAFFY([
 				else
 					bonus.feats["Greater Two-Weapon Fighting"] = true
 					bonus.feats["Two-Weapon Rend"] = true
-	
+
 	class_features: [ "Cast Divine" ]
-, 
+,
 	name: "Rogue"
 	shortname: "Rog"
 	base_attack_bonus: [ "0", "1", "2", "3", "3", "4", "5", "6/1", "6/1", "7/2", "8/3", "9/4", "9/4", "10/5", "11/6/1", "12/7/2", "12/7/2", "13/8/3", "14/9/4", "15/10/5" ]
@@ -336,7 +337,7 @@ this.classes = TAFFY([
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: []
-, 
+,
 	name: "Sorcerer"
 	shortname: "Sor"
 	base_attack_bonus: [ "0", "1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6/1", "6/1", "7/2", "7/2", "8/3", "8/3", "9/4", "9/4", "10/5" ]
@@ -354,6 +355,9 @@ this.classes = TAFFY([
 	spells: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	feats: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
+	sr: (sr, chardata) ->
+		this.calc_dr_saves(sr, "sr", chardata)
+
 	update_bloodline: () ->
 		chardata.bloodline = $("#bloodline_select").val()
 		$("#draconic_type").toggle chardata.bloodline == "Draconic"
@@ -369,22 +373,22 @@ this.classes = TAFFY([
 			for j of power.levels[special_level].vals
 				detail = detail.replace("_$" + j, power.levels[special_level].vals[j])
 		detail
-	
+
 	merge_bloodline_weapons: (char_weapons) ->
-		bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
+		bloodline = sorcerer_bloodlines( name: chardata.bloodline ).first()
 		if bloodline
 			power_weapons = {}
 			for i of bloodline.powers
-				power = bloodline_powers.first(name: bloodline.powers[i])
+				power = bloodline_powers( name: bloodline.powers[i] ).first()
 				if power
 					for level of power.levels
 						if level <= chardata.classes["Sorcerer"].level and power.levels[level].weapons
-# 						# add or update weapons to current values of the bloodline weapon
+ 						# add or update weapons to current values of the bloodline weapon
 							console.log "level: #{level}"
 							for name, weapon of power.levels[level].weapons
 								console.log "name: #{name}, weapon: #{weapon.note}"
 								weapon["name"] = name
-								unless weapons.first(name: name)
+								unless weapons(name: name).first()
 									console.log "Adding "
 									weapons.insert weapon
 								else
@@ -393,9 +397,9 @@ this.classes = TAFFY([
 
 								unless power_weapons[name]
 									power_weapons[name] = power.levels[level].weapons[name]
-								else 
+								else
 									$.extend power_weapons[name], power.levels[level].weapons[name]
-								console.log name									
+								console.log name
 							# over
 						else
 							break
@@ -403,33 +407,38 @@ this.classes = TAFFY([
 			$.each power_weapons, (name, weapon) ->
 				bloodline_weapons.push weapon
 			$.merge char_weapons, bloodline_weapons
-			
+
 			return
-	
-	calc_dr_saves: (save, type) ->
-		bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
+
+	calc_dr_saves: (save, type, char_class) ->
+		console.log "\t\tcalc_dr_saves"
+		bloodline = sorcerer_bloodlines(name: char_class.bloodline).first()
 		if bloodline
 			for i of bloodline.powers
-				power = bloodline_powers.first(name: bloodline.powers[i])
+				power = bloodline_powers(name: bloodline.powers[i]).first()
+				console.log "\t\t\tpower: #{power.name} "
 				dr_fn = null
 				for level of power.levels
-					dr_fn = power.levels[level][type]	if level <= chardata.classes["Sorcerer"].level and power.levels[level][type]
-				dr_fn save	if dr_fn
-	
-	custom: 
-		all: 
-			calc_sr: [ 
+					dr_fn = power.levels[level][type]	if level <= char_class.level and power.levels[level][type]
+					console.log "\t\t\tcalling: #{dr_fn} "
+					dr_fn save, char_class	if dr_fn
+					console.log save
+		save
+
+	custom:
+		all:
+			calc_sr: [
 				(save) ->
 					classes.first(name: "Sorcerer").calc_dr_saves save, "sr"
 			]
-		edit: 
-			0: [ 
+		edit:
+			0: [
 				ui: "<table style='width: 100%;border-collapse: collapse;'><tr style='background-color: #E2F0F9'><td>Bloodline: </td><td id='bloodline'></td></tr></table>"
 				script: ->
 					char_bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
 					char_draconic_type = null
 					char_draconic_type = draconic_types.first(name: chardata.draconic_type)	if chardata.draconic_type
-					
+
 					select = create_select("bloodline_select", sorcerer_bloodlines.get(), "classes.first({name: 'Sorcerer'}).update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
 					draconic_select = create_select("draconic_select", draconic_types.get(), "classes.first({name: 'Sorcerer'}).update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
 					$("#bloodline").append "<tr><td></td><td>" + select + "</td></tr>"
@@ -437,13 +446,13 @@ this.classes = TAFFY([
 					$("#draconic_type").toggle chardata.bloodline == "Draconic"
 					classes.first({name: "Sorcerer"}).update_bloodline()	unless chardata.bloodline
 			]
-		skills: 
-			[ 
+		skills:
+			[
 				(class_skills) ->
 					char_bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
 					class_skills.push char_bloodline.skill
 			]
-		main: 
+		main:
 			before_weapons_build: [ (char_weapons) ->
 				classes.first(name: "Sorcerer").merge_bloodline_weapons char_weapons
 			 ]
@@ -492,22 +501,22 @@ this.classes = TAFFY([
 			Str: [ (mod) ->
 				classes.first(name: "Sorcerer").calc_dr_saves mod, "Str"
 			 ]
-		
-		feats: 
+
+		feats:
 			6: script: (bonus) ->
 				bonus.count += 1
 				bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
 				if bloodline
 					for i of bloodline.feats
 						bonus.feats[bloodline.feats[i]] = true
-			
+
 			12: script: (bonus) ->
 				bonus.count += 1
-			
+
 			18: script: (bonus) ->
 				bonus.count += 1
-		
-		spells: 
+
+		spells:
 			before_build: [ (spells_known) ->
 				bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
 				if bloodline
@@ -530,9 +539,9 @@ this.classes = TAFFY([
 								idx = chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]].indexOf(spell.name)
 								remove chardata.classes["Sorcerer"].spells[spell.classes["Sorcerer"]], idx	if idx > -1
 			 ]
-	
+
 	class_features: [ "Cast Arcane" ]
-, 
+,
 	name: "Wizard"
 	shortname: "Wiz"
 	base_attack_bonus: [ "0", "1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6/1", "6/1", "7/2", "7/2", "8/3", "8/3", "9/4", "9/4", "10/5" ]

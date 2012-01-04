@@ -40,6 +40,9 @@ class Character
 	# weapons : {	}
 	# shields : {	}
 
+	###
+	Returns the count of base feats provided by the character's classes for the current class levels
+	###
 	total_base_feats_count : () ->
 		console.log "\ntotal_base_feats_count"
 		base_feat_count = (if @race_name == "Human" then 1 else 0)
@@ -47,10 +50,13 @@ class Character
 
 		for classname, classdata of @classes
 			for level in [0..classdata.level]
-				base_feat_count += (if base_feats.indexOf(level) > -1 then 1 else 0)
+				base_feat_count += (if ~base_feats.indexOf(level) then 1 else 0)
 
 		base_feat_count
 
+	###
+	Returns the count of (bonus?) feats provided by the character's classes for the current class levels
+	###
 	total_class_feats_count : () ->
 		console.log "\ntotal_class_feats_count"
 		class_feat_count = 0
@@ -62,6 +68,9 @@ class Character
 
 		class_feat_count
 
+	###
+	Returns the Armor Class Penalty for all worn shields
+	###
 	armor_acp : () ->
 		console.log "\narmor_acp"
 		acp = 0
@@ -70,6 +79,9 @@ class Character
 			console.log "\t#{armor.armor_name}: #{armors(name: armor.armor_name).first().acp} (#{armor.is_worn})"
 		acp
 
+	###
+	Returns the Armor Class Penalty for all worn shields
+	###
 	shield_acp : () ->
 		console.log "\nshield_acp"
 		acp = 0
@@ -125,14 +137,14 @@ class Character
 	Returns the ability score (not mod) modified by race and equipment
 	###
 	ability_score : (ability) ->
-		console.log "\nability_score"
+		# console.log "\nability_score"
 		race = races(name: @race_name).first()
 		race_mod = race.abilities?[ability] | 0
 		ability_score = @abilities[ability] | 0
 		equip_bene = @equip_benes?["ability:#{ability}"] | 0
-		console.log "\tequip_benes for #{ability}: #{parseInt(equip_bene)}"
-		console.log "\trace_mod: #{race_mod}   ability_score: #{ability_score}"
-		console.log "\n"
+		# console.log "\tequip_benes for #{ability}: #{parseInt(equip_bene)}"
+		# console.log "\trace_mod: #{race_mod}   ability_score: #{ability_score}"
+		# console.log "\n"
 
 		parseInt ability_score + parseInt race_mod + parseInt equip_bene
 
@@ -140,9 +152,9 @@ class Character
 	Returns the modifier for the supplied ability
 	###
 	ability_modifier : (ability) ->
-		console.log "\nability_modifier"
-		console.log "\t#{ability} : #{common.pos(Math.ceil(this.ability_score(ability) - 11) / 2)}"
-		console.log "\n"
+		# console.log "\nability_modifier"
+		# console.log "\t#{ability} : #{common.pos(Math.ceil(this.ability_score(ability) - 11) / 2)}"
+		# console.log "\n"
 		common.calc_ability_modifier this.ability_score(ability)
 	###
 	Returns true if the supplied skill (or subtype, if applicable) contains any of the supplied character classes.
@@ -192,7 +204,7 @@ class Character
 	Returns an array of feat names collected from class feats of the supplied character classes.
 	###
 	get_class_feat_names : () ->
-		console.log "\nget_class_feat_names"
+		# console.log "\nget_class_feat_names"
 		class_feats = []
 		for classname, char_class of @classes
 			clazz = classes(name: classname).first()
@@ -207,7 +219,7 @@ class Character
 	Returns an array of the class feats collected from the supplied character classes.
 	###
 	get_class_feats : () ->
-		console.log "\nget_class_feats"
+		# console.log "\nget_class_feats"
 		class_feats = []
 		feat_names = this.get_class_feat_names()
 		# console.log "\t#{feat_names}"
@@ -223,17 +235,17 @@ class Character
 	Returns an array of the class feats collected from the supplied character classes and character-selected feats.
 	###
 	get_all_char_feats : () ->
-		console.log "\nget_all_char_feats"
+		# console.log "\nget_all_char_feats"
 		all_char_feats = this.get_class_feats()
 		@feats?().each (char_feat, i) ->
 			feat = feats(name: char_feat.feat_name).first()
 			if all_char_feats.indexOf(feat) == -1
-				console.log "\tadding \"#{feat.name}\""
+				# console.log "\tadding \"#{feat.name}\""
 				all_char_feats.push feat
 
-		console.log "\tall_char_feats count: #{all_char_feats.length}"
-		for i, feat of all_char_feats
-			console.log "\t#{feat.name}"
+		# console.log "\tall_char_feats count: #{all_char_feats.length}"
+		# for i, feat of all_char_feats
+			# console.log "\t#{feat.name}"
 
 		all_char_feats
 
@@ -351,8 +363,12 @@ class Character
 		console.log "\nsize_mod"
 		size = races(name: @race_name).first().size
 		console.log "\t#{@race_name} - #{size}"
+		console.log "\n"
 		(if size == "small" then 1 else 0)
 
+	###
+	Returns the reflex save DC
+	###
 	ref : () ->
 		console.log "\nref"
 		class_ref_score = this.save("ref")
@@ -369,6 +385,9 @@ class Character
 		console.log "\n"
 		this.ability_modifier("Dex") + class_ref_score + ref + equip_mod
 
+	###
+	Returns the will save DC
+	###
 	will : () ->
 		class_will_score = this.save("will")
 		feat_mod = 0
@@ -378,6 +397,9 @@ class Character
 
 		this.ability_modifier("Wis") + class_will_score + feat_mod + (@equip_benes["other:Will"] | 0)
 
+	###
+	Returns the fortitude save DC
+	###
 	fort : () ->
 		class_fort_score = this.save("fort")
 		feat_mod = 0
@@ -438,7 +460,7 @@ class Character
 
 
 	###
-	Returns an array of attacks for the supplied 
+	Returns an array of attacks for the supplied
 	###
 	# TODO - should the babs be cached?
 	# TODO - removed other_mod
@@ -450,7 +472,6 @@ class Character
 		attacks =
 			weapon_proficiency: -4
 			acp: 0
-		attacks.weapon = weapon?.att(@abilities)
 
 		attacks.acp = this.armor_acp() + this.shield_acp()
 		this.get_char_feats()( attack: isFunction: true ).each (feat) ->
@@ -458,11 +479,13 @@ class Character
 			attacks = feat.attack(attacks, weapon)
 			attacks
 
+		attacks.weapon = weapon?.att(@abilities)
+
 		attacks.base = this.base_attack_bonus().map (x) =>
 			console.log "\tbase: #{x}"
-			console.log "\tability mod: #{attacks.weapon}"		
+			console.log "\tability mod: #{attacks.weapon}"
 			console.log "\toverride: #{weapon_bonus}"
-			console.log "\tsize mod: #{this.size_mod()}"		
+			console.log "\tsize mod: #{this.size_mod()}"
 			console.log "\tweapon_proficiency: #{attacks.weapon_proficiency}"
 			console.log "\tacp: #{attacks.acp}"
 			console.log "\tequip_benes: #{(@equip_benes["Att"] | 0)}"
@@ -471,15 +494,20 @@ class Character
 		# attacks.base.join "/"
 
 	spell_resistance : ->
-		sr = do_class_functions("all", "sr", sr: 0).sr
-		class_sr_score = save("sr_save")
+		console.log "\nspell_resistance"
+		sr = sr: 0
+		for classname, char_class of @classes
+			clazz = classes(name: classname).first()
+			clazz?.sr?(sr, char_class)
+
+		class_sr_score = this.save("sr")
 		feat_mod = 0
-		char_feats = get_char_feats()
-		char_feats.get(sr: "!is": null).forEach (feat, i) ->
+
+		this.get_char_feats()( sr: isFunction: true ).each (feat) ->
 			feat_mod = feat.fort(feat_mod)
 			feat_mod
-
-		sr + class_sr_score + feat_mod + equip_mod("SR")
+		console.log "\tequip_benes: #{(@equip_benes["other:SR"] | 0)}"
+		sr.sr + class_sr_score + feat_mod + (@equip_benes["other:SR"] | 0)
 
 	###
 	Returns the class save DC for the supplied save type
@@ -492,6 +520,36 @@ class Character
 			save += classes(name: classname).first()[type][clazz.level]	if classes(name: classname).first()[type]
 		console.log "\n"
 		save
+
+	damage : (char_weapon) ->
+		console.log "\ndamage"
+		damages = []
+		weapon = $.extend({}, weapons( name: char_weapon.weapon_name ).first(), char_weapon)
+		weapon_damage = if typeof weapon.dam == 'function' then weapon.dam() else weapon.dam
+
+		for i, weapon_dam of weapon_damage.split("/")
+			dam_components = weapon_dam.split(/\+|-/)
+			die = dam_components[0]
+			weapon_mod = (if dam_components.length > 1 then parseInt(dam_components[1]) else 0)
+			damages.push
+				die: die
+				mod: weapon_mod
+		console.log "\tdamages: #{damages}"
+		this.get_char_feats()( damage: isFunction: true ).each (feat) ->
+			damages = feat.damage(damages, weapon)
+			damages
+
+		console.log "\tability mod: #{weapon.ability(@abilities)}"
+		damage = ""
+		# TODO - missing parseInt($("#damage_mod").text())
+		for i, dmg of damages
+			mod = common.pos(weapon.ability(@abilities) + dmg.mod + (@equip_benes["Dam"] | 0))
+			console.log "\tmod: #{mod}"
+			damage += dmg.die + (if mod then mod else "")
+			console.log "\tdamage: #{damage}"
+			damage += (if parseInt(i) + 1 < damages.length then "/" else "")
+
+		damage
 
 if typeof(exports) == "object"
 	this.Character = Character

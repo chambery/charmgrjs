@@ -24,6 +24,9 @@ this.weapons = TAFFY([
 	name: "Axe, orc double"
 	category: "exotic"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d8/1d8"
 	crit: "x3"
 	range: "-"
@@ -39,6 +42,8 @@ this.weapons = TAFFY([
 	name: "Axe, throwing"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "10 ft."
@@ -54,6 +59,8 @@ this.weapons = TAFFY([
 	name: "Battleaxe"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -68,7 +75,9 @@ this.weapons = TAFFY([
 	id: 3
 	name: "Chain, spiked"
 	category: "exotic"
-	usage: ["light","two-handed"]
+	usage: ["light", "two-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "2d4"
 	crit: "x2"
 	range: "-"
@@ -84,6 +93,8 @@ this.weapons = TAFFY([
 	name: "Club"
 	category: "simple"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "10 ft."
@@ -99,6 +110,8 @@ this.weapons = TAFFY([
 	name: "Crossbow, hand"
 	category: "exotic"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "19-20/ x 2"
 	range: "30 ft."
@@ -114,6 +127,8 @@ this.weapons = TAFFY([
 	name: "Crossbow, heavy"
 	category: "simple"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d10"
 	crit: "19-20/x2"
 	range: "120 ft."
@@ -129,6 +144,8 @@ this.weapons = TAFFY([
 	name: "Crossbow, light"
 	category: "simple"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "19-20/x2"
 	range: "80 ft."
@@ -144,6 +161,8 @@ this.weapons = TAFFY([
 	name: "Crossbow, repeating"
 	category: "exotic"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "19-20/ x 2"
 	range: "80 ft."
@@ -159,6 +178,8 @@ this.weapons = TAFFY([
 	name: "Dagger"
 	category: "simple"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "19-20/x2"
 	range: "10 ft."
@@ -174,6 +195,8 @@ this.weapons = TAFFY([
 	name: "Dagger, punching"
 	category: "simple"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x3"
 	range: "-"
@@ -189,6 +212,8 @@ this.weapons = TAFFY([
 	name: "Dart"
 	category: "simple"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x2"
 	range: "20 ft."
@@ -204,6 +229,9 @@ this.weapons = TAFFY([
 	name: "Falchion"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "2d4"
 	crit: "18-20/x2"
 	range: "-"
@@ -219,6 +247,9 @@ this.weapons = TAFFY([
 	name: "Flail, dire"
 	category: "exotic"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d8/1d8"
 	crit: "x2"
 	range: "-"
@@ -234,6 +265,9 @@ this.weapons = TAFFY([
 	name: "Flail, heavy"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d10"
 	crit: "19-20/x2"
 	range: "-"
@@ -249,6 +283,8 @@ this.weapons = TAFFY([
 	name: "Flail, light"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x2"
 	range: "-"
@@ -264,6 +300,8 @@ this.weapons = TAFFY([
 	name: "Gauntlet"
 	category: "simple"
 	usage: ["unarmed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "*"
 	crit: "*"
 	range: "-"
@@ -279,6 +317,8 @@ this.weapons = TAFFY([
 	name: "Gauntlet, spiked"
 	category: "simple"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -294,6 +334,10 @@ this.weapons = TAFFY([
 	name: "Glaive"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		console.log "\t\tGlaive mod: #{mod}"
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d10"
 	crit: "x3"
 	range: "-"
@@ -309,6 +353,9 @@ this.weapons = TAFFY([
 	name: "Greataxe"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d12"
 	crit: "x3"
 	range: "-"
@@ -324,6 +371,9 @@ this.weapons = TAFFY([
 	name: "Greatclub"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d10"
 	crit: "x2"
 	range: "-"
@@ -339,6 +389,9 @@ this.weapons = TAFFY([
 	name: "Greatsword"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "2d6"
 	crit: "19-20/x2"
 	range: "-"
@@ -354,6 +407,9 @@ this.weapons = TAFFY([
 	name: "Guisarme"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "2d4"
 	crit: "x3"
 	range: "-"
@@ -369,6 +425,9 @@ this.weapons = TAFFY([
 	name: "Halberd"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d10"
 	crit: "x3"
 	range: "-"
@@ -384,6 +443,8 @@ this.weapons = TAFFY([
 	name: "Halfspear"
 	category: ""
 	usage: [""]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x3"
 	range: "20 ft."
@@ -399,6 +460,9 @@ this.weapons = TAFFY([
 	name: "Hammer, gnome hooked"
 	category: "exotic"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d6/1d4"
 	crit: "x3/x4"
 	range: "-"
@@ -414,6 +478,8 @@ this.weapons = TAFFY([
 	name: "Hammer, light"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x2"
 	range: "20 ft."
@@ -429,6 +495,8 @@ this.weapons = TAFFY([
 	name: "Handaxe"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x3"
 	range: "-"
@@ -444,6 +512,8 @@ this.weapons = TAFFY([
 	name: "Javelin"
 	category: "simple"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "30 ft."
@@ -459,6 +529,8 @@ this.weapons = TAFFY([
 	name: "Kama"
 	category: "exotic"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -474,6 +546,8 @@ this.weapons = TAFFY([
 	name: "Kama, halfling"
 	category: ""
 	usage: [""]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -489,6 +563,8 @@ this.weapons = TAFFY([
 	name: "Kukri"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "18-20/x2"
 	range: "-"
@@ -504,6 +580,9 @@ this.weapons = TAFFY([
 	name: "Lance, heavy"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -519,6 +598,9 @@ this.weapons = TAFFY([
 	name: "Lance, light"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d6"
 	crit: "x3"
 	range: "-"
@@ -534,6 +616,9 @@ this.weapons = TAFFY([
 	name: "Longbow"
 	category: "martial"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > 0 then 0 else mod
 	dam: "1d8"
 	crit: "x3"
 	range: "100 ft."
@@ -549,6 +634,8 @@ this.weapons = TAFFY([
 	name: "Longbow, composite"
 	category: "martial"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x3"
 	range: "110 ft."
@@ -564,6 +651,9 @@ this.weapons = TAFFY([
 	name: "Longspear"
 	category: "simple"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -579,6 +669,8 @@ this.weapons = TAFFY([
 	name: "Longsword"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "19-20/x2"
 	range: "-"
@@ -594,6 +686,8 @@ this.weapons = TAFFY([
 	name: "Mace, heavy"
 	category: "simple"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x2"
 	range: "-"
@@ -609,6 +703,8 @@ this.weapons = TAFFY([
 	name: "Mace, light"
 	category: "simple"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -624,6 +720,8 @@ this.weapons = TAFFY([
 	name: "Morningstar"
 	category: "simple"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x2"
 	range: "-"
@@ -639,6 +737,8 @@ this.weapons = TAFFY([
 	name: "Net"
 	category: "exotic"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		0
 	dam: "*"
 	crit: "*"
 	range: "10 ft."
@@ -654,6 +754,8 @@ this.weapons = TAFFY([
 	name: "Nunchaku"
 	category: "exotic"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -669,6 +771,8 @@ this.weapons = TAFFY([
 	name: "Nunchaku, halfling"
 	category: ""
 	usage: [""]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -684,6 +788,8 @@ this.weapons = TAFFY([
 	name: "Pick, heavy"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x4"
 	range: "-"
@@ -699,6 +805,8 @@ this.weapons = TAFFY([
 	name: "Pick, light"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x4"
 	range: "-"
@@ -714,6 +822,9 @@ this.weapons = TAFFY([
 	name: "Quarterstaff"
 	category: "simple"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d6/1d6"
 	crit: "x2"
 	range: "-"
@@ -729,6 +840,9 @@ this.weapons = TAFFY([
 	name: "Ranseur"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "2d4"
 	crit: "x3"
 	range: "-"
@@ -744,6 +858,8 @@ this.weapons = TAFFY([
 	name: "Rapier"
 	category: "martial"
 	usage: ["light","one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "18-20/x2"
 	range: "-"
@@ -759,6 +875,8 @@ this.weapons = TAFFY([
 	name: "Sap"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -774,6 +892,8 @@ this.weapons = TAFFY([
 	name: "Scimitar"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "18-20/x2"
 	range: "-"
@@ -789,6 +909,9 @@ this.weapons = TAFFY([
 	name: "Scythe"
 	category: "martial"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "2d4"
 	crit: "x4"
 	range: "-"
@@ -804,6 +927,9 @@ this.weapons = TAFFY([
 	name: "Shortbow"
 	category: "martial"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > 0 then 0 else mod
 	dam: "1d6"
 	crit: "x3"
 	range: "60 ft."
@@ -819,6 +945,8 @@ this.weapons = TAFFY([
 	name: "Shortbow, composite"
 	category: "martial"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x3"
 	range: "70 ft."
@@ -834,6 +962,8 @@ this.weapons = TAFFY([
 	name: "Shortspear"
 	category: "simple"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x3"
 	range: "20 ft."
@@ -849,6 +979,8 @@ this.weapons = TAFFY([
 	name: "Shuriken"
 	category: "exotic"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: 1
 	crit: "x 2"
 	range: "10 ft."
@@ -864,6 +996,8 @@ this.weapons = TAFFY([
 	name: "Siangham"
 	category: "exotic"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "x2"
 	range: "-"
@@ -879,6 +1013,8 @@ this.weapons = TAFFY([
 	name: "Siangham, halfling"
 	category: "exotic"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d4"
 	crit: "x2"
 	range: "-"
@@ -909,6 +1045,9 @@ this.weapons = TAFFY([
 	name: "Sling"
 	category: "simple"
 	usage: ["ranged"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > 0 then 0 else mod
 	dam: "1d4"
 	crit: "x2"
 	range: "50 ft."
@@ -940,6 +1079,8 @@ this.weapons = TAFFY([
 	category: "simple"
 	usage: ["unarmed"]
 	dam: "1d2"
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	crit: "x2"
 	range: "-"
 	weight: "-"
@@ -954,6 +1095,8 @@ this.weapons = TAFFY([
 	name: "Sword, bastard"
 	category: "exotic"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d10"
 	crit: "19-20/x2"
 	range: "-"
@@ -969,6 +1112,8 @@ this.weapons = TAFFY([
 	name: "Sword, short"
 	category: "martial"
 	usage: ["light"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d6"
 	crit: "19-20/x2"
 	range: "-"
@@ -984,6 +1129,9 @@ this.weapons = TAFFY([
 	name: "Sword, two-bladed"
 	category: "exotic"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d8/1d8"
 	crit: "19-20/x2"
 	range: "-"
@@ -999,6 +1147,8 @@ this.weapons = TAFFY([
 	name: "Trident"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x2"
 	range: "10 ft."
@@ -1014,6 +1164,9 @@ this.weapons = TAFFY([
 	name: "Urgrosh, dwarven"
 	category: "exotic"
 	usage: ["two-handed"]
+	ability: (abilities) ->
+		mod = common.calc_ability_modifier(abilities["Str"])
+		if mod > -1 then Math.floor(1.5 * mod) else mod
 	dam: "1d8/1d6"
 	crit: "x3"
 	range: "-"
@@ -1029,6 +1182,8 @@ this.weapons = TAFFY([
 	name: "Waraxe, dwarven"
 	category: "exotic"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d10"
 	crit: "x3"
 	range: "-"
@@ -1044,6 +1199,8 @@ this.weapons = TAFFY([
 	name: "Warhammer"
 	category: "martial"
 	usage: ["one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d8"
 	crit: "x3"
 	range: "-"
@@ -1059,6 +1216,8 @@ this.weapons = TAFFY([
 	name: "Whip"
 	category: "exotic"
 	usage: ["light","one-handed"]
+	ability: (abilities) ->
+		common.calc_ability_modifier(abilities["Str"])
 	dam: "1d2"
 	crit: "x 2"
 	range: "15 ft."

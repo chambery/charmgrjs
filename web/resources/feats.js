@@ -1,9 +1,10 @@
-var $, TAFFY, feats;
+var $, TAFFY, common, feats;
 
 if (typeof exports === "object") {
   TAFFY = require("taffydb");
   feats = require("./feats");
   $ = require("jquery");
+  common = require("../common");
 }
 
 this.feats = TAFFY([
@@ -531,7 +532,7 @@ this.feats = TAFFY([
   }, {
     name: "Deadly Aim",
     summary: "Trade ranged attack bonus for damage",
-    detail: "You can make exceptionally deadly ranged attacks by pinpointing a foe?s weak spot, at the expense of making the attack less likely to succeed.<p class=sub><b>Prerequisites: </b>Dex 13, base attack bonus +1<p class=sub><b>Benefit: </b>You can choose to take a ?1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by ?1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.",
+    detail: "You can make exceptionally deadly ranged attacks by pinpointing a foe&apos;s weak spot, at the expense of making the attack less likely to succeed.<p class=sub><b>Prerequisites: </b>Dex 13, base attack bonus +1<p class=sub><b>Benefit: </b>You can choose to take a ?1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by ?1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.",
     prereqs: {
       abilities: {
         Dex: 13,
@@ -2169,7 +2170,15 @@ this.feats = TAFFY([
     summary: "Use Dex instead of Str on attack rolls with light weapons",
     detail: "You are trained in using your agility in melee combat, as opposed to brute strength. <p class=sub><b>Benefit: </b>With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls. <p class=sub><b>Special: </b>Natural weapons are considered light weapons.",
     prereqs: {},
-    attack: "if (weapon.usage == 'light' || weapon.name == 'Whip' || weapon.name == 'Chain, spiked' || weapon.name == 'Rapier') {	var dex_score = calc_ability_modifier(chardata.abilities['Dex']);	var str_score = calc_ability_modifier(chardata.abilities['Str']);	if ($('#ability_Str_score')) {	 str_score = parseInt($('#ability_Str_score').val());	} if ($('#ability_Dex_score')) {	dex_score = parseInt($('#ability_Dex_score').val()); } attacks.ability_score = Math.max(str_score, dex_score); } return attacks;",
+    attack: function(attacks, weapon) {
+      console.log("\t\tWeapon Finesse - attack");
+      if (~weapon.usage.indexOf("light")) {
+        weapon.att = function(abilities) {
+          return common.calc_ability_modifier(Math.max(abilities["Str"], abilities["Dex"]));
+        };
+      }
+      return attacks;
+    },
     groups: ["Combat"],
     tags: ["pathfinder"],
     type: "feat",
@@ -2178,18 +2187,32 @@ this.feats = TAFFY([
     name: "Weapon Focus",
     summary: "+1 bonus on attack rolls with one weapon",
     detail: "Choose one type of weapon. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat. <p class=sub><b>Prerequisites: </b>Proficiency with selected weapon, base attack bonus +1. <p class=sub><b>Benefit: </b>You gain a +1 bonus on all attack rolls you make using the selected weapon. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.",
-    attack: "if(chardata.feats.first({ feat_name: 'Weapon Focus' }).multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
+    attack: function(attacks, weapon, char_feat) {
+      var base_attack, i, _ref, _ref2, _ref3;
+      console.log("\tchar feat: " + char_feat.feat_name);
+      console.log("\tmulti: " + char_feat.multi + " = " + ((_ref = char_feat.multi) != null ? _ref.indexOf(weapon.name) : void 0));
+      if (~(char_feat != null ? (_ref2 = char_feat.multi) != null ? _ref2.indexOf(weapon.name) : void 0 : void 0)) {
+        _ref3 = attacks.base;
+        for (i in _ref3) {
+          base_attack = _ref3[i];
+          console.log("\t\tattack: " + base_attack);
+          attacks.base[i] = parseInt(base_attack) + 1;
+        }
+      }
+      console.log("\tattacks: " + attacks.base);
+      return attacks;
+    },
     prereqs: {
-      base_attack_bonus: 1,
-      multi: {
-        type: "weapons",
-        feats: ["Simple Weapon Proficiency", "Martial Weapon Proficiency", "Exotic Weapon Proficiency"]
-      },
-      groups: ["Combat"],
-      tags: ["pathfinder"],
-      type: "feat",
-      _id: "63e4"
-    }
+      base_attack_bonus: 1
+    },
+    multi: {
+      type: "weapons",
+      feats: ["Simple Weapon Proficiency", "Martial Weapon Proficiency", "Exotic Weapon Proficiency"]
+    },
+    groups: ["Combat"],
+    tags: ["pathfinder"],
+    type: "feat",
+    _id: "63e4"
   }, {
     name: "Weapon Specialization",
     summary: "+2 bonus on damage rolls with one weapon",
@@ -2200,7 +2223,16 @@ this.feats = TAFFY([
         Fighter: 4
       }
     },
-    damage: "if(chardata.feats.first({ feat_name: 'Weapon Specialization' }).multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; }} return damages;",
+    damage: function(damages, weapon, char_feat) {
+      var damage, i;
+      if (~char_feat.multi.indexOf(weapon.name)) {
+        for (i in damages) {
+          damage = damages[i];
+          damage.mod += 2;
+        }
+      }
+      return damages;
+    },
     multi: {
       type: "weapons",
       feats: ["Weapon Focus"]

@@ -400,7 +400,6 @@
       ability: function(abilities) {
         var mod;
         mod = common.calc_ability_modifier(abilities["Str"]);
-        console.log("\t\tGlaive mod: " + mod);
         if (mod > -1) {
           return Math.floor(1.5 * mod);
         } else {

@@ -1,0 +1,27 @@
+
+
+
+module.js:313
+
+
+    throw err;
+
+
+          
+
+^
+
+
+SyntaxError: Unexpected token (
+    at Object.Function (unknown source)
+    at /Users/chambery/Documents/projects/charmgrjs/web/store.js:215:36
+    at /Users/chambery/Documents/projects/typicaljoe-taffydb/taffy.js:57:33
+    at Object.<anonymous> (/Users/chambery/Documents/projects/typicaljoe-taffydb/taffy.js:835:13)
+    at Object.each (/Users/chambery/Documents/projects/typicaljoe-taffydb/taffy.js:99:26)
+    at Object.load_static_data (/Users/chambery/Documents/projects/charmgrjs/web/store.js:208:11)
+    at Object.<anonymous> (/Users/chambery/Documents/projects/charmgrjs/test/feats.coffee:27:9)
+    at Object.<anonymous> (/Users/chambery/Documents/projects/charmgrjs/test/feats.coffee:73:4)
+    at Module._compile (module.js:432:26)
+    at Object..coffee (/usr/local/lib/node_modules/coffee-script/lib/coffee-script/coffee-script.js:21:21)
+
+

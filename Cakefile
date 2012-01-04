@@ -32,12 +32,15 @@ task 'watch', 'Recompile CoffeeScript source files when modified', ->
 task 'test', 'Run the test suite (and re-run if anything changes)', ->
 	suite = null
 	build ->
+		# log = fs.createWriteStream 'test-errors.txt', 'flags': 'w'
 		do runTests = ->
 			suite?.kill()
 			suiteNames = [
-				"common"
-				"character"
-				# "feats"
+				# "weapons"
+				# "classes"
+				# "common"
+				# "character"
+				"feats"
 				# "sorcerer_bloodlines",
 				# "test",
 				# "views"
@@ -49,6 +52,8 @@ task 'test', 'Run the test suite (and re-run if anything changes)', ->
 				# suite = spawn "coffee", ["-e", "reporters.default.run ['#{suiteName}.coffee']"], cwd: 'test'
 				suite.stdout.on 'data', (data) -> print data.toString()
 				suite.stderr.on 'data', (data) -> print data.toString()
+				# suite.stderr.on 'data', (data) -> log.write "#{data.toString()}\n\n"
+
 				suite.on 'exit', -> suiteIndex++; runNextTestSuite()
 			invoke 'docs'	# lest I forget
 

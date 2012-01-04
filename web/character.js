@@ -45,6 +45,10 @@ Character = (function() {
   			"level": 4
   */
 
+  /*
+  	Returns the count of base feats provided by the character's classes for the current class levels
+  */
+
   Character.prototype.total_base_feats_count = function() {
     var base_feat_count, base_feats, classdata, classname, level, _ref, _ref2;
     console.log("\ntotal_base_feats_count");
@@ -54,11 +58,15 @@ Character = (function() {
     for (classname in _ref) {
       classdata = _ref[classname];
       for (level = 0, _ref2 = classdata.level; 0 <= _ref2 ? level <= _ref2 : level >= _ref2; 0 <= _ref2 ? level++ : level--) {
-        base_feat_count += (base_feats.indexOf(level) > -1 ? 1 : 0);
+        base_feat_count += (~base_feats.indexOf(level) ? 1 : 0);
       }
     }
     return base_feat_count;
   };
+
+  /*
+  	Returns the count of (bonus?) feats provided by the character's classes for the current class levels
+  */
 
   Character.prototype.total_class_feats_count = function() {
     var class_feat_count, class_feats, classdata, classname, level, _ref, _ref2;
@@ -76,6 +84,10 @@ Character = (function() {
     }
     return class_feat_count;
   };
+
+  /*
+  	Returns the Armor Class Penalty for all worn shields
+  */
 
   Character.prototype.armor_acp = function() {
     var acp;
@@ -95,6 +107,10 @@ Character = (function() {
     }
     return acp;
   };
+
+  /*
+  	Returns the Armor Class Penalty for all worn shields
+  */
 
   Character.prototype.shield_acp = function() {
     var acp;
@@ -166,16 +182,12 @@ Character = (function() {
 
   Character.prototype.ability_score = function(ability) {
     var ability_score, equip_bene, race, race_mod, _ref, _ref2;
-    console.log("\nability_score");
     race = races({
       name: this.race_name
     }).first();
     race_mod = ((_ref = race.abilities) != null ? _ref[ability] : void 0) | 0;
     ability_score = this.abilities[ability] | 0;
     equip_bene = ((_ref2 = this.equip_benes) != null ? _ref2["ability:" + ability] : void 0) | 0;
-    console.log("\tequip_benes for " + ability + ": " + (parseInt(equip_bene)));
-    console.log("\trace_mod: " + race_mod + "   ability_score: " + ability_score);
-    console.log("\n");
     return parseInt(ability_score + parseInt(race_mod + parseInt(equip_bene)));
   };
 
@@ -184,9 +196,6 @@ Character = (function() {
   */
 
   Character.prototype.ability_modifier = function(ability) {
-    console.log("\nability_modifier");
-    console.log("\t" + ability + " : " + (common.pos(Math.ceil(this.ability_score(ability) - 11) / 2)));
-    console.log("\n");
     return common.calc_ability_modifier(this.ability_score(ability));
   };
 
@@ -250,7 +259,6 @@ Character = (function() {
 
   Character.prototype.get_class_feat_names = function() {
     var char_class, class_feats, classname, clazz, level, these_class_feats, _ref, _ref2;
-    console.log("\nget_class_feat_names");
     class_feats = [];
     _ref = this.classes;
     for (classname in _ref) {
@@ -277,7 +285,6 @@ Character = (function() {
 
   Character.prototype.get_class_feats = function() {
     var class_feats, feat, feat_names, i, name;
-    console.log("\nget_class_feats");
     class_feats = [];
     feat_names = this.get_class_feat_names();
     for (i in feat_names) {
@@ -299,8 +306,7 @@ Character = (function() {
   */
 
   Character.prototype.get_all_char_feats = function() {
-    var all_char_feats, feat, i;
-    console.log("\nget_all_char_feats");
+    var all_char_feats;
     all_char_feats = this.get_class_feats();
     if (typeof this.feats === "function") {
       this.feats().each(function(char_feat, i) {
@@ -308,16 +314,8 @@ Character = (function() {
         feat = feats({
           name: char_feat.feat_name
         }).first();
-        if (all_char_feats.indexOf(feat) === -1) {
-          console.log("\tadding \"" + feat.name + "\"");
-          return all_char_feats.push(feat);
-        }
+        if (all_char_feats.indexOf(feat) === -1) return all_char_feats.push(feat);
       });
-    }
-    console.log("\tall_char_feats count: " + all_char_feats.length);
-    for (i in all_char_feats) {
-      feat = all_char_feats[i];
-      console.log("\t" + feat.name);
     }
     return all_char_feats;
   };
@@ -443,12 +441,17 @@ Character = (function() {
       name: this.race_name
     }).first().size;
     console.log("\t" + this.race_name + " - " + size);
+    console.log("\n");
     if (size === "small") {
       return 1;
     } else {
       return 0;
     }
   };
+
+  /*
+  	Returns the reflex save DC
+  */
 
   Character.prototype.ref = function() {
     var class_ref_score, equip_mod, ref;
@@ -472,6 +475,10 @@ Character = (function() {
     return this.ability_modifier("Dex") + class_ref_score + ref + equip_mod;
   };
 
+  /*
+  	Returns the will save DC
+  */
+
   Character.prototype.will = function() {
     var class_will_score, feat_mod;
     class_will_score = this.save("will");
@@ -486,6 +493,10 @@ Character = (function() {
     });
     return this.ability_modifier("Wis") + class_will_score + feat_mod + (this.equip_benes["other:Will"] | 0);
   };
+
+  /*
+  	Returns the fortitude save DC
+  */
 
   Character.prototype.fort = function() {
     var class_fort_score, feat_mod;
@@ -577,7 +588,6 @@ Character = (function() {
       weapon_proficiency: -4,
       acp: 0
     };
-    attacks.weapon = weapon != null ? weapon.att(this.abilities) : void 0;
     attacks.acp = this.armor_acp() + this.shield_acp();
     this.get_char_feats()({
       attack: {
@@ -588,6 +598,7 @@ Character = (function() {
       attacks = feat.attack(attacks, weapon);
       return attacks;
     });
+    attacks.weapon = weapon != null ? weapon.att(this.abilities) : void 0;
     return attacks.base = this.base_attack_bonus().map(function(x) {
       console.log("\tbase: " + x);
       console.log("\tability mod: " + attacks.weapon);
@@ -601,22 +612,33 @@ Character = (function() {
   };
 
   Character.prototype.spell_resistance = function() {
-    var char_feats, class_sr_score, feat_mod, sr;
-    sr = do_class_functions("all", "sr", {
+    var char_class, class_sr_score, classname, clazz, feat_mod, sr, _ref;
+    console.log("\nspell_resistance");
+    sr = {
       sr: 0
-    }).sr;
-    class_sr_score = save("sr_save");
-    feat_mod = 0;
-    char_feats = get_char_feats();
-    char_feats.get({
-      sr: {
-        "!is": null
+    };
+    _ref = this.classes;
+    for (classname in _ref) {
+      char_class = _ref[classname];
+      clazz = classes({
+        name: classname
+      }).first();
+      if (clazz != null) {
+        if (typeof clazz.sr === "function") clazz.sr(sr, char_class);
       }
-    }).forEach(function(feat, i) {
+    }
+    class_sr_score = this.save("sr");
+    feat_mod = 0;
+    this.get_char_feats()({
+      sr: {
+        isFunction: true
+      }
+    }).each(function(feat) {
       feat_mod = feat.fort(feat_mod);
       return feat_mod;
     });
-    return sr + class_sr_score + feat_mod + equip_mod("SR");
+    console.log("\tequip_benes: " + (this.equip_benes["other:SR"] | 0));
+    return sr.sr + class_sr_score + feat_mod + (this.equip_benes["other:SR"] | 0);
   };
 
   /*
@@ -641,6 +663,47 @@ Character = (function() {
     }
     console.log("\n");
     return save;
+  };
+
+  Character.prototype.damage = function(char_weapon) {
+    var dam_components, damage, damages, die, dmg, i, mod, weapon, weapon_dam, weapon_damage, weapon_mod, _ref;
+    console.log("\ndamage");
+    damages = [];
+    weapon = $.extend({}, weapons({
+      name: char_weapon.weapon_name
+    }).first(), char_weapon);
+    weapon_damage = typeof weapon.dam === 'function' ? weapon.dam() : weapon.dam;
+    _ref = weapon_damage.split("/");
+    for (i in _ref) {
+      weapon_dam = _ref[i];
+      dam_components = weapon_dam.split(/\+|-/);
+      die = dam_components[0];
+      weapon_mod = (dam_components.length > 1 ? parseInt(dam_components[1]) : 0);
+      damages.push({
+        die: die,
+        mod: weapon_mod
+      });
+    }
+    console.log("\tdamages: " + damages);
+    this.get_char_feats()({
+      damage: {
+        isFunction: true
+      }
+    }).each(function(feat) {
+      damages = feat.damage(damages, weapon);
+      return damages;
+    });
+    console.log("\tability mod: " + (weapon.ability(this.abilities)));
+    damage = "";
+    for (i in damages) {
+      dmg = damages[i];
+      mod = common.pos(weapon.ability(this.abilities) + dmg.mod + (this.equip_benes["Dam"] | 0));
+      console.log("\tmod: " + mod);
+      damage += dmg.die + (mod ? mod : "");
+      console.log("\tdamage: " + damage);
+      damage += (parseInt(i) + 1 < damages.length ? "/" : "");
+    }
+    return damage;
   };
 
   return Character;

@@ -25,7 +25,7 @@ this.import_character = ->
 				chardata = parse_character_data(data)
 			else
 				char_name = data
-				$.ajax 
+				$.ajax
 					type: "GET"
 					url: "character/" + chardata.options.owner + "/" + char_name
 					dataType: "json"
@@ -33,17 +33,17 @@ this.import_character = ->
 						chardata = cdata
 						console.log status
 						console.log cdata
-					
+
 					error: (jqXHR, textStatus, errorThrown) ->
 						alert data + " not found on the server."
 						console.log jqXHR
 						console.log textStatus
 						console.log errorThrown
 						throw "Not found"
-					
+
 					data: {}
 					async: false
-				
+
 				console.log "parsing taffy data"
 				chardata.skills = parse_taffy_data(chardata.skills)
 				chardata.feats = parse_taffy_data(chardata.feats)
@@ -65,7 +65,7 @@ this.lod = (char_name) ->
 		chardata = parse_character_data(cookie_data)	if cookie_data
 		remote_data = undefined
 		if chardata.options and chardata.options.owner
-			$.ajax 
+			$.ajax
 				type: "GET"
 				url: "character/" + chardata.options.owner + "/" + char_name
 				dataType: "json"
@@ -73,10 +73,10 @@ this.lod = (char_name) ->
 					remote_data = cdata
 					console.log remote_data
 					console.log status
-				
+
 				data: {}
 				async: false
-			
+
 			chardata = parse_character_data(remote_data)	if remote_data and remote_data.last_mod > chardata.last_mod
 			sync_logs()
 	load_static_data()
@@ -90,14 +90,14 @@ this.sav = (data, local_name, remote_name) ->
 
 this.save_remote = (data, name) ->
 	if data?
-		$.ajax 
+		$.ajax
 			type: "POST"
 			url: "/" + data.type + "/" + chardata.options.owner + "/" + name
 			data: JSON.stringify(data)
 			success: (data, status) ->
 				console.log data
 				console.log "status"
-			
+
 			contentType: "application/json; charset=utf-8"
 			dataType: "json"
 
@@ -138,40 +138,40 @@ this.load_static_data = ->
 		for classname of spell.classes
 			clazz = classes(name: classname).first()
 			clazz.spells[spell.classes[classname]].push spell.name
-	
+
 	console.log "loading specials..."
 	specials().each (special, n) ->
 		for classname of special.classes
 			clazz = classes(name: classname).first()
 			i = 0
-			
+
 			while i < special.classes[classname].length
-				clazz.specials[special.classes[classname][i].level].push 
+				clazz.specials[special.classes[classname][i].level].push
 					special_name: special.name
 					mod: special.mod
 				i++
 
-	console.log "loading feats..."	
-	feats().each (feat, n) ->
-		if feat.multi
-			feat.multi.db = eval(feat.multi.db)
-			feat.multi.type = eval(feat.multi.type)
-		feat.collection.db = eval(feat.collection.db)	if feat.collection
-		# feat.attack = new Function("attacks", "weapon", feat.attack)	if feat.attack
-		feat.damage = new Function("damages", "weapon", feat.damage)	if feat.damage
-		feat.critical = new Function("critical", feat.critical)	if feat.critical
-		# feat.init = new Function("init", feat.init)	if feat.init
-		feat.fort = new Function("fort", feat.fort)	if feat.fort
-		feat.ref = new Function("ref", feat.ref)	if feat.ref
-		feat.will = new Function("will", feat.will)	if feat.will
-		feat.ac = new Function("ac", feat.ac)	if feat.ac
-		feat.mobility = new Function("acp", feat.mobility)	if feat.mobility
-		for classname of feat.classes
-			clazz = classes(name: classname).first()
-			clazz.feats[feat.classes[classname]].push feat.name
-		feat
+	# console.log "loading feats..."
+	# feats().each (feat, n) ->
+	# 	if feat.multi
+	# 		feat.multi.db = eval(feat.multi.db)
+	# 		feat.multi.type = eval(feat.multi.type)
+	# 	feat.collection.db = eval(feat.collection.db)	if feat.collection
+	# 	# feat.attack = new Function("attacks", "weapon", feat.attack)	if feat.attack
+	# 	# feat.damage = new Function("damages", "weapon", feat.damage)	if feat.damage
+	# 	feat.critical = new Function("critical", feat.critical)	if feat.critical
+	# 	# feat.init = new Function("init", feat.init)	if feat.init
+	# 	feat.fort = new Function("fort", feat.fort)	if feat.fort
+	# 	feat.ref = new Function("ref", feat.ref)	if feat.ref
+	# 	feat.will = new Function("will", feat.will)	if feat.will
+	# 	feat.ac = new Function("ac", feat.ac)	if feat.ac
+	# 	feat.mobility = new Function("acp", feat.mobility)	if feat.mobility
+	# 	for classname of feat.classes
+	# 		clazz = classes(name: classname).first()
+	# 		clazz.feats[feat.classes[classname]].push feat.name
+	# 	feat
 
-	console.log "sorting data..." 
+	console.log "sorting data..."
 	races.sort "name"
 	classes.sort "name"
 	weapons.sort "name"
@@ -185,7 +185,7 @@ this.delete_character = ->
 		name = (if chardata.name then chardata.name else ("ch_" + create_default_name()))
 		save_local {}, name, "Thu, 01-Jan-1970 00:00:01 GMT"
 		if chardata.options.owner and chardata.name
-			$.ajax 
+			$.ajax
 				type: "GET"
 				url: "/delete/" + chardata.options.owner + "/" + name
 				data: {}
@@ -193,7 +193,7 @@ this.delete_character = ->
 					console.log data
 					console.log "status: " + status
 					alert "Deleted character data: " + data
-				
+
 				contentType: "application/json; charset=utf-8"
 				async: false
 		create_new_character()

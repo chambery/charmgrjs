@@ -229,47 +229,6 @@ this.calc_armor_bonus = function(char_armor, db, equip_type) {
   };
 };
 
-this.calc_damage = function(weapon, char_feats, char_weapon) {
-  var ability_mod, dam_components, damage, damages, die, foo, i, weapon_damage, weapon_mod;
-  damages = [];
-  weapon = $.extend({}, weapon, char_weapon);
-  if ($.isFunction(weapon.dam)) weapon.dam = weapon.dam();
-  weapon_damage = weapon.dam.split("/");
-  for (i in weapon_damage) {
-    dam_components = weapon_damage[i].split(/\+|-/);
-    die = dam_components[0];
-    weapon_mod = (dam_components.length > 1 ? parseInt(dam_components[1]) : 0);
-    damages.push({
-      die: die,
-      mod: weapon_mod
-    });
-  }
-  char_feats = get_char_feats();
-  char_feats.get({
-    damage: {
-      "!is": null
-    }
-  }).forEach(function(feat, i) {
-    damages = feat.damage(damages, weapon);
-    return damages;
-  });
-  damage = "";
-  ability_mod = 0;
-  if (!weapon.ability) weapon.ability = "Str";
-  if (weapon.ability !== "none") {
-    ability_mod = calc_ability_modifier(chardata.abilities[weapon.ability]);
-  }
-  if (weapon.name === "Shortbow" || weapon.name === "Longbow") {
-    ability_mod = Math.min(ability_mod, 0);
-  }
-  for (i in damages) {
-    foo = pos(Math.max(ability_mod + damages[i].mod + parseInt($("#damage_mod").text()) + calc_equip_mod("Dam")), 1);
-    damage += damages[i].die + (foo ? foo : "");
-    damage += (parseInt(i) + 1 < damages.length ? "/" : "");
-  }
-  return damage;
-};
-
 this.show_dialog = function(title, content, save_on_close, close_fn, opts) {
   var options;
   $(".ui-widget-overlay").live("click", function() {

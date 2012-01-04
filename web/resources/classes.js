@@ -1,6 +1,10 @@
-var TAFFY;
+var TAFFY, bloodline_powers, sorcerer_bloodlines;
 
-if (typeof exports === "object") TAFFY = require("../../lib/taffy").taffy;
+if (typeof exports === "object") {
+  TAFFY = require("../../lib/taffy").taffy;
+  sorcerer_bloodlines = require("./sorcerer_bloodlines").sorcerer_bloodlines;
+  bloodline_powers = require("./sorcerer_bloodlines").bloodline_powers;
+}
 
 this.classes = TAFFY([
   {
@@ -497,6 +501,9 @@ this.classes = TAFFY([
     spells: [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
     feats: [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
     specials: [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+    sr: function(sr, chardata) {
+      return this.calc_dr_saves(sr, "sr", chardata);
+    },
     update_bloodline: function() {
       chardata.bloodline = $("#bloodline_select").val();
       $("#draconic_type").toggle(chardata.bloodline === "Draconic");
@@ -519,15 +526,15 @@ this.classes = TAFFY([
     },
     merge_bloodline_weapons: function(char_weapons) {
       var bloodline, bloodline_weapons, i, level, name, power, power_weapons, weapon, _ref;
-      bloodline = sorcerer_bloodlines.first({
+      bloodline = sorcerer_bloodlines({
         name: chardata.bloodline
-      });
+      }).first();
       if (bloodline) {
         power_weapons = {};
         for (i in bloodline.powers) {
-          power = bloodline_powers.first({
+          power = bloodline_powers({
             name: bloodline.powers[i]
-          });
+          }).first();
           if (power) {
             for (level in power.levels) {
               if (level <= chardata.classes["Sorcerer"].level && power.levels[level].weapons) {
@@ -537,9 +544,9 @@ this.classes = TAFFY([
                   weapon = _ref[name];
                   console.log("name: " + name + ", weapon: " + weapon.note);
                   weapon["name"] = name;
-                  if (!weapons.first({
+                  if (!weapons({
                     name: name
-                  })) {
+                  }).first()) {
                     console.log("Adding ");
                     weapons.insert(weapon);
                   } else {
@@ -568,31 +575,30 @@ this.classes = TAFFY([
         $.merge(char_weapons, bloodline_weapons);
       }
     },
-    calc_dr_saves: function(save, type) {
-      var bloodline, dr_fn, i, level, power, _results;
-      bloodline = sorcerer_bloodlines.first({
-        name: chardata.bloodline
-      });
+    calc_dr_saves: function(save, type, char_class) {
+      var bloodline, dr_fn, i, level, power;
+      console.log("\t\tcalc_dr_saves");
+      bloodline = sorcerer_bloodlines({
+        name: char_class.bloodline
+      }).first();
       if (bloodline) {
-        _results = [];
         for (i in bloodline.powers) {
-          power = bloodline_powers.first({
+          power = bloodline_powers({
             name: bloodline.powers[i]
-          });
+          }).first();
+          console.log("\t\t\tpower: " + power.name + " ");
           dr_fn = null;
           for (level in power.levels) {
-            if (level <= chardata.classes["Sorcerer"].level && power.levels[level][type]) {
+            if (level <= char_class.level && power.levels[level][type]) {
               dr_fn = power.levels[level][type];
             }
-          }
-          if (dr_fn) {
-            _results.push(dr_fn(save));
-          } else {
-            _results.push(void 0);
+            console.log("\t\t\tcalling: " + dr_fn + " ");
+            if (dr_fn) dr_fn(save, char_class);
+            console.log(save);
           }
         }
-        return _results;
       }
+      return save;
     },
     custom: {
       all: {

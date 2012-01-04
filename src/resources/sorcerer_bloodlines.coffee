@@ -233,8 +233,8 @@ this.bloodline_powers = TAFFY([
 	name: "Alien Resistance"
 	detail: "You gain spell resistance equal to your sorcerer level + 10."
 	levels: {
-		14: sr: (sr) ->
-			sr.sr = (sr.sr | 0) + (chardata.classes["Sorcerer"].level + 1) + 10
+		14: sr: (sr, char_class) ->
+			sr.sr = (sr.sr | 0) + (char_class.level + 1) + 10
 			sr
 	}
 	_id: "3a89"

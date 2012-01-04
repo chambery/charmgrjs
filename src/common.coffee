@@ -163,33 +163,6 @@ this.calc_armor_bonus = (char_armor, db, equip_type) ->
 	bonus: armor_bonus
 	max_dex_bonus: max_dex_bonus
 
-this.calc_damage = (weapon, char_feats, char_weapon) ->
-	damages = []
-	weapon = $.extend({}, weapon, char_weapon)
-	weapon.dam = weapon.dam()	if $.isFunction(weapon.dam)
-	weapon_damage = weapon.dam.split("/")
-	for i of weapon_damage
-		dam_components = weapon_damage[i].split(/\+|-/)
-		die = dam_components[0]
-		weapon_mod = (if dam_components.length > 1 then parseInt(dam_components[1]) else 0)
-		damages.push 
-			die: die
-			mod: weapon_mod
-	char_feats = get_char_feats()
-	char_feats.get(damage: "!is": null).forEach (feat, i) ->
-		damages = feat.damage(damages, weapon)
-		damages
-	
-	damage = ""
-	ability_mod = 0
-	weapon.ability = "Str"	unless weapon.ability
-	ability_mod = calc_ability_modifier(chardata.abilities[weapon.ability])	unless weapon.ability == "none"
-	ability_mod = Math.min(ability_mod, 0)	if weapon.name == "Shortbow" or weapon.name == "Longbow"
-	for i of damages
-		foo = pos(Math.max(ability_mod + damages[i].mod + parseInt($("#damage_mod").text()) + calc_equip_mod("Dam")), 1)
-		damage += damages[i].die + (if foo then foo else "")
-		damage += (if parseInt(i) + 1 < damages.length then "/" else "")
-	damage
 
 this.show_dialog = (title, content, save_on_close, close_fn, opts) ->
 	$(".ui-widget-overlay").live "click", ->
