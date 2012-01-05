@@ -1624,6 +1624,7 @@ this.feats = TAFFY([
 	prereqs: {},
 	skills:
 		mod: (skill, subtype, ranks, modifier, char_feats) ->
+			console.log "\t\tSkill Focus"
 			char_skill_focus = char_feats({ feat_name: "Skill Focus"}).first()
 			subtype = if subtype then " (" + subtype + ")" else ""
 			skill_focus_skill = "#{skill.name}#{subtype}"
@@ -1828,7 +1829,8 @@ this.feats = TAFFY([
 	name: "Tower Shield Proficiency"
 	summary: "No penalties on attack rolls when using a tower shield"
 	detail: "You are trained in how to properly use a tower shield. <p class=sub><b>Prerequisite: </b>Shield Proficiency <p class=sub><b>Benefit: </b>When you use a tower shield, the shield&apos;s armor check penalty only applies to Strength and Dexterity-based skills. <p class=sub><b>Normal: </b>A character using a shield with which he is not proficient takes the shield&apos;s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride <p class=sub><b>Special: </b>Fighters automatically have Tower Shield Proficiency as a bonus feat. They need not select it."
-	prereqs: feats: [ "Shield Proficiency" ]
+	prereqs:
+		feats: [ "Shield Proficiency" ]
 	groups: [ "Combat" ]
 	tags: [ "pathfinder" ]
 	type: "feat"
@@ -1837,7 +1839,8 @@ this.feats = TAFFY([
 	name: "Trample"
 	summary: "Overrun targets while mounted"
 	detail: "While mounted, you can ride down opponents and trample them under your mount. <p class=sub><b>Prerequisites: </b>Ride 1 rank, Mounted Combat <p class=sub><b>Benefit: </b>When you attempt to overrun an opponent while mounted, your target may not choose to avoid you. Your mount may make one hoof attack against any target you knock down, gaining the standard +4 bonus on attack rolls against prone targets."
-	prereqs: feats: [ "Mounted Combat" ]
+	prereqs:
+		feats: [ "Mounted Combat" ]
 	groups: [ "Combat" ]
 	tags: [ "pathfinder" ]
 	type: "feat"
@@ -1846,7 +1849,8 @@ this.feats = TAFFY([
 	name: "Turn Undead"
 	summary: "Channel energy can be used to make undead flee"
 	detail: "Calling upon higher powers, you cause undead to flee from the might of your unleashed divine energy. <p class=sub><b>Prerequisites: </b>Channel positive energy class feature <p class=sub><b>Benefit: </b>You can, as a standard action, use one of your uses of channel positive energy to cause all undead within 30 feet of you to flee, as if panicked. Undead receive a Will save to negate the effect. The DC for this Will save is equal to 10 + 1/2 your cleric level + your Charisma modif ier. Undead that fail their save flee for 1 minute. Intelligent undead receive a new saving throw each round to end the effect. If you use channel energy in this way, it has no other effect (it does not heal or harm nearby creatures)."
-	prereqs: class_features: [ "Channel Energy" ]
+	prereqs:
+		class_features: [ "Channel Energy" ]
 	tags: [ "pathfinder" ]
 	type: "feat"
 	_id: "a35"
@@ -1854,7 +1858,8 @@ this.feats = TAFFY([
 	name: "Two-Weapon Defense"
 	summary: "Gain +1 shield bonus when fighting with two weapons"
 	detail: "You are skilled at defending yourself while dual-wielding. <p class=sub><b>Prerequisites: </b>Dex 15, Two-Weapon Fighting <p class=sub><b>Benefit: </b>When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. When you are fighting defensively or using the total defense action, this shield bonus increases to +2."
-	prereqs: feats: [ "Two-Weapon Fighting" ]
+	prereqs:
+		feats: [ "Two-Weapon Fighting" ]
 	groups: [ "Combat", "Two-Weapon Style 2" ]
 	tags: [ "pathfinder" ]
 	type: "feat"
@@ -1944,13 +1949,18 @@ this.feats = TAFFY([
 	detail: "You are skilled at dealing damage with one weapon. Choose one type of weapon (including unarmed strike or grapple) for which you have already selected the Weapon Focus feat. You deal extra damage when using this weapon. <p class=sub><b>Prerequisites: </b>Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th. <p class=sub><b>Benefit: </b>You gain a +2 bonus on all damage rolls you make using the selected weapon. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon."
 	prereqs:
 		feats: [ "Weapon Focus" ]
-		classes: Fighter: 4
+		classes:
+			Fighter: 4
 
-	damage: (damages, weapon, char_feat) ->
-		if ~char_feat.multi.indexOf(weapon.name)
-			for i, damage of damages
-				damage.mod += 2
-		damages
+	damage: (damage, weapon, char_feat) ->
+		console.log "\tchar feat: #{char_feat.feat_name}"
+		console.log "\tmulti: #{char_feat.multi} = #{char_feat.multi?.indexOf(weapon.name)}"
+		if ~char_feat?.multi?.indexOf(weapon.name)
+			console.log "\t\mod: #{damage.mod}"
+			damage.mod += 2
+
+		console.log "\tdamage: #{damage.mod}"
+		damage
 
 	multi:
 		type: "weapons"

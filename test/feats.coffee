@@ -15,40 +15,40 @@ store.load_static_data()
 end_load_static = new Date()
 console.log "+ store.load_static_data: #{end_load_static - end_requires}"
 
-# exports["Skill Focus - skill mod"] = (test) ->
+exports["Skill Focus - skill mod"] = (test) ->
 
-# 	skill_focus = feats(name: "Skill Focus").first()
+	skill_focus = feats(name: "Skill Focus").first()
 
-# 	chardata = {}
-# 	chardata.feats = TAFFY([{
-# 		feat_name: "Skill Focus",
-# 		multi: [ "Disguise", "Knowledge (Dungeoneering)" ]
-# 	}])
-# 	ranks = 2
-# 	disguise = skills(name: "Disguise").first()
-# 	mod = 0
-# 	mod = skill_focus.skills.mod(disguise, ranks, mod, null, chardata.feats)
-# 	test.equal mod, 3, "For 2 ranks, the mod for a Skill Focus skill selection Disguise should be 3"
+	chardata = {}
+	chardata.feats = TAFFY([{
+		feat_name: "Skill Focus",
+		multi: [ "Disguise", "Knowledge (Dungeoneering)" ]
+	}])
+	ranks = 2
+	disguise = skills(name: "Disguise").first()
+	mod = 0
+	mod = skill_focus.skills.mod(disguise, null, ranks, mod, chardata.feats)
+	test.equal mod, 3, "For 2 ranks, the mod for a Skill Focus skill selection Disguise should be 3"
 
-# 	knowledge = skills(name: "Knowledge").first()
-# 	mod = 0
-# 	mod = skill_focus.skills.mod(knowledge, ranks, mod, "Dungeoneering", chardata.feats)
+	knowledge = skills(name: "Knowledge").first()
+	mod = 0
+	mod = skill_focus.skills.mod(knowledge, "Dungeoneering", ranks, mod, chardata.feats)
 
-# 	test.equal mod, 3, "For 2 ranks, the mod for a Skill Focus skill selection Knowledge (Dungeoneering) should be 3"
+	test.equal mod, 3, "For 2 ranks, the mod for a Skill Focus skill selection Knowledge (Dungeoneering) should be 3"
 
-# 	ranks = 10
-# 	mod = 0
-# 	mod = skill_focus.skills.mod(disguise, ranks, mod, null, chardata.feats)
-# 	test.equal mod, 6, "For 10 ranks, the mod for a Skill Focus skill selection Disguise should be 6"
+	ranks = 10
+	mod = 0
+	mod = skill_focus.skills.mod(disguise, null, ranks, mod, chardata.feats)
+	test.equal mod, 6, "For 10 ranks, the mod for a Skill Focus skill selection Disguise should be 6"
 
-# 	mod = 0
-# 	mod = skill_focus.skills.mod(knowledge, ranks, mod, "Dungeoneering", chardata.feats)
-# 	test.equal mod, 6, "For 10 ranks, the mod for a Skill Focus skill selection Knowledge (Dungeoneering) should be 6"
+	mod = 0
+	mod = skill_focus.skills.mod(knowledge, "Dungeoneering", ranks, mod, chardata.feats)
+	test.equal mod, 6, "For 10 ranks, the mod for a Skill Focus skill selection Knowledge (Dungeoneering) should be 6"
 
-# 	test.done()
+	test.done()
 
-# exports["Improved Initiative - init"] = (test) ->
-# 	test.done
+exports["Improved Initiative - init"] = (test) ->
+	test.done()
 
 exports["Weapon Focus"] = (test) ->
 	chardata = {}
@@ -77,31 +77,34 @@ exports["Weapon Focus"] = (test) ->
 
 	test.done()
 
-# exports["Weapon Specialization"] = (test) ->
-# 	chardata = {}
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.feats = TAFFY([
-# 		feat_name: "Weapon Focus"
-# 		multi: [ "Warhammer" ]
-# 	])
+exports["Weapon Specialization"] = (test) ->
+	chardata = {}
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.feats = TAFFY([
+		feat_name: "Weapon Focus"
+		multi: [ "Warhammer" ]
+	,
+		feat_name: "Weapon Specialization"
+		multi: [ "Warhammer" ]
+	])
 
-# 	chardata.weapons = TAFFY([
-# 		weapon_name: "Warhammer"
-# 	])
+	chardata.weapons = TAFFY([
+		weapon_name: "Warhammer"
+	])
 
-# 	damage =
-# 		mod: 0
-# 	feats( name: "Weapon Specialization" ).first().damage(damage, chardata.weapons( weapon_name: "Warhammer" ), chardata.feats( feat_name: "Weapon Specialization" ))
-# 	test.equal , 2, "Weapon Specialization should add 2 to the damage mod, +2"
+	damage =
+		mod: 0
+	feats( name: "Weapon Specialization" ).first().damage(damage, weapons( name: "Warhammer" ).first(), chardata.feats( feat_name: "Weapon Specialization" ).first())
+	test.equal damage.mod, 2, "Weapon Specialization should add 2 to the damage mod, +2"
 
-# 	damage =
-# 		mod: 0
-# 	feats( name: "Weapon Specialization" ).first().damage(damage, chardata.weapons( weapon_name: "Foochin" ), chardata.feats( feat_name: "Weapon Specialization" ))
-# 	test.equal damage, 0, "Weapon Specialization should not modify weapon \"Foochin\""
+	damage =
+		mod: 0
+	feats( name: "Weapon Specialization" ).first().damage(damage, weapons( name: "Foochin" )?.first(), chardata.feats( feat_name: "Weapon Specialization" ).first())
+	test.equal damage.mod, 0, "Weapon Specialization should not modify weapon \"Foochin\""
 
-# 	test.done
+	test.done()
