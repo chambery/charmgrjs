@@ -184,9 +184,9 @@ set_links_part = function(page_id) {
     }).shortname;
     classes_html += "<td id='view_class_" + classname + "' style='color: blue;text-align: right; vertical-align: top' nowrap><a class='fake_link view' onclick='var level_diff=(calc_level()+1)-calc_current_level(); show_class_dialog(level_diff,0);'>" + class_shortname + "</a><sub>" + (chardata.classes[classname].level + 1) + "</sub></td>";
   }
-  race = races.first({
+  race = races({
     name: chardata.race_name
-  });
+  }).first();
   links_html = "<table padding='0' cellpadding='1' margin='0'><tr>";
   allviews = views.get();
   for (k in allviews) {

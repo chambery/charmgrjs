@@ -7,7 +7,7 @@ main.load = function() {
   window.chardata = {
     log: []
   };
-  players_companion = TAFFY.JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
+  players_companion = $.parseJSON(unescape(get_cookie_data("players_companion"))) || {};
   if (players_companion.last_character) {
     lod(players_companion.last_character);
     for (classname in window.chardata.classes) {

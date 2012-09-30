@@ -61,7 +61,7 @@ app.get('/charmgr/delete/:owner/:name', function (req, res) {
 					res.send(chardata);
 					// console.log(chardata);
 				}
-			});	
+			});
 		}
 	});
 });
@@ -100,7 +100,8 @@ app.post('/charmgr/log/:owner/:name', function (req, res) {
 });
 
 app.use('/charmgr/lib', express.static(__dirname + "/lib"));
-app.use('/charmgr', express.static(__dirname + "/charmgr/web"));
+// app.use('/charmgr', express.static(__dirname + "/charmgr/web"));
+app.use('/charmgr', express.static(__dirname + "/"));
 app.use(express.errorHandler({
 	dumpExceptions: true,
 	showStack: true
