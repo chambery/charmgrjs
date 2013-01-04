@@ -35,7 +35,11 @@ class Character
 		"Wizard":
 			"level": 4
 	###
-	# classes : { }
+	classes : { }
+	alignment : alignments[0]
+	goodness : goodness[0]
+
+	# this.classes[classes().first().name] = { "level" : 0 }
 	# armors : { }
 	# weapons : {	}
 	# shields : {	}
@@ -69,7 +73,7 @@ class Character
 		class_feat_count
 
 	###
-	Returns the Armor Class Penalty for all worn shields
+	Returns the Armor Class Penalty for all worn armor
 	###
 	armor_acp : () ->
 		console.log "\narmor_acp"
@@ -204,7 +208,7 @@ class Character
 	Returns an array of feat names collected from class feats of the supplied character classes.
 	###
 	get_class_feat_names : () ->
-		# console.log "\nget_class_feat_names"
+		console.log "\nget_class_feat_names"
 		class_feats = []
 		for classname, char_class of @classes
 			clazz = classes(name: classname).first()
@@ -216,38 +220,59 @@ class Character
 		class_feats
 
 	###
-	Returns an array of the class feats collected from the supplied character classes.
+	Returns true feat name is found in the list of feats compiled from character classes.
+	###
+	is_class_feat: (feat_name) ->
+		~this.get_class_feat_names().indexOf(feat_name)
+
+	###
+	Returns a Taffy db of feat objects for this character's chosen feats. Does not include class-supplied feats.
+	###
+	get_char_feats : () ->
+		console.log "\tget_char_feats - src"
+		char_feats = TAFFY([])
+		if @feats
+			@feats().each (feat) ->
+				char_feats.insert $.extend(feats(name: feat.feat_name).first(), feat)
+
+		# char_feats.insert this.get_class_feats()
+		char_feats
+
+
+	###
+	Returns an Taffy db of the class feats collected from the supplied character classes. Does not include character feat selections.
 	###
 	get_class_feats : () ->
-		# console.log "\nget_class_feats"
-		class_feats = []
+		console.log "\nget_class_feats"
+		class_feats = TAFFY([])
 		feat_names = this.get_class_feat_names()
-		# console.log "\t#{feat_names}"
+		console.log "\t#{feat_names}"
 		for i, name of feat_names
 			feat = feats(name: name).first()
-			if class_feats.indexOf(feat) == -1
-				class_feats.push feats(name: name).first()
+			class_feats.insert feat
 
 		# console.log "\t#{class_feats}"
 		class_feats
 
 	###
-	Returns an array of the class feats collected from the supplied character classes and character-selected feats.
+	Returns a Taffy db of the class feats collected from the supplied character classes and character-selected feats.
 	###
 	get_all_char_feats : () ->
-		# console.log "\nget_all_char_feats"
+		console.log "\nget_all_char_feats"
 		all_char_feats = this.get_class_feats()
-		@feats?().each (char_feat, i) ->
-			feat = feats(name: char_feat.feat_name).first()
-			if all_char_feats.indexOf(feat) == -1
-				# console.log "\tadding \"#{feat.name}\""
-				all_char_feats.push feat
+		console.log "\tall count: #{all_char_feats().count()}"
+		char_feats = this.get_char_feats()
+		console.log "\tchar feats count: #{char_feats().count()}"
+		all_char_feats?().each (feat) ->
+			char_feat = char_feats(name: feat.name).first()
+			if not char_feat
+				char_feats.insert feat
 
 		# console.log "\tall_char_feats count: #{all_char_feats.length}"
-		# for i, feat of all_char_feats
-			# console.log "\t#{feat.name}"
+		all_char_feats().each (feat) ->
+			console.log "\t#{feat.name}"
 
-		all_char_feats
+		char_feats
 
 	###
 	Returns the initiative modifier calculated from all relevant factors:
@@ -264,20 +289,6 @@ class Character
 			init
 
 		this.ability_modifier("Dex") + init
-
-	###
-	Returns a TAFFY db of feat objects for this character's chosen feats.
-	###
-	get_char_feats : () ->
-		console.log "\tget_char_feats - src"
-		char_feats = TAFFY([])
-		if @feats
-			@feats().each (feat) ->
-				char_feats.insert feats(name: feat.feat_name).first()
-
-
-		char_feats.insert this.get_class_feats()
-		char_feats
 
 	# TODO - inline
 	dr : (dr) ->
@@ -474,9 +485,9 @@ class Character
 			acp: 0
 
 		attacks.acp = this.armor_acp() + this.shield_acp()
-		this.get_char_feats()( attack: isFunction: true ).each (feat) ->
+		this.get_all_char_feats()( attack: isFunction: true ).each (feat) ->
 			console.log "\t#{feat.name}"
-			attacks = feat.attack(attacks, weapon)
+			attacks = feat.attack(attacks, weapon, feat)
 			attacks
 
 		attacks.weapon = weapon?.att(@abilities)
@@ -521,6 +532,14 @@ class Character
 		console.log "\n"
 		save
 
+	###
+	Returns calculated damage for the supplied character weapon, considering all factors:
+		weapon
+		ability
+		race
+		feats
+		equipment
+	###
 	damage : (char_weapon) ->
 		console.log "\ndamage"
 		damages = []
@@ -536,7 +555,7 @@ class Character
 				mod: weapon_mod
 		console.log "\tdamages: #{damages}"
 		this.get_char_feats()( damage: isFunction: true ).each (feat) ->
-			damages = feat.damage(damages, weapon)
+			damages = feat.damage(damages, weapon, feat)
 			damages
 
 		console.log "\tability mod: #{weapon.ability(@abilities)}"
@@ -550,6 +569,16 @@ class Character
 			damage += (if parseInt(i) + 1 < damages.length then "/" else "")
 
 		damage
+
+	###
+	Returns the current level calculated from character class levels.
+	###
+	calc_current_level : ->
+		curr_level = 0
+		for classname, clazz of @classes
+			curr_level += clazz.level + 1
+		curr_level
+
 
 if typeof(exports) == "object"
 	this.Character = Character

@@ -3,7 +3,7 @@ edit = ->
 edit.calc_skill_points = ->
   int_score = $("#ability_Int").val()
   int_mod = calc_ability_modifier(int_score)
-  is_human = races.first(name: "Human").name == $("#race").val()
+  is_human = races({ name: "Human" }).first().name == $("#race").val()
   total_skill_points = 0
   class_skills_per_level = 0
   for classname of chardata.classes
@@ -12,22 +12,22 @@ edit.calc_skill_points = ->
     total_skill_points += level_1_points + ((class_skills_per_level + (if is_human then 1 else 0)) * chardata.classes[classname].level)
   $("input[id*=skill]").each (i, element) ->
     total_skill_points -= (if isNaN(parseInt($(element).val())) then 0 else parseInt($(element).val()))
-  
+
   char_lang_count = (if not chardata.languages? then 0 else chardata.languages.length)
   total_skill_points -= Math.abs(Math.min(int_mod - char_lang_count, 0))
   total_skill_points
 
 edit.build_edit_page = ->
   set_links_part 1
-  $("#content").html 
+  $("#content").html
   chardata.abilities = {}  unless chardata.abilities?
-  race_html = create_select("race", races.get(), "edit.recalc_edit_page()", false, "style='width: 75px;'")
+  race_html = create_select("race", races().get(), "edit.recalc_edit_page()", false, "style='width: 75px;'")
   $("#race_select").html race_html
   align_html = []
   alignments.forEach (alignment, i) ->
     goodness.forEach (good, j) ->
       align_html.push [ "<option id='alignment_option_", alignment.name, "_", good.name, "' data_id='", i, ",", j, "' value='", alignment.name, ",", good.name, "'>", alignment.name, " ", good.name, "</option>" ].join("")
-  
+
   $("#alignment").html align_html.join("")
   $("#alignment").change ->
     console.group "deity - ALIGNMENT_CHANGED"
@@ -36,7 +36,7 @@ edit.build_edit_page = ->
     $.each get_deities_for_alignment(chardata.alignment, chardata.goodness), (i, deity) ->
       console.log deity.name + " : " + deity.alignment + " " + deity.goodness
       align_html.push [ "<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>" ]
-    
+
     $("#deity").html align_html.join("")
     if $("#deity").containsOption(chardata.deity)
       $("#deity").val chardata.deity
@@ -46,17 +46,18 @@ edit.build_edit_page = ->
     chardata.alignment = $("#alignment").val().split(" ")[0]
     chardata.goodness = $("#alignment").val().split(" ")[1]
     console.groupEnd()
-  
+
   align_html = []
   align_html.push "<option id='deity_option_-1' data_id='' value=''></option>"
   $.each get_deities_for_alignment(chardata.alignment, chardata.goodness), (i, deity) ->
+    console.log "[" + i + "]  " + deity.name + " : " + deity.alignment + " " + deity.goodness
     align_html.push [ "<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>" ]
-  
+
   $("#deity").html align_html.join("")
   $("#deity").change ->
     chardata.domains = []
     $("#deity").trigger "DEITY_CHANGED"
-  
+
   $("#language_table").html edit.create_languages()
   $("#languages").hide()
   skill_html = []
@@ -73,11 +74,11 @@ edit.build_edit_page = ->
             skill_html.push [ "<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")' subtype='" + subtype + "'>", skill.name, " (", subtype, ")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='", subtype, "' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>" ].join("")
     else
       skill_html.push [ "<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")'>", skill.name, "</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>" ].join("")
-  
+
   $("#skills_table").append skill_html.join("")
   skills.get(subtypes: "!is": null).forEach (skill, i) ->
     $("#" + skill.name).hide()
-  
+
   build_data_part "weapons", "weapon"
   build_data_part "armors", "armor"
   build_data_part "shields", "shield"
@@ -91,7 +92,7 @@ edit.create_languages = ->
   langs = languages.get()
   i = 0
   len = langs.length
-  
+
   while i < len
     language_html.push [ "<tr id='language_", langs[i]._id, "'><td><input id='language_", langs[i]._id, "_check' onclick='update_language(\"", langs[i]._id, "\"); edit.recalc_edit_page();' type='checkbox'/></td><td><label for='language_", langs[i]._id, "_check'>", langs[i].name, "</label></td>" ].join("")
     i++
@@ -100,7 +101,7 @@ edit.create_languages = ->
 edit.populate_edit_page = ->
   $("#charname").val chardata.name  if chardata.name
   race_name = chardata.race_name or $("#race").val()
-  race = races.first(name: race_name)
+  race = races({name: race_name}).first()
   $("#race option[id='race_option_" + race._id + "']").attr "selected", true
   $("input[id='hp']").val chardata.hp or ""
   $("#xp").val chardata.xp or ""
@@ -148,7 +149,7 @@ edit.recalc_edit_page = ->
   chardata.deity = $("#deity").val()
   chardata.domain = $("#domain").val()
   chardata.abilities = {}  unless chardata.abilities?
-  race = races.first(name: chardata.race_name)
+  race = races({name: chardata.race_name}).first()
   for ability of abilities
     chardata.abilities[ability] = $("#ability_" + ability).val()
     $("#race_" + ability + "_mod").val pos(race.abilities[ability])  if race.abilities[ability]
@@ -160,7 +161,7 @@ edit.recalc_edit_page = ->
     class_langs.concat (if clazz.languages? then clazz.languages else [])
   i = 0
   len = langs.length
-  
+
   while i < len
     is_race_language = race.languages.indexOf(langs[i].name) > -1
     is_class_language = class_langs.indexOf(langs[i].name) > -1
@@ -182,7 +183,7 @@ edit.recalc_edit_page = ->
       feat = feats.first(name: char_feat.feat_name)
       feat_mod += feat.skills[skill.name]  if feat.skills and feat.skills[skill.name]
       acp = feat.mobility(acp)  if skill.mobility and feat.mobility
-    
+
     feat_mod += calc_equip_mod(skill.name)
     mods += (if feat_mod > 0 then " o:" + pos(feat_mod) else "")
     skill_ability_score = $("input#ability_" + skill.ability).val()
@@ -194,7 +195,7 @@ edit.recalc_edit_page = ->
         edit.update_skills skill, subtype
     else
       edit.update_skills skill
-  
+
   skill_pts = edit.calc_skill_points()
   $("#skill_pts_remaining").html (if skill_pts < 0 then [ "<span class='alarm'>", skill_pts, "</span>" ].join("") else skill_pts)
   edit.update_race_mods()
@@ -237,7 +238,7 @@ edit.update_skills = (skill, subtype) ->
   skill_link.attr "style", "font-weight: bold;"  if skill_link and class_skill
 
 edit.update_race_mods = ->
-  race = races.first(name: $("#race").val())
+  race = races({ name: $("#race") }).first().val()
   if race
     for ability of abilities
       mod = (if not race.abilities[ability]? then " " else race.abilities[ability])

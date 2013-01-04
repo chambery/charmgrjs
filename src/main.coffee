@@ -2,8 +2,8 @@ window.session = {}
 window.chardata = {}
 main = ->
 main.load = ->
-	window.chardata = log: []
-	players_companion = TAFFY.JSON.parse(unescape(get_cookie_data("players_companion"))) or {}
+	window.chardata = new Character()
+	players_companion = JSON.parse(unescape(get_cookie_data("players_companion"))) or {}
 	if players_companion.last_character
 		lod players_companion.last_character
 		for classname of window.chardata.classes
@@ -13,6 +13,12 @@ main.load = ->
 		window.chardata.options = (if window.chardata.options then window.chardata.options else {})
 		load_static_data()
 		window.chardata.options.owner = players_companion.owner
+		# populate character defaults
+		window.chardata.race_name = races().first().name
+		window.chardata.classes[classes().first().name] = {
+			"level" : 0
+		}
+
 		main.do_edit()
 
 main.do_main = ->
@@ -91,60 +97,60 @@ main.build_main_page = ->
 		url: "main.html",
 		dataType: "html"
 	)
-	$("#ability_score_full0").bind "click", 
+	$("#ability_score_full0").bind "click",
 		ability: "Str"
 		id: 0
 	, (e) ->
 		main.reset_ability_score e
-	
+
 	$("input[id='ability_Str_score']").bind "blur", ability: "Str", (e) ->
 		main.recalc_ability_mod e
-	
-	$("#ability_score_full1").bind "click", 
+
+	$("#ability_score_full1").bind "click",
 		ability: "Dex"
 		id: 1
 	, (e) ->
 		main.reset_ability_score e
-	
+
 	$("input[id='ability_Dex_score']").bind "blur", ability: "Dex", (e) ->
 		main.recalc_ability_mod e
-	
-	$("#ability_score_full2").bind "click", 
+
+	$("#ability_score_full2").bind "click",
 		ability: "Int"
 		id: 2
 	, (e) ->
 		main.reset_ability_score e
-	
+
 	$("input[id='ability_Int_score']").bind "blur", ability: "Int", (e) ->
 		main.recalc_ability_mod e
-	
-	$("#ability_score_full3").bind "click", 
+
+	$("#ability_score_full3").bind "click",
 		ability: "Con"
 		id: 3
 	, (e) ->
 		main.reset_ability_score e
-	
+
 	$("input[id='ability_Con_score']").bind "blur", ability: "Con", (e) ->
 		main.recalc_ability_mod e
-	
-	$("#ability_score_full4").bind "click", 
+
+	$("#ability_score_full4").bind "click",
 		ability: "Cha"
 		id: 4
 	, (e) ->
 		main.reset_ability_score e
-	
+
 	$("input[id='ability_Cha_score']").bind "blur", ability: "Cha", (e) ->
 		main.recalc_ability_mod e
-	
-	$("#ability_score_full5").bind "click", 
+
+	$("#ability_score_full5").bind "click",
 		ability: "Wis"
 		id: 5
 	, (e) ->
 		main.reset_ability_score e
-	
+
 	$("input[id='ability_Wis_score']").bind "blur", ability: "Wis", (e) ->
 		main.recalc_ability_mod e
-	
+
 	window.chardata.skills = TAFFY([])	unless window.chardata.skills?
 	rogue_skill_selections = main.get_rogue_skill_selections()
 	skills.forEach (skill, i) ->
@@ -157,34 +163,34 @@ main.build_main_page = ->
 					skill_html = main.build_skill_entry skill, skill_selection_ind_html, subtype
 		else
 			skill_html = main.build_skill_entry skill, skill_selection_ind_html
-			
+
 		$("#skills_table").append skill_html.join("")
-		$("a[id='skill_" + skill._id + "']").bind "click", skill_id: skill._id, (e) -> 
+		$("a[id='skill_" + skill._id + "']").bind "click", skill_id: skill._id, (e) ->
 			main.show_skill_detail e
 
-	
+
 	$("#temp_hp").bind "blur", ->
 		unless isNaN($(this).val())
 			window.chardata.temp_hp = $(this).val()
 			save_character()
-	
+
 	$("#subdual_hp").bind "blur", ->
 		unless isNaN($(this).val())
 			window.chardata.subdual_hp = $(this).val()
 			save_character()
-	
+
 	$("#plus_att").bind "click", ->
 		adjust_mod "attack", 1
-	
+
 	$("#minus_att").bind "click", ->
 		adjust_mod "attack", -1
-	
+
 	$("#plus_dam").bind "click", ->
 		adjust_mod "damage", 1
-	
+
 	$("#minus_dam").bind "click", ->
 		adjust_mod "damage", -1
-	
+
 	feats_html = ""
 	conditional_feats = []
 	for classname of window.chardata.classes
@@ -194,7 +200,7 @@ main.build_main_page = ->
 				clazz.custom.main.before_specials[script]()
 	char_feats = get_char_feats().get()
 	i = 0
-	
+
 	while i < char_feats.length
 		feat = feats.first(name: char_feats[i].name)
 		conditional_feats.push feat	if feat and feat.conditional
@@ -215,7 +221,7 @@ main.build_main_page = ->
 	if count_attrs(class_specials) > 0
 		$("#specials_heading").bind "click", (e) ->
 			toggle_visible "specials"
-		
+
 		for i of class_specials
 			if class_specials[i] and not class_specials[i].hide
 				checkbox = (if class_specials[i].op? then [ "<input id='special_", class_specials[i]._id, "' type='checkbox' onclick=\"", class_specials[i].op, "\"/>" ].join("") else "")
@@ -436,7 +442,7 @@ main.recalc_main_page = ->
 					populate_skill_entry skill, acp, subtype
 		else
 			main.populate_skill_entry skill, acp
-	
+
 	$("#ac").text calc_ac(dex_score)
 	$("#init").text calc_init(dex_score)
 	$("#fort").text calc_fort(con_score, window.chardata.class_name, window.chardata.xp, window.chardata.feats)
@@ -483,7 +489,7 @@ main.calc_turn = (cha_score) ->
 	char_feats.get(turn: "!is": null).forEach (feat, i) ->
 		feat_mod = feat.critical(feat_mod)
 		feat_mod
-	
+
 	char_know_rel_pnts = (if char_know_religion then char_know_religion.ranks else 0)
 	skill_bonus = (if calc_ranks(chardata.class_name, char_know_rel_pnts, know_religion) >= 5 then 2 else 0)
 	cha_score = $("#ability_4_score").val()
@@ -495,7 +501,7 @@ main.calc_hp = (hp, char_feats) ->
 	char_feats.get(hp: "!is": null).forEach (feat, i) ->
 		feat_mod = feat.hp(feat_mod)
 		feat_mod
-	
+
 	parseInt(hp) + feat_mod
 
 main.calc_critical = (weapon_critical, char_weapon, char_feats) ->
@@ -504,7 +510,7 @@ main.calc_critical = (weapon_critical, char_weapon, char_feats) ->
 	char_feats.get(critical: "!is": null).forEach (feat, i) ->
 		critical = feat.critical(critical)
 		critical
-	
+
 	critical
 
 main.update_weapon_attack = (weapon_idx, mod) ->
@@ -544,9 +550,9 @@ main.calc_grapple = ->
 	char_feats.get(grapple: "!is": null).forEach (feat, i) ->
 		feat_mod = feat.grapple(feat_mod)
 		feat_mod
-	
+
 	i = 0
-	
+
 	while i < babs.length
 		grapple += pos(str_score + babs[i] + grapple_size_mod[race.size] + feat_mod)
 		grapple += (if i + 1 < babs.length then "/" else "")

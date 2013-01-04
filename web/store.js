@@ -1,8 +1,10 @@
-var $, TAFFY, alignments, armors, classes, feats, goodness, races, shields, skills, specials, spells, weapons;
+var $, JSON, TAFFY, alignments, armors, classes, common, feats, goodness, jsdom, races, shields, skills, specials, spells, weapons, window;
 
 if (typeof exports === "object") {
   TAFFY = require("taffydb");
+  JSON = require("../lib/json2").json;
   $ = require("jquery");
+  common = require("./common");
   classes = require("./resources/classes").classes;
   armors = require("./resources/armors").armors;
   shields = require("./resources/shields").shields;
@@ -14,62 +16,61 @@ if (typeof exports === "object") {
   alignments = require("./resources/alignments").alignments;
   goodness = require("./resources/alignments").goodness;
   weapons = require("./resources/weapons").weapons;
+  jsdom = require("jsdom");
+  window = require("../web/window");
 }
 
-this.import_character = function() {
-  var char_name, chardata, data, i, need_new_data, owner;
-  while (!chardata.options || !chardata.options.owner) {
-    chardata.options = {};
-    chardata.options.owner = prompt("Owner string is required to load character data.");
+this.import_character = function(options, char_name) {
+  var data, i, need_new_data, owner;
+  if (!options || !options.owner) {
+    throw "Owner string is required to load character data.";
   }
-  data = prompt("Enter character name (owner: " + chardata.options.owner + ") :");
-  if ((data != null) && jQuery.trim(data).length > 0) {
-    try {
-      if (data.charAt(0) === "{") {
-        chardata = parse_character_data(data);
-      } else {
-        char_name = data;
-        $.ajax({
-          type: "GET",
-          url: "character/" + chardata.options.owner + "/" + char_name,
-          dataType: "json",
-          success: function(cdata, status) {
-            chardata = cdata;
-            console.log(status);
-            return console.log(cdata);
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            alert(data + " not found on the server.");
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
-            throw "Not found";
-          },
-          data: {},
-          async: false
-        });
-        console.log("parsing taffy data");
-        chardata.skills = parse_taffy_data(chardata.skills);
-        chardata.feats = parse_taffy_data(chardata.feats);
-      }
-      save_character();
-      need_new_data = false;
-      if (chardata.options && chardata.options.ext_data && loaded_static_data_tags.length === chardata.options.ext_data.length) {
-        for (i in loaded_static_data_tags) {
-          if (chardata.options.ext_data.indexOf(loaded_static_data_tags[i]) === -1) {
-            need_new_data = true;
-          }
+  if (!char_name || char_name.length === 0) {
+    throw "Character name required to load character data.";
+  }
+  data = null;
+  try {
+    char_name = data;
+    $.ajax({
+      type: "GET",
+      url: "character/" + chardata.options.owner + "/" + char_name,
+      dataType: "json",
+      success: function(cdata, status) {
+        var chardata;
+        chardata = cdata;
+        console.log(status);
+        return console.log(cdata);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(data + " not found on the server.");
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
+        throw "Not found";
+      },
+      data: {},
+      async: false
+    });
+    console.log("parsing taffy data");
+    chardata.skills = parse_taffy_data(chardata.skills);
+    chardata.feats = parse_taffy_data(chardata.feats);
+    save_character();
+    need_new_data = false;
+    if (chardata.options && chardata.options.ext_data && loaded_static_data_tags.length === chardata.options.ext_data.length) {
+      for (i in loaded_static_data_tags) {
+        if (chardata.options.ext_data.indexOf(loaded_static_data_tags[i]) === -1) {
+          need_new_data = true;
         }
       }
-      if (need_new_data) {
-        return window.location.reload();
-      } else {
-        return switch_content(0, chardata);
-      }
-    } catch (e) {
-      owner = (players_companion && players_companion.owner ? players_companion.owner : null);
-      return alert("No character data found for " + data + (owner ? " with owner " + owner + "." : ". You must specify an owner in opt->owner to store and retrieve character data from the server."));
     }
+    if (need_new_data) {
+      return window.location.reload();
+    } else {
+      return switch_content(0, chardata);
+    }
+  } catch (e) {
+    owner = (players_companion && players_companion.owner ? players_companion.owner : null);
+    return alert("No character data found for " + data + (owner ? " with owner " + owner + "." : ". You must specify an owner in opt->owner to store and retrieve character data from the server."));
   }
 };
 
@@ -128,23 +129,37 @@ this.save_remote = function(data, name) {
   }
 };
 
+/*
+Sets a cookie with the supplied name and returns cookie string, in the form of:
+	name=data;expires=[supplied or new Date]
+*/
+
 this.save_local = function(data, name, expires) {
-  expires = expires | (new Date(2020, 02, 02)).toUTCString();
-  data = escape(TAFFY.JSON.stringify(data));
-  return document.cookie = name + "=" + data + ";expires=" + expires;
+  var cookie;
+  expires = expires ? expires : (new Date(2020, 02, 02)).toUTCString();
+  data = escape(JSON.stringify(data));
+  cookie = name + "=" + data + ";expires=" + expires;
+  window.document.cookie = cookie;
+  return cookie;
 };
 
-this.save_character = function() {
+/*
+Saves the supplied character data locally and remotely (if possible), and returns the saved character name (eg. for use with last_character).  If the character has no name a default name (which is not unique) is created.
+*/
+
+this.save_character = function(chardata) {
   var name, save_data;
   name = chardata.name;
-  if (!(name != null) || name.length === 0) name = create_default_name();
-  players_companion.last_character = name;
-  save_local(players_companion, "players_companion");
-  save_data = jQuery.extend(true, {}, chardata);
+  if (!name || name.length === 0) name = create_default_name();
+  if (!window.document.players_companion) window.players_companion = {};
+  window.players_companion.last_character = name;
+  window.document.cookie = this.save_local(players_companion, "players_companion");
+  save_data = $.extend(true, {}, chardata);
   if (save_data.skills != null) save_data.skills = save_data.skills.get();
   if (save_data.feats != null) save_data.feats = save_data.feats.get();
   save_data.type = "character";
-  return sav(save_data, "ch_" + name, name);
+  sav(save_data, "ch_" + name, name);
+  return name;
 };
 
 this.get_cookie_data = function(cookie_name) {
@@ -204,6 +219,16 @@ this.load_static_data = function() {
     }
     return _results;
   });
+  feats().each(function(feat, n) {
+    var classname, clazz;
+    for (classname in feat.classes) {
+      clazz = classes({
+        name: classname
+      }).first();
+      clazz.feats[feat.classes[classname]].push(feat.name);
+    }
+    return feat;
+  });
   console.log("sorting data...");
   races.sort("name");
   classes.sort("name");
@@ -237,16 +262,21 @@ this.delete_character = function() {
   }
 };
 
-this.create_default_name = function() {
+/*
+Returns a string constructed from the shortnames of supplied race and classes.
+*/
+
+this.create_default_name = function(char_race, char_classes) {
   var class_name, classname, race_name;
-  race_name = races.first({
-    name: chardata.race_name
-  }).shortname;
+  race_name = races({
+    name: char_race
+  }).first().shortname;
   class_name = "";
-  for (classname in chardata.classes) {
-    class_name += classes.first({
+  for (classname in char_classes) {
+    console.log(classname);
+    class_name += classes({
       name: classname
-    }).shortname + "_";
+    }).first().shortname + "_";
   }
   return race_name + "_" + class_name;
 };

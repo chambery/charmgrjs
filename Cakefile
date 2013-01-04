@@ -7,7 +7,7 @@ build = (watch, callback) ->
 	if typeof watch is 'function'
 		callback = watch
 		watch = false
-	options = ['-c', '-o', 'lib', 'src']
+	options = ['-b', '-c', '-o', 'lib', 'src']
 	options.unshift '-w' if watch
 
 	coffee = spawn 'coffee', options
@@ -36,14 +36,17 @@ task 'test', 'Run the test suite (and re-run if anything changes)', ->
 		do runTests = ->
 			suite?.kill()
 			suiteNames = [
+				# "zombie"
 				# "weapons"
 				# "classes"
 				# "common"
-				# "character"
-				"feats"
+				# "feats"
 				# "sorcerer_bloodlines",
 				# "test",
 				# "views"
+				# "character"
+				"store"
+				# "test"
 			]
 			suiteIndex = 0
 			do runNextTestSuite = ->

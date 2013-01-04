@@ -3,7 +3,11 @@ function import_character() {
 		chardata.options = {};
 		chardata.options.owner = prompt("Owner string is required to load character data.");
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> coffee-ize, skip the tests
 	var data = prompt("Enter character name (owner: " + chardata.options.owner + ") :");
 	if (data != null && jQuery.trim(data).length > 0) {
 		try {
@@ -82,7 +86,11 @@ function lod(char_name) {
 				data: {},
 				async: false
 			});
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> coffee-ize, skip the tests
 			if(remote_data && remote_data.last_mod > chardata.last_mod) {
 				chardata = parse_character_data(remote_data);
 			}
@@ -103,7 +111,11 @@ function sav(data, local_name, remote_name) {
 	if(local_name && local_name.length > 0) {
 		data.last_mod = (new Date()).getTime();
 		save_local(data, local_name);
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> coffee-ize, skip the tests
 		if(!remote_name) {
 			remote_name = local_name;
 		}
@@ -142,7 +154,11 @@ function save_character() {
 	}
 	players_companion.last_character = name;
 	save_local(players_companion, "players_companion");
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> coffee-ize, skip the tests
 	var save_data = jQuery.extend(true, {}, chardata);
 	if (save_data.skills != null) {
 		save_data.skills = save_data.skills.get();
@@ -151,7 +167,11 @@ function save_character() {
 		save_data.feats = save_data.feats.get();
 	}
 	save_data.type = "character";
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> coffee-ize, skip the tests
 	sav(save_data, "ch_" + name, name);
 }
 
@@ -165,11 +185,19 @@ function get_cookie_data(cookie_name) {
 			if (c_end == -1) {
 				c_end = document.cookie.length;
 			}
+<<<<<<< HEAD
 			data = document.cookie.substring(c_start, c_end);
 
 		}
 	}
 
+=======
+			data = document.cookie.substring(c_start, c_end);	
+
+		}
+	}
+	
+>>>>>>> coffee-ize, skip the tests
 	return data;
 
 }
@@ -182,24 +210,40 @@ function parse_taffy_data(data) {
 }
 
 function load_static_data() {
+<<<<<<< HEAD
 	spells().each(function(spell, n) {
 		for(var classname in spell.classes) {
 			var clazz = classes({ name: classname }).first();
+=======
+	spells.forEach(function(spell, n) {
+		for(var classname in spell.classes) {
+			var clazz = classes.first({ name: classname });
+>>>>>>> coffee-ize, skip the tests
 			// level listed starting from 1
 			clazz.spells[spell.classes[classname]].push(spell.name);
 		}
 	});
 	// TODO - maybe move to the classes
+<<<<<<< HEAD
 	specials().each(function(special, n) {
 		for(var classname in special.classes) {
 			var clazz = classes({ name: classname }).first();
+=======
+	specials.forEach(function(special, n) {
+		for(var classname in special.classes) {
+			var clazz = classes.first({ name: classname });
+>>>>>>> coffee-ize, skip the tests
 			for(var i=0; i<special.classes[classname].length; i++) {
 				clazz.specials[special.classes[classname][i].level].push({special_name: special.name, mod: special.mod});
 			}
 		}
 	});
 
+<<<<<<< HEAD
 	feats().each(function(feat, n) {
+=======
+	feats.forEach(function(feat, n) {		
+>>>>>>> coffee-ize, skip the tests
 		if(feat.multi) {
 			feat.multi.db = eval(feat.multi.db);
 			feat.multi.type = eval(feat.multi.type);
@@ -208,6 +252,7 @@ function load_static_data() {
 			feat.collection.db = eval(feat.collection.db);
 		}
 		if(feat.attack) {
+<<<<<<< HEAD
 			feat.attack = new Function("attacks", "weapon", feat.attack);
 		}
 		if(feat.damage) {
@@ -257,6 +302,57 @@ function load_static_data() {
 	// deitys.orderBy({name:"logical"});
 	// specials.orderBy({name:"logical"});
 	// favored_enemys.orderBy({name:"logical"});
+=======
+			feat.attack = new Function("attacks", "weapon", feat.attack); 
+		}
+		if(feat.damage) {
+			feat.damage = new Function("damages", "weapon", feat.damage); 			
+		}
+		if(feat.critical) {
+			feat.critical = new Function("critical", feat.critical); 
+		}
+		if(feat.init) {
+			feat.init = new Function("init", feat.init); 
+		}
+		if(feat.fort) {
+			feat.fort = new Function("fort", feat.fort); 
+		}
+		if(feat.ref) {
+			feat.ref = new Function("ref", feat.ref); 
+		}
+		if(feat.will) {
+			feat.will = new Function("will", feat.will); 
+		}
+		if(feat.ac) {
+			feat.ac = new Function("ac", feat.ac); 
+		}
+		if(feat.mobility) {
+			feat.mobility = new Function("acp", feat.mobility); 
+		}
+
+		for(classname in feat.classes) {
+			var clazz = classes.first({ name: classname });
+			clazz.feats[feat.classes[classname]].push(feat.name);
+		}
+		
+		return feat;
+	});
+	
+	// TODO - elegance?
+	// spells.orderBy({name:"logical"});
+	// feats.orderBy({name:"logical"});
+	races.orderBy({name:"logical"});
+	// domains.orderBy({name:"logical"});
+	classes.orderBy({name:"logical"});
+	// schools.orderBy({name:"logical"});
+	weapons.orderBy({name:"logical"});
+	armors.orderBy({name:"logical"});
+	skills.orderBy({name:"logical"});
+	// languages.orderBy({name:"logical"});
+	// deitys.orderBy({name:"logical"});
+	// specials.orderBy({name:"logical"});
+	// favored_enemys.orderBy({name:"logical"});	
+>>>>>>> coffee-ize, skip the tests
 }
 
 function delete_character() {
@@ -277,7 +373,11 @@ function delete_character() {
 			  },
 			  contentType: "application/json; charset=utf-8",
 			  async: false
+<<<<<<< HEAD
 			});
+=======
+			});		
+>>>>>>> coffee-ize, skip the tests
 		}
 		create_new_character();
 	}
@@ -289,5 +389,10 @@ function create_default_name() {
 	for(var classname in chardata.classes) {
 		class_name += classes.first({ name: classname }).shortname + "_";
 	}
+<<<<<<< HEAD
 	return race_name + "_" + class_name;
 }
+=======
+	return race_name + "_" + class_name;	
+}
+>>>>>>> coffee-ize, skip the tests

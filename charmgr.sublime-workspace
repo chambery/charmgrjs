@@ -4,410 +4,550 @@
 		"selected_items":
 		[
 			[
-				"log",
-				"log: log"
+				"class",
+				"classes"
 			],
 			[
-				"coun",
-				"count"
-			],
-			[
-				"lo",
-				"log: log"
-			],
-			[
-				"arm",
-				"armordata"
-			],
-			[
-				"is",
-				"is_worn"
-			],
-			[
-				"L",
-				"Leather"
-			],
-			[
-				"equ",
-				"equip_type"
-			],
-			[
-				"calc_ar",
-				"calc_armor_bonus"
-			],
-			[
-				"ma",
-				"max_dex_bonus"
-			],
-			[
-				"shi",
-				"shield_bonus"
-			],
-			[
-				"armor",
-				"armor_bonus"
-			],
-			[
-				"equi",
-				"equip_benes"
-			],
-			[
-				"calc",
-				"calc_size_mod"
-			],
-			[
-				"char",
-				"chardata"
+				"ra",
+				"races"
 			],
 			[
 				"race",
 				"race_name"
 			],
 			[
-				"feat",
-				"feat_name"
+				"clas",
+				"classes"
 			],
 			[
-				"ab",
-				"abilities"
+				"pay",
+				"players_companion"
 			],
 			[
-				"cai",
-				"calc_init"
+				"doc",
+				"document"
 			],
 			[
-				"get",
-				"get_char_feats"
+				"do",
+				"document"
 			],
 			[
-				"fn",
-				"feat_name"
-			],
-			[
-				"fen",
-				"feat_name"
-			],
-			[
-				"calc_ab",
-				"calc_ability_score"
-			],
-			[
-				"char_",
-				"char_skill"
-			],
-			[
-				"su",
-				"tsubtype"
-			],
-			[
-				"sk",
-				"skills"
-			],
-			[
-				"chard",
-				"chardata"
-			],
-			[
-				"skill",
-				"skill_name"
-			],
-			[
-				"skil",
-				"skills"
-			],
-			[
-				"rac",
-				"race_name"
-			],
-			[
-				"lg",
-				"log: log"
-			],
-			[
-				"cr",
-				"cross"
-			],
-			[
-				"feat_",
-				"feat_name"
-			],
-			[
-				"arr",
-				"arr"
-			],
-			[
-				"te",
-				"test"
-			],
-			[
-				"abil",
-				"ability_score"
-			],
-			[
-				"po",
-				"pois"
-			],
-			[
-				"Ac",
-				"Acrobatics"
-			],
-			[
-				"TA",
-				"TAFFY"
-			],
-			[
-				"get_e",
-				"get_equip_benes"
-			],
-			[
-				"e",
-				"equal"
-			],
-			[
-				"max",
-				"max_ranks"
-			],
-			[
-				"char_sk",
-				"char_skill_points"
-			],
-			[
-				"mu",
-				"multiplier"
-			],
-			[
-				"cal",
-				"calc_level"
-			],
-			[
-				"cha",
-				"char_skill"
-			],
-			[
-				"inde",
-				"indexOf"
-			],
-			[
-				"fl",
-				"floor"
-			],
-			[
-				"Mat",
-				"Math"
-			],
-			[
-				"fe",
-				"feat"
-			],
-			[
-				"sub",
-				"subtype"
-			],
-			[
-				"ch",
-				"chardata"
-			],
-			[
-				"Dis",
-				"Disguise"
-			],
-			[
-				"feat_n",
-				"feat_name"
-			],
-			[
-				"my_",
-				"my_feats"
-			],
-			[
-				"test",
-				"test_feats"
-			],
-			[
-				"all",
-				"all_char_feats"
-			],
-			[
-				"all_",
-				"all_char_feats"
-			],
-			[
-				"ind",
-				"index"
-			],
-			[
-				"class_",
-				"class_feats"
-			],
-			[
-				"cla",
-				"class_feats"
-			],
-			[
-				"class",
-				"class_feats"
-			],
-			[
-				"Dru",
-				"Druid"
-			],
-			[
-				"Cler",
-				"Cleric"
-			],
-			[
-				"Cl",
-				"Cleric"
-			],
-			[
-				"load_",
-				"load_static_data"
-			],
-			[
-				"end",
-				"end_requires"
-			],
-			[
-				"l",
-				"log: log"
-			],
-			[
-				"fea",
-				"feat_names"
-			],
-			[
-				"feat_nam",
-				"feat_name"
-			],
-			[
-				"get_cl",
-				"get_class_feat_names"
-			],
-			[
-				"char_f",
-				"char_feats"
-			],
-			[
-				"Disg",
-				"Disguise"
-			],
-			[
-				"Kno",
-				"Knowledge"
-			],
-			[
-				"re",
-				"req: require"
-			],
-			[
-				"di",
-				"disguise"
-			],
-			[
-				"skill_focu",
-				"skill_focus"
-			],
-			[
-				"skill_f",
-				"skill_focus_skill"
-			],
-			[
-				"skill_a",
-				"skill_ability_score"
-			],
-			[
-				"wind",
+				"wi",
 				"window"
 			],
 			[
-				"eq",
-				"equal"
+				"log",
+				"log	log"
 			],
 			[
-				"dis",
-				"disguise"
-			],
-			[
-				"classn",
-				"classname"
-			],
-			[
-				"clas",
-				"classname"
-			],
-			[
-				"skill_cl",
-				"skill_classes"
-			],
-			[
-				"con",
-				"console"
-			],
-			[
-				"kno",
-				"knowledge"
-			],
-			[
-				"kn",
-				"knowledge"
-			],
-			[
-				"disg",
-				"disguise"
-			],
-			[
-				"is_",
-				"is_class_skill"
-			],
-			[
-				"mer",
-				"merge"
-			],
-			[
-				"exp",
-				"expected_feats"
-			],
-			[
-				"und",
-				"undefined"
-			],
-			[
-				"the",
-				"these_class_feats"
-			],
-			[
-				"these",
-				"these_class_feats"
+				"sav",
+				"save_character"
 			],
 			[
 				"requ",
 				"require"
 			],
 			[
+				"test",
+				"test_file"
+			],
+			[
+				"co",
+				"cookie"
+			],
+			[
+				"crea",
+				"create_cookie"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"char",
+				"chardata"
+			],
+			[
+				"opt",
+				"options"
+			],
+			[
+				"impo",
+				"import_character"
+			],
+			[
+				"dat",
+				"data"
+			],
+			[
+				"th",
+				"throw"
+			],
+			[
+				"ch",
+				"char_name"
+			],
+			[
+				"a",
+				"a	<a>"
+			],
+			[
+				"feat",
+				"feat"
+			],
+			[
+				"calcu",
+				"calculated"
+			],
+			[
+				"cal",
+				"calc_current_level"
+			],
+			[
+				"cha",
+				"chardata"
+			],
+			[
+				"eq",
+				"equal"
+			],
+			[
+				"tes",
+				"test"
+			],
+			[
+				"dn",
+				"done"
+			],
+			[
+				"te",
+				"test"
+			],
+			[
+				"not",
+				"not"
+			],
+			[
+				"Fo",
+				"Focus"
+			],
+			[
+				"Weap",
+				"Weapon"
+			],
+			[
+				"le",
+				"level"
+			],
+			[
+				"Fight",
+				"Fighter"
+			],
+			[
+				"Pro",
+				"Proficiency"
+			],
+			[
+				"We",
+				"Weapon"
+			],
+			[
+				"M",
+				"Martial"
+			],
+			[
+				"P",
+				"Proficiency"
+			],
+			[
+				"W",
+				"Weapon"
+			],
+			[
+				"is",
+				"is_class_feat"
+			],
+			[
+				"chard",
+				"chardata"
+			],
+			[
+				"ts",
+				"test"
+			],
+			[
+				"claz",
+				"clazz"
+			],
+			[
+				"cla",
+				"classes"
+			],
+			[
+				"get_cl",
+				"get_class_feats"
+			],
+			[
+				"thes",
+				"these_class_feats"
+			],
+			[
+				"lo",
+				"log	log"
+			],
+			[
+				"all",
+				"all_char_feats"
+			],
+			[
 				"ea",
 				"each"
+			],
+			[
+				"in",
+				"insert"
+			],
+			[
+				"TA",
+				"TAFFY"
+			],
+			[
+				"ins",
+				"insert"
+			],
+			[
+				"fi",
+				"first"
+			],
+			[
+				"T",
+				"TAFFY"
+			],
+			[
+				"get",
+				"get_char_feats"
 			],
 			[
 				"get_all",
 				"get_all_char_feats"
 			],
 			[
-				"ali",
-				"alignments"
+				"fir",
+				"first"
 			],
 			[
-				"ct",
-				"ctrl"
+				"shou",
+				"should"
+			],
+			[
+				"Fig",
+				"Fighter"
+			],
+			[
+				"Fi",
+				"Finesse"
+			],
+			[
+				"Focu",
+				"Focus"
+			],
+			[
+				"equ",
+				"equipment"
+			],
+			[
+				"mul",
+				"multi"
+			],
+			[
+				"Ski",
+				"Skill"
+			],
+			[
+				"ind",
+				"index"
+			],
+			[
+				"else",
+				"else"
+			],
+			[
+				"fea",
+				"feat"
+			],
+			[
+				"mod",
+				"mod"
+			],
+			[
+				"dam",
+				"damage"
+			],
+			[
+				"tdam",
+				"tdamage"
+			],
+			[
+				"Se",
+				"Specialization"
+			],
+			[
+				"deep",
+				"deepEqual"
+			],
+			[
+				"att",
+				"attacks"
+			],
+			[
+				"atta",
+				"attacks"
+			],
+			[
+				"attac",
+				"attacks"
+			],
+			[
+				"base",
+				"base_attack"
+			],
+			[
+				"we",
+				"weapons"
+			],
+			[
+				"weapon",
+				"weapons"
+			],
+			[
+				"fe",
+				"feat_name"
+			],
+			[
+				"Foo",
+				"Foochin"
+			],
+			[
+				"dama",
+				"damage"
+			],
+			[
+				"damage",
+				"damage"
+			],
+			[
+				"Sp",
+				"Specialization"
+			],
+			[
+				"Wa",
+				"Warhammer"
+			],
+			[
+				"wea",
+				"weapon_name"
+			],
+			[
+				"weapons",
+				"weapons"
+			],
+			[
+				"weapo",
+				"weapon_name"
+			],
+			[
+				"Foc",
+				"Focus"
+			],
+			[
+				"Wea",
+				"Weapon"
+			],
+			[
+				"Warhamm",
+				"Warhammer"
+			],
+			[
+				"weap",
+				"Weapon"
+			],
+			[
+				"first",
+				"first"
+			],
+			[
+				"damages",
+				"damages"
+			],
+			[
+				"abi",
+				"abilities"
+			],
+			[
+				"m",
+				"multi"
+			],
+			[
+				"apo",
+				"apos"
+			],
+			[
+				"Fin",
+				"Finesse"
+			],
+			[
+				"Weapn",
+				"weapon_name"
+			],
+			[
+				"feats",
+				"feats"
+			],
+			[
+				"dmg",
+				"dmg"
+			],
+			[
+				"joi",
+				"join"
+			],
+			[
+				"weaon",
+				"weapon_damage"
+			],
+			[
+				"com",
+				"common"
+			],
+			[
+				"Str",
+				"Strength"
+			],
+			[
+				"Gl",
+				"Glaive"
+			],
+			[
+				"L",
+				"Longbow"
+			],
+			[
+				"common",
+				"common"
+			],
+			[
+				"firs",
+				"first"
+			],
+			[
+				"G",
+				"Glaive"
+			],
+			[
+				"equal",
+				"equal"
+			],
+			[
+				"abil",
+				"ability"
+			],
+			[
+				"tr",
+				"true"
+			],
+			[
+				"ru",
+				"true"
+			],
+			[
+				"true",
+				"true"
+			],
+			[
+				"enabled",
+				"enabled"
+			],
+			[
+				"abili",
+				"abilities"
+			],
+			[
+				"heav",
+				"heavy"
+			],
+			[
+				"Lan",
+				"Lance"
+			],
+			[
+				"wep",
+				"weapons"
+			],
+			[
+				"ce",
+				"ceil"
+			],
+			[
+				"Mat",
+				"Math"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
+				"tequ",
+				"tequip_benes"
+			],
+			[
+				"cl",
+				"classes"
+			],
+			[
+				"classes",
+				"classes"
+			],
+			[
+				"sr",
+				"spell_resistance"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "test/common.coffee",
+			"file": "src/common.coffee",
 			"settings":
 			{
-				"buffer_size": 1645,
+				"buffer_size": 28018,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/store.coffee",
+			"settings":
+			{
+				"buffer_size": 8272,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/test.coffee",
+			"settings":
+			{
+				"buffer_size": 121,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main.coffee",
+			"settings":
+			{
+				"buffer_size": 29374,
 				"line_ending": "Unix"
 			}
 		},
@@ -415,42 +555,87 @@
 			"file": "src/character.coffee",
 			"settings":
 			{
-				"buffer_size": 9223,
+				"buffer_size": 17698,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/common.coffee",
+			"file": "/Users/chambery/Documents/projects/taffydart/src/weapons.dart",
 			"settings":
 			{
-				"buffer_size": 33507,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "web/common.js",
+			"file": "src/views.coffee",
 			"settings":
 			{
-				"buffer_size": 39329,
+				"buffer_size": 374,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/resources/armors.coffee",
+			"file": "test/views.coffee",
 			"settings":
 			{
-				"buffer_size": 3149,
+				"buffer_size": 662,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "###\ntest/character.coffee\n###\nCharacter = require(\"../web/character\").Character\nstore = require \"../web/store\"\nskills = require(\"../web/resources/skills\").skills\nraces = require(\"../web/resources/races\").races\nfeats = require(\"../web/resources/feats\").feats\nTAFFY = require(\"taffydb\")\n$ = require(\"jquery\")\nend_requires = new Date()\nstore.load_static_data()\nend_load_static = new Date()\nconsole.log \"+ store.load_static_data: #{end_load_static - end_requires}\"\nglobal = exports ? this\nglobal.session = {}\n\nexports[\"calc_skill_mod\"] = (test) ->\n	chardata = new Character\n	chardata.race_name = \"Dwarf\"\n	chardata.skills = TAFFY([\n		skill_name: \"Disguise\"\n		ranks: 13\n	,\n		skill_name: \"Knowledge\"\n		subtypes:\n			\"Dungeoneering\" : 2\n			\"Engineering\" : 4\n	])\n	chardata.feats = TAFFY([\n		feat_name: \"Skill Focus\"\n		multi: [\n			\"Knowledge (Dungeoneering)\" \n			\"Disguise\"\n		]	\n	])\n	chardata.race_name = \"Dwarf\"\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 3\n		\"Wizard\":\n			\"level\": 4\n	}\n\n	chardata.abilities = {\n		\"Str\" : 10\n		\"Int\" : 10\n		\"Dex\" : 10\n		\"Cha\" : 10\n		\"Con\" : 10\n		\"Wis\" : 10\n	}\n\n	skill = skills({ name: \"Disguise\" }).first()\n	test.equal chardata.calc_skill_mod(skill, null), 12, \"Disguise has 13 points, max ranks of 6 (for Fighter/Wizard cross-class), + 6 for Skill Focus\"\n	skill = skills({ name: \"Perception\" }).first()\n	test.equal chardata.calc_skill_mod(skill, null, chardata), 0, \"Perception has no points assigned\"\n\n	skill = skills({ name: \"Knowledge\" }).first()\n	test.equal chardata.calc_skill_mod(skill, \"Dungeoneering\", chardata), 5, \"Knowledge (Dungeoneering) has 2 points, max ranks of 12 (for Fighter/Wizard), + 3 for Skill Focus\"\n	test.equal chardata.calc_skill_mod(skill, \"Engineering\", chardata), 4, \"Knowledge (Engineering) has 4 points, max ranks of 12 (for Fighter/Wizard)\"\n\n	test.done()\n\nexports[\"calc_ability_score\"] = (test) ->\n	chardata = new Character\n	chardata.race_name = \"Dwarf\"\n	chardata.abilities = {\n		\"Str\" : 10\n		\"Int\" : 10\n		\"Dex\" : 10\n		\"Con\" : 10\n		\"Wis\" : 10\n	}\n	chardata.equip_benes = {\n		\"skill:Acrobatics\" : 10\n		\"save:pois\" : 11\n		\"ability:Int\" : 1\n		\"dr:Ref\" : 3\n		\"skill:Perception\" : -4\n		\"other:ac\" : -3\n	}\n	test.equal chardata.calc_ability_score(\"Str\"), 10, \"Strength should be unmodified for Dwarf\"\n	test.equal chardata.calc_ability_score(\"Int\"), 11, \"Intelligence should be +1 for equipment\"\n	test.equal chardata.calc_ability_score(\"Con\"), 12, \"Constitution should be +2 for Dwarf\"\n	test.equal chardata.calc_ability_score(\"Cha\"), -2, \"Charisma should be -2 for Dwarf\"\n	test.done()\n\nexports[\"calc_ranks\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Rogue\":\n			\"level\": 7\n	}\n	chardata.skills = TAFFY([\n		skill_name: \"Disguise\"\n		ranks: 6\n	,\n		skill_name: \"Knowledge\"\n		subtypes:\n			\"Arcana\" : 4\n			\"Dungeoneering\" : 20\n			\"Engineering\" : 6\n	])\n	disguise = skills(name: \"Disguise\").first()\n	# has subtype\n	knowledge = skills(name: \"Knowledge\").first()\n	test.equal (chardata.calc_ranks disguise, null), 6, \"Disguise is a Rogue class skill\"\n	test.equal (chardata.calc_ranks knowledge, \"Arcana\"), 2, \"Knowledge (Arcana) is a cross-class skill for Fighter or Rogue\"\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 1\n		\"Rogue\":\n			\"level\": 0\n	}\n	test.equal (chardata.calc_ranks knowledge, \"Dungeoneering\"), 6, \"Knowledge (Dungeoneering) is class skill for Fighter or Rogue, max ranks 6 for 3rd level\"\n\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 1\n		\"Wizard\":\n			\"level\": 0\n	}\n	test.equal (chardata.calc_ranks disguise, null), 3, \"Disguise is a cross-class skill for Fighter or Wizard\"\n	\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 1\n		\"Wizard\":\n			\"level\": 0\n	}\n	test.equal (chardata.calc_ranks knowledge, \"Engineering\"), 6, \"Knowledge (Engineering) is a Fighter or Wizard class skill\"\n\n	test.done()\n\nexports[\"calc_total_base_feats_count\"] = (test) ->\n	chardata = new Character\n	chardata.race_name = \"Not Human\"\n	chardata.classes = { \"Ranger\" : { \"level\" : 0 }}\n	test.equal chardata.calc_total_base_feats_count(), 1, \"Non human should have 1 base feat at 1st level\"\n	chardata.race_name = \"Human\"\n	test.equal chardata.calc_total_base_feats_count(), 2, \"Human should have 2 base feat at 1st level\"\n	chardata.classes = { \"Ranger\" : { \"level\" : 5 }}\n	test.equal chardata.calc_total_base_feats_count(), 4, \"Human should have 4 base feats at 6th level\"\n	chardata.race_name = \"Not Human\"\n	test.equal chardata.calc_total_base_feats_count(), 3, \"Non human should have 3 base feats at 6th level\"\n	chardata.classes = { \"Ranger\":	{ level: 16 }}\n	test.equal chardata.calc_total_base_feats_count(), 6, \"Non human should have 6 base feats at 17th level\"\n	chardata.race_name = \"Human\"\n	test.equal chardata.calc_total_base_feats_count(), 7, \"Human should have 7 base feats at 17th level\"\n			\n	test.done()\n\nexports[\"calc_total_class_feats_count\"] = (test) ->\n	chardata = new Character\n	chardata.classes = { \"Barbarian\": { level: 0 }}\n	test.equal chardata.calc_total_class_feats_count(), 0, \"Barbarian should have no class feats at first level\"\n	chardata.classes = { \"Barbarian\": { level: 18 }}\n	test.equal chardata.calc_total_class_feats_count(), 3, \"Barbarian should have 3 class feats at nineteenth level\"\n	chardata.classes = { \"Barbarian\": { level: 18 }, \"Sorcerer\": { level: 3 } }\n	test.equal chardata.calc_total_class_feats_count(), 4, \"Multiclass should have 3 class feats at nineteenth level\"\n	\n	test.done()\n \nexports[\"is_class_skill\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Rogue\":\n			\"level\": 7\n	}	\n	disguise = skills(name: \"Disguise\").first()\n	# has subtype\n	knowledge = skills(name: \"Knowledge\").first()\n	test.ok (chardata.is_class_skill disguise, null), \"Rogue should have Disguise as a class skill\"\n	test.ok not(chardata.is_class_skill knowledge, \"Arcana\"), \"Rogue or Fighter should _not_ have Knowledge (Arcana) as a class skill\"\n\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Wizard\":\n			\"level\": 7\n	}	\n	test.ok not(chardata.is_class_skill disguise, null), \"Fighter or Wizard should _not_ have Disguise as a class skill\"\n	\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 17\n		\"Wizard\":\n			\"level\": 7\n	}\n	test.ok (chardata.is_class_skill knowledge, \"Engineering\"), \"Fighter or Wizard should have Knowledge (Engineering) as a class skill\"\n\n	test.ok (chardata.is_class_skill knowledge, \"Dungeoneering\"), \"Fighter or Wizard should have Knowledge (Dungeoneering) as a class skill\"\n	\n	test.done()\n\nexports[\"get_char_feats\"] = (test) ->\n	chardata = new Character\n	chardata.feats = TAFFY([\n		feat_name: \"Skill Focus\"\n		multi: [\n			\"Knowledge (Dungeoneering)\" \n			\"Disguise\"\n		]	\n	,\n		feat_name: \"Martial Weapon Proficiency\"\n	,\n		feat_name: \"Augment Summoning\"\n	,\n		feat_name: \"Animal Affinity\"\n	])\n\n	char_feats = chardata.get_char_feats()\n	test.ok char_feats(name: \"Augment Summoning\").first(), \"'Augment Summoning' should exist as a feat in the array.\"\n	test.equal char_feats(name: \"Augment Summoning\").first()._id, \"97ff\", \"'Augment Summoning' should exist as a feat in the array.\"\n	test.ok not( char_feats(name: \"monkey\").first() ), \"'monkey' should NOT exist as a feat in the array.\"\n\n	test.done()\n\nexports[\"calc_init\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 4\n		\"Wizard\":\n			\"level\": 7\n	}\n\n	chardata.abilities = { Dex : 10 }\n	test.equal chardata.calc_init(), 0, \"Initiative modifier should be 0 for dexterity 10\"\n	chardata.abilities = { Dex : 21 }\n	test.equal chardata.calc_init(), 5, \"Initiative modifier should be 6 for dexterity 21\"\n	chardata.abilities = { Dex : 10 }\n	chardata.feats = TAFFY([\n		feat_name: \"Improved Initiative\"\n	])\n	test.equal chardata.calc_init(), 4, \"Initiative modifier should be 4 for dexterity 10, Improved Initiative feat\"\n	chardata.abilities = { Dex : 21 }\n	test.equal chardata.calc_init(), 9, \"Initiative modifier should be 10 for dexterity 21\"\n\n	test.done()\n\nexports[\"calc_ac\"] = (test) ->\n	chardata = new Character\n	chardata.classes = {\n		\"Fighter\": \n			\"level\": 4\n		\"Wizard\":\n			\"level\": 7\n	}\n	chardata.feats = TAFFY([\n		feat_name: \"Skill Focus\"\n		multi: [\n			\"Knowledge (Dungeoneering)\" \n			\"Disguise\"\n		]	\n	,\n		feat_name: \"Martial Weapon Proficiency\"\n	])\n	chardata.armors = TAFFY([\n		armor_name: \"Studded leather\"\n		is_worn: true\n	])\n	console.log \"+ is_worn: #{chardata.armors(armor_name: \"Studded Leather\").first().is_worn}\"\n	chardata.abilities = { Dex : 10 }\n	test.equal chardata.calc_ac(), 14, \"Armor class should be 14 for Studded leather, dexterity 10, Dwarf\"\n	chardata.abilities = { Dex : 21 }\n	# test.equal chardata.calc_ac(), 18, \"Armor class should be 8 for Studded Leather and dexterity 21\"\n\n	test.done()\n\n# exports[\"calc_size_mod\"] = (test) ->\n# 	chardata = new Character\n# 	chardata.race_name = \"Dwarf\"\n# 	test.equal chardata.calc_size_mod(), 1, \"Dwarf should have a size mod of +1\"\n# 	chardata.race_name = \"Halfling\"\n# 	test.equal chardata.calc_size_mod(), 1, \"Halfling should have a size mod of +1\"\n# 	chardata.race_name = \"Human\"\n# 	test.equal chardata.calc_size_mod(), 0, \"Human should have a size mod of 0\"\n# 	chardata.race_name = \"Half-Orc\"\n# 	test.equal chardata.calc_size_mod(), 0, \"Half-Orc should have a size mod of 0\"\n\n# 	test.done()\n\ncreate_character = () ->\n	chardata = new Character\n	chardata.skills = TAFFY([\n		skill_name: \"Disguise\"\n		ranks: 12\n	,\n		skill_name: \"Knowledge\"\n		subtypes:\n			\"Dungeoneering\" : 2\n			\"Engineering\" : 4\n	])\n\n	chardata.xp = 35000\n\n	chardata.abilities = {\n		\"Str\" : 10,\n		\"Int\" : 10,\n		\"Dex\" : 10,\n		\"Cha\" : 10,\n		\"Con\" : 10,\n		\"Wis\" : 10\n	}\n\n	# chardata.skills().each (i, j) ->\n		# console.log \"+#{i}, #{j}\"for the \n	# chardata.classes = {\n	# 	\"Fighter\": \n	# 		\"level\": 3\n	# 	\"Wizard\":\n	# 		\"level\": 4\n	# }\n\n	# chardata.feats = TAFFY([\n	# 	feat_name: \"Skill Focus\"\n	# 	multi: [\n	# 		\"Knowledge (Dungeoneering)\" \n	# 		\"Disguise\"\n	# 	]\n	# ])\n\n	chardata.race_name = \"Dwarf\"\n\n	# chardata.equipment = TAFFY([\n	# 	id: \"jh23422k\"\n	# 	name: \"ruby bird\"\n	# 	notes: \"some notes\"\n	# 	benefits: [\n	# 		id: \"skill:Acrobatics\"\n	# 		mod: 10\n	# 	,\n	# 		id: \"save:pois\"\n	# 		mod: 2\n	# 	,\n	# 		id: \"ability:Int\"\n	# 		mod: 1\n	# 	,\n	# 		id: \"dr:Ref\"\n	# 		mod: 3\n	# 	]\n	# ,\n	# 	id: \"asdf333\"\n	# 	name: \"bad ring\"\n	# 	notes: \"some notes\"\n	# 	benefits: [\n	# 		id: \"skill:Perception\"\n	# 		mod: -4\n	# 	,\n	# 		id: \"save:pois\"\n	# 		mod: 9\n	# 	,\n	# 		id: \"other:ac\"\n	# 		mod: -3\n	# 	]\n	# ])\n	\n	# chardata.equip_benes = {\n	# 	\"skill:Acrobatics\" : 10\n	# 	\"save:pois\" : 11\n	# 	\"ability:Int\" : 1\n	# 	\"dr:Ref\" : 3\n	# 	\"skill:Perception\" : -4\n	# 	\"other:ac\" : -3\n	# }\n",
-			"file": "test/character.coffee",
-			"file_size": 10530,
-			"file_write_time": 1324326799000000,
+			"file": "test/classes.coffee",
 			"settings":
 			{
-				"buffer_size": 10528,
+				"buffer_size": 1311,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 3962,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/common.coffee",
+			"settings":
+			{
+				"buffer_size": 2266,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/store.coffee",
+			"settings":
+			{
+				"buffer_size": 2745,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/chambery/Library/Application Support/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.tmLanguage",
+			"settings":
+			{
+				"buffer_size": 18129,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/taffy.js",
+			"settings":
+			{
+				"buffer_size": 75805,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "store.js",
+			"settings":
+			{
+				"buffer_size": 8351,
 				"line_ending": "Unix"
 			}
 		},
@@ -458,25 +643,33 @@
 			"file": "Cakefile",
 			"settings":
 			{
-				"buffer_size": 2055,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "web/resources/feats.js",
-			"settings":
-			{
-				"buffer_size": 151516,
+				"buffer_size": 2277,
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "Packages/User/Jade.sublime-build",
+	"build_system": "Packages/CoffeeScript/CoffeeScript.sublime-build",
 	"command_palette":
 	{
-		"height": 45.0,
+		"height": 67.0,
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: Install Package",
 				"Package Control: Install Package"
@@ -516,13 +709,9 @@
 			[
 				"",
 				"Package Control: Install Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 494.0
 	},
 	"console":
 	{
@@ -539,35 +728,63 @@
 	},
 	"file_history":
 	[
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Installed Packages/SublimeCodeIntel.sublime-package",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
-		"/Users/chambery/Documents/projects/charmgrjs/web/character.js",
-		"/Users/chambery/Documents/projects/charmgrjs/Cakefile",
-		"/Users/chambery/Documents/projects/charmgrjs/src/store.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/feats.coffee",
+		"/Users/chambery/projects/charmgrjs/charmgr.sublime-project",
+		"/Users/chambery/projects/charmgrjs/src/chardata.coffee",
+		"/Users/chambery/projects/charmgrjs/test/character.coffee",
+		"/Users/chambery/projects/charmgrjs/coffee-ize.sh",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.sublime-settings",
+		"/Users/chambery/Documents/projects/charmgrjs/charmgr.css",
 		"/Users/chambery/Documents/projects/charmgrjs/test/test.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/skills.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/edit_equipment.js",
-		"/Users/chambery/Documents/projects/charmgrjs/src/main.coffee",
+		"/Users/chambery/Documents/projects/taffydart/src/Taffy.dart",
+		"/Users/chambery/Documents/projects/taffydart/test/taffy.dart",
+		"/Users/chambery/Documents/projects/charmgrjs/src/window.coffee",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Base File.sublime-settings",
+		"/Users/chambery/Documents/projects/taffydb/taffy.js",
+		"/Users/chambery/Documents/projects/charmgrjs/lib/json2.js",
+		"/Users/chambery/Documents/projects/charmgrjs/lib/taffy.js",
+		"/Users/chambery/Documents/projects/charmgrjs/web/store.js",
+		"/Users/chambery/Downloads/cpulimit-1.1/cpulimit.c",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/armors.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/index.html",
+		"/Users/chambery/Documents/projects/charmgrjs/redirect.html",
+		"/Users/chambery/Documents/projects/charmgrjs/test/zombie.js",
+		"/Users/chambery/Documents/projects/charmgrjs/server.js",
 		"/Users/chambery/Documents/projects/charmgrjs/test/feats.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/classes.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/weapons.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/common.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/Cakefile",
+		"/Users/chambery/Documents/projects/charmgrjs/test/zombie.coffee",
+		"/private/tmp/charmgrjs/server.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/sorcerer_bloodlines.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/test-errors.txt",
+		"/Users/chambery/Documents/projects/charmgrjs/test/weapons.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/web/character.js",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Base File.sublime-settings",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Global.sublime-settings",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/chambery/Documents/projects/charmgrjs/edit_equipment.js",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/races.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/shields.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/web/resources/classes.js",
+		"/Users/chambery/Documents/projects/charmgrjs/web/resources/feats.js",
+		"/Users/chambery/Documents/projects/charmgrjs/.gitignore",
+		"/Users/chambery/Desktop/demo.html",
 		"/Users/chambery/Documents/projects/charmgrjs/web/common.js",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Installed Packages/SublimeCodeIntel.sublime-package",
+		"/Users/chambery/Documents/projects/charmgrjs/src/store.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/resources/skills.coffee",
+		"/Users/chambery/Documents/projects/charmgrjs/src/main.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/test.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/spells-pf.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/web/resources/spells-pf.js",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/specials.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/weapons.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/resources/alignments.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/common.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/edit.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/classes.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/web/resources/feats.js",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/races.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/shields.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/sorcerer_bloodlines.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/views.coffee",
-		"/Users/chambery/Documents/projects/charmgrjs/src/resources/armors.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/test/common.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/web/resources/armors.js",
 		"/Users/chambery/Documents/projects/charmgrjs/coffee/edit_feats.coffee",
@@ -579,7 +796,6 @@
 		"/Users/chambery/Documents/projects/charmgrjs/coffee/resources/schools.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/src/edit.html",
 		"/Users/chambery/.bash_profile",
-		"/Users/chambery/Documents/projects/taffydb/taffy.js",
 		"/Users/chambery/Documents/projects/charmgrjs/src/test/common.coffee",
 		"/Users/chambery/Documents/projects/charmgrjs/test/chardata_calc_skill_mod.coffee",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Comments.tmPreferences",
@@ -587,23 +803,18 @@
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.tmLanguage",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Dart/Dart.tmlanguage",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/toggleview.py",
-		"/Users/chambery/Documents/projects/charmgrjs/server.js",
 		"/Users/chambery/Documents/projects/charmgrjs/src/edit.jade",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/indentation.py",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/SublimeOnSaveBuild/SublimeOnSaveBuild.py",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/goto_line.py",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Jade.sublime-build",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Switch Group.py",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Base File.sublime-settings",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Jade/Jade.tmLanguage",
-		"/Users/chambery/Documents/projects/charmgrjs/lib/taffy.js",
-		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Base File.sublime-settings",
 		"/Users/chambery/Documents/projects/charmgrjs/src/main.jade",
 		"/Users/chambery/Documents/projects/charmgrjs/src/main.html",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/.gitignore",
 		"/Users/chambery/Documents/projects/charmgrjs/lib/map.js",
 		"/Users/chambery/Documents/projects/charmgrjs/lib/set.js",
-		"/Users/chambery/Documents/projects/charmgrjs/web/store.js",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/User/Delete line.sublime-macro",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/IR_Black.tmTheme",
 		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/zenburn.tmTheme",
@@ -621,6 +832,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/chambery/Library/Application Support/Sublime Text 2",
 			"/Users/chambery/Documents/projects/charmgrjs,*.coffee",
 			"/Users/chambery/Documents/projects/charmgrjs",
 			"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default",
@@ -635,6 +847,58 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"calc_current_level",
+			"classes\\.first\\((.*?)\\)",
+			"get_cookie_data",
+			"get_cook",
+			"\\t(.*?):",
+			"create_cookie",
+			"JSON",
+			"level",
+			"count",
+			"classes:",
+			"Two-Weapon Style",
+			"Two-Weapon Style 1",
+			"Weapon Focus",
+			"damage",
+			"scythe",
+			"common",
+			"if mod > -1 Math",
+			"Math.floor\\(1\\.5 \\* common.calc_ability_modifier\\(abilities\\[\"Str\"\\]\\)\\)",
+			"Math.floor(1.5 * common.calc_ability_modifier(abilities[\"Str\"]))",
+			"Math.ceil",
+			"\\[\"two-han",
+			"\\t\\t\"(.*?)\" \\+ (.*?)$",
+			"bow",
+			"dam: \"(.*?)\"",
+			"ability",
+			"spell res",
+			"sr",
+			"usage: \"(.*?)\"",
+			"attack:",
+			"attack_override",
+			"Math",
+			"attack:",
+			"common.calc_ability_modifier\\(abilities\\[\"(.*?)\"\\]\\)",
+			"		abilities\\[\"(.*?)\"\\]",
+			"		abilities\\[\"(.*?\")\\]",
+			"		abilities\\[\"(.*?\"\\]",
+			"tags",
+			"chardata\\.",
+			"chardata.abilities = \\{ Dex : (.*?) \\}",
+			"chardata.abilities = { Dex : (.*?) }",
+			"@ability_modifier",
+			"common.calc_ability_modifier",
+			"common.armo",
+			"common.ability",
+			"calc_",
+			"skill_mod",
+			"calc_",
+			"this\\.(.*?) = ",
+			"ac ",
+			"0",
+			"skills",
+			"TM_COMMENT_START",
 			"ctrl+k",
 			"ctrl+f",
 			"console.log \"",
@@ -710,20 +974,38 @@
 			"(^S)",
 			"focus",
 			"ctrl+f\"",
-			"find",
-			"save",
-			"xml",
-			"+s\"",
-			"+k",
-			"delete_",
-			"ctrl+f"
+			"find"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"classes({\\1}).first()",
+			"classes(\\1).first()",
+			"\\t\"\\1\":",
+			"save_local",
+			"Two-Weapon Style",
+			"if mod > -1 then Math",
+			"mod = common.calc_ability_modifier(abilities[\"Str\"])\\n\\t\\tif mod > -1 Math.floor(1.5 * mod) else mod",
+			"Math.floor",
+			"\\t\\t\"\\1\" + pos(\\2)",
+			"\\t\\t\"\\t\" + pos(\\2)",
+			"dam: ->\\n\\t\\t\"\\1\" + common.calc_ability_modifier(abilities[\"Str\"])",
+			"dam: ->\\n\\t\"\\1\" + common.calc_ability_modifier(abilities[\"Str\"])",
+			"usage: [\"\\1\"]",
+			"weapon_bonus",
+			"Math.ceil(abilities[\"\\1\"] - 11) / 2",
+			"Math.ceil(abilities[\"\\1\"] - 11) / 2)",
+			"		common.calc_ability_modifier(abilities[\"\\1\"])",
+			"@",
+			"chardata.abilities[\"Dex\"] = \\1",
+			"this.ability_modifier",
+			"common.calc_armo",
+			"common.calc_ability",
+			"",
+			"\\t\\1 : ",
 			"console.log \"+",
 			"equip_type",
 			"@",
@@ -773,23 +1055,103 @@
 			[
 				{
 					"buffer": 0,
-					"file": "test/common.coffee",
+					"file": "src/common.coffee",
 					"settings":
 					{
-						"buffer_size": 1645,
+						"buffer_size": 28018,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1519,
-								1519
+								6413,
+								6413
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2070.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/store.coffee",
+					"settings":
+					{
+						"buffer_size": 8272,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5107,
+								5107
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2035.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/test.coffee",
+					"settings":
+					{
+						"buffer_size": 121,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								116,
+								116
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/main.coffee",
+					"settings":
+					{
+						"buffer_size": 29374,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								684,
+								684
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -799,65 +1161,38 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 4,
 					"file": "src/character.coffee",
 					"settings":
 					{
-						"buffer_size": 9223,
+						"buffer_size": 17698,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6361,
-								6361
+								17515,
+								17533
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 487.0,
+						"translation.y": 7542.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/common.coffee",
+					"buffer": 5,
+					"file": "/Users/chambery/Documents/projects/taffydart/src/weapons.dart",
 					"settings":
 					{
-						"buffer_size": 33507,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7564,
-								7564
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 334.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "web/common.js",
-					"settings":
-					{
-						"buffer_size": 39329,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -870,30 +1205,82 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Dart/Dart.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 1.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/resources/armors.coffee",
+					"buffer": 6,
+					"file": "src/views.coffee",
 					"settings":
 					{
-						"buffer_size": 3149,
+						"buffer_size": 374,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								521,
-								538
+								374,
+								374
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "test/views.coffee",
+					"settings":
+					{
+						"buffer_size": 662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								646,
+								646
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "test/classes.coffee",
+					"settings":
+					{
+						"buffer_size": 1311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								476,
+								476
 							]
 						],
 						"settings":
@@ -914,51 +1301,51 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
-					"file": "test/character.coffee",
+					"buffer": 9,
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 10528,
+						"buffer_size": 3962,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								937,
-								937
+								3930,
+								3930
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"is_xml": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 191.0,
+						"translation.y": 458.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "Cakefile",
+					"buffer": 10,
+					"file": "test/common.coffee",
 					"settings":
 					{
-						"buffer_size": 2055,
+						"buffer_size": 2266,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								320,
-								320
+								791,
+								791
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage",
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -968,11 +1355,107 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "web/resources/feats.js",
+					"buffer": 11,
+					"file": "test/store.coffee",
 					"settings":
 					{
-						"buffer_size": 151516,
+						"buffer_size": 2745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								791,
+								791
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/Users/chambery/Library/Application Support/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.tmLanguage",
+					"settings":
+					{
+						"buffer_size": 18129,
+						"regions":
+						{
+							"TagLint":
+							{
+								"flags": 52,
+								"icon": "dot",
+								"regions":
+								[
+									[
+										142,
+										163
+									]
+								],
+								"scope": "variable.parameter"
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_xml": true,
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5000.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "lib/taffy.js",
+					"settings":
+					{
+						"buffer_size": 75805,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1228,
+								1228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "store.js",
+					"settings":
+					{
+						"buffer_size": 8351,
 						"regions":
 						{
 						},
@@ -986,8 +1469,34 @@
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3591.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "Cakefile",
+					"settings":
+					{
+						"buffer_size": 2277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1054,
+								1054
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1026,7 +1535,7 @@
 		"cols":
 		[
 			0.0,
-			0.425669642857,
+			0.473386531099,
 			1.0
 		],
 		"rows":
@@ -1040,7 +1549,7 @@
 	{
 		"height": 62.0
 	},
-	"save_all_on_build": true,
+	"save_all_on_build": false,
 	"select_file":
 	{
 		"height": 0.0,
@@ -1060,7 +1569,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 122.0,
 	"status_bar_visible": true
 }

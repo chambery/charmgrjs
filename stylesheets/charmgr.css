@@ -103,7 +103,7 @@ p.sub {
 	text-indent: 10px;
 	margin-top: 3px;
 	margin-bottom: 3px;
-}                                      
+}
 
 span.fake_link, label.fake_link, tr.fake_link, a.fake_link,a.view {
 	cursor: pointer;
@@ -196,16 +196,16 @@ a.btn{
 	text-decoration:none;
 	cursor: default;
 }
- 
+
 a.btn:hover {
 	background-color: #AAAAAA;
 	filter:alpha(opacity:80);
 }
- 
+
 a.btn span
 {
 	padding:3px 8px 4px 8px;
-	
+
 	text-align:center;
 	position:relative;
 	left:1px;top:1px;
@@ -213,7 +213,7 @@ a.btn span
 	text-decoration:none;
 	font:small/1 Verdana;
 	color:#222;
-	
+
 }
 
 img.dtl {
@@ -235,7 +235,7 @@ legend.fake_link:hover {
 	cursor: pointer;
 }
 
-/* 
+/*
 	character sheet styles
 */
 .entry_box {
@@ -285,19 +285,20 @@ table.pftable {
 
 th.pftable {
 	border-bottom: 2px solid tan;
-	padding-right: 4px; 
+	padding-top: 10px;
+	padding-right: 4px;
 	padding-left: 4px;
 }
 
 td.pftable {
 	border-bottom: 1px solid wheat;
-	padding-right: 4px; 
+	padding-right: 4px;
 	padding-left: 4px;
 }
 
 tr:last-child td.pftable {
 	border-bottom: 2px solid tan;
-	padding-right: 4px; 
+	padding-right: 4px;
 	padding-left: 4px;
 }
 
@@ -306,6 +307,6 @@ td.number {
 }
 
 td.seamless {
-	padding-left: 3px; 
+	padding-left: 3px;
 	padding-right: 3px;
 }

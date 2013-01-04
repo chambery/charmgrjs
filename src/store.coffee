@@ -1,6 +1,10 @@
+# root = exports ? exports : window
+
 if typeof(exports) == "object"
 	TAFFY = require("taffydb")
+	JSON = require("../lib/json2").json
 	$ = require("jquery")
+	common = require("./common")
 	classes = require("./resources/classes").classes
 	armors = require("./resources/armors").armors
 	shields = require("./resources/shields").shields
@@ -12,53 +16,57 @@ if typeof(exports) == "object"
 	alignments = require("./resources/alignments").alignments
 	goodness = require("./resources/alignments").goodness
 	weapons = require("./resources/weapons").weapons
+	jsdom = require("jsdom")
+	window = require "../web/window"
 
 
-this.import_character = ->
-	while not chardata.options or not chardata.options.owner
-		chardata.options = {}
-		chardata.options.owner = prompt("Owner string is required to load character data.")
-	data = prompt("Enter character name (owner: " + chardata.options.owner + ") :")
-	if data? and jQuery.trim(data).length > 0
-		try
-			if data.charAt(0) == "{"
-				chardata = parse_character_data(data)
-			else
-				char_name = data
-				$.ajax
-					type: "GET"
-					url: "character/" + chardata.options.owner + "/" + char_name
-					dataType: "json"
-					success: (cdata, status) ->
-						chardata = cdata
-						console.log status
-						console.log cdata
+this.import_character = (options, char_name) ->
+	# no import without owner and name
+	if not options or not options.owner
+		throw "Owner string is required to load character data."
+	if not char_name or char_name.length == 0
+		throw "Character name required to load character data."
+		# options = {}
+		# options.owner = prompt("Owner string is required to load character data.")
+	# data = prompt("Enter character name (owner: " + chardata.options.owner + ") :")
+	data = null
+	try
+		char_name = data
+		$.ajax
+			type: "GET"
+			url: "character/" + chardata.options.owner + "/" + char_name
+			dataType: "json"
+			success: (cdata, status) ->
+				chardata = cdata
+				console.log status
+				console.log cdata
 
-					error: (jqXHR, textStatus, errorThrown) ->
-						alert data + " not found on the server."
-						console.log jqXHR
-						console.log textStatus
-						console.log errorThrown
-						throw "Not found"
+			error: (jqXHR, textStatus, errorThrown) ->
+				alert data + " not found on the server."
+				console.log jqXHR
+				console.log textStatus
+				console.log errorThrown
+				throw "Not found"
 
-					data: {}
-					async: false
+			data: {}
+			async: false
 
-				console.log "parsing taffy data"
-				chardata.skills = parse_taffy_data(chardata.skills)
-				chardata.feats = parse_taffy_data(chardata.feats)
-			save_character()
-			need_new_data = false
-			if chardata.options and chardata.options.ext_data and loaded_static_data_tags.length == chardata.options.ext_data.length
-				for i of loaded_static_data_tags
-					need_new_data = true	if chardata.options.ext_data.indexOf(loaded_static_data_tags[i]) == -1
-			if need_new_data
-				window.location.reload()
-			else
-				switch_content 0, chardata
-		catch e
-			owner = (if (players_companion and players_companion.owner) then players_companion.owner else null)
-			alert "No character data found for " + data + (if owner then " with owner " + owner + "." else ". You must specify an owner in opt->owner to store and retrieve character data from the server.")
+		console.log "parsing taffy data"
+		chardata.skills = parse_taffy_data(chardata.skills)
+		chardata.feats = parse_taffy_data(chardata.feats)
+		save_character()
+		need_new_data = false
+		if chardata.options and chardata.options.ext_data and loaded_static_data_tags.length == chardata.options.ext_data.length
+			for i of loaded_static_data_tags
+				need_new_data = true	if chardata.options.ext_data.indexOf(loaded_static_data_tags[i]) == -1
+		if need_new_data
+			window.location.reload()
+		else
+			switch_content 0, chardata
+	catch e
+		owner = (if (players_companion and players_companion.owner) then players_companion.owner else null)
+		alert "No character data found for " + data + (if owner then " with owner " + owner + "." else ". You must specify an owner in opt->owner to store and retrieve character data from the server.")
+
 this.lod = (char_name) ->
 	if char_name
 		cookie_data = get_cookie_data("ch_" + char_name)
@@ -101,21 +109,36 @@ this.save_remote = (data, name) ->
 			contentType: "application/json; charset=utf-8"
 			dataType: "json"
 
+###
+Sets a cookie with the supplied name and returns cookie string, in the form of:
+	name=data;expires=[supplied or new Date]
+###
 this.save_local = (data, name, expires) ->
-	expires = expires | (new Date(2020, 02, 02)).toUTCString()
-	data = escape(TAFFY.JSON.stringify(data))
-	document.cookie = name + "=" + data + ";expires=" + expires
+	expires = if expires then expires else (new Date(2020, 02, 02)).toUTCString()
+	# console.log data.taffy( name: "taffy" ).first()
 
-this.save_character = ->
+	data = escape(JSON.stringify(data))
+	cookie = name + "=" + data + ";expires=" + expires
+	window.document.cookie = cookie
+
+	cookie
+
+###
+Saves the supplied character data locally and remotely (if possible), and returns the saved character name (eg. for use with last_character).  If the character has no name a default name (which is not unique) is created.
+###
+this.save_character = (chardata) ->
 	name = chardata.name
-	name = create_default_name()	if not name? or name.length == 0
-	players_companion.last_character = name
-	save_local players_companion, "players_companion"
-	save_data = jQuery.extend(true, {}, chardata)
+	name = create_default_name()	if not name or name.length == 0
+	window.players_companion = {} if not window.document.players_companion
+	window.players_companion.last_character = name
+	window.document.cookie = @save_local players_companion, "players_companion"
+
+	save_data = $.extend(true, {}, chardata)
 	save_data.skills = save_data.skills.get()	if save_data.skills?
 	save_data.feats = save_data.feats.get()	if save_data.feats?
 	save_data.type = "character"
 	sav save_data, "ch_" + name, name
+	name
 
 this.get_cookie_data = (cookie_name) ->
 	data = null
@@ -152,7 +175,7 @@ this.load_static_data = ->
 				i++
 
 	# console.log "loading feats..."
-	# feats().each (feat, n) ->
+	feats().each (feat, n) ->
 	# 	if feat.multi
 	# 		feat.multi.db = eval(feat.multi.db)
 	# 		feat.multi.type = eval(feat.multi.type)
@@ -166,10 +189,10 @@ this.load_static_data = ->
 	# 	feat.will = new Function("will", feat.will)	if feat.will
 	# 	feat.ac = new Function("ac", feat.ac)	if feat.ac
 	# 	feat.mobility = new Function("acp", feat.mobility)	if feat.mobility
-	# 	for classname of feat.classes
-	# 		clazz = classes(name: classname).first()
-	# 		clazz.feats[feat.classes[classname]].push feat.name
-	# 	feat
+		for classname of feat.classes
+			clazz = classes(name: classname).first()
+			clazz.feats[feat.classes[classname]].push feat.name
+		feat
 
 	console.log "sorting data..."
 	races.sort "name"
@@ -198,9 +221,13 @@ this.delete_character = ->
 				async: false
 		create_new_character()
 
-this.create_default_name = ->
-	race_name = races.first(name: chardata.race_name).shortname
+###
+Returns a string constructed from the shortnames of supplied race and classes.
+###
+this.create_default_name = (char_race, char_classes) ->
+	race_name = races(name: char_race).first().shortname
 	class_name = ""
-	for classname of chardata.classes
-		class_name += classes.first(name: classname).shortname + "_"
+	for classname of char_classes
+		console.log classname
+		class_name += classes(name: classname).first().shortname + "_"
 	race_name + "_" + class_name

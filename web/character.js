@@ -259,6 +259,7 @@ Character = (function() {
 
   Character.prototype.get_class_feat_names = function() {
     var char_class, class_feats, classname, clazz, level, these_class_feats, _ref, _ref2;
+    console.log("\nget_class_feat_names");
     class_feats = [];
     _ref = this.classes;
     for (classname in _ref) {
@@ -280,44 +281,75 @@ Character = (function() {
   };
 
   /*
-  	Returns an array of the class feats collected from the supplied character classes.
+  	Returns true feat name is found in the list of feats compiled from character classes.
+  */
+
+  Character.prototype.is_class_feat = function(feat_name) {
+    return ~this.get_class_feat_names().indexOf(feat_name);
+  };
+
+  /*
+  	Returns a Taffy db of feat objects for this character's chosen feats. Does not include class-supplied feats.
+  */
+
+  Character.prototype.get_char_feats = function() {
+    var char_feats;
+    console.log("\tget_char_feats - src");
+    char_feats = TAFFY([]);
+    if (this.feats) {
+      this.feats().each(function(feat) {
+        return char_feats.insert($.extend(feats({
+          name: feat.feat_name
+        }).first(), feat));
+      });
+    }
+    return char_feats;
+  };
+
+  /*
+  	Returns an Taffy db of the class feats collected from the supplied character classes. Does not include character feat selections.
   */
 
   Character.prototype.get_class_feats = function() {
     var class_feats, feat, feat_names, i, name;
-    class_feats = [];
+    console.log("\nget_class_feats");
+    class_feats = TAFFY([]);
     feat_names = this.get_class_feat_names();
+    console.log("\t" + feat_names);
     for (i in feat_names) {
       name = feat_names[i];
       feat = feats({
         name: name
       }).first();
-      if (class_feats.indexOf(feat) === -1) {
-        class_feats.push(feats({
-          name: name
-        }).first());
-      }
+      class_feats.insert(feat);
     }
     return class_feats;
   };
 
   /*
-  	Returns an array of the class feats collected from the supplied character classes and character-selected feats.
+  	Returns a Taffy db of the class feats collected from the supplied character classes and character-selected feats.
   */
 
   Character.prototype.get_all_char_feats = function() {
-    var all_char_feats;
+    var all_char_feats, char_feats;
+    console.log("\nget_all_char_feats");
     all_char_feats = this.get_class_feats();
-    if (typeof this.feats === "function") {
-      this.feats().each(function(char_feat, i) {
-        var feat;
-        feat = feats({
-          name: char_feat.feat_name
+    console.log("\tall count: " + (all_char_feats().count()));
+    char_feats = this.get_char_feats();
+    console.log("\tchar feats count: " + (char_feats().count()));
+    if (typeof all_char_feats === "function") {
+      all_char_feats().each(function(feat) {
+        var char_feat;
+        char_feat = char_feats({
+          name: feat.name
         }).first();
-        if (all_char_feats.indexOf(feat) === -1) return all_char_feats.push(feat);
+        if (!char_feat) return char_feats.insert(feat);
       });
     }
-    return all_char_feats;
+    all_char_feats().each(function(feat) {
+      return console.log("\t" + feat.name);
+    });
+    return char_feats;
   };
 
   /*
@@ -345,25 +377,6 @@ Character = (function() {
       return init;
     });
     return this.ability_modifier("Dex") + init;
-  };
-
-  /*
-  	Returns a TAFFY db of feat objects for this character's chosen feats.
-  */
-
-  Character.prototype.get_char_feats = function() {
-    var char_feats;
-    console.log("\tget_char_feats - src");
-    char_feats = TAFFY([]);
-    if (this.feats) {
-      this.feats().each(function(feat) {
-        return char_feats.insert(feats({
-          name: feat.feat_name
-        }).first());
-      });
-    }
-    char_feats.insert(this.get_class_feats());
-    return char_feats;
   };
 
   Character.prototype.dr = function(dr) {
@@ -589,13 +602,13 @@ Character = (function() {
       acp: 0
     };
     attacks.acp = this.armor_acp() + this.shield_acp();
-    this.get_char_feats()({
+    this.get_all_char_feats()({
       attack: {
         isFunction: true
       }
     }).each(function(feat) {
       console.log("\t" + feat.name);
-      attacks = feat.attack(attacks, weapon);
+      attacks = feat.attack(attacks, weapon, feat);
       return attacks;
     });
     attacks.weapon = weapon != null ? weapon.att(this.abilities) : void 0;
@@ -665,6 +678,15 @@ Character = (function() {
     return save;
   };
 
+  /*
+  	Returns calculated damage for the supplied character weapon, considering all factors:
+  		weapon
+  		ability
+  		race
+  		feats
+  		equipment
+  */
+
   Character.prototype.damage = function(char_weapon) {
     var dam_components, damage, damages, die, dmg, i, mod, weapon, weapon_dam, weapon_damage, weapon_mod, _ref;
     console.log("\ndamage");
@@ -690,7 +712,7 @@ Character = (function() {
         isFunction: true
       }
     }).each(function(feat) {
-      damages = feat.damage(damages, weapon);
+      damages = feat.damage(damages, weapon, feat);
       return damages;
     });
     console.log("\tability mod: " + (weapon.ability(this.abilities)));
@@ -704,6 +726,21 @@ Character = (function() {
       damage += (parseInt(i) + 1 < damages.length ? "/" : "");
     }
     return damage;
+  };
+
+  /*
+  	Returns the current level calculated from character class levels.
+  */
+
+  Character.prototype.calc_current_level = function() {
+    var classname, clazz, curr_level, _ref;
+    curr_level = 0;
+    _ref = this.classes;
+    for (classname in _ref) {
+      clazz = _ref[classname];
+      curr_level += clazz.level + 1;
+    }
+    return curr_level;
   };
 
   return Character;

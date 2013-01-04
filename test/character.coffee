@@ -225,465 +225,556 @@ console.log "+ store.load_static_data: #{end_load_static - end_requires}"
 
 # 	test.done()
 
-# exports["get_char_feats"] = (test) ->
-# 	chardata = new Character
-# 	chardata.feats = TAFFY([
-# 		feat_name: "Skill Focus"
-# 		multi: [
-# 			"Knowledge (Dungeoneering)"
-# 			"Disguise"
-# 		]
-# 	,
-# 		feat_name: "Martial Weapon Proficiency"
-# 	,
-# 		feat_name: "Augment Summoning"
-# 	,
-# 		feat_name: "Animal Affinity"
-# 	])
+exports["get_char_feats"] = (test) ->
+	chardata = new Character
+	chardata.classes =
+		Fighter:
+			level: 4
+		Wizard:
+			level: 7
 
-# 	char_feats = chardata.get_char_feats()
-# 	test.ok char_feats(name: "Augment Summoning").first(), "'Augment Summoning' should exist as a feat in the array."
-# 	test.equal char_feats(name: "Augment Summoning").first()._id, "97ff", "'Augment Summoning' should exist as a feat in the array."
-# 	test.ok not( char_feats(name: "monkey").first() ), "'monkey' should NOT exist as a feat in the array."
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)"
+			"Disguise"
+		]
+	,
+		feat_name: "Augment Summoning"
+	,
+		feat_name: "Animal Affinity"
+	])
 
-# 	test.done()
+	char_feats = chardata.get_char_feats()
+	test.ok char_feats(name: "Augment Summoning").first(), "'Augment Summoning' should exist as a feat in the array."
+	test.equal char_feats(name: "Augment Summoning").first()._id, "97ff", "'Augment Summoning' should exist as a feat in the array."
+	test.ok not( char_feats(name: "monkey").first() ), "'monkey' should NOT exist as a feat in the array."
+	test.equal char_feats(name: "Skill Focus").first().multi.length, 2, "Skill Focus should include the character multi selections (2)"
+	console.log "+ #{char_feats(name: "Martial Weapon Proficiency").first()}"
+	test.ok not( char_feats(name: "Martial Weapon Proficiency").first()), "Fighter class skill \"Martial Weapon Proficiency\" should not appear in get_char_feats()"
+	test.done()
 
-# exports["init"] = (test) ->
-# 	chardata = new Character
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
 
-# 	chardata.abilities["Dex"] = 10
-# 	test.equal chardata.init(), 0, "Initiative modifier should be 0 for dexterity 10"
-# 	chardata.abilities["Dex"] = 21
-# 	test.equal chardata.init(), 5, "Initiative modifier should be 6 for dexterity 21"
-# 	chardata.abilities["Dex"] = 10
-# 	chardata.feats = TAFFY([
-# 		feat_name: "Improved Initiative"
-# 	])
-# 	test.equal chardata.init(), 4, "Initiative modifier should be 4 for dexterity 10, Improved Initiative feat"
-# 	chardata.abilities["Dex"] = 21
-# 	test.equal chardata.init(), 9, "Initiative modifier should be 10 for dexterity 21"
+exports["get_class_feats"] = (test) ->
+	chardata = new Character
+	chardata.classes =
+		Fighter:
+			level: 4
+		Wizard:
+			level: 7
 
-# 	test.done()
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)"
+			"Disguise"
+		]
+	,
+		feat_name: "Augment Summoning"
+	,
+		feat_name: "Animal Affinity"
+	])
 
-# exports["ac"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.feats = TAFFY([
-# 		feat_name: "Skill Focus"
-# 		multi: [
-# 			"Knowledge (Dungeoneering)"
-# 			"Disguise"
-# 		]
-# 	,
-# 		feat_name: "Martial Weapon Proficiency"
-# 	])
-# 	chardata.armors = TAFFY([
-# 		armor_name: "Studded leather"
-# 		is_worn: true
-# 	])
-# 	console.log "+ is_worn: #{chardata.armors(armor_name: "Studded Leather").first().is_worn}"
-# 	chardata.abilities["Dex"] = 10
-# 	test.equal chardata.ac(), 15, "Armor class should be 15 for 10 + Studded leather (3), dexterity 12 [10 + Halfling (2)](1), Halfling (1)"
-# 	chardata.abilities["Dex"] = 21
-# 	test.equal chardata.ac(), 19, "Armor class should be 19 for 10 + Studded Leather (3), dexterity 21 (5), Halfling (1)"
+	char_feats = chardata.get_class_feats()
+	test.ok not( char_feats(name: "Augment Summoning").first() ), "'Augment Summoning' should exist as a feat in the array."
+	test.ok not( char_feats(name: "monkey").first() ), "'monkey' should NOT exist as a feat in the array."
+	test.ok char_feats(name: "Martial Weapon Proficiency").first(), "Fighter class skill \"Martial Weapon Proficiency\" should appear in get_all_char_feats()"
+	test.done()
 
-# 	chardata.shields = TAFFY([
-# 		shield_name: "Shield, small, wooden"
-# 		is_worn: true
-# 	])
-# 	test.equal chardata.ac(), 20, "Armor class should be 20 for 10 + Studded Leather (3), Shield, small, wooden (1), dexterity 23 [21 + Halfling (2)](6), Halfling (1) -- max dex (5)"
+exports["get_all_char_feats"] = (test) ->
+	chardata = new Character
+	chardata.classes =
+		Fighter:
+			level: 4
+		Wizard:
+			level: 7
 
-# 	chardata.armors(armor_name: "Studded leather").update(armor_name: "Chainmail")
-# 	test.equal chardata.ac(), 19, "Armor class should be 19 for 10 + Chainmail (5), Shield, small, wooden (1), dexterity 23 [21 + Halfling (2)](6), Halfling (1) -- max dex (2)"
-# 	chardata.armors(armor_name: "Chainmail").update(
-# 		armor_name: "Splint mail"
-# 	)
-# 	test.equal chardata.ac(), 18, "Armor class should be 18 for 10 + Splint mail (6), Shield, small, wooden (1), dexterity 23 [21 + Halfling (2)](6), Halfling (1) -- max dex (0)"
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)"
+			"Disguise"
+		]
+	,
+		feat_name: "Augment Summoning"
+	,
+		feat_name: "Animal Affinity"
+	])
 
-# 	chardata.race_name = "Human"
-# 	chardata.armors(armor_name: "Splint mail").update(is_worn: false)
-# 	test.equal chardata.ac(), 16, "Armor class should be 16 for 10 + Shield, small, wooden (1), dexterity 21 (5), Human (0)"
+	char_feats = chardata.get_all_char_feats()
+	test.ok char_feats(name: "Augment Summoning").first(), "'Augment Summoning' should exist as a feat in the array."
+	test.equal char_feats(name: "Augment Summoning").first()._id, "97ff", "'Augment Summoning' should exist as a feat in the array."
+	test.ok not( char_feats(name: "monkey").first() ), "'monkey' should NOT exist as a feat in the array."
+	test.equal char_feats(name: "Skill Focus").first().multi.length, 2, "Skill Focus should include the character multi selections (2)"
+	test.ok char_feats(name: "Martial Weapon Proficiency").first(), "Fighter class skill \"Martial Weapon Proficiency\" should appear in get_all_char_feats()"
+	test.done()
 
-# 	test.done()
+exports["init"] = (test) ->
+	chardata = new Character
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
 
-# exports["size_mod"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Dwarf"
-# 	test.equal chardata.size_mod(), 0, "Dwarf should have a size mod of 0"
-# 	chardata.race_name = "Halfling"
-# 	test.equal chardata.size_mod(), 1, "Halfling should have a size mod of +1"
-# 	chardata.race_name = "Human"
-# 	test.equal chardata.size_mod(), 0, "Human should have a size mod of 0"
-# 	chardata.race_name = "Half-Orc"
-# 	test.equal chardata.size_mod(), 0, "Half-Orc should have a size mod of 0"
+	chardata.abilities["Dex"] = 10
+	test.equal chardata.init(), 0, "Initiative modifier should be 0 for dexterity 10"
+	chardata.abilities["Dex"] = 21
+	test.equal chardata.init(), 5, "Initiative modifier should be 6 for dexterity 21"
+	chardata.abilities["Dex"] = 10
+	chardata.feats = TAFFY([
+		feat_name: "Improved Initiative"
+	])
+	test.equal chardata.init(), 4, "Initiative modifier should be 4 for dexterity 10, Improved Initiative feat"
+	chardata.abilities["Dex"] = 21
+	test.equal chardata.init(), 9, "Initiative modifier should be 10 for dexterity 21"
 
-# 	test.done()
+	test.done()
 
-# exports["touch_ac"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Dex: 10 }
-# 	test.equal chardata.touch_ac(), 12, "Touch ac should be 12 for 10 + dexterity 12 [10 + Halfling (2)](1) + Halfling (1) -- no feats yet"
-# 	chardata.abilities = { Dex: 21 }
-# 	chardata.race_name = "Human"
-# 	test.equal chardata.touch_ac(), 15, "Touch ac should be 15 for 10 + dexterity 21 (5) + Human (0) -- no feats yet"
+exports["ac"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.feats = TAFFY([
+		feat_name: "Skill Focus"
+		multi: [
+			"Knowledge (Dungeoneering)"
+			"Disguise"
+		]
+	,
+		feat_name: "Martial Weapon Proficiency"
+	])
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	console.log "+ is_worn: #{chardata.armors(armor_name: "Studded Leather").first().is_worn}"
+	chardata.abilities["Dex"] = 10
+	test.equal chardata.ac(), 15, "Armor class should be 15 for 10 + Studded leather (3), dexterity 12 [10 + Halfling (2)](1), Halfling (1)"
+	chardata.abilities["Dex"] = 21
+	test.equal chardata.ac(), 19, "Armor class should be 19 for 10 + Studded Leather (3), dexterity 21 (5), Halfling (1)"
 
-# 	test.done()
+	chardata.shields = TAFFY([
+		shield_name: "Shield, small, wooden"
+		is_worn: true
+	])
+	test.equal chardata.ac(), 20, "Armor class should be 20 for 10 + Studded Leather (3), Shield, small, wooden (1), dexterity 23 [21 + Halfling (2)](6), Halfling (1) -- max dex (5)"
 
-# exports["flat_footed_ac"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Dex: 10 }
-# 	chardata.armors = TAFFY([
-# 		armor_name: "Studded leather"
-# 		is_worn: true
-# 	])
-# 	test.equal chardata.flat_footed_ac(), 13, "Flat-footed ac should be 13 for 10 + Studded leather (3)"
-# 	chardata.armors(armor_name: "Studded leather").update(armor_name: "Splint mail")
-# 	test.equal chardata.flat_footed_ac(), 16, "Flat-footed ac should be 16 for 10 + Splint mail (6)"
+	chardata.armors(armor_name: "Studded leather").update(armor_name: "Chainmail")
+	test.equal chardata.ac(), 19, "Armor class should be 19 for 10 + Chainmail (5), Shield, small, wooden (1), dexterity 23 [21 + Halfling (2)](6), Halfling (1) -- max dex (2)"
+	chardata.armors(armor_name: "Chainmail").update(
+		armor_name: "Splint mail"
+	)
+	test.equal chardata.ac(), 18, "Armor class should be 18 for 10 + Splint mail (6), Shield, small, wooden (1), dexterity 23 [21 + Halfling (2)](6), Halfling (1) -- max dex (0)"
 
-# 	test.done()
+	chardata.race_name = "Human"
+	chardata.armors(armor_name: "Splint mail").update(is_worn: false)
+	test.equal chardata.ac(), 16, "Armor class should be 16 for 10 + Shield, small, wooden (1), dexterity 21 (5), Human (0)"
 
-# exports["armor_acp"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Dex: 10 }
-# 	chardata.armors = TAFFY([
-# 		armor_name: "Studded leather"
-# 		is_worn: true
-# 	])
-# 	test.equal chardata.armor_acp(), -1, "Armor class penalty should be -1 for Studded leather (-1)"
-# 	chardata.armors(armor_name: "Studded leather").update(armor_name: "Splint mail")
-# 	chardata.armors.insert( {
-# 		armor_name: "Half-plate"
-# 		is_worn: true
-# 	} )
-# 	test.equal chardata.armor_acp(), -14, "Armor class penalty should be -8 for Splint mail (-1) + Half-plate (-7)"
-# 	chardata.armors(armor_name: "Splint mail").update(is_worn: false)
-# 	test.equal chardata.armor_acp(), -7, "Armor class penalty should be -7 for Half-plate (-7)"
+	test.done()
 
-# 	test.done()
+exports["size_mod"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Dwarf"
+	test.equal chardata.size_mod(), 0, "Dwarf should have a size mod of 0"
+	chardata.race_name = "Halfling"
+	test.equal chardata.size_mod(), 1, "Halfling should have a size mod of +1"
+	chardata.race_name = "Human"
+	test.equal chardata.size_mod(), 0, "Human should have a size mod of 0"
+	chardata.race_name = "Half-Orc"
+	test.equal chardata.size_mod(), 0, "Half-Orc should have a size mod of 0"
 
-# exports["shield_acp"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Dex: 10 }
-# 	chardata.armors = TAFFY([
-# 		armor_name: "Studded leather"
-# 		is_worn: true
-# 	])
-# 	chardata.shields = TAFFY([
-# 		shield_name: "Shield, large, wooden"
-# 		is_worn: true
-# 	])
-# 	test.equal chardata.shield_acp(), -2, "Armor class penalty should be -1 for Shield, large, wooden (-2)"
-# 	chardata.shields(shield_name: "Shield, large, wooden").update(shield_name: "Shield, tower")
-# 	chardata.shields.insert( {
-# 		shield_name: "Buckler"
-# 		is_worn: true
-# 	} )
-# 	test.equal chardata.shield_acp(), -11, "Armor class penalty should be -11 for Shield, tower (-10) + Buckler (-1)"
-# 	chardata.shields(shield_name: "Buckler").update(is_worn: false)
-# 	test.equal chardata.shield_acp(), -10, "Armor class penalty should be -10 for Shield, tower (-10)"
+	test.done()
 
-# 	test.done()
+exports["touch_ac"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
+	test.equal chardata.touch_ac(), 12, "Touch ac should be 12 for 10 + dexterity 12 [10 + Halfling (2)](1) + Halfling (1) -- no feats yet"
+	chardata.abilities = { Dex: 21 }
+	chardata.race_name = "Human"
+	test.equal chardata.touch_ac(), 15, "Touch ac should be 15 for 10 + dexterity 21 (5) + Human (0) -- no feats yet"
 
-# exports["save"] = (test) ->
-# 	chardata = new Character
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	test.equal chardata.save("ref"), 3, "Ref save for Fighter level 5 (1) and Wizard level 8 (2) should be 3"
-# 	chardata.classes = {
-# 		"Rogue":
-# 			"level": 6
-# 	}
-# 	test.equal chardata.save("fort"), 2, "Fort save for Rogue level 7 (2) should be 2"
-# 	test.done()
+	test.done()
 
-# exports["ref"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Dex: 10 }
+exports["flat_footed_ac"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	test.equal chardata.flat_footed_ac(), 13, "Flat-footed ac should be 13 for 10 + Studded leather (3)"
+	chardata.armors(armor_name: "Studded leather").update(armor_name: "Splint mail")
+	test.equal chardata.flat_footed_ac(), 16, "Flat-footed ac should be 16 for 10 + Splint mail (6)"
 
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
-# 	test.equal chardata.ref(), 7, "Reflex save for dexterity 12 [10 + Halfling (2)](1) + Fighter level 5 (1) + Wizard level 8 (2) + equipment (3)"
-# 	chardata.race_name = "Human"
-# 	chardata.equip_benes["other:Ref"] = undefined
+	test.done()
 
-# 	test.equal chardata.ref(), 3, "Reflex save for dexterity 10 (0) + Human (0) + Fighter level 5 (1) + Wizard level 8 (3)"
+exports["armor_acp"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	test.equal chardata.armor_acp(), -1, "Armor class penalty should be -1 for Studded leather (-1)"
+	chardata.armors(armor_name: "Studded leather").update(armor_name: "Splint mail")
+	chardata.armors.insert( {
+		armor_name: "Half-plate"
+		is_worn: true
+	} )
+	test.equal chardata.armor_acp(), -14, "Armor class penalty should be -8 for Splint mail (-1) + Half-plate (-7)"
+	chardata.armors(armor_name: "Splint mail").update(is_worn: false)
+	test.equal chardata.armor_acp(), -7, "Armor class penalty should be -7 for Half-plate (-7)"
 
-# 	test.done()
+	test.done()
 
-# exports["will"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Halfling"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Wis: 10 }
+exports["shield_acp"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	chardata.shields = TAFFY([
+		shield_name: "Shield, large, wooden"
+		is_worn: true
+	])
+	test.equal chardata.shield_acp(), -2, "Armor class penalty should be -1 for Shield, large, wooden (-2)"
+	chardata.shields(shield_name: "Shield, large, wooden").update(shield_name: "Shield, tower")
+	chardata.shields.insert( {
+		shield_name: "Buckler"
+		is_worn: true
+	} )
+	test.equal chardata.shield_acp(), -11, "Armor class penalty should be -11 for Shield, tower (-10) + Buckler (-1)"
+	chardata.shields(shield_name: "Buckler").update(is_worn: false)
+	test.equal chardata.shield_acp(), -10, "Armor class penalty should be -10 for Shield, tower (-10)"
 
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
-# 	test.equal chardata.will(), 7, "Will save for Wisdom 10 (0) + Fighter level 5 (1) + Wizard level 8 (6) "
-# 	chardata.race_name = "Human"
-# 	chardata.equip_benes["other:Will"] = 3
+	test.done()
 
-# 	test.equal chardata.will(), 10, "Will save for Wisdom 10 (0) + Fighter level 5 (1) + Wizard level 8 (6) + equipment (3)"
+exports["save"] = (test) ->
+	chardata = new Character
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	test.equal chardata.save("ref"), 3, "Ref save for Fighter level 5 (1) and Wizard level 8 (2) should be 3"
+	chardata.classes = {
+		"Rogue":
+			"level": 6
+	}
+	test.equal chardata.save("fort"), 2, "Fort save for Rogue level 7 (2) should be 2"
+	test.done()
 
-# 	test.done()
+exports["ref"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Dex: 10 }
 
-# exports["fort"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Gnome"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = { Con: 10 }
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.equal chardata.ref(), 7, "Reflex save for dexterity 12 [10 + Halfling (2)](1) + Fighter level 5 (1) + Wizard level 8 (2) + equipment (3)"
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Ref"] = undefined
 
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
-# 	test.equal chardata.fort(), 7, "Fort save for Constitution 12 [10 + Gnome(2)] (1) + Fighter level 5 (4) + Wizard level 8 (2) "
-# 	chardata.race_name = "Human"
-# 	chardata.equip_benes["other:Fort"] = 3
+	test.equal chardata.ref(), 3, "Reflex save for dexterity 10 (0) + Human (0) + Fighter level 5 (1) + Wizard level 8 (3)"
 
-# 	test.equal chardata.fort(), 9, "Fort save for Constitution 10 (0) + Fighter level 5 (4) + Wizard level 8 (2) + equipment (3)"
+	test.done()
 
-# 	test.done()
+exports["will"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Halfling"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Wis: 10 }
 
-# exports["base_attack_bonus"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Gnome"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 5
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = {
-# 		Str: 10
-# 		Dex: 10
-# 		Con: 10
-# 	}
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.equal chardata.will(), 7, "Will save for Wisdom 10 (0) + Fighter level 5 (1) + Wizard level 8 (6) "
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Will"] = 3
 
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
-# 	test.deepEqual chardata.base_attack_bonus(), [10, 1], "Base attack bonus for Fighter level 6 (6/1) + Wizard level 8 (4)"
-# 	chardata.race_name = "Human"
-# 	chardata.equip_benes["other:Fort"] = 3
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 5
-# 	}
-# 	test.deepEqual chardata.base_attack_bonus(), [6, 1], "Fort save for Constitution 10 (0) + Fighter level 5 (4)"
+	test.equal chardata.will(), 10, "Will save for Wisdom 10 (0) + Fighter level 5 (1) + Wizard level 8 (6) + equipment (3)"
 
-# 	test.done()
+	test.done()
 
-# exports["cmb"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Gnome"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = {
-# 		Str: 10
-# 		Dex: 10
-# 		Con: 10
-# 	}
+exports["fort"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = { Con: 10 }
 
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.equal chardata.fort(), 7, "Fort save for Constitution 12 [10 + Gnome(2)] (1) + Fighter level 5 (4) + Wizard level 8 (2) "
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Fort"] = 3
 
-# 	test.equal chardata.cmb(), "+9", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
-# 	chardata.race_name = "Human"
-# 	chardata.classes["Fighter"]["level"] = 7
-# 	test.equal chardata.cmb(), "+12/+3", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+	test.equal chardata.fort(), 9, "Fort save for Constitution 10 (0) + Fighter level 5 (4) + Wizard level 8 (2) + equipment (3)"
 
-# 	test.done()
+	test.done()
 
-# exports["cmd"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Gnome"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = {
-# 		Str: 10
-# 		Dex: 10
-# 		Con: 10
-# 	}
+exports["base_attack_bonus"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 5
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10
+	}
 
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	test.deepEqual chardata.base_attack_bonus(), [10, 1], "Base attack bonus for Fighter level 6 (6/1) + Wizard level 8 (4)"
+	chardata.race_name = "Human"
+	chardata.equip_benes["other:Fort"] = 3
+	chardata.classes = {
+		"Fighter":
+			"level": 5
+	}
+	test.deepEqual chardata.base_attack_bonus(), [6, 1], "Fort save for Constitution 10 (0) + Fighter level 5 (4)"
 
-# 	test.equal chardata.cmd(), "+19", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
-# 	chardata.race_name = "Human"
-# 	chardata.classes["Fighter"]["level"] = 7
-# 	test.equal chardata.cmd(), "+22/+13", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+	test.done()
 
-# 	test.done()
+exports["cmb"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10
+	}
 
-# exports["attack"] = (test) ->
-# 	chardata = new Character
-# 	chardata.race_name = "Gnome"
-# 	chardata.classes = {
-# 		"Fighter":
-# 			"level": 4
-# 		"Wizard":
-# 			"level": 7
-# 	}
-# 	chardata.abilities = {
-# 		Str: 10
-# 		Dex: 18
-# 		Con: 10
-# 	}
-# 	chardata.weapons = TAFFY([
-# 		weapon_name: "Glaive"
-# 	,
-# 		weapon_name: "Longbow, composite"
-# 	,
-# 		weapon_name: "Longbow"
-# 	])
-# 	chardata.equip_benes = {
-# 		"skill:Acrobatics" : 10
-# 		"save:pois" : 11
-# 		"ability:Int" : 1
-# 		"other:Ref" : 3
-# 		"skill:Perception" : -4
-# 		"other:ac" : -3
-# 	}
-# 	glaive = chardata.weapons(weapon_name: "Glaive").first()
-# 	test.deepEqual chardata.attack(glaive), [10], "Attack should be [10] for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
-# 	chardata.race_name = "Human"
-# 	chardata.classes["Fighter"]["level"] = 7
-# 	test.deepEqual chardata.attack(glaive), [12, 3], "Attack should be [12, 3] for Strength 10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
-# 	# compound bow
-# 	composite_bow = chardata.weapons(weapon_name: "Longbow, composite").first()
-# 	test.deepEqual chardata.attack(composite_bow), [16, 7], "Attack should be [10] for Dexterity 18 (4) + Fighter level 8 (8/3) + Wizard level 8 (4)"
-# 	chardata.abilities["Str"] = 21
-# 	chardata.abilities["Dex"] = 15
-# 	test.deepEqual chardata.attack(glaive), [17, 8], "Attack should be [17, 8] for Strength 21 (5) + Fighter level 8 (8/3) + Wizard level 8 (4)"
-# 	composite_bow = chardata.weapons(weapon_name: "Longbow, composite").update( att: 4 ).first()
-# 	test.deepEqual chardata.attack(composite_bow), [21, 12], "Attack should be [21, 12] for Strength 21 (5) + Fighter level 8 (8/3) + Wizard level 8 (4) + weapon bonus (4)"
-# 	chardata.equip_benes["Att"] = 5
-# 	test.deepEqual chardata.attack(composite_bow), [26, 17], "Attack should be [26, 17] for Strength 21 (5) + Fighter level 8 (8/3) + Wizard level 8 (4) + weapon bonus (4) + equipment bonus (5)"
-# 	longbow = chardata.weapons(weapon_name: "Longbow").first()
-# 	test.deepEqual chardata.attack(longbow), [19, 10], "Attack should be [19, 10] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5)"
-# 	# acp
-# 	chardata.armors = TAFFY([
-# 		armor_name: "Studded leather"
-# 		is_worn: true
-# 	])
-# 	test.deepEqual chardata.attack(longbow), [18, 9], "Attack should be [19, 10] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5) - Studded leather (1)"
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
 
-# 	chardata.shields = TAFFY([
-# 		shield_name: "Shield, large, wooden"
-# 		is_worn: true
-# 	])
-# 	test.deepEqual chardata.attack(longbow), [16, 7], "Attack should be [19, 10] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5) - Studded leather (1) - Shield, large, wooden (2)"
-# 	# various feats
-# 	chardata.feats = TAFFY([
-# 		feat_name: "Weapon Finesse"
-# 	])
-# 	chardata.weapons.insert( weapon_name: "Rapier" )
-# 	rapier = chardata.weapons(weapon_name: "Rapier").first()
-# 	chardata.abilities["Str"] = 10
-# 	test.deepEqual chardata.attack(rapier), [16, 7], "Attack should be [16, 7] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5) - Studded leather (1) - Shield, large, wooden (2)"
-# 	test.done()
+	test.equal chardata.cmb(), "+9", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
+	chardata.race_name = "Human"
+	chardata.classes["Fighter"]["level"] = 7
+	test.equal chardata.cmb(), "+12/+3", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+
+	test.done()
+
+exports["cmd"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10
+	}
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+
+	test.equal chardata.cmd(), "+19", "CMB for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
+	chardata.race_name = "Human"
+	chardata.classes["Fighter"]["level"] = 7
+	test.equal chardata.cmd(), "+22/+13", "CMB for Strength  10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+
+	test.done()
+
+exports["attack"] = (test) ->
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 18
+		Con: 10
+	}
+	chardata.weapons = TAFFY([
+		weapon_name: "Glaive"
+	,
+		weapon_name: "Longbow, composite"
+	,
+		weapon_name: "Longbow"
+	])
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:ac" : -3
+	}
+	glaive = chardata.weapons(weapon_name: "Glaive").first()
+	test.deepEqual chardata.attack(glaive), [10], "Attack should be 10 for Strength 8 [10 + Gnome (-2)] (-1) + Gnome (1)"
+	chardata.race_name = "Human"
+	chardata.classes["Fighter"]["level"] = 7
+	test.deepEqual chardata.attack(glaive), [12, 3], "Attack should be [12, 3] for Strength 10 (0) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+	# compound bow
+	composite_bow = chardata.weapons(weapon_name: "Longbow, composite").first()
+	test.deepEqual chardata.attack(composite_bow), [16, 7], "Attack should be [10] for Dexterity 18 (4) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+	chardata.abilities["Str"] = 21
+	chardata.abilities["Dex"] = 15
+	test.deepEqual chardata.attack(glaive), [17, 8], "Attack should be [17, 8] for Strength 21 (5) + Fighter level 8 (8/3) + Wizard level 8 (4)"
+	composite_bow = chardata.weapons(weapon_name: "Longbow, composite").update( att: 4 ).first()
+	test.deepEqual chardata.attack(composite_bow), [21, 12], "Attack should be [21, 12] for Strength 21 (5) + Fighter level 8 (8/3) + Wizard level 8 (4) + weapon bonus (4)"
+	chardata.equip_benes["Att"] = 5
+	test.deepEqual chardata.attack(composite_bow), [26, 17], "Attack should be [26, 17] for Strength 21 (5) + Fighter level 8 (8/3) + Wizard level 8 (4) + weapon bonus (4) + equipment bonus (5)"
+	longbow = chardata.weapons(weapon_name: "Longbow").first()
+	test.deepEqual chardata.attack(longbow), [19, 10], "Attack should be [19, 10] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5)"
+	# acp
+	chardata.armors = TAFFY([
+		armor_name: "Studded leather"
+		is_worn: true
+	])
+	test.deepEqual chardata.attack(longbow), [18, 9], "Attack should be [19, 10] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5) - Studded leather (1)"
+
+	chardata.shields = TAFFY([
+		shield_name: "Shield, large, wooden"
+		is_worn: true
+	])
+	test.deepEqual chardata.attack(longbow), [16, 7], "Attack should be [19, 10] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5) - Studded leather (1) - Shield, large, wooden (2)"
+	# various feats
+	chardata.feats = TAFFY([
+		feat_name: "Weapon Finesse"
+	])
+	chardata.weapons.insert( weapon_name: "Rapier" )
+	rapier = chardata.weapons(weapon_name: "Rapier").first()
+	chardata.abilities["Str"] = 10
+	test.deepEqual chardata.attack(rapier), [16, 7], "Attack should be [16, 7] for Dexterity 15 (3) + Fighter level 8 (8/3) + Wizard level 8 (4) + equipment bonus (5) - Studded leather (1) - Shield, large, wooden (2)"
+	test.done()
+
+exports["spell_resistance"] = (test) ->
+	sorcerer = classes(name: "Sorcerer").first()
+	chardata = new Character
+	chardata.race_name = "Gnome"
+	chardata.classes = {
+		Sorcerer:
+			level: 14
+			bloodline: "Aberrant"
+	}
+	chardata.abilities = {
+		Str: 10
+		Dex: 10
+		Con: 10
+	}
+
+	chardata.equip_benes = {
+		"skill:Acrobatics" : 10
+		"save:pois" : 11
+		"ability:Int" : 1
+		"other:Ref" : 3
+		"skill:Perception" : -4
+		"other:SR" : 3
+	}
+
+	test.equal chardata.spell_resistance(), 28, "Spell resistance for a Sorcerer with Aberrant bloodline, level 15, + equipment (3) should be 28."
+	# no feats to increase spell resistance
+
+	test.done()
+
 
 exports["damage"] = (test) ->
 	chardata = new Character
@@ -743,31 +834,41 @@ exports["damage"] = (test) ->
 
 	test.done()
 
-exports["spell_resistance"] = (test) ->
-	sorcerer = classes(name: "Sorcerer").first()
+exports["calc_current_level"] = (test) ->
 	chardata = new Character
-	chardata.race_name = "Gnome"
+	chardata.classes =
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
+
+	test.equal chardata.calc_current_level(), 13
+	chardata.classes =
+		"Fighter":
+			"level": 4
+	test.equal chardata.calc_current_level(), 5
+	test.done()
+
+exports["is_class_feat"] = (test) ->
+	chardata = new Character
 	chardata.classes = {
-		Sorcerer:
-			level: 14
-			bloodline: "Aberrant"
+		"Fighter":
+			"level": 4
+		"Wizard":
+			"level": 7
 	}
-	chardata.abilities = {
-		Str: 10
-		Dex: 10
-		Con: 10
-	}
+	chardata.feats = TAFFY([
+		feat_name: "Weapon Focus"
+		multi: [
+			"Warhammer"
+		]
+	,
+		feat_name: "Weapon Specialization"
+		multi: [
+			"Warhammer"
+		]
+	])
 
-	chardata.equip_benes = {
-		"skill:Acrobatics" : 10
-		"save:pois" : 11
-		"ability:Int" : 1
-		"other:Ref" : 3
-		"skill:Perception" : -4
-		"other:SR" : 3
-	}
-
-	test.equal chardata.spell_resistance(), 28, "Spell resistance for a Sorcerer with Aberrant bloodline, level 15, + equipment (3) should be 28."
-	# no feats to increase spell resistance
-
+	test.ok chardata.is_class_feat("Martial Weapon Proficiency"), "Martial Weapon Proficiency should be a class feat of Fighter level 5"
+	test.ok not ( chardata.is_class_feat("Weapon Focus") ), "Weapon Focus should not be a class feat of Fighter level 5"
 	test.done()

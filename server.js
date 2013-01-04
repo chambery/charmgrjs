@@ -99,8 +99,12 @@ app.post('/charmgr/log/:owner/:name', function (req, res) {
 	res.send(req.body);
 });
 
+app.use('/charmgr/resources', express.static(__dirname + "/resources"));
 app.use('/charmgr/lib', express.static(__dirname + "/lib"));
+<<<<<<< HEAD
 // app.use('/charmgr', express.static(__dirname + "/charmgr/web"));
+=======
+>>>>>>> coffee-ize, skip the tests
 app.use('/charmgr', express.static(__dirname + "/"));
 app.use(express.errorHandler({
 	dumpExceptions: true,

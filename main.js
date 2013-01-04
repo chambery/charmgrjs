@@ -7,7 +7,11 @@ main.load = function() {
   window.chardata = {
     log: []
   };
+<<<<<<< HEAD
   players_companion = $.parseJSON(unescape(get_cookie_data("players_companion"))) || {};
+=======
+  players_companion = JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
+>>>>>>> coffee-ize, skip the tests
   if (players_companion.last_character) {
     lod(players_companion.last_character);
     for (classname in window.chardata.classes) {

@@ -466,10 +466,6 @@ this.update_options = function(message) {
   return false;
 };
 
-this.is_class_feat = function(feat_name) {
-  return get_class_feat_names().indexOf(feat_name) > -1;
-};
-
 this.get_special_abilities = function() {
   var class_special, class_specials, classname, i, item, level, rogue_special_abilities, special_abilities, supersede;
   special_abilities = [];
@@ -558,15 +554,6 @@ this.create_selector_group = function(item, title, all_options, option_db, cols,
     _results.push(i++);
   }
   return _results;
-};
-
-this.calc_current_level = function() {
-  var classname, curr_level;
-  curr_level = 0;
-  for (classname in char_classes) {
-    curr_level += char_classes[classname].level + 1;
-  }
-  return curr_level;
 };
 
 this.is_empty = function(object) {
