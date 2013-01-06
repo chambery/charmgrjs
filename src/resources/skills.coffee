@@ -1,7 +1,7 @@
 if typeof(exports) == "object"
 	TAFFY = require("../../lib/taffy").taffy
-	
-this.skills = TAFFY([ 
+
+this.skills = new TAFFY([
 	name: "Acrobatics"
 	skill_classes: [ "Barbarian", "Bard", "Monk", "Rogue" ]
 	untrained: true
@@ -10,7 +10,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "a370"
-, 
+,
 	name: "Appraise"
 	skill_classes: [ "Bard", "Cleric", "Rogue", "Sorcerer", "Wizard" ]
 	untrained: true
@@ -19,7 +19,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "12d3"
-, 
+,
 	name: "Bluff"
 	skill_classes: [ "Bard", "Rogue", "Sorcerer" ]
 	untrained: true
@@ -28,7 +28,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "73ea"
-, 
+,
 	name: "Climb"
 	skill_classes: [ "Barbarian", "Bard", "Fighter", "Monk", "Ranger", "Rogue" ]
 	untrained: true
@@ -38,14 +38,14 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "efd7"
-, 
+,
 	name: "Craft"
 	skill_classes: [ "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" ]
 	untrained: true
 	ability: "Str"
 	detail: "You are skilled in the creation of a specific group of items, such as armor or weapons. Like Knowledge, Perform, and Profession, Craft is actually a number of separate skills. You could have several Craft skills, each with its own ranks. The most common Craft skills are alchemy, armor, baskets, books, bows, calligraphy, carpentry, cloth, clothing, glass, jewelry, leather, locks, paintings, pottery, sculptures, ships, shoes, stonemasonry, traps, and weapons. <p class=sub>A Craft skill is specifically focused on creating something. If nothing is created by the endeavor, it probably falls under the heading of a Profession skill. <p class=sub><b>Check: </b>You can practice your trade and make a decent living, earning half your check result in gold pieces per week of dedicated work. You know how to use the tools of your trade, how to perform the craft&apos;s daily tasks, how to supervise untrained helpers, and how to handle common problems. (Untrained laborers and assistants earn an average of 1 silver piece per day.) <p class=sub>The basic function of the Craft skill, however, is to allow you to make an item of the appropriate type. The DC depends on the complexity of the item to be created. The DC, your check result, and the price of the item determine how long it takes to make a particular item. The item&apos;s finished price also determines the cost of raw materials. <p class=sub>In some cases, the <i>fabricate</i> spell can be used to achieve the results of a Craft check with no actual check involved. You must still make an appropriate Craft check when using the spell to make articles requiring a high degree of craftsmanship. <p class=sub>A successful Craft check related to woodworking in conjunction with the casting of the ironwood spell enables you to make wooden items that have the strength of steel. <p class=sub>When casting the spell <i>minor creation</i>, you must succeed on an appropriate Craft check to make a complex item. All crafts require artisan&apos;s tools to give the best chance of success. If improvised tools are used, the check is made with a -2 penalty. On the other hand, masterwork artisan&apos;s tools provide a +2 circumstance bonus on the check. <p class=sub>To determine how much time and money it takes to make an item, follow these steps. <p class=sub><ol><li>Find the item&apos;s price in silver pieces (1 gp = 10 sp).</li> <p class=sub><li>Find the item&apos;s DC from Table 4-4.</li> <p class=sub><li>Pay 1/3 of the item&apos;s price for the raw material cost.</li> <p class=sub><li>Make an appropriate Craft check representing one week&apos;s worth of work. If the check succeeds, multiply your check result by the DC. If the result x the DC equals the price of the item in sp, then you have completed the item. (If the result x the DC equals double or triple the price of the item in silver pieces, then you&apos;ve completed the task in one-half or onethird of the time. Other multiples of the DC reduce the time in the same manner.) If the result x the DC doesn&apos;t equal the price, then it represents the progress you&apos;ve made this week. Record the result and make a new Craft check for the next week. Each week, you make more progress until your total reaches the price of the item in silver pieces. </li></ol> <p class=sub>If you fail a check by 4 or less, you make no progress this week. If you fail by 5 or more, you ruin half the raw materials and have to pay half the original raw material cost again. <p class=sub>Progress by the Day: You can make checks by the day instead of by the week. In this case your progress (check result x DC) should be divided by the number of days in a week. <p class=sub><i>Create Masterwork Items: </i>You can make a masterwork item: a weapon, suit of armor, shield, or tool that conveys a bonus on its use through its exceptional craftsmanship. To create a masterwork item, you create the masterwork component as if it were a separate item in addition to the standard item. The masterwork component has its own price (300 gp for a weapon or 150 gp for a suit of armor or a shield, see Chapter 6 for the price of other masterwork tools) and a Craft DC of 20. Once both the standard component and the masterwork component are completed, the masterwork item is finished. The cost you pay for the masterwork component is one-third of the given amount, just as it is for the cost in raw materials. <p class=sub><i>Repair Items: </i>You can repair an item by making checks against the same DC that it took to make the item in the first place. The cost of repairing an item is one-fifth of the item&apos;s price. <p class=sub><b>Action: </b>Does not apply. Craft checks are made by the day or week (see above). <p class=sub><b>Try Again: </b>Yes, but each time you fail by 5 or more, you ruin half the raw materials and have to pay half the original raw material cost again. <p class=sub><b>Special: </b>You may voluntarily add +10 to the indicated DC to craft an item. This allows you to create the item more quickly (since you&apos;ll be multiplying this higher DC by your Craft check result to determine progress). You must decide whether to increase the DC before you make each weekly or daily check. <p class=sub>To make an item using Craft (alchemy), you must have alchemical equipment. If you are working in a city, you can buy what you need as part of the raw materials cost to make the item, but alchemical equipment is difficult or impossible to come by in some places. Purchasing and maintaining an alchemist&apos;s lab grants a +2 circumstance bonus on Craft (alchemy) checks because you have the perfect tools for the job, but it does not affect the cost of any items made using the skill. <p class=sub>A gnome receives a +2 bonus on a Craft or Profession skill of her choice. <table class=pftable><tr><th class=pftable>Item </th><th class=pftable>Craft Skill </th><th class=pftable>Craft DC</th></tr> <tr><td class=pftable>Acid </td><td class=pftable>Alchemy </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Alchemist&apos;s fire, smokestick, or tindertwig </td><td class=pftable>Alchemy </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Antitoxin, sunrod, tanglefoot bag, or thunderstone </td><td class=pftable>Alchemy </td><td class='pftable number'>25</td></tr> <tr><td class=pftable>Armor or shield </td><td class=pftable>Armor </td><td class='pftable number'>10 + AC bonus</td></tr> <tr><td class=pftable>Longbow, shortbow, or arrows </td><td class=pftable>Bows </td><td class='pftable number'>12</td></tr> <tr><td class=pftable>Composite longbow or composite shortbow </td><td class=pftable>Bows </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Composite longbow or composite shortbow with high strength rating </td><td class=pftable>Bows </td><td class='pftable number'>15 + (2 x rating)</td></tr> <tr><td class=pftable>Mechanical trap </td><td class=pftable>Traps </td><td class='pftable number'>Varies*</td></tr> <tr><td class=pftable>Crossbow, or bolts </td><td class=pftable>Weapons </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Simple melee or thrown weapon </td><td class=pftable>Weapons </td><td class='pftable number'>12</td></tr> <tr><td class=pftable>Martial melee or thrown weapon </td><td class=pftable>Weapons </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Exotic melee or thrown weapon </td><td class=pftable>Weapons </td><td class='pftable number'>18</td></tr> <tr><td class=pftable>Very simple item (wooden spoon) </td><td class=pftable>Varies </td><td class='pftable number'>5</td></tr> <tr><td class=pftable>Typical item (iron pot) </td><td class=pftable>Varies </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>High-quality item (bell) </td><td class='pftable'>Varies </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Complex or superior item (lock) </td><td class=pftable>Varies </td><td class='pftable number'>20</td></tr> </table> <p class=sub>* Traps have their own rules for construction (see Chapter 13). "
 	mobility: true
-	subtypes: 
+	subtypes:
 		alchemy: true
 		armor: true
 		baskets: true
@@ -67,11 +67,11 @@ this.skills = TAFFY([
 		stonemasonry: true
 		traps: true
 		weapons: true
-	
+
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "6494"
-, 
+,
 	name: "Diplomacy"
 	skill_classes: [ "Bard", "Cleric", "Paladin", "Rogue" ]
 	untrained: true
@@ -81,7 +81,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "9ea1"
-, 
+,
 	name: "Disable Device"
 	skill_classes: [ "Rogue" ]
 	untrained: false
@@ -91,7 +91,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "273"
-, 
+,
 	name: "Disguise"
 	skill_classes: [ "Bard", "Rogue" ]
 	untrained: true
@@ -101,7 +101,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "d208"
-, 
+,
 	name: "Escape Artist"
 	skill_classes: [ "Bard", "Monk", "Rogue" ]
 	untrained: true
@@ -111,7 +111,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "aa06"
-, 
+,
 	name: "Fly"
 	skill_classes: [ "Druid", "Sorcerer", "Wizard" ]
 	untrained: true
@@ -121,7 +121,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "f64b"
-, 
+,
 	name: "Handle Animal"
 	skill_classes: [ "Barbarian", "Druid", "Fighter", "Paladin", "Ranger" ]
 	untrained: false
@@ -131,7 +131,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "cb94"
-, 
+,
 	name: "Heal"
 	skill_classes: [ "Cleric", "Druid", "Paladin", "Ranger" ]
 	untrained: true
@@ -141,7 +141,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "ce3f"
-, 
+,
 	name: "Intimidate"
 	skill_classes: [ "Barbarian", "Bard", "Fighter", "Monk", "Ranger", "Rogue", "Sorcerer" ]
 	untrained: true
@@ -151,13 +151,13 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "b45"
-, 
+,
 	name: "Knowledge"
 	untrained: false
 	ability: "Int"
 	detail: "You are educated in a field of study and can answer both simple and complex questions. Like the Craft, Perform, and Profession skills, Knowledge actually encompasses a number of different specialties. Below are listed typical fields of study. <ul> <li>Arcana (ancient mysteries, magic traditions, arcane symbols, constructs, dragons, magical beasts) </li> <li>Dungeoneering (aberrations, caverns, oozes, spelunking)</li> <li>Engineering (buildings, aqueducts, bridges, fortifications</li> <li>Geography (lands, terrain, climate, people)</li> <li>History (wars, colonies, migrations, founding of cities)</li> <li>Local (legends, personalities, inhabitants, laws, customs, traditions, humanoids) </li> <li>Nature (animals, fey, monstrous humanoids, plants, seasons and cycles, weather, vermin) </li> <li>Nobility (lineages, heraldry, personalities, royalty)</li> <li>Planes (the Inner Planes, the Outer Planes, the Astral Plane, the Ethereal Plane, outsiders, planar magic) </li> <li>Religion (gods and goddesses, mythic history, ecclesiastic tradition, holy symbols, undead) </li> </ul> <p class=sub><b>Check: </b>Answering a question within your field of study has a DC of 10 (for really easy questions), 15 (for basic questions), or 20 to 30 (for really tough questions). <p class=sub>You can use this skill to identify monsters and their special powers or vulnerabilities. In general, the DC of such a check equals 10 + the monster&apos;s CR. For common monsters, such as goblins, the DC of this check equals 5 + the monster&apos;s CR. For particularly rare monsters, such as the tarrasque, the DC of this check equals 15 + the monster&apos;s CR, or more. A successful check allows you to remember a bit of useful information about that monster. For every 5 points by which your check result exceeds the DC, you recall another piece of useful information. Many of the Knowledge skills have specif ic uses as noted on Table 4-6. <p class=sub><b>Action: </b>Usually none. In most cases, a Knowledge check doesn&apos;t take an action (but see &quot;Untrained,&quot; below). <p class=sub><b>Try Again: </b>No. The check represents what you know, and thinking about a topic a second time doesn&apos;t let you know something that you never learned in the first place. <p class=sub><b>Untrained: </b>You cannot make an untrained Knowledge check with a DC higher than 10. If you have access to an extensive library that covers a specific skill, this limit is removed. The time to make checks using a library, however, increases to 1d4 hours. Particularly complete libraries might even grant a bonus on Knowledge checks in the fields that they cover. <table class=pftable><tr><th class=pftable>Task </th><th class=pftable>Knowledge</th><th class=pftable> Skill DC</th></tr> <tr><td class=pftable>Identify auras while using detect magic </td><td class=pftable>Arcana </td><td class='pftable number'>15 + spell level</td></tr> <tr><td class=pftable>Identify a spell effect that is in place </td><td class=pftable>Arcana </td><td class='pftable number'>20 + spell level</td></tr> <tr><td class=pftable>Identify materials manufactured by magic </td><td class=pftable>Arcana </td><td class='pftable number'>20 + spell level</td></tr> <tr><td class=pftable>Identify a spell that just targeted you </td><td class=pftable>Arcana </td><td class='pftable number'>25 + spell level</td></tr> <tr><td class=pftable>Identify the spells cast using a specific material component </td><td class=pftable>Arcana </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Identify underground hazard </td><td class=pftable>Dungeoneering </td><td class='pftable number'>15 + hazard&apos;s CR</td></tr> <tr><td class=pftable>Identify mineral, stone, or metal </td><td class=pftable>Dungeoneering </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Determine slope </td><td class=pftable>Dungeoneering </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Determine depth underground </td><td class=pftable>Dungeoneering </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Identify dangerous construction </td><td class=pftable>Engineering </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Determine a structure&apos;s style or age </td><td class=pftable>Engineering </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Determine a structure&apos;s weakness </td><td class=pftable>Engineering </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Identify a creature&apos;s ethnicity or accent </td><td class=pftable>Geography </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Recognize regional terrain features </td><td class=pftable>Geography </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Know location of nearest community or noteworthy site </td><td class=pftable>Geography </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Know recent or historically significant event </td><td class=pftable>History </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Determine approximate date of a specific event </td><td class=pftable>History </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Know obscure or ancient historical event </td><td class=pftable>History </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Know local laws, rulers, and popular locations </td><td class=pftable>Local </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Know a common rumor or local tradition </td><td class=pftable>Local </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Know hidden organizations, rulers, and locations </td><td class=pftable>Local </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Identify natural hazard </td><td class=pftable>Nature </td><td class='pftable number'>15 + hazard&apos;s CR</td></tr> <tr><td class=pftable>Identify a common plant or animal </td><td class=pftable>Nature </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Identify unnatural weather phenomenon </td><td class=pftable>Nature </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Determine artificial nature of feature </td><td class=pftable>Nature </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Know current rulers and their symbols </td><td class=pftable>Nobility </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Know proper etiquette </td><td class=pftable>Nobility </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Know line of succession </td><td class=pftable>Nobility </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Know the names of the planes </td><td class=pftable>Planes </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Recognize current plane </td><td class=pftable>Planes </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Identify a creature&apos;s planar origin </td><td class=pftable>Planes </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Recognize a common deity&apos;s symbol or clergy </td><td class=pftable>Religion </td><td class='pftable number'>10</td></tr> <tr><td class=pftable>Know common mythology and tenets </td><td class=pftable>Religion </td><td class='pftable number'>15</td></tr> <tr><td class=pftable>Recognize an obscure deity&apos;s symbol or clergy </td><td class=pftable>Religion </td><td class='pftable number'>20</td></tr> <tr><td class=pftable>Identify a monster&apos;s abilities and weaknesses </td><td class=pftable>Varies </td><td class='pftable number'>10 + monster&apos;s CR</td></tr></table> "
 	mobility: false
-	subtypes: 
+	subtypes:
 		Arcana: [ "Bard", "Cleric", "Sorcerer", "Wizard" ]
 		Dungeoneering: [ "Bard", "Fighter", "Ranger", "Rogue", "Wizard" ]
 		Engineering: [ "Bard", "Fighter", "Wizard" ]
@@ -168,11 +168,11 @@ this.skills = TAFFY([
 		Nobility: [ "Bard", "Cleric", "Paladin", "Wizard" ]
 		Planes: [ "Bard", "Cleric", "Wizard" ]
 		Religion: [ "Bard", "Cleric", "Monk", "Paladin", "Wizard" ]
-	
+
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "ca1a"
-, 
+,
 	name: "Linguistics"
 	skill_classes: [ "Bard", "Cleric", "Rogue", "Wizard" ]
 	untrained: false
@@ -182,7 +182,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "3050"
-, 
+,
 	name: "Perception"
 	skill_classes: [ "Barbarian", "Bard", "Druid", "Monk", "Ranger", "Rogue" ]
 	untrained: true
@@ -192,14 +192,14 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "4c4f"
-, 
+,
 	name: "Perform"
 	skill_classes: [ "Bard", "Monk", "Rogue" ]
 	untrained: true
 	ability: "Cha"
 	detail: "You are skilled at one form of entertainment, from singing to acting to playing an instrument. Like Craft, Knowledge, and Profession, Perform is actually a number of separate skills. You could have several Perform skills, each with its own ranks. <p class=sub>Each of the nine categories of the Perform skill includes a variety of methods, instruments, or techniques, a small sample of which is provided for each category below. <ul><li>Act (comedy, drama, pantomime)</li> <li>Comedy (buffoonery, limericks, joke-telling)</li> <li>Dance (ballet, waltz, jig)</li> <li>Keyboard instruments (harpsichord, piano, pipe organ)</li> <li>Oratory (epic, ode, storytelling)</li> <li>Percussion instruments (bells, chimes, drums, gong)</li> <li>String instruments (fiddle, harp, lute, mandolin)</li> <li>Wind instruments (f lute, pan pipes, recorder, trumpet)</li> <li>Sing (ballad, chant, melody)</li></ul> <p class=sub><b>Check: </b>You can impress audiences with your talent and skill in your chosen performance type. <table class=pftable><tr><th class=pftable>Perform DC</th> <th class=pftable>Performance</th></tr> <tr><td class='pftable number'>10</td> <td class=pftable>Routine performance. Trying to earn money by playing in public is akin to begging. You can earn 1d10 cp/day.</td></tr> <tr><td class='pftable number'>15 </td><td class=pftable>Enjoyable performance. In a prosperous city, you can earn 1d10 sp/day.</td></tr> <tr><td class='pftable number'>20 </td><td class=pftable>Great performance. In a prosperous city, you can earn 3d10 sp/day. In time, you may be invited to join a professional troupe and may develop a regional reputation.</td></tr> <tr><td class='pftable number'>25 </td><td class=pftable>Memorable performance. In a prosperous city, you can earn 1d6 gp/day. In time, you may come to the attention of noble patrons and develop a national reputation.</td></tr> <tr><td class='pftable number'>30 </td><td class=pftable>Extraordinary performance. In a prosperous city, you can earn 3d6 gp/day. In time, you may draw attention from distant patrons, or even from extraplanar beings.</td></tr> </table> <p class=sub>A masterwork musical instrument gives you a +2 circumstance bonus on all Perform checks that involve its use. <p class=sub><b>Action: </b>Varies. Trying to earn money by playing in public requires anywhere from an evening&apos;s work to a full day&apos;s performance. The bard&apos;s special Perform-based abilities are described in that class&apos;s description. <p class=sub><b>Try Again: </b>Yes. Retries are allowed, but they don&apos;t negate previous failures, and an audience that has been unimpressed in the past is likely to be prejudiced against future performances. (Increase the DC by 2 for each previous failure.) <p class=sub><b>Special: </b>A bard must have ranks in specific Perform categories to use some of his Bardic Performance abilities. Consult the Bardic Performance section of the bard class description in Chapter 3 for more details"
 	mobility: false
-	subtypes: 
+	subtypes:
 		Act: true
 		Comedy: true
 		Dance: true
@@ -209,18 +209,18 @@ this.skills = TAFFY([
 		"String instruments": true
 		"Wind instruments": true
 		Sing: true
-	
+
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "fbc5"
-, 
+,
 	name: "Profession"
 	skill_classes: [ "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" ]
 	untrained: false
 	ability: "Wis"
 	detail: "You are skilled at a specific job. Like Craft, Knowledge, and Perform, Profession is actually a number of separate skills. You could have several Profession skills, each with its own ranks. While a Craft skill represents ability in creating an item, a Profession skill represents an aptitude in a vocation requiring a broader range of less specific knowledge. The most common Profession skills are architect, baker, barrister, brewer, butcher, clerk, cook, courtesan, driver, engineer, farmer, fisherman, gambler, gardener, herbalist, innkeeper, librarian, merchant, midwife, miller, miner, porter, sailor, scribe, shepherd, stable master, soldier, tanner, trapper, and woodcutter. <p class=sub><b>Check: </b>You can earn half your Profession check result in gold pieces per week of dedicated work. You know how to use the tools of your trade, how to perform the profession&apos;s daily tasks, how to supervise helpers, and how to handle common problems. You can also answer questions about your Profession. Basic questions are DC 10, while more complex questions are DC 15 or higher. <p class=sub><b>Action: </b>Not applicable. A single check generally represents a week of work. <p class=sub><b>Try Again: </b>Varies. An attempt to use a Profession skill to earn income cannot be retried. You are stuck with whatever weekly wage your check result brought you. Another check may be made after a week to determine a new income for the next period of time. An attempt to accomplish some specific task can usually be retried. <p class=sub><b>Untrained: </b>Untrained laborers and assistants (that is, characters without any ranks in Profession) earn an average of 1 silver piece per day. <p class=sub><b>Special: </b>A gnome gets a +2 bonus on a Craft or Profession skill of her choice. "
 	mobility: false
-	subtypes: 
+	subtypes:
 		architect: true
 		baker: true
 		barrister: true
@@ -251,11 +251,11 @@ this.skills = TAFFY([
 		tanner: true
 		trapper: true
 		woodcutter: true
-	
+
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "9a9"
-, 
+,
 	name: "Ride"
 	skill_classes: [ "Barbarian", "Druid", "Fighter", "Monk", "Ranger", "Rogue" ]
 	untrained: true
@@ -265,7 +265,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "969f"
-, 
+,
 	name: "Sense Motive"
 	skill_classes: [ "Bard", "Cleric", "Monk", "Paladin", "Rogue" ]
 	untrained: false
@@ -275,7 +275,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "ebf7"
-, 
+,
 	name: "Sleight of Hand"
 	skill_classes: [ "Bard", "Rogue" ]
 	untrained: false
@@ -285,7 +285,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "8312"
-, 
+,
 	name: "Spellcraft"
 	skill_classes: [ "Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Wizard" ]
 	untrained: false
@@ -295,7 +295,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "3736"
-, 
+,
 	name: "Stealth"
 	skill_classes: [ "Bard", "Monk", "Ranger", "Rogue" ]
 	untrained: true
@@ -305,7 +305,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "5f7"
-, 
+,
 	name: "Survival"
 	skill_classes: [ "Barbarian", "Druid", "Fighter", "Ranger" ]
 	untrained: true
@@ -315,7 +315,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "33d3"
-, 
+,
 	name: "Swim"
 	skill_classes: [ "Barbarian", "Druid", "Fighter", "Monk", "Ranger", "Rogue" ]
 	untrained: true
@@ -325,7 +325,7 @@ this.skills = TAFFY([
 	type: "skill"
 	tags: [ "pathfinder" ]
 	_id: "e85f"
-, 
+,
 	name: "Use Magic Device"
 	skill_classes: [ "Bard", "Sorcerer", "Wizard" ]
 	untrained: false

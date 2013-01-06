@@ -7,7 +7,7 @@ build = (watch, callback) ->
 	if typeof watch is 'function'
 		callback = watch
 		watch = false
-	options = ['-b', '-c', '-o', 'lib', 'src']
+	options = ['-b', '-c', '-o', 'web', 'src']
 	options.unshift '-w' if watch
 
 	coffee = spawn 'coffee', options

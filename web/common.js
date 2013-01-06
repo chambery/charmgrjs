@@ -62,16 +62,16 @@ this.set_links_part = function(page_id) {
   is_spellpicker = false;
   for (classname in chardata.classes) {
     is_spellpicker = (spellpickers.indexOf(classname) > -1 ? true : is_spellpicker);
-    class_shortname = classes.first({
+    class_shortname = classes({
       name: classname
-    }).shortname;
+    }).first().shortname;
     classes_html += "<td id='view_class_" + classname + "' style='color: blue;text-align: right; vertical-align: top' nowrap><a class='fake_link view' onclick='var level_diff=(calc_level()+1)-calc_current_level(); show_class_dialog(level_diff,0);'>" + class_shortname + "</a><sub>" + (chardata.classes[classname].level + 1) + "</sub></td>";
   }
-  race = races.first({
+  race = races({
     name: chardata.race_name
-  });
+  }).first();
   links_html = "<table padding='0' cellpadding='1' margin='0'><tr>";
-  allviews = views.get();
+  allviews = views().get();
   for (k in allviews) {
     if (allviews[k].name === "spells" && !is_spellpicker) continue;
     if (allviews[k].id === page_id) {
@@ -92,7 +92,7 @@ this.set_links_part = function(page_id) {
     existing_chars_html = "<li class='sep'><hr /></li>" + existing_chars_html;
   }
   $("#linkspart").html(links_html + "<td class='view'>" + "<td class='view'><ul id='file'><li class='btn box'>&nbsp;char&nbsp;<ul><li id='load'>load</li><li></li><li id='new'>new</li><li></li><li id='log'>log</li><li></li><li id='options'>options</li><li></li><li id='sheet'>sheet</li><li></li>" + existing_chars_html + "</ul></ul></td>" + "<td class='view' style='color: blue;width: 100%;text-align: right;' nowrap>" + race.shortname + "</td>" + classes_html + "</tr></table>");
-  if (this.calc_level() - calc_current_level() > 0) {
+  if (this.calc_level() - window.chardata.calc_current_level() > 0) {
     $("td[id^='view_class']").css("font-weight", "bold");
   } else {
     $("td[id^='view_class']").css("font-weight", "");
@@ -439,9 +439,9 @@ this.update_options = function(message) {
   curr_opts = chardata["options"];
   title = "Options";
   content = "<table>";
-  string_options = options.get({
+  string_options = options({
     type: "string"
-  });
+  }).get();
   if (string_options.length > 0) {
     content += "<table>";
     if (message) content += "<tr><td colspan=2>" + message + "</td></tr>";
@@ -470,9 +470,9 @@ this.get_special_abilities = function() {
   var class_special, class_specials, classname, i, item, level, rogue_special_abilities, special_abilities, supersede;
   special_abilities = [];
   for (classname in chardata.classes) {
-    class_specials = classes.first({
+    class_specials = classes({
       name: classname
-    }).specials;
+    }).first().specials;
     level = 0;
     while (level <= chardata.classes[classname].level) {
       item = 0;
@@ -589,9 +589,9 @@ this.do_class_functions = function(page, location, obj) {
     obj = $.extend({}, obj);
   }
   for (classname in chardata.classes) {
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
     if (clazz.custom && clazz.custom[page] && clazz.custom[page][location]) {
       for (script in clazz.custom[page][location]) {
         clazz.custom[page][location][script](obj);
@@ -699,6 +699,10 @@ this.curr_xp = 0;
 this.char_classes = [];
 
 this.equipment_benefits = [];
+
+alignments = ["Lawful", "Neutral", "Chaotic"];
+
+goodness = ["Good", "Neutral", "Evil"];
 
 $.extend({
   keys: function(obj) {

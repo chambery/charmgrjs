@@ -1,7 +1,0 @@
-
-		var favored_enemy = favored_enemys.first({ name: chardata.favored_enemies ? chardata.favored_enemies[0] : '' })._id; var select = create_select('favored_enemy_0', favored_enemys.get(), \"if(!chardata.favored_enemies){ chardata.favored_enemies = [] } chardata.favored_enemies[0] = $('#favored_enemy_0').val(); save_character();\", false, \"style='width: 145px;'\", null, favored_enemy); $('#favored_enemies').append('<tr><td>' + select + '</td><td>2</td></tr>');
-	}
-
-
-<table id='favored_enemies'><tr><td>Favored Enemies</td></tr></table>
-	

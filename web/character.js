@@ -45,6 +45,12 @@ Character = (function() {
   			"level": 4
   */
 
+  Character.prototype.classes = {};
+
+  Character.prototype.alignment = alignments[0];
+
+  Character.prototype.goodness = goodness[0];
+
   /*
   	Returns the count of base feats provided by the character's classes for the current class levels
   */
@@ -86,7 +92,7 @@ Character = (function() {
   };
 
   /*
-  	Returns the Armor Class Penalty for all worn shields
+  	Returns the Armor Class Penalty for all worn armor
   */
 
   Character.prototype.armor_acp = function() {

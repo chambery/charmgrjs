@@ -61,7 +61,7 @@ edit.build_edit_page = ->
   $("#language_table").html edit.create_languages()
   $("#languages").hide()
   skill_html = []
-  skills.forEach (skill, i) ->
+  window.skills.forEach (skill, i) ->
     if skill.subtypes
       skill_html.push [ "<tr onclick=\"toggle_visible('" + skill.name + "')\" bgcolor='#E2F0F9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link' id='skill_", skill._id, "'><span id='", skill.name, "_expand_flag' style='float: right'><img src='images/collapsed.png'/></span>", skill.name, "</a></td></tr><tr id='", skill.name, "'><td colspan=3><table id='", skill.name, "_table' width='100%'style='border-collapse: collapse;'>" ].join("")
       for subtype of skill.subtypes
@@ -89,7 +89,7 @@ edit.build_edit_page = ->
 
 edit.create_languages = ->
   language_html = []
-  langs = languages.get()
+  langs = languages().get()
   i = 0
   len = langs.length
 

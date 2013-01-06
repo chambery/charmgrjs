@@ -6,9 +6,9 @@ edit.calc_skill_points = function() {
   var char_lang_count, class_skills_per_level, classname, int_mod, int_score, is_human, level_1_points, total_skill_points;
   int_score = $("#ability_Int").val();
   int_mod = calc_ability_modifier(int_score);
-  is_human = races.first({
+  is_human = races({
     name: "Human"
-  }).name === $("#race").val();
+  }).first().name === $("#race").val();
   total_skill_points = 0;
   class_skills_per_level = 0;
   for (classname in chardata.classes) {
@@ -31,7 +31,7 @@ edit.build_edit_page = function() {
   set_links_part(1);
   $("#content").html;
   if (chardata.abilities == null) chardata.abilities = {};
-  race_html = create_select("race", races.get(), "edit.recalc_edit_page()", false, "style='width: 75px;'");
+  race_html = create_select("race", races().get(), "edit.recalc_edit_page()", false, "style='width: 75px;'");
   $("#race_select").html(race_html);
   align_html = [];
   alignments.forEach(function(alignment, i) {
@@ -62,6 +62,7 @@ edit.build_edit_page = function() {
   align_html = [];
   align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
   $.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
+    console.log("[" + i + "]  " + deity.name + " : " + deity.alignment + " " + deity.goodness);
     return align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
   });
   $("#deity").html(align_html.join(""));
@@ -72,7 +73,7 @@ edit.build_edit_page = function() {
   $("#language_table").html(edit.create_languages());
   $("#languages").hide();
   skill_html = [];
-  skills.forEach(function(skill, i) {
+  window.skills.forEach(function(skill, i) {
     var char_skill, subtype, _results;
     if (skill.subtypes) {
       skill_html.push(["<tr onclick=\"toggle_visible('" + skill.name + "')\" bgcolor='#E2F0F9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link' id='skill_", skill._id, "'><span id='", skill.name, "_expand_flag' style='float: right'><img src='images/collapsed.png'/></span>", skill.name, "</a></td></tr><tr id='", skill.name, "'><td colspan=3><table id='", skill.name, "_table' width='100%'style='border-collapse: collapse;'>"].join(""));
@@ -123,7 +124,7 @@ edit.build_edit_page = function() {
 edit.create_languages = function() {
   var i, langs, language_html, len;
   language_html = [];
-  langs = languages.get();
+  langs = languages().get();
   i = 0;
   len = langs.length;
   while (i < len) {
@@ -137,9 +138,9 @@ edit.populate_edit_page = function() {
   var alignment_name, deity_name, domain_name, goodness_name, race, race_name;
   if (chardata.name) $("#charname").val(chardata.name);
   race_name = chardata.race_name || $("#race").val();
-  race = races.first({
+  race = races({
     name: race_name
-  });
+  }).first();
   $("#race option[id='race_option_" + race._id + "']").attr("selected", true);
   $("input[id='hp']").val(chardata.hp || "");
   $("#xp").val(chardata.xp || "");
@@ -201,9 +202,9 @@ edit.recalc_edit_page = function() {
   chardata.deity = $("#deity").val();
   chardata.domain = $("#domain").val();
   if (chardata.abilities == null) chardata.abilities = {};
-  race = races.first({
+  race = races({
     name: chardata.race_name
-  });
+  }).first();
   for (ability in abilities) {
     chardata.abilities[ability] = $("#ability_" + ability).val();
     if (race.abilities[ability]) {
@@ -340,9 +341,9 @@ edit.update_skills = function(skill, subtype) {
 
 edit.update_race_mods = function() {
   var ability, mod, race, _results;
-  race = races.first({
-    name: $("#race").val()
-  });
+  race = races({
+    name: $("#race")
+  }).first().val();
   if (race) {
     _results = [];
     for (ability in abilities) {

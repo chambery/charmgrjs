@@ -8,10 +8,8 @@ main = function() {};
 
 main.load = function() {
   var classname, players_companion;
-  window.chardata = {
-    log: []
-  };
-  players_companion = TAFFY.JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
+  window.chardata = new Character();
+  players_companion = JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
   if (players_companion.last_character) {
     lod(players_companion.last_character);
     for (classname in window.chardata.classes) {
@@ -22,6 +20,10 @@ main.load = function() {
     window.chardata.options = (window.chardata.options ? window.chardata.options : {});
     load_static_data();
     window.chardata.options.owner = players_companion.owner;
+    window.chardata.race_name = races().first().name;
+    window.chardata.classes[classes().first().name] = {
+      "level": 0
+    };
     return main.do_edit();
   }
 };
