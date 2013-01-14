@@ -43,7 +43,7 @@ edit_equipment.recalc_equipment_page = ->
 
 edit_equipment.delete_bene = (id) ->
   delete chardata.equipment[id]
-  
+
   save_character()
   edit_equipment.recalc_equipment_page()
 
@@ -51,22 +51,22 @@ edit_equipment.add_bene = (index) ->
   equipment = (if index != undefined then chardata.equipment[index] else false)
   dialog_html = "<table><tr><td>Name:</td><td colspan='4'><input id='equipment_id' type='hidden' value='" + (if equipment then equipment.id else "") + "'/><input id='equipment_index' type='hidden' value='" + (if index != undefined then index else "") + "'/>"
   dialog_html += "<input id='equipment_name' type='text' style='width: 95%' value='" + (if equipment then equipment.name else "") + "'/></td><td style='text-align: right'><a class='box btn' style='width: 30px;' onclick='edit_equipment.save_equipment(" + (if index != undefined then true else "") + ")'>save</a></td></tr><tr><td colspan=6><hr width='80%'/></td></tr>"
-  type = create_select("benefit_type", [ 
+  type = create_select("benefit_type", [
     name: "Skills"
     id: "skill_id"
-  , 
+  ,
     name: "Abilities"
     id: "ability_id"
-  , 
+  ,
     name: "Other"
     id: "other"
-  , 
+  ,
     name: "DR"
     id: "dr"
-  , 
+  ,
     name: "Save"
     id: "save"
-   ], "edit_equipment.update_bene_detail($('#benefit_type').val())")
+  ], "edit_equipment.update_bene_detail($('#benefit_type').val())")
   dialog_html += "<tr><td>Benefit:</td><td colspan='2'>" + type + "</td><td id='benefit_detail' colspan='3'>" + create_select("benefit_detail", skills.get(), "", false, "") + "</td>"
   dialog_html += "<tr><td valign='bottom' colspan='3'>Notes:</td><td valign='bottom'>Bonus:</td><td><input id='benefit_mod' class='three_digit' type='text'/></td><td style='text-align: right' nowrap><a class='box btn' style='width: 30px; padding: 1px 2px;' onclick=\"edit_equipment.add_benefit($('select[id=benefit_detail]').val(), $('select[id=benefit_detail] option:selected').text(), $('#benefit_mod').val() )\">add&darr;</a></td></tr>"
   dialog_html += "<tr><td colspan='3' valign='top'><textarea id='equipment_notes' style='width: 95%'>" + (if equipment then equipment.notes else "") + "</textarea></td><td colspan='3' valign='top' style='border: 1px solid #D0D0D0;'><div id='equipment_benefits' >" + edit_equipment.create_benefits_table(equipment, index) + "</div></td></tr></table>"
@@ -80,19 +80,19 @@ edit_equipment.add_benefit = (id, name, bene) ->
 edit_equipment.save_equipment = (close_after_save) ->
   benefits = []
   $("#equipment_benefits input").each ->
-    benefits.push 
+    benefits.push
       id: @getAttribute("benefit_type")
       mod: @getAttribute("benefit_mod")
-  
+
   if $("#equipment_index").val().length > 0
-    chardata.equipment[$("#equipment_index").val()] = 
+    chardata.equipment[$("#equipment_index").val()] =
       id: $("#equipment_id").val()
       name: $("#equipment_name").val()
       notes: htmlize($("#equipment_notes").val())
       benefits: benefits
   else
     id = generate_id()
-    chardata.equipment[id] = 
+    chardata.equipment[id] =
       id: id
       name: $("#equipment_name").val()
       notes: $("#equipment_notes").val()
@@ -112,67 +112,67 @@ edit_equipment.update_bene_detail = (type) ->
     items = skills.get()
   else if type == "Abilities"
     for ability of abilities
-      items.push 
+      items.push
         name: ability
         id: ability
   else if type == "Other"
-    items[0] = 
+    items[0] =
       name: "Fortitude"
       id: "Fort"
-    
-    items[1] = 
+
+    items[1] =
       name: "Reflex"
       id: "Ref"
-    
-    items[2] = 
+
+    items[2] =
       name: "Will"
       id: "Will"
-    
-    items[3] = 
+
+    items[3] =
       name: "Attack"
       id: "Att"
-    
-    items[4] = 
+
+    items[4] =
       name: "Damage"
       id: "Dam"
-    
-    items[5] = 
+
+    items[5] =
       name: "AC"
       id: "AC"
-    
-    items[5] = 
+
+    items[5] =
       name: "SR"
       id: "SR"
   else if type == "DR"
-    items[0] = 
+    items[0] =
       name: "Base"
       id: "base"
-    
-    items[1] = 
+
+    items[1] =
       name: "Cold"
       id: "cold"
-    
-    items[2] = 
+
+    items[2] =
       name: "Fire"
       id: "fire"
-    
-    items[3] = 
+
+    items[3] =
       name: "Electricity"
       id: "elec"
-    
-    items[4] = 
+
+    items[4] =
       name: "Acid"
       id: "acid"
-    
-    items[5] = 
+
+    items[5] =
       name: "Poison"
       id: "pois"
   else if type == "Save"
-    items[0] = 
+    items[0] =
       name: "Poison"
       id: "pois"
-    
-    items[1] = 
+
+    items[1] =
       name: "Petrification"
       id: "petr"
   $("#benefit_detail").html create_select("benefit_detail", items, "", false, "'style='width: 55px'", null, null, true)

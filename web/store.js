@@ -150,7 +150,9 @@ Saves the supplied character data locally and remotely (if possible), and return
 this.save_character = function(chardata) {
   var name, save_data;
   name = chardata.name;
-  if (!name || name.length === 0) name = create_default_name();
+  if (!name || name.length === 0) {
+    name = create_default_name(chardata.race_name, chardata.classes);
+  }
   if (!window.document.players_companion) window.players_companion = {};
   window.players_companion.last_character = name;
   window.document.cookie = this.save_local(players_companion, "players_companion");

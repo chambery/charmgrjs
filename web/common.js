@@ -236,7 +236,7 @@ this.show_dialog = function(title, content, save_on_close, close_fn, opts) {
   });
   if (save_on_close) {
     $("#mydialog").bind("dialogclose", function() {
-      return save_character();
+      return save_character(chardata);
     });
   }
   if (close_fn) {
@@ -352,7 +352,7 @@ this.parse_character_data = function(data) {
       log_data = data.substring(data.indexOf("``") + 2);
       data = data.substring(0, data.indexOf("``"));
     }
-    data = TAFFY.JSON.parse(unescape(data)) || {};
+    data = JSON.parse(unescape(data)) || {};
   }
   data.skills = parse_taffy_data(data.skills);
   data.feats = parse_taffy_data(data.feats);
@@ -360,7 +360,7 @@ this.parse_character_data = function(data) {
     log_entries = log_data.split("`");
     i = 0;
     while (i < log_entries.length) {
-      entry = TAFFY.JSON.parse(unescape(log_entries[i]));
+      entry = JSON.parse(unescape(log_entries[i]));
       sav(entry, "log_" + data.name + "_" + entry.id);
       i++;
     }
@@ -388,7 +388,7 @@ this.export_character = function() {
       cookie_data += "``";
       i = 0;
       while (i < chardata.log.length) {
-        cookie_data += TAFFY.JSON.stringify(get_log_entry(chardata.log[i])) + (i + 1 < chardata.log.length ? "," : "");
+        cookie_data += JSON.stringify(get_log_entry(chardata.log[i])) + (i + 1 < chardata.log.length ? "," : "");
         i++;
       }
     }

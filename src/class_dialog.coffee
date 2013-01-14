@@ -6,7 +6,7 @@ show_class_dialog = (level_diff, ability_increase) ->
     level_selection_total += chardata.classes[classname].level + 1
     options = ""
     i = chardata.classes[classname].level + 1
-    
+
     while i <= level_diff + chardata.classes[classname].level + 1
       options += "<option>" + i + "</option>"
       i++
@@ -14,13 +14,13 @@ show_class_dialog = (level_diff, ability_increase) ->
     html += "<tr><td><input type='checkbox' id='class_dialog_" + classname + "' name='" + classname + "' checked='true' classname='" + classname + "' onclick=\"do_checkbox( $(this).attr('classname') )\" /></td><td colspan='2'>" + classname + "</td><td id=''><select id='class_dialog_" + classname + "' classname='" + classname + "' onchange=\"var classname = $(this).attr('classname'); chardata.classes[classname].level = parseInt($(this).val())-1; repopulate_linked_class_selects();\" >" + options + "</select></td></tr>"
   options = ""
   i = 1
-  
+
   while i <= level_diff
     options += "<option>" + i + "</option>"
     i++
-  classes.forEach (clazz, n) ->
+  classes().each (clazz, n) ->
     html += "<tr><td><input type='checkbox' id='class_dialog_" + clazz.name + "' name='" + clazz.name + "' classname='" + clazz.name + "' onclick=\"do_checkbox( $(this).attr('classname'))\" /></td><td colspan='2'>" + clazz.name + "</td><td id=''><select id='class_dialog_" + clazz.name + "' disabled='true' style='width: 100%' classname='" + clazz.name + "' onchange=\"var classname = $(this).attr('classname'); chardata.classes[classname].level = parseInt($(this).val())-1; repopulate_linked_class_selects();\" >" + options + "</select></td></tr>"  if classnames.indexOf(clazz.name) == -1
-  
+
   html += "</table><input type='hidden' id='level_selection_total' name='level_selection_total' value='" + level_selection_total + "' />"
   show_dialog "Classes", html, true, "char_classes = chardata.classes.keys; switch_content(1, chardata)", width: 190
 do_checkbox = (classname) ->
@@ -31,7 +31,7 @@ do_checkbox = (classname) ->
       chardata.classes[classname].level = 0
       options = ""
       i = 1
-      
+
       while i <= level_diff
         options += "<option>" + i + "</option>"
         i++
@@ -42,7 +42,7 @@ do_checkbox = (classname) ->
       $(this).removeAttr "checked"
   else
     delete chardata.classes[classname]
-    
+
     $("select[id='class_dialog_" + classname + "']").html ""
     $("select[id='class_dialog_" + classname + "']").attr "disabled", "disabled"
   repopulate_linked_class_selects()
@@ -59,19 +59,19 @@ repopulate_linked_class_selects = ->
     selected_val = $(this).val()
     options = ""
     i = 1
-    
+
     while i <= level_diff + parseInt($(this).val())
       options += "<option>" + i + "</option>"
       i++
     $(this).html options
     $(this).val selected_val
-  
+
   $("#level_selection_total").val calc_current_total
 calc_current_total = ->
   total = 0
   $("select[id^='class_dialog']:not(:disabled)").each ->
     total += parseInt($(this).val())
-  
+
   total
 calc_available_levels = ->
   current_level = calc_level() + 1

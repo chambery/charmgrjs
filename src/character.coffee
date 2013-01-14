@@ -38,7 +38,8 @@ class Character
 	classes : { }
 	alignment : alignments[0]
 	goodness : goodness[0]
-
+	languages : []
+	equipment_benefits : {}
 	# this.classes[classes().first().name] = { "level" : 0 }
 	# armors : { }
 	# weapons : {	}
@@ -579,6 +580,8 @@ class Character
 			curr_level += clazz.level + 1
 		curr_level
 
+	calc_equip_mod : (key) ->
+		parseInt(equipment_benefits[key] == null ? 0 : equipment_benefits[key])
 
 if typeof(exports) == "object"
 	this.Character = Character

@@ -51,6 +51,10 @@ Character = (function() {
 
   Character.prototype.goodness = goodness[0];
 
+  Character.prototype.languages = [];
+
+  Character.prototype.equipment_benefits = {};
+
   /*
   	Returns the count of base feats provided by the character's classes for the current class levels
   */
@@ -747,6 +751,13 @@ Character = (function() {
       curr_level += clazz.level + 1;
     }
     return curr_level;
+  };
+
+  Character.prototype.calc_equip_mod = function(key) {
+    var _ref;
+    return parseInt((_ref = equipment_benefits[key] === null) != null ? _ref : {
+      0: equipment_benefits[key]
+    });
   };
 
   return Character;

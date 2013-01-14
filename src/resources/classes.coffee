@@ -2,6 +2,7 @@ if typeof(exports) == "object"
 	TAFFY = require("../../lib/taffy").taffy
 	sorcerer_bloodlines = require("./sorcerer_bloodlines").sorcerer_bloodlines
 	bloodline_powers = require("./sorcerer_bloodlines").bloodline_powers
+
 this.classes = TAFFY([
 	name: "Barbarian"
 	shortname: "Brb"
@@ -22,7 +23,7 @@ this.classes = TAFFY([
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	update_literacy: (language_id) ->
 		checked = $("#literacy_" + language_id + "_check").attr("checked")
-		language = languages.first(_id: language_id)
+		language = languages( _id: language_id ).first()
 		if not checked and chardata.classes["Barbarian"].literacy[language.name]
 			delete chardata.classes["Barbarian"].literacy[language.name]
 		else
@@ -36,16 +37,17 @@ this.classes = TAFFY([
 		$("#language_table").prepend "<td id=\"literacy_header\" colspan=2></td><td>Lit</td>"	if $("#literacy_header").length == 0
 		langs = []
 		for classname of chardata.classes
-			clazz = classes.first(name: classname)
+			clazz = classes( name: classname ).first()
 			langs = langs.concat((if clazz.languages? then clazz.languages else []))
+		race = races( name: chardata.race_name ).first()
 		langs = langs.concat(race.languages)
 		langs = langs.concat(chardata.languages)
 		for i of langs
-			lang = languages.first(name: langs[i])
+			lang = languages( name: langs[i] ).first()
 			if $("#literacy_" + lang._id).length == 0
 				$("tr#language_" + lang._id).append "<td id=\"literacy_" + lang._id + "\"><input id=\"literacy_" + lang._id + "_check\" type=\"checkbox\" /></td>"
 				$("#literacy_" + lang._id + "_check").click ->
-					classes.first(name: "Barbarian").update_literacy lang._id
+					classes( name: "Barbarian" ).first().update_literacy lang._id
 
 				$("#literacy_" + lang._id + "_check").attr "checked", "checked"	if chardata.classes["Barbarian"].literacy[lang.name]
 	 ]
@@ -208,9 +210,9 @@ this.classes = TAFFY([
 
 	edit_favored: (favored_name, db, index) ->
 		chardata[favored_name] = []	unless chardata[favored_name]
-		favored = db.first(name: (if chardata[favored_name].length > index then chardata[favored_name][index].name else ""))
+		favored = db( name: (if chardata[favored_name].length > index then chardata[favored_name][index].name else "" )).first()
 		favored = favored._id	if favored
-		select = create_select(favored_name + "_" + index, db.get(), "chardata." + favored_name + "[" + index + "] = { name: $('#" + favored_name + "_" + index + "').val(), val: (parseInt($('#" + favored_name + "_" + index + "_bonus').val()) | 0) }; save_character();", false, "style='width: 100%;'", null, favored)
+		select = create_select(favored_name + "_" + index, db().get(), "chardata." + favored_name + "[" + index + "] = { name: $('#" + favored_name + "_" + index + "').val(), val: (parseInt($('#" + favored_name + "_" + index + "_bonus').val()) | 0) }; save_character();", false, "style='width: 100%;'", null, favored)
 		$("#" + favored_name + "s").append "<tr><td>" + select + "</td><td><input id=\"" + favored_name + "_" + index + "_bonus\" type=\"text\" size=\"1\"/></td></tr>"
 		$("#" + favored_name + "_" + index + "_bonus").val (if chardata[favored_name][index] then chardata[favored_name][index].val else 0)
 		$("#" + favored_name + "_" + index + "_bonus").blur ->
@@ -222,7 +224,7 @@ this.classes = TAFFY([
 
 	main_favored: (favored_name, db, short_name, specials_id) ->
 		for i of chardata[favored_name]
-			f_e = db.first(name: chardata[favored_name][i].name)
+			f_e = db( name: chardata[favored_name][i].name ).first()
 			$("#specials").append "<tr id=\"special_" + favored_name + "_" + f_e._id + "\"><td><input id=\"" + favored_name + "_" + f_e._id + "\" type=\"checkbox\"/></td><td><a class=fake_link onclick=\"show_item_detail(specials, '" + specials_id + "')\">" + chardata[favored_name][i].name + " " + pos(chardata[favored_name][i].val) + " (" + short_name + ")</a></td></tr>"
 			$("input[id=\"" + favored_name + "_" + f_e._id + "\"]").bind "click", mod: chardata[favored_name][i].val, (e) ->
 				if $(this).attr("checked")
@@ -238,7 +240,7 @@ this.classes = TAFFY([
 			0: [
 				ui: "<table id='favored_enemys' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>"
 				script: ->
-					classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 0
+					classes( name: "Ranger" ).first().edit_favored "favored_enemy", favored_enemies, 0
 			 ]
 			1: [
 				ui: "<table style='width: 100%;'><tr><td>Weapon Style</td><td id='weapon_style'></td></tr></table>"
@@ -250,40 +252,40 @@ this.classes = TAFFY([
 					,
 						_id: 1
 						name: "Archery"
-					 ], "classes.first({ name : 'Ranger' }).update_weapon_style()", false, "style='width: 100%;'", null, selected)
+					 ], "classes( { name : 'Ranger' } ).first().update_weapon_style()", false, "style='width: 100%;'", null, selected)
 					$("#weapon_style").append "<tr><td>" + select + "</td></tr>"
 			 ]
 			2: [
 				ui: "<table id='favored_terrains' style='width: 100%;'><tr><td>Favored Terrain <span style='float:right'>Available Bonus: </span></td><td id='ft_bonus'></td></tr></table>"
 				script: ->
-					classes.first(name: "Ranger").edit_favored "favored_terrain", favored_terrains, 0
+					classes( name: "Ranger" ).first().edit_favored "favored_terrain", favored_terrains, 0
 			 ]
 			4: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 1
+				classes( name: "Ranger" ).first().edit_favored "favored_enemy", favored_enemies, 1
 			 ]
 			7: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_terrain", favored_terrains, 1
+				classes( name: "Ranger" ).first().edit_favored "favored_terrain", favored_terrains, 1
 			 ]
 			9: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 2
+				classes( name: "Ranger" ).first().edit_favored "favored_enemy", favored_enemies, 2
 			 ]
 			12: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_terrain", favored_terrains, 2
+				classes( name: "Ranger" ).first().edit_favored "favored_terrain", favored_terrains, 2
 			 ]
 			14: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 3
+				classes( name: "Ranger" ).first().edit_favored "favored_enemy", favored_enemies, 3
 			 ]
 			17: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_terrain", favored_terrains, 3
+				classes( name: "Ranger" ).first().edit_favored "favored_terrain", favored_terrains, 3
 			 ]
 			19: [ script: ->
-				classes.first(name: "Ranger").edit_favored "favored_enemy", favored_enemies, 4
+				classes( name: "Ranger" ).first().edit_favored "favored_enemy", favored_enemies, 4
 			 ]
 
 		main: before_specials: [ ->
-			classes.first(name: "Ranger").main_favored "favored_enemy", favored_enemies, "Fav. Enemy", "90c3"
+			classes( name: "Ranger" ).first().main_favored "favored_enemy", favored_enemies, "Fav. Enemy", "90c3"
 		, ->
-			classes.first(name: "Ranger").main_favored "favored_terrain", favored_terrains, "Fav. Terr.", "9dc3"
+			classes( name: "Ranger" ).first().main_favored "favored_terrain", favored_terrains, "Fav. Terr.", "9dc3"
 		 ]
 		feats:
 			1: script: (bonus) ->
@@ -429,7 +431,7 @@ this.classes = TAFFY([
 		all:
 			calc_sr: [
 				(save) ->
-					classes.first(name: "Sorcerer").calc_dr_saves save, "sr"
+					classes( name: "Sorcerer" ).first().calc_dr_saves save, "sr"
 			]
 		edit:
 			0: [
@@ -439,12 +441,12 @@ this.classes = TAFFY([
 					char_draconic_type = null
 					char_draconic_type = draconic_types.first(name: chardata.draconic_type)	if chardata.draconic_type
 
-					select = create_select("bloodline_select", sorcerer_bloodlines.get(), "classes.first({name: 'Sorcerer'}).update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
-					draconic_select = create_select("draconic_select", draconic_types.get(), "classes.first({name: 'Sorcerer'}).update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
+					select = create_select("bloodline_select", sorcerer_bloodlines.get(), "classes( {name: 'Sorcerer'} ).first().update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_bloodline then char_bloodline._id else ""))
+					draconic_select = create_select("draconic_select", draconic_types.get(), "classes( {name: 'Sorcerer'} ).first().update_bloodline(); edit.recalc_edit_page();", false, "style='width: 100%;'", null, (if char_draconic_type then char_draconic_type._id else ""))
 					$("#bloodline").append "<tr><td></td><td>" + select + "</td></tr>"
 					$("#bloodline").append "<tr id=\"draconic_type\"><td>type:</td><td>" + draconic_select + "</td></tr>"
 					$("#draconic_type").toggle chardata.bloodline == "Draconic"
-					classes.first({name: "Sorcerer"}).update_bloodline()	unless chardata.bloodline
+					classes( {name: "Sorcerer"} ).first().update_bloodline()	unless chardata.bloodline
 			]
 		skills:
 			[
@@ -454,13 +456,13 @@ this.classes = TAFFY([
 			]
 		main:
 			before_weapons_build: [ (char_weapons) ->
-				classes.first(name: "Sorcerer").merge_bloodline_weapons char_weapons
+				classes( name: "Sorcerer" ).first().merge_bloodline_weapons char_weapons
 			 ]
 			before_weapons_populate: [ (char_weapons) ->
-				classes.first(name: "Sorcerer").merge_bloodline_weapons char_weapons
+				classes( name: "Sorcerer" ).first().merge_bloodline_weapons char_weapons
 			 ]
 			before_weapons_recalc: [ (char_weapons) ->
-				classes.first(name: "Sorcerer").merge_bloodline_weapons char_weapons
+				classes( name: "Sorcerer" ).first().merge_bloodline_weapons char_weapons
 			 ]
 			before_spells: [ (all_spells) ->
 				bloodline = sorcerer_bloodlines.first(name: chardata.bloodline)
@@ -489,17 +491,17 @@ this.classes = TAFFY([
 						special = null
 						for level of power.levels
 							special = power	if level <= chardata.classes["Sorcerer"].level
-						$("#specials").append "<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>"	if special
+						$("#specials").append "<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes( { name: \"Sorcerer\"} ).first().modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>"	if special
 				return
 			 ]
 			damage_reduction: [ (dr) ->
-				classes.first(name: "Sorcerer").calc_dr_saves dr, "dr"
+				classes( name: "Sorcerer" ).first().calc_dr_saves dr, "dr"
 			 ]
 			save: [ (save) ->
-				classes.first(name: "Sorcerer").calc_dr_saves save, "save"
+				classes( name: "Sorcerer" ).first().calc_dr_saves save, "save"
 			 ]
 			Str: [ (mod) ->
-				classes.first(name: "Sorcerer").calc_dr_saves mod, "Str"
+				classes( name: "Sorcerer" ).first().calc_dr_saves mod, "Str"
 			 ]
 
 		feats:
@@ -562,3 +564,16 @@ this.classes = TAFFY([
 	specials: [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]
 	class_features: [ "Cast Arcane" ]
  ])
+
+is_class_skill = (skill, subtype) ->
+	for classname in chardata.classes
+		if skill.skill_classes
+			if skill.skill_classes( classname ).indexOf() > -1
+				return true
+
+		else if skill.subtypes[subtype].indexOf(classname) > -1
+			return true
+
+	return false
+
+

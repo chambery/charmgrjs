@@ -1,6 +1,5 @@
-var allfeats, build_feats_page, calc_feats_remaining, calc_prereqs, create_feat_listing, create_rogue_special_abilities, disable_feat, filter_options, find_match, handle_pick, inform_dependents, is_bonus_eligible, is_prereqs_met, populate_feats_page, update_count, update_feat, update_feats_remaining;
 
-build_feats_page = function() {
+edit_feats.build_feats_page = function() {
   var allfeats, char_classes, classname, clazz, feats_page_layout, i, is_spellcaster, l, prereqs, removed, temp_feats;
   char_classes = [];
   for (classname in chardata.classes) {
@@ -65,7 +64,7 @@ build_feats_page = function() {
   });
 };
 
-create_feat_listing = function(feat, indent) {
+edit_feats.create_feat_listing = function(feat, indent) {
   var all_options, count, db, expand_bar, html, multi, prereq;
   indent = (!(indent != null) ? 0 : indent);
   count = indent;
@@ -118,7 +117,7 @@ create_feat_listing = function(feat, indent) {
   return indent;
 };
 
-populate_feats_page = function() {
+edit_feats.populate_feats_page = function() {
   allfeats.forEach(function(feat, i) {
     var char_feat, char_multi, checked, multi_id, _results;
     if (feat.multi) {
@@ -162,7 +161,7 @@ populate_feats_page = function() {
   return calc_prereqs();
 };
 
-disable_feat = function(feat, disabled) {
+edit_feats.disable_feat = function(feat, disabled) {
   var checked;
   if (disabled) {
     $("input[id='" + feat._id + "']").attr("disabled", "disabled");
@@ -176,14 +175,14 @@ disable_feat = function(feat, disabled) {
   }
 };
 
-update_feats_remaining = function() {
+edit_feats.update_feats_remaining = function() {
   var count;
   count = calc_feats_remaining();
   $("#feats_remaining").text(count.base_feats_remaining);
   return $("#bonus_feats_remaining").text(count.bonus_feats.count);
 };
 
-calc_prereqs = function() {
+edit_feats.calc_prereqs = function() {
   return allfeats.forEach(function(feat, i) {
     var prereqs_met;
     prereqs_met = false;
@@ -198,7 +197,7 @@ calc_prereqs = function() {
   });
 };
 
-is_prereqs_met = function(feat_id, prereqs) {
+edit_feats.is_prereqs_met = function(feat_id, prereqs) {
   var char_feats, char_skill, clazz, group_feats, j, k, l, prereqs_met;
   char_feats = get_char_feats();
   prereqs_met = true;
@@ -268,7 +267,7 @@ is_prereqs_met = function(feat_id, prereqs) {
   return true;
 };
 
-calc_feats_remaining = function() {
+edit_feats.calc_feats_remaining = function() {
   var base_feats_remaining, bonus, char_feats, classname, clazz, feat, i, level;
   bonus = {
     count: 0,
@@ -327,7 +326,7 @@ calc_feats_remaining = function() {
   };
 };
 
-filter_options = function(feat, options_db) {
+edit_feats.filter_options = function(feat, options_db) {
   var char_feat, char_feat_ref, filtered_options, i, j, k, multi_feat, option;
   filtered_options = [];
   if (feat.multi.db) {
@@ -376,7 +375,7 @@ filter_options = function(feat, options_db) {
   return filtered_options;
 };
 
-update_count = function(feat) {
+edit_feats.update_count = function(feat) {
   var char_feat, count;
   count = calc_feats_remaining();
   if (count.base_feats_remaining === 0 && !is_bonus_eligible(feat, count.bonus_feats)) {
@@ -392,7 +391,7 @@ update_count = function(feat) {
   return update_feats_remaining();
 };
 
-update_feat = function(feat, is_selected, multi_item, multi_type) {
+edit_feats.update_feat = function(feat, is_selected, multi_item, multi_type) {
   var char_feat, count, multi, total_feats_remaining;
   multi = (multi_item ? "_" + multi_type.first({
     name: multi_item
@@ -438,7 +437,7 @@ update_feat = function(feat, is_selected, multi_item, multi_type) {
   return calc_prereqs();
 };
 
-inform_dependents = function(feat) {
+edit_feats.inform_dependents = function(feat) {
   return feats.get({
     multi: {
       "!is": null
@@ -458,7 +457,7 @@ inform_dependents = function(feat) {
   });
 };
 
-create_rogue_special_abilities = function(level, clazz) {
+edit_feats.create_rogue_special_abilities = function(level, clazz) {
   var count, i, rogue_specials, selected, selected_special, special_html;
   rogue_specials = [];
   for (i in rogue_special_abilities) {
@@ -496,7 +495,7 @@ create_rogue_special_abilities = function(level, clazz) {
   return $("#rogue_specials").hide();
 };
 
-handle_pick = function(group, count) {
+edit_feats.handle_pick = function(group, count) {
   var i, matches;
   matches = 0;
   for (i in group) {
@@ -510,7 +509,7 @@ handle_pick = function(group, count) {
   if (matches < count) return false;
 };
 
-find_match = function(o1, o2) {
+edit_feats.find_match = function(o1, o2) {
   var prop;
   for (prop in o1) {
     if (o2[prop]) return true;
@@ -518,8 +517,8 @@ find_match = function(o1, o2) {
   return false;
 };
 
-is_bonus_eligible = function(feat, bonus_feats) {
+edit_feats.is_bonus_eligible = function(feat, bonus_feats) {
   return bonus_feats.count > 0 && (bonus_feats.feats[feat.name] || find_match(bonus_feats.groups, feat.groups));
 };
 
-allfeats = null;
+edit_feats.allfeats = null;

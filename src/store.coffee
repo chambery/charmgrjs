@@ -128,7 +128,7 @@ Saves the supplied character data locally and remotely (if possible), and return
 ###
 this.save_character = (chardata) ->
 	name = chardata.name
-	name = create_default_name()	if not name or name.length == 0
+	name = create_default_name(chardata.race_name, chardata.classes)	if not name or name.length == 0
 	window.players_companion = {} if not window.document.players_companion
 	window.players_companion.last_character = name
 	window.document.cookie = @save_local players_companion, "players_companion"

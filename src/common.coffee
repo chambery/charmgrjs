@@ -171,7 +171,7 @@ this.show_dialog = (title, content, save_on_close, close_fn, opts) ->
 
 	if save_on_close
 		$("#mydialog").bind "dialogclose", ->
-			save_character()
+			save_character(chardata)
 	if close_fn
 		$("#mydialog").bind "dialogclose", ->
 			eval close_fn
@@ -262,7 +262,7 @@ this.parse_character_data = (data) ->
 		if log_separator > 0
 			log_data = data.substring(data.indexOf("``") + 2)
 			data = data.substring(0, data.indexOf("``"))
-		data = TAFFY.JSON.parse(unescape(data)) or {}
+		data = JSON.parse(unescape(data)) or {}
 	data.skills = parse_taffy_data(data.skills)
 	data.feats = parse_taffy_data(data.feats)
 	if log_data
@@ -270,7 +270,7 @@ this.parse_character_data = (data) ->
 		i = 0
 
 		while i < log_entries.length
-			entry = TAFFY.JSON.parse(unescape(log_entries[i]))
+			entry = JSON.parse(unescape(log_entries[i]))
 			sav entry, "log_" + data.name + "_" + entry.id
 			i++
 	data
@@ -291,7 +291,7 @@ this.export_character = ->
 			i = 0
 
 			while i < chardata.log.length
-				cookie_data += TAFFY.JSON.stringify(get_log_entry(chardata.log[i])) + (if i + 1 < chardata.log.length then "," else "")
+				cookie_data += JSON.stringify(get_log_entry(chardata.log[i])) + (if i + 1 < chardata.log.length then "," else "")
 				i++
 		show_dialog "character export", "Copy the below string to save your character:\n" + cookie_data
 	else
