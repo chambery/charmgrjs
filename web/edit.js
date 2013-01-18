@@ -27,9 +27,9 @@ edit.calc_skill_points = function() {
 };
 
 edit.build_edit_page = function() {
-  var align_html, level, race_html, skill_html;
+  var align_html, race_html, skill_html;
   set_links_part(1);
-  $("#content").html("<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' onblur='edit.recalc_edit_page()' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' onchange='edit.recalc_edit_page()' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;' onchange='edit.recalc_edit_page()'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table border='0'><tbody><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Str')\">Str</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Strscore'class='two_digit' id='ability_Str'></td><td align='center' id='race_Str_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Dex')\">Dex</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Dexscore'class='two_digit' id='ability_Dex'></td><td align='center' id='race_Dex_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Int</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Intscore'class='two_digit' id='ability_Int'></td><td align='center' id='race_Int_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Con')\">Con</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Conscore'class='two_digit' id='ability_Con'></td><td align='center' id='race_Con_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Cha</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Chascore'class='two_digit' id='ability_Cha'></td><td align='center' id='race_Cha_mod'></td></tr> <tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Wis')\">Wis</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Wisscore'class='two_digit' id='ability_Wis'></td><td align='center' id='race_Wis_mod'></td></tr></tbody></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>");
+  $("#content").html("<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table border='0'><tbody><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Str')\">Str</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Strscore'class='two_digit' id='ability_Str'></td><td align='center' id='race_Str_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Dex')\">Dex</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Dexscore'class='two_digit' id='ability_Dex'></td><td align='center' id='race_Dex_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Int</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Intscore'class='two_digit' id='ability_Int'></td><td align='center' id='race_Int_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Con')\">Con</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Conscore'class='two_digit' id='ability_Con'></td><td align='center' id='race_Con_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Cha</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Chascore'class='two_digit' id='ability_Cha'></td><td align='center' id='race_Cha_mod'></td></tr> <tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Wis')\">Wis</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Wisscore'class='two_digit' id='ability_Wis'></td><td align='center' id='race_Wis_mod'></td></tr></tbody></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>");
   if (chardata.abilities == null) chardata.abilities = {};
   race_html = create_select("race", races().get(), "edit.recalc_edit_page()", false, "style='width: 75px;'");
   $("#race_select").html(race_html);
@@ -40,25 +40,6 @@ edit.build_edit_page = function() {
     });
   });
   $("#alignment").html(align_html.join(""));
-  $("#alignment").change(function() {
-    console.group("deity - ALIGNMENT_CHANGED");
-    align_html = [];
-    align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
-    $.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
-      console.log(deity.name + " : " + deity.alignment + " " + deity.goodness);
-      return align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
-    });
-    $("#deity").html(align_html.join(""));
-    if ($("#deity").containsOption(chardata.deity)) {
-      $("#deity").val(chardata.deity);
-    } else {
-      chardata.deity = "";
-      chardata.domains = null;
-    }
-    chardata.alignment = $("#alignment").val().split(" ")[0];
-    chardata.goodness = $("#alignment").val().split(" ")[1];
-    return console.groupEnd();
-  });
   align_html = [];
   align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
   $.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
@@ -66,10 +47,6 @@ edit.build_edit_page = function() {
     return align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
   });
   $("#deity").html(align_html.join(""));
-  $("#deity").change(function() {
-    chardata.domains = [];
-    return $("#deity").trigger("DEITY_CHANGED");
-  });
   $("#language_table").html(edit.create_languages());
   $("#languages").hide();
   skill_html = [];
@@ -83,7 +60,7 @@ edit.build_edit_page = function() {
         }) || !chardata.skills.first({
           skill_name: skill.name
         }).subtypes[subtype]) {
-          skill_html.push(["<tr><td style='vertical-align: top;'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")' subtype='" + subtype + "'>", skill.name, " (", subtype, ")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='", subtype, "' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(""));
+          skill_html.push(["<tr><td style='vertical-align: top;width:100%'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")' subtype='" + subtype + "'>", skill.name, " (", subtype, ")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='", subtype, "' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(""));
         }
       }
       skill_html.push("</table></td></tr>");
@@ -116,9 +93,77 @@ edit.build_edit_page = function() {
   build_data_part("shields", "shield");
   if (is_empty(chardata.classes)) {
     chardata.classes = {};
-    level = ($("#xp").val() === "" ? 0 : parseInt($("#xp").val()));
-    return show_class_dialog(calc_level(level) + 1, 0);
+    show_class_dialog(calc_level(chardata.xp) + 1, 0);
   }
+  return edit.bind_controls();
+};
+
+edit.bind_controls = function() {
+  var ability, race, _results;
+  $("#xp").blur(function() {
+    chardata.xp = $("#xp").val;
+    return save_character(chardata);
+  });
+  $("input[id='hp']").blur(function() {
+    chardata.hp = $("input[id='hp']").val;
+    return save_character(chardata);
+  });
+  $("#race").change(function() {
+    var race;
+    console.log("" + chardata.race_name + " -> " + ($("#race").val()));
+    chardata.race_name = $("#race").val();
+    race = races({
+      name: chardata.race_name
+    }).first();
+    $("#char_race").text(race.shortname);
+    return save_character(chardata);
+  });
+  $("#alignment").change(function() {
+    var align_html;
+    chardata.alignment = $("#alignment").val.split(",")[0];
+    chardata.goodness = $("#alignment").val.split(",")[1];
+    console.group("deity - ALIGNMENT_CHANGED");
+    align_html = [];
+    align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
+    $.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
+      console.log(deity.name + " : " + deity.alignment + " " + deity.goodness);
+      return align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
+    });
+    $("#deity").html(align_html.join(""));
+    if ($("#deity").containsOption(chardata.deity)) {
+      $("#deity").val(chardata.deity);
+    } else {
+      chardata.deity = "";
+      chardata.domains = null;
+    }
+    console.groupEnd();
+    return save_character(chardata);
+  });
+  $("#deity").change(function() {
+    chardata.deity = $("#deity").val;
+    return save_character(chardata);
+  });
+  $("#domain").change(function() {
+    chardata.domain = $("#domain").val;
+    return save_character(chardata);
+  });
+  $("#charname").blur(function() {
+    chardata.name = $("#charname").val;
+    return save_character(chardata);
+  });
+  _results = [];
+  for (ability in abilities) {
+    race = races({
+      name: chardata.race_name
+    }).first();
+    chardata.abilities[ability] = $("#ability_" + ability).val();
+    if (race.abilities[ability]) {
+      _results.push($("#race_" + ability + "_mod").val(pos(race.abilities[ability])));
+    } else {
+      _results.push(void 0);
+    }
+  }
+  return _results;
 };
 
 edit.create_languages = function() {
@@ -135,23 +180,18 @@ edit.create_languages = function() {
 };
 
 edit.populate_edit_page = function() {
-  var alignment_name, deity_name, domain_name, goodness_name, race, race_name;
+  var race;
   if (chardata.name) $("#charname").val(chardata.name);
-  race_name = chardata.race_name || $("#race").val();
   race = races({
-    name: race_name
+    name: chardata.race_name
   }).first();
   $("#race option[id='race_option_" + race._id + "']").attr("selected", true);
   $("input[id='hp']").val(chardata.hp || "");
   $("#xp").val(chardata.xp || "");
   $("#weapon_style").selectOptions(chardata.weapon_style || "two_weapon_combat");
-  alignment_name = chardata.alignment || $("#alignment").val().split(" ")[0];
-  goodness_name = chardata.goodness || $("#alignment").val().split(" ")[1];
-  $("#alignment option[id='alignment_option_" + alignment_name + "_" + goodness_name + "']").attr("selected", true);
-  deity_name = chardata.deity || $("#deity").val();
-  $("#deity option[id='deity_option_" + deity_name + "']").attr("selected", true);
-  domain_name = chardata.domain_name || $("#domain").val();
-  $("#domain option[id='domain_option_" + domain_name + "']").attr("selected", true);
+  $("#alignment option[id='alignment_option_" + chardata.alignment + "_" + chardata.goodness + "']").attr("selected", true);
+  $("#deity option[id='deity_option_" + chardata.deity + "']").attr("selected", true);
+  $("#domain option[id='domain_option_" + chardata.domain_name + "']").attr("selected", true);
   if (chardata.abilities) {
     $("#ability_Str").val(chardata.abilities["Str"]);
     $("#ability_Dex").val(chardata.abilities["Dex"]);
@@ -183,24 +223,14 @@ edit.populate_edit_page = function() {
 };
 
 edit.recalc_edit_page = function() {
-  var ability, ability_increase, char_langs, checked, class_langs, classname, clazz, curr_level, feature, feature_count, i, is_class_language, is_race_language, lang_idx, langs, len, level, level_diff, new_level, race, skill_pts;
-  chardata.name = $("#charname").val();
-  curr_level = calc_level(chardata.xp);
-  new_level = calc_level($("#xp").val());
-  chardata.xp = $("#xp").val();
-  if (curr_level < new_level) {
-    level_diff = new_level - curr_level;
-    ability_increase = (new_level + 1) % 4 === 0;
+  var ability, ability_increase, calcd_level, char_langs, checked, class_langs, classname, clazz, feature, feature_count, i, is_class_language, is_race_language, lang_idx, langs, len, level, level_diff, race, skill_pts;
+  calcd_level = calc_level(chardata.xp);
+  if (calcd_level < chardata.level) {
+    level_diff = calcd_level - chardata.level;
+    ability_increase = (chardata.level + 1) % 4 === 0;
     show_class_dialog(level_diff, ability_increase);
   }
-  curr_level = new_level;
-  $("#max_ranks").text(curr_level + 1 + 3);
-  chardata.hp = $("input[id='hp']").val();
-  chardata.race_name = $("#race").val();
-  chardata.alignment = $("#alignment").val().split(",")[0];
-  chardata.goodness = $("#alignment").val().split(",")[1];
-  chardata.deity = $("#deity").val();
-  chardata.domain = $("#domain").val();
+  $("#max_ranks").text(calcd_level + 1 + 3);
   if (chardata.abilities == null) chardata.abilities = {};
   race = races({
     name: chardata.race_name

@@ -43,12 +43,13 @@ this.toggle_visible = (section, hide) ->
 	$("#" + section + "_expand_flag").html (if hidden then "<img src='images/collapsed.png'/>" else "<img src='images/expanded.png'/>")
 
 this.set_links_part = (page_id) ->
+	window.curr_page = page_id or window.curr_page
 	classes_html = ""
 	is_spellpicker = false
 	for classname of chardata.classes
 		is_spellpicker = (if spellpickers.indexOf(classname) > -1 then true else is_spellpicker)
 		class_shortname = classes({name: classname}).first().shortname
-		classes_html += "<td id='view_class_" + classname + "' style='color: blue;text-align: right; vertical-align: top' nowrap><a class='fake_link view' onclick='var level_diff=(calc_level()+1)-calc_current_level(); show_class_dialog(level_diff,0);'>" + class_shortname + "</a><sub>" + (chardata.classes[classname].level + 1) + "</sub></td>"
+		classes_html += "<td id='view_class_" + classname + "' style='color: blue;text-align: right; vertical-align: top' nowrap><a class='fake_link view' onclick='var level_diff=(calc_level()+1)-(chardata.level()+1); show_class_dialog(level_diff,0);'>" + class_shortname + "</a><sub>" + (chardata.classes[classname].level + 1) + "</sub></td>"
 			# set a default race if null
 	race = races({name: chardata.race_name}).first()
 	links_html = "<table padding='0' cellpadding='1' margin='0'><tr>"
@@ -65,8 +66,8 @@ this.set_links_part = (page_id) ->
 	for i of characters
 		existing_chars_html += "<li id='" + characters[i].name + "' onclick=\"players_companion.last_character='" + characters[i].name + "'; sav(players_companion, 'players_companion'); window.location.reload();\" >" + characters[i].name + "</li>"	if characters[i].name? and characters[i].name.length > 0 and characters[i].name != chardata.name
 	existing_chars_html = "<li class='sep'><hr /></li>" + existing_chars_html	if existing_chars_html.length > 0
-	$("#linkspart").html links_html + "<td class='view'>" + "<td class='view'><ul id='file'><li class='btn box'>&nbsp;char&nbsp;<ul><li id='load'>load</li><li></li><li id='new'>new</li><li></li><li id='log'>log</li><li></li><li id='options'>options</li><li></li><li id='sheet'>sheet</li><li></li>" + existing_chars_html + "</ul></ul></td>" + "<td class='view' style='color: blue;width: 100%;text-align: right;' nowrap>" + race.shortname + "</td>" + classes_html + "</tr></table>"
-	if this.calc_level() - window.chardata.calc_current_level() > 0
+	$("#linkspart").html links_html + "<td class='view'>" + "<td class='view'><ul id='file'><li class='btn box'>&nbsp;char&nbsp;<ul><li id='load'>load</li><li></li><li id='new'>new</li><li></li><li id='log'>log</li><li></li><li id='options'>options</li><li></li><li id='sheet'>sheet</li><li></li>" + existing_chars_html + "</ul></ul></td>" + "<td id='char_race' class='view' style='color: blue;width: 100%;text-align: right;' nowrap>" + race.shortname + "</td>" + classes_html + "</tr></table>"
+	if this.calc_level() - chardata.level > 0
 		$("td[id^='view_class']").css "font-weight", "bold"
 	else
 		$("td[id^='view_class']").css "font-weight", ""

@@ -574,10 +574,10 @@ class Character
 	###
 	Returns the current level calculated from character class levels.
 	###
-	calc_current_level : ->
+	level : ->
 		curr_level = 0
 		for classname, clazz of @classes
-			curr_level += clazz.level + 1
+			curr_level += clazz.level
 		curr_level
 
 	calc_equip_mod : (key) ->

@@ -99,13 +99,12 @@ this.classes = TAFFY([
 					remove chardata.domains, chardata.domains.indexOf(item.name)
 
 			chardata.domains = []	unless chardata.domains?
-			available_domains = domains.get()
+			available_domains = []
 			if chardata.deity
-				deity = deities.first(name: chardata.deity)
+				deity = deities( name: chardata.deity ).first()
 				console.log deity.name
-				available_domains = domains.get(name: deity.domains)
-			else
-				available_domains = []
+				available_domains = domains( name: deity.domains ).get()
+
 			console.log available_domains
 			create_selector_grid available_domains, "table#domains", set_domain, chardata.domains, 4
 

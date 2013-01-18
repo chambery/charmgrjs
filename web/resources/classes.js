@@ -144,17 +144,15 @@ this.classes = TAFFY([
                 }
               };
               if (chardata.domains == null) chardata.domains = [];
-              available_domains = domains.get();
+              available_domains = [];
               if (chardata.deity) {
-                deity = deities.first({
+                deity = deities({
                   name: chardata.deity
-                });
+                }).first();
                 console.log(deity.name);
-                available_domains = domains.get({
+                available_domains = domains({
                   name: deity.domains
-                });
-              } else {
-                available_domains = [];
+                }).get();
               }
               console.log(available_domains);
               return create_selector_grid(available_domains, "table#domains", set_domain, chardata.domains, 4);

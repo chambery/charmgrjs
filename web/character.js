@@ -742,13 +742,13 @@ Character = (function() {
   	Returns the current level calculated from character class levels.
   */
 
-  Character.prototype.calc_current_level = function() {
+  Character.prototype.level = function() {
     var classname, clazz, curr_level, _ref;
     curr_level = 0;
     _ref = this.classes;
     for (classname in _ref) {
       clazz = _ref[classname];
-      curr_level += clazz.level + 1;
+      curr_level += clazz.level;
     }
     return curr_level;
   };
