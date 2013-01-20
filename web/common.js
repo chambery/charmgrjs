@@ -366,6 +366,7 @@ this.parse_character_data = function(data) {
       i++;
     }
   }
+  console.log("parse_character_data: " + (JSON.stringify(data, null, 2)));
   return data;
 };
 

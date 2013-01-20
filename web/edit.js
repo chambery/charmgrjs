@@ -27,11 +27,14 @@ edit.calc_skill_points = function() {
 };
 
 edit.build_edit_page = function() {
-  var align_html, race_html, skill_html;
+  var ability, align_html, race_html, skill_html;
   set_links_part(1);
-  $("#content").html("<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table border='0'><tbody><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Str')\">Str</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Strscore'class='two_digit' id='ability_Str'></td><td align='center' id='race_Str_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Dex')\">Dex</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Dexscore'class='two_digit' id='ability_Dex'></td><td align='center' id='race_Dex_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Int</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Intscore'class='two_digit' id='ability_Int'></td><td align='center' id='race_Int_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Con')\">Con</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Conscore'class='two_digit' id='ability_Con'></td><td align='center' id='race_Con_mod'></td></tr><tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Int')\">Cha</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Chascore'class='two_digit' id='ability_Cha'></td><td align='center' id='race_Cha_mod'></td></tr> <tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'Wis')\">Wis</a></b></td><td align='center'><input type='text'onblur='edit.recalc_edit_page()' value='' name='Wisscore'class='two_digit' id='ability_Wis'></td><td align='center' id='race_Wis_mod'></td></tr></tbody></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>");
+  $("#content").html("<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table id='abilities_table' border='0'></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>");
+  for (ability in abilities) {
+    $("#abilities_table").append("<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'" + ability + "')\">" + ability + "</a></b></td><td align='center'><input type='text' value='' name='" + ability + "score'class='two_digit' id='ability_" + ability + "'></td>");
+  }
   if (chardata.abilities == null) chardata.abilities = {};
-  race_html = create_select("race", races().get(), "edit.recalc_edit_page()", false, "style='width: 75px;'");
+  race_html = create_select("race", races().get(), "", false, "style='width: 75px;'");
   $("#race_select").html(race_html);
   align_html = [];
   alignments.forEach(function(alignment, i) {
@@ -99,7 +102,7 @@ edit.build_edit_page = function() {
 };
 
 edit.bind_controls = function() {
-  var ability, race, _results;
+  var ability, _results;
   $("#xp").blur(function() {
     chardata.xp = $("#xp").val;
     return save_character(chardata);
@@ -151,17 +154,24 @@ edit.bind_controls = function() {
     chardata.name = $("#charname").val;
     return save_character(chardata);
   });
+  for (ability in abilities) {
+    $("#ability_" + ability).blur(function() {
+      var race;
+      chardata.abilities[ability] = $("#ability_" + ability).val;
+      race = races({
+        name: chardata.race_name
+      }).first;
+      if (race.abilities[ability]) {
+        return $("#race_" + ability + "_mod").val(pos(race.abilities[ability]));
+      }
+    });
+  }
   _results = [];
   for (ability in abilities) {
-    race = races({
-      name: chardata.race_name
-    }).first();
-    chardata.abilities[ability] = $("#ability_" + ability).val();
-    if (race.abilities[ability]) {
-      _results.push($("#race_" + ability + "_mod").val(pos(race.abilities[ability])));
-    } else {
-      _results.push(void 0);
-    }
+    console.log("binding click -> " + ability);
+    _results.push($("#ability_" + ability).click(function() {
+      return show_item_detail(abilities, ability);
+    }));
   }
   return _results;
 };

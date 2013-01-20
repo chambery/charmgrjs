@@ -70,7 +70,7 @@ this.import_character = (options, char_name) ->
 this.lod = (char_name) ->
 	if char_name
 		cookie_data = get_cookie_data("ch_" + char_name)
-		chardata = parse_character_data(cookie_data)	if cookie_data
+		window.chardata = parse_character_data(cookie_data)	if cookie_data
 		remote_data = undefined
 		if chardata.options and chardata.options.owner
 			$.ajax
@@ -85,7 +85,7 @@ this.lod = (char_name) ->
 				data: {}
 				async: false
 
-			chardata = parse_character_data(remote_data)	if remote_data and remote_data.last_mod > chardata.last_mod
+			window.chardata = parse_character_data(remote_data)	if remote_data and remote_data.last_mod > chardata.last_mod
 			sync_logs()
 	load_static_data()
 
@@ -137,6 +137,7 @@ this.save_character = (chardata) ->
 	save_data.skills = save_data.skills.get()	if save_data.skills?
 	save_data.feats = save_data.feats.get()	if save_data.feats?
 	save_data.type = "character"
+	console.log "save_character: #{JSON.stringify(save_data, null, 2)}"
 	sav save_data, "ch_" + name, name
 	name
 

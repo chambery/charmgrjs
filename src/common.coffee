@@ -274,6 +274,7 @@ this.parse_character_data = (data) ->
 			entry = JSON.parse(unescape(log_entries[i]))
 			sav entry, "log_" + data.name + "_" + entry.id
 			i++
+	console.log "parse_character_data: #{JSON.stringify(data, null, 2)}"
 	data
 
 this.reconstitute_array = (array_obj, attr_name) ->

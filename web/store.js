@@ -75,10 +75,10 @@ this.import_character = function(options, char_name) {
 };
 
 this.lod = function(char_name) {
-  var chardata, cookie_data, remote_data;
+  var cookie_data, remote_data;
   if (char_name) {
     cookie_data = get_cookie_data("ch_" + char_name);
-    if (cookie_data) chardata = parse_character_data(cookie_data);
+    if (cookie_data) window.chardata = parse_character_data(cookie_data);
     remote_data = void 0;
     if (chardata.options && chardata.options.owner) {
       $.ajax({
@@ -94,7 +94,7 @@ this.lod = function(char_name) {
         async: false
       });
       if (remote_data && remote_data.last_mod > chardata.last_mod) {
-        chardata = parse_character_data(remote_data);
+        window.chardata = parse_character_data(remote_data);
       }
       sync_logs();
     }
@@ -160,6 +160,7 @@ this.save_character = function(chardata) {
   if (save_data.skills != null) save_data.skills = save_data.skills.get();
   if (save_data.feats != null) save_data.feats = save_data.feats.get();
   save_data.type = "character";
+  console.log("save_character: " + (JSON.stringify(save_data, null, 2)));
   sav(save_data, "ch_" + name, name);
   return name;
 };
