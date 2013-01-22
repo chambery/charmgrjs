@@ -360,7 +360,7 @@ this.get_special_abilities = ->
 			item = 0
 
 			while item < class_specials[level].length
-				class_special = specials.first(name: class_specials[level][item].special_name)
+				class_special = specials( name: class_specials[level][item].special_name ).first()
 				if class_special.supersedes
 					for supersede of class_special.supersedes
 						special_abilities[class_special.supersedes[supersede]] = null
@@ -371,7 +371,7 @@ this.get_special_abilities = ->
 	rogue_special_abilities = chardata.rogue_special_abilities
 	for i of rogue_special_abilities
 		unless rogue_special_abilities[i].special_name == "Skill Mastery"
-			class_special = specials.first(name: rogue_special_abilities[i].special_name)
+			class_special = specials( name: rogue_special_abilities[i].special_name ).first()
 			special_abilities[rogue_special_abilities[i].special_name] = class_special
 	special_abilities
 

@@ -135,7 +135,7 @@ this.save_character = (chardata) ->
 
 	save_data = $.extend(true, {}, chardata)
 	save_data.skills = save_data.skills.get()	if save_data.skills?
-	save_data.feats = save_data.feats.get()	if save_data.feats?
+	save_data.feats = save_data.feats()
 	save_data.type = "character"
 	console.log "save_character: #{JSON.stringify(save_data, null, 2)}"
 	sav save_data, "ch_" + name, name

@@ -40,6 +40,7 @@ class Character
 	goodness : goodness[0]
 	languages : []
 	equipment_benefits : {}
+	feats : new TAFFY([])
 	# this.classes[classes().first().name] = { "level" : 0 }
 	# armors : { }
 	# weapons : {	}
@@ -229,7 +230,7 @@ class Character
 	###
 	Returns a Taffy db of feat objects for this character's chosen feats. Does not include class-supplied feats.
 	###
-	get_char_feats : () ->
+	get_feats : () ->
 		console.log "\tget_char_feats - src"
 		char_feats = TAFFY([])
 		if @feats
@@ -262,10 +263,10 @@ class Character
 		console.log "\nget_all_char_feats"
 		all_char_feats = this.get_class_feats()
 		console.log "\tall count: #{all_char_feats().count()}"
-		char_feats = this.get_char_feats()
+		char_feats = this.feats
 		console.log "\tchar feats count: #{char_feats().count()}"
 		all_char_feats?().each (feat) ->
-			char_feat = char_feats(name: feat.name).first()
+			char_feat = feats(name: feat.name).first
 			if not char_feat
 				char_feats.insert feat
 

@@ -93,71 +93,33 @@ main.build_main_page = ->
 		session["shield"][i] = {}
 		session["shield"][i]["is_worn"] = true
 	set_links_part 0
-	$("#content").html $.ajax(
-		url: "main.html",
-		dataType: "html"
-	)
-	$("#ability_score_full0").bind "click",
-		ability: "Str"
-		id: 0
-	, (e) ->
-		main.reset_ability_score e
+	# $.ajax(
+	# 	url: "web/main.html",
+	# 	dataType: "html",
+	# 	async: false,
+	#     success: (data) ->
+	#       $("#content").html data
+	# )
+	$("#content").html "<div id='topline'></div> <div id='topleceilft' class='dp66'> <div id='abilitiespart' class='dp40' style='float: left'> <table border=0 id='abilities_table'> <tr> <td id='char_name' colspan='4' style='font-weight: bold; color: blue'></td> </tr> <tr> <td><b>Str</b></td> <td id='ability_score_full_Str' nowrap></td> <td><input ability='Str' id='ability_Str_score' class='two_digit' value='' type='text'></td> <td id='ability_Str_mod' align='right' nowrap></td> </tr> <tr> <td><b>Dex</b></td> <td id='ability_score_full_Dex' nowrap></td> <td><input ability='Dex' id='ability_Dex_score' class='two_digit' value='' type='text'></td> <td id='ability_Dex_mod' align='right' nowrap></td> </tr> <tr> <td><b>Int</b></td> <td id='ability_score_full_Int' nowrap></td> <td><input ability='Int' id='ability_Int_score' class='two_digit' value='' type='text'></td> <td id='ability_Int_mod' align='right' nowrap></td> </tr> <tr> <td><b>Con</b></td> <td id='ability_score_full_Con' nowrap></td> <td><input ability='Con' id='ability_Con_score' class='two_digit' value='' type='text'></td> <td id='ability_Con_mod' align='right' nowrap></td> </tr> <tr> <td><b>Cha</b></td> <td id='ability_score_full_Cha' nowrap></td> <td><input ability='Cha' id='ability_Cha_score' class='two_digit' value='' type='text'></td> <td id='ability_Cha_mod' align='right' nowrap></td> </tr> <tr> <td><b>Wis</b></td> <td id='ability_score_full_Wis' nowrap></td> <td><input ability='Wis' id='ability_Wis_score' class='two_digit' value='' type='text'></td> <td id='ability_Wis_mod' align='right' nowrap></td> </tr><tr><td colspan=3>Speed: <span id='speed'></span></td></tr> </table> </div> <div id='middlepart' class='dp60' style='float: left;'> <table id='middle_table' style='table-layout: fixed; width: 100%'> <tr> <td colspan=4 style='padding: 0px;'> <table border=0 style='padding: 0px; width: 100%;'> <tr> <td align='left'>HP</td> <td id='hp' align='right'></td> <td align='right'><input id='temp_hp' style='width: 2em;text-align: center;' type='text' value='' /></td> <td align='right'>SD <input id='subdual_hp' style='width: 15px; text-align: center' type='text' value='' /></td> </tr> </table> </td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Fort</td> <td id='fort' class='box numeric' style='width: 30px;' nowrap></td> <td>AC</td> <td id='ac' class='box numeric' style='width: 30px;'></td> </tr> <tr> <td>Ref</td> <td id='ref' class='box numeric' nowrap></td> <td>Tch</td> <td id='touch' class='box numeric' nowrap></td> </tr> <tr> <td>Will</td> <td id='will' class='box numeric' nowrap></td> <td>Flat</td> <td id='flat' class='box numeric' nowrap></td> </tr> <tr> <td>SR</td> <td id='spell_resistance' class='box numeric' nowrap></td> <td>Init</td> <td id='init' class='box numeric'></td> </tr><tr><td colspan=4><table id='dr' style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;'></table></td></tr><tr><td colspan=4><table id='saves' style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;'></table></td></tr><tr> <td>CMB</td> <td id='cmb' class='box' colspan=3></td> </tr><tr> <td>CMD</td> <td id='cmd' class='box' colspan=3></td> </tr> <tr> <td>BAB</td> <td id='base_attack_bonus' class='box' colspan=3></td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Att</td> <td id='attack_mod'>0</td> <td><a id='plus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> <tr> <td>Dam</td> <td id='damage_mod'>0</td> <td><a id='plus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> </table> </div> <div id='featspart' class='dp100'> <table style='width: 100%; margin: 0px 0px 5px 0px; border-collapse: collapse;' border='0'> <tbody> <tr onclick=\"toggle_visible('conditional_feats')\"> <td colspan='3' bgcolor='#8DC3E9'><span id='conditional_feats_expand_flag' style='float: right; vertical-align: middle'><img src='images/collapsed.png' /></span><a class='fake_link'>Feats</a></td> </tr> </tbody> <tbody id='conditional_feats'></tbody> </table> </div> <div id='specialpart' class='dp100'> <table id='specials_table' style='width: 100%; border: 0px; margin: 0px 0px 5px 0px; border-collapse: collapse;'> <tr id='specials_heading' style='background-color: #8DC3E9'> <td colspan='2'><span id='specials_expand_flag' style='float: right'><img src='images/collapsed.png' /></span><a class='fake_link'>Special Abilities</a></td> </tr> <tbody id='specials'></tbody> </table> </div> <div id='weaponspart' class='dp100'></div> <div id='armorpart' class='dp100'></div> <div id='shieldspart' class='dp100'></div> <div id='spellspart' class='dp100'></div> </div> <div id='skillspart' class='dp33'> <table border='0' id='skills_table'></table> </div>"
+	i=0
+	for ability of abilities
+		$("#ability_score_full#{i}").bind "click",
+			ability: "#{ability}"
+			id: i
+		, (e) ->
+			main.reset_ability_score e
 
-	$("input[id='ability_Str_score']").bind "blur", ability: "Str", (e) ->
-		main.recalc_ability_mod e
-
-	$("#ability_score_full1").bind "click",
-		ability: "Dex"
-		id: 1
-	, (e) ->
-		main.reset_ability_score e
-
-	$("input[id='ability_Dex_score']").bind "blur", ability: "Dex", (e) ->
-		main.recalc_ability_mod e
-
-	$("#ability_score_full2").bind "click",
-		ability: "Int"
-		id: 2
-	, (e) ->
-		main.reset_ability_score e
-
-	$("input[id='ability_Int_score']").bind "blur", ability: "Int", (e) ->
-		main.recalc_ability_mod e
-
-	$("#ability_score_full3").bind "click",
-		ability: "Con"
-		id: 3
-	, (e) ->
-		main.reset_ability_score e
-
-	$("input[id='ability_Con_score']").bind "blur", ability: "Con", (e) ->
-		main.recalc_ability_mod e
-
-	$("#ability_score_full4").bind "click",
-		ability: "Cha"
-		id: 4
-	, (e) ->
-		main.reset_ability_score e
-
-	$("input[id='ability_Cha_score']").bind "blur", ability: "Cha", (e) ->
-		main.recalc_ability_mod e
-
-	$("#ability_score_full5").bind "click",
-		ability: "Wis"
-		id: 5
-	, (e) ->
-		main.reset_ability_score e
-
-	$("input[id='ability_Wis_score']").bind "blur", ability: "Wis", (e) ->
-		main.recalc_ability_mod e
+		$("input[id='ability_#{ability}_score']").bind "blur", ability: "#{ability}", (e) ->
+			main.recalc_ability_mod e
+		i++
 
 	window.chardata.skills = TAFFY([])	unless window.chardata.skills?
 	rogue_skill_selections = main.get_rogue_skill_selections()
-	skills.forEach (skill, i) ->
+	skills().each (skill, i) ->
 		skill_html = []
 		skill_selection_ind_html = (if rogue_skill_selections.indexOf(skill._id) > -1 then "<sup>+</sup>" else "")
 		if skill.subtypes
-			char_skill = window.chardata.skills.first(skill_name: skill.name)
+			char_skill = window.chardata.skills( skill_name: skill.name ).first()
 			if char_skill
 				for subtype of char_skill.subtypes
 					skill_html = main.build_skill_entry skill, skill_selection_ind_html, subtype
@@ -194,11 +156,11 @@ main.build_main_page = ->
 	feats_html = ""
 	conditional_feats = []
 	for classname of window.chardata.classes
-		clazz = classes.first(name: classname)
+		clazz = classes( name: classname ).first()
 		if clazz.custom and clazz.custom.main and clazz.custom.main.before_specials
 			for script of clazz.custom.main.before_specials
 				clazz.custom.main.before_specials[script]()
-	char_feats = get_char_feats().get()
+	char_feats = chardata.feats().get()
 	i = 0
 
 	while i < char_feats.length
@@ -257,11 +219,11 @@ main.build_main_page = ->
 		domain = domains.first(name: window.chardata.domains[domain])
 		char_domains.push domain
 	for classname of window.chardata.classes
-		clazz = classes.first(name: classname)
+		clazz = classes( name: classname ).first()
 	$("#spellspart").css "margin-top", "10px"
 	$("#spellspart").html ""
 	for classname of window.chardata.classes
-		clazz = classes.first(name: classname)
+		clazz = classes( name: classname ).first()
 		window.chardata.classes[classname].spells = [ [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [] ]	if clazz.spells_known and not window.chardata.classes[classname].spells
 		all_spells = $.merge([], (if clazz.spells_known then window.chardata.classes[classname].spells else clazz.spells))
 		if clazz.custom and clazz.custom.main and clazz.custom.main.before_spells
@@ -295,7 +257,7 @@ main.build_main_page = ->
 			spells_html.push "</tr></table>"
 			$("#spellspart").append spells_html.join("")
 	for classname of window.chardata.classes
-		clazz = classes.first(name: classname)
+		clazz = classes( name: classname ).first()
 		if clazz.custom and clazz.custom.main and clazz.custom.main.before_spells
 			for script of clazz.custom.main.after_spells
 				clazz.custom.main.after_spells[script]()
@@ -326,7 +288,7 @@ main.adjust_mod = (type, magnitude) ->
 	recalc_main_page()
 
 main.populate_main_page = ->
-	race = races.first(name: window.chardata.race_name)
+	race = races( name: window.chardata.race_name ).first()
 	$("#char_name").text window.chardata.name
 	$("#hp").text (if not window.chardata.hp? or window.chardata.hp.length <= 0 then 0 else calc_hp(chardata.hp, window.chardata.feats))
 	$("#temp_hp").val window.chardata.temp_hp or $("#hp").text() or 0
@@ -335,10 +297,10 @@ main.populate_main_page = ->
 	$("#level").text calc_level() + 1
 	allabilities = window.chardata.abilities
 	for ability of abilities
-		ability_score = calc_ability_score(ability, window.chardata.race_name)
+		ability_score = chardata.ability_score(ability, window.chardata.race_name)
 		$("#ability_score_full_" + ability).text ability_score
 		$("#ability_" + ability + "_score").val window.chardata.abilities["temp_" + ability] or ability_score
-		ability_mod = calc_ability_modifier($("#ability_" + ability + "_score").val())
+		ability_mod = chardata.ability_modifier($("#ability_" + ability + "_score").val())
 		$("#ability_" + ability + "_mod").text pos(ability_mod)
 	char_weapons = do_class_functions("main", "before_weapons_populate", window.chardata.weapons)
 	for j of char_weapons
@@ -434,9 +396,9 @@ main.recalc_main_page = ->
 		$("#shield_" + j + "_acp").text shield_data.shield_check_penalty
 	acp = calc_armor_acp(chardata.armors)
 	acp += calc_shield_acp(chardata.shields)
-	skills.forEach (skill, i) ->
+	skills().each (skill, i) ->
 		if skill.subtypes
-			char_skill = window.chardata.skills.first(skill_name: skill.name)
+			char_skill = window.chardata.skills( skill_name: skill.name ).first()
 			if char_skill
 				for subtype of char_skill.subtypes
 					populate_skill_entry skill, acp, subtype
@@ -453,12 +415,12 @@ main.recalc_main_page = ->
 	$("#flat").text calc_flat_footed_ac(chardata.armors)
 	$("#cmb").text calc_cmb(calc_base_attack_bonus())
 	$("#cmd").text calc_cmd(calc_base_attack_bonus())
-	-$("#spell_resistance").text(calc_spell_resistance() + "%")
+	$("#spell_resistance").text(calc_spell_resistance() + "%")
 	for i of base_attack_bonuses
 		base_attack_bonuses[i] = pos(base_attack_bonuses[i])
 	$("#base_attack_bonus").text base_attack_bonuses.join("/")
 	for classname of window.chardata.classes
-		clazz = classes.first(name: classname)
+		clazz = classes( name: classname ).first()
 		spells_per_day = clazz.spells_per_day[chardata.classes[classname].level]
 		for i of spells_per_day
 			$("#spd_count_" + clazz.shortname + i).text spells_per_day[i]
@@ -475,30 +437,29 @@ main.update_ability = (id) ->
 	class_val = {}
 	class_val[id] = base: 0
 	class_val = do_class_functions("main", id, class_val)
-	ability_val = calc_ability_score(id)
-	mod = calc_ability_modifier(ability_val + (class_val[id].base | 0)) + (class_val[id].mod | 0)
+	ability_val = chardata.ability_score(id)
+	mod = chardata.ability_modifier(ability_val + (class_val[id].base | 0)) + (class_val[id].mod | 0)
 	$("#ability_" + id + "_mod").text pos(mod)
 	$("#ability_score_full_" + id).text ability_val + (class_val[id].base | 0)
 
 main.calc_turn = (cha_score) ->
-	know_religion = skills.first(name: "Knowledge (religion)")
+	know_religion = skills( name: "Knowledge (religion ).first()")
 	char_know_religion = false
-	char_know_religion = window.chardata.skills.first(skill_name: know_religion.name)	if window.chardata.skills?
+	char_know_religion = window.chardata.skills( skill_name: know_religion.name ).first()	if window.chardata.skills?
 	feat_mod = 0
-	char_feats = get_char_feats()
-	char_feats.get(turn: "!is": null).forEach (feat, i) ->
+	char_feats = chardata.feats()
+	char_feats(turn: "!is": null).each (feat, i) ->
 		feat_mod = feat.critical(feat_mod)
 		feat_mod
 
 	char_know_rel_pnts = (if char_know_religion then char_know_religion.ranks else 0)
 	skill_bonus = (if calc_ranks(chardata.class_name, char_know_rel_pnts, know_religion) >= 5 then 2 else 0)
 	cha_score = $("#ability_4_score").val()
-	Math.max 3 + calc_ability_modifier(cha_score) + skill_bonus + feat_mod, 0
+	Math.max 3 + chardata.ability_modifier(cha_score) + skill_bonus + feat_mod, 0
 
 main.calc_hp = (hp, char_feats) ->
 	feat_mod = 0
-	char_feats = get_char_feats()
-	char_feats.get(hp: "!is": null).forEach (feat, i) ->
+	chardata.feats(hp: "!is": null).get().each (feat, i) ->
 		feat_mod = feat.hp(feat_mod)
 		feat_mod
 
@@ -506,8 +467,8 @@ main.calc_hp = (hp, char_feats) ->
 
 main.calc_critical = (weapon_critical, char_weapon, char_feats) ->
 	critical = (if not char_weapon.crit? then weapon_critical else char_weapon.crit)
-	char_feats = get_char_feats()
-	char_feats.get(critical: "!is": null).forEach (feat, i) ->
+	char_feats = chardata.feats()
+	char_feats(critical: "!is": null).each (feat, i) ->
 		critical = feat.critical(critical)
 		critical
 
@@ -536,17 +497,17 @@ main.update_weapon_damage = (weapon_idx, mod) ->
 
 main.update_skill_ranks = (skills_) ->
 	for i of skills_
-		skill_id = skills.first(name: skills_[i])._id
+		skill_id = skills( name: skills_[i] ).first()._id
 		ranks = parseInt($("#skill_" + skill_id + "_ranks").text()) + 2
 		$("#skill_" + skill_id + "_ranks").text pos(ranks)
 
 main.calc_grapple = ->
 	grapple = ""
-	race = races.first(name: window.chardata.race_name)
-	str_score = calc_ability_modifier(parseInt($("#ability_Str_score").val()))
+	race = races( name: window.chardata.race_name ).first()
+	str_score = chardata.ability_modifier(parseInt($("#ability_Str_score").val()))
 	babs = calc_base_attack_bonus()
 	feat_mod = 0
-	char_feats = get_char_feats()
+	char_feats = chardata.feats()
 	char_feats.get(grapple: "!is": null).forEach (feat, i) ->
 		feat_mod = feat.grapple(feat_mod)
 		feat_mod

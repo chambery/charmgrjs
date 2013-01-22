@@ -55,6 +55,8 @@ Character = (function() {
 
   Character.prototype.equipment_benefits = {};
 
+  Character.prototype.feats = new TAFFY([]);
+
   /*
   	Returns the count of base feats provided by the character's classes for the current class levels
   */
@@ -302,7 +304,7 @@ Character = (function() {
   	Returns a Taffy db of feat objects for this character's chosen feats. Does not include class-supplied feats.
   */
 
-  Character.prototype.get_char_feats = function() {
+  Character.prototype.get_feats = function() {
     var char_feats;
     console.log("\tget_char_feats - src");
     char_feats = TAFFY([]);
@@ -345,14 +347,14 @@ Character = (function() {
     console.log("\nget_all_char_feats");
     all_char_feats = this.get_class_feats();
     console.log("\tall count: " + (all_char_feats().count()));
-    char_feats = this.get_char_feats();
+    char_feats = this.feats;
     console.log("\tchar feats count: " + (char_feats().count()));
     if (typeof all_char_feats === "function") {
       all_char_feats().each(function(feat) {
         var char_feat;
-        char_feat = char_feats({
+        char_feat = feats({
           name: feat.name
-        }).first();
+        }).first;
         if (!char_feat) return char_feats.insert(feat);
       });
     }

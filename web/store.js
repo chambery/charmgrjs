@@ -158,7 +158,7 @@ this.save_character = function(chardata) {
   window.document.cookie = this.save_local(players_companion, "players_companion");
   save_data = $.extend(true, {}, chardata);
   if (save_data.skills != null) save_data.skills = save_data.skills.get();
-  if (save_data.feats != null) save_data.feats = save_data.feats.get();
+  save_data.feats = save_data.feats();
   save_data.type = "character";
   console.log("save_character: " + (JSON.stringify(save_data, null, 2)));
   sav(save_data, "ch_" + name, name);

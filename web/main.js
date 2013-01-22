@@ -105,7 +105,7 @@ main.recalc_favored_enemy = function(e) {
 };
 
 main.build_main_page = function() {
-  var all_spells, armor_data, char_domains, char_feats, char_weapons, checkbox, class_specials, classname, clazz, clazz_spells, conditional_feats, domain, equipment_benefits, feat, feats_html, html, i, j, level, rogue_skill_selections, script, shield_data, spells_html, spells_per_day, weapon_data, _results;
+  var ability, all_spells, armor_data, char_domains, char_feats, char_weapons, checkbox, class_specials, classname, clazz, clazz_spells, conditional_feats, domain, equipment_benefits, feat, feats_html, html, i, j, level, rogue_skill_selections, script, shield_data, spells_html, spells_per_day, weapon_data, _results;
   equipment_benefits = {};
   for (i in window.chardata.equipment) {
     if ((window.chardata.equipment[i].benefits != null) && window.chardata.equipment[i].benefits.length > 0) {
@@ -128,86 +128,32 @@ main.build_main_page = function() {
     session["shield"][i]["is_worn"] = true;
   }
   set_links_part(0);
-  $("#content").html($.ajax({
-    url: "main.html",
-    dataType: "html"
-  }));
-  $("#ability_score_full0").bind("click", {
-    ability: "Str",
-    id: 0
-  }, function(e) {
-    return main.reset_ability_score(e);
-  });
-  $("input[id='ability_Str_score']").bind("blur", {
-    ability: "Str"
-  }, function(e) {
-    return main.recalc_ability_mod(e);
-  });
-  $("#ability_score_full1").bind("click", {
-    ability: "Dex",
-    id: 1
-  }, function(e) {
-    return main.reset_ability_score(e);
-  });
-  $("input[id='ability_Dex_score']").bind("blur", {
-    ability: "Dex"
-  }, function(e) {
-    return main.recalc_ability_mod(e);
-  });
-  $("#ability_score_full2").bind("click", {
-    ability: "Int",
-    id: 2
-  }, function(e) {
-    return main.reset_ability_score(e);
-  });
-  $("input[id='ability_Int_score']").bind("blur", {
-    ability: "Int"
-  }, function(e) {
-    return main.recalc_ability_mod(e);
-  });
-  $("#ability_score_full3").bind("click", {
-    ability: "Con",
-    id: 3
-  }, function(e) {
-    return main.reset_ability_score(e);
-  });
-  $("input[id='ability_Con_score']").bind("blur", {
-    ability: "Con"
-  }, function(e) {
-    return main.recalc_ability_mod(e);
-  });
-  $("#ability_score_full4").bind("click", {
-    ability: "Cha",
-    id: 4
-  }, function(e) {
-    return main.reset_ability_score(e);
-  });
-  $("input[id='ability_Cha_score']").bind("blur", {
-    ability: "Cha"
-  }, function(e) {
-    return main.recalc_ability_mod(e);
-  });
-  $("#ability_score_full5").bind("click", {
-    ability: "Wis",
-    id: 5
-  }, function(e) {
-    return main.reset_ability_score(e);
-  });
-  $("input[id='ability_Wis_score']").bind("blur", {
-    ability: "Wis"
-  }, function(e) {
-    return main.recalc_ability_mod(e);
-  });
+  $("#content").html("<div id='topline'></div> <div id='topleceilft' class='dp66'> <div id='abilitiespart' class='dp40' style='float: left'> <table border=0 id='abilities_table'> <tr> <td id='char_name' colspan='4' style='font-weight: bold; color: blue'></td> </tr> <tr> <td><b>Str</b></td> <td id='ability_score_full_Str' nowrap></td> <td><input ability='Str' id='ability_Str_score' class='two_digit' value='' type='text'></td> <td id='ability_Str_mod' align='right' nowrap></td> </tr> <tr> <td><b>Dex</b></td> <td id='ability_score_full_Dex' nowrap></td> <td><input ability='Dex' id='ability_Dex_score' class='two_digit' value='' type='text'></td> <td id='ability_Dex_mod' align='right' nowrap></td> </tr> <tr> <td><b>Int</b></td> <td id='ability_score_full_Int' nowrap></td> <td><input ability='Int' id='ability_Int_score' class='two_digit' value='' type='text'></td> <td id='ability_Int_mod' align='right' nowrap></td> </tr> <tr> <td><b>Con</b></td> <td id='ability_score_full_Con' nowrap></td> <td><input ability='Con' id='ability_Con_score' class='two_digit' value='' type='text'></td> <td id='ability_Con_mod' align='right' nowrap></td> </tr> <tr> <td><b>Cha</b></td> <td id='ability_score_full_Cha' nowrap></td> <td><input ability='Cha' id='ability_Cha_score' class='two_digit' value='' type='text'></td> <td id='ability_Cha_mod' align='right' nowrap></td> </tr> <tr> <td><b>Wis</b></td> <td id='ability_score_full_Wis' nowrap></td> <td><input ability='Wis' id='ability_Wis_score' class='two_digit' value='' type='text'></td> <td id='ability_Wis_mod' align='right' nowrap></td> </tr><tr><td colspan=3>Speed: <span id='speed'></span></td></tr> </table> </div> <div id='middlepart' class='dp60' style='float: left;'> <table id='middle_table' style='table-layout: fixed; width: 100%'> <tr> <td colspan=4 style='padding: 0px;'> <table border=0 style='padding: 0px; width: 100%;'> <tr> <td align='left'>HP</td> <td id='hp' align='right'></td> <td align='right'><input id='temp_hp' style='width: 2em;text-align: center;' type='text' value='' /></td> <td align='right'>SD <input id='subdual_hp' style='width: 15px; text-align: center' type='text' value='' /></td> </tr> </table> </td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Fort</td> <td id='fort' class='box numeric' style='width: 30px;' nowrap></td> <td>AC</td> <td id='ac' class='box numeric' style='width: 30px;'></td> </tr> <tr> <td>Ref</td> <td id='ref' class='box numeric' nowrap></td> <td>Tch</td> <td id='touch' class='box numeric' nowrap></td> </tr> <tr> <td>Will</td> <td id='will' class='box numeric' nowrap></td> <td>Flat</td> <td id='flat' class='box numeric' nowrap></td> </tr> <tr> <td>SR</td> <td id='spell_resistance' class='box numeric' nowrap></td> <td>Init</td> <td id='init' class='box numeric'></td> </tr><tr><td colspan=4><table id='dr' style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;'></table></td></tr><tr><td colspan=4><table id='saves' style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;'></table></td></tr><tr> <td>CMB</td> <td id='cmb' class='box' colspan=3></td> </tr><tr> <td>CMD</td> <td id='cmd' class='box' colspan=3></td> </tr> <tr> <td>BAB</td> <td id='base_attack_bonus' class='box' colspan=3></td> </tr> <tr> <td colspan='4'></td> </tr> <tr> <td>Att</td> <td id='attack_mod'>0</td> <td><a id='plus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_att' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> <tr> <td>Dam</td> <td id='damage_mod'>0</td> <td><a id='plus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> + </a></td> <td style='text-align: right'><a id='minus_dam' class='btn box' style='font-family: monospace; font-size: larger; width: 20px'> - </a></td> </tr> </table> </div> <div id='featspart' class='dp100'> <table style='width: 100%; margin: 0px 0px 5px 0px; border-collapse: collapse;' border='0'> <tbody> <tr onclick=\"toggle_visible('conditional_feats')\"> <td colspan='3' bgcolor='#8DC3E9'><span id='conditional_feats_expand_flag' style='float: right; vertical-align: middle'><img src='images/collapsed.png' /></span><a class='fake_link'>Feats</a></td> </tr> </tbody> <tbody id='conditional_feats'></tbody> </table> </div> <div id='specialpart' class='dp100'> <table id='specials_table' style='width: 100%; border: 0px; margin: 0px 0px 5px 0px; border-collapse: collapse;'> <tr id='specials_heading' style='background-color: #8DC3E9'> <td colspan='2'><span id='specials_expand_flag' style='float: right'><img src='images/collapsed.png' /></span><a class='fake_link'>Special Abilities</a></td> </tr> <tbody id='specials'></tbody> </table> </div> <div id='weaponspart' class='dp100'></div> <div id='armorpart' class='dp100'></div> <div id='shieldspart' class='dp100'></div> <div id='spellspart' class='dp100'></div> </div> <div id='skillspart' class='dp33'> <table border='0' id='skills_table'></table> </div>");
+  i = 0;
+  for (ability in abilities) {
+    $("#ability_score_full" + i).bind("click", {
+      ability: "" + ability,
+      id: i
+    }, function(e) {
+      return main.reset_ability_score(e);
+    });
+    $("input[id='ability_" + ability + "_score']").bind("blur", {
+      ability: "" + ability
+    }, function(e) {
+      return main.recalc_ability_mod(e);
+    });
+    i++;
+  }
   if (window.chardata.skills == null) window.chardata.skills = TAFFY([]);
   rogue_skill_selections = main.get_rogue_skill_selections();
-  skills.forEach(function(skill, i) {
+  skills().each(function(skill, i) {
     var char_skill, skill_html, skill_selection_ind_html, subtype;
     skill_html = [];
     skill_selection_ind_html = (rogue_skill_selections.indexOf(skill._id) > -1 ? "<sup>+</sup>" : "");
     if (skill.subtypes) {
-      char_skill = window.chardata.skills.first({
+      char_skill = window.chardata.skills({
         skill_name: skill.name
-      });
+      }).first();
       if (char_skill) {
         for (subtype in char_skill.subtypes) {
           skill_html = main.build_skill_entry(skill, skill_selection_ind_html, subtype);
@@ -250,16 +196,16 @@ main.build_main_page = function() {
   feats_html = "";
   conditional_feats = [];
   for (classname in window.chardata.classes) {
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
     if (clazz.custom && clazz.custom.main && clazz.custom.main.before_specials) {
       for (script in clazz.custom.main.before_specials) {
         clazz.custom.main.before_specials[script]();
       }
     }
   }
-  char_feats = get_char_feats().get();
+  char_feats = chardata.feats().get();
   i = 0;
   while (i < char_feats.length) {
     feat = feats.first({
@@ -341,16 +287,16 @@ main.build_main_page = function() {
     char_domains.push(domain);
   }
   for (classname in window.chardata.classes) {
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
   }
   $("#spellspart").css("margin-top", "10px");
   $("#spellspart").html("");
   for (classname in window.chardata.classes) {
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
     if (clazz.spells_known && !window.chardata.classes[classname].spells) {
       window.chardata.classes[classname].spells = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
     }
@@ -403,9 +349,9 @@ main.build_main_page = function() {
   }
   _results = [];
   for (classname in window.chardata.classes) {
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
     if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
       _results.push((function() {
         var _results2;
@@ -463,9 +409,9 @@ main.adjust_mod = function(type, magnitude) {
 
 main.populate_main_page = function() {
   var ability, ability_mod, ability_score, allabilities, armor_data, char_weapons, col_cnt, dr, dr_count, drs, j, note, race, row_cnt, save, saves, saves_count, shield_data, val, weapon_data;
-  race = races.first({
+  race = races({
     name: window.chardata.race_name
-  });
+  }).first();
   $("#char_name").text(window.chardata.name);
   $("#hp").text((!(window.chardata.hp != null) || window.chardata.hp.length <= 0 ? 0 : calc_hp(chardata.hp, window.chardata.feats)));
   $("#temp_hp").val(window.chardata.temp_hp || $("#hp").text() || 0);
@@ -474,10 +420,10 @@ main.populate_main_page = function() {
   $("#level").text(calc_level() + 1);
   allabilities = window.chardata.abilities;
   for (ability in abilities) {
-    ability_score = calc_ability_score(ability, window.chardata.race_name);
+    ability_score = chardata.ability_score(ability, window.chardata.race_name);
     $("#ability_score_full_" + ability).text(ability_score);
     $("#ability_" + ability + "_score").val(window.chardata.abilities["temp_" + ability] || ability_score);
-    ability_mod = calc_ability_modifier($("#ability_" + ability + "_score").val());
+    ability_mod = chardata.ability_modifier($("#ability_" + ability + "_score").val());
     $("#ability_" + ability + "_mod").text(pos(ability_mod));
   }
   char_weapons = do_class_functions("main", "before_weapons_populate", window.chardata.weapons);
@@ -604,12 +550,12 @@ main.recalc_main_page = function() {
   }
   acp = calc_armor_acp(chardata.armors);
   acp += calc_shield_acp(chardata.shields);
-  skills.forEach(function(skill, i) {
+  skills().each(function(skill, i) {
     var char_skill, subtype, _results;
     if (skill.subtypes) {
-      char_skill = window.chardata.skills.first({
+      char_skill = window.chardata.skills({
         skill_name: skill.name
-      });
+      }).first();
       if (char_skill) {
         _results = [];
         for (subtype in char_skill.subtypes) {
@@ -631,16 +577,16 @@ main.recalc_main_page = function() {
   $("#flat").text(calc_flat_footed_ac(chardata.armors));
   $("#cmb").text(calc_cmb(calc_base_attack_bonus()));
   $("#cmd").text(calc_cmd(calc_base_attack_bonus()));
-  -$("#spell_resistance").text(calc_spell_resistance() + "%");
+  $("#spell_resistance").text(calc_spell_resistance() + "%");
   for (i in base_attack_bonuses) {
     base_attack_bonuses[i] = pos(base_attack_bonuses[i]);
   }
   $("#base_attack_bonus").text(base_attack_bonuses.join("/"));
   _results = [];
   for (classname in window.chardata.classes) {
-    clazz = classes.first({
+    clazz = classes({
       name: classname
-    });
+    }).first();
     spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
     _results.push((function() {
       var _results2;
@@ -671,48 +617,47 @@ main.update_ability = function(id) {
     base: 0
   };
   class_val = do_class_functions("main", id, class_val);
-  ability_val = calc_ability_score(id);
-  mod = calc_ability_modifier(ability_val + (class_val[id].base | 0)) + (class_val[id].mod | 0);
+  ability_val = chardata.ability_score(id);
+  mod = chardata.ability_modifier(ability_val + (class_val[id].base | 0)) + (class_val[id].mod | 0);
   $("#ability_" + id + "_mod").text(pos(mod));
   return $("#ability_score_full_" + id).text(ability_val + (class_val[id].base | 0));
 };
 
 main.calc_turn = function(cha_score) {
   var char_feats, char_know_rel_pnts, char_know_religion, feat_mod, know_religion, skill_bonus;
-  know_religion = skills.first({
-    name: "Knowledge (religion)"
+  know_religion = skills({
+    name: "Knowledge (religion ).first()"
   });
   char_know_religion = false;
   if (window.chardata.skills != null) {
-    char_know_religion = window.chardata.skills.first({
+    char_know_religion = window.chardata.skills({
       skill_name: know_religion.name
-    });
+    }).first();
   }
   feat_mod = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
+  char_feats = chardata.feats();
+  char_feats({
     turn: {
       "!is": null
     }
-  }).forEach(function(feat, i) {
+  }).each(function(feat, i) {
     feat_mod = feat.critical(feat_mod);
     return feat_mod;
   });
   char_know_rel_pnts = (char_know_religion ? char_know_religion.ranks : 0);
   skill_bonus = (calc_ranks(chardata.class_name, char_know_rel_pnts, know_religion) >= 5 ? 2 : 0);
   cha_score = $("#ability_4_score").val();
-  return Math.max(3 + calc_ability_modifier(cha_score) + skill_bonus + feat_mod, 0);
+  return Math.max(3 + chardata.ability_modifier(cha_score) + skill_bonus + feat_mod, 0);
 };
 
 main.calc_hp = function(hp, char_feats) {
   var feat_mod;
   feat_mod = 0;
-  char_feats = get_char_feats();
-  char_feats.get({
+  chardata.feats({
     hp: {
       "!is": null
     }
-  }).forEach(function(feat, i) {
+  }).get().each(function(feat, i) {
     feat_mod = feat.hp(feat_mod);
     return feat_mod;
   });
@@ -722,12 +667,12 @@ main.calc_hp = function(hp, char_feats) {
 main.calc_critical = function(weapon_critical, char_weapon, char_feats) {
   var critical;
   critical = (!(char_weapon.crit != null) ? weapon_critical : char_weapon.crit);
-  char_feats = get_char_feats();
-  char_feats.get({
+  char_feats = chardata.feats();
+  char_feats({
     critical: {
       "!is": null
     }
-  }).forEach(function(feat, i) {
+  }).each(function(feat, i) {
     critical = feat.critical(critical);
     return critical;
   });
@@ -765,9 +710,9 @@ main.update_skill_ranks = function(skills_) {
   var i, ranks, skill_id, _results;
   _results = [];
   for (i in skills_) {
-    skill_id = skills.first({
+    skill_id = skills({
       name: skills_[i]
-    })._id;
+    }).first()._id;
     ranks = parseInt($("#skill_" + skill_id + "_ranks").text()) + 2;
     _results.push($("#skill_" + skill_id + "_ranks").text(pos(ranks)));
   }
@@ -777,13 +722,13 @@ main.update_skill_ranks = function(skills_) {
 main.calc_grapple = function() {
   var babs, char_feats, feat_mod, grapple, i, race, str_score;
   grapple = "";
-  race = races.first({
+  race = races({
     name: window.chardata.race_name
-  });
-  str_score = calc_ability_modifier(parseInt($("#ability_Str_score").val()));
+  }).first();
+  str_score = chardata.ability_modifier(parseInt($("#ability_Str_score").val()));
   babs = calc_base_attack_bonus();
   feat_mod = 0;
-  char_feats = get_char_feats();
+  char_feats = chardata.feats();
   char_feats.get({
     grapple: {
       "!is": null

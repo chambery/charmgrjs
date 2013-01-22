@@ -19,7 +19,16 @@ edit.calc_skill_points = ->
 
 edit.build_edit_page = ->
   set_links_part 1
-  $("#content").html "<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table id='abilities_table' border='0'></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>"
+  # $.ajax(
+  #   url: "web/edit.html",
+  #   dataType: "html",
+  #   async: false,
+  #   success: (data) ->
+  #     $("#content").html data
+  # )
+  $("#content").html "<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table border='0'></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>"
+
+  # $("#content").html "<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table id='abilities_table' border='0'></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>"
 
   for ability of abilities
     $("#abilities_table").append "<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'#{ability}')\">#{ability}</a></b></td><td align='center'><input type='text' value='' name='#{ability}score'class='two_digit' id='ability_#{ability}'></td>"
@@ -121,13 +130,11 @@ edit.bind_controls = ->
     save_character chardata
 
   for ability of abilities
-    $("#ability_" + ability).blur ->
+    console.log "binding click -> #{ability}"
+    $("input#ability_" + ability).blur ->
       chardata.abilities[ability] = $("#ability_" + ability).val
       race = races( name: chardata.race_name ).first
       $("#race_" + ability + "_mod").val(pos(race.abilities[ability]))  if race.abilities[ability]
-
-  for ability of abilities
-    console.log "binding click -> #{ability}"
     $("#ability_" + ability).click ->
       show_item_detail abilities, ability
 
@@ -273,11 +280,10 @@ edit.update_skills = (skill, subtype) ->
   skill_link.attr "style", "font-weight: bold;"  if skill_link and class_skill
 
 edit.update_race_mods = ->
-  race = races({ name: $("#race").val() }).first()
-  if race
-    for ability of abilities
-      mod = (if not race.abilities[ability]? then " " else race.abilities[ability])
-      $("#race_" + ability + "_mod").text pos(mod)
+  race = races( name: chardata.race_name ).first()
+  for ability of abilities
+    mod = (if not race.abilities[ability]? then " " else race.abilities[ability])
+    $("#race_" + ability + "_mod").text pos(mod)
 
 edit.update_language = (language_id) ->
   checked = $("#language_" + language_id + "_check").attr("checked")

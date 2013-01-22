@@ -479,9 +479,9 @@ this.get_special_abilities = function() {
     while (level <= chardata.classes[classname].level) {
       item = 0;
       while (item < class_specials[level].length) {
-        class_special = specials.first({
+        class_special = specials({
           name: class_specials[level][item].special_name
-        });
+        }).first();
         if (class_special.supersedes) {
           for (supersede in class_special.supersedes) {
             special_abilities[class_special.supersedes[supersede]] = null;
@@ -497,9 +497,9 @@ this.get_special_abilities = function() {
   rogue_special_abilities = chardata.rogue_special_abilities;
   for (i in rogue_special_abilities) {
     if (rogue_special_abilities[i].special_name !== "Skill Mastery") {
-      class_special = specials.first({
+      class_special = specials({
         name: rogue_special_abilities[i].special_name
-      });
+      }).first();
       special_abilities[rogue_special_abilities[i].special_name] = class_special;
     }
   }
