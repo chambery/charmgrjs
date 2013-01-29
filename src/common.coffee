@@ -143,6 +143,22 @@ this.calc_level = (xp) ->
 this.calc_ability_modifier = (score) ->
 	Math.ceil((score - 11) / 2)
 
+this.calc_base_attack_bonus = ->
+	attacks = undefined
+	bab = undefined
+	class_babs = undefined
+	classname = undefined
+	i = undefined
+	bab = []
+	for classname of chardata.classes
+		class_babs = classes( name: classname ).first().base_attack_bonus
+		attacks = class_babs[chardata.classes[classname].level].split("/")
+		i = 0
+		while i < attacks.length
+			bab[i] = (bab[i] | 0) + parseInt(attacks[i])
+			i++
+	bab
+
 ###
 Returns the armor bonus for any "armor-like" object
 ###
@@ -165,6 +181,25 @@ this.calc_armor_bonus = (char_armor, db, equip_type) ->
 	bonus: armor_bonus
 	max_dex_bonus: max_dex_bonus
 
+this.calc_armor_acp = (char_armors) ->
+	acp = undefined
+	armor = undefined
+	i = undefined
+	acp = 0
+	for i of char_armors
+		armor = armors( name: char_armors[i].armor_name ).first()
+		acp += armor.acp
+	acp
+
+this.calc_shield_acp = (char_shields) ->
+	acp = undefined
+	i = undefined
+	shield = undefined
+	acp = 0
+	for i of char_shields
+		shield = shields( name: char_shields[i].shield_name ).first()
+		acp += shield.acp
+	acp
 
 this.show_dialog = (title, content, save_on_close, close_fn, opts) ->
 	$(".ui-widget-overlay").live "click", ->
@@ -256,16 +291,18 @@ this.dehtmlize = (text) ->
 		replacement_text = replacement_text.replace(/&ndash;/g, "--")
 	replacement_text or ""
 
+# deprecated - use new Character(data)
 this.parse_character_data = (data) ->
+	chardata = new Character()
 	unless TAFFY.isObject(data)
 		log_data = null
 		log_separator = data.indexOf("``")
 		if log_separator > 0
 			log_data = data.substring(data.indexOf("``") + 2)
 			data = data.substring(0, data.indexOf("``"))
-		data = JSON.parse(unescape(data)) or {}
-	data.skills = parse_taffy_data(data.skills)
-	data.feats = parse_taffy_data(data.feats)
+		chardata = JSON.parse(unescape(data)) or {}
+	chardata.skills = parse_taffy_data(data.skills)
+	chardata.feats = parse_taffy_data(data.feats)
 	if log_data
 		log_entries = log_data.split("`")
 		i = 0
@@ -275,7 +312,7 @@ this.parse_character_data = (data) ->
 			sav entry, "log_" + data.name + "_" + entry.id
 			i++
 	console.log "parse_character_data: #{JSON.stringify(data, null, 2)}"
-	data
+	chardata
 
 this.reconstitute_array = (array_obj, attr_name) ->
 	array = null

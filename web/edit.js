@@ -29,7 +29,14 @@ edit.calc_skill_points = function() {
 edit.build_edit_page = function() {
   var ability, align_html, race_html, skill_html;
   set_links_part(1);
-  $("#content").html("<div class='dp100' style='padding-bottom: 5px;'><span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name='xp' id='xp'></span><input id='charname' value='' size='12' type='text' />&nbsp;<span id='race_select'></span></div><div id='moralitypart' class='dp100' style='padding-bottom: 5px;'><select id='alignment' style='float: right;'></select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style='width: 25px' />&nbsp;&nbsp;<select id='deity' style='width: 105px;vertical-align: top;'></select></div><div id='middlepart'><div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'><table border='0'></table></div><div id='classespart' class='dp75'></div></div><br style='clear: both' /><div class='dp100'><div id='skillspart' class='dp45' style='float: right'><table id='skills_table' style='width: 100%' border='0'><tr><td colspan='3'><span style='float: right;'>Pts left: <span id='skill_pts_remaining'>0</span></span>Max ranks: <span id='max_ranks'></span></td></tr><tr onclick=\"toggle_visible('languages')\" bgcolor='#8DC3E9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link'><span id='languages_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>Languages</a></td></tr><tr id='languages'><td colspan=3><table id='language_table' width='100%'style='border-collapse: collapse;'></table></td></tr></table></div><div id='waspart' class='dp50'><div id='weaponspart' class='dp100'><div id='char_weapons'></div><div id='new_weapon' class='new_weapon'></div><hr width='80%' /></div><div id='armorpart' class='dp100'><div id='char_armors'></div><div id='new_armor' class='new_weapon'></div><hr width='80%' /></div><div id='shieldpart' class='dp100'><div id='char_shields'></div><div id='new_shield' class='new_weapon'></div></div></div></div><div class='clear'></div>");
+  $.ajax({
+    url: "web/edit.html",
+    dataType: "html",
+    async: false,
+    success: function(data) {
+      return $("#content").html(data);
+    }
+  });
   for (ability in abilities) {
     $("#abilities_table").append("<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'" + ability + "')\">" + ability + "</a></b></td><td align='center'><input type='text' value='' name='" + ability + "score'class='two_digit' id='ability_" + ability + "'></td>");
   }
@@ -58,19 +65,19 @@ edit.build_edit_page = function() {
     if (skill.subtypes) {
       skill_html.push(["<tr onclick=\"toggle_visible('" + skill.name + "')\" bgcolor='#E2F0F9'><td colspan=3 style='vertical-align: middle;'><a class='fake_link' id='skill_", skill._id, "'><span id='", skill.name, "_expand_flag' style='float: right'><img src='/charmgr/images/collapsed.png'/></span>", skill.name, "</a></td></tr><tr id='", skill.name, "'><td colspan=3><table id='", skill.name, "_table' width='100%'style='border-collapse: collapse;'>"].join(""));
       for (subtype in skill.subtypes) {
-        if (!chardata.skills || !chardata.skills.first({
+        if (!chardata.skills || !chardata.skills({
           skill_name: skill.name
-        }) || !chardata.skills.first({
+        }).first() || !chardata.skills({
           skill_name: skill.name
-        }).subtypes[subtype]) {
+        }).first().subtypes[subtype]) {
           skill_html.push(["<tr><td style='vertical-align: top;width:100%'><a id='skill_", skill._id, "' class='fake_link' onclick='show_item_detail(skills, \"", skill._id, "\")' subtype='" + subtype + "'>", skill.name, " (", subtype, ")</a></td><td style='vertical-align: top;'><input id='skill_", skill._id, "_input' subtype='", subtype, "' class='two_digit' value='' onblur='edit.recalc_edit_page()'></td><td style='font-size: xx-small; vertical-align: top;'>", skill.ability, "<br><span id='", skill._id, "_mods' style='font-size: xx-small;'></span></td></tr>"].join(""));
         }
       }
       skill_html.push("</table></td></tr>");
       if (chardata.skills) {
-        char_skill = chardata.skills.first({
+        char_skill = chardata.skills({
           skill_name: skill.name
-        });
+        }).first();
         if (char_skill) {
           _results = [];
           for (subtype in char_skill.subtypes) {
@@ -210,11 +217,11 @@ edit.populate_edit_page = function() {
   }
   if (chardata.languages == null) chardata.languages = [];
   if (chardata.skills != null) {
-    return skills.forEach(function(skill, i) {
+    return skills().each(function(skill, i) {
       var char_skill, subtype, _results;
-      char_skill = chardata.skills.first({
+      char_skill = chardata.skills({
         skill_name: skill.name
-      });
+      }).first();
       if (char_skill !== false) {
         if (char_skill.subtypes) {
           _results = [];
@@ -355,17 +362,17 @@ edit.update_skills = function(skill, subtype) {
         }
       ]);
     }
-    char_skill = chardata.skills.first({
+    char_skill = chardata.skills({
       skill_name: skill.name
-    });
+    }).first();
     chardata.skills.insert({
       skill_name: !char_skill ? skill.name : void 0
     });
     updata = {};
     if (subtype) {
-      updata.subtypes = $.extend({}, chardata.skills.first({
+      updata.subtypes = $.extend({}, chardata.skills({
         skill_name: skill.name
-      }).subtypes);
+      }).first().subtypes);
       updata.subtypes[subtype] = skill_text.val();
     } else {
       updata.ranks = skill_text.val();

@@ -23,7 +23,54 @@ if (typeof exports === "object") {
 
 Character = (function() {
 
-  function Character() {}
+  function Character(data) {
+    var default_class, entry, i, log_data, log_entries, log_separator;
+    data = data || {};
+    if (!TAFFY.isObject(data)) {
+      log_data = null;
+      log_separator = data.indexOf("``");
+      if (log_separator > 0) {
+        log_data = data.substring(data.indexOf("``") + 2);
+        data = data.substring(0, data.indexOf("``"));
+      }
+      data = JSON.parse(unescape(data)) || {};
+    }
+    this.name = data.name || "";
+    this.race_name = data.race_name || races().first().name;
+    this.abilities = data.abilities || {};
+    default_class = classes().first().name;
+    if (data.classes) {
+      this.classes = data.classes;
+    } else {
+      this.classes[default_class] = {
+        level: 0
+      };
+    }
+    this.alignment = data.alignment || alignments[0];
+    this.goodness = data.goodness || goodness[0];
+    this.languages = [];
+    this.equipment_benefits = {};
+    if (data.skills) {
+      this.skills = parse_taffy_data(data.skills);
+    } else {
+      this.skills = new TAFFY([]);
+    }
+    if (data.feats) {
+      this.feats = parse_taffy_data(data.feats);
+    } else {
+      this.feats = new TAFFY([]);
+    }
+    if (log_data) {
+      log_entries = log_data.split("`");
+      i = 0;
+      while (i < log_entries.length) {
+        entry = JSON.parse(unescape(log_entries[i]));
+        sav(entry, "log_" + data.name + "_" + entry.id);
+        i++;
+      }
+    }
+    console.log("Character(data): " + (JSON.stringify(data, null, 2)));
+  }
 
   Character.prototype.name = "";
 
@@ -208,7 +255,7 @@ Character = (function() {
   */
 
   Character.prototype.ability_modifier = function(ability) {
-    return common.calc_ability_modifier(this.ability_score(ability));
+    return calc_ability_modifier(this.ability_score(ability));
   };
 
   /*
@@ -306,13 +353,16 @@ Character = (function() {
 
   Character.prototype.get_feats = function() {
     var char_feats;
-    console.log("\tget_char_feats - src");
+    console.log("\tget_feats");
     char_feats = TAFFY([]);
     if (this.feats) {
       this.feats().each(function(feat) {
-        return char_feats.insert($.extend(feats({
+        var full_feat;
+        full_feat = feats({
           name: feat.feat_name
-        }).first(), feat));
+        }).first();
+        $.extend(full_feat, feat);
+        return char_feats.insert(feat);
       });
     }
     return char_feats;

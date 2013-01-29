@@ -78,7 +78,7 @@ this.lod = function(char_name) {
   var cookie_data, remote_data;
   if (char_name) {
     cookie_data = get_cookie_data("ch_" + char_name);
-    if (cookie_data) window.chardata = parse_character_data(cookie_data);
+    if (cookie_data) window.chardata = new Character(cookie_data);
     remote_data = void 0;
     if (chardata.options && chardata.options.owner) {
       $.ajax({
@@ -94,7 +94,7 @@ this.lod = function(char_name) {
         async: false
       });
       if (remote_data && remote_data.last_mod > chardata.last_mod) {
-        window.chardata = parse_character_data(remote_data);
+        window.chardata = new Character(remote_data);
       }
       sync_logs();
     }
@@ -157,8 +157,8 @@ this.save_character = function(chardata) {
   window.players_companion.last_character = name;
   window.document.cookie = this.save_local(players_companion, "players_companion");
   save_data = $.extend(true, {}, chardata);
-  if (save_data.skills != null) save_data.skills = save_data.skills.get();
-  save_data.feats = save_data.feats();
+  if (save_data.skills != null) save_data.skills = save_data.skills();
+  if (save_data.feats != null) save_data.feats = save_data.feats();
   save_data.type = "character";
   console.log("save_character: " + (JSON.stringify(save_data, null, 2)));
   sav(save_data, "ch_" + name, name);

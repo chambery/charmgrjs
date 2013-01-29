@@ -18,6 +18,50 @@ if typeof(exports) == "object"
 
 class Character
 
+	constructor : (data) ->
+		data = data or {}
+		unless TAFFY.isObject(data)
+			log_data = null
+			log_separator = data.indexOf("``")
+			if log_separator > 0
+				log_data = data.substring(data.indexOf("``") + 2)
+				data = data.substring(0, data.indexOf("``"))
+			data = JSON.parse(unescape(data)) or {}
+		@name = data.name or ""
+		@race_name = data.race_name or races().first().name
+		@abilities = data.abilities or {}
+		default_class = classes().first().name
+		if data.classes
+			@classes = data.classes
+		else
+			@classes[default_class] = { level: 0 }
+		@alignment = data.alignment or alignments[0]
+		@goodness = data.goodness or goodness[0]
+		@languages = []
+		@equipment_benefits = {}
+
+		if data.skills
+			@skills = parse_taffy_data(data.skills)
+		else
+			@skills = new TAFFY([])
+
+		if data.feats
+			@feats = parse_taffy_data(data.feats)
+		else
+			@feats = new TAFFY([])
+
+		if log_data
+			log_entries = log_data.split("`")
+			i = 0
+
+			while i < log_entries.length
+				entry = JSON.parse(unescape(log_entries[i]))
+				sav entry, "log_" + data.name + "_" + entry.id
+				i++
+		console.log "Character(data): #{JSON.stringify(data, null, 2)}"
+
+
+
 	name : ""
 	race_name : ""
 
@@ -161,7 +205,7 @@ class Character
 		# console.log "\nability_modifier"
 		# console.log "\t#{ability} : #{common.pos(Math.ceil(this.ability_score(ability) - 11) / 2)}"
 		# console.log "\n"
-		common.calc_ability_modifier this.ability_score(ability)
+		calc_ability_modifier this.ability_score(ability)
 	###
 	Returns true if the supplied skill (or subtype, if applicable) contains any of the supplied character classes.
 	###
@@ -231,11 +275,13 @@ class Character
 	Returns a Taffy db of feat objects for this character's chosen feats. Does not include class-supplied feats.
 	###
 	get_feats : () ->
-		console.log "\tget_char_feats - src"
+		console.log "\tget_feats"
 		char_feats = TAFFY([])
 		if @feats
 			@feats().each (feat) ->
-				char_feats.insert $.extend(feats(name: feat.feat_name).first(), feat)
+				full_feat = feats(name: feat.feat_name).first()
+				$.extend(full_feat, feat)
+				char_feats.insert feat
 
 		# char_feats.insert this.get_class_feats()
 		char_feats

@@ -1,6 +1,70 @@
-<div style="padding-bottom: 5px;" class="dp100"><span style="float: right;"></span>XP
-<input id="xp" type="text" onblur="edit.recalc_edit_page()" size="5" value="" name="xp"/><input id="charname" value="" size="12" type="text"/><span id="race_select"></span></div><div id="moralitypart" style="padding-bottom: 5px;" class="dp100"><select id="alignment" onchange="edit.recalc_edit_page()" style="float: right;"></select>HP
-<input id="hp" value="" type="text" style="width: 25px;"/><select id="deity" style="width: 105px; vertical-align: top;" onchange="edit.recalc_edit_page()"></select></div><div id="middlepart"><div id="abilitiespart" style="padding-bottom: 5px; float: left;" class="dp25"></div><table border="0"><tbody></tbody><tr><td align="center"></td><b><a onclick="&quot;show_item_detail(abilities,'Str')&quot;" class="fake_link">Str</a></b><td align="center"></td><input id="ability_Str" type="text" onblur="edit.recalc_edit_page()" value="" name="Strscore" class="two_digit"/><td id="race_Str_mod" align="center"></td></tr><tr><td align="center"></td><b><a onclick="&quot;show_item_detail(abilities,'Dex')&quot;" class="fake_link">Dex</a></b><td align="center"></td><input id="ability_Dex" type="text" onblur="edit.recalc_edit_page()" value="" name="Dexscore" class="two_digit"/><td id="race_Dex_mod" align="center"></td></tr><tr><td align="center"></td><b><a onclick="&quot;show_item_detail(abilities,'Int')&quot;" class="fake_link">Int</a></b><td align="center"></td><input id="ability_Int" type="text" onblur="edit.recalc_edit_page()" value="" name="Intscore" class="two_digit"/><td id="race_Int_mod" align="center"></td></tr><tr><td align="center"></td><b><a onclick="&quot;show_item_detail(abilities,'Con')&quot;" class="fake_link">Con</a></b><td align="center"></td><input id="ability_Con" type="text" onblur="edit.recalc_edit_page()" value="" name="Conscore" class="two_digit"/><td id="race_Con_mod" align="center"></td></tr><tr><td align="center"></td><b><a onclick="&quot;show_item_detail(abilities,'Int')&quot;" class="fake_link">Cha</a></b><td align="center"></td><input id="ability_Cha" type="text" onblur="edit.recalc_edit_page()" value="" name="Chascore" class="two_digit"/><td id="race_Cha_mod" align="center"></td></tr><tr><td align="center"></td><b><a onclick="&quot;show_item_detail(abilities,'Wis')&quot;" class="fake_link">Wis</a></b><td align="center"></td><input id="ability_Wis" type="text" onblur="edit.recalc_edit_page()" value="" name="Wisscore" class="two_digit"/><td id="race_Wis_mod" align="center"></td></tr></table><div id="classespart" class="dp75"></div></div><br style="clear: both;"/><div class="dp100"><div id="skillspart" style="float: right;" class="dp45"></div><table id="skills_table" border="0"><tr></tr><td colspan="3"><span style="float: right;"></span>Pts left:
-<span id="skill_pts_remaining">0</span>Max ranks:
-<span id="max_ranks"></span></td><tr onclick="&quot;toggle_visible('languages')&quot;" bgcolor="#8DC3E9"></tr><td colspan="3" style="vertical-align: middle;"><a class="fake_link"></a><span id="languages_expand_flag" style="float: right;"><img src="images/collapsed.png"/></span>Languages
-</td><tr id="languages"></tr><td colspan="3"><table id="language_table" width="100%" style="border-collapse: collapse;"></table></td></table><div id="waspart" class="dp50"></div><div id="weaponspart" class="dp100"><div id="char_weapons"></div><div id="new_weapon" class="new_weapon"></div><hr width="80%"/></div><div id="armorpart" class="dp100"><div id="char_armors"></div><div id="new_armor" class="new_weapon"></div><hr width="80%"/></div><div id="shieldpart" class="dp100"><div id="char_shields"></div><div id="new_shield" class="new_weapon"></div></div></div><div class="clear"></div>
+  <div class='dp100' style='padding-bottom: 5px;'>
+    <span style='float: right;'>XP&nbsp;&nbsp;<input type='text' size='5' value='' name=
+    'xp' id='xp' /></span><input id='charname' value='' size='12' type=
+    'text' />&nbsp;<span id='race_select'></span>
+  </div>
+
+  <div id='moralitypart' class='dp100' style='padding-bottom: 5px;'>
+    <select id='alignment' style='float: right;'>
+      </select>HP&nbsp;&nbsp;<input id='hp' value='' type='text' style=
+      'width: 25px' />&nbsp;&nbsp;<select id='deity' style=
+      'width: 105px;vertical-align: top;'>
+      </select>
+  </div>
+
+  <div id='middlepart'>
+    <div id='abilitiespart' class='dp25' style='padding-bottom: 5px; float: left'>
+      <table id='abilities_table' border='0'></table>
+    </div>
+
+    <div id='classespart' class='dp75'></div>
+  </div><br style='clear: both' />
+
+  <div class='dp100'>
+    <div id='skillspart' class='dp45' style='float: right'>
+      <table id='skills_table' style='width: 100%' border='0'>
+        <tr>
+          <td colspan='3'><span style='float: right;'>Pts left: <span id=
+          'skill_pts_remaining'>0</span></span>Max ranks: <span id=
+          'max_ranks'></span></td>
+        </tr>
+
+        <tr onclick="\&quot;toggle_visible('languages')\&quot;" bgcolor='#8DC3E9'>
+          <td colspan="3" style='vertical-align: middle;'><a class='fake_link'><span id=
+          'languages_expand_flag' style='float: right'><img src=
+          '/charmgr/images/collapsed.png' /></span>Languages</a></td>
+        </tr>
+
+        <tr id='languages'>
+          <td colspan="3">
+            <table id='language_table' width='100%' style='border-collapse: collapse;'>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id='waspart' class='dp50'>
+      <div id='weaponspart' class='dp100'>
+        <div id='char_weapons'></div>
+
+        <div id='new_weapon' class='new_weapon'></div>
+        <hr width='80%' />
+      </div>
+
+      <div id='armorpart' class='dp100'>
+        <div id='char_armors'></div>
+
+        <div id='new_armor' class='new_weapon'></div>
+        <hr width='80%' />
+      </div>
+
+      <div id='shieldpart' class='dp100'>
+        <div id='char_shields'></div>
+
+        <div id='new_shield' class='new_weapon'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class='clear'></div>

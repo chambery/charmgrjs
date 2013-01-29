@@ -195,6 +195,28 @@ this.calc_ability_modifier = function(score) {
   return Math.ceil((score - 11) / 2);
 };
 
+this.calc_base_attack_bonus = function() {
+  var attacks, bab, class_babs, classname, i;
+  attacks = void 0;
+  bab = void 0;
+  class_babs = void 0;
+  classname = void 0;
+  i = void 0;
+  bab = [];
+  for (classname in chardata.classes) {
+    class_babs = classes({
+      name: classname
+    }).first().base_attack_bonus;
+    attacks = class_babs[chardata.classes[classname].level].split("/");
+    i = 0;
+    while (i < attacks.length) {
+      bab[i] = (bab[i] | 0) + parseInt(attacks[i]);
+      i++;
+    }
+  }
+  return bab;
+};
+
 /*
 Returns the armor bonus for any "armor-like" object
 */
@@ -228,6 +250,36 @@ this.calc_armor_bonus = function(char_armor, db, equip_type) {
     bonus: armor_bonus,
     max_dex_bonus: max_dex_bonus
   };
+};
+
+this.calc_armor_acp = function(char_armors) {
+  var acp, armor, i;
+  acp = void 0;
+  armor = void 0;
+  i = void 0;
+  acp = 0;
+  for (i in char_armors) {
+    armor = armors({
+      name: char_armors[i].armor_name
+    }).first();
+    acp += armor.acp;
+  }
+  return acp;
+};
+
+this.calc_shield_acp = function(char_shields) {
+  var acp, i, shield;
+  acp = void 0;
+  i = void 0;
+  shield = void 0;
+  acp = 0;
+  for (i in char_shields) {
+    shield = shields({
+      name: char_shields[i].shield_name
+    }).first();
+    acp += shield.acp;
+  }
+  return acp;
 };
 
 this.show_dialog = function(title, content, save_on_close, close_fn, opts) {
@@ -345,7 +397,8 @@ this.dehtmlize = function(text) {
 };
 
 this.parse_character_data = function(data) {
-  var entry, i, log_data, log_entries, log_separator;
+  var chardata, entry, i, log_data, log_entries, log_separator;
+  chardata = new Character();
   if (!TAFFY.isObject(data)) {
     log_data = null;
     log_separator = data.indexOf("``");
@@ -353,10 +406,10 @@ this.parse_character_data = function(data) {
       log_data = data.substring(data.indexOf("``") + 2);
       data = data.substring(0, data.indexOf("``"));
     }
-    data = JSON.parse(unescape(data)) || {};
+    chardata = JSON.parse(unescape(data)) || {};
   }
-  data.skills = parse_taffy_data(data.skills);
-  data.feats = parse_taffy_data(data.feats);
+  chardata.skills = parse_taffy_data(data.skills);
+  chardata.feats = parse_taffy_data(data.feats);
   if (log_data) {
     log_entries = log_data.split("`");
     i = 0;
@@ -367,7 +420,7 @@ this.parse_character_data = function(data) {
     }
   }
   console.log("parse_character_data: " + (JSON.stringify(data, null, 2)));
-  return data;
+  return chardata;
 };
 
 this.reconstitute_array = function(array_obj, attr_name) {
