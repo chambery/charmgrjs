@@ -309,10 +309,10 @@ class Character
 		console.log "\nget_all_char_feats"
 		all_char_feats = this.get_class_feats()
 		console.log "\tall count: #{all_char_feats().count()}"
-		char_feats = this.feats
+		char_feats = new TAFFY(chardata.feats().get())
 		console.log "\tchar feats count: #{char_feats().count()}"
 		all_char_feats?().each (feat) ->
-			char_feat = feats(name: feat.name).first
+			char_feat = chardata.feats(name: feat.name).first()
 			if not char_feat
 				char_feats.insert feat
 

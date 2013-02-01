@@ -397,14 +397,14 @@ Character = (function() {
     console.log("\nget_all_char_feats");
     all_char_feats = this.get_class_feats();
     console.log("\tall count: " + (all_char_feats().count()));
-    char_feats = this.feats;
+    char_feats = new TAFFY(chardata.feats().get());
     console.log("\tchar feats count: " + (char_feats().count()));
     if (typeof all_char_feats === "function") {
       all_char_feats().each(function(feat) {
         var char_feat;
-        char_feat = feats({
+        char_feat = chardata.feats({
           name: feat.name
-        }).first;
+        }).first();
         if (!char_feat) return char_feats.insert(feat);
       });
     }

@@ -182,9 +182,6 @@ this.calc_armor_bonus = (char_armor, db, equip_type) ->
 	max_dex_bonus: max_dex_bonus
 
 this.calc_armor_acp = (char_armors) ->
-	acp = undefined
-	armor = undefined
-	i = undefined
 	acp = 0
 	for i of char_armors
 		armor = armors( name: char_armors[i].armor_name ).first()
@@ -192,14 +189,62 @@ this.calc_armor_acp = (char_armors) ->
 	acp
 
 this.calc_shield_acp = (char_shields) ->
-	acp = undefined
-	i = undefined
-	shield = undefined
 	acp = 0
 	for i of char_shields
 		shield = shields( name: char_shields[i].shield_name ).first()
 		acp += shield.acp
 	acp
+
+this.calc_skill_mod = (skill, skill_ability_score, acp, subtype) ->
+	acp = acp | 0
+	char_skill_points = 0
+	char_skill = false
+	char_skill = chardata.skills( skill_name: skill.name ).first()	if chardata.skills?
+	if char_skill
+		char_skill_points = char_skill.ranks
+		char_skill_points = char_skill.subtypes[subtype]	if subtype and char_skill.subtypes
+	race = races( name: chardata.race_name ).first()
+	feat_mod = 0
+	all_char_feats = chardata.get_all_char_feats()
+	all_char_feats = all_char_feats().get()
+	for char_feat in all_char_feats
+		console.log char_feat.name
+		feat = feats( name: char_feat.name ).first()
+		feat_mod += feat.skills[skill.name]	if feat.skills and feat.skills[skill.name]
+		acp = feat.mobility(acp)	if skill.mobility and feat.mobility
+
+	if chardata.feats
+		skill_focus = chardata.feats( feat_name: "Skill Focus" ).first()
+		feat_mod += 3	if skill_focus and skill_focus.multi and jQuery.inArray(skill.name, skill_focus.multi) > -1
+	race_mod = ((if race.skills[skill.name]? then race.skills[skill.name] else 0))
+	ranks = calc_ranks(char_skill_points, skill, subtype)
+	synergy_mod = calc_synergies(skill)
+	max_ranks = calc_ranks(calc_level() + 4, skill, subtype)
+	Math.min(Math.floor(max_ranks), ranks) + calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + ((if skill.mobility then acp else 0)) + calc_equip_mod(skill.name) | 0
+
+is_class_skill = (skill, subtype) ->
+	classname = undefined
+	for classname of chardata.classes
+		if skill.skill_classes
+			return true	if skill.skill_classes.indexOf(classname) > -1
+		else
+			return true	if skill.subtypes[subtype].indexOf(classname) > -1
+	false
+
+calc_ranks = (char_skill_points, skill, subtype) ->
+  class_skill = is_class_skill(skill, subtype)
+  multiplier = ((if class_skill then 1 else .5))
+  multiplier * char_skill_points
+
+calc_synergies = (skill) ->
+  synergy_mod = 0
+  for i of skill.synergies
+    char_synergy_skill = false
+    char_synergy_skill = chardata.skills.first(skill_id: skill.synergies[i])  if chardata.skills
+    if char_synergy_skill
+      synergy_skill = skills.first(id: skill.synergies[i])
+      synergy_mod = ((if calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 then 2 else 0))
+  synergy_mod
 
 this.show_dialog = (title, content, save_on_close, close_fn, opts) ->
 	$(".ui-widget-overlay").live "click", ->
