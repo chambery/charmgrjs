@@ -50,16 +50,8 @@ Character = (function() {
     this.goodness = data.goodness || goodness[0];
     this.languages = [];
     this.equipment_benefits = {};
-    if (data.skills) {
-      this.skills = parse_taffy_data(data.skills);
-    } else {
-      this.skills = new TAFFY([]);
-    }
-    if (data.feats) {
-      this.feats = parse_taffy_data(data.feats);
-    } else {
-      this.feats = new TAFFY([]);
-    }
+    this.skills = TAFFY(data.skills);
+    this.feats = TAFFY(data.feats);
     if (log_data) {
       log_entries = log_data.split("`");
       i = 0;
@@ -102,7 +94,7 @@ Character = (function() {
 
   Character.prototype.equipment_benefits = {};
 
-  Character.prototype.feats = new TAFFY([]);
+  Character.prototype.feats = TAFFY();
 
   /*
   	Returns the count of base feats provided by the character's classes for the current class levels
@@ -354,8 +346,8 @@ Character = (function() {
   Character.prototype.get_feats = function() {
     var char_feats;
     console.log("\tget_feats");
-    char_feats = TAFFY([]);
-    if (this.feats) {
+    char_feats = TAFFY();
+    if (this.feats.length > 0) {
       this.feats().each(function(feat) {
         var full_feat;
         full_feat = feats({
@@ -375,7 +367,7 @@ Character = (function() {
   Character.prototype.get_class_feats = function() {
     var class_feats, feat, feat_names, i, name;
     console.log("\nget_class_feats");
-    class_feats = TAFFY([]);
+    class_feats = TAFFY();
     feat_names = this.get_class_feat_names();
     console.log("\t" + feat_names);
     for (i in feat_names) {
@@ -397,7 +389,7 @@ Character = (function() {
     console.log("\nget_all_char_feats");
     all_char_feats = this.get_class_feats();
     console.log("\tall count: " + (all_char_feats().count()));
-    char_feats = new TAFFY(chardata.feats().get());
+    char_feats = TAFFY(chardata.feats().get());
     console.log("\tchar feats count: " + (char_feats().count()));
     if (typeof all_char_feats === "function") {
       all_char_feats().each(function(feat) {

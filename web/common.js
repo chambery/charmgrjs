@@ -3,7 +3,7 @@
 src/common.coffee
 */
 
-var $, TAFFY, alignments, armors, calc_ranks, calc_synergies, classes, common, feats, global, goodness, is_class_skill, races, shields, skills, start, _;
+var $, TAFFY, alignments, armors, calc_ac, calc_cmb, calc_cmd, calc_equip_mod, calc_flat_footed_ac, calc_fort, calc_init, calc_ranks, calc_ref, calc_save, calc_size_mod, calc_spell_resistance, calc_synergies, calc_touch_ac, calc_will, classes, common, feats, global, goodness, is_class_skill, races, shields, skills, start, _;
 
 start = new Date();
 
@@ -183,7 +183,7 @@ this.pos = function(number) {
 };
 
 /*
-Returns the 0-based level for the supplied xp.  Eg. xp = 100 -> 0, xp = 1200 -> 1
+Returns the 0-based level for the supplied xp.	Eg. xp = 100 -> 0, xp = 1200 -> 1
 */
 
 this.calc_level = function(xp) {
@@ -229,7 +229,7 @@ this.calc_armor_bonus = function(char_armor, db, equip_type) {
   if (typeof char_armor === "function") {
     char_armor().each(function(type) {
       var armordata;
-      console.log("\t" + type[equip_type + "_name"] + "  " + type.is_worn);
+      console.log("\t" + type[equip_type + "_name"] + "	" + type.is_worn);
       if (type.is_worn) {
         armordata = db({
           name: type[equip_type + "_name"]
@@ -364,85 +364,175 @@ calc_synergies = function(skill) {
   return synergy_mod;
 };
 
-this.show_dialog = function(title, content, save_on_close, close_fn, opts) {
-  var options;
-  $(".ui-widget-overlay").live("click", function() {
-    return $("#mydialog").dialog("close");
-  });
-  if (save_on_close) {
-    $("#mydialog").bind("dialogclose", function() {
-      return save_character(chardata);
-    });
-  }
-  if (close_fn) {
-    $("#mydialog").bind("dialogclose", function() {
-      return eval(close_fn);
-    });
-  } else {
-    $("#mydialog").unbind("dialogclose");
-  }
-  $("#mydialog").html(content);
-  options = {
-    modal: true,
-    autoOpen: false,
-    title: title,
-    offset: [50, 50],
-    width: 320
-  };
-  $.extend(options, opts);
-  $("#mydialog").dialog(options);
-  $("tr[class='detail'][class!='header']:even").addClass("even_row");
-  $("#mydialog").dialog("open");
-  $("tr[class='detail']:even").removeClass("even_row");
-  return false;
+calc_equip_mod = function(key) {
+  return parseInt(((equipment_benefits[key] != null) ? 0 : equipment_benefits[key]));
 };
 
-this.show_item_detail = function(table, obj_id, modify_detail) {
-  var content, detail, obj, title;
-  obj = null;
-  if (table.hasOwnProperty("find")) {
-    obj = table.first({
-      _id: obj_id
-    });
-  } else {
-    obj = table[obj_id];
-  }
-  content = "";
-  title = obj.name;
-  jQuery.each(obj, function(name, value) {
-    var count, i, related_feats, skill_data, skill_name, skills_count;
-    if (!(value != null) || value.toString().length === 0 || show_detail_ignore.indexOf(name) > -1) {} else if (name !== "detail" && name !== "name" && name !== "class_data" && name !== "description" && name !== "op") {
-      if (name === "ability_id") {
-        name = "Ability";
-        value = abilities[value].name;
-      } else if (name === "synergies") {
-        if (value.length > 0) value = value.join(", ");
-      } else if (name === "feats") {
-        count = 0;
-        related_feats = "";
-        for (i in value) {
-          related_feats += i;
-          count++;
-        }
-        value = related_feats;
-      } else if (name === "skills") {
-        skill_data = "";
-        i = 0;
-        skills_count = count_attrs(value);
-        for (skill_name in value) {
-          skill_data += skill_name + " " + pos(value[skill_name]);
-          i++;
-          skill_data += (i < skills_count ? ", " : "");
-        }
-        value = skill_data;
-      }
-      return content += "<b>" + capitalize(name).replace(/_/g, " ") + "</b>: " + value + "<br/>";
+calc_ac = function(dex_score) {
+  var ac, armor_bonus, char_feats, monk_mod, shield_bonus;
+  ac = 0;
+  char_feats = chardata.get_feats();
+  char_feats({
+    ac: {
+      isNull: false
     }
+  }).get().forEach(function(feat, i) {
+    ac = feat.ac(ac);
+    return ac;
   });
-  detail = obj.detail;
-  if (modify_detail) detail = modify_detail(obj);
-  if (detail) content += "<br/>" + detail.replace(/%class%/g, "class");
-  return show_dialog(title, content);
+  armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor");
+  shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield");
+  monk_mod = (chardata.classes["Monk"] != null ? classes.first({
+    name: "Monk"
+  }).ac_bonus[calc_level()] : 0);
+  return 10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod("AC") + ac;
+};
+
+calc_size_mod = function(race_name) {
+  var size;
+  size = races({
+    name: race_name
+  }).first().size;
+  if (size === "small") {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+calc_init = function(dex_score) {
+  var char_feats, init;
+  init = 0;
+  char_feats = chardata.get_feats();
+  char_feats({
+    init: {
+      isNull: false
+    }
+  }).get().forEach(function(feat, i) {
+    init = feat.init(init);
+    return init;
+  });
+  return calc_ability_modifier(dex_score) + init;
+};
+
+calc_fort = function(con_score) {
+  var char_feats, class_fort_score, feat_mod;
+  class_fort_score = calc_save("fort_save");
+  feat_mod = 0;
+  char_feats = chardata.get_feats();
+  char_feats({
+    fort: {
+      isNull: false
+    }
+  }).get().forEach(function(feat, i) {
+    feat_mod = feat.fort(feat_mod);
+    return feat_mod;
+  });
+  return calc_ability_modifier(con_score) + class_fort_score + feat_mod + calc_equip_mod("Fort");
+};
+
+calc_save = function(type) {
+  var classname, save;
+  save = 0;
+  for (classname in chardata.classes) {
+    if (classes({
+      name: classname
+    }).first()[type]) {
+      save += classes({
+        name: classname
+      }).first()[type][chardata.classes[classname].level];
+    }
+  }
+  return save;
+};
+
+calc_ref = function(dex_score, class_name, xp, char_feats) {
+  var class_ref_score, ref;
+  class_ref_score = calc_save("ref_save");
+  ref = 0;
+  char_feats = chardata.get_feats();
+  char_feats({
+    ref: {
+      isNull: false
+    }
+  }).get().forEach(function(feat, i) {
+    ref = feat.ref(ref);
+    return ref;
+  });
+  return calc_ability_modifier(dex_score) + class_ref_score + ref + calc_equip_mod("Ref");
+};
+
+calc_will = function(wis_score) {
+  var char_feats, class_will_score, feat_mod;
+  class_will_score = calc_save("will_save");
+  feat_mod = 0;
+  char_feats = chardata.get_feats();
+  char_feats({
+    will: {
+      isNull: false
+    }
+  }).get().forEach(function(feat, i) {
+    feat_mod = feat.will(feat_mod);
+    return feat_mod;
+  });
+  return calc_ability_modifier(wis_score) + class_will_score + feat_mod + calc_equip_mod("Will");
+};
+
+calc_touch_ac = function(dex_score, race_name) {
+  return 10 + calc_ability_modifier(dex_score) + calc_size_mod(race_name);
+};
+
+calc_flat_footed_ac = function(char_armor) {
+  return 10 + calc_armor_bonus(char_armor, armors, "armor").bonus;
+};
+
+calc_cmb = function(base_attack_bonuses, other_mod) {
+  var babs, cmb, i;
+  cmb = "";
+  other_mod = (other_mod ? parseInt(other_mod) : 0);
+  babs = base_attack_bonuses.map(function(x) {
+    return x + calc_ability_modifier(chardata.abilities["Str"]) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod("Att");
+  });
+  i = 0;
+  while (i < babs.length) {
+    cmb += pos(babs[i]) + (i + 1 < babs.length ? "/" : "");
+    i++;
+  }
+  return cmb;
+};
+
+calc_cmd = function(base_attack_bonuses, other_mod) {
+  var babs, cmd, i;
+  cmd = "";
+  other_mod = (other_mod ? parseInt(other_mod) : 0);
+  babs = base_attack_bonuses.map(function(x) {
+    return x + calc_ability_modifier(chardata.abilities["Str"]) + calc_ability_modifier(chardata.abilities["Dex"]) + calc_size_mod(chardata.race_name) + other_mod + 10;
+  });
+  i = 0;
+  while (i < babs.length) {
+    cmd += pos(babs[i]) + (i + 1 < babs.length ? "/" : "");
+    i++;
+  }
+  return cmd;
+};
+
+calc_spell_resistance = function() {
+  var char_feats, class_sr_score, feat_mod, sr;
+  sr = do_class_functions("all", "calc_sr", {
+    sr: 0
+  }).sr;
+  class_sr_score = calc_save("sr_save");
+  feat_mod = 0;
+  char_feats = chardata.get_feats();
+  char_feats({
+    sr: {
+      isNull: false
+    }
+  }).get().forEach(function(feat, i) {
+    feat_mod = feat.fort(feat_mod);
+    return feat_mod;
+  });
+  return sr + class_sr_score + feat_mod + calc_equip_mod("SR");
 };
 
 this.capitalize = function(string) {
@@ -479,30 +569,7 @@ this.dehtmlize = function(text) {
 };
 
 this.parse_character_data = function(data) {
-  var chardata, entry, i, log_data, log_entries, log_separator;
-  chardata = new Character();
-  if (!TAFFY.isObject(data)) {
-    log_data = null;
-    log_separator = data.indexOf("``");
-    if (log_separator > 0) {
-      log_data = data.substring(data.indexOf("``") + 2);
-      data = data.substring(0, data.indexOf("``"));
-    }
-    chardata = JSON.parse(unescape(data)) || {};
-  }
-  chardata.skills = parse_taffy_data(data.skills);
-  chardata.feats = parse_taffy_data(data.feats);
-  if (log_data) {
-    log_entries = log_data.split("`");
-    i = 0;
-    while (i < log_entries.length) {
-      entry = JSON.parse(unescape(log_entries[i]));
-      sav(entry, "log_" + data.name + "_" + entry.id);
-      i++;
-    }
-  }
-  console.log("parse_character_data: " + (JSON.stringify(data, null, 2)));
-  return chardata;
+  return new Character(data);
 };
 
 this.reconstitute_array = function(array_obj, attr_name) {
@@ -747,6 +814,87 @@ this.print = function(o) {
     _results.push(console.log("\t\t" + key + " : " + value));
   }
   return _results;
+};
+
+this.show_dialog = function(title, content, save_on_close, close_fn, opts) {
+  var options;
+  $(".ui-widget-overlay").live("click", function() {
+    return $("#mydialog").dialog("close");
+  });
+  if (save_on_close) {
+    $("#mydialog").bind("dialogclose", function() {
+      return save_character(chardata);
+    });
+  }
+  if (close_fn) {
+    $("#mydialog").bind("dialogclose", function() {
+      return eval(close_fn);
+    });
+  } else {
+    $("#mydialog").unbind("dialogclose");
+  }
+  $("#mydialog").html(content);
+  options = {
+    modal: true,
+    autoOpen: false,
+    title: title,
+    offset: [50, 50],
+    width: 320
+  };
+  $.extend(options, opts);
+  $("#mydialog").dialog(options);
+  $("tr[class='detail'][class!='header']:even").addClass("even_row");
+  $("#mydialog").dialog("open");
+  $("tr[class='detail']:even").removeClass("even_row");
+  return false;
+};
+
+this.show_item_detail = function(table, obj_id, modify_detail) {
+  var content, detail, obj, title;
+  obj = null;
+  if (table.hasOwnProperty("find")) {
+    obj = table.first({
+      _id: obj_id
+    });
+  } else {
+    obj = table[obj_id];
+  }
+  content = "";
+  title = obj.name;
+  jQuery.each(obj, function(name, value) {
+    var count, i, related_feats, skill_data, skill_name, skills_count;
+    if (!(value != null) || value.toString().length === 0 || show_detail_ignore.indexOf(name) > -1) {} else if (name !== "detail" && name !== "name" && name !== "class_data" && name !== "description" && name !== "op") {
+      if (name === "ability_id") {
+        name = "Ability";
+        value = abilities[value].name;
+      } else if (name === "synergies") {
+        if (value.length > 0) value = value.join(", ");
+      } else if (name === "feats") {
+        count = 0;
+        related_feats = "";
+        for (i in value) {
+          related_feats += i;
+          count++;
+        }
+        value = related_feats;
+      } else if (name === "skills") {
+        skill_data = "";
+        i = 0;
+        skills_count = count_attrs(value);
+        for (skill_name in value) {
+          skill_data += skill_name + " " + pos(value[skill_name]);
+          i++;
+          skill_data += (i < skills_count ? ", " : "");
+        }
+        value = skill_data;
+      }
+      return content += "<b>" + capitalize(name).replace(/_/g, " ") + "</b>: " + value + "<br/>";
+    }
+  });
+  detail = obj.detail;
+  if (modify_detail) detail = modify_detail(obj);
+  if (detail) content += "<br/>" + detail.replace(/%class%/g, "class");
+  return show_dialog(title, content);
 };
 
 this.loaded_static_data_tags = [];

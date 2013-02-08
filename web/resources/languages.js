@@ -1,6 +1,6 @@
 var languages;
 
-languages = new TAFFY([
+languages = TAFFY([
   {
     name: "Abyssal",
     type: "language",

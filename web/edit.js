@@ -38,7 +38,7 @@ edit.build_edit_page = function() {
     }
   });
   for (ability in abilities) {
-    $("#abilities_table").append("<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'" + ability + "')\">" + ability + "</a></b></td><td align='center'><input type='text' value='' name='" + ability + "score'class='two_digit' id='ability_" + ability + "'></td>");
+    $("#abilities_table").append("<tr><td align='center'><b><a class='fake_link' onclick=\"show_item_detail(abilities,'" + ability + "')\">" + ability + "</a></b></td><td align='center'><input type='text' value='' name='" + ability + "score'class='two_digit' id='ability_" + ability + "'></td><td align='center' id='race_" + ability + "_mod'></td>");
   }
   if (chardata.abilities == null) chardata.abilities = {};
   race_html = create_select("race", races().get(), "", false, "style='width: 75px;'");
@@ -53,7 +53,7 @@ edit.build_edit_page = function() {
   align_html = [];
   align_html.push("<option id='deity_option_-1' data_id='' value=''></option>");
   $.each(get_deities_for_alignment(chardata.alignment, chardata.goodness), function(i, deity) {
-    console.log("[" + i + "]  " + deity.name + " : " + deity.alignment + " " + deity.goodness);
+    console.log("[" + i + "]	" + deity.name + " : " + deity.alignment + " " + deity.goodness);
     return align_html.push(["<option id='deity_option_" + deity.name + "' data_id='" + deity._id + "' value='" + deity.name + "'>" + deity.name + "</option>"]);
   });
   $("#deity").html(align_html.join(""));
@@ -109,7 +109,7 @@ edit.build_edit_page = function() {
 };
 
 edit.bind_controls = function() {
-  var ability, _results;
+  var ability;
   $("#xp").blur(function() {
     chardata.xp = $("#xp").val;
     return save_character(chardata);
@@ -161,24 +161,14 @@ edit.bind_controls = function() {
     chardata.name = $("#charname").val;
     return save_character(chardata);
   });
-  _results = [];
   for (ability in abilities) {
-    console.log("binding click -> " + ability);
+    console.log("binding blur -> " + ability);
     $("input#ability_" + ability).blur(function() {
-      var race;
       chardata.abilities[ability] = $("#ability_" + ability).val;
-      race = races({
-        name: chardata.race_name
-      }).first;
-      if (race.abilities[ability]) {
-        return $("#race_" + ability + "_mod").val(pos(race.abilities[ability]));
-      }
+      return $("#race_" + ability + "_mod").text(calc_ability_modifier(chardata.abilities[ability]));
     });
-    _results.push($("#ability_" + ability).click(function() {
-      return show_item_detail(abilities, ability);
-    }));
   }
-  return _results;
+  return "done binding";
 };
 
 edit.create_languages = function() {
@@ -238,7 +228,7 @@ edit.populate_edit_page = function() {
 };
 
 edit.recalc_edit_page = function() {
-  var ability, ability_increase, calcd_level, char_langs, checked, class_langs, classname, clazz, feature, feature_count, i, is_class_language, is_race_language, lang_idx, langs, len, level, level_diff, race, skill_pts;
+  var ability, ability_increase, calcd_level, char_feats, char_langs, checked, class_langs, classname, clazz, feature, feature_count, i, is_class_language, is_race_language, lang_idx, langs, len, level, level_diff, race, skill_pts;
   calcd_level = calc_level(chardata.xp);
   if (calcd_level < chardata.level) {
     level_diff = calcd_level - chardata.level;
@@ -284,12 +274,12 @@ edit.recalc_edit_page = function() {
     }
     i++;
   }
+  char_feats = chardata.get_all_char_feats();
   skills().each(function(skill, i) {
-    var ability_mod, char_feats, feat_mod, mods, race_mod, skill_ability_score, subtype, _results;
+    var ability_mod, feat_mod, mods, race_mod, skill_ability_score, subtype, _results;
     race_mod = (race.skills[skill.name] != null ? race.skills[skill.name] : 0);
     mods = (race_mod > 0 ? "r:" + pos(race_mod) : "");
     feat_mod = 0;
-    char_feats = chardata.get_all_char_feats();
     char_feats().each(function(char_feat, j) {
       var acp, feat;
       console.log(char_feat.name);

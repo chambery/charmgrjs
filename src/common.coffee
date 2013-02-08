@@ -133,7 +133,7 @@ this.pos = (number) ->
 	(if (isFinite(number)) and (number > 0) then "+" + number else number)
 
 ###
-Returns the 0-based level for the supplied xp.  Eg. xp = 100 -> 0, xp = 1200 -> 1
+Returns the 0-based level for the supplied xp.	Eg. xp = 100 -> 0, xp = 1200 -> 1
 ###
 this.calc_level = (xp) ->
 	xp = xp | 0
@@ -167,7 +167,7 @@ this.calc_armor_bonus = (char_armor, db, equip_type) ->
 	max_dex_bonus = "-"
 	armor_bonus = 0
 	char_armor?().each (type) ->
-		console.log "\t#{type[equip_type + "_name"]}  #{type.is_worn}"
+		console.log "\t#{type[equip_type + "_name"]}	#{type.is_worn}"
 		if type.is_worn
 			armordata = db( {name: type[equip_type + "_name"]} ).first()
 			console.log "\tarmordata: #{armordata.max_dex_bonus}"
@@ -232,86 +232,141 @@ is_class_skill = (skill, subtype) ->
 	false
 
 calc_ranks = (char_skill_points, skill, subtype) ->
-  class_skill = is_class_skill(skill, subtype)
-  multiplier = ((if class_skill then 1 else .5))
-  multiplier * char_skill_points
+	class_skill = is_class_skill(skill, subtype)
+	multiplier = ((if class_skill then 1 else .5))
+	multiplier * char_skill_points
 
 calc_synergies = (skill) ->
-  synergy_mod = 0
-  for i of skill.synergies
-    char_synergy_skill = false
-    char_synergy_skill = chardata.skills.first(skill_id: skill.synergies[i])  if chardata.skills
-    if char_synergy_skill
-      synergy_skill = skills.first(id: skill.synergies[i])
-      synergy_mod = ((if calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 then 2 else 0))
-  synergy_mod
+	synergy_mod = 0
+	for i of skill.synergies
+		char_synergy_skill = false
+		char_synergy_skill = chardata.skills.first(skill_id: skill.synergies[i])	if chardata.skills
+		if char_synergy_skill
+			synergy_skill = skills.first(id: skill.synergies[i])
+			synergy_mod = ((if calc_ranks(class_id, char_synergy_skill.ranks, synergy_skill) >= 5 then 2 else 0))
+	synergy_mod
 
-this.show_dialog = (title, content, save_on_close, close_fn, opts) ->
-	$(".ui-widget-overlay").live "click", ->
-		$("#mydialog").dialog "close"
+calc_equip_mod = (key) ->
+	parseInt ((if (equipment_benefits[key]?) then 0 else equipment_benefits[key]))
 
-	if save_on_close
-		$("#mydialog").bind "dialogclose", ->
-			save_character(chardata)
-	if close_fn
-		$("#mydialog").bind "dialogclose", ->
-			eval close_fn
+calc_ac = (dex_score) ->
+	ac = 0
+	char_feats = chardata.get_feats()
+	char_feats(ac:
+		isNull: false
+	).get().forEach (feat, i) ->
+		ac = feat.ac(ac)
+		ac
+
+	armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor")
+	shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield")
+	monk_mod = ((if chardata.classes["Monk"]? then classes.first(name: "Monk").ac_bonus[calc_level()] else 0))
+	10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod("AC") + ac
+
+calc_size_mod = (race_name) ->
+	size = races( name: race_name ).first().size
+	if size is "small"
+		1
 	else
-		$("#mydialog").unbind "dialogclose"
-	$("#mydialog").html content
-	options =
-		modal: true
-		autoOpen: false
-		title: title
-		offset: [ 50, 50 ]
-		width: 320
+		0
 
-	$.extend options, opts
-	$("#mydialog").dialog options
-	$("tr[class='detail'][class!='header']:even").addClass "even_row"
-	$("#mydialog").dialog "open"
-	$("tr[class='detail']:even").removeClass "even_row"
-	false
+calc_init = (dex_score) ->
+	init = 0
+	char_feats = chardata.get_feats()
+	char_feats(init:
+		isNull: false
+	).get().forEach (feat, i) ->
+		init = feat.init(init)
+		init
 
-this.show_item_detail = (table, obj_id, modify_detail) ->
-	obj = null
-	if table.hasOwnProperty("find")
-		obj = table.first(_id: obj_id)
-	else
-		obj = table[obj_id]
-	content = ""
-	title = obj.name
-	jQuery.each obj, (name, value) ->
-		if not value? or value.toString().length == 0 or show_detail_ignore.indexOf(name) > -1
-			return
-		else if name != "detail" and name != "name" and name != "class_data" and name != "description" and name != "op"
-			if name == "ability_id"
-				name = "Ability"
-				value = abilities[value].name
-			else if name == "synergies"
-				value = value.join(", ")	if value.length > 0
-			else if name == "feats"
-				count = 0
-				related_feats = ""
-				for i of value
-					related_feats += i
-					count++
-				value = related_feats
-			else if name == "skills"
-				skill_data = ""
-				i = 0
-				skills_count = count_attrs(value)
-				for skill_name of value
-					skill_data += skill_name + " " + pos(value[skill_name])
-					i++
-					skill_data += (if i < skills_count then ", " else "")
-				value = skill_data
-			content += "<b>" + capitalize(name).replace(/_/g, " ") + "</b>: " + value + "<br/>"
+	calc_ability_modifier(dex_score) + init
 
-	detail = obj.detail
-	detail = modify_detail(obj)	if modify_detail
-	content += "<br/>" + detail.replace(/%class%/g, "class")	if detail
-	show_dialog title, content
+calc_fort = (con_score) ->
+	class_fort_score = calc_save("fort_save")
+	feat_mod = 0
+	char_feats = chardata.get_feats()
+	char_feats( fort:
+		isNull: false
+	).get().forEach (feat, i) ->
+		feat_mod = feat.fort(feat_mod)
+		feat_mod
+
+	calc_ability_modifier(con_score) + class_fort_score + feat_mod + calc_equip_mod("Fort")
+
+calc_save = (type) ->
+	save = 0
+	for classname of chardata.classes
+		save += classes( name: classname ).first()[type][chardata.classes[classname].level]	if classes( name: classname ).first()[type]
+	save
+
+calc_ref = (dex_score, class_name, xp, char_feats) ->
+	class_ref_score = calc_save("ref_save")
+	ref = 0
+	char_feats = chardata.get_feats()
+	char_feats( ref:
+		isNull: false
+	).get().forEach (feat, i) ->
+		ref = feat.ref(ref)
+		ref
+
+	calc_ability_modifier(dex_score) + class_ref_score + ref + calc_equip_mod("Ref")
+
+calc_will = (wis_score) ->
+	class_will_score = calc_save("will_save")
+	feat_mod = 0
+	char_feats = chardata.get_feats()
+	char_feats( will:
+		isNull: false
+	).get().forEach (feat, i) ->
+		feat_mod = feat.will(feat_mod)
+		feat_mod
+
+	calc_ability_modifier(wis_score) + class_will_score + feat_mod + calc_equip_mod("Will")
+
+calc_touch_ac = (dex_score, race_name) ->
+	10 + calc_ability_modifier(dex_score) + calc_size_mod(race_name)
+
+calc_flat_footed_ac = (char_armor) ->
+	10 + calc_armor_bonus(char_armor, armors, "armor").bonus
+
+calc_cmb = (base_attack_bonuses, other_mod) ->
+	cmb = ""
+	other_mod = ((if other_mod then parseInt(other_mod) else 0))
+	babs = base_attack_bonuses.map((x) ->
+		x + calc_ability_modifier(chardata.abilities["Str"]) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod("Att")
+	)
+	i = 0
+	while i < babs.length
+		cmb += pos(babs[i]) + ((if i + 1 < babs.length then "/" else ""))
+		i++
+	cmb
+
+calc_cmd = (base_attack_bonuses, other_mod) ->
+	cmd = ""
+	other_mod = ((if other_mod then parseInt(other_mod) else 0))
+	babs = base_attack_bonuses.map((x) ->
+		x + calc_ability_modifier(chardata.abilities["Str"]) + calc_ability_modifier(chardata.abilities["Dex"]) + calc_size_mod(chardata.race_name) + other_mod + 10
+	)
+	i = 0
+	while i < babs.length
+		cmd += pos(babs[i]) + ((if i + 1 < babs.length then "/" else ""))
+		i++
+	cmd
+
+calc_spell_resistance = ->
+	sr = do_class_functions("all", "calc_sr",
+		sr: 0
+	).sr
+	class_sr_score = calc_save("sr_save")
+	feat_mod = 0
+	char_feats = chardata.get_feats()
+	char_feats( sr:
+		isNull: false
+	).get().forEach (feat, i) ->
+		feat_mod = feat.fort(feat_mod)
+		feat_mod
+
+	sr + class_sr_score + feat_mod + calc_equip_mod("SR")
 
 this.capitalize = (string) ->
 	string.charAt(0).toUpperCase() + string.slice(1)
@@ -338,26 +393,25 @@ this.dehtmlize = (text) ->
 
 # deprecated - use new Character(data)
 this.parse_character_data = (data) ->
-	chardata = new Character()
-	unless TAFFY.isObject(data)
-		log_data = null
-		log_separator = data.indexOf("``")
-		if log_separator > 0
-			log_data = data.substring(data.indexOf("``") + 2)
-			data = data.substring(0, data.indexOf("``"))
-		chardata = JSON.parse(unescape(data)) or {}
-	chardata.skills = parse_taffy_data(data.skills)
-	chardata.feats = parse_taffy_data(data.feats)
-	if log_data
-		log_entries = log_data.split("`")
-		i = 0
+	# unless TAFFY.isObject(data)
+	# 	log_data = null
+	# 	log_separator = data.indexOf("``")
+	# 	if log_separator > 0
+	# 		log_data = data.substring(data.indexOf("``") + 2)
+	# 		data = data.substring(0, data.indexOf("``"))
+	# 	chardata = JSON.parse(unescape(data)) or {}
+	# chardata.skills = parse_taffy_data(data.skills)
+	# chardata.feats = parse_taffy_data(data.feats)
+	# if log_data
+	# 	log_entries = log_data.split("`")
+	# 	i = 0
 
-		while i < log_entries.length
-			entry = JSON.parse(unescape(log_entries[i]))
-			sav entry, "log_" + data.name + "_" + entry.id
-			i++
-	console.log "parse_character_data: #{JSON.stringify(data, null, 2)}"
-	chardata
+	# 	while i < log_entries.length
+	# 		entry = JSON.parse(unescape(log_entries[i]))
+	# 		sav entry, "log_" + data.name + "_" + entry.id
+	# 		i++
+	# console.log "parse_character_data: #{JSON.stringify(data, null, 2)}"
+	new Character(data)
 
 this.reconstitute_array = (array_obj, attr_name) ->
 	array = null
@@ -525,6 +579,74 @@ this.print = (o) ->
 	console.log "print - src"
 	for key, value of o
 		console.log "\t\t#{key} : #{value}"
+
+this.show_dialog = (title, content, save_on_close, close_fn, opts) ->
+	$(".ui-widget-overlay").live "click", ->
+		$("#mydialog").dialog "close"
+
+	if save_on_close
+		$("#mydialog").bind "dialogclose", ->
+			save_character(chardata)
+	if close_fn
+		$("#mydialog").bind "dialogclose", ->
+			eval close_fn
+	else
+		$("#mydialog").unbind "dialogclose"
+	$("#mydialog").html content
+	options =
+		modal: true
+		autoOpen: false
+		title: title
+		offset: [ 50, 50 ]
+		width: 320
+
+	$.extend options, opts
+	$("#mydialog").dialog options
+	$("tr[class='detail'][class!='header']:even").addClass "even_row"
+	$("#mydialog").dialog "open"
+	$("tr[class='detail']:even").removeClass "even_row"
+	false
+
+this.show_item_detail = (table, obj_id, modify_detail) ->
+	obj = null
+	if table.hasOwnProperty("find")
+		obj = table.first(_id: obj_id)
+	else
+		obj = table[obj_id]
+	content = ""
+	title = obj.name
+	jQuery.each obj, (name, value) ->
+		if not value? or value.toString().length == 0 or show_detail_ignore.indexOf(name) > -1
+			return
+		else if name != "detail" and name != "name" and name != "class_data" and name != "description" and name != "op"
+			if name == "ability_id"
+				name = "Ability"
+				value = abilities[value].name
+			else if name == "synergies"
+				value = value.join(", ")	if value.length > 0
+			else if name == "feats"
+				count = 0
+				related_feats = ""
+				for i of value
+					related_feats += i
+					count++
+				value = related_feats
+			else if name == "skills"
+				skill_data = ""
+				i = 0
+				skills_count = count_attrs(value)
+				for skill_name of value
+					skill_data += skill_name + " " + pos(value[skill_name])
+					i++
+					skill_data += (if i < skills_count then ", " else "")
+				value = skill_data
+			content += "<b>" + capitalize(name).replace(/_/g, " ") + "</b>: " + value + "<br/>"
+
+	detail = obj.detail
+	detail = modify_detail(obj)	if modify_detail
+	content += "<br/>" + detail.replace(/%class%/g, "class")	if detail
+	show_dialog title, content
+
 
 this.loaded_static_data_tags = []
 

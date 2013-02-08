@@ -52,8 +52,8 @@ this.import_character = (options, char_name) ->
 			async: false
 
 		console.log "parsing taffy data"
-		chardata.skills = parse_taffy_data(chardata.skills)
-		chardata.feats = parse_taffy_data(chardata.feats)
+		chardata.skills = new TAFFY(chardata.skills)
+		chardata.feats = new TAFFY(chardata.feats)
 		save_character()
 		need_new_data = false
 		if chardata.options and chardata.options.ext_data and loaded_static_data_tags.length == chardata.options.ext_data.length

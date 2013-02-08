@@ -20,10 +20,6 @@ main.load = function() {
     window.chardata.options = (window.chardata.options ? window.chardata.options : {});
     load_static_data();
     window.chardata.options.owner = players_companion.owner;
-    window.chardata.race_name = races().first().name;
-    window.chardata.classes[classes().first().name] = {
-      "level": 0
-    };
     return main.do_edit();
   }
 };
@@ -73,6 +69,7 @@ main.get_rogue_skill_selections = function() {
 };
 
 main.reset_ability_score = function(e) {
+  console.log(e);
   $("input[id='ability_" + e.data.ability + "_score']").val($("#ability_score_full" + id).text());
   window.chardata.abilities["temp_" + e.data.ability] = parseInt($("#ability_score_full" + id).text());
   save_character();
@@ -83,7 +80,7 @@ main.recalc_ability_mod = function(e) {
   if (!isNaN($(this).val())) {
     window.chardata.abilities["temp_" + e.data.ability] = $(this).val();
   }
-  save_character();
+  save_character(chardata);
   return main.recalc_main_page();
 };
 
@@ -576,11 +573,11 @@ main.recalc_main_page = function() {
   });
   $("#ac").text(calc_ac(dex_score));
   $("#init").text(calc_init(dex_score));
-  $("#fort").text(calc_fort(con_score, window.chardata.class_name, window.chardata.xp, window.chardata.feats));
-  $("#ref").text(calc_ref(dex_score, window.chardata.class_name, window.chardata.xp, window.chardata.feats));
-  $("#will").text(calc_will(wis_score, window.chardata.class_name, window.chardata.xp, window.chardata.feats));
+  $("#fort").text(calc_fort(con_score));
+  $("#ref").text(calc_ref(dex_score));
+  $("#will").text(calc_will(wis_score));
   $("#turn").text((window.chardata.class_id === 2 ? "Turn: " + calc_turn(cha_score) : ""));
-  $("#touch").text(calc_touch_ac(dex_score, window.chardata.race_id, window.chardata.feats));
+  $("#touch").text(calc_touch_ac(dex_score, window.chardata.race_name));
   $("#flat").text(calc_flat_footed_ac(chardata.armors));
   $("#cmb").text(calc_cmb(calc_base_attack_bonus()));
   $("#cmd").text(calc_cmd(calc_base_attack_bonus()));

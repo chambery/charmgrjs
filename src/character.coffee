@@ -40,15 +40,9 @@ class Character
 		@languages = []
 		@equipment_benefits = {}
 
-		if data.skills
-			@skills = parse_taffy_data(data.skills)
-		else
-			@skills = new TAFFY([])
+		@skills = TAFFY(data.skills)
 
-		if data.feats
-			@feats = parse_taffy_data(data.feats)
-		else
-			@feats = new TAFFY([])
+		@feats = TAFFY(data.feats)
 
 		if log_data
 			log_entries = log_data.split("`")
@@ -84,7 +78,7 @@ class Character
 	goodness : goodness[0]
 	languages : []
 	equipment_benefits : {}
-	feats : new TAFFY([])
+	feats : TAFFY()
 	# this.classes[classes().first().name] = { "level" : 0 }
 	# armors : { }
 	# weapons : {	}
@@ -276,8 +270,8 @@ class Character
 	###
 	get_feats : () ->
 		console.log "\tget_feats"
-		char_feats = TAFFY([])
-		if @feats
+		char_feats = TAFFY()
+		if @feats.length > 0
 			@feats().each (feat) ->
 				full_feat = feats(name: feat.feat_name).first()
 				$.extend(full_feat, feat)
@@ -292,7 +286,7 @@ class Character
 	###
 	get_class_feats : () ->
 		console.log "\nget_class_feats"
-		class_feats = TAFFY([])
+		class_feats = TAFFY()
 		feat_names = this.get_class_feat_names()
 		console.log "\t#{feat_names}"
 		for i, name of feat_names
@@ -309,7 +303,7 @@ class Character
 		console.log "\nget_all_char_feats"
 		all_char_feats = this.get_class_feats()
 		console.log "\tall count: #{all_char_feats().count()}"
-		char_feats = new TAFFY(chardata.feats().get())
+		char_feats = TAFFY(chardata.feats().get())
 		console.log "\tchar feats count: #{char_feats().count()}"
 		all_char_feats?().each (feat) ->
 			char_feat = chardata.feats(name: feat.name).first()
