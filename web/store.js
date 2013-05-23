@@ -52,8 +52,8 @@ this.import_character = function(options, char_name) {
       async: false
     });
     console.log("parsing taffy data");
-    chardata.skills = TAFFY(chardata.skills);
-    chardata.feats = TAFFY(chardata.feats);
+    chardata.skills = new TAFFY(chardata.skills);
+    chardata.feats = new TAFFY(chardata.feats);
     save_character();
     need_new_data = false;
     if (chardata.options && chardata.options.ext_data && loaded_static_data_tags.length === chardata.options.ext_data.length) {

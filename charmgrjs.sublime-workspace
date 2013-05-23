@@ -4,11 +4,59 @@
 		"selected_items":
 		[
 			[
-				"char",
-				"chardata"
+				"fe",
+				"feats"
+			],
+			[
+				"feat",
+				"feat"
+			],
+			[
+				"u",
+				"unless"
+			],
+			[
+				"ra",
+				"races"
+			],
+			[
+				"ali",
+				"alignment"
+			],
+			[
+				"abil",
+				"abilities"
+			],
+			[
+				"save",
+				"save_character"
+			],
+			[
+				"sav",
+				"save_data"
+			],
+			[
+				"rac",
+				"race"
+			],
+			[
+				"co",
+				"cookies"
 			],
 			[
 				"ch",
+				"change"
+			],
+			[
+				"cha",
+				"chardata"
+			],
+			[
+				"chang",
+				"change"
+			],
+			[
+				"char",
 				"chardata"
 			],
 			[
@@ -20,28 +68,12 @@
 				"equipment_benefits"
 			],
 			[
-				"feat",
-				"feat_name"
-			],
-			[
-				"cha",
-				"char_feat"
-			],
-			[
-				"ali",
-				"alignments"
-			],
-			[
 				"fo",
 				"folder_exclude_patterns"
 			],
 			[
 				"class",
 				"classes"
-			],
-			[
-				"ra",
-				"races"
 			],
 			[
 				"race",
@@ -72,20 +104,12 @@
 				"log	log"
 			],
 			[
-				"sav",
-				"save_character"
-			],
-			[
 				"requ",
 				"require"
 			],
 			[
 				"test",
 				"test_file"
-			],
-			[
-				"co",
-				"cookie"
 			],
 			[
 				"crea",
@@ -336,10 +360,6 @@
 				"weapons"
 			],
 			[
-				"fe",
-				"feat_name"
-			],
-			[
 				"Foo",
 				"Foochin"
 			],
@@ -464,10 +484,6 @@
 				"equal"
 			],
 			[
-				"abil",
-				"ability"
-			],
-			[
 				"tr",
 				"true"
 			],
@@ -498,164 +514,78 @@
 			[
 				"wep",
 				"weapons"
-			],
-			[
-				"ce",
-				"ceil"
-			],
-			[
-				"Mat",
-				"Math"
-			],
-			[
-				"na",
-				"name"
-			],
-			[
-				"tequ",
-				"tequip_benes"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "src/store.coffee",
 			"settings":
 			{
-				"buffer_size": 3754,
+				"buffer_size": 8355,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/chambery/projects/taffydart/damage_types.json",
+			"file": "/Applications/apache-tomee-plus-1.5.1/conf/tomee.xml",
 			"settings":
 			{
-				"buffer_size": 241,
+				"buffer_size": 6532,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/chambery/projects/taffydart/weapons.json",
+			"contents": "<openejb>\n    <Resource id=\"MyJmsResourceAdapter\" type=\"ActiveMQResourceAdapter\">\n        BrokerXmlConfig =  broker:(tcp://localhost:61616)\n        ServerUrl       =  tcp://localhost:61616\n    </Resource>\n\n    <Resource id=\"MyJmsConnectionFactory\" type=\"javax.jms.ConnectionFactory\">\n        ResourceAdapter = MyJmsResourceAdapter\n    </Resource>\n    <Resource id=\"MyJmsConnectionFactory\" type=\"injection-of-connectionfactory/Messages\">\n        ResourceAdapter = Messages\n    </Resource>\n    <Container id=\"MyJmsMdbContainer\" ctype=\"MESSAGE\">\n        ResourceAdapter = MyJmsResourceAdapter\n    </Container>\n\n    <Resource id=\"FooQueue\" type=\"javax.jms.Queue\"/>\n    <Resource id=\"BarTopic\" type=\"javax.jms.Topic\"/>\n</openejb>\n",
+			"file": "/Users/chambery/Documents/workspace/TomEERouter/src/main/java/META-INF/openejb.xml",
+			"file_size": 725,
+			"file_write_time": 1360499542000000,
 			"settings":
 			{
-				"buffer_size": 15166,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/edit.coffee",
-			"settings":
-			{
-				"buffer_size": 17697,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/common.coffee",
-			"settings":
-			{
-				"buffer_size": 28114,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/deities-pf.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
+				"buffer_size": 725,
+				"line_ending": "Unix",
+				"name": "<openejb>"
 			}
 		},
 		{
 			"file": "src/character.coffee",
 			"settings":
 			{
-				"buffer_size": 17891,
+				"buffer_size": 18943,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/resources/skills.coffee",
+			"contents": "Searching 196 files for \"new TAFFY\" (regex)\n\n/Users/chambery/projects/charmgrjs/charmgrjs.sublime-workspace:\n 1004  			\"\\\\{\",\n 1005  			\"^\\\\}, \\\\{\",\n 1006: 			\"new TAFFY(\",\n 1007  			\"(\\\\S*?$)\",\n 1008  			\"  \",\n\n/Users/chambery/projects/charmgrjs/lib/taffy.js:\n  875                  // * T is the main TAFFY object\n  876                  // * Takes: an array of objects or JSON\n  877:                 // * Returns a new TAFFYDB\n  878                  // **************************************** \n  879                  var TOb = [],\n\n/Users/chambery/projects/charmgrjs/src/character.coffee:\n   41  		@equipment_benefits = {}\n   42  \n   43: 		@skills = new TAFFY(data.skills)\n   44  \n   45: 		@feats = new TAFFY(data.feats)\n   46  \n   47  		if log_data\n   ..\n   79  	languages : []\n   80  	equipment_benefits : {}\n   81: 	feats : new TAFFY()\n   82  	# this.classes[classes().first().name] = { \"level\" : 0 }\n   83  	# armors : { }\n   ..\n  271  	get_feats : () ->\n  272  		console.log \"\\tget_feats\"\n  273: 		char_feats = new TAFFY()\n  274  		if @feats.length > 0\n  275  			@feats().each (feat) ->\n  ...\n  287  	get_class_feats : () ->\n  288  		console.log \"\\nget_class_feats\"\n  289: 		class_feats = new TAFFY()\n  290  		feat_names = this.get_class_feat_names()\n  291  		console.log \"\\t#{feat_names}\"\n  ...\n  304  		all_char_feats = this.get_class_feats()\n  305  		console.log \"\\tall count: #{all_char_feats().count()}\"\n  306: 		char_feats = new TAFFY(chardata.feats().get())\n  307  		console.log \"\\tchar feats count: #{char_feats().count()}\"\n  308  		all_char_feats?().each (feat) ->\n\n/Users/chambery/projects/charmgrjs/src/resources/languages.coffee:\n    1: languages = new TAFFY([\n    2    name: \"Abyssal\"\n    3    type: \"language\"\n\n/Users/chambery/projects/charmgrjs/src/resources/skills.coffee:\n    2  	TAFFY = require(\"../../lib/taffy\").taffy\n    3  \n    4: this.skills = new TAFFY([\n    5  	name: \"Acrobatics\"\n    6  	skill_classes: [ \"Barbarian\", \"Bard\", \"Monk\", \"Rogue\" ]\n\n/Users/chambery/projects/charmgrjs/web/character.js:\n   51      this.languages = [];\n   52      this.equipment_benefits = {};\n   53:     this.skills = new TAFFY(data.skills);\n   54:     this.feats = new TAFFY(data.feats);\n   55      if (log_data) {\n   56        log_entries = log_data.split(\"`\");\n   ..\n   95    Character.prototype.equipment_benefits = {};\n   96  \n   97:   Character.prototype.feats = new TAFFY();\n   98  \n   99    /*\n  ...\n  347      var char_feats;\n  348      console.log(\"\\tget_feats\");\n  349:     char_feats = new TAFFY();\n  350      if (this.feats.length > 0) {\n  351        this.feats().each(function(feat) {\n  ...\n  368      var class_feats, feat, feat_names, i, name;\n  369      console.log(\"\\nget_class_feats\");\n  370:     class_feats = new TAFFY();\n  371      feat_names = this.get_class_feat_names();\n  372      console.log(\"\\t\" + feat_names);\n  ...\n  390      all_char_feats = this.get_class_feats();\n  391      console.log(\"\\tall count: \" + (all_char_feats().count()));\n  392:     char_feats = new TAFFY(chardata.feats().get());\n  393      console.log(\"\\tchar feats count: \" + (char_feats().count()));\n  394      if (typeof all_char_feats === \"function\") {\n\n/Users/chambery/projects/charmgrjs/web/resources/favored_enemies.js:\n    1: var favored_enemies = new TAFFY ([{\n    2  	name: \"Aberration\",\n    3  	type: \"favored_enemy\",\n    .\n  165  }]);\n  166  \n  167: var favored_terrains = new TAFFY([\n  168  {\n  169  	name: \"Cold\",\n\n/Users/chambery/projects/charmgrjs/web/resources/feats-pf.js:\n    1: feats = new TAFFY([{\n    2  		name: \"Acrobatic\",\n    3  		summary: \"+2 bonus on Acrobatics and Fly checks\",\n\n/Users/chambery/projects/charmgrjs/web/resources/languages.js:\n    1  var languages;\n    2  \n    3: languages = new TAFFY([\n    4    {\n    5      name: \"Abyssal\",\n\n/Users/chambery/projects/charmgrjs/web/resources/schools.js:\n    1: schools = new TAFFY ([{\n    2    name: \"Abjuration\",\n    3    abbrev: \"Abjur\",\n\n/Users/chambery/projects/charmgrjs/web/resources/skills-pf.js:\n    1  var skills;\n    2: skills = new TAFFY([\n    3    {\n    4      name: \"Acrobatics\",\n\n/Users/chambery/projects/charmgrjs/web/resources/skills.js:\n    3  if (typeof exports === \"object\") TAFFY = require(\"../../lib/taffy\").taffy;\n    4  \n    5: this.skills = new TAFFY([\n    6    {\n    7      name: \"Acrobatics\",\n\n/Users/chambery/projects/charmgrjs/web/store.js:\n   53      });\n   54      console.log(\"parsing taffy data\");\n   55:     chardata.skills = new TAFFY(chardata.skills);\n   56:     chardata.feats = new TAFFY(chardata.feats);\n   57      save_character();\n   58      need_new_data = false;\n\n25 matches across 13 files\n",
 			"settings":
 			{
-				"buffer_size": 123471,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/skills.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Cakefile",
-			"settings":
-			{
-				"buffer_size": 2277,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/edit_weapons.coffee",
-			"settings":
-			{
-				"buffer_size": 3872,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "web/edit_weapons.js",
-			"settings":
-			{
-				"buffer_size": 4714,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "freesea123",
-			"settings":
-			{
-				"buffer_size": 10,
+				"buffer_size": 4620,
 				"line_ending": "Unix",
-				"name": "freesea123"
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
-			"contents": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<dartKeyBindings version=\"1\">\n<!--The format is straightforward, consisting of two attributes plus one that is optional.\nThe required attributes are the command name, which is the same as it appears in\nmenus, and the key sequence, which is all uppercase. The optional attribute is the\nname of the platform to which the binding applies if it is not universal.-->\n<keyBinding commandName=\"Backward History\" keySequence=\"ALT+ARROW_LEFT\"/>\n<keyBinding commandName=\"Backward History\" keySequence=\"ALT+COMMAND+ARROW_LEFT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Backward History\" keySequence=\"COMMAND+[\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Close\" keySequence=\"COMMAND+W\"/>\n<keyBinding commandName=\"Close All\" keySequence=\"COMMAND+SHIFT+W\"/>\n<keyBinding commandName=\"Content Assist\" keySequence=\"ALT+/\"/>\n<keyBinding commandName=\"Content Assist\" keySequence=\"CTRL+SPACE\"/>\n<keyBinding commandName=\"Copy\" keySequence=\"COMMAND+C\"/>\n<keyBinding commandName=\"Copy Lines\" keySequence=\"ALT+COMMAND+ARROW_DOWN\"/>\n<keyBinding commandName=\"Cut\" keySequence=\"COMMAND+X\"/>\n<keyBinding commandName=\"Delete\" keySequence=\"DEL\"/>\n<keyBinding commandName=\"Delete Line\" keySequence=\"COMMAND+D\"/>\n<keyBinding commandName=\"Delete Next Word\" keySequence=\"COMMAND+DEL\"/>\n<keyBinding commandName=\"Delete Next Word\" keySequence=\"ALT+DEL\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Delete Previous Word\" keySequence=\"COMMAND+BS\"/>\n<keyBinding commandName=\"Delete Previous Word\" keySequence=\"ALT+BS\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Delete to End of Line\" keySequence=\"COMMAND+SHIFT+DEL\"/>\n<keyBinding commandName=\"Duplicate Lines\" keySequence=\"ALT+COMMAND+ARROW_UP\"/>\n<keyBinding commandName=\"Extract Local Variable\" keySequence=\"ALT+SHIFT+L\"/>\n<keyBinding commandName=\"Extract Local Variable\" keySequence=\"ALT+COMMAND+L\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Extract Method\" keySequence=\"ALT+SHIFT+M\"/>\n<keyBinding commandName=\"Extract Method\" keySequence=\"ALT+COkjbtform=\"cocoa\"/>\n<keyBinding commandName=\"Find Callers\" keySequence=\"ALT+CTRL+H\"/>\n<keyBinding commandName=\"Find Next\" keySequence=\"COMMAND+K\"/>\n<keyBinding commandName=\"Find Previous\" keySequence=\"COMMAND+SHIFT+K\"/>\n<keyBinding commandName=\"Find and Replace\" keySequence=\"COMMAND+F\"/>\n<keyBinding commandName=\"Format Element\" keySequence=\"COMMAND+SHIFT+F\"/>\n<keyBinding commandName=\"Forward History\" keySequence=\"ALT+ARROW_RIGHT\"/>\n<keyBinding commandName=\"Forward History\" keySequence=\"ALT+COMMAND+ARROW_RIGHT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Forward History\" keySequence=\"COMMAND+]\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Generate JavaScript\" keySequence=\"COMMAND+SHIFT+G\"/>\n<keyBinding commandName=\"Go to Line\" keySequence=\"COMMAND+L\"/>\n<keyBinding commandName=\"Go to Matching Bracket\" keySequence=\"COMMAND+SHIFT+P\"/>\n<keyBinding commandName=\"Inline\" keySequence=\"ALT+SHIFT+I\"/>\n<keyBinding commandName=\"Inline\" keySequence=\"ALT+COMMAND+I\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Insert Line Above Current Line\" keySequence=\"COMMAND+SHIFT+CR\"/>\n<keyBinding commandName=\"Insert Line Below Current Line\" keySequence=\"SHIFT+CR\"/>\n<keyBinding commandName=\"Join Lines\" keySequence=\"ALT+COMMAND+J\"/>\n<keyBinding commandName=\"Line End\" keySequence=\"END\"/>\n<keyBinding commandName=\"Line End\" keySequence=\"COMMAND+ARROW_RIGHT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Line Start\" keySequence=\"HOME\"/>\n<keyBinding commandName=\"Line Start\" keySequence=\"COMMAND+ARROW_LEFT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Manage Launches\" keySequence=\"COMMAND+SHIFT+M\"/>\n<keyBinding commandName=\"Maximize Active View or Editor\" keySequence=\"COMMAND+M\"/>\n<keyBinding commandName=\"Maximize Active View or Editor\" keySequence=\"CTRL+M\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Move Lines Down\" keySequence=\"ALT+ARROW_DOWN\"/>\n<keyBinding commandName=\"Move Lines Up\" keySequence=\"ALT+ARROW_UP\"/>\n<keyBinding commandName=\"New File...\" keySequence=\"COMMAND+N\"/>\n<keyBinding commandName=\"Next Word\" keySequence=\"COMMAND+ARROW_RIGHT\"/>\n<keyBinding commandName=\"Next Word\" keySequence=\"ALT+ARROW_RIGHT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Open Class Hierarchy\" keySequence=\"F4\"/>\n<keyBinding commandName=\"Open Declaration\" keySequence=\"F3\"/>\n<keyBinding commandName=\"Open Existing Folder...\" keySequence=\"COMMAND+O\"/>\n<keyBinding commandName=\"Open Structure\" keySequence=\"COMMAND+F3\"/>\n<keyBinding commandName=\"Organize Imports\" keySequence=\"ALT+SHIFT+O\"/>\n<keyBinding commandName=\"Organize Imports\" keySequence=\"ALT+COMMAND+O\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Paste\" keySequence=\"COMMAND+V\"/>\n<keyBinding commandName=\"Previous Word\" keySequence=\"COMMAND+ARROW_LEFT\"/>\n<keyBinding commandName=\"Previous Word\" keySequence=\"ALT+ARROW_LEFT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Properties\" keySequence=\"ALT+CR\"/>\n<keyBinding commandName=\"Properties\" keySequence=\"COMMAND+I\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Quick Fix\" keySequence=\"COMMAND+1\"/>\n<keyBinding commandName=\"Quick Hierarchy\" keySequence=\"COMMAND+T\"/>\n<keyBinding commandName=\"Quick Outline\" keySequence=\"ALT+O\"/>\n<keyBinding commandName=\"Redo\" keySequence=\"COMMAND+Y\"/>\n<keyBinding commandName=\"Redo\" keySequence=\"COMMAND+SHIFT+Z\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Refresh\" keySequence=\"F5\"/>\n<keyBinding commandName=\"Rename - Refactoring \" keySequence=\"ALT+SHIFT+R\"/>\n<keyBinding commandName=\"Rename - Refactoring \" keySequence=\"ALT+COMMAND+R\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Resume\" keySequence=\"F8\"/>\n<keyBinding commandName=\"Run\" keySequence=\"COMMAND+R\"/>\n<keyBinding commandName=\"Save\" keySequence=\"COMMAND+S\"/>\n<keyBinding commandName=\"Save All\" keySequence=\"COMMAND+SHIFT+S\"/>\n<keyBinding commandName=\"Scroll Line Down\" keySequence=\"CTRL+ARROW_DOWN\"/>\n<keyBinding commandName=\"Scroll Line Up\" keySequence=\"CTRL+ARROW_UP\"/>\n<keyBinding commandName=\"Search Box\" keySequence=\"COMMAND+3\"/>\n<keyBinding commandName=\"Select All\" keySequence=\"COMMAND+A\"/>\n<keyBinding commandName=\"Select Line End\" keySequence=\"SHIFT+END\"/>\n<keyBinding commandName=\"Select Line End\" keySequence=\"COMMAND+SHIFT+ARROW_RIGHT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Select Line Start\" keySequence=\"SHIFT+HOME\"/>\n<keyBinding commandName=\"Select Line Start\" keySequence=\"COMMAND+SHIFT+ARROW_LEFT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Select Next Word\" keySequence=\"COMMAND+SHIFT+ARROW_RIGHT\"/>\n<keyBinding commandName=\"Select Next Word\" keySequence=\"ALT+SHIFT+ARROW_RIGHT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Select Previous Word\" keySequence=\"COMMAND+SHIFT+ARROW_LEFT\"/>\n<keyBinding commandName=\"Select Previous Word\" keySequence=\"ALT+SHIFT+ARROW_LEFT\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Select Text End\" keySequence=\"SHIFT+END\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Select Text Start\" keySequence=\"SHIFT+HOME\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Show Key Assist\" keySequence=\"COMMAND+SHIFT+L\"/>\n<keyBinding commandName=\"Show Ruler Context Menu\" keySequence=\"COMMAND+F10\"/>\n<keyBinding commandName=\"Step Into\" keySequence=\"F5\"/>\n<keyBinding commandName=\"Step Over\" keySequence=\"F6\"/>\n<keyBinding commandName=\"Step Return\" keySequence=\"F7\"/>\n<keyBinding commandName=\"Terminate\" keySequence=\"COMMAND+F2\"/>\n<keyBinding commandName=\"Text End\" keySequence=\"COMMAND+END\"/>\n<keyBinding commandName=\"Text End\" keySequence=\"END\" platform=\"cocoa\"/>\n<keyBinding commandName=\"Text Start\" keySequence=\"COMMAND+HOME\"/>\n<keyBinding commandName=\"Text Start\" keySequence=\"HOME\" platform=\"cocoa\"/>\n<keyBinding commandName=\"To Lower Case\" keySequence=\"COMMAND+SHIFT+Y\"/>\n<keyBinding commandName=\"To Upper Case\" keySequence=\"COMMAND+SHIFT+X\"/>\n<keyBinding commandName=\"Toggle Breakpoint\" keySequence=\"COMMAND+SHIFT+B\"/>\n<keyBinding commandName=\"Toggle Comment\" keySequence=\"COMMAND+/\"/>\n<keyBinding commandName=\"Toggle Overwrite\" keySequence=\"INSERT\"/>\n<keyBinding commandName=\"Undo\" keySequence=\"COMMAND+Z\"/>\n</dartKeyBindings>\n",
-			"file": "/Users/chambery/Desktop/keys.xml",
-			"file_size": 7980,
-			"file_write_time": 1357866214000000,
+			"file": "web/store.js",
 			"settings":
 			{
-				"buffer_size": 7971,
+				"buffer_size": 9191,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "server.js",
+			"file": "src/edit_feats.coffee",
 			"settings":
 			{
-				"buffer_size": 3409,
-				"line_ending": "Unix"
+				"buffer_size": 13853,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/edit_equipment.coffee",
+			"file": "src/class_dialog.coffee",
 			"settings":
 			{
-				"buffer_size": 8407,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/resources/races.coffee",
-			"settings":
-			{
-				"buffer_size": 1597,
+				"buffer_size": 4307,
 				"line_ending": "Unix"
 			}
 		},
@@ -663,25 +593,31 @@
 			"file": "src/resources/classes.coffee",
 			"settings":
 			{
-				"buffer_size": 33818,
+				"buffer_size": 33791,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 196 files for \"store.save_character\" (regex)\n\n/Users/chambery/projects/charmgrjs/test/store.coffee:\n  102  			])\n  103  \n  104: 	test.equal store.save_character()\n  105  	test.done()\n  106  \n\n1 match in 1 file\n",
+			"file": "src/common.coffee",
 			"settings":
 			{
-				"buffer_size": 220,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
+				"buffer_size": 34820,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/store.coffee",
+			"file": "src/resources/deities-pf.coffee",
 			"settings":
 			{
-				"buffer_size": 8308,
+				"buffer_size": 5521,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/edit.coffee",
+			"settings":
+			{
+				"buffer_size": 18305,
 				"line_ending": "Unix"
 			}
 		}
@@ -766,18 +702,40 @@
 	},
 	"file_history":
 	[
+		"/Users/chambery/tmp/me2",
+		"/Users/chambery/tmp/me",
+		"/Users/chambery/Desktop/keys.xml",
+		"/Users/chambery/projects/charmgrjs/src/resources/languages.coffee",
+		"/Users/chambery/projects/charmgrjs/src/resources/skills.coffee",
+		"/Users/chambery/projects/charmgrjs/web/character.js",
+		"/Users/chambery/projects/charmgrjs/src/character.coffee",
+		"/Users/chambery/projects/charmgrjs/src/resources/deities-pf.coffee",
+		"/Users/chambery/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/chambery/projects/charmgrjs/index.html",
+		"/Users/chambery/projects/taffydart/damage_types.json",
+		"/Users/chambery/projects/taffydart/weapons.json",
+		"/Users/chambery/projects/charmgrjs/src/edit.coffee",
+		"/Users/chambery/projects/charmgrjs/src/common.coffee",
+		"/Users/chambery/projects/charmgrjs/resources/deities-pf.js",
+		"/Users/chambery/projects/charmgrjs/resources/skills.js",
+		"/Users/chambery/projects/charmgrjs/Cakefile",
+		"/Users/chambery/projects/charmgrjs/src/edit_weapons.coffee",
+		"/Users/chambery/projects/charmgrjs/web/edit_weapons.js",
+		"/Users/chambery/projects/charmgrjs/server.js",
+		"/Users/chambery/projects/charmgrjs/src/edit_equipment.coffee",
+		"/Users/chambery/projects/charmgrjs/src/resources/races.coffee",
+		"/Users/chambery/projects/charmgrjs/src/resources/classes.coffee",
+		"/Users/chambery/projects/charmgrjs/src/store.coffee",
 		"/Users/chambery/projects/charmgrjs/src/resources/feats.coffee",
 		"/Users/chambery/projects/charmgrjs/web/edit.js",
 		"/Users/chambery/projects/charmgrjs/resources/skills-pf.js",
 		"/Users/chambery/projects/charmgrjs/web/resources/languages.js",
 		"/Users/chambery/projects/charmgrjs/resources/languages.js",
-		"/Users/chambery/projects/charmgrjs/src/resources/languages.coffee",
 		"/Users/chambery/projects/charmgrjs/src/resources/languages.js",
 		"/Users/chambery/projects/charmgrjs/common.js",
 		"/Users/chambery/projects/charmgrjs/charmgrjs.sublime-project",
 		"/Users/chambery/projects/charmgrjs/stylesheets/clickmenu.css",
 		"/Users/chambery/projects/charmgrjs/stylesheets/charmgr.css",
-		"/Users/chambery/projects/charmgrjs/Cakefile",
 		"/Users/chambery/projects/charmgrjs/charmgr.sublime-project",
 		"/Users/chambery/projects/charmgrjs/src/chardata.coffee",
 		"/Users/chambery/projects/charmgrjs/test/character.coffee",
@@ -879,7 +837,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/chambery/projects/charmgrjs",
@@ -898,6 +856,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"^Feb .*\\n",
+			"^Feb .*",
+			"new TAFFY",
+			"TAFFY",
+			"parse_taffy_data",
+			"  ",
+			"calc_base",
+			"onblur",
+			"onch",
+			"curr_level",
+			"chardata.lev",
+			"calc_le",
+			"skills_",
+			"db\\.(.*?)\\((.*?)\\)",
+			"TAFFY.JSON",
 			"store.save_character",
 			"languages\\.(.*?)\\((.*?)\\)",
 			"classes\\.(.*?)\\((.*?)\\)",
@@ -1010,22 +983,7 @@
 			"TAFFY = require(\"taffy",
 			"^  ",
 			"  ",
-			"char_feats",
-			"calc_syn",
-			"syn",
-			"synergy",
-			"synerg",
-			"synergies",
-			"calc_level",
-			"find_n",
-			"calc_level",
-			"window",
-			"expected_feats\\[\"(.*?)\"\\]",
-			"\"(.*?)\"",
-			"\"(.*?)\",",
-			"					\"(.*?)\",",
-			",",
-			"app.get"
+			"char_feats"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1033,6 +991,14 @@
 		"regex": true,
 		"replace_history":
 		[
+			"",
+			"TAFFY",
+			"new TAFFY",
+			"\\t",
+			"calcd_level",
+			"db( \\2 ).\\1()",
+			"JSON",
+			"JSON\n\n",
 			"languages( \\2 ).\\1()",
 			"classes( \\2 ).\\1()",
 			"classes(\\2).\\1()",
@@ -1115,29 +1081,29 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "src/store.coffee",
 					"settings":
 					{
-						"buffer_size": 3754,
+						"buffer_size": 8355,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								247,
-								251
+								1070,
+								1070
 							]
 						],
 						"settings":
 						{
-							"is_xml": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1147,50 +1113,56 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/chambery/projects/taffydart/damage_types.json",
+					"file": "/Applications/apache-tomee-plus-1.5.1/conf/tomee.xml",
 					"settings":
 					{
-						"buffer_size": 241,
+						"buffer_size": 6532,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								5732,
+								5732
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"is_xml": true,
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2062.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/Users/chambery/projects/taffydart/weapons.json",
+					"file": "/Users/chambery/Documents/workspace/TomEERouter/src/main/java/META-INF/openejb.xml",
 					"settings":
 					{
-						"buffer_size": 15166,
+						"buffer_size": 725,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								725,
+								725
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "<openejb>",
+							"is_xml": true,
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1200,420 +1172,36 @@
 				},
 				{
 					"buffer": 3,
-					"file": "src/edit.coffee",
+					"file": "src/character.coffee",
 					"settings":
 					{
-						"buffer_size": 17697,
+						"buffer_size": 18943,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16113,
-								16113
+								9285,
+								9285
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2815.0,
+						"translation.y": 2820.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/common.coffee",
 					"settings":
 					{
-						"buffer_size": 28114,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19858,
-								19858
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 294.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "resources/deities-pf.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/character.coffee",
-					"settings":
-					{
-						"buffer_size": 17891,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								908,
-								908
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/resources/skills.coffee",
-					"settings":
-					{
-						"buffer_size": 123471,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								74,
-								78
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "resources/skills.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "Cakefile",
-					"settings":
-					{
-						"buffer_size": 2277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								251,
-								251
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 42.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "src/edit_weapons.coffee",
-					"settings":
-					{
-						"buffer_size": 3872,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1288,
-								1326
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "web/edit_weapons.js",
-					"settings":
-					{
-						"buffer_size": 4714,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 886.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"settings":
-					{
-						"buffer_size": 10,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10,
-								10
-							]
-						],
-						"settings":
-						{
-							"auto_name": "freesea123",
-							"is_xml": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/Users/chambery/Desktop/keys.xml",
-					"settings":
-					{
-						"buffer_size": 7971,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2021,
-								2021
-							]
-						],
-						"settings":
-						{
-							"is_xml": true,
-							"syntax": "Packages/XML/XML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "server.js",
-					"settings":
-					{
-						"buffer_size": 3409,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3409,
-								3409
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"is_xml": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 588.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "src/edit_equipment.coffee",
-					"settings":
-					{
-						"buffer_size": 8407,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4581,
-								4581
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "src/resources/races.coffee",
-					"settings":
-					{
-						"buffer_size": 1597,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "src/resources/classes.coffee",
-					"settings":
-					{
-						"buffer_size": 33818,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2256,
-								2256
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 267.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"settings":
-					{
-						"buffer_size": 220,
+						"buffer_size": 4620,
 						"regions":
 						{
 							"match":
@@ -1622,8 +1210,104 @@
 								"regions":
 								[
 									[
-										150,
-										170
+										160,
+										169
+									],
+									[
+										417,
+										426
+									],
+									[
+										653,
+										662
+									],
+									[
+										702,
+										711
+									],
+									[
+										830,
+										839
+									],
+									[
+										1019,
+										1028
+									],
+									[
+										1197,
+										1206
+									],
+									[
+										1439,
+										1448
+									],
+									[
+										1669,
+										1678
+									],
+									[
+										1875,
+										1884
+									],
+									[
+										2130,
+										2139
+									],
+									[
+										2178,
+										2187
+									],
+									[
+										2381,
+										2390
+									],
+									[
+										2510,
+										2519
+									],
+									[
+										2742,
+										2751
+									],
+									[
+										3003,
+										3012
+									],
+									[
+										3265,
+										3274
+									],
+									[
+										3394,
+										3403
+									],
+									[
+										3515,
+										3524
+									],
+									[
+										3728,
+										3737
+									],
+									[
+										3858,
+										3867
+									],
+									[
+										4026,
+										4035
+									],
+									[
+										4252,
+										4261
+									],
+									[
+										4446,
+										4455
+									],
+									[
+										4502,
+										4511
 									]
 								],
 								"scope": ""
@@ -1632,8 +1316,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								4348,
+								4348
 							]
 						],
 						"settings":
@@ -1647,25 +1331,53 @@
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
+						"translation.y": 1507.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 19,
-					"file": "src/store.coffee",
+					"buffer": 5,
+					"file": "web/store.js",
 					"settings":
 					{
-						"buffer_size": 8308,
+						"buffer_size": 9191,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4533,
-								4533
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1759.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/edit_feats.coffee",
+					"settings":
+					{
+						"buffer_size": 13853,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1674,7 +1386,144 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1377.0,
+						"translation.y": 731.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/class_dialog.coffee",
+					"settings":
+					{
+						"buffer_size": 4307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1327,
+								1327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/resources/classes.coffee",
+					"settings":
+					{
+						"buffer_size": 33791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7371,
+								7371
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1050.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/common.coffee",
+					"settings":
+					{
+						"buffer_size": 34820,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14521,
+								14521
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2357.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/resources/deities-pf.coffee",
+					"settings":
+					{
+						"buffer_size": 5521,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								559,
+								559
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/edit.coffee",
+					"settings":
+					{
+						"buffer_size": 18305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 352.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1737,7 +1586,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 179.0,
 	"status_bar_visible": true
 }
