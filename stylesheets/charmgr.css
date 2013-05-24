@@ -1,0 +1,332 @@
+body {
+	font-size: x-small;
+	max-width: 300;
+	font-family: sans-serif;
+}
+
+.text,.checkbox {
+	font-size: x-small;
+}
+
+.text {
+	width: 210px;
+}
+
+view {
+	font-size: xx-small;
+	padding-right: 10px;
+	vertical-align: top;
+}
+
+.collapse {
+  background-color: #8DC3E9;
+}
+
+div.collapse {
+  width: 100%;
+}
+
+span.collapse {
+  vertical-align: middle;
+}
+
+img.collapse {
+  display: table-cell;
+  float: right;
+  vertical-align: middle;
+  margin-right: 2px;
+  margin-top: 3px;
+}
+
+.dp20,.dp25,.dp33,.dp40,.dp45,.dp50,.dp55,.dp60,.dp66,.dp75,.dp100 {
+	float: left;
+	display: inline; *
+	margin-left: -0.04em;
+}
+
+.dp20 {
+	width: 20%;
+}
+
+.dp25 {
+	width: 25%;
+}
+
+.dp33 {
+	width: 33.33%;
+}
+
+.dp40 {
+	width: 40%;
+}
+
+.dp45 {
+	width: 45%;
+}
+
+.dp50 {
+	width: 50%;
+}
+
+.dp55 {
+	width: 55%;
+}
+
+.dp60 {
+	width: 60%
+}
+
+.dp66 {
+	width: 66.66%;
+}
+
+.dp75 {
+	width: 75%;
+}
+
+.dp100 {
+	width: 100%;
+}
+
+.clear {
+	clear: both;
+}
+
+.box {
+	border: solid;
+	border-width: 1px;
+}
+
+td.box {
+	border: 1px solid #C5C6F6;
+}
+
+.feat {
+	padding: 3px;
+	vertical-align: top;
+}
+
+input.feat {
+	margin-top: 0px;
+}
+
+table.box {
+	border-collapse: collapse;
+}
+
+.alarm {
+	font-weight: bold;
+	color: red;
+}
+
+p.sub {
+	text-indent: 10px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+span.fake_link, label.fake_link, tr.fake_link, a.fake_link,a.view {
+	cursor: pointer;
+}
+
+a.view:hover {
+	text-decoration: underline;
+}
+
+.view {
+	 vertical-align: top;
+}
+
+td.header {
+	font-weight: bold;
+	text-align: center;
+}
+
+tr.header {
+	font-weight: bold;
+	text-align: center;
+	background: #B4B5B5;
+}
+
+td.indent {
+	padding-left: 40px
+}
+
+sup {
+	font-weight: normal;
+}
+
+.disabled {
+	color: #888888;
+}
+
+.enabled {
+	color: #000000;
+}
+
+.class_feat {
+	background-color: #DCECFF;
+}
+
+.numeric {
+	text-align: right;
+}
+
+.new_weapon {
+	background-color: #dcecff;
+	text-align: center;
+}
+
+.even_row {
+	background-color: #eaeaea;
+}
+
+input {
+	border: solid 1px Lightgrey;
+}
+
+input.two_digit {
+	width: 15px;
+	text-align: center;
+}
+
+input.three_digit {
+	width: 25px;
+}
+
+.weapon_text {
+	width: 135px;
+}
+
+input.small_button {
+  font: 84% 'trebuchet ms',helvetica,sans-serif;
+  border:1px solid;
+  height: 15%;
+}
+
+tr.highlight:hover {
+	background-color: #DCECFF;
+}
+
+a.btn{
+	background-color: #EBE9ED;
+	float:left;
+	text-align:center;
+	display:block;
+	text-decoration:none;
+	cursor: default;
+}
+
+a.btn:hover {
+	background-color: #AAAAAA;
+	filter:alpha(opacity:80);
+}
+
+a.btn span
+{
+	padding:3px 8px 4px 8px;
+
+	text-align:center;
+	position:relative;
+	left:1px;top:1px;
+	display:block;
+	text-decoration:none;
+	font:small/1 Verdana;
+	color:#222;
+
+}
+
+img.dtl {
+	width: 100%,
+	display: block;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+legend.fake_link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/*
+	character sheet styles
+*/
+.entry_box {
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	border-bottom-color: #000000;
+	font-size: small;
+	font-weight: bold;
+}
+.cell_spacer {
+	width: 20px
+}
+.auto-style1 {
+	margin-right: 0px;
+}
+.top_header {
+	text-align: center;
+	font-size: xx-small;
+	vertical-align: bottom;
+}
+.bottom_annotation {
+	text-align: center;
+	font-size: xx-small;
+	vertical-align: top;
+}
+
+.group_header {
+	text-align: center;
+	background-color: #C0C0C0;
+	border: thin solid #000000;
+}
+.user-entry-box {
+	border: 1px solid #000000;
+	text-align: center;
+}
+.auto-style4 {
+	text-align: center;
+}
+.temp_entry_box {
+	border: medium solid #C0C0C0;
+}
+
+table.pftable {
+	border-spacing: 0px;
+	margin: 5px;
+}
+
+th.pftable {
+	border-bottom: 2px solid tan;
+	padding-top: 10px;
+	padding-right: 4px;
+	padding-left: 4px;
+}
+
+td.pftable {
+	border-bottom: 1px solid wheat;
+	padding-right: 4px;
+	padding-left: 4px;
+}
+
+tr:last-child td.pftable {
+	border-bottom: 2px solid tan;
+	padding-right: 4px;
+	padding-left: 4px;
+}
+
+td.number {
+	text-align: center;
+}
+
+td.seamless {
+	padding-left: 3px;
+	padding-right: 3px;
+}
