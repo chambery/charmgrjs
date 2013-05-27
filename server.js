@@ -105,4 +105,4 @@ app.use(express.errorHandler({
     showStack: true
 }));
 app.listen(1860);
-console.log('Express server started on port %s', app.address().port);
+console.log('Express server started on port 1860');

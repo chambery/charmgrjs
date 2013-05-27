@@ -681,13 +681,13 @@ function calc_damage(weapon, char_feats, char_weapon) {
 }
 
 function show_dialog(title, content, save_on_close, close_fn, opts) {
+    var close_action = null;
 	// close dialog when clicking outside of it
 	$(".ui-widget-overlay").live("click", function() {
 		$("#mydialog").dialog("close");
 	});
 	if(save_on_close) {
-		$("#mydialog").bind('dialogclose', function() { save_character();
-		});
+		close_action = function() { return save_character(); }
 	}
 	if(close_fn) {
 		$("#mydialog").bind('dialogclose', function() { eval(close_fn);
@@ -701,8 +701,11 @@ function show_dialog(title, content, save_on_close, close_fn, opts) {
 		autoOpen : false,
 		title : title,
 		position : [50, 50],
-		width : 320
+		width : 320,
+        closeOnEscape: true,
+        close: function( event, ui ) { return close_action(); }
 	};
+
 	$.extend(options, opts)
 	$("#mydialog").dialog(options);
 	$("tr[class='detail'][class!='header']:even").addClass("even_row");

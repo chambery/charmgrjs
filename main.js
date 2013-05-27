@@ -414,7 +414,7 @@ main.populate_main_page = function() {
 	$('#char_name').text(chardata.name);
 //	$('#race').text(race ? race : '');
 //	$('#clazz').text(clazz ? clazz : '');
-	$('#hp').text(chardata.hp == null || chardata.hp.length <= 0 ? 0 : calc_hp(chardata.hp, chardata.feats));
+	$('#hp').text(chardata.hp == null || chardata.hp.length <= 0 ? 0 : main.calc_hp(chardata.hp, chardata.feats));
 	$('#temp_hp').val(chardata.temp_hp || $("#hp").text() || 0);
 	$('#subdual_hp').val(chardata.subdual_hp || $("#subdual_hp").text() || 0);
 	$("input[id='hp']").val(chardata.hp == null || chardata.hp.length <= 0 ? 0 : chardata.hp);
