@@ -274,12 +274,12 @@ classes = new TAFFY([{
 			}, function (e) {
 				if ($(this).attr('checked')) {
 					for (var j in chardata.weapons) {
-						update_weapon_attack(j, e.data.mod);
-						update_weapon_damage(j, e.data.mod);
+						main.update_weapon_attack(j, e.data.mod);
+						main.update_weapon_damage(j, e.data.mod);
 					}
 					update_skill_ranks(['Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival']);
 				} else {
-					recalc_main_page();
+					main.recalc_main_page();
 				}
 			});
 		}

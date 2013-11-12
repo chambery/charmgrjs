@@ -29,7 +29,7 @@ main.do_main = function() {
 		main.populate_main_page();
 		main.recalc_main_page();
 	} else {
-		do_edit();
+		main.do_edit();
 	}
 }
 

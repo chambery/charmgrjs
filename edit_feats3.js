@@ -154,7 +154,8 @@ function populate_feats_page() {
 
 	// TODO - before looping set up all class feats
 	allfeats.forEach( function(feat, i) {
-		// // console.log(feat.name);
+        console.log(feat.name);
+        console.log("element: " + $("input[id='" + feat._id + "']").length);
 		if (feat.multi) {
 			var char_feat = false;
 			if (chardata.feats != null) {

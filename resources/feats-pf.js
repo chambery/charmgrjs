@@ -293,7 +293,7 @@ feats = new TAFFY([{
 }, {
     name: "Catch Off-Guard",
     summary: "No penalties for improvised melee weapons",
-    detail: "Foes are surprised by your skilled use of unorthodox and improvised weapons.<p class=sub><b>Benefit: </b>You do not suffer any penalties for using an improvised melee weapon. Unarmed opponents are flatfooted against any attacks you make with an improvised melee weapon. <p class=sub><b>Normal: </b>You take a ?4 penalty on attack rolls made with an improvised weapon. ",
+    detail: "Foes are surprised by your skilled use of unorthodox and improvised weapons.<p class=sub><b>Benefit: </b>You do not suffer any penalties for using an improvised melee weapon. Unarmed opponents are flatfooted against any attacks you make with an improvised melee weapon. <p class=sub><b>Normal: </b>You take a -1 penalty on attack rolls made with an improvised weapon. ",
     prereqs: {},
     conditional: true,
     groups: ["Combat"],
@@ -315,7 +315,7 @@ feats = new TAFFY([{
 }, {
     name: "Cleave",
     summary: "Make an additional attack if the first one hits",
-    detail: "You can strike two adjacent foes with a single swing.<p class=sub><b>Prerequisites: </b>Str 13, Power Attack, base attack bonus +1. <p class=sub><b>Benefit: </b>As a standard action, you can make a single attack at your full base attack bonus against a foe within reach. If you hit, you deal damage normally and can make an additional attack (using your full base attack bonus) against a foe that is adjacent to the first and also within reach. You can only make one additional attack per round with this feat. When you use this feat, you take a ?2 penalty to your Armor Class until your next turn. ",
+    detail: "You can strike two adjacent foes with a single swing.<p class=sub><b>Prerequisites: </b>Str 13, Power Attack, base attack bonus +1. <p class=sub><b>Benefit: </b>As a standard action, you can make a single attack at your full base attack bonus against a foe within reach. If you hit, you deal damage normally and can make an additional attack (using your full base attack bonus) against a foe that is adjacent to the first and also within reach. You can only make one additional attack per round with this feat. When you use this feat, you take a -2 penalty to your Armor Class until your next turn. ",
     prereqs: {
         abilities: {
             Str: 13
@@ -348,7 +348,7 @@ feats = new TAFFY([{
 }, {
     name: "Combat Expertise",
     summary: "Trade attack bonus for AC bonus",
-    detail: "You can increase your defense at the expense of your accuracy.<p class=sub><b>Prerequisites: </b>Int 13<p class=sub><b>Benefit: </b>You can choose to take a ?1 penalty on melee attack rolls and combat maneuver checks to gain a +1 dodge bonus to your Armor Class. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by ?1 and the dodge bonus increases by +1. You can only choose to use this feat when you declare that you are making an attack or a full-attack action with a melee weapon. The effects of this feat last until your next turn.",
+    detail: "You can increase your defense at the expense of your accuracy.<p class=sub><b>Prerequisites: </b>Int 13<p class=sub><b>Benefit: </b>You can choose to take a -1 penalty on melee attack rolls and combat maneuver checks to gain a +1 dodge bonus to your Armor Class. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the dodge bonus increases by +1. You can only choose to use this feat when you declare that you are making an attack or a full-attack action with a melee weapon. The effects of this feat last until your next turn.",
     prereqs: {
         abilities: {
             Int: 13
@@ -514,7 +514,7 @@ feats = new TAFFY([{
 }, {
     name: "Deadly Aim",
     summary: "Trade ranged attack bonus for damage",
-    detail: "You can make exceptionally deadly ranged attacks by pinpointing a foe?s weak spot, at the expense of making the attack less likely to succeed.<p class=sub><b>Prerequisites: </b>Dex 13, base attack bonus +1<p class=sub><b>Benefit: </b>You can choose to take a ?1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by ?1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.",
+    detail: "You can make exceptionally deadly ranged attacks by pinpointing a foe?s weak spot, at the expense of making the attack less likely to succeed.<p class=sub><b>Prerequisites: </b>Dex 13, base attack bonus +1<p class=sub><b>Benefit: </b>You can choose to take a -1 penalty on all ranged attack rolls to gain a +2 bonus on all ranged damage rolls. When your base attack bonus reaches +4, and every +4 thereafter, the penalty increases by -1 and the bonus to damage increases by +2. You must choose to use this feat before making an attack roll and its effects last until your next turn. The bonus damage does not apply to touch attacks or effects that do not deal hit point damage.",
     prereqs: {
         abilities: {
             Dex: 13
@@ -749,7 +749,7 @@ feats = new TAFFY([{
 }, {
     name: "Exotic Weapon Proficiency",
     summary: "No penalty on attacks made with one exotic weapon",
-    detail: "<p class=sub><b>Prerequisites: </b>Base attack bonus +1<p class=sub><b>Benefit: </b>You make attack rolls with the weapon normally. <p class=sub><b>Normal: </b>A character who uses a weapon with which he is not proficient takes a ?4 penalty on attack rolls. <p class=sub><b>Special: </b>You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon.",
+    detail: "<p class=sub><b>Prerequisites: </b>Base attack bonus +1<p class=sub><b>Benefit: </b>You make attack rolls with the weapon normally. <p class=sub><b>Normal: </b>A character who uses a weapon with which he is not proficient takes a -1 penalty on attack rolls. <p class=sub><b>Special: </b>You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon.",
     prereqs: {
         base_attack_bonus: 1
     },

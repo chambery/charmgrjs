@@ -385,7 +385,7 @@ function recalc_edit_page() {
 	for (var classname in chardata.classes) {
 		// if no features, don't show the fieldset
 		var feature_count = 0;
-		$("#classespart").append("<fieldset id='" + classname + "'><legend>" + classname + "</legend></fieldset>");
+		$("#classespart").append("<fieldset id='" + classname + "' style='padding-left: 3px;border: 1px solid LightGray'><legend>" + classname + "</legend></fieldset>");
 		var clazz = classes.first({ name : classname });
 		if (clazz.custom && clazz.custom.edit) {
 			for (level in  clazz.custom.edit) {
