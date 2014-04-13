@@ -6,8 +6,8 @@ feats = [{
 	detail: "You have excellent body awareness and coordination.<p class=sub><b>Benefit</b>: You get a +2 bonus on all Jump checks and Tumble checks.</p>",
 	benefit: "+2 bonus on Jump and Tumble checks",
 	skills: {
-		"Jump" : 2, 
-		"Tumble" : 2 
+		"Jump" : 2,
+		"Tumble" : 2
 	},
 	prereqs: {}
 },{
@@ -18,8 +18,8 @@ feats = [{
 	detail: "You are particularly flexible and poised. <p class=sub><b>Benefit</b>: You get a +2 bonus on all Balance checks and Escape Artist checks. ",
 	benefit: "+2 bonus on Balance and Escape Artist checks",
 	skills: {
-		"Balance" : 2, 
-		"Escape Artist" : 2 
+		"Balance" : 2,
+		"Escape Artist" : 2
 	},
 	prereqs: {}
 },{
@@ -30,10 +30,10 @@ feats = [{
 	detail: "You have finely tuned senses. <p class=sub><b>Benefit</b>: You get a +2 bonus on all Listen checks and Spot checks. <p class=sub><b>Special</b>: The master of a familiar (see the Familiars sidebar, page 52) gains the benefit of the Alertness feat whenever the familiar is within arm&apos;s reach. ",
 	benefit: "+2 bonus on Listen and Spot checks",
 	skills: {
-		"Listen" : 2, 
-		"Spot" : 2 
+		"Listen" : 2,
+		"Spot" : 2
 	},
-	prereqs: {}	
+	prereqs: {}
 },{
 	name: "Animal Affinity",
 	tags: ["phb", "pathfinder"],
@@ -42,8 +42,8 @@ feats = [{
 	detail: "You are good with animals. <p class='sub'><b>Benefit</b>: You get a +2 bonus on all Handle Animal checks and Ride checks.",
 	benefit: "+2 bonus on Handle Animal and Ride checks",
 	skills: {
-		"Handle Animal" : 2, 
-		"Ride" : 2 
+		"Handle Animal" : 2,
+		"Ride" : 2
 	},
 	prereqs: {}
 },{
@@ -53,8 +53,8 @@ feats = [{
 	description: "You are proficient with heavy armor.",
 	detail: "You are proficient with heavy armor (see Table 7-6: Armor and Shields, page 123). <p class=sub><b>Prerequisites</b>: Armor Proficiency (light), Armor Proficiency (medium). <p class=sub><b>Benefit</b>: See Armor Proficiency (light). <p class=sub><b>Normal</b>: See Armor Proficiency (light). <p class=sub><b>Special</b>: Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it.",
 	benefit: "No armor check penalty on attack rolls",
-	attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
-	mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; ",
+	attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
+	mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; ",
 	classes: {
 		"Cleric": 2,
 		"Fighter": 2,
@@ -74,8 +74,8 @@ feats = [{
 	description: "You are proficient with light armor.",
 	detail: "You are proficient with light armor (see Table 7-6: Armor and Shields, page 123). <p class=sub><b>Benefit</b>: When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Pick Pocket, and Tumble checks. <p class=sub><b>Normal</b>: A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride. <p class=sub><b>Special</b>: All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it.",
 	benefit: "No armor check penalty on attack rolls",
-	attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'light') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
-	mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'light') { acp += Math.abs(armor.acp) } } } return acp;",
+	attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'light') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
+	mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'light') { acp += Math.abs(armor.acp) } } } return acp;",
 	classes: {
 		"Barbarian": 1,
 		"Bard": 1,
@@ -98,8 +98,8 @@ feats = [{
 	description: "You are proficient with medium armor.",
 	detail: "You are proficient with medium armor (see Table 7-6: Armor and Shields, page 123). <p class=sub><b>Prerequisite</b>: Armor Proficiency (light). <p class=sub><b>Benefit</b>: See Armor Proficiency (light). <p class=sub><b>Normal</b>: See Armor Proficiency (light). <p class=sub><b>Special</b>: Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it.",
 	benefit: "No armor check penalty on attack rolls",
-	attack: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
-	mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;",
+	attack: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
+	mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;",
 	prereqs: {
 		feats: ["Armor Proficiency (light)"]
 	},
@@ -274,8 +274,8 @@ feats = [{
 	detail: "You have a knack for disguising the truth. <p class=sub><b>Benefit</b>: You get a +2 bonus on all Disguise checks and Forgery checks.",
 	benefit: "+2 bonus on Disguise and Forgery checks",
 	skills: {
-		"Disguise" : 2, 
-		"Forgery" : 2 
+		"Disguise" : 2,
+		"Forgery" : 2
 	},
 	prereqs: {}
 },{
@@ -301,8 +301,8 @@ feats = [{
 	detail: "You have exceptional manual dexterity. <p class=sub><b>Benefit</b>: You get a +2 bonus on all Sleight of Hand checks and Use Rope checks. ",
 	benefit: "+2 bonus on Sleight of Hand and Use Rope checks",
 	skills: {
-		"Sleight of Hand" : 2, 
-		"Use Rope" : 2 
+		"Sleight of Hand" : 2,
+		"Use Rope" : 2
 	},
 	prereqs: {}
 },{
@@ -324,8 +324,8 @@ feats = [{
 	detail: "Your meticulousness allows you to analyze minute details that others miss. <p class=sub><b>Benefit</b>: You get a +2 bonus on all Appraise checks and Decipher Script checks.",
 	benefit: "+2 bonus on Appraise and Decipher Script checks",
 	skills: {
-		"Appraise" : 2, 
-		"Decipher Script" : 2 
+		"Appraise" : 2,
+		"Decipher Script" : 2
 	},
 	prereqs: {}
 },{
@@ -395,7 +395,7 @@ feats = [{
 		base_attack_bonus: 1,
 		feats: ["Martial Weapon Proficiency"]
 	},
-	multi: { 
+	multi: {
 		type: "weapons",
 		db: "weapons",
 		filter: { category: "exotic" }
@@ -523,8 +523,8 @@ feats = [{
 	description: "Improves your proficiency with a weapon for which you have selected Weapon Focus.",
 	detail: "Choose one type of weapon, such as greataxe, for which you have already selected Weapon Focus. You can also choose unarmed strike or grapple as your weapon for purposes of this feat. You are especially good at using this weapon. <p class=sub><b>Prerequisites</b>: Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 8th. <p class=sub><b>Benefit</b>: You gain a +1 bonus on all attack rolls you make using the selected weapon. This bonus stacks with other bonuses on attack rolls, including the one from Weapon Focus (see below). <p class=sub><b>Special</b>: You can gain Greater Weapon Focus multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon. <p class=sub>A fighter must have Greater Weapon Focus with a given weapon to gain the Greater Weapon Specialization feat for that weapon.  <p class=sub>A fighter may select Greater Weapon Focus as one of his fighter bonus feats (see page 38).",
 	benefit: "+2 bonus on attack rolls with selected weapon",
-	attack: "if(chardata.feats.first({ feat_name: 'Greater Weapon Focus' }).multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
-	multi: { 
+	attack: "if(chardata.feats({ feat_name: 'Greater Weapon Focus' }).first().multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
+	multi: {
 		type: "weapons",
 		feats: ["Weapon Focus"]
 	},
@@ -542,8 +542,8 @@ feats = [{
 	description: "Increases damage for a weapon for which you have selected Weapon Specialization.",
 	detail: "Choose one type of weapon, such as greataxe, for which you have already selected Weapon Specialization. You can also choose unarmed strike or grapple as your weapon for purposes of this feat. You deal extra damage when using this weapon. <p class=sub><b>Prerequisites</b>: Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus with selected weapon, Weapon Specialization with selected weapon, fighter level 12th. <p class=sub><b>Benefit</b>: You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus stacks with other bonuses on damage rolls, including the one from Weapon Specialization (see below). <p class=sub><b>Special</b>: You can gain Greater Weapon Specialization multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon. <p class=sub>A fighter may select Greater Weapon Specialization as one of his fighter bonus feats (see page 38).",
 	benefit: "+4 bonus on damage rolls with selected weapon",
-	damage: "if(chardata.feats.first({ feat_name: 'Greater Weapon Specialization' }).multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; } } return damages;",
-	multi: { 
+	damage: "if(chardata.feats({ feat_name: 'Greater Weapon Specialization' }).first().multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; } } return damages;",
+	multi: {
 		type: "weapons",
 		feats: ["Weapon Specialization"]
 		// feats: {
@@ -821,7 +821,7 @@ feats = [{
 		base_attack_bonus: 6
 	},
 	conditional: true,
-	op: "if ($(this).attr('checked')) {if ($('#feat_54_conditional').attr('checked')) {$('#feat_54_conditional').removeAttr('checked');recalc_main_page();}for ( var i in chardata.weapons) {var weapon = weapons.first({ id: chardata.weapons[i].weapon_id });if (weapon.subcategory == 'ranged') { var attacks = $('#weapon_' + i + '_att').text().split('/');var base_attack_bonus = parseInt(attacks[0]);var arrows = Math.min(Math.ceil(Math.abs(base_attack_bonus - 6) / 5), 4) + 1;var manyshot_penalty = (arrows * 2);var many_shot_atts = '';for (var j=0; j<arrows; j++) {many_shot_atts += pos(base_attack_bonus - manyshot_penalty);many_shot_atts += ((j+1) < arrows ? '/' : '');}$('#weapon_' + i + '_att').text(many_shot_atts);}}} else {recalc_main_page();}",
+	op: "if ($(this).attr('checked')) {if ($('#feat_54_conditional').attr('checked')) {$('#feat_54_conditional').removeAttr('checked');recalc_main_page();}for ( var i in chardata.weapons) {var weapon = weapons({ id: chardata.weapons[i].weapon_id }).first();if (weapon.subcategory == 'ranged') { var attacks = $('#weapon_' + i + '_att').text().split('/');var base_attack_bonus = parseInt(attacks[0]);var arrows = Math.min(Math.ceil(Math.abs(base_attack_bonus - 6) / 5), 4) + 1;var manyshot_penalty = (arrows * 2);var many_shot_atts = '';for (var j=0; j<arrows; j++) {many_shot_atts += pos(base_attack_bonus - manyshot_penalty);many_shot_atts += ((j+1) < arrows ? '/' : '');}$('#weapon_' + i + '_att').text(many_shot_atts);}}} else {recalc_main_page();}",
 	fighter_bonus_feat: true
 },{
 	name: "Martial Weapon Proficiency",
@@ -954,7 +954,7 @@ feats = [{
 	benefit: "+1 bonus on ranged attack and damage within 30 ft.",
 	prereqs: {},
 	conditional: true,
-	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons.first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
+	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons().first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
 	fighter_bonus_feat: true
 },{
 	name: "Power Attack",
@@ -1030,7 +1030,7 @@ feats = [{
 		feats: ["Point Blank Shot"]
 	},
 	conditional: true,
-	op: "if($(this).attr('checked')) { if($('#feat_45_conditional').attr('checked')) { $('#feat_45_conditional').removeAttr('checked'); recalc_main_page(); } for (var i in chardata.weapons) { var weapon = weapons.first({ name: chardata.weapons[i].weapon_name });if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); attacks.push(attacks[0]); var rapid_shot_atts = ''; for(j in attacks) { rapid_shot_atts += pos(parseInt(attacks[j]) - 2);	rapid_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); }	$('#weapon_' + i + '_att').text(rapid_shot_atts); } } } else { recalc_main_page(); }",
+	op: "if($(this).attr('checked')) { if($('#feat_45_conditional').attr('checked')) { $('#feat_45_conditional').removeAttr('checked'); recalc_main_page(); } for (var i in chardata.weapons) { var weapon = weapons({ name: chardata.weapons[i].weapon_name }).first();if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); attacks.push(attacks[0]); var rapid_shot_atts = ''; for(j in attacks) { rapid_shot_atts += pos(parseInt(attacks[j]) - 2);	rapid_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); }	$('#weapon_' + i + '_att').text(rapid_shot_atts); } } } else { recalc_main_page(); }",
 	fighter_bonus_feat: true
 },{
 	name: "Ride-By Attack",
@@ -1277,9 +1277,9 @@ feats = [{
 	description: "You are tougher than normal.",
 	detail: "You are tougher than normal. <p class=sub><b>Benefit</b>: You gain +3 hit points. <p class=sub><b>Special</b>: A character may gain this feat multiple times. Its effects stack. <p class=sub> ",
 	benefit: "+3 hit points",
-	hp: "hp += chardata.feats.first({ feat_name: 'Toughness' }).multi * 3; return hp;",
+	hp: "hp += chardata.feats({ feat_name: 'Toughness' }).first().multi * 3; return hp;",
 	prereqs: {}
-//	multi: { 
+//	multi: {
 //		data: "count"
 //	}
 },{
@@ -1290,7 +1290,7 @@ feats = [{
 	detail: "You are proficient with tower shields. <p class=sub><b>Prerequisite</b>: Shield Proficiency. <p class=sub><b>Benefit</b>: You can use a tower shield and suffer only the standard penalties (see Table 7-6: Armor and Shields, page 123). <p class=sub><b>Normal</b>: A character who is using a shield with which he or she is not proficient takes the shield&apos;s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride. <p class=sub><b>Special</b>: Fighters automatically have Tower Shield Proficiency as a bonus feat. They need not select it.",
 	benefit: "No armor check penalty on attack rolls",
 	attack: "if(chardata.shields){ for(var i in chardata.shields) { var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'tower') { attacks.acp += Math.abs(shield.acp) } } return attacks; }",
-	mobility: "if(chardata.shields){ for(var i in chardata.shields) {	var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'tower') { acp += Math.abs(armor.acp) } } return acp; }",   
+	mobility: "if(chardata.shields){ for(var i in chardata.shields) {	var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'tower') { acp += Math.abs(armor.acp) } } return acp; }",
 	prereqs: {
 		feats: ["Shield Proficiency"]
 	}
@@ -1361,7 +1361,7 @@ feats = [{
 	description: "You gain a +1 bonus on all attack rolls you make using the selected weapon.",
 	detail: "Choose one type of weapon, such as greataxe. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for purposes of this feat. You are especially good at using this weapon. (If you have chosen ray, you are especially good with rays, such as the one produced by the <i>ray of frost</i> spell.) <p class=sub><b>Prerequisites</b>: Proficiency with selected weapon, base attack bonus +1. <p class=sub><b>Benefit</b>: You gain a +1 bonus on all attack rolls you make using the selected weapon. <p class=sub><b>Special</b>: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon. <p class=sub>A fighter may select Weapon Focus as one of his fighter bonus feats (see page 38). He must have Weapon Focus with a weapon to gain the Weapon Specialization feat for that weapon.",
 	benefit: "+1 bonus on attack rolls with selected weapon",
-	attack: "if(chardata.feats.first({ feat_name: 'Weapon Focus' }).multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
+	attack: "if(chardata.feats({ feat_name: 'Weapon Focus' }).first().multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
 	prereqs: {
 		base_attack_bonus: 1
 	},
@@ -1373,11 +1373,11 @@ feats = [{
 },{
 	name: "Weapon Specialization",
 	tags: ["pathfinder"],
-	type: "feat",  
+	type: "feat",
 	description: "You gain a +2 bonus on all damage rolls you make using the selected weapon.",
 	detail: "Choose one type of weapon, such as greataxe, for which you have already selected the Weapon Focus feat. You can also choose unarmed strike or grapple as your weapon for purposes of this feat. You deal extra damage when using this weapon. <p class=sub><b>Prerequisites</b>: Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th. <p class=sub><b>Benefit</b>: You gain a +2 bonus on all damage rolls you make using the selected weapon. <p class=sub><b>Special</b>: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon. <p class=sub>A fighter may select Weapon Specialization as one of his fighter bonus feats (see page 38).",
 	benefit: "+2 bonus on damage rolls with selected weapon",
-	damage: "if(chardata.feats.first({ feat_name: 'Weapon Specialization' }).multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; }} return damages;",
+	damage: "if(chardata.feats({ feat_name: 'Weapon Specialization' }).first().multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; }} return damages;",
 	prereqs: {
 		feats: ["Weapon Focus"]
 	},

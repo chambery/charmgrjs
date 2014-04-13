@@ -1617,14 +1617,14 @@ var deities = new TAFFY([ {
 
 var domains = {};
 
-deities.forEach(function(deity, i) {
+deities().forEach(function(deity, i) {
 		for(var j in deity.domains) {
 			var domain_deities = domains[deity.domains[j]];
 			if(!domain_deities) {
 				domains[deity.domains[j]] = [];
 				domain_deities = domains[deity.domains[j]];
 			}
-			domain_deities.push(deity.name);
+			domain_deities().push(deity.name);
 		}
 });
 

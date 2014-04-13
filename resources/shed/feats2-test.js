@@ -6,11 +6,11 @@ feats2 = [{
 	prereqs: {
 		base_attack_bonus: 12
 	},
-	multi: { 
+	multi: {
 		type: "armors",
 		feats: ["Armor Proficiency (light)", "Armor Proficiency (medium)", "Armor Proficiency (heavy)"]
 	},
-	type: "feat",               
+	type: "feat",
 	tags: ["phb2"],
 	fighter_bonus_feat: true
 },{
@@ -33,13 +33,13 @@ feats2 = [{
 	detail: "Choose one type of shield from the following list: buckler, heavy, or light. When using a shield of the appropriate type, you increase its shield bonus to AC by 1.",
 	benefit: "Increase shield bonus by +1",
 	// TODO - armors needs to be a TAFFYDB
-	ac: "if(chardata.shields) { console.log('Shield Specialization'); var shield_spec = chardata.feats.first({ feat_name: 'Shield Specialization' }); for(var i in chardata.shields) { console.log(i + ':' + chardata.shields[i].shield_name); var char_shield = shields.first({ name: chardata.shields[i].shield_name }); console.log(shield_spec.multi[0] + ' : ' + char_shield.category + '   ' + (shield_spec.multi.indexOf(char_shield.category) > -1 ? 'match' : 'no match')); if(shield_spec.multi.indexOf(char_shield.category) > -1) { ac += 1; } } } return ac;",
+	ac: "if(chardata.shields) { console.log('Shield Specialization'); var shield_spec = chardata.feats({ feat_name: 'Shield Specialization' }).first(); for(var i in chardata.shields) { console.log(i + ':' + chardata.shields[i].shield_name); var char_shield = shields.first({ name: chardata.shields[i].shield_name }); console.log(shield_spec.multi[0] + ' : ' + char_shield.category + '   ' + (shield_spec.multi.indexOf(char_shield.category) > -1 ? 'match' : 'no match')); if(shield_spec.multi.indexOf(char_shield.category) > -1) { ac += 1; } } } return ac;",
 	special: "You can take this feat more than once. Each time you select it, choose a different type of shield.<p class=sub>A fighter can select Shield Specialization as one of his fighter bonus feats.",
 	prereqs: {
 		feats: ["Shield Proficiency"]
 	},
-	// TODO - PHEW!  
-    multi: { 
+	// TODO - PHEW!
+    multi: {
     	type: "shield_types",
     	db: "shield_types",
     	filter: { name: {"!is" : "tower"}}

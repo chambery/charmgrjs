@@ -5,7 +5,7 @@ main.load = function() {
 	session={};
 	// console.group("load");
 	chardata = { log: [] };
-	players_companion = TAFFY.JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
+	players_companion = JSON.parse(unescape(get_cookie_data("players_companion"))) || {};
 	if (players_companion.last_character) {
 		lod(players_companion.last_character);
 		// find me a home
@@ -146,14 +146,14 @@ main.build_main_page = function() {
 	// TODO - add utility
 	// skills
 	if (chardata.skills == null) {
-		chardata.skills = new TAFFY([]);
+		chardata.skills = TAFFY([]);
 	}
-	// TODO - kick out to classes.js 
+	// TODO - kick out to classes.js
 	var rogue_skill_selections = main.get_rogue_skill_selections();
-	skills.forEach(function(skill, i) {
+	skills().each(function(skill, i) {
 		var skill_selection_ind_html = rogue_skill_selections.indexOf(skill._id) > -1 ? "<sup>+</sup>" : "";
 		if(skill.subtypes) {
-			var char_skill = chardata.skills.first({ skill_name: skill.name });
+			var char_skill = chardata.skills({ skill_name: skill.name }).first();
 			if(char_skill) {
 				for(var subtype in char_skill.subtypes) {
 					main.build_skill_entry(skill, skill_selection_ind_html, subtype);
@@ -179,7 +179,7 @@ main.build_main_page = function() {
 
 	// custom class features
 	for (var classname in chardata.classes) {
-		var clazz = classes.first({ name : classname });
+		var clazz = classes({ name : classname }).first();
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_specials) {
 			for (var script in clazz.custom.main.before_specials) {
 				clazz.custom.main.before_specials[script]();
@@ -187,9 +187,9 @@ main.build_main_page = function() {
 		}
 	}
 
-	var char_feats = get_char_feats().get();
+	var char_feats = get_char_feats()();
 	for (var i =0; i < char_feats.length; i++) {
-		var feat = feats.first({
+		var feat = feats().first({
 			name: char_feats[i].name
 		});
 		if(feat && feat.conditional) {
@@ -237,9 +237,7 @@ main.build_main_page = function() {
 	// base attack information
 	var html = [];
 	for (var j in char_weapons) {
-		var weapon_data = weapons.first( {
-			name : char_weapons[j]['weapon_name']
-		});
+		var weapon_data = weapons({name : char_weapons[j]['weapon_name']}).first();
 		html.push(["<table width='100%' border='0' margin='0'><tr><td id='weapon_", j, "_name' weapon_id='", weapon_data._id, "' colspan='4' bgcolor='#C5C6F6'></td></tr><tr><td width='22px'>Att</td><td id='weapon_", j, "_att' class='box'></td><td  width='20px'>Crit</td><td id='weapon_", j, "_crit' class='box' width='50px'></td></tr><tr><td width='22px'>Dam</td><td id='weapon_", j, "_dam' class='box'></td><td width='20px'>Bon</td><td id='weapon_", j, "_bon' class='box'></td></tr><tr id='weapon_", j, "_note'><td id='weapon_", j, "_note' colspan='4' width='100%' style='padding-left: 10px'></td></tr></table>"].join(''));
 	}
 
@@ -251,10 +249,8 @@ main.build_main_page = function() {
 	// armor
 	html = [];
 	for (var j in chardata.armors) {
-		var armor_data = armors.first( {
-			name : chardata.armors[j]['armor_name']
-		});
-		html.push(["<table width='100%' border='0' margin='0'><tr id='armor_", j, "' armor_idx='", j, "' onclick=\"var chk=$('#armor_", j, "_is_worn_check'); session['armor'][", j,"]['is_worn']=!session['armor'][",j,"]['is_worn']; chk.attr('src', 'images/'+ (session['armor'][", j,"]['is_worn'] ? 'checked' : 'unchecked') + '.png'); recalc_main_page();\"><td colspan='4' bgcolor='#C5C6F6'><img id='armor_", j, "_is_worn_check' armor_idx='", j, "' src='images/", session['armor'][j]['is_worn'] ? 'checked' : 'unchecked', ".png' style='float: right; margin-right: 3px; margin-left: 2px; margin-bottom: 1px; margin-top: 1px'/><label style='float: right; margin-bottom: 0px; margin-top: 1px; vertical-align: middle' class='fake_link'>worn:</label><span id='armor_", j, "_name'  class='fake_link'></span></td></tr><tr><td>Bon</td><td id='armor_", j, "_bon' class='box' width='50%'></td><td>ACP</td><td id='armor_", j, "_acp'  class='box' width='50%'></td></tr><tr id='armor_", j, "_note'><td valign='top'>Note</td><td colspan='3' id='armor_", j, "_note' width='100%'></td></tr></table>"].join(''));
+		var armor_data = armors({name : chardata.armors[j]['armor_name']}).first();
+		html.push(["<table width='100%' border='0' margin='0'><tr id='armor_", j, "' armor_idx='", j, "' onclick=\"var chk=$('#armor_", j, "_is_worn_check'); session['armor'][", j,"]['is_worn']=!session['armor'][",j,"]['is_worn']; chk.attr('src', 'images/'+ (session['armor'][", j,"]['is_worn'] ? 'checked' : 'unchecked') + '.png'); main.recalc_main_page();\"><td colspan='4' bgcolor='#C5C6F6'><img id='armor_", j, "_is_worn_check' armor_idx='", j, "' src='images/", session['armor'][j]['is_worn'] ? 'checked' : 'unchecked', ".png' style='float: right; margin-right: 3px; margin-left: 2px; margin-bottom: 1px; margin-top: 1px'/><label style='float: right; margin-bottom: 0px; margin-top: 1px; vertical-align: middle' class='fake_link'>worn:</label><span id='armor_", j, "_name'  class='fake_link'></span></td></tr><tr><td>Bon</td><td id='armor_", j, "_bon' class='box' width='50%'></td><td>ACP</td><td id='armor_", j, "_acp'  class='box' width='50%'></td></tr><tr id='armor_", j, "_note'><td valign='top'>Note</td><td colspan='3' id='armor_", j, "_note' width='100%'></td></tr></table>"].join(''));
 	}
 	$('#armorpart').html(html.join(''));
 	$('#armorpart').css('margin-top', '5px');
@@ -262,17 +258,15 @@ main.build_main_page = function() {
 	// armor
 	html = [];
 	for (var j in chardata.shields) {
-		var shield_data = shields.first( {
-			_id : chardata.shields[j]['shield_id']
-		});
-		html.push(["<table width='100%' border='0' margin='0'><tr id='shield_", j, "' shield_idx='", j, "' onclick=\"var chk=$('#shield_", j, "_is_worn_check'); session['shield'][", j,"]['is_worn']=!session['shield'][",j,"]['is_worn']; chk.attr('src', 'images/'+ (session['shield'][", j,"]['is_worn'] ? 'checked' : 'unchecked') + '.png'); recalc_main_page();\"><td colspan='4' bgcolor='#C5C6F6'><img id='shield_", j, "_is_worn_check' shield_idx='", j, "' src='images/", session['shield'][j]['is_worn'] ? 'checked' : 'unchecked', ".png' style='float: right; margin-right: 3px; margin-left: 2px; margin-bottom: 1px; margin-top: 1px;'/><label style='float: right; margin-bottom: 0px; margin-top: 1px; vertical-align: middle' class='fake_link'>worn:</label><span id='shield_", j, "_name'  class='fake_link'></span></td></tr><tr><td>Bon</td><td id='shield_", j, "_bon' class='box' width='50%'></td><td>ACP</td><td id='shield_", j, "_acp'  class='box' width='50%'></td></tr><tr id='shield_", j, "_note'><td valign='top'>Note</td><td colspan='3' id='shield_" + j + "_note' width='100%'></td></tr></table>"].join(''));
+		var shield_data = shields({_id : chardata.shields[j]['shield_id']}).first();
+		html.push(["<table width='100%' border='0' margin='0'><tr id='shield_", j, "' shield_idx='", j, "' onclick=\"var chk=$('#shield_", j, "_is_worn_check'); session['shield'][", j,"]['is_worn']=!session['shield'][",j,"]['is_worn']; chk.attr('src', 'images/'+ (session['shield'][", j,"]['is_worn'] ? 'checked' : 'unchecked') + '.png'); main.recalc_main_page();\"><td colspan='4' bgcolor='#C5C6F6'><img id='shield_", j, "_is_worn_check' shield_idx='", j, "' src='images/", session['shield'][j]['is_worn'] ? 'checked' : 'unchecked', ".png' style='float: right; margin-right: 3px; margin-left: 2px; margin-bottom: 1px; margin-top: 1px;'/><label style='float: right; margin-bottom: 0px; margin-top: 1px; vertical-align: middle' class='fake_link'>worn:</label><span id='shield_", j, "_name'  class='fake_link'></span></td></tr><tr><td>Bon</td><td id='shield_", j, "_bon' class='box' width='50%'></td><td>ACP</td><td id='shield_", j, "_acp'  class='box' width='50%'></td></tr><tr id='shield_", j, "_note'><td valign='top'>Note</td><td colspan='3' id='shield_" + j + "_note' width='100%'></td></tr></table>"].join(''));
 	}
 	$("#shieldspart").html(html.join(""));
 	$("#shieldspart").css("margin-top", "5px");
 	// $("tr[id^='shield_']").click(function() {
 		// session["shield"][this.shield_idx]["is_worn"] =! session["shield"][this.shield_idx]["is_worn"];
 		// $(this.id).attr("src", (session["shield"][this.shield_idx]["is_worn"] ? "checked" : "unchecked") + ".png");
-		// recalc_main_page();
+		// main.recalc_main_page();
 		// alert($(this.id).attr("src"));
 	// });
 	// spells
@@ -285,14 +279,14 @@ main.build_main_page = function() {
 	}
 
 	for (var classname in chardata.classes) {
-		var clazz = classes.first({ name : classname });
+		var clazz = classes({ name : classname }).first();
 	}
 
 	// TODO - what's the modifier for SPD?
 	$('#spellspart').css('margin-top', '10px');
 	$('#spellspart').html("");
 	for (var classname in chardata.classes) {
-		var clazz = classes.first( {
+		var clazz = classes().first( {
 			name : classname
 		});
 		if (clazz.spells_known && !chardata.classes[classname].spells) {
@@ -384,7 +378,7 @@ main.build_main_page = function() {
 		}
 	}
 	for (var classname in chardata.classes) {
-		var clazz = classes.first({ name : classname });
+		var clazz = classes({ name : classname }).first();
 		if (clazz.custom && clazz.custom.main && clazz.custom.main.before_spells) {
 			for (var script in clazz.custom.main.after_spells) {
 				clazz.custom.main.after_spells[script]();
@@ -408,7 +402,7 @@ main.adjust_mod = function(type, magnitude) {
 
 main.populate_main_page = function() {
 	// console.group("populate_main_page");
-	var race = races.first( {
+	var race = races().first( {
 		name : chardata.race_name
 	});
 	$('#char_name').text(chardata.name);
@@ -435,7 +429,7 @@ main.populate_main_page = function() {
 	// weapons
 	var char_weapons = do_class_functions("main","before_weapons_populate", chardata.weapons);
 	for (var j in char_weapons) {
-		var weapon_data = weapons.first( {
+		var weapon_data = weapons().first( {
 			name : char_weapons[j].weapon_name
 		});
 		$('#weapon_' + j + '_name').text(char_weapons[j].name != null ? char_weapons[j].name + (char_weapons[j].name.indexOf(weapon_data.name) == -1 ? " (" + weapon_data.name + ")" : "") : weapon_data.name);
@@ -451,7 +445,7 @@ main.populate_main_page = function() {
 
 	// armor
 	for (var j in chardata.armors) {
-		var armor_data = armors.first( {
+		var armor_data = armors().first( {
 			name : chardata.armors[j]['armor_name']
 		});
 		$('#armor_' + j + '_name').text(chardata.armors[j].name != null ? chardata.armors[j].name + (chardata.armors[j].name.indexOf(armor_data.name) == -1 ? " (" + armor_data.name + ")" : "") : armor_data.name);
@@ -474,12 +468,12 @@ main.populate_main_page = function() {
 		$('#shield_' + j + '_note').text(chardata.shields[j]['notes']);
 		$("tr[id='shield_" + j + "_note']").toggle(chardata.shields[j].note != null && chardata.shields[j].note.length > 0);
 	}
-	
-	// TODO - refactor along with saves (below) 
+
+	// TODO - refactor along with saves (below)
 	var drs = do_class_functions("main", "damage_reduction", chardata.dr);
 	var dr_count = count_attrs(drs);
 	var row_cnt = 0;
-	var col_cnt = 0;	
+	var col_cnt = 0;
 	$("#dr").append("<tr id='dr_0'>");
 	for(var dr in damage_reductions) {
 		console.log(damage_reductions[dr] + ": " + drs[damage_reductions[dr]] + " ____  " + equipment_benefits[damage_reductions[dr]]);
@@ -499,8 +493,8 @@ main.populate_main_page = function() {
 	if(col_cnt % 2 != 0) {
 		$("#dr_" + (row_cnt)).append("<td style='width: 25%'>&nbsp;</td><td style='width: 25%'>&nbsp;</td>");
 	}
-	$("#dr").append("</tr>");		
-	
+	$("#dr").append("</tr>");
+
 	if(!$("#dr_" + (row_cnt)).children().length) {
 		$("#dr_" + row_cnt).remove();
 	}
@@ -510,7 +504,7 @@ main.populate_main_page = function() {
 	var saves = do_class_functions("main", "save", chardata.save);
 	var saves_count = count_attrs(saves);
 	var row_cnt = 0;
-	var col_cnt = 0;	
+	var col_cnt = 0;
 	$("#saves").append("<tr id='save_0'>");
 	for(var save in save_against) {
 		console.log(save_against[save] + ": " + saves[save_against[save]] + " ____  " + equipment_benefits[save_against[save]]);
@@ -531,8 +525,8 @@ main.populate_main_page = function() {
 	if(col_cnt % 2 != 0) {
 		$("#save_" + (row_cnt)).append("<td style='width: 25%'>&nbsp;</td><td style='width: 25%'>&nbsp;</td>");
 	}
-	$("#saves").append("</tr>");		
-	
+	$("#saves").append("</tr>");
+
 	if(!$("#save_" + (row_cnt)).children().length) {
 		$("#save_" + row_cnt).remove();
 	}
@@ -543,7 +537,7 @@ main.populate_main_page = function() {
 	// speed
 	// var speed = race.speed;
 	// for (i in char_armor) {
-	// 	armordata = armors.first( {
+	// 	armordata = armors().first( {
 	// 		name : char_armor[i].armor_name
 	// 	});
 	// 	if(char_armor[i].speed) {
@@ -564,7 +558,7 @@ main.recalc_main_page = function() {
 	var cha_score = chardata.abilities["Cha_curr"] = $('#ability_Cha_score').val();
 	var wis_score = chardata.abilities["Wis_curr"] = $('#ability_Wis_score').val();
 	var level = calc_level();
-	
+
 	main.update_ability("Str");
 	main.update_ability("Dex");
 	main.update_ability("Int");
@@ -577,7 +571,7 @@ main.recalc_main_page = function() {
 	var base_attack_bonuses = calc_base_attack_bonus();
 	var char_weapons = do_class_functions("main", "before_weapons_recalc", chardata.weapons);
 	for (var j in char_weapons) {
-		var weapon = weapons.first( {
+		var weapon = weapons().first( {
 			_id : $('#weapon_' + j + '_name').attr('weapon_id')
 		});
 
@@ -587,7 +581,7 @@ main.recalc_main_page = function() {
 
 	// armor
 	for (var j in chardata.armors) {
-		var armor_data = armors.first( {
+		var armor_data = armors().first( {
 			name : chardata.armors[j].armor_name
 		});
 		// populate with char overrides
@@ -609,12 +603,12 @@ main.recalc_main_page = function() {
     acp += calc_shield_acp(chardata.shields);
 
 	// skills
-	skills.forEach(function(skill, i) {
+	skills().each(function(skill, i) {
 		if(skill.subtypes) {
-			var char_skill = chardata.skills.first({ skill_name: skill.name });
+			var char_skill = chardata.skills({ skill_name: skill.name }).first();
 			if(char_skill) {
 				for(var subtype in char_skill.subtypes) {
-					populate_skill_entry(skill, acp, subtype);
+					main.populate_skill_entry(skill, acp, subtype);
 				}
 			}
 		} else {
@@ -647,7 +641,7 @@ main.recalc_main_page = function() {
 	// spell
 	// TODO - what's the modifier for SPD?
 	for (var classname in chardata.classes) {
-		var clazz = classes.first({ name: classname });
+		var clazz = classes({ name: classname }).first();
 		var spells_per_day = clazz.spells_per_day[chardata.classes[classname].level];
 
 		for (var i in spells_per_day) {
@@ -684,19 +678,19 @@ main.calc_turn = function( cha_score) {
 	// equal to 3 + his Charisma modifier. A cleric with 5 or more ranks in
 	// Knowledge (religion) gets a +2 bonus on turning checks against
 	// undead.
-	var know_religion = skills.first( {
+	var know_religion = skills().first( {
 		name : 'Knowledge (religion)'
 	});
 	var char_know_religion = false;
 	if (chardata.skills != null) {
-		char_know_religion = chardata.skills.first( {
+		char_know_religion = chardata.skills().first( {
 			skill_name : know_religion.name
 		});
 	}
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
 	// have feats modify the attacks
-	char_feats.get({ turn : { "!is": null } }).forEach( function(feat, i) {
+	char_feats({ turn : { "!is": null } }).each( function(feat, i) {
 			// TODO - can we do this by reference
 		feat_mod = feat.critical(feat_mod);
 		return feat_mod;
@@ -711,7 +705,7 @@ main.calc_turn = function( cha_score) {
 main.calc_hp = function(hp, char_feats) {
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({ hp : { "!is": null } }).forEach( function(feat, i) {
+	char_feats({ hp : { "!is": null } }).each( function(feat, i) {
 			// TODO - can we do this by reference
 		feat_mod = feat.hp(feat_mod);
 		return feat_mod;
@@ -724,7 +718,7 @@ main.calc_critical = function(weapon_critical, char_weapon, char_feats) {
 	var critical = char_weapon.crit == null ? weapon_critical : char_weapon.crit;
 
 	var char_feats = get_char_feats();
-	char_feats.get({ critical : { "!is": null } }).forEach( function(feat, i) {
+	char_feats({ critical : { "!is": null } }).each( function(feat, i) {
 			// TODO - can we do this by reference
 		critical = feat.critical(critical);
 		return critical;
@@ -762,7 +756,7 @@ main.update_weapon_damage = function(weapon_idx, mod) {
 
 main.update_skill_ranks = function(skills_) {
 	for(var i in skills_) {
-		var skill_id = skills.first({ name: skills_[i] })._id;
+		var skill_id = skills({ name: skills_[i] }).first()._id;
 		var ranks = parseInt($("#skill_" + skill_id + "_ranks").text()) + 2;
 		$("#skill_" + skill_id + "_ranks").text(pos(ranks));
 	}
@@ -770,14 +764,14 @@ main.update_skill_ranks = function(skills_) {
 
 main.calc_grapple = function() {
 	var grapple = "";
-	var race = races.first({ name: chardata.race_name });
+	var race = races({ name: chardata.race_name }).first();
 	var str_score = calc_ability_modifier(parseInt($('#ability_Str_score').val()));
 	var babs = calc_base_attack_bonus();
 
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
 	// have feats modify the attacks
-	char_feats.get({ grapple : { "!is": null } }).forEach( function(feat, i) {
+	char_feats({ grapple : { "!is": null } }).each( function(feat, i) {
 		// TODO - can we do this by reference
 		feat_mod = feat.grapple(feat_mod);
 		return feat_mod;

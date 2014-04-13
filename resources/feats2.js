@@ -124,7 +124,7 @@ feats2 = [{
 	benefit: "Through long wear and hours of combat, you have trained your body to believe in its armor. Where others flinch, you confront. When the sword falls, your instincts, born of bruises and rent flesh, present your cuirass, cuisse, helm, or gorget to meet the blade at the perfect angle, causing it to skitter off harmlessly.",
 	detail: "Through long wear and hours of combat, you have trained your body to believe in its armor. Where others flinch, you confront. When the sword falls, your instincts, born of bruises and rent flesh, present your cuirass, cuisse, helm, or gorget to meet the blade at the perfect angle, causing it to skitter off harmlessly.<p class=sub><b>Prerequisites:</b> Proficiency with selected armor type, base attack bonus +12<p class=sub><b>Benefit:</b> Choose one type of medium or heavy armor with which you are proficient. When wearing masterwork armor (including magic armor) of that type, you gain damage reduction 2/-. Any time you lose your Dexterity bonus to Armor Class, you lose the benefit of this feat, because you cannot properly deflect the blows of the enemy.<p class=sub><b>Special:</b> You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of armor.<p class=sub>A fighter can select Armor Specialization as one of his fighter bonus feats.",
 	description: "DR 2/- with chosen armor",
-	ac: "if(chardata.feats.first({ name: 'Armor Specialization' }).multi.indexOf(armor.armor_name) > -1) { armor.damage_reduction += 2; }  return armor;",
+	ac: "if(chardata.feats({ name: 'Armor Specialization' }).first().multi.indexOf(armor.armor_name) > -1) { armor.damage_reduction += 2; }  return armor;",
 	prereqs: {
 		base_attack_bonus: 12
 	},
@@ -654,8 +654,8 @@ feats2 = [{
 		type: "damage_types",
 		db: "damage_types"
 	},
-	attack: "if (chardata.feats.first( { feat_name : 'Melee Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage != 'ranged') { for ( var i in attacks.base) {  attacks.base[i] += 2; } } return attacks;",
-	damage: "console.group('damage: Melee Weapon Mastery');console.log('weapon damage type: ' + weapon.damage_type);if (chardata.feats.first( { feat_name : 'Melee Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage != 'ranged') { for ( var i in damages) {  damages[i].mod += 2; } } console.groupEnd();return damages;",
+	attack: "if (chardata.feats().first( { feat_name : 'Melee Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage != 'ranged') { for ( var i in attacks.base) {  attacks.base[i] += 2; } } return attacks;",
+	damage: "console.group('damage: Melee Weapon Mastery');console.log('weapon damage type: ' + weapon.damage_type);if (chardata.feats().first( { feat_name : 'Melee Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage != 'ranged') { for ( var i in damages) {  damages[i].mod += 2; } } console.groupEnd();return damages;",
 	type: "feat",
 	tags: ["phb2"],
 	fighter_bonus_feat: true
@@ -698,8 +698,8 @@ feats2 = [{
 		type: "damage_types",
 		db: "damage_types"
 	},
-	attack: "if (chardata.feats.first( { feat_name : 'Ranged Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage == 'ranged') { for ( var i in attacks.base) {  attacks.base[i] += 2; } } return attacks;",
-	damage: "console.group('damage: Ranged Weapon Mastery');console.log('weapon damage type: ' + weapon.damage_type);if (chardata.feats.first( { feat_name : 'Ranged Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage == 'ranged') { for ( var i in damages) {  damages[i].mod += 2; } } console.groupEnd();return damages;",
+	attack: "if (chardata.feats().first( { feat_name : 'Ranged Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage == 'ranged') { for ( var i in attacks.base) {  attacks.base[i] += 2; } } return attacks;",
+	damage: "console.group('damage: Ranged Weapon Mastery');console.log('weapon damage type: ' + weapon.damage_type);if (chardata.feats().first( { feat_name : 'Ranged Weapon Mastery' }).multi.indexOf(weapon.damage_type) > -1 && weapon.usage == 'ranged') { for ( var i in damages) {  damages[i].mod += 2; } } console.groupEnd();return damages;",
 	type: "feat",
 	tags: ["phb2"],
 	fighter_bonus_feat: true
@@ -746,11 +746,11 @@ feats2 = [{
 	detail: "You are skilled in using a shield, allowing you to gain greater defensive benefits from it.<p class=sub><b>Prerequisites:</b> Proficiency with shields, Improved  Shield Bash, Shield Specialization, base attack bonus +9<p class=sub><b>Benefit:</b> Choose one type of shield from the following list: buckler, heavy, or light. When using a shield of the appropriate type, you increase its shield bonus to AC by 1.<p class=sub><b>Special:</b> You can take this feat more than once. Each time you select it, choose a different type of shield.<p class=sub>A fighter can select Shield Specialization as one of his fighter bonus feats.",
 	description: "Increase shield bonus by +1",
 	// TODO - armors needs to be a TAFFYDB
-	ac: "if(chardata.armors) { var shield_spec = chardata.feats.first({ feat_name: 'Shield Specialization' }); for(var i in chardata.armors) { if(shield_spec.multi.indexOf(chardata.armors[i].shield_type) > -1) { ac += 1 } } } return ac;",
+	ac: "if(chardata.armors) { var shield_spec = chardata.feats({ feat_name: 'Shield Specialization' }).first(); for(var i in chardata.armors) { if(shield_spec.multi.indexOf(chardata.armors[i].shield_type) > -1) { ac += 1 } } } return ac;",
 	prereqs: {
 		feats: ["Shield Proficiency"]
 	},
-	// TODO - PHEW!  
+	// TODO - PHEW!
 	multi: {
 		type: "shield_types",
 		db: "shield_types"
@@ -985,7 +985,7 @@ feats2 = [{
 			feats: ["Improved Unarmed Strike", "Stunning Fist"]
 		}, {
 			classes: {
-				"Monk": 9				
+				"Monk": 9
 			},
 			feats: ["Stunning Fist"]
 		}],
@@ -1207,7 +1207,7 @@ feats2 = [{
 	prereqs: {
 		// TODO - class levels aren't right
 		// ability to turn or rebuke undead
-		// Divine caster level 9th			
+		// Divine caster level 9th
 	},
 	type: "feat",
 	tags: ["phb2"],

@@ -9,7 +9,7 @@ function build_feats_page() {
 	// // console.group("build_feats_page");
 	var is_spellcaster = false;
 	for (var classname in chardata.classes) {
-		if (spellcasters.indexOf(classname) > -1 && classes.first( {
+		if (spellcasters.indexOf(classname) > -1 && classes().first( {
 				name : classname
 		}).spells_per_day[calc_current_level()][0] != '-') {
 			is_spellcaster = true;
@@ -19,7 +19,7 @@ function build_feats_page() {
 
 	set_links_part(2);
 	if (chardata.feats == null) {
-		chardata.feats = new TAFFY( []);
+		chardata.feats = TAFFY( []);
 	}
 	var feats_page_layout = "<div id='rogue_special_abilities'></div><div id='feats'></div>";
 	$('#content').html(feats_page_layout);
@@ -28,11 +28,11 @@ function build_feats_page() {
 			+ "<span id='feats_available' style='float: right'>Base: <span id='feats_remaining'></span> Bonus: <span id='bonus_feats_remaining'></span></span>Feats</td></tr></table>"
 					+ "<table id='feats_table' style='border: 1px solid #D0D0D0; border-collapse: collapse; width: 100%;'></table>");
 
-	allfeats = new TAFFY(feats.get());
+	allfeats = TAFFY(feats());
 	allfeats.orderBy(function(a, b) {
 		return (a.prereqs == null || a.prereqs.feats == null) && (a.name < b.name) ? -1 : 1;
 	});
-	var temp_feats = allfeats.get();
+	var temp_feats = allfeats();
 	for ( var i in temp_feats) {
 		var removed = false;
 		// weed out the impossible feats
@@ -41,7 +41,7 @@ function build_feats_page() {
 		if(prereqs && prereqs.class_features) {
 			for(var classname in chardata.classes) {
 				if(removed) { break; }
-				var clazz = classes.first({ name: classname });
+				var clazz = classes({ name: classname }).first();
 				for(var l in prereqs.class_features) {
 					if(!clazz.class_features.indexOf(prereqs.class_features[l]) > -1) {
 						allfeats.remove({ name: temp_feats[i].name })
@@ -76,7 +76,7 @@ function create_feat_listing(feat, indent) {
 	indent = indent == null ? 0 : indent;
 	var count = indent;
 	if (feat.prereqs && feat.prereqs.feats) {
-		var prereq = allfeats.first( {
+		var prereq = allfeats().first( {
 			// if there are multiple prereqs, nest it under the first one
 			name : feat.prereqs.feats[0]
 		});
@@ -90,7 +90,7 @@ function create_feat_listing(feat, indent) {
 	// ignore already printed feats
 	if ($('#' + feat._id).length == 0) {
 		if (feat.prereqs && feat.prereqs.feats) {
-			var prereq = feats.first( {
+			var prereq = feats().first( {
 				name : feat.prereqs.feats[0]
 			});
 			var multi = prereq.multi ? "_sub_" : "";
@@ -144,7 +144,7 @@ function populate_feats_page() {
 	// // console.group("populate_feats_page");
 	// apply class customizations
 //	for (var classname in chardata.classes) {
-//		var clazz = classes.first({ name : classname });
+//		var clazz = classes({ name : classname }).first();
 //		if (clazz.custom && clazz.custom.feats) {
 //			for(var feature in clazz.custom.feats) {
 //				clazz.custom.feats[feature]();
@@ -159,7 +159,7 @@ function populate_feats_page() {
 		if (feat.multi) {
 			var char_feat = false;
 			if (chardata.feats != null) {
-				var char_feat = chardata.feats.first( {
+				var char_feat = chardata.feats().first( {
 					feat_name : feat.name
 				});
 			}
@@ -180,7 +180,7 @@ function populate_feats_page() {
 			}
 		} else {
 
-			var checked = chardata.feats != null && chardata.feats.first( {
+			var checked = chardata.feats != null && chardata.feats().first( {
 				feat_name : feat.name
 			});
 
@@ -244,7 +244,7 @@ function update_feats_remaining() {
 }
 
 function calc_prereqs() {
-	// var allfeats = feats.get();
+	// var allfeats = feats();
 	// TODO - move to recalc (don't loop over all)?
 	// // console.group("calc_prereqs");
 	allfeats.forEach( function( feat, i ) {
@@ -318,7 +318,7 @@ function is_prereqs_met(feat_id, prereqs) {
         }
 
         if (prereqs.pick.group) {
-            var group_feats = feats.get({
+            var group_feats = feats({
                 group: {
                     has: prereqs.pick.group
                 }
@@ -331,7 +331,7 @@ function is_prereqs_met(feat_id, prereqs) {
     if (prereqs.feats) {
         for (var k in prereqs.feats) {
             // if it's not a char feat or a class feat
-            if ((chardata.feats == null || chardata.feats.first({
+            if ((chardata.feats == null || chardata.feats().first({
                 feat_name: prereqs.feats[k]
             }) == false) && !is_class_feat(prereqs.feats[k])) {
                 // console.log("feat fail: " + prereqs.feats[k]);
@@ -343,9 +343,9 @@ function is_prereqs_met(feat_id, prereqs) {
     if (prereqs.multi) {
         for (var k in prereqs.multi) {
             for (var l in prereqs.multi[k]) {
-                if (chardata.feats || !chardata.feats.first({
+                if (chardata.feats || !chardata.feats().first({
                     name: k
-                }) || !(chardata.feats.first({
+                }) || !(chardata.feats().first({
                     name: k
                 }).multi.indexOf(prereqs.multi[k][l]) > -1)) {
                     // // console.log("multi fail: " + k + " - " + prereqs.multi[k][l]);
@@ -366,7 +366,7 @@ function is_prereqs_met(feat_id, prereqs) {
 
     if (prereqs.skills) {
         for (var k in prereqs.skills) {
-            var char_skill = chardata.skills && chardata.skills.first({
+            var char_skill = chardata.skills && chardata.skills().first({
                 name: k
             });
             if (char_skill && char_skill.ranks < prereqs.skills[k]) {
@@ -387,7 +387,7 @@ function calc_feats_remaining() {
 	};
 	// collect the number and constraints of the bonus feats
 	for (var classname in chardata.classes) {
-		var clazz = classes.first({ name: classname });
+		var clazz = classes({ name: classname }).first();
 		if (clazz.custom && clazz.custom.feats) {
 			for (var level in clazz.custom.feats) {
 				if (calc_current_level() >= level) {
@@ -403,11 +403,11 @@ function calc_feats_remaining() {
 		}
 	}
 
-	var char_feats = chardata.feats == null ? [] : chardata.feats.get();
+	var char_feats = chardata.feats == null ? [] : chardata.feats();
 	var base_feats_remaining = calc_total_base_feats_count(chardata.race_name, chardata.xp);
 
 	for (var i in char_feats) {
-		var feat = feats.first({
+		var feat = feats().first({
 			name: char_feats[i].feat_name
 		});
 		if (char_feats[i].multi) {
@@ -456,7 +456,7 @@ function filter_options(feat, options_db) {
 	}
 	if (feat.multi.feats) {
 		for ( var i in feat.multi.feats) {
-			var multi_feat = feats.first( {
+			var multi_feat = feats().first( {
 				name : feat.multi.feats[i]
 			});
 			var char_feat = get_char_feats().first( {
@@ -473,7 +473,7 @@ function filter_options(feat, options_db) {
 				// multi_feat: Weapon Focus
 				// chardata.feats [{Exotic Weapon Proficiency, multi: ["Battleaxe"]}]
 				if (char_feat && char_feat.multi != null && chardata.feats) {
-					char_feat_ref = chardata.feats.first( {
+					char_feat_ref = chardata.feats().first( {
 						feat_name : multi_feat.name
 					});
 					for ( var j in char_feat_ref.multi) {
@@ -513,7 +513,7 @@ function update_count(feat) {
 		alert('No feat selections remaining.');
 		return;
 	}
-	char_feat = chardata.feats.first( {
+	char_feat = chardata.feats().first( {
 		feat_name : feat_name
 	});
 	char_feat.multi += 1;
@@ -528,7 +528,7 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
 	})._id : "";
 	var count = calc_feats_remaining();
 	var total_feats_remaining = count.bonus_feats.count + count.base_feats_remaining;
-	var char_feat = chardata.feats.first( {
+	var char_feat = chardata.feats().first( {
 		feat_name : feat.name
 	});
 	if (is_selected) {
@@ -542,7 +542,7 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
 				var count = chardata.feats.insert( {
 					feat_name : feat.name
 				});
-				char_feat = chardata.feats.first( {
+				char_feat = chardata.feats().first( {
 					feat_name : feat.name
 				});
 			}
@@ -583,11 +583,11 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
 function inform_dependents(feat) {
 	// // console.group("inform_dependents");
 	// // console.log(feat.name);
-	feats.get( {
+	feats( {
 		multi : {
 			"!is" : null
 		}
-	}).forEach(function(dependent, i) {
+	}).each(function(dependent, i) {
 		if (dependent.multi.feats && dependent.multi.feats.indexOf(feat.name) > -1) {
 			if (dependent.multi && dependent.multi.feats) {
 				inform_dependents(dependent);
@@ -654,7 +654,7 @@ function create_rogue_special_abilities(level, clazz) {
 function handle_pick(group, count) {
 	var matches = 0;
 	for ( var i in group) {
-		if (char_feats.first( {
+		if (char_feats().first( {
 			name : group[i]
 		})) {
 			// // console.log("match " + matches + " of " + prereqs.pick.count);

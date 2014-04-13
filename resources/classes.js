@@ -1,4 +1,4 @@
-classes = new TAFFY([{
+classes = TAFFY([{
 	name: "Barbarian",
 	shortname: "Brb",
 	base_attack_bonus: ['1', '2', '3', '4', '5', '6/1', '7/2', '8/3', '9/4', '10/5', '11/6/1', '12/7/2', '13/8/3', '14/9/4', '15/10/5', '16/11/6/1', '17/12/7/2', '18/13/8/3', '19/14/9/4', '20/15/10/5'],
@@ -18,9 +18,9 @@ classes = new TAFFY([{
 	specials: [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
 	update_literacy: function (language_id) {
 		var checked = $('#literacy_' + language_id + '_check').attr('checked');
-		var language = languages.first({
+		var language = languages({
 			_id: language_id
-		});
+		}).first();
 		if (!checked && chardata.classes['Barbarian'].literacy[language.name]) {
 			delete chardata.classes['Barbarian'].literacy[language.name];
 		} else {
@@ -42,23 +42,23 @@ classes = new TAFFY([{
 					}
 					var langs = [];
 					for (var classname in chardata.classes) {
-						var clazz = classes.first({
+						var clazz = classes({
 							name: classname
-						});
+						}).first();
 						langs = langs.concat(clazz.languages != null ? clazz.languages : []);
 					}
 					langs = langs.concat(race.languages);
 					langs = langs.concat(chardata.languages);
 					for (var i in langs) {
-						var lang = languages.first({
+						var lang = languages({
 							name: langs[i]
-						});
+						}).first();
 						if ($('#literacy_' + lang._id).length == 0) {
 							$('tr#language_' + lang._id).append('<td id="literacy_' + lang._id + '"><input id="literacy_' + lang._id + '_check" type="checkbox" /></td>');
 							$('#literacy_' + lang._id + '_check').click(function () {
-								return classes.first({
+								return classes({
 									name: "Barbarian"
-								}).update_literacy(lang._id);
+								}).first().update_literacy(lang._id);
 							});
 							if (chardata.classes['Barbarian'].literacy[lang.name]) {
 								$('#literacy_' + lang._id + '_check').attr('checked', 'checked');
@@ -125,7 +125,7 @@ classes = new TAFFY([{
 						}
 						var available_domains = domains.get();
 						if (chardata.deity) {
-							var deity = deities.first({
+							var deity = deities().first({
 								name: chardata.deity
 							});
 							console.log(deity.name);
@@ -246,13 +246,13 @@ classes = new TAFFY([{
 		if (!chardata[favored_name]) {
 			chardata[favored_name] = [];
 		}
-		var favored = db.first({
+		var favored = db().first({
 			name: chardata[favored_name].length > index ? chardata[favored_name][index].name : ''
 		});
 		if (favored) {
 			favored = favored._id;
 		}
-		var select = create_select(favored_name + '_' + index, db.get(), "chardata." + favored_name + "[" + index + "] = { name: $('#" + favored_name + "_" + index + "').val(), val: (parseInt($('#" + favored_name + "_" + index + "_bonus').val()) | 0) }; save_character();", false, "style='width: 100%;'", null, favored);
+		var select = create_select(favored_name + '_' + index, db().get(), "chardata." + favored_name + "[" + index + "] = { name: $('#" + favored_name + "_" + index + "').val(), val: (parseInt($('#" + favored_name + "_" + index + "_bonus').val()) | 0) }; save_character();", false, "style='width: 100%;'", null, favored);
 		$('#' + favored_name + 's').append('<tr><td>' + select + '</td><td><input id="' + favored_name + '_' + index + '_bonus" type="text" size="1"/></td></tr>');
 		$('#' + favored_name + '_' + index + '_bonus').val(chardata[favored_name][index] ? chardata[favored_name][index].val : 0);
 		$('#' + favored_name + '_' + index + '_bonus').blur(function () {
@@ -265,7 +265,7 @@ classes = new TAFFY([{
 	},
 	main_favored: function (favored_name, db, short_name, specials_id) {
 		for (var i in chardata[favored_name]) {
-			var f_e = db.first({
+			var f_e = db().first({
 				name: chardata[favored_name][i].name
 			});
 			$('#specials').append('<tr id="special_' + favored_name + '_' + f_e._id + '"><td><input id="' + favored_name + '_' + f_e._id + '" type="checkbox"/></td><td><a class=fake_link onclick="show_item_detail(specials, \'' + specials_id + '\')">' + chardata[favored_name][i].name + ' ' + pos(chardata[favored_name][i].val) + ' (' + short_name + ')</a></td></tr>');
@@ -289,9 +289,9 @@ classes = new TAFFY([{
 			0: [{
 				ui: "<table id='favored_enemys' style='width: 100%;'><tr><td>Favored Enemies<span style='float:right'>Available Bonus:</span></td><td id='fe_bonus'></td></tr></table>",
 				script: function () {
-					classes.first({
-						name: "Ranger"
-					}).edit_favored("favored_enemy", favored_enemies, 0);
+					classes({
+                        name: "Ranger"
+                    }).first().edit_favored("favored_enemy", favored_enemies, 0);
 				}
 			}
 				           ],
@@ -304,79 +304,79 @@ classes = new TAFFY([{
 					}, {
 						_id: 1,
 						name: 'Archery'
-					}], "classes.first({ name : 'Ranger' }).update_weapon_style()", false, "style='width: 100%;'", null, (chardata.weapon_style == 'Archery' ? 1 : 0));
+					}], "classes({ name : 'Ranger' }).first().update_weapon_style()", false, "style='width: 100%;'", null, (chardata.weapon_style == 'Archery' ? 1 : 0));
 					$('#weapon_style').append('<tr><td>' + select + '</td></tr>');
 				}
 			}],
 			2: [{
 				ui: "<table id='favored_terrains' style='width: 100%;'><tr><td>Favored Terrain <span style='float:right'>Available Bonus: </span></td><td id='ft_bonus'></td></tr></table>",
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_terrain", favored_terrains, 0);
+					}).first().edit_favored("favored_terrain", favored_terrains, 0);
 				}
 			}],
 			4: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_enemy", favored_enemies, 1);
+					}).first().edit_favored("favored_enemy", favored_enemies, 1);
 				}
 			}],
 			7: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_terrain", favored_terrains, 1);
+					}).first().edit_favored("favored_terrain", favored_terrains, 1);
 				}
 			}],
 			9: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_enemy", favored_enemies, 2);
+					}).first().edit_favored("favored_enemy", favored_enemies, 2);
 				}
 			}],
 			12: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_terrain", favored_terrains, 2);
+					}).first().edit_favored("favored_terrain", favored_terrains, 2);
 				}
 			}],
 			14: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_enemy", favored_enemies, 3);
+					}).first().edit_favored("favored_enemy", favored_enemies, 3);
 				}
 			}],
 			17: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_terrain", favored_terrains, 3);
+					}).first().edit_favored("favored_terrain", favored_terrains, 3);
 				}
 			}],
 			19: [{
 				script: function () {
-					classes.first({
+					classes({
 						name: "Ranger"
-					}).edit_favored("favored_enemy", favored_enemies, 4);
+					}).first().edit_favored("favored_enemy", favored_enemies, 4);
 				}
-			}],
+			}]
 		},
 		main: {
 			before_specials: [
 				function () {
-				classes.first({
+				classes({
 					name: "Ranger"
-				}).main_favored("favored_enemy", favored_enemies, "Fav. Enemy", "90c3");
+				}).first().main_favored("favored_enemy", favored_enemies, "Fav. Enemy", "90c3");
 			},
 				function () {
-				classes.first({
+				classes({
 					name: "Ranger"
-				}).main_favored("favored_terrain", favored_terrains, "Fav. Terr.", "9dc3");
+				}).first().main_favored("favored_terrain", favored_terrains, "Fav. Terr.", "9dc3");
 			}
 			]
 		},
@@ -493,13 +493,13 @@ classes = new TAFFY([{
 						if (level <= chardata.classes['Sorcerer'].level && power.levels[level].weapons) {
 							for (var i in power.levels[level].weapons) {
 								console.log(power.levels[level].weapons[i].name);
-								if (!weapons.first({
+								if (!weapons().first({
 									name: power.levels[level].weapons[i].name
 								})) {
 									weapons.insert(power.levels[level].weapons[i])
 								} else {
-									weapons.update(power.levels[level].weapons[i], { 
-											name: power.levels[level].weapons[i].name 
+									weapons.update(power.levels[level].weapons[i], {
+											name: power.levels[level].weapons[i].name
 										});
 								}
 							}
@@ -535,7 +535,7 @@ classes = new TAFFY([{
 						for(var level in power.levels) {
 							if (level <= chardata.classes['Sorcerer'].level && power.levels[level][type]) {
 								dr_fn = power.levels[level][type];
-							}				
+							}
 						}
 						if(dr_fn) {
 							dr_fn(save);
@@ -548,7 +548,7 @@ classes = new TAFFY([{
 		all: {
 			calc_sr: [
 				function(save) {
-					classes.first({ name: "Sorcerer" }).calc_dr_saves(save, "sr");
+					classes({ name: "Sorcerer" }).first().calc_dr_saves(save, "sr");
 				}
 			]
 		},
@@ -563,19 +563,19 @@ classes = new TAFFY([{
 					if(chardata.draconic_type) {
 						char_draconic_type = draconic_types.first({
 							name: chardata.draconic_type
-						});						
+						});
 					}
 					update_bloodline = function () {
 						chardata.bloodline = $('#bloodline_select').val();
-						$('#draconic_type').toggle(chardata.bloodline == "Draconic");						
-						chardata.draconic_type = chardata.bloodline == "Draconic" ? $("#draconic_select").val() : null;  
+						$('#draconic_type').toggle(chardata.bloodline == "Draconic");
+						chardata.draconic_type = chardata.bloodline == "Draconic" ? $("#draconic_select").val() : null;
 						save_character();
 					};
 					var select = create_select('bloodline_select', sorcerer_bloodlines.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_bloodline ? char_bloodline._id : ''));
-					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));							
+					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));
 					$('#bloodline').append('<tr><td></td><td>' + select + '</td></tr>');
 					$('#bloodline').append('<tr id="draconic_type"><td>type:</td><td>' + draconic_select + '</td></tr>');
-					$('#draconic_type').toggle(chardata.bloodline == "Draconic");						
+					$('#draconic_type').toggle(chardata.bloodline == "Draconic");
 					if (!chardata.bloodline) {
 						update_bloodline();
 					}
@@ -594,17 +594,17 @@ classes = new TAFFY([{
 		main: {
 			before_weapons_build: [
 				function(char_weapons) {
-					classes.first({ name: "Sorcerer" }).merge_bloodline_weapons(char_weapons);
+					classes({ name: "Sorcerer" }).first().merge_bloodline_weapons(char_weapons);
 				}
 				],
 			before_weapons_populate: [
 				function(char_weapons) {
-					classes.first({ name: "Sorcerer" }).merge_bloodline_weapons(char_weapons);
+					classes({ name: "Sorcerer" }).first().merge_bloodline_weapons(char_weapons);
 				}
 			],
 			before_weapons_recalc: [
 				function(char_weapons) {
-					classes.first({ name: "Sorcerer" }).merge_bloodline_weapons(char_weapons);
+					classes({ name: "Sorcerer" }).first().merge_bloodline_weapons(char_weapons);
 				}
 				],
 			before_spells: [
@@ -622,10 +622,10 @@ classes = new TAFFY([{
 						if (!all_spells[spell.classes['Sorcerer']]) {
 							all_spells[spell.classes['Sorcerer']] = [];
 						}
-						if (chardata.classes['Sorcerer'].level >= bloodline_level && 
-								all_spells[class_spell_lvl].indexOf(bloodline.spells[bloodline_level]) == -1) {
-							all_spells[class_spell_lvl].push(bloodline.spells[bloodline_level]);
-						}
+						// if (chardata.classes['Sorcerer'].level >= bloodline_level &&
+						// 		all_spells[class_spell_lvl].indexOf(bloodline.spells[bloodline_level]) == -1) {
+						// 	all_spells[class_spell_lvl].push(bloodline.spells[bloodline_level]);
+						// }
 						class_spell_lvl++;
 					}
 				}
@@ -666,20 +666,20 @@ classes = new TAFFY([{
 							}
 						}
 						if (special) {
-							$("#specials").append("<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes.first({ name: \"Sorcerer\"}).modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>");
+							$("#specials").append("<tr><td></td><td><a class=fake_link onclick='show_item_detail(bloodline_powers, \"" + special._id + "\", classes({ name: \"Sorcerer\"}).first().modify_bloodline_power_detail)'>" + special.name + "</a></td></tr>");
 						}
 					}
 				}
 			}
 			],
 			damage_reduction: [
-				function(dr) { classes.first({ name: "Sorcerer" }).calc_dr_saves(dr, "dr"); }
+				function(dr) { classes({ name: "Sorcerer" }).first().calc_dr_saves(dr, "dr"); }
 			],
 			save: [
-				function(save) { classes.first({ name: "Sorcerer" }).calc_dr_saves(save, "save"); }				
+				function(save) { classes({ name: "Sorcerer" }).first().calc_dr_saves(save, "save"); }
 			],
 			Str: [
-				function(mod) { classes.first({ name: "Sorcerer" }).calc_dr_saves(mod, "Str"); }
+				function(mod) { classes({ name: "Sorcerer" }).first().calc_dr_saves(mod, "Str"); }
 			]
 		},
 		feats: {

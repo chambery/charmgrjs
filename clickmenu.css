@@ -88,7 +88,7 @@ html>body div.shadowbox1
 	bottom: 5px;
 	width: 5px;
 	height: 100%;
-	background: url(myshadow.png) no-repeat right top;
+	background: url(images/myshadow.png) no-repeat right top;
 }
 html>body div.shadowbox2
 {
@@ -97,7 +97,7 @@ html>body div.shadowbox2
 	right: 5px;
 	height: 5px;
 	width: 100%;
-	background: url(myshadow.png) left bottom;
+	background: url(images/myshadow.png) left bottom;
 }
 html>body div.shadowbox3
 {
@@ -106,7 +106,7 @@ html>body div.shadowbox3
 	right: 0;
 	height: 5px;
 	width: 5px;
-	background: url(myshadow.png) no-repeat right bottom;
+	background: url(images/myshadow.png) no-repeat right bottom;
 }
 html>body .innerbox
 {

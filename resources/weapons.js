@@ -1,8 +1,8 @@
-damage_types = new TAFFY([{ name: "bludgeoning", tags: ["pathfinder"], _id: "b0fe", type: "damage_type" }, 
-{ name: "slashing", tags: ["pathfinder"], _id: "ec4", type: "damage_type" }, 
+damage_types = TAFFY([{ name: "bludgeoning", tags: ["pathfinder"], _id: "b0fe", type: "damage_type" },
+{ name: "slashing", tags: ["pathfinder"], _id: "ec4", type: "damage_type" },
 { name: "piercing", tags: ["pathfinder"], _id: "c497", type: "damage_type" }]);
 
-weapons = new TAFFY([ {
+weapons = TAFFY([ {
 	id: 0,
 	name: "Axe, orc double",
 	category: "exotic",

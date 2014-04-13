@@ -1,9 +1,9 @@
 function import_character() {
-	while(!chardata.options || !chardata.options.owner) {
+	while (!chardata.options || !chardata.options.owner) {
 		chardata.options = {};
 		chardata.options.owner = prompt("Owner string is required to load character data.");
 	}
-	
+
 	var data = prompt("Enter character name (owner: " + chardata.options.owner + ") :");
 	if (data != null && jQuery.trim(data).length > 0) {
 		try {
@@ -82,12 +82,12 @@ function lod(char_name) {
 				data: {},
 				async: false
 			});
-			
+
 			if(remote_data && remote_data.last_mod > chardata.last_mod) {
 				chardata = parse_character_data(remote_data);
 			}
 			// for(var classname in chardata.classes) {
-			// 	var clazz = classes.first({ name: classname });
+			// 	var clazz = classes({ name: classname }).first();
 			// 		for (var i in clazz.spells) {
 			// 			class_spells.concat(clazz.spells[i])
 			// 		}
@@ -103,7 +103,7 @@ function sav(data, local_name, remote_name) {
 	if(local_name && local_name.length > 0) {
 		data.last_mod = (new Date()).getTime();
 		save_local(data, local_name);
-		
+
 		if(!remote_name) {
 			remote_name = local_name;
 		}
@@ -131,7 +131,7 @@ function save_remote(data, name) {
 
 function save_local(data, name, expires) {
 	expires = expires | (new Date(2020, 02, 02)).toUTCString();
-	data = escape(TAFFY.JSON.stringify(data));
+	data = escape(JSON.stringify(data));
 	document.cookie = name + "=" + data + ";expires=" + expires;
 }
 
@@ -142,16 +142,16 @@ function save_character() {
 	}
 	players_companion.last_character = name;
 	save_local(players_companion, "players_companion");
-	
+
 	var save_data = jQuery.extend(true, {}, chardata);
 	if (save_data.skills != null) {
-		save_data.skills = save_data.skills.get();
+		save_data.skills = save_data.skills();
 	}
 	if (save_data.feats != null) {
-		save_data.feats = save_data.feats.get();
+		save_data.feats = save_data.feats();
 	}
 	save_data.type = "character";
-	
+
 	sav(save_data, "ch_" + name, name);
 }
 
@@ -165,11 +165,11 @@ function get_cookie_data(cookie_name) {
 			if (c_end == -1) {
 				c_end = document.cookie.length;
 			}
-			data = document.cookie.substring(c_start, c_end);	
+			data = document.cookie.substring(c_start, c_end);
 
 		}
 	}
-	
+
 	return data;
 
 }
@@ -178,28 +178,28 @@ function parse_taffy_data(data) {
 	if(data == null) {
 		data = [];
 	}
-	return new TAFFY(data);
+	return TAFFY(data);
 }
 
 function load_static_data() {
-	spells.forEach(function(spell, n) {
+	spells().each(function(spell, n) {
 		for(var classname in spell.classes) {
-			var clazz = classes.first({ name: classname });
+			var clazz = classes({ name: classname }).first();
 			// level listed starting from 1
 			clazz.spells[spell.classes[classname]].push(spell.name);
 		}
 	});
 	// TODO - maybe move to the classes
-	specials.forEach(function(special, n) {
+	specials().each(function(special, n) {
 		for(var classname in special.classes) {
-			var clazz = classes.first({ name: classname });
+			var clazz = classes({ name: classname }).first();
 			for(var i=0; i<special.classes[classname].length; i++) {
 				clazz.specials[special.classes[classname][i].level].push({special_name: special.name, mod: special.mod});
 			}
 		}
 	});
 
-	feats.forEach(function(feat, n) {		
+	feats().each(function(feat, n) {
 		if(feat.multi) {
 			feat.multi.db = eval(feat.multi.db);
 			feat.multi.type = eval(feat.multi.type);
@@ -208,55 +208,55 @@ function load_static_data() {
 			feat.collection.db = eval(feat.collection.db);
 		}
 		if(feat.attack) {
-			feat.attack = new Function("attacks", "weapon", feat.attack); 
+			feat.attack = new Function("attacks", "weapon", feat.attack);
 		}
 		if(feat.damage) {
-			feat.damage = new Function("damages", "weapon", feat.damage); 			
+			feat.damage = new Function("damages", "weapon", feat.damage);
 		}
 		if(feat.critical) {
-			feat.critical = new Function("critical", feat.critical); 
+			feat.critical = new Function("critical", feat.critical);
 		}
 		if(feat.init) {
-			feat.init = new Function("init", feat.init); 
+			feat.init = new Function("init", feat.init);
 		}
 		if(feat.fort) {
-			feat.fort = new Function("fort", feat.fort); 
+			feat.fort = new Function("fort", feat.fort);
 		}
 		if(feat.ref) {
-			feat.ref = new Function("ref", feat.ref); 
+			feat.ref = new Function("ref", feat.ref);
 		}
 		if(feat.will) {
-			feat.will = new Function("will", feat.will); 
+			feat.will = new Function("will", feat.will);
 		}
 		if(feat.ac) {
-			feat.ac = new Function("ac", feat.ac); 
+			feat.ac = new Function("ac", feat.ac);
 		}
 		if(feat.mobility) {
-			feat.mobility = new Function("acp", feat.mobility); 
+			feat.mobility = new Function("acp", feat.mobility);
 		}
 
 		for(classname in feat.classes) {
-			var clazz = classes.first({ name: classname });
+			var clazz = classes({ name: classname }).first();
 			clazz.feats[feat.classes[classname]].push(feat.name);
 		}
-		
+
 		return feat;
 	});
-	
+
 	// TODO - elegance?
-	// spells.orderBy({name:"logical"});
-	// feats.orderBy({name:"logical"});
-	races.orderBy({name:"logical"});
-	// domains.orderBy({name:"logical"});
-	classes.orderBy({name:"logical"});
-	// schools.orderBy({name:"logical"});
-	weapons.orderBy({name:"logical"});
-	armors.orderBy({name:"logical"});
-	skills.orderBy({name:"logical"});
-	// languages.orderBy({name:"logical"});
-	// deitys.orderBy({name:"logical"});
-	// specials.orderBy({name:"logical"});
-	// favored_enemys.orderBy({name:"logical"});	
+	// spells.order("name");
+	// feats.order("name");
+	races().order("name");
+	// domains.order("name");
+	classes().order("name");
+	// schools.order("name");
+	weapons().order("name");
+	armors().order("name");
+	skills().order("name");
+	// languages().order("name");
+	// deitys.order("name");
+	// specials.order("name");
+	// favored_enemys.order("name");
 }
 
 function delete_character() {
@@ -277,17 +277,17 @@ function delete_character() {
 			  },
 			  contentType: "application/json; charset=utf-8",
 			  async: false
-			});		
+			});
 		}
 		create_new_character();
 	}
 }
 
 function create_default_name() {
-	var race_name = races.first({ name: chardata.race_name }).shortname;
+	var race_name = races({ name: chardata.race_name }).first().shortname;
 	var class_name = "";
 	for(var classname in chardata.classes) {
-		class_name += classes.first({ name: classname }).shortname + "_";
+		class_name += classes({ name: classname }).first().shortname + "_";
 	}
-	return race_name + "_" + class_name;	
+	return race_name + "_" + class_name;
 }

@@ -16,7 +16,7 @@ function build_rogue_specials(level) {
 		return update_skill_mastery_selections();
 	});
 	$("#rogue_specials").append("<tr><td colspan='3'><table id='skill_mastery_sub' style='width: 100%'></table></td></tr>");
-	create_selector_group({id: "skill_mastery"}, "Skill Mastery", skills.get(), skills, 3, update_skill_mastery, true);
+	create_selector_group({id: "skill_mastery"}, "Skill Mastery", skills(), skills, 3, update_skill_mastery, true);
 	$("#skill_mastery_sub_").hide();
 }
 

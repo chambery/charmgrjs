@@ -1,5 +1,5 @@
 shield_types = [{ name: "buckler", type: "shield_type", tags: ["pathfinder"], _id: "e80c" }, { name: "light", type: "shield_type", tags: ["pathfinder"], _id: "f761" }, { name: "heavy", type: "shield_type", tags: ["pathfinder"], _id: "1831" }, { name: "tower", type: "shield_type", tags: ["pathfinder"], _id: "9e74" }];
-shields = new TAFFY([{
+shields = TAFFY([{
     name: "Buckler",
     cost: "15 gp",
     bon: 1,

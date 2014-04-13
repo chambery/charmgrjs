@@ -1,4 +1,4 @@
-views = new TAFFY([{
+views = TAFFY([{
 	id: 0,
 	name: "main",
 	title: "Pathfinder Player's Companion"
@@ -19,6 +19,4 @@ views = new TAFFY([{
 	name: "equip",
 	title: "Edit Equipment"
 }]);
-
-views.orderBy({id:"logical"});
 

@@ -63,7 +63,7 @@ function build_data_part( data_name, id_name) {
 	
 	// create the add new select
 	var name = id_name + '_new';
-	var items = eval(data_name).get();
+	var items = eval(data_name)().get();
 	var new_select = create_select(name, items, "add_data( '" + data_name + "', '" + id_name + "')", true, "style='width: 150px;'");
 	$('#new_' + id_name).html(new_select);
 	

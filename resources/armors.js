@@ -1,5 +1,5 @@
 
-armors = new TAFFY([{
+armors = TAFFY([{
     name: "Padded",
     cost: "5 gp",
     bon: 1,
@@ -9,8 +9,8 @@ armors = new TAFFY([{
     speed30: "30",
     speed20: "20",
     weight: 10,
-    category: "light", 
-    type: "armor", 
+    category: "light",
+    type: "armor",
     tags: ["pathfinder"], _id: "ce4b"
 }, {
     name: "Leather",
@@ -22,8 +22,8 @@ armors = new TAFFY([{
     speed30: "30",
     speed20: "20",
     weight: 15,
-    category: "light", 
-    type: "armor", 
+    category: "light",
+    type: "armor",
     tags: ["pathfinder"], _id: "22d2"
 }, {
     name: "Studded leather",

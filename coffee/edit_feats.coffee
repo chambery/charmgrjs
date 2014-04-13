@@ -6,23 +6,23 @@ build_feats_page = () ->
 	# TODO - FIX ME!!
 	char_classes = []
 	char_classes.push(classname) for classname in chardata.classes
-		
+
 	# # console.group("build_feats_page")
 	is_spellcaster = false
 	for classname in chardata.classes
-		if ~spellcasters.indexOf classname and classes.first( { name : classname }).spells_per_day[calc_current_level()][0] != '-'
+		if ~spellcasters.indexOf classname and classes().first( { name : classname }).spells_per_day[calc_current_level()][0] != '-'
 			is_spellcaster = true
 			break
 
 	if not chardata.feats
-		chardata.feats || new TAFFY( [])
-	 
+		chardata.feats || TAFFY( [])
+
 	feats_page_layout =
 	 	"<div id='rogue_special_abilities'></div><div id='feats'>
 			<table width=100% style='border: 1px solid #8DC3E9; border-collapse: collapse;'>
 				<tr style='background: #8DC3E9;'><td style='text-align: left'>
 					<span id='feats_available' style='float: right'>
-						Base: <span id='feats_remaining'></span> 
+						Base: <span id='feats_remaining'></span>
 						Bonus: <span id='bonus_feats_remaining'></span>
 					</span>Feats</td>
 				</tr>
@@ -30,12 +30,12 @@ build_feats_page = () ->
 			<table id='feats_table' style='border: 1px solid #D0D0D0; border-collapse: collapse; width: 100%;'></table></div>")
 	$('#content').html(feats_page_layout)
 
-	allfeats = new TAFFY(feats.get())
+	allfeats = TAFFY(feats())
 	allfeats.orderBy( (a, b) ->
 		return (a.prereqs == null or a.prereqs.feats == null) and (a.name < b.name) ? -1 : 1
 	})``pbpaste``
-	
-	temp_feats = allfeats.get()
+
+	temp_feats = allfeats()
 	for  i in temp_feats
 		removed = false
 		# weed out the impossible feats
@@ -44,7 +44,7 @@ build_feats_page = () ->
 		if(prereqs and prereqs.class_features) {
 			for(classname in chardata.classes) {
 				if(removed) { break }
-				clazz = classes.first({ name: classname })
+				clazz = classes({ name: classname }).first()
 				for(l in prereqs.class_features) {
 					if not ~clazz.class_features.indexOf(prereqs.class_features[l])
 						allfeats.remove({ name: temp_feats[i].name })
@@ -69,12 +69,12 @@ create_feat_listing = (feat, indent) ->
 	# # console.log("feat: " + feat.name)
 	count = indent = indent | 0
 	if feat.prereqs and feat.prereqs.feats
-		prereq = allfeats.first( {
+		prereq = allfeats().first( {
 			# if there are multiple prereqs, nest it under the first one
 			name : feat.prereqs.feats[0]
 		})
 		indent = create_feat_listing(prereq, indent + 1) if prereq
-			
+
 	html = "<tr id='#{feat._id}' class='feat'>
 				<td class='feat'>
 					<input id='#{feat._id}' type='checkbox' class='feat' /></td>
@@ -86,13 +86,13 @@ create_feat_listing = (feat, indent) ->
 	# ignore already printed feats
 	if $("##{feat._id}").length == 0
 		if feat.prereqs?.feats
-			prereq = feats.first({	name : feat.prereqs.feats[0] })
+			prereq = feats({	name : feat.prereqs.feats[0] }).first()
 			multi = if prereq.multi then "_sub_" else ""
 			$("##{prereq._id}#{multi}").after(html)
 			$("td[id='#{feat._id}']").css('padding-left', (10 * (indent - count)) + 'px')
 		else
 			$('#feats_table').append(html)
-		
+
 		$("a[id='#{feat._id}']").bind("click", {
 			feat_id : feat._id
 		}, function(e) {
@@ -123,7 +123,7 @@ create_feat_listing = (feat, indent) ->
 			$("##{feat._id}_sub_").hide()
 
 			disable_feat(feat, true) if all_options.length == 0
-				
+
 
 		else
 			$("input[id='#{feat._id}']").bind('click', {
@@ -143,7 +143,7 @@ populate_feats_page = () ->
 	# # console.group("populate_feats_page")
 	# apply class customizations
 #	for classname in chardata.classes
-#		clazz = classes.first({ name : classname })
+#		clazz = classes({ name : classname }).first()
 #		if clazz.custom and clazz.custom.feats
 #			for(feature in clazz.custom.feats) {
 #				clazz.custom.feats[feature]()
@@ -169,7 +169,7 @@ populate_feats_page = () ->
 				# count
 				$("span##{feat._id}_count").text((char_feat ? char_feat.multi : 1))
 				$("tr##{feat._id}_sub").toggle(checked)
-			
+
 		else
 			checked = chardata.feats?.first({ feat_name : feat.name })
 
@@ -178,14 +178,14 @@ populate_feats_page = () ->
 				checked = true
 				# prevent unchecking since an auto-added class feat
 				disable_feat(feat, true)
-			
+
 
 			$("input[id='#{feat._id}']").attr('checked', checked)
 
 			if checked and $("input[id='#{feat._id}']").attr('disabled')
 				$("tr#" + feat._id).addClass('class_feat')
-			
-		
+
+
 	})
 
 	# TODO - Rogue Special Abilities
@@ -233,7 +233,7 @@ update_feats_remaining = () ->
 }
 
 calc_prereqs = () ->
-	# allfeats = feats.get()
+	# allfeats = feats()
 	# TODO - move to recalc (don't loop over all)?
 	# # console.group("calc_prereqs")
 	allfeats.forEach( function( feat, i ) {
@@ -241,15 +241,15 @@ calc_prereqs = () ->
 		prereqs_met = false
 
 		if not is_class_feat(feat.name)
-			if(feat.prereqs) 
+			if(feat.prereqs)
 			# # # console.group("is_prereqs_met")
 				prereqs_met = prereqs_met or is_prereqs_met(feats._id, feat.prereqs)
 			else
 				prereqs_met = true
-			
+
 			# # # console.groupEnd()
 			disable_feat(feat, not prereqs_met)
-		
+
 		# if(allfeats[i].multi and allfeats[i].multi != "count") {
 		# repopulate_multi(allfeats[i])
 		# }
@@ -298,7 +298,7 @@ is_prereqs_met = (feat_id, prereqs) ->
             handle_pick(prereqs.pick.feats, prereqs.pick.count)
 
         if prereqs.pick.group
-            group_feats = feats.get({
+            group_feats = feats({
                 group: {
                     has: prereqs.pick.group
                 }
@@ -311,7 +311,7 @@ is_prereqs_met = (feat_id, prereqs) ->
     if prereqs.feats
         for i, feat in prereqs.feats
             # if it's not a char feat or a class feat
-            if ((chardata.feats == null or chardata.feats.first({
+            if ((chardata.feats == null or chardata.feats().first({
                 feat_name: feat
             }) == false) and not is_class_feat(feat)) {
                 # console.log("feat fail: " + prereqs.feats[k])
@@ -320,9 +320,9 @@ is_prereqs_met = (feat_id, prereqs) ->
     if prereqs.multi
         for k in prereqs.multi
             for l in prereqs.multi[k]
-                if (chardata.feats or !chardata.feats.first({
+                if (chardata.feats or !chardata.feats().first({
                     name: k
-                }) or not (chardata.feats.first({
+                }) or not (chardata.feats().first({
                     name: k
                 }).multi.indexOf(prereqs.multi[k][l]) > -1)) {
                     # # console.log("multi fail: #{k} - " + prereqs.multi[k][l])
@@ -354,7 +354,7 @@ calc_feats_remaining = () ->
 	}
 	# collect the number and constraints of the bonus feats
 	for classname in chardata.classes
-		clazz = classes.first({ name: classname })
+		clazz = classes({ name: classname }).first()
 		if clazz.custom and clazz.custom.feats
 			for level in clazz.custom.feats
 				if calc_current_level() >= level
@@ -370,11 +370,11 @@ calc_feats_remaining = () ->
 		}
 	}
 
-	char_feats = chardata.feats == null ? [] : chardata.feats.get()
+	char_feats = chardata.feats == null ? [] : chardata.feats()
 	base_feats_remaining = calc_total_base_feats_count(chardata.race_name, chardata.xp)
 
 	for i in char_feats
-		feat = feats.first({
+		feat = feats().first({
 			name: char_feats[i].feat_name
 		})
 		if char_feats[i].multi
@@ -423,7 +423,7 @@ filter_options = (feat, options_db) ->
 	}
 	if feat.multi.feats
 		for  i in feat.multi.feats
-			multi_feat = feats.first( {
+			multi_feat = feats().first( {
 				name : feat.multi.feats[i]
 			})
 			char_feat = get_char_feats().first( {
@@ -440,7 +440,7 @@ filter_options = (feat, options_db) ->
 				# multi_feat: Weapon Focus
 				# chardata.feats [{Exotic Weapon Proficiency, multi: ["Battleaxe"]}]
 				if char_feat and char_feat.multi != null and chardata.feats
-					char_feat_ref = chardata.feats.first( {
+					char_feat_ref = chardata.feats().first( {
 						feat_name : multi_feat.name
 					})
 					for  j in char_feat_ref.multi
@@ -480,7 +480,7 @@ update_count = (feat) ->
 		alert('No feat selections remaining.')
 		return
 	}
-	char_feat = chardata.feats.first( {
+	char_feat = chardata.feats().first( {
 		feat_name : feat_name
 	})
 	char_feat.multi += 1
@@ -495,7 +495,7 @@ update_feat = (feat, is_selected, multi_item, multi_type) ->
 	})._id : ""
 	count = calc_feats_remaining()
 	total_feats_remaining = count.bonus_feats.count + count.base_feats_remaining
-	char_feat = chardata.feats.first( {
+	char_feat = chardata.feats().first( {
 		feat_name : feat.name
 	})
 	if is_selected
@@ -509,7 +509,7 @@ update_feat = (feat, is_selected, multi_item, multi_type) ->
 				count = chardata.feats.insert( {
 					feat_name : feat.name
 				})
-				char_feat = chardata.feats.first( {
+				char_feat = chardata.feats().first( {
 					feat_name : feat.name
 				})
 			}
@@ -550,11 +550,11 @@ update_feat = (feat, is_selected, multi_item, multi_type) ->
 inform_dependents = (feat) ->
 	# # console.group("inform_dependents")
 	# # console.log(feat.name)
-	feats.get( {
+	feats( {
 		multi : {
 			"!is" : null
 		}
-	}).forEach(function(dependent, i) {
+	}).each(function(dependent, i) {
 		if ~dependent.multi.feats?.indexOf feat.name
 			if dependent.multi and dependent.multi?.feats
 				inform_dependents(dependent)
@@ -582,7 +582,7 @@ create_rogue_special_abilities = (level, clazz) ->
 	for i in clazz.special_abilities_levels
 		if level >= clazz.special_abilities_levels[i]
 			count++
-		
+
 	special_html = ""
 	$("#rogue_special_abilities").html("
 		<table id='rogue_specials_table' style='border: 1px solid #D0D0D0' width='100%' border='0' margin='0'>
@@ -591,7 +591,7 @@ create_rogue_special_abilities = (level, clazz) ->
 					<span id='rogue_specials_expand_flag' style='font-family: Monospace; float: right'>+</span><a class='fake_link'>Rogue Special Abilities</a>
 				</td>
 			</tr>"
-				
+
 	$("tr[id='rogue_specials']").bind("click", function(e) {
 		return toggle_visibility("rogue_specials")
 	})
@@ -606,7 +606,7 @@ create_rogue_special_abilities = (level, clazz) ->
 								<a class='fake_link' onclick='show_item_detail(special_abilities, #{(if selected_special then selected_special._id else rogue_specials[i]._id)})'>
 									#{(if selected_special then selected_special.description else rogue_specials[i].description)}
 								</a></td></tr>"
-		if (selected == "Skill Mastery") 
+		if (selected == "Skill Mastery")
 			# expand skill mastery bit
 			special_html += create_skill_selection_matrix(i)
 
@@ -619,7 +619,7 @@ create_rogue_special_abilities = (level, clazz) ->
 handle_pick = (group, count) ->
 	matches = 0
 	for i, item in group
-		if char_feats.first( { name : item } ) 
+		if char_feats().first( { name : item } )
 			# # console.log("match #{matches} of " + prereqs.pick.count)
 			matches++
 			if matches == count

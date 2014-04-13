@@ -1,4 +1,4 @@
-feats = new TAFFY([{
+feats = TAFFY([{
     name: "Acrobatic",
     summary: "+2 bonus on Acrobatics and Fly checks",
     detail: "You are skilled at leaping, jumping, and flying. <p class=sub><b>Benefit: </b>You get a +2 bonus on all Acrobatics and Fly skill checks. If you have 10 or more ranks in one of these skills, the bonus increases to +4 for that skill.",
@@ -133,8 +133,8 @@ feats = new TAFFY([{
     name: "Armor Proficiency, Heavy",
     summary: "No penalties on attack rolls while wearing heavy armor",
     detail: "You are skilled at wearing heavy armor.<p class=sub><b>Prerequisites: </b>Armor Proficiency, Medium<p class=sub><b>Benefit: </b>See Armor Proficiency, Light. <p class=sub><b>Normal: </b>See Armor Proficiency, Light. <p class=sub><b>Special: </b>Fighters and paladins automatically have Heavy Armor Proficiency as a bonus feat. They need not select it.",
-    attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
-    mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; ",
+    attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
+    mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; ",
 	classes: {
 		"Cleric": 2,
 		"Fighter": 2,
@@ -156,8 +156,8 @@ feats = new TAFFY([{
     name: "Armor Proficiency, Light",
     summary: "No penalties on attack rolls while wearing light armor",
     detail: "You are skilled at wearing light armor.<p class=sub><b>Benefit: </b>When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Dexterity- and Strength-based skill checks. <b>Normal: </b>A character who is wearing armor with which he is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving. <b>Special: </b>All characters except monks, sorcerers, and wizards automatically have Light Armor Proficiency as a bonus feat. They need not select it.",
-    attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'light') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
-    mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'light') { acp += Math.abs(armor.acp) } } } return acp;",
+    attack: "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'light') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
+    mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'light') { acp += Math.abs(armor.acp) } } } return acp;",
     classes: {
         "Barbarian": 1,
         "Bard": 1,
@@ -182,8 +182,8 @@ feats = new TAFFY([{
     name: "Armor Proficiency, Medium",
     summary: "No penalties on attack rolls while wearing medium armor",
     detail: "You are skilled at wearing medium armor.<p class=sub><b>Prerequisites: </b>Armor Proficiency, Light<p class=sub><b>Benefit: </b>See Armor Proficiency, Light. <p class=sub><b>Normal: </b>See Armor Proficiency, Light. <p class=sub><b>Special: </b>Fighters, paladins, and rangers automatically have Medium Armor Proficiency as a bonus feat. They need not select it.",
-    attack: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
-    mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;",
+    attack: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
+    mobility: "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;",
 	classes: {
 		"Barbarian": 1,
 		"Cleric": 1,
@@ -1132,7 +1132,7 @@ feats = new TAFFY([{
     detail: "Attacks made with your chosen weapon are quite deadly. <p class=sub><b>Prerequisite: </b>Proficient with weapon, base attack bonus +8 <p class=sub><b>Benefit: </b>When using the weapon you selected, your threat range is doubled. <p class=sub><b>Special: </b>You can gain Improved Critical multiple times. <p class=sub>The effects do not stack. Each time you take the feat, it applies to a new type of weapon. <p class=sub>This effect doesn&apos;t stack with any other effect that expands the threat range of a weapon.",
     prereqs: {
     	base_attack_bonus: 8,
-    	// TODO - 
+    	// TODO -
     	// feats: [""]
     },
     groups: ["Combat"],
@@ -1413,7 +1413,7 @@ feats = new TAFFY([{
     	feats: ["Rapid Shot"],
     	base_attack_bonus: 6
     },
-    op: "if ($(this).attr('checked')) {if ($('#feat_54_conditional').attr('checked')) {$('#feat_54_conditional').removeAttr('checked');recalc_main_page();}for ( var i in chardata.weapons) {var weapon = weapons.first({ id: chardata.weapons[i].weapon_id });if (weapon.subcategory == 'ranged') { var attacks = $('#weapon_' + i + '_att').text().split('/');var base_attack_bonus = parseInt(attacks[0]);var arrows = Math.min(Math.ceil(Math.abs(base_attack_bonus - 6) / 5), 4) + 1;var manyshot_penalty = (arrows * 2);var many_shot_atts = '';for (var j=0; j<arrows; j++) {many_shot_atts += pos(base_attack_bonus - manyshot_penalty);many_shot_atts += ((j+1) < arrows ? '/' : '');}$('#weapon_' + i + '_att').text(many_shot_atts);}}} else {recalc_main_page();}",
+    op: "if ($(this).attr('checked')) {if ($('#feat_54_conditional').attr('checked')) {$('#feat_54_conditional').removeAttr('checked');recalc_main_page();}for ( var i in chardata.weapons) {var weapon = weapons({ id: chardata.weapons[i].weapon_id }).first();if (weapon.subcategory == 'ranged') { var attacks = $('#weapon_' + i + '_att').text().split('/');var base_attack_bonus = parseInt(attacks[0]);var arrows = Math.min(Math.ceil(Math.abs(base_attack_bonus - 6) / 5), 4) + 1;var manyshot_penalty = (arrows * 2);var many_shot_atts = '';for (var j=0; j<arrows; j++) {many_shot_atts += pos(base_attack_bonus - manyshot_penalty);many_shot_atts += ((j+1) < arrows ? '/' : '');}$('#weapon_' + i + '_att').text(many_shot_atts);}}} else {recalc_main_page();}",
     groups: ["Combat", "Archery Style 2"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1581,7 +1581,7 @@ feats = new TAFFY([{
     detail: "You are especially accurate when making ranged attacks against close targets. <p class=sub><b>Benefit: </b>You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet.",
     prereqs: {},
 	conditional: true,
-	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons.first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
+	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons().first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
     groups: ["Combat", "Archery Style 1"],
     tags: ["pathfinder"],
     type: "feat",
@@ -1656,9 +1656,9 @@ feats = new TAFFY([{
     	},
     	feats: ["Point-Blank Shot"]
     },
-	op: "if($(this).attr('checked')) { if($('#feat_45_conditional').attr('checked')) { $('#feat_45_conditional').removeAttr('checked'); recalc_main_page(); } for (var i in chardata.weapons) { var weapon = weapons.first({ name: chardata.weapons[i].weapon_name });if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); attacks.push(attacks[0]); var rapid_shot_atts = ''; for(j in attacks) { rapid_shot_atts += pos(parseInt(attacks[j]) - 2);	rapid_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); }	$('#weapon_' + i + '_att').text(rapid_shot_atts); } } } else { recalc_main_page(); }",    
+	op: "if($(this).attr('checked')) { if($('#feat_45_conditional').attr('checked')) { $('#feat_45_conditional').removeAttr('checked'); recalc_main_page(); } for (var i in chardata.weapons) { var weapon = weapons({ name: chardata.weapons[i].weapon_name }).first();if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); attacks.push(attacks[0]); var rapid_shot_atts = ''; for(j in attacks) { rapid_shot_atts += pos(parseInt(attacks[j]) - 2);	rapid_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); }	$('#weapon_' + i + '_att').text(rapid_shot_atts); } } } else { recalc_main_page(); }",
     groups: ["Combat", "Archery Style 1"],
-	conditional: true,    
+	conditional: true,
     tags: ["pathfinder"],
     type: "feat",
     _id: "5af6"
@@ -1707,7 +1707,7 @@ feats = new TAFFY([{
     	abilities: {
     		Cha: 13
     	},
-    	
+
     },
     tags: ["pathfinder"],
     type: "feat",
@@ -2069,7 +2069,7 @@ feats = new TAFFY([{
     },
     tags: ["pathfinder"],
     type: "feat",
-    _id: "a35"	
+    _id: "a35"
 }, {
     name: "Two-Weapon Defense",
     summary: "Gain +1 shield bonus when fighting with two weapons",
@@ -2138,7 +2138,7 @@ feats = new TAFFY([{
     name: "Weapon Focus",
     summary: "+1 bonus on attack rolls with one weapon",
     detail: "Choose one type of weapon. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for the purposes of this feat. <p class=sub><b>Prerequisites: </b>Proficiency with selected weapon, base attack bonus +1. <p class=sub><b>Benefit: </b>You gain a +1 bonus on all attack rolls you make using the selected weapon. <p class=sub><b>Special: </b>You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.",
-	attack: "if(chardata.feats.first({ feat_name: 'Weapon Focus' }).multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
+	attack: "if(chardata.feats({ feat_name: 'Weapon Focus' }).first().multi.indexOf(weapon.name) > -1) { for(var i in attacks.base) { attacks.base[i] = parseInt(attacks.base[i]) + 1; }} return attacks;",
 	prereqs: {
 		base_attack_bonus: 1
 	},
@@ -2157,11 +2157,11 @@ feats = new TAFFY([{
     prereqs: {
         feats: ["Weapon Focus"],
         classes: {
-        	Fighter: 4	
+        	Fighter: 4
         }
-        
+
     },
-    damage: "if(chardata.feats.first({ feat_name: 'Weapon Specialization' }).multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; }} return damages;",
+    damage: "if(chardata.feats({ feat_name: 'Weapon Specialization' }).first().multi.indexOf(weapon.name) > -1) { for(var i in damages) { damages[i].mod += 2; }} return damages;",
     multi: {
         type: "weapons",
         feats: ["Weapon Focus"]

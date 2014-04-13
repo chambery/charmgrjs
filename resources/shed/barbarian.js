@@ -4,14 +4,14 @@ if($('#literacy_header').length == 0) {
 }
 var langs = [];
 for (var classname in chardata.classes) {
-	var clazz = classes.first({ name : classname });
+	var clazz = classes({ name : classname }).first();
 	langs = langs.concat(clazz.languages != null ? clazz.languages : []);
 }
 langs = langs.concat(race.languages);
 langs = langs.concat(chardata.languages);
 for (var i in langs) {
 	if($('#literacy_' + lang._id).length == 0) {
-		var lang = languages.first({ name: langs[i] })
+		var lang = languages({ name: langs[i] }).first()
 		$('tr#language_' + lang._id).append('<input id=\"literacy_' + lang._id + '_check\" type=\"checkbox\" onclick=\"update_literacy(' + lang._id + ')\"/>);
 	}
 }

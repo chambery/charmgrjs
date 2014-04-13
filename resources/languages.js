@@ -1,4 +1,4 @@
-languages = new TAFFY ([{
+languages = TAFFY ([{
 	name: "Abyssal",
 	type: "language",
 	tags: ["pathfinder"], _id: "241f"

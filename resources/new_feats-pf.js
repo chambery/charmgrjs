@@ -146,8 +146,8 @@ pf_feats = [
 			summary : "No penalties on attack rolls while wearing heavy armor",
 			description : "You are skilled at wearing heavy armor.<p class=sub><b>Prerequisites: </b>Armor Proficiency, Medium<p class=sub><b>Benefit: </b>See Armor Proficiency, Light. <p class=sub><b>Normal: </b>See Armor Proficiency, Light. <p class=sub><b>Special: </b>Fighters and paladins automatically have Heavy Armor Proficiency as a bonus feat. They need not select it.",
 			benefit : {
-				attack : "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
-				mobility : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; "
+				attack : "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'heavy') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
+				mobility : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'heavy') { acp += Math.abs(armor.acp) } } } return acp; "
 			},
 			collection : {
 				db : "armors",
@@ -166,8 +166,8 @@ pf_feats = [
 			summary : "No penalties on attack rolls while wearing light armor",
 			description : "You are skilled at wearing light armor.<p class=sub><b>Benefit: </b>When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Dexterity- and Strength-based skill checks. <b>Normal: </b>A character who is wearing armor with which he is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving. <b>Special: </b>All characters except monks, sorcerers, and wizards automatically have Light Armor Proficiency as a bonus feat. They need not select it.",
 			benefit : {
-				attack : "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'light') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
-				mobility : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'light') { acp += Math.abs(armor.acp) } } } return acp;"
+				attack : "if(chardata.armors){ for(var i in chardata.armors) { var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'light') { attacks.acp += Math.abs(armor.acp) } } } return attacks;",
+				mobility : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'light') { acp += Math.abs(armor.acp) } } } return acp;"
 			},
 			collection : {
 				db : "armors",
@@ -184,8 +184,8 @@ pf_feats = [
 			summary : "No penalties on attack rolls while wearing medium armor",
 			description : "You are skilled at wearing medium armor.<p class=sub><b>Prerequisites: </b>Armor Proficiency, Light<p class=sub><b>Benefit: </b>See Armor Proficiency, Light. <p class=sub><b>Normal: </b>See Armor Proficiency, Light. <p class=sub><b>Special: </b>Fighters, paladins, and rangers automatically have Medium Armor Proficiency as a bonus feat. They need not select it.",
 			benefit : {
-				attack : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
-				mobility : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors.first({ name: chardata.armors[i].armor_name }); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;"
+				attack : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'medium') { attacks.acp += Math.abs(armor.acp) } } } return attacks; ",
+				mobility : "if(chardata.armors){ for(var i in chardata.armors) {	var armor = armors({ name: chardata.armors[i].armor_name }).first(); if(armor.category == 'medium') { acp += Math.abs(armor.acp) } } } return acp;"
 			},
 			collection : {
 				db : "armors",

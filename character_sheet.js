@@ -31,7 +31,7 @@
 	$("input#eyes").val(chardata.eyes ? chardata.eyes : "");
 	$("input#handedness").val(chardata.handedness ? chardata.handedness : "");
 
-	var all_skills = skills.get();
+	var all_skills = skills();
 	var rows = parseInt(all_skills.length / 3) + (all_skills.length % 3 ? 1 : 0);
 
 	for (ability in chardata.abilities) {
@@ -53,7 +53,7 @@
 			row = row.concat( [ "<td", (is_class_skill ? " style='font-weight: bold'" : ""), ">", all_skills[j * rows + i].name, "</td><td style='text-align: right'>",
 					(all_skills[j * rows + i].mobility ? "&dagger;" : ""), (all_skills[j * rows + i].untrained == "Yes" ? "&diams;" : ""),
 					"</td><td></td><td class='entry_box' style='text-align: center'>", calc_skill_mod(all_skills[j * rows + i], chardata.abilities[all_skills[j * rows + i].ability]),
-					"</td><td style='text-align: center'>=</td><td class='entry_box' style='text-align: center'>", (chardata.skills ? chardata.skills.first( {
+					"</td><td style='text-align: center'>=</td><td class='entry_box' style='text-align: center'>", (chardata.skills ? chardata.skills().first( {
 						skill_name : all_skills[j * rows + i].name
 					}).ranks : ""), "</td><td style='text-align: center'>+</td><td class='entry_box' style='text-align: center'>",
 					calc_ability_modifier(chardata.abilities[all_skills[j * rows + i].ability]),
@@ -66,7 +66,7 @@
 	}
 
 	for ( var i in chardata.armors) {
-		var armor = armors.first( {
+		var armor = armors().first( {
 			name : chardata.armors[i].armor_name
 		});
 		var html = [ "<tr><td class='user-entry-box'>", armor.name, "</td><td class='user-entry-box'>", armor.category, "</td><td class='user-entry-box'>", armor.bon,
@@ -75,30 +75,30 @@
 		$("#armor_header").after(html.join(''));
 
 	}
-	var ap = is_class_feat("Armor Proficiency (light)") || chardata.feats.first( {
+	var ap = is_class_feat("Armor Proficiency (light)") || chardata.feats().first( {
 		name : "Armor Proficiency (light)"
 	}) ? "checked" : "";
 	$("#light_armor_proficiency").attr("checked", ap);
-	ap = is_class_feat("Armor Proficiency (medium)") || chardata.feats.first( {
+	ap = is_class_feat("Armor Proficiency (medium)") || chardata.feats().first( {
 		name : "Armor Proficiency (medium)"
 	}) ? "checked" : "";
 	$("#medium_armor_proficiency").attr("checked", ap);
-	ap = is_class_feat("Armor Proficiency (heavy)") || chardata.feats.first( {
+	ap = is_class_feat("Armor Proficiency (heavy)") || chardata.feats().first( {
 		name : "Armor Proficiency (heavy)"
 	}) ? "checked" : "";
 	$("#heavy_armor_proficiency").attr("checked", ap);
-	ap = is_class_feat("Simple Weapon Proficiency") || chardata.feats.first( {
+	ap = is_class_feat("Simple Weapon Proficiency") || chardata.feats().first( {
 		name : "Simple Weapon Proficiency"
 	}) ? "checked" : "";
 	$("#simple_weapon_proficiency").attr("checked", ap);
-	ap = is_class_feat("Martial Weapon Proficiency") || chardata.feats.first( {
+	ap = is_class_feat("Martial Weapon Proficiency") || chardata.feats().first( {
 		name : "Martial Weapon Proficiency"
 	}) ? "checked" : "";
 	$("#martial_weapon_proficiency").attr("checked", ap);
 	
 	var base_attack_bonuses = calc_base_attack_bonus();
 	for ( var i in chardata.weapons) {
-		var weapon = weapons.first( {
+		var weapon = weapons().first( {
 			name : chardata.weapons[i].weapon_name
 		});
 		var html = [ "<tr><td class='user-entry-box'>", chardata.weapons[i].name != null ? chardata.weapons[i].name + " (" + weapon.name + ")" : weapon.name, "</td><td class='user-entry-box'>", chardata.weapons[i].att, "</td><td class='user-entry-box'>", calc_damage(weapon, chardata.abilities["Str"], chardata.feats, chardata.weapons[i]),
@@ -152,7 +152,7 @@
 	
 	var wp = "";
 	var c = 0;
-	var weapon_proficiencies = chardata.feats.get({ name: [ "Exotic Weapon Proficiency", "Weapon Specialization", "Weapon Focus", "Greater Weapon Specialization", "Greater Weapon Focus" ] })
+	var weapon_proficiencies = chardata.feats({ name: [ "Exotic Weapon Proficiency", "Weapon Specialization", "Weapon Focus", "Greater Weapon Specialization", "Greater Weapon Focus" ] })
 	for(var i in weapon_proficiencies) {
 		$("#weapon_proficiencies").after("<tr><td colspan=2>" + weapon_proficiencies[i].name + "</td></tr>");
 		wp = "<tr>";

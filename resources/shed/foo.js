@@ -1,6 +1,6 @@
 function update_literacy(language_id) {
 	var checked = $('#literacy_' + language_id + '_check').attr('checked');
-	var language = languages.first( {
+	var language = languages().first( {
 		_id : language_id
 	});
 	if (!checked && chardata.classes['Barbarian'].literacy[language.name]) {
@@ -20,7 +20,7 @@ if ($('#literacy_header').length == 0) {
 }
 var langs = [];
 for ( var classname in chardata.classes) {
-	var clazz = classes.first( {
+	var clazz = classes().first( {
 		name : classname
 	});
 	langs = langs.concat(clazz.languages != null ? clazz.languages : []);
@@ -28,7 +28,7 @@ for ( var classname in chardata.classes) {
 langs = langs.concat(race.languages);
 langs = langs.concat(chardata.languages);
 for ( var i in langs) {
-	var lang = languages.first( {
+	var lang = languages().first( {
 		name : langs[i]
 	});  
 	if ($('#literacy_' + lang._id).length == 0) {

@@ -1,4 +1,4 @@
-spells = new TAFFY([{
+spells = TAFFY([{
 	name: "Acid Arrow",
 	School: "Conj",
 	time: "1 a",
@@ -6,7 +6,7 @@ spells = new TAFFY([{
 	range: "long (400 ft. + 40 ft./level)",
 	effect: "one arrow of acid",
 	duration: "1 round + 1 round per three levels",
-	save: "-",			 
+	save: "-",
 	sr: "no",
 	classes: {
 		Sorcerer: 1,
@@ -19,7 +19,7 @@ spells = new TAFFY([{
 	summary: "Fog deals 2d6/rnd acid damage",
 	school: "Conj",
 	composition: "V, S, M (powdered peas and an animal hoof)",
-	time: "1 a",	
+	time: "1 a",
 	range: "Medium",
 	effect: "20-ft radius, 20-ft high",
 	duration: "1 rnd/lvl",
@@ -629,14 +629,14 @@ spells = new TAFFY([{
 	composition: "V, S, M (a piece of the creature whose form you plan to assume)",
 	range: "Self",
 	effect: "Caster",
-	duration: "1 min/lvl (D)",		
+	duration: "1 min/lvl (D)",
 	detail: "When you cast this spell, you can assume the form of any Small or Medium creature of the animal type. If the form you assume has any of the following abilities, you gain the listed ability: climb 30 feet, fly 30 feet (average maneuverability), swim 30 feet, darkvision 60 feet, low-light vision, and scent.<p class=sub><i>Small animal: </i>If the form you take is that of a Small animal, you gain a +2 size bonus to your Dexterity and a +1 natural armor bonus.<p class=sub><i>Medium animal: </i>If the form you take is that of a Medium animal, you gain a +2 size bonus to your Strength and a +2 natural armor bonus.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "6c02"
 }, {
 	name: "Beast Shape II",
 	school: "Trans (polymorph)",
 	classes: {
-		Sorcerer: 4,						
+		Sorcerer: 4,
 		Wizard: 4
 	},
 	detail: "This spell functions as beast shape I, except that it also allows you to assume the form of a Tiny or Large creature of the animal type. If the form you assume has any of the following abilities, you gain the listed ability: climb 60 feet, fly 60 feet (good maneuverability), swim 60 feet, darkvision 60 feet, low-light vision, scent, grab, pounce, and trip.<i>Tiny animal: </i>If the form you take is that of a Tiny animal, you gain a +4 size bonus to your Dexterity, a &emdash;2 penalty to your Strength, and a +1 natural armor bonus.<i>Large animal: </i>If the form you take is that of a Large animal, you gain a +4 size bonus to your Strength, a &emdash;2 penalty to your Dexterity, and a +4 natural armor bonus.",
@@ -688,7 +688,7 @@ spells = new TAFFY([{
 	range: "medium (100 ft. + 10 ft./level)",
 	effect: "20-ft.-radius spread",
 	duration: "1 round/lvl (D)",
-	save: "-", 
+	save: "-",
 	sr: false,
 	detail: "This spell causes a field of rubbery black tentacles to appear, burrowing up from the floor and reaching for any creature in the area. <p class=sub>Every creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, including the round that black tentacles is cast. Creatures that enter the area of effect are also automatically attacked. The tentacles do not provoke attacks of opportunity. When determining the tentacles&emdash; CMB, the tentacles use your caster level as their base attack bonus and receive a +4 bonus due to their Strength and a +1 size bonus. Roll only once for the entire spell effect each round and apply the result to all creatures in the area of effect.<p class=sub>If the tentacles succeed in grappling a foe, that foe takes 1d6+4 points of damage and gains the grappled condition. Grappled opponents cannot move without first breaking the grapple. All other movement is prohibited unless the creature breaks the grapple first. The black tentacles spell receives a +5 bonus on grapple checks made against opponents it is already grappling, but cannot move foes or pin foes. Each round that black tentacles succeeds on a grapple check, it deals an additional 1d6+4 points of damage. The CMD of black tentacles, for the purposes of escaping the grapple, is equal to 10 + its CMB.<p class=sub>The tentacles created by this spell cannot be damaged, but they can be dispelled as normal. The entire area of effect is considered difficult terrain while the tentacles last.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "b6d4"
@@ -728,7 +728,7 @@ spells = new TAFFY([{
 	name: "Bleed",
 	school: "Necro",
 	classes: {
-		Cleric: 1, 
+		Cleric: 1,
 		Sorcerer: 1,
 		Wizard: 1
 	},
@@ -737,7 +737,7 @@ spells = new TAFFY([{
 	range: "close (25 ft. + 5 ft./2 levels)",
 	effect: "One living creature",
 	duration: "instantaneous",
-	save: "Will negates", 
+	save: "Will negates",
 	sr: true,
 	detail: "You cause a living creature that is below 0 hit points but stabilized to resume dying. Upon casting this spell, you target a living creature that has &emdash;1 or fewer hit points. That creature begins dying, taking 1 point of damage per round. The creature can be stabilized later normally. This spell causes a creature that is dying to take 1 point of damage.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "a4ed"
@@ -892,7 +892,7 @@ spells = new TAFFY([{
 	time: "1 a",
 	composition: "V, S",
 	range: "Touch",
-	effect: "One creature",	
+	effect: "One creature",
 	save: "Will negs",
 	sr: "Yes",
 	duration: "instantaneous",
@@ -1153,7 +1153,7 @@ spells = new TAFFY([{
 	duration: "1 day/lvl",
 	save: "Will negs",
 	sr: "Yes",
-	phb: "209", tags: ["pathfinder"], _id: "3a84",   
+	phb: "209", tags: ["pathfinder"], _id: "3a84",
 	classes: {
 		Bard: 3,
 		Sorcerer: 4,
@@ -1335,7 +1335,7 @@ spells = new TAFFY([{
 	effect: "Cone",
 	duration: "Instantaneous",
 	save: "Will negs",
-	sr: "Yes",				  
+	sr: "Yes",
 	classes: {
 		Sorcerer: 1,
 		Wizard: 1
@@ -3995,7 +3995,7 @@ spells = new TAFFY([{
 	classes: {
 		Sorcerer: 2,
 		Wizard: 2
-	},																					 
+	},
 	detail: "Imbuing you with negative energy, this spell allows you to paralyze a single living humanoid for the duration of the spell with a successful melee touch attack. <p class=sub>Additionally, the paralyzed subject exudes a carrion stench that causes all living creatures (except you) in a 10-foot-radius spread to become sickened (Fortitude negates). A <i>neutralize poison</i> spell removes the effect from a sickened creature, and creatures immune to poison are unaffected by the stench",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "2f63"
 }, {
@@ -4506,7 +4506,7 @@ spells = new TAFFY([{
 	name: "Hideous Laughter",
 	school: "Ench (compulsion) [mind-affecting]",
 	classes: {
-		Bard: 1, 
+		Bard: 1,
 		Sorcerer: 2,
 		Wizard: 2
 	},
@@ -5040,7 +5040,7 @@ spells = new TAFFY([{
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "1daf"
 }, {
 	name: "Interposing Hand",
-	school: "Evoc  [force]",	
+	school: "Evoc  [force]",
 	classes: {
 		Sorcerer: 5,
 		Wizard: 5
@@ -5185,7 +5185,7 @@ spells = new TAFFY([{
 	save: "Will partial",
 	sr: "yes",
 	classes: {
-		Bard: 6, 
+		Bard: 6,
 		Sorcerer: 8,
 		Wizard: 8
 	},
@@ -5502,7 +5502,7 @@ spells = new TAFFY([{
 	save: "-",
 	sr: "no",
 	detail: "You conjure up a phantom watchdog that is invis ble to everyone  but yourself. It then guards the area where it was conjured (it does  not move). The hound immediately starts barking loudly if any  Small or larger creature approaches within 30 feet of it. (Those  within 30 feet of the hound when it is conjured may move about  in the area, but if they leave and return, they activate the barking.)  The hound sees invisible and ethereal creatures. It does not react  to figments, but it does react to shadow illusions. <p class=sub>If an intruder approaches to within 5 feet of the hound, the dog  stops barking and delivers a vicious bite (+10 attack bonus, 2d6+3  points of piercing damage) once per round. The dog also gets the  bonuses appropriate to an invisible creature (see <i>invisibility</i>). <p class=sub>The dog is considered ready to bite intruders, so it delivers its  first bite on the intruder&apos;s turn. Its bite is the equivalent of a magic  weapon for the purpose of damage reduction. The hound cannot be  attacked, but it can be dispelled. <p class=sub>The spell lasts for 1 hour per caster level, but once the hound  begins barking, it lasts only 1 round per caster level. If you are ever  more than 100 feet distant from the hound, the spell ends.",
-	type: "spell", phb: "196", tags: ["pathfinder"], _id: "c8cd"	
+	type: "spell", phb: "196", tags: ["pathfinder"], _id: "c8cd"
 }, {
 	name: "Mage\'s Lucubration",
 	school: "Trans",
@@ -5532,9 +5532,9 @@ spells = new TAFFY([{
 	sr: "no",
 	detail: "You conjure up an extradimensional dwelling that has a single  entrance on the plane from which the spell was cast. The entry  point looks like a faint shimmering in the air that is 4 feet  wide and 8 feet high. Only those you designate may enter the  mansion, and the portal is shut and made invisible behind you  when you enter. You may open it again from your own side at  will. Once observers have passed beyond the entrance, they are  in a magnificent foyer with numerous chambers beyond. The  atmosphere is clean, fresh, and warm. <p class=sub>You can create any floor plan you desire to the limit of the spell's  effect. The place is furnished and contains sufficient foodstuffs to  serve a nine-course banquet to a dozen people per caster level.  A staff of near-transparent servants (as many as two per caster  level), liveried and obedient, wait upon all who enter. The servants  function as <i>unseen servant</i> spells except that they are visible and can  go anywhere in the mansion. <p class=sub>Since the place can be entered only through its special portal,  outside conditions do not affect the mansion, nor do conditions  inside it pass to the plane beyond.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "4a1f"
-}, {	
+}, {
 	name: "Mage's Private Sanctum",
-	school: "Abjur",	
+	school: "Abjur",
 	classes: {
 		Sorcerer: 5,
 		Wizard: 5
@@ -5548,7 +5548,7 @@ spells = new TAFFY([{
 	sr: "no",
 	detail: "This spell ensures privacy. Anyone looking into the area from  outside sees only a dark, foggy mass. Darkvision cannot  penetrate it. No sounds, no matter how loud, can escape the  area, so nobody can eavesdrop from outside. Those inside can  see out normally. <p class=sub>Divination (scrying) spells cannot perceive anything within the  area, and those within are immune to <i>detect thoughts</i>. The ward  prevents speech between those inside and those outside (because it  blocks sound), but it does not prevent other communication, such  as a <i>sending</i> or message spell, or telepathic communication, such as  that between a Wizard and her familiar. <p class=sub>The spell does not prevent creatures or objects from moving into  and out of the area. <p class=sub><i>Mage's private sanctum</i> can be made permanent with a  <i>permanency</i> spell.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "a81c"
-}, {	
+}, {
 	name: "Mage's Sword",
 	school: "Evoc",
 	classes: {
@@ -5564,7 +5564,7 @@ spells = new TAFFY([{
 	sr: "yes",
 	detail: "This spell brings into being a shimmering, sword-like plane of  force. The sword strikes at any opponent within its range, as you  desire, starting in the round that you cast the spell. The sword  attacks its designated target once each round on your turn. Its  attack bonus is equal to your caster level + your Intelligence bonus  or your Charisma bonus (for Wizards or sorcerers, respectively)  with an additional +3 enhancement bonus. As a force effect,  it can strike ethereal and incorporeal creatures. It deals 4d6+3  points of force damage, with a threat range of 19-20 and a critical  multiplier of x2. <p class=sub>The sword always strikes from your direction. It does not get a  bonus for flanking or help a combatant get one. If the sword goes  beyond the spell range from you, goes out of your sight, or you are  not directing it, it returns to you and hovers. <p class=sub>Each round after the first, you can use a standard action to switch  the sword to a new target. If you do not, the sword continues to  attack the previous round&emdash;s target. <p class=sub>The sword cannot be attacked or harmed by physical attacks,  but <i>dispel magic</i>, <i>disintegrate</i>, a <i>sphere of annihilation</i>, or a <i>rod of  cancellation</i> affects it. The sword's AC is 13 (10, +0 size bonus for  Medium object, +3 deflection bonus). <p class=sub>If an attacked creature has spell resistance, the resistance  is checked the first time <i>mage's sword</i> strikes it. If the sword is  successfully resisted, the spell is dispelled. If not, the sword has its  normal full effect on that creature for the duration of the spell.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "8892"
-}, {	
+}, {
 	name: "Mage's Sword",
 	school: "Evoc",
 	classes: {
@@ -5579,12 +5579,12 @@ spells = new TAFFY([{
 	save: "-",
 	sr: "yes",
 	detail: "This spell brings into being a shimmering, sword-like plane of force. The sword strikes at any opponent within its range, as you desire, starting in the round that you cast the spell. The sword attacks its designated target once each round on your turn. Its attack bonus is equal to your caster level + your Intelligence bonus or your Charisma bonus (for Wizards or sorcerers, respectively) with an additional +3 enhancement bonus. As a force effect, it can strike ethereal and incorporeal creatures. It deals 4d6+3 points of force damage, with a threat range of 19-20 and a critical multiplier of x2.<p class=sub>The sword always strikes from your direction. It does not get a bonus for flanking or help a combatant get one. If the sword goes beyond the spell range from you, goes out of your sight, or you are not directing it, it returns to you and hovers.<p class=sub>Each round after the first, you can use a standard action to switch the sword to a new target. If you do not, the sword continues to attack the previous round&emdash;s target.<p class=sub>The sword cannot be attacked or harmed by physical attacks, but <i>dispel magic</i>, <i>disintegrate</i>, a <i>sphere of annihilation</i>, or a <i>rod of cancellation</i> affects it. The sword's AC is 13 (10, +0 size bonus for Medium object, +3 deflection bonus).<p class=sub>If an attacked creature has spell resistance, the resistance is checked the first time <i>mage's sword</i> strikes it. If the sword is successfully resisted, the spell is dispelled. If not, the sword has its normal full effect on that creature for the duration of the spell.",
-	type: "spell", phb: "196", tags: ["pathfinder"], _id: "b07a"	
+	type: "spell", phb: "196", tags: ["pathfinder"], _id: "b07a"
 }, {
 	name: "Magic Aura",
 	school: "Illus",
 	classes: {
-		Bard: 1, 
+		Bard: 1,
 		Sorcerer: 1,
 		Wizard: 1
 	},
@@ -5596,7 +5596,7 @@ spells = new TAFFY([{
 	save: "none; see text",
 	sr: "no",
 	detail: "You alter an item's aura so that it registers to detect spells (and spells with similar capabilities) as though it were nonmagical, or a magic item of a kind you specify, or the subject of a spell you specify. If the object bearing <i>magic aura</i> has <i>identify</i> cast on it or is similarly examined, the examiner recognizes that the aura is false and detects the object's actual qualities if he succeeds on a Will save. Otherwise, he believes the aura and no amount of testing reveals what the true magic is.<p class=sub>If the targeted item's own aura is exceptionally powerful (if it is an artifact, for instance), <i>magic aura</i> doesn't work.<p class=sub><i>Note</i> A magic weapon, shield, or suit of armor must be a masterwork item, so a sword of average make, for example, looks suspicious if it has a magical aura.",
-	type: "spell", phb: "196", tags: ["pathfinder"], _id: "2d88"	
+	type: "spell", phb: "196", tags: ["pathfinder"], _id: "2d88"
 }, {
 	name: "Magic Circle against Chaos",
 	summary: "Non-lawful creatures cannot enter",
@@ -6544,7 +6544,7 @@ spells = new TAFFY([{
 	save: "-",
 	sr: "no",
 	detail: "This spell makes a lock or other small mechanism seem to be trapped to anyone who can detect traps. You place the spell upon any small mechanism or device, such as a lock, hinge, hasp, cork, cap, or ratchet. Any character able to detect traps, or who uses any spell or device enabling trap detection, is certain a real trap exists. Of course, the effect is illusory and nothing happens if the trap is &quot;sprung&qout; its primary purpose is to frighten away thieves or make them waste precious time.<p class=sub>If another <i>phantom trap</i> is active within 50 feet when the spell is cast, the casting fails.",
-	type: "spell", phb: "196", tags: ["pathfinder"], _id: "f4e3"	
+	type: "spell", phb: "196", tags: ["pathfinder"], _id: "f4e3"
 }, {
 	name: "Phase Door",
 	summary: "Passage appears in wooden, stone wall",
@@ -6710,7 +6710,7 @@ spells = new TAFFY([{
 	duration: "1 min/lvl (D)",
 	detail: "When you cast this spell you can assume the form of any Small or Medium creature of the plant type (see the <i>Pathfinder RPG Bestiary</i>). If the form you assume has any of the following abilities, you gain the listed ability: darkvision 60 feet, low-light vision, constrict, grab, and poison. If the form you assume does not possess the ability to move, your speed is reduced to 5 feet and you lose all other forms of movement. If the creature has vulnerability to an element, you gain that vulnerability.<p class=sub><i>Small plant</i> If the form you take is that of a Small plant, you gain a +2 size bonus to your Constitution and a +2 natural armor bonus.<p class=sub><i>Medium plant</i> If the form you take is that of a Medium plant, you gain a +2 size bonus to your Strength, a +2 enhancement bonus to your Constitution, and a +2 natural armor bonus.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "6395"
-}, {	
+}, {
 	name: "Plant Shape II",
 	school: "Trans (polymorph)",
 	classes: {
@@ -7980,10 +7980,10 @@ spells = new TAFFY([{
 	name: "Secure Shelter",
 	school: "Conj (creation)",
 	classes: {
-		Bard: 4, 
+		Bard: 4,
 		Sorcerer: 4,
 		Wizard: 4
-	},              
+	},
 	time: "10 minutes",
 	composition: "V, S, M (a chip of stone, sand, a drop of water, and a wood splinter)",
 	range: "close (25 ft. + 5 ft./2 levels)",
@@ -8840,7 +8840,7 @@ spells = new TAFFY([{
 	name: "Stabilize",
 	school: "Conj (healing)",
 	classes: {
-		Cleric: 1, 
+		Cleric: 1,
 		Druid: 1
 	},
 	time: "1 a",
@@ -8848,7 +8848,7 @@ spells = new TAFFY([{
 	range: "close (25 ft. + 5 ft./2 levels)",
 	effect: "one living creature",
 	duration: "instantaneous",
-	save: "Will negates (harmless)", 
+	save: "Will negates (harmless)",
 	sr: "yes",
 	detail: "Upon casting this spell, you target a living creature that has -1 or fewer hit points. That creature is automatically stabilized and does not lose any further hit points. If the creature later takes damage, it continues dying normally.",
 	type: "spell", phb: "196", tags: ["pathfinder"], _id: "249"
@@ -9751,7 +9751,7 @@ spells = new TAFFY([{
 	name: "Tiny Hut",
 	school: "Evoc",
 	classes: {
-		Bard: 3, 
+		Bard: 3,
 		Sorcerer: 3,
 		Wizard: 3
 	},

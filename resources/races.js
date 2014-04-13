@@ -1,4 +1,4 @@
-races = new TAFFY ([{
+races = TAFFY ([{
 	name: "Halfling",
 	shortname: "Hfg",
 	abilities: {
@@ -9,8 +9,8 @@ races = new TAFFY ([{
 	size: "small",
 	favored_class: "Rogue",
 	languages: ["Common", "Draconic"],
-	speed: 20,	
-	type: "race", 
+	speed: 20,
+	type: "race",
 	tags: ["pathfinder"], _id: "f0e3"
 }, {
 	name: "Human",
@@ -18,9 +18,9 @@ races = new TAFFY ([{
 	abilities: {},
 	skills: {},
 	size: "medium",
-	languages: ["Common"], 
+	languages: ["Common"],
 	speed: 30,
-	type: "race", 
+	type: "race",
 	tags: ["pathfinder"], _id: "7a57"
 }, {
 	name: "Dwarf",
@@ -35,8 +35,8 @@ races = new TAFFY ([{
 	spell_resistance: 2,
 	languages: ["Common", "Dwarven"],
 	speed: 20,
-	type: "race", 
-	tags: ["pathfinder"], _id: "62a2"    
+	type: "race",
+	tags: ["pathfinder"], _id: "62a2"
 }, {
 	name: "Half-Orc",
 	shortname: "H-O",
@@ -48,9 +48,9 @@ races = new TAFFY ([{
 	skills: {},
 	size: "medium",
 	favored_class: "Barbarian",
-	languages: ["Common", "Orc"], 
+	languages: ["Common", "Orc"],
 	speed: 30,
-	type: "race", 
+	type: "race",
 	tags: ["pathfinder"], _id: "3f3c"
 }, {
 	name: "Elf",
@@ -62,9 +62,9 @@ races = new TAFFY ([{
 	skills: { "Listen" : 2 },
 	size: "medium",
 	favored_class: "Wizard",
-	languages: ["Common", "Elven"], 
+	languages: ["Common", "Elven"],
 	speed: 30,
-	type: "race", 
+	type: "race",
 	tags: ["pathfinder"], _id: "274c"
 }, {
 	name: "Gnome",
@@ -76,8 +76,8 @@ races = new TAFFY ([{
 	skills: { "Listen" : 2 },
 	size: "small",
 	favored_class: "Bard",
-	languages: ["Common", "Gnome"], 
-	type: "race", 
+	languages: ["Common", "Gnome"],
+	type: "race",
 	tags: ["pathfinder"], _id: "6e46"
 }, {
 	name: "Half-Elf",
@@ -85,8 +85,8 @@ races = new TAFFY ([{
 	abilities: {},
 	skills: { "Diplomacy" : 2, "Listen" : 1 },
 	size: "medium",
-	languages: ["Common", "Elven"], 
+	languages: ["Common", "Elven"],
 	speed: 30,
-	type: "race", 
+	type: "race",
 	tags: ["pathfinder"], _id: "667a"
 }]);

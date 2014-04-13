@@ -15,7 +15,7 @@ function show_class_dialog(level_diff, ability_increase) {
 	for(var i=1; i<=level_diff; i++) { 
 		options += '<option>' + i + '</option>'; 
 	}
-	classes.forEach(function (clazz, n) {
+	classes().each(function (clazz, n) {
 		if(classnames.indexOf(clazz.name) == -1) {
 			html += "<tr><td><input type='checkbox' id='class_dialog_" + clazz.name + "' name='" + clazz.name + "' classname='" + clazz.name + "' onclick=\"do_checkbox( $(this).attr('classname'))\" /></td><td colspan='2'>" + clazz.name + "</td><td id=''><select id='class_dialog_" + clazz.name + "' disabled='true' style='width: 100%' classname='" + clazz.name + "' onchange=\"var classname = $(this).attr('classname'); chardata.classes[classname].level = parseInt($(this).val())-1; repopulate_linked_class_selects();\" >" + options + "</select></td></tr>";			
 		} 

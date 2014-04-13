@@ -1,4 +1,4 @@
-sorcerer_bloodlines = new TAFFY([{
+sorcerer_bloodlines = TAFFY([{
 	name : "Aberrant",
 	description : "There is a taint in your blood, one that is alien and bizarre. You tend to think in odd ways, approaching problems from an angle that most would not expect. Over time, this taint manifests itself in your physical form.",
 	skill : "Knowledge (dungeoneering)",
@@ -189,7 +189,7 @@ sorcerer_bloodlines = new TAFFY([{
 	powers : ["Grave Touch", "Death\'s Gift", "Grasp of the Dead", "Incorporeal Form", "One of Us"],
 	_id : "1w33"
 }]);
-var bloodline_powers = new TAFFY([{
+var bloodline_powers = TAFFY([{
 	name : "Acidic Ray",
 	detail : "You can fire an acidic ray as a standard action, targeting any foe within 30 feet as a ranged touch attack. The acidic ray deals 1d6 points of acid damage + 1 for every two sorcerer levels you possess. You can use this ability a number of times per day equal to 3 + your Charisma modifier.",
 	levels : {
@@ -263,7 +263,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
+				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races({ name: chardata.race }).first().size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : "You can grow claws as a free action. "
 			}]
 		},
@@ -272,7 +272,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
+				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races({ name: chardata.race }).first().size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : "Your claws are considered magic weapons for the purpose of overcoming DR."
 			}]
 		},
@@ -282,7 +282,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : function() { var dam = "1d4/1d4"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d6/1d6"; } return dam; },
+				dam : function() { var dam = "1d4/1d4"; var size = sizes.indexOf(races({ name: chardata.race }).first().size); if(size > 3) { dam = "1d6/1d6"; } return dam; },
 				note : "Your claws are considered magic weapons for the purpose of overcoming DR."
 			}]
 		},
@@ -292,7 +292,7 @@ var bloodline_powers = new TAFFY([{
 				_id : "a389d",
 				name : "Claws",
 				weapon_name : "Claws",
-				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races.first({ name: chardata.race }).size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
+				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races({ name: chardata.race }).first().size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
 				note : function() { var rounds = (3 + calc_ability_modifier(chardata.abilities["Cha"])); return rounds > 0 ? "+1d6 fire " + rounds + " rounds/day" : "" }
 			}]
 		}
@@ -379,15 +379,15 @@ var bloodline_powers = new TAFFY([{
 	levels : {
 		2 : {
 			dr : function(dr) {
-				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 5;	
-				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 5;	
+				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 5;
+				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 5;
 			},
 			vals : ["5"]
 		},
 		8 : {
 			dr : function(dr) {
-				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 10;	
-				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 10;	
+				dr["acid"] = (dr["acid"] ? dr["acid"] : 0) + 10;
+				dr["cold"] = (dr["cold"] ? dr["cold"] : 0) + 10;
 			},
 			vals : ["10"]
 		}
@@ -417,9 +417,9 @@ var bloodline_powers = new TAFFY([{
 				dr["fire"] = (dr["fire"] ? dr["fire"] : 0) + 10;
 				dr["cold"] = "imm";
 				dr["acid"] = "imm";
-			}, 
+			},
 			save : function(save) {
-				save["petr"] = "imm";				
+				save["petr"] = "imm";
 			}
 		}
 	},
@@ -598,7 +598,7 @@ var bloodline_powers = new TAFFY([{
 				if(draconic_energy_type) {
 					dr[draconic_energy_type] = -1;
 				}
-			}, 
+			},
 			save : function(save) {
 				save["para"] = "imm";
 				save["sleep"] = "imm";

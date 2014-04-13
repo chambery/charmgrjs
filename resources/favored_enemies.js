@@ -1,4 +1,4 @@
-var favored_enemies = new TAFFY ([{
+var favored_enemies = TAFFY ([{
 	name: "Aberration",
 	type: "favored_enemy",
 	tags: ["pathfinder"], _id: "6d58"
@@ -164,7 +164,7 @@ var favored_enemies = new TAFFY ([{
 	tags: ["pathfinder"], _id: "ddff"
 }]);
 
-var favored_terrains = new TAFFY([
+var favored_terrains = TAFFY([
 {
 	name: "Cold",
 	type: "favored_terrain",
@@ -205,7 +205,7 @@ var favored_terrains = new TAFFY([
 	name: "Urban",
 	type: "favored_terrain",
 	tags: ["pathfinder"], _id: "cdf8"
-}, {	
+}, {
 	name: "Water",
 	type: "favored_terrain",
 	tags: ["pathfinder"], _id: "117c"

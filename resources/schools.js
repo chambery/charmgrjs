@@ -1,4 +1,4 @@
-schools = new TAFFY ([{
+schools = TAFFY ([{
   name: "Abjuration",
   abbrev: "Abjur",
   detail: "Abjurations are protective spells. They create physical or magicalbarriers, negate magical or physical abilities, harm trespassers, oreven banish the subject of the spell to another plane of existence.Representative spells include <i>protection from evil</i>, <i>dispel magic</i>,<i>antimagic field</i>, and <i>banishment</i>.<p class=sub>If one abjuration spell is active within 10 feet of another for 24hours or more, the magical fields interfere with each other andcreate barely visible energy fluctuations. The DC to find such spellswith the Search skill drops by 4.<p class=sub>If an abjuration creates a barrier that keeps certain types ofcreatures at bay, that barrier cannot be used to push away thosecreatures. If you force the barrier against such a creature, you feel adiscernible pressure against the barrier. If you continue to applypressure, you end the spell.", type: "school", tags: ["pathfinder"], _id: "27b5"

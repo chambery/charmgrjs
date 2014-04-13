@@ -1,1434 +1,2017 @@
 /*
 
-Software License Agreement (BSD License)
-http://taffydb.com
-Copyright (c) 2008
-All rights reserved.
-Version 1.7.3
+ Software License Agreement (BSD License)
+ http://taffydb.com
+ Copyright (c)
+ All rights reserved.
 
 
-Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following condition is met:
+ Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following condition is met:
 
-* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-SUMMARY:
-TAFFY takes a JavaScript object and returns a set of methods
-to search, modify, and manipulate that object.
+ */
 
-.get(),first(),last() - allow multiple objects
-gte,lte
-
+/*jslint        browser : true, continue : true,
+ devel  : true, indent  : 2,    maxerr   : 500,
+ newcap : true, nomen   : true, plusplus : true,
+ regexp : true, sloppy  : true, vars     : false,
+ white  : true
 */
 
+// BUILD 193d48d, modified by mmikowski to pass jslint
 
-// Setup TAFFY Function (nameSpace) to return an object with methods. 
+// Setup TAFFY name space to return an object with methods
+var TAFFY, exports, T;
+(function () {
+  'use strict';
+  var
+    typeList,     makeTest,     idx,    typeKey,
+    version,      TC,           idpad,  cmax,
+    API,          protectJSON,  each,   eachin,
+    isIndexable,  returnFilter, runFilters,
+    numcharsplit, orderByCol,   run,    intersection,
+    filter,       makeCid,      safeForJson,
+    isRegexp
+    ;
 
-if (typeof TAFFY=="undefined"||!TAFFY) {
 
-TAFFY = function (obj) {
-	var conf = {
-		template:null
-	}, T = TAFFY, raw = (T.isString(obj)) ? T.JSON.parse(obj) : obj, TOb = raw, TIA = [], t = true, f=false;
-	
-	
-	// ****************************************
-    // *
-    // * Create prvate mergeTemp function
-    // * Loop over set of indexes and apply a template to the record
-    // *
-    // ****************************************
-	var mergeTemp = function (rows,tmpl) {
-		var tmpl = tmpl || conf.template;
-		if (!TAFFY.isNull(tmpl))
-		{
-			for(var x = 0, xl = rows.length; x < xl; x++) {
-           		TOb[rows[x]] = TAFFY.mergeObj(TOb[rows[x]],tmpl);
-        	}
-		}
-	};
+  if ( ! TAFFY ){
+    // TC = Counter for Taffy DBs on page, used for unique IDs
+    // cmax = size of charnumarray conversion cache
+    // idpad = zeros to pad record IDs with
+    version = '2.7';
+    TC      = 1;
+    idpad   = '000000';
+    cmax    = 1000;
+    API     = {};
 
-	// ****************************************
-    // *
-    // * Create prvate bTIA function
-    // * Loop over every index within the Taffy Object TOb
-	// * and populate the Taffy Index Array TIA with the indexes
-    // *
-    // ****************************************
-	var bTIA = function () {
-		TIA = [];
-		for(var x = 0, xl = TOb.length; x < xl; x++) {
-           TIA[TIA.length] = x;
-        }
-	};
-	bTIA();
-	
-	
-	// ****************************************
-    // *
-    // * Create prvate findTests Object
-    // * Collect all possible true/false expression used when
-	// * doing lookups via the public find method.
-    // * Purpose: Used to house and document all of the
-	// * possible ways to match a value to a field with the
-	// * TAFFY Object. Each of the contained functions does an
-	// * evaluation against a value from the TAFFY Obj and a test
-	// * provided by the caller of the find method. If this
-	// * evaluation is true then the find method will add
-	// * the TAFFY Object record to the results set.
-    // *
-    // ****************************************
-	
-							var findTests = {
-								
-								pickTest:function(Tt)
-								{
-								var m = (Tt.indexOf("!") === 0) ? f : t;
-								if (!m)
-								{
-									Tt = Tt.substring(1,Tt.length);
-								}
-								return {test:(Tt == 'equal') ? 'is' : 
-									   (Tt == 'notequal') ? 'not' : 
-									   (Tt == 'startswith') ? 'starts' : 
-									   (Tt == 'endswith') ? 'ends' : 
-									   (Tt == 'greaterthan') ? 'gt' : 
-									   (Tt == 'lessthan') ? 'lt' : 
-									   (Tt == 'regexppass') ? 'regex' :	Tt,mode:(m) ? {s:t,f:f} : {s:f,f:t}};
-								},
-								run:function(s,mvalue,mtest,b) {
-									return ((s=="regex") ? (mtest.test(mvalue)) :
-									(s=="lt") ? (mvalue < mtest) :
-									(s=="gt") ? (mvalue > mtest) :
-									(s=="lte") ? (mvalue <= mtest) :
-									(s=="gte") ? (mvalue >= mtest) :
-									(s=="starts") ? (mvalue.indexOf(mtest) === 0) :
-									(s=="ends") ? (mvalue.substring((mvalue.length - mtest.length)) == mtest) :
-									(s=="like") ? (mvalue.indexOf(mtest) >= 0) :
-									(s=="is") ? (mvalue == mtest) :
-									(s=="has") ? (T.has(mvalue,mtest)) :
-									(s=="hasAll") ? (T.hasAll(mvalue,mtest)) :
-									(s=="length") ? (findTests.length(mvalue,mtest,b)) :
-									findTests[s](mvalue,mtest)) ? b.s : b.f;
-								},
-								length:function (mvalue,mtest,b)
-								{
-									// If a value length exits and meets filter criteria
-									var rlen = (!T.isUndefined(mvalue.length)) ? mvalue.length : (!T.isUndefined(mvalue.getLength)) ? mvalue.getLength() : 0;
-									if (T.isObject(mtest)) {
-										for(var kt in mtest)
-										{
-											if (mtest.hasOwnProperty(kt))
-											{
-												var pt = findTests.pickTest(kt);
-												return findTests.run(pt.test,rlen,mtest[kt],pt.mode) ? t : f;
-											}
-										}
-									}
-									// default return
-									return rlen == mtest ? b.s : b.f;
-								}								
-								};
-	
-	// Add in isObjectType checks
-	(function () {
-		for(var z in TAFFY)
-		{
-			if (TAFFY.hasOwnProperty(z) && z.indexOf("is") === 0)
-			{
-			(function (y) {
-				findTests["is" + y] = function (mvalue,mtest,b) {
-					return (TAFFY["is" + y](mvalue) == mtest) ? t : f;
-				};
-			}(z.substring(2,z.length)));
-			}
-		}
-	}()); 
-	
-	// ****************************************
-    // *
-    // * Create prvate bDexArray method
-    // * Return an array of indexes
-    // * Purpose: Used to create a variable that is an
-	// * array that contains the indexes of the records
-	// * that an action should be taken on. If a single
-	// * number is passed then an array is created with that
-	// * number being in postion 0. If an array is passed
-	// * in then that array is returned. If no value is
-	// * passed in then an array containing every index
-	// * in the TAFFY Obj is returned. If an object is passed
-	// * then a call to the find function is made and the
-	// * resulting array of indexes returned.
-    // *
-    // ****************************************
-    
-    var bDexArray = function (iA,f) {
-		var rA = [];
-        if (!T.isArray(iA) && TAFFY.isNumber(iA)) 
-			{
-                rA[rA.length] = iA;
-            } 
-		else if (T.isArray(iA))
-           {
-               rA = iA;
-                    
-           }
-		else if (T.isObject(iA))
-		   {
-				rA = f(iA);			
-		   }
-		else if (!T.isArray(iA) && !T.isNumber(iA))
-           {
-                rA = TIA;
-        	}
-		 return rA;
+    protectJSON = function ( t ) {
+      // ****************************************
+      // *
+      // * Takes: a variable
+      // * Returns: the variable if object/array or the parsed variable if JSON
+      // *
+      // ****************************************  
+      if ( TAFFY.isArray( t ) || TAFFY.isObject( t ) ){
+        return t;
+      }
+      else {
+        return JSON.parse( t );
+      }
     };
     
-	// ****************************************
-    // *
-    // * Create private toLogicalArray method
-    // * return custom array for use in array.sort based on sort obj
-    // * argument
-    // * Purpose: This is used by the buildSortFunction function in the case
-	// * of logical and logicaldesc sort types. This function splits a complex
-	// * value into an array so that each array item can be compared against
-	// * the item at the index in each value.
-	// *
-    // ****************************************
-	var toLogicalArray = function (value) {
-		var rArray = [0],type = "none",value = value + "";
-		if (!T.isNull(value) && !T.isUndefined(value)) {
-		for(var n = 0, nl = value.length;n<nl;n++)
-		{
-			var c = value.slice(n,(n+1));
-			if (T.isNumeric(c)) {
-				if (type != 'number') {
-					rArray[rArray.length] = c;
-					type = 'number';
-				} else {
-					rArray[(rArray.length-1)] = rArray[(rArray.length-1)] + "" + c;
-				}
-			} else {
-				if (type != 'string') {
-					rArray[rArray.length] = c;
-					type = 'string';
-				} else {
-					rArray[(rArray.length-1)] = rArray[(rArray.length-1)] + c;
-				}
-			}
-			
-		}
-		for(var n = 0, nl = rArray.length;n<nl;n++)
-		{
-			if (T.isNumeric(rArray[n])) {
-				rArray[n] = parseFloat(rArray[n]);
-			}
-		}
-		} else {
-			rArray[rArray.length] = null;
-		}
-		return rArray;
-	};
-	
-    // ****************************************
-    // *
-    // * Create private buildSortFunction method
-    // * return custom sort function for use in array.sort based on sort obj
-    // * argument
-    // * Purpose: This is used by the orderBy method to create a custom sort
-    // * function for use with array.sort(). This sort function will be unique
-    // * based on the field list supplied in the sortobj argument.
-    // *
-    // ****************************************
-    var buildSortFunction = function (sortobj) {
-        var custO = [],localO = [];
-        
-        if (T.isString(sortobj))
+    // gracefully stolen from underscore.js
+    intersection = function(array1, array2) {
+        return filter(array1, function(item) {
+          return array2.indexOf(item) >= 0;
+        });
+    };
+
+    // gracefully stolen from underscore.js
+    filter = function(obj, iterator, context) {
+        var results = [];
+        if (obj == null) return results;
+        if (Array.prototype.filter && obj.filter === Array.prototype.filter) return obj.filter(iterator, context);
+        each(obj, function(value, index, list) {
+          if (iterator.call(context, value, index, list)) results[results.length] = value;
+        });
+        return results;
+    };
+    
+    isRegexp = function(aObj) {
+        return Object.prototype.toString.call(aObj)==='[object RegExp]';
+    }
+    
+    safeForJson = function(aObj) {
+        var myResult = T.isArray(aObj) ? [] : T.isObject(aObj) ? {} : null;
+        if(aObj===null) return aObj;
+        for(var i in aObj) {
+            myResult[i]  = isRegexp(aObj[i]) ? aObj[i].toString() : T.isArray(aObj[i]) || T.isObject(aObj[i]) ? safeForJson(aObj[i]) : aObj[i];
+        }
+        return myResult;
+    }
+    
+    makeCid = function(aContext) {
+        var myCid = JSON.stringify(aContext);
+        if(myCid.match(/regex/)===null) return myCid;
+        return JSON.stringify(safeForJson(aContext));
+    }
+    
+    each = function ( a, fun, u ) {
+      var r, i, x, y;
+      // ****************************************
+      // *
+      // * Takes:
+      // * a = an object/value or an array of objects/values
+      // * f = a function
+      // * u = optional flag to describe how to handle undefined values
+      //   in array of values. True: pass them to the functions,
+      //   False: skip. Default False;
+      // * Purpose: Used to loop over arrays
+      // *
+      // ****************************************  
+      if ( a && ((T.isArray( a ) && a.length === 1) || (!T.isArray( a ))) ){
+        fun( (T.isArray( a )) ? a[0] : a, 0 );
+      }
+      else {
+        for ( r, i, x = 0, a = (T.isArray( a )) ? a : [a], y = a.length;
+              x < y; x++ )
         {
-		    localO[0] = sortobj;
-        } else if (T.isObject(sortobj)) {
-			localO = [sortobj];
-		} else {
-            localO = sortobj;
-        }
-        
-        // create the custO which contains instructions
-        // for the returned sort function
-        if (T.isArray(localO)) {
-            for(var sa = 0, sal = localO.length; sa < sal; sa++) {
-                if (T.isString(localO[sa]))
-                    {
-                    if (T.isString(TOb[0][localO[sa]]))
-                        {
-                            custO[custO.length] = {sortCol : localO[sa], sortDir : "asc", type : "string"};
-                        } else {
-                            custO[custO.length] = {sortCol : localO[sa], sortDir : "asc", type : "number"};
-                        }
-                    } else if (T.isObject(localO[sa])) {
-						for(var sc in localO[sa])
-						{
-							if (localO[sa].hasOwnProperty(sc))
-								{
-                        	if (T.isString(TOb[0][localO[sa].sortCol]))
-                        	{
-                            	custO[custO.length] = {sortCol : sc, sortDir : localO[sa][sc], type : "string"};
-                        	} else {
-                            	custO[custO.length] = {sortCol : sc, sortDir : localO[sa][sc], type : "number"};
-                        	}
-								}
-                        	
-						}
-                    }
+          i = a[x];
+          if ( !T.isUndefined( i ) || (u || false) ){
+            r = fun( i, x );
+            if ( r === T.EXIT ){
+              break;
             }
+
+          }
         }
-        
-        // Return the sort function to the calling object.
-        return function (a,b) {
-            var returnvar = 0,r1=a,r2=b,x,y;
-            
-            // loop over the custO and test each sort
-            // instruction set against records x and y to see which
-            // should appear first in the final array sort
-            for(var sa = 0, sal = custO.length; sa < sal; sa++) {
-                if (returnvar === 0) {
-				
-                x = r1[custO[sa].sortCol];
-                y = r2[custO[sa].sortCol];
-                
-                if (custO[sa].type == 'string'){
-                    x = (T.isString(x)) ? x.toLowerCase() : x;
-                    y = (T.isString(y)) ? y.toLowerCase() : y;
-                }
-    
-                if (custO[sa].sortDir == 'desc')
-                {
-					if (T.isNull(y) || T.isUndefined(y) || y < x) {
-                        returnvar = -1;
-                    } else if (T.isNull(x) || T.isUndefined(x) || x < y){
-                        returnvar = 1;
-                    }
-                } else if (custO[sa].sortDir == 'logical') {
-					x = toLogicalArray(x);
-                    y = toLogicalArray(y);
-					
-					for(var z = 0, zl = y.length;z<zl;z++)
-					{
-						if (x[z] < y[z] && z < x.length) {
-							returnvar = -1;
-							break;
-                   		} else if (x[z] > y[z]){
-                        	returnvar = 1;
-							break;
-                    	}
-					}
-					if (x.length < y.length && returnvar==0)
-					{
-						returnvar = -1;
-					} else if (x.length > y.length && returnvar==0) {
-						returnvar = 1;
-					}
-				} else if (custO[sa].sortDir == 'logicaldesc') {
-					x = toLogicalArray(x);
-                    y = toLogicalArray(y);
-					for(var z = 0, zl = y.length;z<zl;z++)
-					{
-						if (x[z] > y[z] && z < x.length) {
-                        	returnvar = -1;
-							break;
-                   		} else if (x[z] < y[z]){
-                        	returnvar = 1;
-							break;
-                    	}
-					}
-					if (x.length < y.length && returnvar==0)
-					{
-						returnvar = 1;
-					} else if (x.length > y.length && returnvar==0) {
-						returnvar = -1;
-					}
-				} else {
-					if (T.isNull(x) || T.isUndefined(x) || x < y) {
-                        returnvar = -1;
-                    } else if (T.isNull(y) || T.isUndefined(y) || x > y){
-                        returnvar = 1;
-                    }
-                }
-                
-                }
-            
+      }
+    };
+
+    eachin = function ( o, fun ) {
+      // ****************************************
+      // *
+      // * Takes:
+      // * o = an object
+      // * f = a function
+      // * Purpose: Used to loop over objects
+      // *
+      // ****************************************  
+      var x = 0, r, i;
+
+      for ( i in o ){
+        if ( o.hasOwnProperty( i ) ){
+          r = fun( o[i], i, x++ );
+          if ( r === T.EXIT ){
+            break;
+          }
+        }
+      }
+
+    };
+
+    API.extend = function ( m, f ) {
+      // ****************************************
+      // *
+      // * Takes: method name, function
+      // * Purpose: Add a custom method to the API
+      // *
+      // ****************************************  
+      API[m] = function () {
+        return f.apply( this, arguments );
+      };
+    };
+
+    isIndexable = function ( f ) {
+      var i;
+      // Check to see if record ID
+      if ( T.isString( f ) && /[t][0-9]*[r][0-9]*/i.test( f ) ){
+        return true;
+      }
+      // Check to see if record
+      if ( T.isObject( f ) && f.___id && f.___s ){
+        return true;
+      }
+
+      // Check to see if array of indexes
+      if ( T.isArray( f ) ){
+        i = true;
+        each( f, function ( r ) {
+          if ( !isIndexable( r ) ){
+            i = false;
+
+            return TAFFY.EXIT;
+          }
+        });
+        return i;
+      }
+
+      return false;
+    };
+
+    runFilters = function ( r, filter ) {
+      // ****************************************
+      // *
+      // * Takes: takes a record and a collection of filters
+      // * Returns: true if the record matches, false otherwise
+      // ****************************************
+      var match = true;
+
+
+      each( filter, function ( mf ) {
+        switch ( T.typeOf( mf ) ){
+          case 'function':
+            // run function
+            if ( !mf.apply( r ) ){
+              match = false;
+              return TAFFY.EXIT;
             }
-            return returnvar;
-        
+            break;
+          case 'array':
+            // loop array and treat like a SQL or
+            match = (mf.length === 1) ? (runFilters( r, mf[0] )) :
+              (mf.length === 2) ? (runFilters( r, mf[0] ) ||
+                runFilters( r, mf[1] )) :
+                (mf.length === 3) ? (runFilters( r, mf[0] ) ||
+                  runFilters( r, mf[1] ) || runFilters( r, mf[2] )) :
+                  (mf.length === 4) ? (runFilters( r, mf[0] ) ||
+                    runFilters( r, mf[1] ) || runFilters( r, mf[2] ) ||
+                    runFilters( r, mf[3] )) : false;
+            if ( mf.length > 4 ){
+              each( mf, function ( f ) {
+                if ( runFilters( r, f ) ){
+                  match = true;
+                }
+              });
+            }
+            break;
+        }
+      });
+
+      return match;
+    };
+
+    returnFilter = function ( f ) {
+      // ****************************************
+      // *
+      // * Takes: filter object
+      // * Returns: a filter function
+      // * Purpose: Take a filter object and return a function that can be used to compare
+      // * a TaffyDB record to see if the record matches a query
+      // ****************************************  
+      var nf = [];
+      if ( T.isString( f ) && /[t][0-9]*[r][0-9]*/i.test( f ) ){
+        f = { ___id : f };
+      }
+      if ( T.isArray( f ) ){
+        // if we are working with an array
+
+        each( f, function ( r ) {
+          // loop the array and return a filter func for each value
+          nf.push( returnFilter( r ) );
+        });
+        // now build a func to loop over the filters and return true if ANY of the filters match
+        // This handles logical OR expressions
+        f = function () {
+          var that = this, match = false;
+          each( nf, function ( f ) {
+            if ( runFilters( that, f ) ){
+              match = true;
+            }
+          });
+          return match;
         };
-    
-    };
+        return f;
 
-	 // ****************************************
-    // *
-    // * Return Obj containing Methods
-    // *
-    // ****************************************
-    return {
-	
-	// ****************************************
-    // *
-    // * This is a simple true flag to identify
-	// * the returned collection as being created by
-	// * TAFFY()
-    // *
-    // ****************************************
-    TAFFY:true,
-	
-	// ****************************************
-    // *
-    // * Get the length of the TAFFY collection.
-    // *
-    // ****************************************
-    getLength:function () {
-		return TOb.length;
-	},
-    
-	// ****************************************
-    // *
-    // * This is the date of the last change
-	// * to the TAFFY object.
-    // *
-    // ****************************************
-   	lastModifyDate:new Date(),
-	
-    // ****************************************
-    // *
-    // * Create public find method
-    // * Returns array of index numbers for matching array values
-    // * Purpose: This takes an obj that defines a set of match
-    // * cases for use against the TOb. Matching indexes are
-    // * added to an array and then returned to the user. This is the
-    // * primary "lookup" feature of TAFFY and is how you find individual
-    // * or sets of records for use in update, remove, get, etc.
-    // *
-    // ****************************************
-    find : function (matchObj,findFilter) {
-	
-	
-        // define findMatches array and findMatchesLoaded flag
-        var findIndex = 0;
-        
-			// if findFilter is provided use findFilter to start findMatches array
-			// otherwise use TIA which contains all indexes of the TOb 
-					if (T.isArray(findFilter)) {
-						var findMatches = findFilter;
-					} else  {
-                    	var findMatches = TIA;
-					
+      }
+      // if we are dealing with an Object
+      if ( T.isObject( f ) ){
+        if ( T.isObject( f ) && f.___id && f.___s ){
+          f = { ___id : f.___id };
+        }
+
+        // Loop over each value on the object to prep match type and match value
+        eachin( f, function ( v, i ) {
+
+          // default match type to IS/Equals
+          if ( !T.isObject( v ) ){
+            v = {
+              'is' : v
+            };
+          }
+          // loop over each value on the value object  - if any
+          eachin( v, function ( mtest, s ) {
+            // s = match type, e.g. is, hasAll, like, etc
+            var c = [], looper;
+
+            // function to loop and apply filter
+            looper = (s === 'hasAll') ?
+              function ( mtest, func ) {
+                func( mtest );
+              } : each;
+
+            // loop over each test
+            looper( mtest, function ( mtest ) {
+
+              // su = match success
+              // f = match false
+              var su = true, f = false, matchFunc;
+
+
+              // push a function onto the filter collection to do the matching
+              matchFunc = function () {
+
+                // get the value from the record
+                var
+                  mvalue   = this[i],
+                  eqeq     = '==',
+                  bangeq   = '!=',
+                  eqeqeq   = '===',
+                  lt   = '<',
+                  gt   = '>',
+                  lteq   = '<=',
+                  gteq   = '>=',
+                  bangeqeq = '!==',
+                  r
+                  ;
+
+                if (typeof mvalue === 'undefined') {
+                  return false;
                 }
-		
-       // if matchObject is a function run it against every item in findMatches
-		if (T.isFunction(matchObj)) {
-			var thisMatchArray = [];
-			// loop over every element in the findMatches
-			for (var d = 0, dl = findMatches.length; d < dl; d++) {
-				// add to matched item list if function returns true
-				if (matchObj(TOb[d], d)) {
-					thisMatchArray[thisMatchArray.length] = findMatches[d];
-				}
-			}
-			findMatches = thisMatchArray;
-		}
-		else {
-			// loop over attributes in matchObj
-			for (var mi in matchObj) {
-				if (matchObj.hasOwnProperty(mi)) {
-					// default matchType, matchValue, matchField
-					var matchType = 'is', matchValue = '', matchField = mi, matchMode = {
-						s: t,
-						f: f
-					}, pt = {};
-					
-					// If the matchObj attribute is an object
-					if (T.isObject(matchObj[mi])) {
-					
-						// loop over match field attributes
-						for (var fi in matchObj[mi]) {
-							if (matchObj[mi].hasOwnProperty(fi)) {
-								// switch over attributes, extract data
-								pt = findTests.pickTest(fi);
-								matchType = pt.test;
-								matchMode = pt.mode;
-								
-								matchValue = matchObj[mi][fi];
-							}
-						}
-					}
-					// If the matchObj attribute is not an object
-					else {
-						// set the match value to the value provided
-						matchValue = matchObj[mi];
-					}
-					
-					//define thisMatchArray for this find method
-					var thisMatchArray = [];
-					
-					// loop over every element in the findMatches
-					for (var d = 0, dl = findMatches.length; d < dl; d++) {
-					
-						// if the value is an array of values, loop rather than do 1 to 1
-						if (T.isArray(matchValue) && matchType != 'isSameArray' && matchType != 'hasAll') {
-							// call the correct filter based on matchType and add the record if the filter returns true for normal mode
-							if (matchMode.s) {
-								for (var md = 0; md < matchValue.length; md++) {
-								
-									if (findTests.run(matchType, TOb[findMatches[d]][matchField], matchValue[md], matchMode)) {
-										thisMatchArray[thisMatchArray.length] = findMatches[d];
-										
-									}
-									
-								}
-							}
-							else {
-							
-								// call the correct filter based on matchType and add the record only if fit passes every filter value if negative (!) mode
-								var pt = 1;
-								for (var md = 0; md < matchValue.length; md++) {
-								
-									if (!findTests.run(matchType, TOb[findMatches[d]][matchField], matchValue[md], matchMode)) {
-										pt = 0;
-										
-									}
-									
-								}
-								if (pt == 1) {
-									thisMatchArray[thisMatchArray.length] = findMatches[d];
-								}
-							}
-						}
-						// if the value is a function call function and append index if it returns true
-						else 
-							if (T.isFunction(matchValue) && matchValue(TOb[findMatches[d]][matchField], d)) {
-								thisMatchArray[thisMatchArray.length] = findMatches[d];
-							}
-							// if the value is not an array but a single value
-							// If an exact match is found then add it to the array
-							
-							else 
-								if (findTests.run(matchType, TOb[findMatches[d]][matchField], matchValue, matchMode)) {
-									thisMatchArray[thisMatchArray.length] = findMatches[d];
-									
-								}
-					}
-					
-					findMatches = thisMatchArray;
-				}
-			}
-		}
-		// Garther only unique finds
-		findMatches = T.gatherUniques(findMatches);
+                
+                if ( (s.indexOf( '!' ) === 0) && s !== bangeq &&
+                  s !== bangeqeq )
+                {
+                  // if the filter name starts with ! as in '!is' then reverse the match logic and remove the !
+                  su = false;
+                  s = s.substring( 1, s.length );
+                }
+                // get the match results based on the s/match type
+                /*jslint eqeq : true */
+                r = (
+                  (s === 'regex') ? (mtest.test( mvalue )) : (s === 'lt' || s === lt)
+                  ? (mvalue < mtest)  : (s === 'gt' || s === gt)
+                  ? (mvalue > mtest)  : (s === 'lte' || s === lteq)
+                  ? (mvalue <= mtest) : (s === 'gte' || s === gteq)
+                  ? (mvalue >= mtest) : (s === 'left')
+                  ? (mvalue.indexOf( mtest ) === 0) : (s === 'leftnocase')
+                  ? (mvalue.toLowerCase().indexOf( mtest.toLowerCase() )
+                    === 0) : (s === 'right')
+                  ? (mvalue.substring( (mvalue.length - mtest.length) )
+                    === mtest) : (s === 'rightnocase')
+                  ? (mvalue.toLowerCase().substring(
+                    (mvalue.length - mtest.length) ) === mtest.toLowerCase())
+                    : (s === 'like')
+                  ? (mvalue.indexOf( mtest ) >= 0) : (s === 'likenocase')
+                  ? (mvalue.toLowerCase().indexOf(mtest.toLowerCase()) >= 0)
+                    : (s === eqeqeq || s === 'is')
+                  ? (mvalue ===  mtest) : (s === eqeq)
+                  ? (mvalue == mtest) : (s === bangeqeq)
+                  ? (mvalue !==  mtest) : (s === bangeq)
+                  ? (mvalue != mtest) : (s === 'isnocase')
+                  ? (mvalue.toLowerCase
+                    ? mvalue.toLowerCase() === mtest.toLowerCase()
+                      : mvalue === mtest) : (s === 'has')
+                  ? (T.has( mvalue, mtest )) : (s === 'hasall')
+                  ? (T.hasAll( mvalue, mtest )) : (s === 'contains')
+                  ? (TAFFY.isArray(mvalue) && mvalue.indexOf(mtest) > -1) : (
+                    s.indexOf( 'is' ) === -1
+                      && !TAFFY.isNull( mvalue )
+                      && !TAFFY.isUndefined( mvalue )
+                      && !TAFFY.isObject( mtest )
+                      && !TAFFY.isArray( mtest )
+                    )
+                  ? (mtest === mvalue[s])
+                    : (T[s] && T.isFunction( T[s] )
+                    && s.indexOf( 'is' ) === 0)
+                  ? T[s]( mvalue ) === mtest
+                    : (T[s] && T.isFunction( T[s] ))
+                  ? T[s]( mvalue, mtest ) : (false)
+                );
+                /*jslint eqeq : false */
+                r = (r && !su) ? false : (!r && !su) ? true : r;
 
-        return findMatches;
-    },
-    
-    // ****************************************
-    // *
-    // * Create public remove method
-    // * Purpose: This is used to remove a record from
-    // * the TOb by an index or an array of indexes.
-    // *
-    // ****************************************
-    remove : function (dex) {
-        	
-            var removeIndex = bDexArray(dex,this.find);
-			
-            // loop over removeIndex and set each record to remove
-            // this is done so all records are flagged for remove
-            // before the size of the array changes do to the splice
-            // function below
-            for(var di = 0, dil = removeIndex.length; di < dil; di++) {
-				if (!T.isNull(this.onRemove))
-				{
-					this.onRemove(TOb[removeIndex[di]]);
-				}
-                TOb[removeIndex[di]] = 'remove';
+                return r;
+              };
+              c.push( matchFunc );
+
+            });
+            // if only one filter in the collection push it onto the filter list without the array
+            if ( c.length === 1 ){
+
+              nf.push( c[0] );
             }
-			
-			// nested function find delete
-			var removeRemaining = function () {
-				for(var tdi = 0, tdil = TOb.length; tdi < tdil; tdi++) {
-           		 	if (TOb[tdi] === 'remove') {
-                    	return t;
-             		}
-            	}
-				return f;
-			};
-            
-            // loop over TOb and remove all rows set to remove
-            while (removeRemaining()) {
-				for(var tdi = 0, tdil = TOb.length; tdi < tdil; tdi++) {
-	                if (TOb[tdi] === 'remove') {
-	                    TOb.splice(tdi,1);
-						// update lastModifyDate
-						this.lastModifyDate = new Date();
-	                }
-	            }
-			}
-
-			// populate TIA
-			bTIA();
-            return removeIndex;
-    },
-    
-
-    
-    
-    // ****************************************
-    // *
-    // * Create public insert method
-    // * Purpose: this takes an obj and inserts it into
-    // * the TAFFY Obj array
-    // *
-    // ****************************************    
-    insert : function (newRecordObj) {
-        
-		var rec = (TAFFY.isArray(newRecordObj)) ? newRecordObj : [newRecordObj];
-		
-		for (var x = 0; x < rec.length; x++) {
-			if (!T.isNull(this.onInsert)) {
-				this.onInsert(rec[x]);
-			}
-			
-			
-			// Do insert
-			TOb[TOb.length] = (TAFFY.isNull(conf.template)) ? rec[x] : TAFFY.mergeObj(conf.template, rec[x]);
-			
-			// update lastModifyDate
-			this.lastModifyDate = new Date();
-			
-			// populate TIA
-			TIA[TIA.length] = TOb.length - 1;
-			
-		}
-		return [TOb.length-1];
-    },
-    
-    // ****************************************
-    // *
-    // * Create public update method
-    // * Purpose: This takes an obj of name/value
-    // * pairs and then a set of 1 or more indexes
-    // * and updates those records with in the TOb
-    // *
-    // ****************************************    
-    update : function (updateObj,dex) {
-        	
-            var updateIndex = bDexArray(dex,this.find), updateCount=0;
-			
-            for(var d = 0, dl = updateIndex.length; d < dl; d++) {
-              // set the updatedex
-              var updateDex = updateIndex[d];
-              
-			  if (!T.isNull(this.onUpdate))
-				{
-					this.onUpdate(updateObj,TOb[updateDex]);
-				}
-			            
-              // Merge Objects
-			  TOb[updateDex] = T.mergeObj(TOb[updateDex],updateObj);
-                        
-              // add the updaecount
-              updateCount++;
-			  
+            else {
+              // else build a function to loop over all the filters and return true only if ALL match
+              // this is a logical AND
+              nf.push( function () {
+                var that = this, match = false;
+                each( c, function ( f ) {
+                  if ( f.apply( that ) ){
+                    match = true;
+                  }
+                });
+                return match;
+              });
+            }
+          });
+        });
+        // finally return a single function that wraps all the other functions and will run a query
+        // where all functions have to return true for a record to appear in a query result
+        f = function () {
+          var that = this, match = true;
+          // faster if less than  4 functions
+          match = (nf.length === 1 && !nf[0].apply( that )) ? false :
+            (nf.length === 2 &&
+              (!nf[0].apply( that ) || !nf[1].apply( that ))) ? false :
+              (nf.length === 3 &&
+                (!nf[0].apply( that ) || !nf[1].apply( that ) ||
+                  !nf[2].apply( that ))) ? false :
+                (nf.length === 4 &&
+                  (!nf[0].apply( that ) || !nf[1].apply( that ) ||
+                    !nf[2].apply( that ) || !nf[3].apply( that ))) ? false
+                  : true;
+          if ( nf.length > 4 ){
+            each( nf, function ( f ) {
+              if ( !runFilters( that, f ) ){
+                match = false;
               }
-        
-			return updateIndex;
-        },
-        
-        
-    // ****************************************
-    // *
-    // * Create public get method
-    // * Purpose: This return an array containing
-    // * the rows for a set of indexes. Used to get
-    // * a record set with the help of the find
-    // * function. Returns an empty array if
-	// * no records are found.
-    // *
-    // ****************************************
-    
-    get : function (dex) {
-        
-         var nT = [];
-            
-         var getIndex = bDexArray(dex,this.find);
-                
-                // loop over all of the indexes
-                for(var d = 0, dl = getIndex.length; d < dl; d++) {
-                    
-                    // add the TOb to the newTAFFYArray array
-                    nT[nT.length] = TOb[getIndex[d]];
-                }
-        return nT;
-    },
-	
-	// ****************************************
-    // *
-    // * Create public first method
-    // * Purpose: This returns the first row
-	// * from a set of indexes. Used to get
-    // * a record with the help of the find
-    // * function. Returns false if no records
-	// * are found.
-    // *
-    // ****************************************
-    
-    first : function (dex) {
-            
-         var getIndex = bDexArray(dex,this.find);
-                
-         return (getIndex.length > 0) ? TOb[getIndex[0]] : false;
-					
-    },
-	
-	// ****************************************
-    // *
-    // * Create public last method
-    // * Purpose: This returns the last row
-	// * from a set of indexes. Used to get
-    // * a record with the help of the find
-    // * function. Returns false if no records
-	// * are found.
-    // *
-    // ****************************************
-    
-    last : function (dex) {
-        
-         var getIndex = bDexArray(dex,this.find);
-                
-         return (getIndex.length > 0) ? TOb[getIndex[(getIndex.length - 1)]] : false;
-    },
-	
-	// ****************************************
-    // *
-    // * Create public stringify method
-    // * Purpose: This returns a string JSON array
-	// * from a set of indexes. Used to get records
-	// * for handling by AJAX or other langauges.
-    // *
-    // ****************************************
-    
-    stringify : function (dex) {
-        
-        return T.JSON.stringify(this.get(dex));
-    },
-    
-    // ****************************************
-    // *
-    // * Create public orderBy method
-    // * Purpose: Reorder the array according
-    // * to a list of fields. Very useful for
-    // * ordering tables or other types of
-    // * sorting.
-    // *
-    // ****************************************
-    orderBy : function (Obj) {
-        
-		// Only attempt to sort if there is a length
-		// to the TAFFY array
-		if (TOb.length > 0) {
-        // Use the private buildSortFunction method
-        // to create a custom sort function unless one is provided
-		
-		if (T.isFunction(Obj)) {
-			var customSort = Obj;
-		} else {
-			var customSort = buildSortFunction(Obj);		
-		}
-       
-        // Call JavaScript's array.sort with the custom
-        // sort function
-        TOb.sort(customSort);
-		
-		// update lastModifyDate
-		this.lastModifyDate = new Date();
-        
-		
-		}
-        },
-        
-    // ****************************************
-    // *
-    // * Create public forEach method
-    // * Purpose: Loop over every item in a TOb
-    // * (or at least the ones passed in the forIndex)
-    // * and call the provided user created function.
-    // *
-    // ****************************************
-    forEach : function (func2call,dex) {
-        
-        var forIndex = bDexArray(dex,this.find);
-			
-        var row;
-        // loop over all of the indexes
-            for(var fe = 0, fel = forIndex.length; fe < fel; fe++) {
-                // get this row from the TOb
-                 row = TOb[forIndex[fe]];
-                // call the function passed in to the method
-				var nr = func2call(row,forIndex[fe]);
-				
-				// If nr is an object then set the row equal to the new object
-				if (T.isObject(nr))
-				{
-					if (TAFFY.isSameObject(nr,TAFFY.EXIT)) {
-						break;
-					} else {
-						this.update(nr,forIndex[fe]);
-					}
-				}
-            }
-        
-        },
-		
-	// ****************************************
-    // *
-    // * Create public sum method
-    // * Purpose: Take a column name and a forIndex
-	// * and sum up the numeric total for every row.
-    // *
-    // ****************************************
-    sum : function (col,dex) {
-        var t = 0;
-        this.forEach(function (r) {
-			if(TAFFY.isNumeric(r[col])) {
-				t = t + r[col];
-			}
-			
-		},dex)
-        
-		return t;
-        },
-	
-	// ****************************************
-    // *
-    // * Create public max method
-    // * Purpose: Take a column name and a forIndex
-	// * and find the highest value in that column
-	// * over every row.
-    // *
-    // ****************************************
-    max : function (col,dex) {
-       	var t, f = 0;
-        this.forEach(function (r) {
-			if (f==1 && r[col] > t) {
-				t = r[col];
-			} else if (f==0) {
-				t=r[col];
-				f=1;
-			}		
-		},dex)
-        
-		return t;
-        },
-	
-	// ****************************************
-    // *
-    // * Create public min method
-    // * Purpose: Take a column name and a forIndex
-	// * and find the lowest value in that column
-	// * over every row.
-    // *
-    // ****************************************
-    min : function (col,dex) {
-       	var t, f = 0;
-        this.forEach(function (r) {
-			if (f==1 && r[col] < t) {
-				t = r[col];
-			} else if (f==0) {
-				t=r[col];
-				f=1;
-			}		
-		},dex)
-        
-		return t;
-        },
-	
-	// ****************************************
-    // *
-    // * Create public values method
-    // * Purpose: Take a column name and a forIndex
-	// * and find all the values for the rows returned.
-    // *
-    // ****************************************
-    values : function (col,dex) {
-      	var t = [];
-        this.forEach(function (r) {
-			t[t.length] = r[col];
-		},dex)
-		return t;
-        },
-	// ****************************************
-    // *
-    // * Create public uniqueValues method
-    // * Purpose: Take a column name and a forIndex
-	// * and find only the unique values for the rows returned.
-    // *
-    // ****************************************
-    uniqueValues : function (col,dex) {
-      	var t = TAFFY([]);
-        this.forEach(function (r) {
-			if (t.find({value:r[col]}).length == 0) {
-				t.insert({value:r[col]});	
-			}
-		},dex)
-		return t.values("value");
-        },
-	// ****************************************
-    // *
-    // * config variable object
-    // *
-    // ****************************************
-		config:{
-			// ****************************************
-		    // *
-		    // * Create public set method
-		    // * Purpose: Set a config value
-		    // *
-		    // ****************************************
-			set:function (n,v) {
-				conf[n] = v;
-				if (n == 'template' && !TAFFY.isNull(v)) {
-					mergeTemp(TIA,v);
-				}
-			},
-			// ****************************************
-		    // *
-		    // * Create public get method
-		    // * Purpose: Get a config value
-		    // *
-		    // ****************************************
-			get:function (n) {
-				return conf[n];
-			}
-		},
-	
-	// ****************************************
-    // *
-    // * Create public stringify method
-    // * Purpose: This returns a string JSON array
-	// * from a set of indexes. Used to get records
-	// * for handling by AJAX or other langauges.
-    // *
-    // ****************************************
-    
-    applyTemplate : function (tmp,dex) {
-         var getIndex = bDexArray(dex,this.find);
-                
-         mergeTemp(getIndex,tmp);
-    },
-	// ****************************************
-    // *
-    // * Empty On Update Event - This can be replaced with a function
-	// * to call a custom action as each record is updated.
-    // *
-    // ****************************************
-		onUpdate:null,
-	
-	// ****************************************
-    // *
-    // * Empty On Remove Event - This can be replaced with a function
-	// * to call a custom action as each record is removed.
-    // *
-    // ****************************************
-		onRemove:null,
-		
-	// ****************************************
-    // *
-    // * Empty On Insert Event - This can be replaced with a function
-	// * to call a custom action as each record is inserted.
-    // *
-    // ****************************************
-		onInsert:null
-    
+            });
+          }
+          return match;
+        };
+        return f;
+      }
+
+      // if function
+      if ( T.isFunction( f ) ){
+        return f;
+      }
     };
-    
-};
-	
-	// ****************************************
+
+    orderByCol = function ( ar, o ) {
+      // ****************************************
+      // *
+      // * Takes: takes an array and a sort object
+      // * Returns: the array sorted
+      // * Purpose: Accept filters such as "[col], [col2]" or "[col] desc" and sort on those columns
+      // *
+      // ****************************************
+
+      var sortFunc = function ( a, b ) {
+        // function to pass to the native array.sort to sort an array
+        var r = 0;
+
+        T.each( o, function ( sd ) {
+          // loop over the sort instructions
+          // get the column name
+          var o, col, dir, c, d;
+          o = sd.split( ' ' );
+          col = o[0];
+
+          // get the direction
+          dir = (o.length === 1) ? "logical" : o[1];
+
+
+          if ( dir === 'logical' ){
+            // if dir is logical than grab the charnum arrays for the two values we are looking at
+            c = numcharsplit( a[col] );
+            d = numcharsplit( b[col] );
+            // loop over the charnumarrays until one value is higher than the other
+            T.each( (c.length <= d.length) ? c : d, function ( x, i ) {
+              if ( c[i] < d[i] ){
+                r = -1;
+                return TAFFY.EXIT;
+              }
+              else if ( c[i] > d[i] ){
+                r = 1;
+                return TAFFY.EXIT;
+              }
+            } );
+          }
+          else if ( dir === 'logicaldesc' ){
+            // if logicaldesc than grab the charnum arrays for the two values we are looking at
+            c = numcharsplit( a[col] );
+            d = numcharsplit( b[col] );
+            // loop over the charnumarrays until one value is lower than the other
+            T.each( (c.length <= d.length) ? c : d, function ( x, i ) {
+              if ( c[i] > d[i] ){
+                r = -1;
+                return TAFFY.EXIT;
+              }
+              else if ( c[i] < d[i] ){
+                r = 1;
+                return TAFFY.EXIT;
+              }
+            } );
+          }
+          else if ( dir === 'asec' && a[col] < b[col] ){
+            // if asec - default - check to see which is higher
+            r = -1;
+            return T.EXIT;
+          }
+          else if ( dir === 'asec' && a[col] > b[col] ){
+            // if asec - default - check to see which is higher
+            r = 1;
+            return T.EXIT;
+          }
+          else if ( dir === 'desc' && a[col] > b[col] ){
+            // if desc check to see which is lower
+            r = -1;
+            return T.EXIT;
+
+          }
+          else if ( dir === 'desc' && a[col] < b[col] ){
+            // if desc check to see which is lower
+            r = 1;
+            return T.EXIT;
+
+          }
+          // if r is still 0 and we are doing a logical sort than look to see if one array is longer than the other
+          if ( r === 0 && dir === 'logical' && c.length < d.length ){
+            r = -1;
+          }
+          else if ( r === 0 && dir === 'logical' && c.length > d.length ){
+            r = 1;
+          }
+          else if ( r === 0 && dir === 'logicaldesc' && c.length > d.length ){
+            r = -1;
+          }
+          else if ( r === 0 && dir === 'logicaldesc' && c.length < d.length ){
+            r = 1;
+          }
+
+          if ( r !== 0 ){
+            return T.EXIT;
+          }
+
+
+        } );
+        return r;
+      };
+      // call the sort function and return the newly sorted array
+      return (ar && ar.push) ? ar.sort( sortFunc ) : ar;
+
+
+    };
+
+    // ****************************************
     // *
-    // * TAFFY Public Utilities
-	// * Accessed via TAFFY[methodname]()
+    // * Takes: a string containing numbers and letters and turn it into an array
+    // * Returns: return an array of numbers and letters
+    // * Purpose: Used for logical sorting. String Example: 12ABC results: [12,'ABC']
+    // **************************************** 
+    (function () {
+      // creates a cache for numchar conversions
+      var cache = {}, cachcounter = 0;
+      // creates the numcharsplit function
+      numcharsplit = function ( thing ) {
+        // if over 1000 items exist in the cache, clear it and start over
+        if ( cachcounter > cmax ){
+          cache = {};
+          cachcounter = 0;
+        }
+
+        // if a cache can be found for a numchar then return its array value
+        return cache['_' + thing] || (function () {
+          // otherwise do the conversion
+          // make sure it is a string and setup so other variables
+          var nthing = String( thing ),
+            na = [],
+            rv = '_',
+            rt = '',
+            x, xx, c;
+
+          // loop over the string char by char
+          for ( x = 0, xx = nthing.length; x < xx; x++ ){
+            // take the char at each location
+            c = nthing.charCodeAt( x );
+            // check to see if it is a valid number char and append it to the array.
+            // if last char was a string push the string to the charnum array
+            if ( ( c >= 48 && c <= 57 ) || c === 46 ){
+              if ( rt !== 'n' ){
+                rt = 'n';
+                na.push( rv.toLowerCase() );
+                rv = '';
+              }
+              rv = rv + nthing.charAt( x );
+            }
+            else {
+              // check to see if it is a valid string char and append to string
+              // if last char was a number push the whole number to the charnum array
+              if ( rt !== 's' ){
+                rt = 's';
+                na.push( parseFloat( rv ) );
+                rv = '';
+              }
+              rv = rv + nthing.charAt( x );
+            }
+          }
+          // once done, push the last value to the charnum array and remove the first uneeded item
+          na.push( (rt === 'n') ? parseFloat( rv ) : rv.toLowerCase() );
+          na.shift();
+          // add to cache
+          cache['_' + thing] = na;
+          cachcounter++;
+          // return charnum array
+          return na;
+        }());
+      };
+    }());
+
+    // ****************************************
+    // *
+    // * Runs a query
+    // **************************************** 
+
+
+    run = function () {
+      this.context( {
+        results : this.getDBI().query( this.context() )
+      });
+
+    };
+
+    API.extend( 'filter', function () {
+      // ****************************************
+      // *
+      // * Takes: takes unlimited filter objects as arguments
+      // * Returns: method collection
+      // * Purpose: Take filters as objects and cache functions for later lookup when a query is run
+      // **************************************** 
+      var
+        nc = TAFFY.mergeObj( this.context(), { run : null } ),
+        nq = []
+      ;
+      each( nc.q, function ( v ) {
+        nq.push( v );
+      });
+      nc.q = nq;
+      // Hadnle passing of ___ID or a record on lookup.
+      each( arguments, function ( f ) {
+        nc.q.push( returnFilter( f ) );
+        nc.filterRaw.push( f );
+      });
+
+      return this.getroot( nc );
+    });
+
+    API.extend( 'order', function ( o ) {
+      // ****************************************
+      // *
+      // * Purpose: takes a string and creates an array of order instructions to be used with a query
+      // ****************************************
+
+      o = o.split( ',' );
+      var x = [], nc;
+
+      each( o, function ( r ) {
+        x.push( r.replace( /^\s*/, '' ).replace( /\s*$/, '' ) );
+      });
+
+      nc = TAFFY.mergeObj( this.context(), {sort : null} );
+      nc.order = x;
+
+      return this.getroot( nc );
+    });
+
+    API.extend( 'limit', function ( n ) {
+      // ****************************************
+      // *
+      // * Purpose: takes a limit number to limit the number of rows returned by a query. Will update the results
+      // * of a query
+      // **************************************** 
+      var nc = TAFFY.mergeObj( this.context(), {}),
+        limitedresults
+        ;
+
+      nc.limit = n;
+
+      if ( nc.run && nc.sort ){
+        limitedresults = [];
+        each( nc.results, function ( i, x ) {
+          if ( (x + 1) > n ){
+            return TAFFY.EXIT;
+          }
+          limitedresults.push( i );
+        });
+        nc.results = limitedresults;
+      }
+
+      return this.getroot( nc );
+    });
+
+    API.extend( 'start', function ( n ) {
+      // ****************************************
+      // *
+      // * Purpose: takes a limit number to limit the number of rows returned by a query. Will update the results
+      // * of a query
+      // **************************************** 
+      var nc = TAFFY.mergeObj( this.context(), {} ),
+        limitedresults
+        ;
+
+      nc.start = n;
+
+      if ( nc.run && nc.sort && !nc.limit ){
+        limitedresults = [];
+        each( nc.results, function ( i, x ) {
+          if ( (x + 1) > n ){
+            limitedresults.push( i );
+          }
+        });
+        nc.results = limitedresults;
+      }
+      else {
+        nc = TAFFY.mergeObj( this.context(), {run : null, start : n} );
+      }
+
+      return this.getroot( nc );
+    });
+
+    API.extend( 'update', function ( arg0, arg1, arg2 ) {
+      // ****************************************
+      // *
+      // * Takes: a object and passes it off DBI update method for all matched records
+      // **************************************** 
+      var runEvent = true, o = {}, args = arguments, that;
+      if ( TAFFY.isString( arg0 ) &&
+        (arguments.length === 2 || arguments.length === 3) )
+      {
+        o[arg0] = arg1;
+        if ( arguments.length === 3 ){
+          runEvent = arg2;
+        }
+      }
+      else {
+        o = arg0;
+        if ( args.length === 2 ){
+          runEvent = arg1;
+        }
+      }
+
+      that = this;
+      run.call( this );
+      each( this.context().results, function ( r ) {
+        var c = o;
+        if ( TAFFY.isFunction( c ) ){
+          c = c.apply( TAFFY.mergeObj( r, {} ) );
+        }
+        else {
+          if ( T.isFunction( c ) ){
+            c = c( TAFFY.mergeObj( r, {} ) );
+          }
+        }
+        if ( TAFFY.isObject( c ) ){
+          that.getDBI().update( r.___id, c, runEvent );
+        }
+      });
+      if ( this.context().results.length ){
+        this.context( { run : null });
+      }
+      return this;
+    });
+    API.extend( 'remove', function ( runEvent ) {
+      // ****************************************
+      // *
+      // * Purpose: removes records from the DB via the remove and removeCommit DBI methods
+      // **************************************** 
+      var that = this, c = 0;
+      run.call( this );
+      each( this.context().results, function ( r ) {
+        that.getDBI().remove( r.___id );
+        c++;
+      });
+      if ( this.context().results.length ){
+        this.context( {
+          run : null
+        });
+        that.getDBI().removeCommit( runEvent );
+      }
+
+      return c;
+    });
+
+
+    API.extend( 'count', function () {
+      // ****************************************
+      // *
+      // * Returns: The length of a query result
+      // **************************************** 
+      run.call( this );
+      return this.context().results.length;
+    });
+
+    API.extend( 'callback', function ( f, delay ) {
+      // ****************************************
+      // *
+      // * Returns null;
+      // * Runs a function on return of run.call
+      // **************************************** 
+      if ( f ){
+        var that = this;
+        setTimeout( function () {
+          run.call( that );
+          f.call( that.getroot( that.context() ) );
+        }, delay || 0 );
+      }
+
+
+      return null;
+    });
+
+    API.extend( 'get', function () {
+      // ****************************************
+      // *
+      // * Returns: An array of all matching records
+      // **************************************** 
+      run.call( this );
+      return this.context().results;
+    });
+
+    API.extend( 'stringify', function () {
+      // ****************************************
+      // *
+      // * Returns: An JSON string of all matching records
+      // **************************************** 
+      return JSON.stringify( this.get() );
+    });
+    API.extend( 'first', function () {
+      // ****************************************
+      // *
+      // * Returns: The first matching record
+      // **************************************** 
+      run.call( this );
+      return this.context().results[0] || false;
+    });
+    API.extend( 'last', function () {
+      // ****************************************
+      // *
+      // * Returns: The last matching record
+      // **************************************** 
+      run.call( this );
+      return this.context().results[this.context().results.length - 1] ||
+        false;
+    });
+
+
+    API.extend( 'sum', function () {
+      // ****************************************
+      // *
+      // * Takes: column to sum up
+      // * Returns: Sums the values of a column
+      // **************************************** 
+      var total = 0, that = this;
+      run.call( that );
+      each( arguments, function ( c ) {
+        each( that.context().results, function ( r ) {
+          total = total + (r[c] || 0);
+        });
+      });
+      return total;
+    });
+
+    API.extend( 'min', function ( c ) {
+      // ****************************************
+      // *
+      // * Takes: column to find min
+      // * Returns: the lowest value
+      // **************************************** 
+      var lowest = null;
+      run.call( this );
+      each( this.context().results, function ( r ) {
+        if ( lowest === null || r[c] < lowest ){
+          lowest = r[c];
+        }
+      });
+      return lowest;
+    });
+
+    //  Taffy innerJoin Extension (OCD edition)
+    //  =======================================
+    //
+    //  How to Use
+    //  **********
+    //
+    //  left_table.innerJoin( right_table, condition1 <,... conditionN> )
+    //
+    //  A condition can take one of 2 forms:
+    //
+    //    1. An ARRAY with 2 or 3 values:
+    //    A column name from the left table, an optional comparison string,
+    //    and column name from the right table.  The condition passes if the test
+    //    indicated is true.   If the condition string is omitted, '===' is assumed.
+    //    EXAMPLES: [ 'last_used_time', '>=', 'current_use_time' ], [ 'user_id','id' ]
+    //
+    //    2. A FUNCTION:
+    //    The function receives a left table row and right table row during the
+    //    cartesian join.  If the function returns true for the rows considered,
+    //    the merged row is included in the result set.
+    //    EXAMPLE: function (l,r){ return l.name === r.label; }
+    //
+    //  Conditions are considered in the order they are presented.  Therefore the best
+    //  performance is realized when the least expensive and highest prune-rate
+    //  conditions are placed first, since if they return false Taffy skips any
+    //  further condition tests.
+    //
+    //  Other notes
+    //  ***********
+    //
+    //  This code passes jslint with the exception of 2 warnings about
+    //  the '==' and '!=' lines.  We can't do anything about that short of
+    //  deleting the lines.
+    //
+    //  Credits
+    //  *******
+    //
+    //  Heavily based upon the work of Ian Toltz.
+    //  Revisions to API by Michael Mikowski.
+    //  Code convention per standards in http://manning.com/mikowski
+    (function () {
+      var innerJoinFunction = (function () {
+        var fnCompareList, fnCombineRow, fnMain;
+
+        fnCompareList = function ( left_row, right_row, arg_list ) {
+          var data_lt, data_rt, op_code, error;
+
+          if ( arg_list.length === 2 ){
+            data_lt = left_row[arg_list[0]];
+            op_code = '===';
+            data_rt = right_row[arg_list[1]];
+          }
+          else {
+            data_lt = left_row[arg_list[0]];
+            op_code = arg_list[1];
+            data_rt = right_row[arg_list[2]];
+          }
+
+          /*jslint eqeq : true */
+          switch ( op_code ){
+            case '===' :
+              return data_lt === data_rt;
+            case '!==' :
+              return data_lt !== data_rt;
+            case '<'   :
+              return data_lt < data_rt;
+            case '>'   :
+              return data_lt > data_rt;
+            case '<='  :
+              return data_lt <= data_rt;
+            case '>='  :
+              return data_lt >= data_rt;
+            case '=='  :
+              return data_lt == data_rt;
+            case '!='  :
+              return data_lt != data_rt;
+            default :
+              throw String( op_code ) + ' is not supported';
+          }
+          // 'jslint eqeq : false'  here results in
+          // "Unreachable '/*jslint' after 'return'".
+          // We don't need it though, as the rule exception
+          // is discarded at the end of this functional scope
+        };
+
+        fnCombineRow = function ( left_row, right_row ) {
+          var out_map = {}, i, prefix;
+
+          for ( i in left_row ){
+            if ( left_row.hasOwnProperty( i ) ){
+              out_map[i] = left_row[i];
+            }
+          }
+          for ( i in right_row ){
+            if ( right_row.hasOwnProperty( i ) && i !== '___id' &&
+              i !== '___s' )
+            {
+              prefix = !TAFFY.isUndefined( out_map[i] ) ? 'right_' : '';
+              out_map[prefix + String( i ) ] = right_row[i];
+            }
+          }
+          return out_map;
+        };
+
+        fnMain = function ( table ) {
+          var
+            right_table, i,
+            arg_list = arguments,
+            arg_length = arg_list.length,
+            result_list = []
+            ;
+
+          if ( typeof table.filter !== 'function' ){
+            if ( table.TAFFY ){ right_table = table(); }
+            else {
+              throw 'TAFFY DB or result not supplied';
+            }
+          }
+          else { right_table = table; }
+
+          this.context( {
+            results : this.getDBI().query( this.context() )
+          } );
+
+          TAFFY.each( this.context().results, function ( left_row ) {
+            right_table.each( function ( right_row ) {
+              var arg_data, is_ok = true;
+              CONDITION:
+                for ( i = 1; i < arg_length; i++ ){
+                  arg_data = arg_list[i];
+                  if ( typeof arg_data === 'function' ){
+                    is_ok = arg_data( left_row, right_row );
+                  }
+                  else if ( typeof arg_data === 'object' && arg_data.length ){
+                    is_ok = fnCompareList( left_row, right_row, arg_data );
+                  }
+                  else {
+                    is_ok = false;
+                  }
+
+                  if ( !is_ok ){ break CONDITION; } // short circuit
+                }
+
+              if ( is_ok ){
+                result_list.push( fnCombineRow( left_row, right_row ) );
+              }
+            } );
+          } );
+          return TAFFY( result_list )();
+        };
+
+        return fnMain;
+      }());
+
+      API.extend( 'join', innerJoinFunction );
+    }());
+
+    API.extend( 'max', function ( c ) {
+      // ****************************************
+      // *
+      // * Takes: column to find max
+      // * Returns: the highest value
+      // ****************************************
+      var highest = null;
+      run.call( this );
+      each( this.context().results, function ( r ) {
+        if ( highest === null || r[c] > highest ){
+          highest = r[c];
+        }
+      });
+      return highest;
+    });
+
+    API.extend( 'select', function () {
+      // ****************************************
+      // *
+      // * Takes: columns to select values into an array
+      // * Returns: array of values
+      // * Note if more than one column is given an array of arrays is returned
+      // **************************************** 
+
+      var ra = [], args = arguments;
+      run.call( this );
+      if ( arguments.length === 1 ){
+
+        each( this.context().results, function ( r ) {
+
+          ra.push( r[args[0]] );
+        });
+      }
+      else {
+        each( this.context().results, function ( r ) {
+          var row = [];
+          each( args, function ( c ) {
+            row.push( r[c] );
+          });
+          ra.push( row );
+        });
+      }
+      return ra;
+    });
+    API.extend( 'distinct', function () {
+      // ****************************************
+      // *
+      // * Takes: columns to select unique alues into an array
+      // * Returns: array of values
+      // * Note if more than one column is given an array of arrays is returned
+      // **************************************** 
+      var ra = [], args = arguments;
+      run.call( this );
+      if ( arguments.length === 1 ){
+
+        each( this.context().results, function ( r ) {
+          var v = r[args[0]], dup = false;
+          each( ra, function ( d ) {
+            if ( v === d ){
+              dup = true;
+              return TAFFY.EXIT;
+            }
+          });
+          if ( !dup ){
+            ra.push( v );
+          }
+        });
+      }
+      else {
+        each( this.context().results, function ( r ) {
+          var row = [], dup = false;
+          each( args, function ( c ) {
+            row.push( r[c] );
+          });
+          each( ra, function ( d ) {
+            var ldup = true;
+            each( args, function ( c, i ) {
+              if ( row[i] !== d[i] ){
+                ldup = false;
+                return TAFFY.EXIT;
+              }
+            });
+            if ( ldup ){
+              dup = true;
+              return TAFFY.EXIT;
+            }
+          });
+          if ( !dup ){
+            ra.push( row );
+          }
+        });
+      }
+      return ra;
+    });
+    API.extend( 'supplant', function ( template, returnarray ) {
+      // ****************************************
+      // *
+      // * Takes: a string template formated with key to be replaced with values from the rows, flag to determine if we want array of strings
+      // * Returns: array of values or a string
+      // **************************************** 
+      var ra = [];
+      run.call( this );
+      each( this.context().results, function ( r ) {
+        // TODO: The curly braces used to be unescaped
+        ra.push( template.replace( /\{([^\{\}]*)\}/g, function ( a, b ) {
+          var v = r[b];
+          return typeof v === 'string' || typeof v === 'number' ? v : a;
+        } ) );
+      });
+      return (!returnarray) ? ra.join( "" ) : ra;
+    });
+
+
+    API.extend( 'each', function ( m ) {
+      // ****************************************
+      // *
+      // * Takes: a function
+      // * Purpose: loops over every matching record and applies the function
+      // **************************************** 
+      run.call( this );
+      each( this.context().results, m );
+      return this;
+    });
+    API.extend( 'map', function ( m ) {
+      // ****************************************
+      // *
+      // * Takes: a function
+      // * Purpose: loops over every matching record and applies the function, returing the results in an array
+      // **************************************** 
+      var ra = [];
+      run.call( this );
+      each( this.context().results, function ( r ) {
+        ra.push( m( r ) );
+      });
+      return ra;
+    });
+
+
+
+    T = function ( d ) {
+      // ****************************************
+      // *
+      // * T is the main TAFFY object
+      // * Takes: an array of objects or JSON
+      // * Returns a new TAFFYDB
+      // **************************************** 
+      var TOb = [],
+        ID = {},
+        RC = 1,
+        settings = {
+          template          : false,
+          onInsert          : false,
+          onUpdate          : false,
+          onRemove          : false,
+          onDBChange        : false,
+          storageName       : false,
+          forcePropertyCase : null,
+          cacheSize         : 100,
+          name              : ''
+        },
+        dm = new Date(),
+        CacheCount = 0,
+        CacheClear = 0,
+        Cache = {},
+        DBI, runIndexes, root
+        ;
+      // ****************************************
+      // *
+      // * TOb = this database
+      // * ID = collection of the record IDs and locations within the DB, used for fast lookups
+      // * RC = record counter, used for creating IDs
+      // * settings.template = the template to merge all new records with
+      // * settings.onInsert = event given a copy of the newly inserted record
+      // * settings.onUpdate = event given the original record, the changes, and the new record
+      // * settings.onRemove = event given the removed record
+      // * settings.forcePropertyCase = on insert force the proprty case to be lower or upper. default lower, null/undefined will leave case as is
+      // * dm = the modify date of the database, used for query caching
+      // **************************************** 
+
+
+      runIndexes = function ( indexes ) {
+        // ****************************************
+        // *
+        // * Takes: a collection of indexes
+        // * Returns: collection with records matching indexed filters
+        // **************************************** 
+
+        var records = [], UniqueEnforce = false;
+
+        if ( indexes.length === 0 ){
+          return TOb;
+        }
+
+        each( indexes, function ( f ) {
+          // Check to see if record ID
+          if ( T.isString( f ) && /[t][0-9]*[r][0-9]*/i.test( f ) &&
+            TOb[ID[f]] )
+          {
+            records.push( TOb[ID[f]] );
+            UniqueEnforce = true;
+          }
+          // Check to see if record
+          if ( T.isObject( f ) && f.___id && f.___s &&
+            TOb[ID[f.___id]] )
+          {
+            records.push( TOb[ID[f.___id]] );
+            UniqueEnforce = true;
+          }
+          // Check to see if array of indexes
+          if ( T.isArray( f ) ){
+            each( f, function ( r ) {
+              each( runIndexes( r ), function ( rr ) {
+                records.push( rr );
+              });
+
+            });
+          }
+        });
+        if ( UniqueEnforce && records.length > 1 ){
+          records = [];
+        }
+
+        return records;
+      };
+
+      DBI = {
+        // ****************************************
+        // *
+        // * The DBI is the internal DataBase Interface that interacts with the data
+        // **************************************** 
+        dm           : function ( nd ) {
+          // ****************************************
+          // *
+          // * Takes: an optional new modify date
+          // * Purpose: used to get and set the DB modify date
+          // **************************************** 
+          if ( nd ){
+            dm = nd;
+            Cache = {};
+            CacheCount = 0;
+            CacheClear = 0;
+          }
+          if ( settings.onDBChange ){
+            setTimeout( function () {
+              settings.onDBChange.call( TOb );
+            }, 0 );
+          }
+          if ( settings.storageName ){
+            setTimeout( function () {
+              localStorage.setItem( 'taffy_' + settings.storageName,
+                JSON.stringify( TOb ) );
+            });
+          }
+          return dm;
+        },
+        insert       : function ( i, runEvent ) {
+          // ****************************************
+          // *
+          // * Takes: a new record to insert
+          // * Purpose: merge the object with the template, add an ID, insert into DB, call insert event
+          // **************************************** 
+          var columns = [],
+            records   = [],
+            input     = protectJSON( i )
+            ;
+          each( input, function ( v, i ) {
+            var nv, o;
+            if ( T.isArray( v ) && i === 0 ){
+              each( v, function ( av ) {
+
+                columns.push( (settings.forcePropertyCase === 'lower')
+                  ? av.toLowerCase()
+                    : (settings.forcePropertyCase === 'upper')
+                  ? av.toUpperCase() : av );
+              });
+              return true;
+            }
+            else if ( T.isArray( v ) ){
+              nv = {};
+              each( v, function ( av, ai ) {
+                nv[columns[ai]] = av;
+              });
+              v = nv;
+
+            }
+            else if ( T.isObject( v ) && settings.forcePropertyCase ){
+              o = {};
+
+              eachin( v, function ( av, ai ) {
+                o[(settings.forcePropertyCase === 'lower') ? ai.toLowerCase()
+                  : (settings.forcePropertyCase === 'upper')
+                  ? ai.toUpperCase() : ai] = v[ai];
+              });
+              v = o;
+            }
+
+            RC++;
+            v.___id = 'T' + String( idpad + TC ).slice( -6 ) + 'R' +
+              String( idpad + RC ).slice( -6 );
+            v.___s = true;
+            records.push( v.___id );
+            if ( settings.template ){
+              v = T.mergeObj( settings.template, v );
+            }
+            TOb.push( v );
+
+            ID[v.___id] = TOb.length - 1;
+            if ( settings.onInsert &&
+              (runEvent || TAFFY.isUndefined( runEvent )) )
+            {
+              settings.onInsert.call( v );
+            }
+            DBI.dm( new Date() );
+          });
+          return root( records );
+        },
+        sort         : function ( o ) {
+          // ****************************************
+          // *
+          // * Purpose: Change the sort order of the DB itself and reset the ID bucket
+          // **************************************** 
+          TOb = orderByCol( TOb, o.split( ',' ) );
+          ID = {};
+          each( TOb, function ( r, i ) {
+            ID[r.___id] = i;
+          });
+          DBI.dm( new Date() );
+          return true;
+        },
+        update       : function ( id, changes, runEvent ) {
+          // ****************************************
+          // *
+          // * Takes: the ID of record being changed and the changes
+          // * Purpose: Update a record and change some or all values, call the on update method
+          // ****************************************
+
+          var nc = {}, or, nr, tc, hasChange;
+          if ( settings.forcePropertyCase ){
+            eachin( changes, function ( v, p ) {
+              nc[(settings.forcePropertyCase === 'lower') ? p.toLowerCase()
+                : (settings.forcePropertyCase === 'upper') ? p.toUpperCase()
+                : p] = v;
+            });
+            changes = nc;
+          }
+
+          or = TOb[ID[id]];
+          nr = T.mergeObj( or, changes );
+
+          tc = {};
+          hasChange = false;
+          eachin( nr, function ( v, i ) {
+            if ( TAFFY.isUndefined( or[i] ) || or[i] !== v ){
+              tc[i] = v;
+              hasChange = true;
+            }
+          });
+          if ( hasChange ){
+            if ( settings.onUpdate &&
+              (runEvent || TAFFY.isUndefined( runEvent )) )
+            {
+              settings.onUpdate.call( nr, TOb[ID[id]], tc );
+            }
+            TOb[ID[id]] = nr;
+            DBI.dm( new Date() );
+          }
+        },
+        remove       : function ( id ) {
+          // ****************************************
+          // *
+          // * Takes: the ID of record to be removed
+          // * Purpose: remove a record, changes its ___s value to false
+          // **************************************** 
+          TOb[ID[id]].___s = false;
+        },
+        removeCommit : function ( runEvent ) {
+          var x;
+          // ****************************************
+          // *
+          // * 
+          // * Purpose: loop over all records and remove records with ___s = false, call onRemove event, clear ID
+          // ****************************************
+          for ( x = TOb.length - 1; x > -1; x-- ){
+
+            if ( !TOb[x].___s ){
+              if ( settings.onRemove &&
+                (runEvent || TAFFY.isUndefined( runEvent )) )
+              {
+                settings.onRemove.call( TOb[x] );
+              }
+              ID[TOb[x].___id] = undefined;
+              TOb.splice( x, 1 );
+            }
+          }
+          ID = {};
+          each( TOb, function ( r, i ) {
+            ID[r.___id] = i;
+          });
+          DBI.dm( new Date() );
+        },
+        query : function ( context ) {
+          // ****************************************
+          // *
+          // * Takes: the context object for a query and either returns a cache result or a new query result
+          // **************************************** 
+          var returnq, cid, results, indexed, limitq, ni;
+
+          if ( settings.cacheSize ) {
+            cid = '';
+            each( context.filterRaw, function ( r ) {
+              if ( T.isFunction( r ) ){
+                cid = 'nocache';
+                return TAFFY.EXIT;
+              }
+            });
+            if ( cid === '' ){
+              cid = makeCid( T.mergeObj( context,
+                {q : false, run : false, sort : false} ) );
+            }
+          }
+          // Run a new query if there are no results or the run date has been cleared
+          if ( !context.results || !context.run ||
+            (context.run && DBI.dm() > context.run) )
+          {
+            results = [];
+
+            // check Cache
+
+            if ( settings.cacheSize && Cache[cid] ){
+
+              Cache[cid].i = CacheCount++;
+              return Cache[cid].results;
+            }
+            else {
+              // if no filter, return DB
+              if ( context.q.length === 0 && context.index.length === 0 ){
+                each( TOb, function ( r ) {
+                  results.push( r );
+                });
+                returnq = results;
+              }
+              else {
+                // use indexes
+
+                indexed = runIndexes( context.index );
+
+                // run filters
+                each( indexed, function ( r ) {
+                  // Run filter to see if record matches query
+                  if ( context.q.length === 0 || runFilters( r, context.q ) ){
+                    results.push( r );
+                  }
+                });
+
+                returnq = results;
+              }
+            }
+
+
+          }
+          else {
+            // If query exists and run has not been cleared return the cache results
+            returnq = context.results;
+          }
+          // If a custom order array exists and the run has been clear or the sort has been cleared
+          if ( context.order.length > 0 && (!context.run || !context.sort) ){
+            // order the results
+            returnq = orderByCol( returnq, context.order );
+          }
+
+          // If a limit on the number of results exists and it is less than the returned results, limit results
+          if ( returnq.length &&
+            ((context.limit && context.limit < returnq.length) ||
+              context.start)
+          ) {
+            limitq = [];
+            each( returnq, function ( r, i ) {
+              if ( !context.start ||
+                (context.start && (i + 1) >= context.start) )
+              {
+                if ( context.limit ){
+                  ni = (context.start) ? (i + 1) - context.start : i;
+                  if ( ni < context.limit ){
+                    limitq.push( r );
+                  }
+                  else if ( ni > context.limit ){
+                    return TAFFY.EXIT;
+                  }
+                }
+                else {
+                  limitq.push( r );
+                }
+              }
+            });
+            returnq = limitq;
+          }
+
+          // update cache
+          if ( settings.cacheSize && cid !== 'nocache' ){
+            CacheClear++;
+
+            setTimeout( function () {
+              var bCounter, nc;
+              if ( CacheClear >= settings.cacheSize * 2 ){
+                CacheClear = 0;
+                bCounter = CacheCount - settings.cacheSize;
+                nc = {};
+                eachin( function ( r, k ) {
+                  if ( r.i >= bCounter ){
+                    nc[k] = r;
+                  }
+                });
+                Cache = nc;
+              }
+            }, 0 );
+
+            Cache[cid] = { i : CacheCount++, results : returnq };
+          }
+          return returnq;
+        }
+      };
+
+
+      root = function () {
+        var iAPI, context;
+        // ****************************************
+        // *
+        // * The root function that gets returned when a new DB is created
+        // * Takes: unlimited filter arguments and creates filters to be run when a query is called
+        // **************************************** 
+        // ****************************************
+        // *
+        // * iAPI is the the method collection valiable when a query has been started by calling dbname
+        // * Certain methods are or are not avaliable once you have started a query such as insert -- you can only insert into root
+        // ****************************************
+        iAPI = TAFFY.mergeObj( TAFFY.mergeObj( API, { insert : undefined } ),
+          { getDBI  : function () { return DBI; },
+            getroot : function ( c ) { return root.call( c ); },
+          context : function ( n ) {
+            // ****************************************
+            // *
+            // * The context contains all the information to manage a query including filters, limits, and sorts
+            // **************************************** 
+            if ( n ){
+              context = TAFFY.mergeObj( context,
+                n.hasOwnProperty('results')
+                  ? TAFFY.mergeObj( n, { run : new Date(), sort: new Date() })
+                  : n
+              );
+            }
+            return context;
+          },
+          extend  : undefined
+        });
+
+        context = (this && this.q) ? this : {
+          limit     : false,
+          start     : false,
+          q         : [],
+          filterRaw : [],
+          index     : [],
+          order     : [],
+          results   : false,
+          run       : null,
+          sort      : null,
+          settings  : settings
+        };
+        // ****************************************
+        // *
+        // * Call the query method to setup a new query
+        // **************************************** 
+        each( arguments, function ( f ) {
+
+          if ( isIndexable( f ) ){
+            context.index.push( f );
+          }
+          else {
+            context.q.push( returnFilter( f ) );
+          }
+          context.filterRaw.push( f );
+        });
+
+
+        return iAPI;
+      };
+
+      // ****************************************
+      // *
+      // * If new records have been passed on creation of the DB either as JSON or as an array/object, insert them
+      // **************************************** 
+      TC++;
+      if ( d ){
+        DBI.insert( d );
+      }
+
+
+      root.insert = DBI.insert;
+
+      root.merge = function ( i, key, runEvent ) {
+        var
+          search      = {},
+          finalSearch = [],
+          obj         = {}
+          ;
+
+        runEvent    = runEvent || false;
+        key         = key      || 'id';
+
+        each( i, function ( o ) {
+          var existingObject;
+          search[key] = o[key];
+          finalSearch.push( o[key] );
+          existingObject = root( search ).first();
+          if ( existingObject ){
+            DBI.update( existingObject.___id, o, runEvent );
+          }
+          else {
+            DBI.insert( o, runEvent );
+          }
+        });
+
+        obj[key] = finalSearch;
+        return root( obj );
+      };
+
+      root.TAFFY = true;
+      root.sort = DBI.sort;
+      // ****************************************
+      // *
+      // * These are the methods that can be accessed on off the root DB function. Example dbname.insert;
+      // **************************************** 
+      root.settings = function ( n ) {
+        // ****************************************
+        // *
+        // * Getting and setting for this DB's settings/events
+        // **************************************** 
+        if ( n ){
+          settings = TAFFY.mergeObj( settings, n );
+          if ( n.template ){
+
+            root().update( n.template );
+          }
+        }
+        return settings;
+      };
+
+      // ****************************************
+      // *
+      // * These are the methods that can be accessed on off the root DB function. Example dbname.insert;
+      // **************************************** 
+      root.store = function ( n ) {
+        // ****************************************
+        // *
+        // * Setup localstorage for this DB on a given name
+        // * Pull data into the DB as needed
+        // **************************************** 
+        var r = false, i;
+        if ( localStorage ){
+          if ( n ){
+            i = localStorage.getItem( 'taffy_' + n );
+            if ( i && i.length > 0 ){
+              root.insert( i );
+              r = true;
+            }
+            if ( TOb.length > 0 ){
+              setTimeout( function () {
+                localStorage.setItem( 'taffy_' + settings.storageName,
+                  JSON.stringify( TOb ) );
+              });
+            }
+          }
+          root.settings( {storageName : n} );
+        }
+        return root;
+      };
+
+      // ****************************************
+      // *
+      // * Return root on DB creation and start having fun
+      // **************************************** 
+      return root;
+    };
+    // ****************************************
+    // *
+    // * Sets the global TAFFY object
+    // **************************************** 
+    TAFFY = T;
+
+
+    // ****************************************
+    // *
+    // * Create public each method
+    // *
+    // ****************************************   
+    T.each = each;
+
+    // ****************************************
+    // *
+    // * Create public eachin method
+    // *
+    // ****************************************   
+    T.eachin = eachin;
+    // ****************************************
+    // *
+    // * Create public extend method
+    // * Add a custom method to the API
+    // *
+    // ****************************************   
+    T.extend = API.extend;
+
+
+    // ****************************************
+    // *
+    // * Creates TAFFY.EXIT value that can be returned to stop an each loop
+    // *
+    // ****************************************  
+    TAFFY.EXIT = 'TAFFYEXIT';
+
+    // ****************************************
+    // *
+    // * Create public utility mergeObj method
+    // * Return a new object where items from obj2
+    // * have replaced or been added to the items in
+    // * obj1
+    // * Purpose: Used to combine objs
+    // *
+    // ****************************************   
+    TAFFY.mergeObj = function ( ob1, ob2 ) {
+      var c = {};
+      eachin( ob1, function ( v, n ) { c[n] = ob1[n]; });
+      eachin( ob2, function ( v, n ) { c[n] = ob2[n]; });
+      return c;
+    };
+
+
+    // ****************************************
+    // *
+    // * Create public utility has method
+    // * Returns true if a complex object, array
+    // * or taffy collection contains the material
+    // * provided in the second argument
+    // * Purpose: Used to comare objects
     // *
     // ****************************************
-	
-	
-	// ****************************************
+    TAFFY.has = function ( var1, var2 ) {
+
+      var re = false, n;
+
+      if ( (var1.TAFFY) ){
+        re = var1( var2 );
+        if ( re.length > 0 ){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      else {
+
+        switch ( T.typeOf( var1 ) ){
+          case 'object':
+            if ( T.isObject( var2 ) ){
+              eachin( var2, function ( v, n ) {
+                if ( re === true && !T.isUndefined( var1[n] ) &&
+                  var1.hasOwnProperty( n ) )
+                {
+                  re = T.has( var1[n], var2[n] );
+                }
+                else {
+                  re = false;
+                  return TAFFY.EXIT;
+                }
+              });
+            }
+            else if ( T.isArray( var2 ) ){
+              each( var2, function ( v, n ) {
+                re = T.has( var1, var2[n] );
+                if ( re ){
+                  return TAFFY.EXIT;
+                }
+              });
+            }
+            else if ( T.isString( var2 ) ){
+              if ( !TAFFY.isUndefined( var1[var2] ) ){
+                return true;
+              }
+              else {
+                return false;
+              }
+            }
+            return re;
+          case 'array':
+            if ( T.isObject( var2 ) ){
+              each( var1, function ( v, i ) {
+                re = T.has( var1[i], var2 );
+                if ( re === true ){
+                  return TAFFY.EXIT;
+                }
+              });
+            }
+            else if ( T.isArray( var2 ) ){
+              each( var2, function ( v2, i2 ) {
+                each( var1, function ( v1, i1 ) {
+                  re = T.has( var1[i1], var2[i2] );
+                  if ( re === true ){
+                    return TAFFY.EXIT;
+                  }
+                });
+                if ( re === true ){
+                  return TAFFY.EXIT;
+                }
+              });
+            }
+            else if ( T.isString( var2 ) || T.isNumber( var2 ) ){
+             re = false;
+              for ( n = 0; n < var1.length; n++ ){
+                re = T.has( var1[n], var2 );
+                if ( re ){
+                  return true;
+                }
+              }
+            }
+            return re;
+          case 'string':
+            if ( T.isString( var2 ) && var2 === var1 ){
+              return true;
+            }
+            break;
+          default:
+            if ( T.typeOf( var1 ) === T.typeOf( var2 ) && var1 === var2 ){
+              return true;
+            }
+            break;
+        }
+      }
+      return false;
+    };
+
+    // ****************************************
+    // *
+    // * Create public utility hasAll method
+    // * Returns true if a complex object, array
+    // * or taffy collection contains the material
+    // * provided in the call - for arrays it must
+    // * contain all the material in each array item
+    // * Purpose: Used to comare objects
+    // *
+    // ****************************************
+    TAFFY.hasAll = function ( var1, var2 ) {
+
+      var T = TAFFY, ar;
+      if ( T.isArray( var2 ) ){
+        ar = true;
+        each( var2, function ( v ) {
+          ar = T.has( var1, v );
+          if ( ar === false ){
+            return TAFFY.EXIT;
+          }
+        });
+        return ar;
+      }
+      else {
+        return T.has( var1, var2 );
+      }
+    };
+
+
+    // ****************************************
     // *
     // * typeOf Fixed in JavaScript as public utility
     // *
     // ****************************************
-	TAFFY.typeOf = function (v) {
-    var s = typeof v;
-    if (s === 'object') {
-        if (v) {
-            if (typeof v.length === 'number' &&
-                    !(v.propertyIsEnumerable('length')) &&
-                    typeof v.splice === 'function') {
-                s = 'array';
-            }
-        } else {
-            s = 'null';
+    TAFFY.typeOf = function ( v ) {
+      var s = typeof v;
+      if ( s === 'object' ){
+        if ( v ){
+          if ( typeof v.length === 'number' &&
+            !(v.propertyIsEnumerable( 'length' )) )
+          {
+            s = 'array';
+          }
         }
-    }
-    return s;
-	};
-	
-	
-	// ****************************************
-    // *
-    // * JSON Object Handler / public utility
-    // * See http://www.JSON.org/js.html
-    // * The following JSON Object is Public Domain
-	// * No warranty expressed or implied. Use at your own risk.
-    // *
+        else {
+          s = 'null';
+        }
+      }
+      return s;
+    };
+
     // ****************************************
-	
-	    TAFFY.JSON = function () {
-	
-	        function f(n) {
-	            return n < 10 ? '0' + n : n;
-	        }
-	
-	        Date.prototype.toJSON = function () {
-	
-	            return this.getUTCFullYear()   + '-' +
-	                 f(this.getUTCMonth() + 1) + '-' +
-	                 f(this.getUTCDate())      + 'T' +
-	                 f(this.getUTCHours())     + ':' +
-	                 f(this.getUTCMinutes())   + ':' +
-	                 f(this.getUTCSeconds())   + 'Z';
-	        };
-	
-	
-	        var m = { 
-	            '\b': '\\b',
-	            '\t': '\\t',
-	            '\n': '\\n',
-	            '\f': '\\f',
-	            '\r': '\\r',
-	            '"' : '\\"',
-	            '\\': '\\\\'
-	        };
-	
-	        function stringify(value, whitelist) {
-	            var a,i,k,l, r = /["\\\x00-\x1f\x7f-\x9f]/g,v;
-	
-	            switch (typeof value) {
-	            case 'string':
-	
-	                return r.test(value) ?
-	                    '"' + value.replace(r, function (a) {
-	                        var c = m[a];
-	                        if (c) {
-	                            return c;
-	                        }
-	                        c = a.charCodeAt();
-	                        return '\\u00' + Math.floor(c / 16).toString(16) +
-	                                                   (c % 16).toString(16);
-	                    }) + '"' :
-	                    '"' + value + '"';
-	
-	            case 'number':
-	
-	                return isFinite(value) ? String(value) : 'null';
-	
-	            case 'boolean':
-	            case 'null':
-	                return String(value);
-	
-	            case 'object':
-	
-	                if (!value) {
-	                    return 'null';
-	                }
-	
-	                if (typeof value.toJSON === 'function') {
-	                    return stringify(value.toJSON());
-	                }
-	                a = [];
-	                if (typeof value.length === 'number' &&
-	                        !(value.propertyIsEnumerable('length'))) {
-	
-	                    l = value.length;
-	                    for (i = 0; i < l; i += 1) {
-	                        a.push(stringify(value[i], whitelist) || 'null');
-	                    }
-	
-	                    return '[' + a.join(',') + ']';
-	                }
-	                if (whitelist) {
-	
-	                    l = whitelist.length;
-	                    for (i = 0; i < l; i += 1) {
-	                        k = whitelist[i];
-	                        if (typeof k === 'string') {
-	                            v = stringify(value[k], whitelist);
-	                            if (v) {
-	                                a.push(stringify(k) + ':' + v);
-	                            }
-	                        }
-	                    }
-	                } else {
-	
-	                    for (k in value) {
-	                        if (typeof k === 'string') {
-	                            v = stringify(value[k], whitelist);
-	                            if (v) {
-	                                a.push(stringify(k) + ':' + v);
-	                            }
-	                        }
-	                    }
-	                }
-	
-	                return '{' + a.join(',') + '}';
-	            }
-				return "";
-	        }
-	
-	        return {
-	            stringify: stringify,
-	            parse: function (text, filter) {
-	                var j;
-	
-	                function walk(k, v) {
-	                    var i, n;
-	                    if (v && typeof v === 'object') {
-	                        for (i in v) {
-	                            if (Object.prototype.hasOwnProperty.apply(v, [i])) {
-	                                n = walk(i, v[i]);
-	                                if (n !== undefined) {
-	                                    v[i] = n;
-	                                } else {
-	                                    delete v[i];
-	                                }
-	                            }
-	                        }
-	                    }
-	                    return filter(k, v);
-	                }
-	
-	
-	                if (/^[\],:{}\s]*$/.test(text.replace(/\\./g, '@').
-	replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
-	replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
-	
-	                    j = eval('(' + text + ')');
-	
-	                    return typeof filter === 'function' ? walk('', j) : j;
-	                }
-	
-	                throw new SyntaxError('parseJSON');
-	            }
-	        };
-	    }();
-		
-	
-	// ****************************************
-    // *
-    // * End JSON Code Object Handler
-    // *
-    // ****************************************       
-	
-	// ****************************************
-    // *
-    // * Create public utility mergeObj method
-    // * Return a new object where items from obj2
-	// * have replaced or been added to the items in
-	// * obj1
-    // * Purpose: Used to combine objs
-    // *
-    // ****************************************   
-	TAFFY.mergeObj = function (ob1,ob2) {
-		var c = {};
-		for(var n in ob1)
-		{
-			if (ob1.hasOwnProperty(n)) {
-				c[n] = ob1[n];
-			}
-		}
-		for(var n in ob2)
-		{
-			if (ob2.hasOwnProperty(n)) {
-				c[n] = ob2[n];
-			}
-		}
-		return c;
-	};
-	
-	// ****************************************
     // *
     // * Create public utility getObjectKeys method
     // * Returns an array of an objects keys
     // * Purpose: Used to get the keys for an object
     // *
     // ****************************************   
-	TAFFY.getObjectKeys = function (ob) {
-		var kA = [];
-		for(var n in ob)
-		{
-			if (ob.hasOwnProperty(n))
-			{
-				kA[kA.length] = n;
-			}
-		}
-		kA.sort();
-		return kA;
-	};
-	
-	// ****************************************
+    TAFFY.getObjectKeys = function ( ob ) {
+      var kA = [];
+      eachin( ob, function ( n, h ) {
+        kA.push( h );
+      });
+      kA.sort();
+      return kA;
+    };
+
+    // ****************************************
     // *
     // * Create public utility isSameArray
     // * Returns an array of an objects keys
     // * Purpose: Used to get the keys for an object
     // *
     // ****************************************   
-	TAFFY.isSameArray = function (ar1,ar2) {
-		return (TAFFY.isArray(ar1) && TAFFY.isArray(ar2) && ar1.join(",") == ar2.join(",")) ? true : false;
-	};
-	
-	// ****************************************
+    TAFFY.isSameArray = function ( ar1, ar2 ) {
+      return (TAFFY.isArray( ar1 ) && TAFFY.isArray( ar2 ) &&
+        ar1.join( ',' ) === ar2.join( ',' )) ? true : false;
+    };
+
+    // ****************************************
     // *
     // * Create public utility isSameObject method
     // * Returns true if objects contain the same
-	// * material or false if they do not
+    // * material or false if they do not
     // * Purpose: Used to comare objects
     // *
     // ****************************************   
-	TAFFY.isSameObject = function (ob1,ob2) {
-		var T = TAFFY;
-		if (T.isObject(ob1) && T.isObject(ob2)) {		
-		if (T.isSameArray(T.getObjectKeys(ob1),T.getObjectKeys(ob2))) {
-			for(var n in ob1)
-			{
-				if (ob1.hasOwnProperty(n))
-				{
-					if ((T.isObject(ob1[n]) && T.isObject(ob2[n]) && T.isSameObject(ob1[n],ob2[n]))
-						|| (T.isArray(ob1[n]) && T.isArray(ob2[n]) && T.isSameArray(ob1[n],ob2[n]))
-						|| (ob1[n] == ob2[n])) {						
-					} else {
-						return false;
-					}
-				} 
-			}
-		} else {
-			return false;
-		}
-		} else {
-			return false;
-		}
-		return true;
-	};
-	
-	// ****************************************
+    TAFFY.isSameObject = function ( ob1, ob2 ) {
+      var T = TAFFY, rv = true;
+
+      if ( T.isObject( ob1 ) && T.isObject( ob2 ) ){
+        if ( T.isSameArray( T.getObjectKeys( ob1 ),
+          T.getObjectKeys( ob2 ) ) )
+        {
+          eachin( ob1, function ( v, n ) {
+            if ( ! ( (T.isObject( ob1[n] ) && T.isObject( ob2[n] ) &&
+              T.isSameObject( ob1[n], ob2[n] )) ||
+              (T.isArray( ob1[n] ) && T.isArray( ob2[n] ) &&
+                T.isSameArray( ob1[n], ob2[n] )) || (ob1[n] === ob2[n]) )
+            ) {
+              rv = false;
+              return TAFFY.EXIT;
+            }
+          });
+        }
+        else {
+          rv = false;
+        }
+      }
+      else {
+        rv = false;
+      }
+      return rv;
+    };
+
+    // ****************************************
     // *
-    // * Create public utility has method
-    // * Returns true if a complex object, array
-	// * or taffy collection contains the material
-	// * provided in the second argument
-    // * Purpose: Used to comare objects
+    // * Create public utility is[DataType] methods
+    // * Return true if obj is datatype, false otherwise
+    // * Purpose: Used to determine if arguments are of certain data type
+    // *
+    // * mmikowski 2012-08-06 refactored to make much less "magical":
+    // *   fewer closures and passes jslint
     // *
     // ****************************************
-	TAFFY.has = function(var1, var2){
-		var T = TAFFY;
-		var re = true;
-		if (T.isTAFFY(var1)) {
-			re = var1.find(var2);
-			if (re.length > 0)
-			{
-				return true;
-			} else {
-				return false;
-			}
-		}
-		else {
-			switch (T.typeOf(var1)) {
-				case "object":
-					if (T.isObject(var2)) {
-						for (var x in var2) {
-							if (re === true&& var2.hasOwnProperty(x) && !T.isUndefined(var1[x]) && var1.hasOwnProperty(x)) {
-								re = T.has(var1[x], var2[x]);
-							} else {
-								return false;
-							}
-						}
-						return re;
-					}
-					else 
-						if (T.isArray(var2)) {
-						for (var x = 0; x < var2.length; x++) {
-							re = T.has(var1, var2[x]);
-							if (re === true) {
-								return true;
-							}
-						}
-						}
-						else 
-							if (T.isString(var2) && !TAFFY.isUndefined(var1[var2])) {
-								return true;
-							}
-					break;
-				case "array":
-					if (T.isObject(var2)) {
-						for (var n = 0; n < var1.length; n++) {
-							re = T.has(var1[n], var2);
-							if (re == true) {
-								return true;
-							}
-						}
-					}
-					else 
-						if (T.isArray(var2)) {
-						for (var x = 0; x < var2.length; x++) {
-							for (var n = 0; n < var1.length; n++) {
-								re = T.has(var1[n], var2[x]);
-								if (re == true) {
-									return true;
-								}
-							}						}
-						}
-						else 
-							if (T.isString(var2)) {
-								for (var n = 0; n < var1.length; n++) {
-									re = T.has(var1[n], var2);
-									if (re == true) {
-										return true;
-									}
-								}
-							}
-					break;
-				case "string":
-					if (T.isString(var2) && var2 == var1) {
-						return true;
-					}
-					break;
-				default:
-					if (T.typeOf(var1) == T.typeOf(var2) && var1 == var2) {
-						return true;
-					}
-					break;
-			}
-		}
-		return false;
-	};
-		
-	// ****************************************
-    // *
-    // * Create public utility hasAll method
-    // * Returns true if a complex object, array
-	// * or taffy collection contains the material
-	// * provided in the call - for arrays it must
-	// * contain all the material in each array item
-    // * Purpose: Used to comare objects
-    // *
-    // ****************************************
-		
-		TAFFY.hasAll = function (var1,var2) {
-			var T = TAFFY;
-			if (T.isArray(var2)) {
-				var ar = true;
-				for(var i = 0, il = var2.length;i<il;i++)
-				{
-					ar = T.has(var1,var2[i]);
-					if(ar == false)
-					{
-						return ar;
-					}
-				}
-				return true;
-			} else {
-				return T.has(var1,var2);
-			}
-		};
-		
-		// ****************************************
-		// *
-		// * Create public utility gatherUniques method
-		// * Return a new array with only unique
-		// * values from the passed array
-		// * Purpose: Used to get unique indexes for find
-		// *
-		// ****************************************   
-		TAFFY.gatherUniques = function(a){
-			var uniques = [];
-			for (var z = 0; z < a.length; z++) {
-				var d = true;
-				for (var c = 0; c < uniques.length; c++) {
-					if (uniques[c] == a[z]) {
-						d = false;
-					}
-				}
-				if (d == true) {
-					uniques[uniques.length] = a[z];
-				}
-			}
-			return uniques;
-		};
-		
-		// ****************************************
-		// *
-		// * Create public utility is[DataType] methods
-		// * Return true if obj is datatype, false otherwise
-		// * Purpose: Used to determine if arguments are of certain data type
-		// *
-		// ****************************************
-		
-		(function(ts){
-			for (var z = 0; z < ts.length; z++) {
-				(function(y){
-					TAFFY["is" + y] = function(c){
-						return (TAFFY.typeOf(c) == y.toLowerCase()) ? true : false;
-					}
-				}
-(ts[z]))
-			}
-		}
-(["String", "Number", "Object", "Array", "Boolean", "Null", "Function", "Undefined"]));
-		
-		// ****************************************
-		// *
-		// * Create public utility isNumeric method
-		// * Return ture if text of sT is made up solely of numbers, false otherwise
-		// * Purpose: Used to determine if arguments are numbers
-		// *
-		// ****************************************
-		TAFFY.isNumeric = function(sT){
-			var vC = "0123456789";
-			var IsN = true;
-			for (var i = 0; i < sT.length && IsN == true; i++) {
-				if (vC.indexOf(sT.charAt(i)) == -1) {
-					return false;
-				}
-			}
-			return IsN;
-			
-		};
-		
-		// ****************************************
-		// *
-		// * Create public utility isTAFFY method
-		// * Return ture if obj is created by TAFFY()
-		// * Purpose: Used to change behavior if oB is a TAFFY collection
-		// *
-		// ****************************************
-		TAFFY.isTAFFY = function(oB){
-			return (TAFFY.isObject(oB) && oB.TAFFY) ? true : false;
-			
-		};
-		
-		// ****************************************
-		// *
-		// * Create public utility EXIT object
-		// * Static value
-		// * Purpose: Return in a forEach function to break out of the loop
-		// *
-		// ****************************************
-		TAFFY.EXIT = {EXIT:true};
-		
+
+    typeList = [
+      'String',  'Number', 'Object',   'Array',
+      'Boolean', 'Null',   'Function', 'Undefined'
+    ];
+  
+    makeTest = function ( thisKey ) {
+      return function ( data ) {
+        return TAFFY.typeOf( data ) === thisKey.toLowerCase() ? true : false;
+      };
+    };
+  
+    for ( idx = 0; idx < typeList.length; idx++ ){
+      typeKey = typeList[idx];
+      TAFFY['is' + typeKey] = makeTest( typeKey );
+    }
+  }
+}());
+
+if ( typeof(exports) === 'object' ){
+  exports.taffy = TAFFY;
 }
+

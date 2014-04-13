@@ -4,7 +4,7 @@ simple_weapons = [];
 martial_weapons = [];
 exotic_weapons = [];
 // TODO - export
-show_detail_ignore = ["id", "_rev", "classes", "type", "prereqs", "mobility", "conditional", "multi", "inform", "abbrev", "skill_classes", "attack", "damage", "spells", "levels", "tags", "id", "_id"];
+show_detail_ignore = ["_id", "_rev", "classes", "type", "prereqs", "mobility", "conditional", "multi", "inform", "abbrev", "skill_classes", "attack", "damage", "spells", "levels", "tags", "id", "_id"];
 spellcasters = ["Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Wizard"];
 natural_spellcasters = ["Cleric", "Druid", "Paladin", "Ranger"];
 spellpickers = ["Bard", "Sorcerer", "Wizard"];
@@ -24,7 +24,7 @@ grapple_size_mod = {
 damage_reductions = ["fire", "cold", "acid", "pois", "elec", "base"];
 save_against = ["pois", "petr"];
 sizes = ["fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal"];
-draconic_types = new TAFFY([{
+draconic_types = TAFFY([{
 	name : "Black",
 	_id : "xxca1",
 	breath : "Acid - 60ft line"
@@ -68,18 +68,24 @@ draconic_types = new TAFFY([{
 curr_xp = 0;
 char_classes = [];
 equipment_benefits = [];
-alignments = new TAFFY([{
+alignments = TAFFY([{
+    index: 0,
 	name : 'Lawful'
 }, {
+    index: 1,
 	name : 'Neutral'
 }, {
+    index: 2,
 	name : 'Chaotic'
 }]);
-goodness = new TAFFY([{
+goodness = TAFFY([{
+    index: 0,
 	name : 'Good'
 }, {
+    index: 1,
 	name : 'Neutral'
 }, {
+    index: 2,
 	name : 'Evil'
 }]);
 
@@ -94,7 +100,7 @@ $.extend({
 });
 
 function update_weapon(name, index) {
-	var weapon = weapons.first({
+	var weapon = weapons().first({
 		name : name
 	});
 	$('#' + name + index + 'dam').value = weapon.damage;
@@ -120,7 +126,7 @@ function calc_total_base_feats_count(race_name, xp) {
 function calc_total_class_feats_count(xp) {
 	var class_feat_count = 0;
 	for(var classname in chardata.classes) {
-		var class_feats = classes.first({
+		var class_feats = classes().first({
 			name : classname
 		}).bonus_feats_levels;
 		// TODO - do this elegantly
@@ -135,7 +141,7 @@ function calc_total_class_feats_count(xp) {
 function calc_armor_acp(char_armors) {
 	var acp = 0;
 	for(var i in char_armors) {
-		var armor = armors.first({
+		var armor = armors().first({
 			name : char_armors[i].armor_name
 		});
 		acp += armor.acp;
@@ -162,7 +168,7 @@ function calc_skill_mod(skill, skill_ability_score, acp, subtype) {
 	// has the character spent points for this skill
 	var char_skill = false;
 	if(chardata.skills != null) {
-		char_skill = chardata.skills.first({
+		char_skill = chardata.skills().first({
 			skill_name : skill.name
 		});
 	}
@@ -174,13 +180,13 @@ function calc_skill_mod(skill, skill_ability_score, acp, subtype) {
 		}
 	}
 
-	var race = races.first({
+	var race = races().first({
 		name : chardata.race_name
 	});
 	var feat_mod = 0;
 
 	get_all_char_feats().forEach(function(char_feat, i) {
-		var feat = feats.first({
+		var feat = feats().first({
 			name : char_feat.feat_name
 		});
 		// console.log(feat.name);
@@ -194,7 +200,7 @@ function calc_skill_mod(skill, skill_ability_score, acp, subtype) {
 	});
 	// TODO - move to feat definition
 	if(chardata.feats) {
-		var skill_focus = chardata.feats.first({
+		var skill_focus = chardata.feats().first({
 			feat_name : "Skill Focus"
 		});
 		if(skill_focus && skill_focus.multi && jQuery.inArray(skill.name, skill_focus.multi) > -1) {
@@ -239,12 +245,12 @@ function calc_synergies(skill) {
 	for(var i in skill.synergies) {
 		var char_synergy_skill = false;
 		if(chardata.skills) {
-			char_synergy_skill = chardata.skills.first({
+			char_synergy_skill = chardata.skills().first({
 				skill_id : skill.synergies[i]
 			});
 		}
 		if(char_synergy_skill) {
-			synergy_skill = skills.first({
+			synergy_skill = skills().first({
 				id : skill.synergies[i]
 			});
 			// calculate the ranks for the synergy skill
@@ -255,7 +261,7 @@ function calc_synergies(skill) {
 	return synergy_mod;
 }
 
-options = new TAFFY([{
+options = TAFFY([{
 	name : "owner",
 	description : "Owner",
 	note : "prevents character overwrites",
@@ -297,7 +303,7 @@ abilities = {
 };
 
 function calc_ability_score(ability, race_name) {
-	var race = races.first({
+	var race = races().first({
 		name : race_name
 	});
 	var race_mod = race.abilities[ability];
@@ -340,18 +346,18 @@ function set_links_part(page_id) {
 	var is_spellpicker = false;
 	for(var classname in chardata.classes) {
 		is_spellpicker = spellpickers.indexOf(classname) > -1 ? true : is_spellpicker;
-		var class_shortname = classes.first({
-			name : classname
-		}).shortname;
+		var class_shortname = classes({
+            name : classname
+        }).first().shortname;
 		classes_html += "<td id='view_class_" + classname + "' style='color: blue;text-align: right; vertical-align: top' nowrap><a class='fake_link view' onclick='var level_diff=(calc_level()+1)-calc_current_level(); show_class_dialog(level_diff,0);'>" + class_shortname + "</a><sub>" + (chardata.classes[classname].level + 1) + "</sub></td>";
 	}
 
-	var race = races.first({
+	var race = races().first({
 		name : chardata.race_name
 	});
-	//	// console.log("skills length (before): %d", chardata.skills ? chardata.skills.get().length : 0);
+	//	// console.log("skills length (before): %d", chardata.skills ? chardata.skills().length : 0);
 	links_html = "<table padding='0' cellpadding='1' margin='0'><tr>";
-	allviews = views.get();
+	allviews = views().get();
 	for(k in allviews) {
 		// exclude spells link if class doesn't have any
 		if(allviews[k].name == 'spells' && !is_spellpicker) {
@@ -388,7 +394,7 @@ function set_links_part(page_id) {
 	$("#load").bind("click", function(e) {
 		return import_character();
 	});
-	//	// console.log("skills length (after): %d", chardata.skills ? chardata.skills.get().length : 0);
+	//	// console.log("skills length (after): %d", chardata.skills ? chardata.skills().length : 0);
 
 	$("#new").bind("click", function(e) {
 		// document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString()
@@ -409,8 +415,8 @@ function set_links_part(page_id) {
 	//	for (var i in characters) {
 	//		var nam = characters[i].name;
 	//		if(nam.length == 0) {
-	//			var race_name = races.first({ name: characters[i].race_name }).shortname;
-	//			var class_name = classes.first({ name: characters[i].class_name }).shortname;
+	//			var race_name = races({ name: characters[i].race_name }).first().shortname;
+	//			var class_name = classes({ name: characters[i].class_name }).first().shortname;
 	//			nam = race_name + "_" + class_name;
 
 	//		}
@@ -495,11 +501,11 @@ function calc_level(xp) {
 function calc_init(dex_score) {
 	init = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		init : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		init = feat.init(init);
 		return init;
 	});
@@ -511,11 +517,11 @@ function calc_ref(dex_score, class_name, xp, char_feats) {
 
 	var ref = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		ref : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		ref = feat.ref(ref);
 		return ref;
 	});
@@ -527,11 +533,11 @@ function calc_will(wis_score, class_name, xp, char_feats) {
 
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		will : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		feat_mod = feat.will(feat_mod);
 		return feat_mod;
 	});
@@ -542,11 +548,11 @@ function calc_fort(con_score) {
 	var class_fort_score = calc_save("fort_save");
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		fort : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		feat_mod = feat.fort(feat_mod);
 		return feat_mod;
 	});
@@ -558,11 +564,11 @@ function calc_spell_resistance() {
 	var class_sr_score = calc_save("sr_save");
 	var feat_mod = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		sr : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		feat_mod = feat.fort(feat_mod);
 		return feat_mod;
 	});
@@ -577,18 +583,18 @@ function calc_ac(dex_score) {
 	// TODO - include feats
 	var ac = 0;
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		ac : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		ac = feat.ac(ac);
 		return ac;
 	});
 	var armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor");
 	var shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield");
 	// TODO - move to ac: in classes
-	var monk_mod = chardata.classes["Monk"] != null ? classes.first({ name: "Monk" }).ac_bonus[calc_level()] : 0;
+	var monk_mod = chardata.classes["Monk"] != null ? classes({ name: "Monk" }).first().ac_bonus[calc_level()] : 0;
 	return 10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod('AC') + ac;
 }
 
@@ -604,7 +610,7 @@ function calc_armor_bonus(char_armor, db, dammit) {
 	if(char_armor != null) {
 		for(i in char_armor) {
 			if(session['armor'][i]['is_worn']) {
-				armordata = db.first({
+				armordata = db().first({
 					name : char_armor[i][dammit + "_name"]
 				});
 
@@ -624,7 +630,7 @@ function calc_armor_bonus(char_armor, db, dammit) {
 }
 
 function calc_size_mod(race_name) {
-	size = races.first({
+	size = races().first({
 		name : race_name
 	}).size;
 
@@ -650,11 +656,11 @@ function calc_damage(weapon, char_feats, char_weapon) {
 	}
 
 	var char_feats = get_char_feats();
-	char_feats.get({
+	char_feats({
 		damage : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		// console.log("damage: " + feat.name);
 		damages = feat.damage(damages, weapon);
 		return damages;
@@ -717,8 +723,8 @@ function show_dialog(title, content, save_on_close, close_fn, opts) {
 
 function show_item_detail(table, obj_id, modify_detail) {
 	var obj = null;
-	if(table.hasOwnProperty("find")) {
-		obj = table.first({
+	if(table.hasOwnProperty("TAFFY")) {
+		obj = table().first({
 			_id : obj_id
 		});
 	} else {
@@ -727,7 +733,7 @@ function show_item_detail(table, obj_id, modify_detail) {
 	var content = '';
 	var title = obj.name;
 	jQuery.each(obj, function(name, value) {
-		if(value == null || value.toString().length == 0 || show_detail_ignore.indexOf(name) > -1) {
+		if(value == null || value.toString().length == 0 || name.indexOf('_') == 0 || show_detail_ignore.indexOf(name) > -1) {
 			return;
 		} else if(name != 'detail' && name != 'name' && name != 'class_data' && name != 'description' && name != 'op') {
 			if(name == 'ability_id') {
@@ -813,7 +819,7 @@ function parse_character_data(data) {
 			log_data = data.substring(data.indexOf('``') + 2);
 			data = data.substring(0, data.indexOf('``'));
 		}
-		data = TAFFY.JSON.parse(unescape(data)) || {};
+		data = JSON.parse(unescape(data)) || {};
 	}
 	data.skills = parse_taffy_data(data.skills);
 	data.feats = parse_taffy_data(data.feats);
@@ -943,7 +949,7 @@ function is_class_feat(feat_name) {
 function get_class_feat_names() {
 	var class_feats = [];
 	for(var classname in chardata.classes) {
-		var clazz = classes.first({
+		var clazz = classes().first({
 			name : classname
 		});
 		for(var level in clazz.feats) {
@@ -959,7 +965,7 @@ function get_class_feats() {
 	var class_feats = [];
 	var feat_names = get_class_feat_names();
 	for(var i in feat_names) {
-		class_feats = class_feats.concat(feats.first({
+		class_feats = class_feats.concat(feats().first({
 			name : feat_names[i]
 		}));
 	}
@@ -967,18 +973,25 @@ function get_class_feats() {
 }
 
 function get_all_char_feats() {
-	return chardata.feats ? chardata.feats.get().concat(get_class_feats()) : get_class_feats();
+    // TODO - fix feat_name/name mismatch
+    var all_feats = get_class_feats();
+    if(chardata.feats)
+    {
+        all_feats = chardata.feats().get().concat(all_feats)
+    }
+
+	return all_feats;
 }
 
 function get_special_abilities() {
 	var special_abilities = [];
 	for(var classname in chardata.classes) {
-		var class_specials = classes.first({
+		var class_specials = classes().first({
 			name : classname
 		}).specials;
 		for(var level = 0; level <= chardata.classes[classname].level; level++) {
 			for(var item = 0; item < class_specials[level].length; item++) {
-				var class_special = specials.first({
+				var class_special = specials().first({
 					name : class_specials[level][item].special_name
 				});
 				if(class_special.supersedes) {
@@ -1071,8 +1084,8 @@ function calc_current_level() {
 function calc_save(type) {
 	var save = 0;
 	for(var classname in chardata.classes) {
-		if(classes.first({ name: classname })[type]) {
-			save += classes.first({ name: classname })[type][chardata.classes[classname].level];
+		if(classes({ name: classname }).first()[type]) {
+			save += classes({ name: classname }).first()[type][chardata.classes[classname].level];
 		}
 	}
 
@@ -1116,11 +1129,11 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, other_mod) {
 
 	var char_feats = get_char_feats();
 	// have feats modify the attacks
-	char_feats.get({
+	char_feats({
 		attack : {
 			"!is" : null
 		}
-	}).forEach(function(feat, i) {
+	}).each(function(feat, i) {
 		// TODO - can we do this by reference
 		// console.log("attack: " + feat.name);
 		attacks = feat.attack(attacks, weapon);
@@ -1200,7 +1213,7 @@ function do_class_functions(page, location, obj) {
 	}
 
 	for(var classname in chardata.classes) {
-		var clazz = classes.first({
+		var clazz = classes().first({
 			name : classname
 		});
 		if(clazz.custom && clazz.custom[page] && clazz.custom[page][location]) {
@@ -1215,10 +1228,10 @@ function do_class_functions(page, location, obj) {
 
 function get_char_feats() {
 	// get the class feats + char feats
-	var char_feats = new TAFFY([]);
+	var char_feats = TAFFY([]);
 	if(chardata.feats) {
-		chardata.feats.get().forEach(function(feat, i) {
-			char_feats.insert(feats.first({
+		chardata.feats().each(function(feat, i) {
+			char_feats.insert(feats().first({
 				name : feat.feat_name
 			}));
 		});
@@ -1242,7 +1255,7 @@ function calc_flat_footed_ac(char_armor) {
 function calc_base_attack_bonus() {
 	var bab = [];
 	for(var classname in chardata.classes) {
-		var class_babs = classes.first({
+		var class_babs = classes().first({
 			name : classname
 		}).base_attack_bonus;
 		var attacks = class_babs[chardata.classes[classname].level].split("/");
