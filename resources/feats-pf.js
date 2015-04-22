@@ -98,7 +98,7 @@ feats = TAFFY([{
     detail: "You have mastered the ability to cast spells while wearing armor.<p class=sub><b>Prerequisites: </b>Arcane Armor Training, Medium Armor Proficiency, caster level 7th<p class=sub><b>Benefit: </b>As a swift action, reduce the arcane spell failure chance due to the armor you are wearing by 20% for any spells you cast this round. This bonus replaces, and does not stack with, the bonus granted by Arcane Armor Training.",
     prereqs: {
         level: 7,
-        feats: ["Arcane Armor Training", "Medium Armor Proficiency"]
+        feats: ["Arcane Armor Training", "Armor Proficiency, Medium"]
     },
     groups: ["Combat"],
     tags: ["pathfinder"],
@@ -1208,7 +1208,7 @@ feats = TAFFY([{
     summary: "Once per day, you may reroll a Will save ",
     detail: "Your clarity of thought allows you to resist mental attacks. <p class=sub><b>Prerequisites: </b>Iron Will <p class=sub><b>Benefit: </b>Once per day, you may reroll a Will save. You must decide to use this ability before the results are revealed. You must take the second roll, even if it is worse.",
     prereqs: {
-    	feats: ["	Iron Will"]
+    	feats: ["Iron Will"]
     },
     tags: ["pathfinder"],
     type: "feat",
@@ -1636,7 +1636,7 @@ feats = TAFFY([{
     summary: "Reload crossbow quickly",
     detail: "Choose a type of crossbow (hand, light, or heavy). You can reload such weapons quickly. <p class=sub><b>Prerequisite: </b>Weapon Proficiency (crossbow type chosen) <p class=sub><b>Benefit: </b>The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow). Reloading a crossbow still provokes an attack of opportunity. <p class=sub>If you have selected this feat for hand crossbow or light crossbow, you may fire that weapon as many times in a full-attack action as you could attack if you were using a bow. <p class=sub><b>Normal: </b>A character without this feat needs a move action to reload a hand or light crossbow, or a full-round action to reload a heavy crossbow. <p class=sub><b>Special: </b>You can gain Rapid Reload multiple times. Each time you take the feat, it applies to a new type of crossbow.",
     prereqs: {
-    	feats: ["Weapon Proficiency"],
+    	// feats: ["Weapon Proficiency"],
     	// TODO - do this one
     	multi: {
     		type: "Crossbow"
