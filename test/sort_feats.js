@@ -28,7 +28,7 @@ all_feats.forEach(function (feat, n)
 
 all_feats.sort(function (a, b)
 {
-   return (a.prereqs == undefined || a.prereqs.feats == undefined) && (a.name < b.name) ? -1 : 1;
+    return (a.prereqs == undefined || a.prereqs.feats == undefined) && (a.name < b.name) ? -1 : 1;
 });
 
 console.log("\n\n---**# AFTER SORTING #**---")
@@ -55,7 +55,7 @@ console.log("\n\n---**# IN PREREQ ORDER #**---");
 
 order.forEach(function (name, i)
 {
-   console.log(printed[name] + name);
+    console.log(printed[name] + name);
 });
 
 function create_feat_listing(feat, indent)
@@ -63,11 +63,8 @@ function create_feat_listing(feat, indent)
     var count = indent;
     if (feat.prereqs && feat.prereqs.feats)
     {
-        for (var i = 0; i < feat.prereqs.feats.length; i++)
-        {
-            var prereq = feats({name: feat.prereqs.feats[i]}).first();
-            indent = create_feat_listing(prereq, indent + 1);
-        }
+        var prereq = feats({name: feat.prereqs.feats[0]}).first();
+        indent = create_feat_listing(prereq, indent + 1);
     }
 
     var tab = "";
@@ -79,13 +76,13 @@ function create_feat_listing(feat, indent)
 
     if (printed[feat.name] == null)
     {
-        var idx = order.length-1;
+        var idx = order.length - 1;
         //console.log(tab + feat.name);
-        if(feat.prereqs && feat.prereqs.feats)
+        if (feat.prereqs && feat.prereqs.feats)
         {
-            idx = order.indexOf[feat.prereqs.feats[0]];
+            idx = order.indexOf(feat.prereqs.feats[0]);
         }
-        order.splice(idx+1, 0, feat.name);
+        order.splice(idx + 1, 0, feat.name);
         printed[feat.name] = tab;
     }
 
