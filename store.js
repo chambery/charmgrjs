@@ -130,7 +130,7 @@ function save_remote(data, name) {
 }
 
 function save_local(data, name, expires) {
-  expires = expires | (new Date(2020, 02, 02)).toUTCString();
+  expires = expires === undefined | expires <= 0 ? "Sun, 02-Feb-2020 00:00:01 GMT" : expires;
   data = escape(JSON.stringify(data));
   document.cookie = name + "=" + data + ";expires=" + expires;
 }
@@ -145,10 +145,10 @@ function save_character() {
 
   var save_data = jQuery.extend(true, {}, chardata);
   if (save_data.skills != null) {
-    save_data.skills = save_data.skills();
+    save_data.skills = save_data.skills().get();
   }
   if (save_data.feats != null) {
-    save_data.feats = save_data.feats();
+    save_data.feats = save_data.feats().get();
   }
   save_data.type = "character";
 

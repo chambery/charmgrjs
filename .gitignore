@@ -1,3 +1,11 @@
 *~
 /users
 *#
+node_modules/
+.idea/
+.settings/
+.externalToolBuilders/
+*.marks
+.vscode/
+projectFilesBackup/
+bower_components/

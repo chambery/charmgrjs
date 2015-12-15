@@ -493,9 +493,9 @@ classes = TAFFY([{
 						if (level <= chardata.classes['Sorcerer'].level && power.levels[level].weapons) {
 							for (var i in power.levels[level].weapons) {
 								console.log(power.levels[level].weapons[i].name);
-								if (!weapons().first({
+								if (!weapons({
 									name: power.levels[level].weapons[i].name
-								})) {
+								}).first()) {
 									weapons.insert(power.levels[level].weapons[i])
 								} else {
 									weapons.update(power.levels[level].weapons[i], {

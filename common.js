@@ -21,9 +21,9 @@ $.extend({
 });
 
 function update_weapon(name, index) {
-	var weapon = weapons().first({
+	var weapon = weapons({
 		name : name
-	});
+	}).first();
 	$('#' + name + index + 'dam').value = weapon.damage;
 	$('#' + name + index + 'crit').value = weapon.critical;
 }
@@ -646,9 +646,9 @@ function show_dialog(title, content, save_on_close, close_fn, opts) {
 function show_item_detail(table, obj_id, modify_detail) {
 	var obj = null;
 	if(table.hasOwnProperty("TAFFY")) {
-		obj = table().first({
+		obj = table({
 			_id : obj_id
-		});
+		}).first();
 	} else {
 		obj = table[obj_id];
 	}
@@ -1120,7 +1120,7 @@ function create_new_character() {
 	players_companion.last_character = "";
 	chardata.options.owner = players_companion.owner;
 	sav(players_companion, 'players_companion');
-	edit.do_edit();
+	main.do_edit();
 }
 
 function do_class_functions(page, location, obj) {

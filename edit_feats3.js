@@ -63,13 +63,35 @@ function build_feats_page() {
   }
 
   var filtered_feats = allfeats().get();
-  filtered_feats.sort(function(a, b) {
-    // console.log(a.name + ((a.prereqs == null || a.prereqs.feats == null) && (a.name < b.name) ? " < " : " > ") + b.name);
-    return (a.prereqs != null && a.prereqs.feats != null) ? 1 : -1;  // && (a.name < b.name)
+  console.group("Before sorting");
+  filtered_feats.forEach( function(feat, n) {
+    if (!feat.hidden) {
+      console.log(feat.name);
+    }
   });
+  console.groupEnd();
+
+
+  filtered_feats.sort( function(a, b)
+  {
+    // console.log(a.name + ((a.prereqs == null || a.prereqs.feats == null) && (a.name < b.name) ? " < " : " > ") + b.name);
+    return (a.prereqs == undefined || a.prereqs.feats == undefined) && (a.name < b.name) ? -1 : 1; //
+  });
+
+
+  var filtered_feats = allfeats().get();
+  console.group("After sorting");
+  filtered_feats.forEach( function(feat, n) {
+    if (!feat.hidden) {
+      console.log(feat.name);
+    }
+  });
+  console.groupEnd();
+
 
   filtered_feats.forEach( function(feat, n) {
     if (!feat.hidden) {
+      console.log(feat.name);
       create_feat_listing(feat, 1);
     }
   });
@@ -78,21 +100,6 @@ function build_feats_page() {
 
 function create_feat_listing(feat, indent) {
   // console.group("create_feat_listing");
-  var foo = "";
-  for (var i = indent - 2; i >= 0; i--) {
-    foo += "\t";
-  };
-  for(var p in feat.prereqs)
-  {
-    if(p.feats != null)
-    {
-      for(var fp in prereqs.feats)
-      {
-      }
-
-    }
-
-  }
   indent = indent == null ? 0 : indent;
   var count = indent;
   if (feat.prereqs && feat.prereqs.feats) {

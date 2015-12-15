@@ -95,12 +95,12 @@
 		name : "Martial Weapon Proficiency"
 	}) ? "checked" : "";
 	$("#martial_weapon_proficiency").attr("checked", ap);
-	
+
 	var base_attack_bonuses = calc_base_attack_bonus();
 	for ( var i in chardata.weapons) {
-		var weapon = weapons().first( {
+		var weapon = weapons( {
 			name : chardata.weapons[i].weapon_name
-		});
+		}).first();
 		var html = [ "<tr><td class='user-entry-box'>", chardata.weapons[i].name != null ? chardata.weapons[i].name + " (" + weapon.name + ")" : weapon.name, "</td><td class='user-entry-box'>", chardata.weapons[i].att, "</td><td class='user-entry-box'>", calc_damage(weapon, chardata.abilities["Str"], chardata.feats, chardata.weapons[i]),
 				"</td><td class='user-entry-box'>",calc_critical(weapon.crit, chardata.weapons[i], chardata.feats), "</td><td class='user-entry-box'>", weapon.range, "</td><td class='user-entry-box'>", weapon.usage,
 		"</td><td class='user-entry-box'>", weapon.category, "</td><td class='user-entry-box'>", weapon.weight, "</td><td class='user-entry-box'>", (chardata.weapons[i].note ? chardata.weapons[i].note : ""), "</td></tr>" ];
@@ -110,7 +110,7 @@
 	var init = calc_init(chardata.abilities["Dex"]);
 	$("#init_total").text(init);
 	$("#init_misc_mod").text(init - calc_ability_modifier(chardata.abilities["Dex"]));
-	
+
 	var fort = calc_fort(chardata.abilities["Con"]);
 	$("#fort_total").text(pos(fort));
 	var fort_base = calc_save("fort_save");
@@ -128,7 +128,7 @@
 	var ref_base = calc_save("ref_save");
 	$("#ref_base").text(pos(ref_base));
 	$("#ref_misc_mod").text(pos(ref - (ref_base + calc_ability_modifier(chardata.abilities["Dex"]))));
-	
+
 	var ac = calc_ac(chardata.abilities["Dex"]);
 	$("#ac_total").text(ac);
 	var armor_bonus = calc_armor_bonus(chardata.armors, armors, "armor");
@@ -138,18 +138,18 @@
 	var size_mod = calc_size_mod(chardata.race_name);
 	$("[id=size_mod]").text(pos(size_mod));
 	$("#ac_misc_mod").text(pos(ac - (armor_bonus.bonus + shield_bonus.bonus + size_mod + calc_ability_modifier(chardata.abilities["Dex"]) + 10)));
-	
+
 	$("#touch").text(pos(10 + calc_ability_modifier(chardata.abilities["Dex"]) + size_mod));
 	$("#flat").text(pos(10 + armor_bonus.bonus));
-	
+
 	$("[id=base_attack_bonus]").text(base_attack_bonuses.map(function(x){ return pos(x); }).join("/"));
 	$("#armor_check_penalty").text(calc_armor_acp(chardata.armors) + calc_shield_acp(chardata.shields));
-	
+
 	$("#melee_total").text(calc_base_attack(base_attack_bonuses, parseInt(chardata.abilities["Str"])).map(function(x){ return pos(x); }).join("/"));
 	$("#melee_misc_mod").text();
 	$("#ranged_total").text(calc_base_attack(base_attack_bonuses, parseInt(chardata.abilities["Dex"])).map(function(x){ return pos(x); }).join("/"));
 	$("#ranged_misc_mod").text();
-	
+
 	var wp = "";
 	var c = 0;
 	var weapon_proficiencies = chardata.feats({ name: [ "Exotic Weapon Proficiency", "Weapon Specialization", "Weapon Focus", "Greater Weapon Specialization", "Greater Weapon Focus" ] })

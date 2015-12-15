@@ -8,7 +8,7 @@ races = TAFFY ([{
 	skills: { "Listen" : 2  },
 	size: "small",
 	favored_class: "Rogue",
-	languages: ["Common", "Draconic"],
+	languages: ["Common", "Halfling"],
 	speed: 20,
 	type: "race",
 	tags: ["pathfinder"], _id: "f0e3"

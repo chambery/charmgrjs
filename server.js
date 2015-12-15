@@ -1,4 +1,4 @@
-var sqlite3 = require("sqlite3").verbose();
+// var sqlite3 = require("sqlite3").verbose();
 var express = require('express'),
     app = express();
 var bodyParser = require("body-parser");
@@ -17,8 +17,8 @@ var fs = require('fs');
 var file = "../propmgmt.sqlite";
 var exists = fs.existsSync(file);
 console.log("file exists: " + exists);
-var db = new sqlite3.Database(file);
-console.log("db: " + db.toString());
+// var db = new sqlite3.Database(file);
+// console.log("db: " + db.toString());
 YAML = require('yamljs');
 
 
@@ -57,7 +57,7 @@ app.get('/character/:owner/:name', function (req, res) {
     console.log("in get character");
     fs.readFile("users/" + req.params.owner + "/" + req.params.name + "/chardata", encoding = 'utf8', function (err, data) {
         if (err) {
-            res.send(err, 404);
+            res.status(404).send(err);
             console.log(err);
         } else {
             res.send(data);
@@ -70,7 +70,7 @@ app.get('/log/:owner/:name/:entry_id', function (req, res) {
     console.log("in get log entry");
     fs.readFile("users/" + req.params.owner + "/" + req.params.name + "/" + req.params.entry_id, encoding = 'utf8', function (err, data) {
         if (err) {
-            res.send(err, 404);
+            res.status(404).send(err);
             console.log(err);
         } else {
             res.send(data);
@@ -85,7 +85,7 @@ app.get('/delete/:owner/:name', function (req, res) {
     console.log("reading file");
     fs.readFile("users/" + req.params.owner + "/" + req.params.name + "/chardata", encoding = 'utf8', function (err, data) {
         if (err) {
-            res.send(err, 404);
+            res.status(404).send(err);
             console.log(err);
         } else {
             console.log("Successfully read")
@@ -94,7 +94,7 @@ app.get('/delete/:owner/:name', function (req, res) {
             console.log("renaming file");
             fs.rename("users/" + req.params.owner + "/" + req.params.name + "/chardata", "users/" + req.params.owner + "/" + req.params.name + "/chardata_" + parseInt((new Date()).getTime(), 16), function (err) {
                 if (err) {
-                    res.send(err, 404);
+                    res.status(404).send(err);
                     console.log(err);
                 } else {
                     console.log("Successfully renamed")
@@ -111,9 +111,9 @@ app.post('/character/:owner/:name', function (req, res) {
     make_dir("users/");
     make_dir("users/" + req.params.owner);
     make_dir("users/" + req.params.owner + "/" + req.params.name);
-    fs.writeFile("users/" + req.params.owner + "/" + req.params.name + "/chardata", JSON.stringify(req.body), 'utf8', function (err) {
+    fs.writeFile("users/" + req.params.owner + "/" + req.params.name + "/chardata", JSON.stringify(req.body, null, 4), 'utf8', function (err) {
         if (err) {
-            res.send(err, 500);
+            res.status(500).send(err);
             console.log(err);
         } else {
             console.log("The file was saved!");
@@ -128,9 +128,9 @@ app.post('/log/:owner/:name', function (req, res) {
     make_dir("users/");
     make_dir("users/" + req.params.owner);
     make_dir("users/" + req.params.owner + "/" + req.body.char_name);
-    fs.writeFile("users/" + req.params.owner + "/" + req.body.char_name + "/" + req.body.id, JSON.stringify(req.body), 'utf8', function (err) {
+    fs.writeFile("users/" + req.params.owner + "/" + req.body.char_name + "/" + req.body.id, JSON.stringify(req.body, null, 4), 'utf8', function (err) {
         if (err) {
-            res.send(err, 500);
+            res.status(500).send(err);
             console.log(err);
         } else {
             console.log("The file was saved!");
@@ -143,6 +143,3 @@ app.use('/', express.static(__dirname));
 
 app.listen(1860);
 console.log('Express server started on port 1860');
-
-
-

@@ -237,7 +237,7 @@ main.build_main_page = function() {
 	// base attack information
 	var html = [];
 	for (var j in char_weapons) {
-		var weapon_data = weapons({name : char_weapons[j]['weapon_name']}).first();
+		var weapon_data = weapons({name: char_weapons[j].weapon_name}).first();
 		html.push(["<table width='100%' border='0' margin='0'><tr><td id='weapon_", j, "_name' weapon_id='", weapon_data._id, "' colspan='4' bgcolor='#C5C6F6'></td></tr><tr><td width='22px'>Att</td><td id='weapon_", j, "_att' class='box'></td><td  width='20px'>Crit</td><td id='weapon_", j, "_crit' class='box' width='50px'></td></tr><tr><td width='22px'>Dam</td><td id='weapon_", j, "_dam' class='box'></td><td width='20px'>Bon</td><td id='weapon_", j, "_bon' class='box'></td></tr><tr id='weapon_", j, "_note'><td id='weapon_", j, "_note' colspan='4' width='100%' style='padding-left: 10px'></td></tr></table>"].join(''));
 	}
 
@@ -286,9 +286,9 @@ main.build_main_page = function() {
 	$('#spellspart').css('margin-top', '10px');
 	$('#spellspart').html("");
 	for (var classname in chardata.classes) {
-		var clazz = classes().first( {
+		var clazz = classes( {
 			name : classname
-		});
+		}).first();
 		if (clazz.spells_known && !chardata.classes[classname].spells) {
 			chardata.classes[classname].spells = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 		}
@@ -344,9 +344,9 @@ main.build_main_page = function() {
 						// wizards print it if the spell id is in their character
 						// list of spells
 						if(!clazz.spells_known || chardata.classes[classname].spells[level].indexOf(clazz_spells[i]) > -1) {
-							var spell = spells.first( {
+							var spell = spells( {
 								name : clazz_spells[i]
-							});
+							}).first();
 							// TODO - this does not come close to handling the general case
 							// don't print the spell if the descriptor is counter to alignment
 							for ( var j in spell.descriptors) {
@@ -429,9 +429,9 @@ main.populate_main_page = function() {
 	// weapons
 	var char_weapons = do_class_functions("main","before_weapons_populate", chardata.weapons);
 	for (var j in char_weapons) {
-		var weapon_data = weapons().first( {
+		var weapon_data = weapons({
 			name : char_weapons[j].weapon_name
-		});
+		}).first();
 		$('#weapon_' + j + '_name').text(char_weapons[j].name != null ? char_weapons[j].name + (char_weapons[j].name.indexOf(weapon_data.name) == -1 ? " (" + weapon_data.name + ")" : "") : weapon_data.name);
 		$('#weapon_' + j + '_crit').text(main.calc_critical(weapon_data.crit, char_weapons[j], chardata.feats));
 		$('#weapon_' + j + '_bon').text(char_weapons[j].att != null ? char_weapons[j].att : "");
@@ -571,9 +571,9 @@ main.recalc_main_page = function() {
 	var base_attack_bonuses = calc_base_attack_bonus();
 	var char_weapons = do_class_functions("main", "before_weapons_recalc", chardata.weapons);
 	for (var j in char_weapons) {
-		var weapon = weapons().first( {
+		var weapon = weapons({
 			_id : $('#weapon_' + j + '_name').attr('weapon_id')
-		});
+		}).first();
 
 		$('#weapon_' + j + '_att').text(calc_attack(base_attack_bonuses, weapon, chardata.weapons[j], parseInt($('#attack_mod').text())));
 		$('#weapon_' + j + '_dam').text(calc_damage(weapon, chardata.feats, chardata.weapons[j]));

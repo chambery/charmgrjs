@@ -14,30 +14,29 @@ async = require('async');
 
 import_feats();
 
-printed = {};
-order = [];
+var printed = {};
+var order = [];
 
 var all_feats = feats().get();
 
-console.log("\n\n---**# BEFORE SORTING #**---")
-all_feats.forEach(function (feat, n)
-{
-    console.log(feat.name);
-});
-
+  console.log("\n\n\tBefore sorting");
+  all_feats.forEach( function(feat, n) {
+    if (!feat.hidden) {
+      console.log(feat.name);
+    }
+  });
 
 all_feats.sort(function (a, b)
 {
     return (a.prereqs == undefined || a.prereqs.feats == undefined) && (a.name < b.name) ? -1 : 1;
 });
 
-console.log("\n\n---**# AFTER SORTING #**---")
-all_feats.forEach(function (feat, n)
-{
-    console.log(feat.name);
-});
-
-
+  console.log("\n\n\tAfter sorting");
+  all_feats.forEach( function(feat, n) {
+    if (!feat.hidden) {
+      console.log(feat.name);
+    }
+  });
 // sort_feats(err, data)
 // {
 
@@ -45,13 +44,13 @@ all_feats.forEach(function (feat, n)
 //var all_feats = TAFFY(feats().get())
 all_feats.forEach(function (feat, n)
 {
+    console.log(feat.name);
     if (!feat.hidden)
     {
         create_feat_listing(feat, 0);
     }
 });
-
-console.log("\n\n---**# IN PREREQ ORDER #**---");
+console.log("\n\n\n\n");
 
 order.forEach(function (name, i)
 {

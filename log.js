@@ -115,7 +115,7 @@ function edit_log_entry(entry_id) {
 function get_log_entry(entry_id) {
 	console.log("log id: " + entry_id);
 	var log_data = get_cookie_data(get_log_name(entry_id));
-	var log = TAFFY.JSON.parse(unescape(log_data));
+	var log = JSON.parse(unescape(log_data));
 	log = chardata.log[entry_id] && chardata.log[entry_id].last_mod && (log == null || chardata.log[entry_id].last_mod > log.last_mod) ? chardata.log[entry_id] : log;
 
 	return log;

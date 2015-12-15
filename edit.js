@@ -232,17 +232,25 @@ function populate_edit_page() {
 //	}
 
 	// TODO - move to recalc_edit_page()?
-	if (chardata.skills != null) {
-		skills().each(function(skill, i) {
-			var char_skill = chardata.skills().first( {
-				skill_name : skill.name
+	if (chardata.skills != null)
+	{
+		skills().each(function(skill, i)
+		{
+			var char_skill = chardata.skills().first(
+			{
+				skill_name: skill.name
 			});
-			if (char_skill != false) {
-				if(char_skill.subtypes) {
-					for(var subtype in char_skill.subtypes) {
+			if (char_skill != false)
+			{
+				if (char_skill.subtypes)
+				{
+					for (var subtype in char_skill.subtypes)
+					{
 						$("input[id=skill_" + skill._id + "_input][subtype='" + subtype + "']").val(char_skill.subtypes[subtype]);
 					}
-				} else {
+				}
+				else
+				{
 					$("#skill_" + skill._id + "_input").val(char_skill.ranks);
 				}
 			}
@@ -290,20 +298,19 @@ function recalc_edit_page() {
 	// move to class features
 	// $("#domain").toggle(chardata.class_name == "Cleric");
 
-	if (chardata.abilities == null) {
+	if (chardata.abilities == null)
+	{
 		chardata.abilities = {};
 	}
 
-	var race = races().first( {
-		name : chardata.race_name
-	});
+	var race = races({name : chardata.race_name}).first();
 
 	// abilities
-	for (var ability in abilities) {
-		chardata.abilities[ability] = $("#ability_" + ability).val();
-		if (race.abilities[ability]) {
-			$("#race_" + ability + "_mod").val(pos(race.abilities[ability]));
-		}
+	for (var ability in abilities)
+	{
+			chardata.abilities[ability] = $("#ability_" + ability).val();
+			var mod = race.abilities[ability] == null ? ' ' : race.abilities[ability];
+			$('#race_' + ability + '_mod').text(pos(mod));
 	}
 
 //	var ability_mods = {};
@@ -373,8 +380,6 @@ function recalc_edit_page() {
 	var skill_pts = calc_skill_points();
 	$('#skill_pts_remaining').html(skill_pts < 0 ? ["<span class='alarm'>", skill_pts, "</span>"].join('') : skill_pts);
 
-	update_race_mods();
-
 	// update available weapons (for class change)
 	build_data_part( "weapons", "weapon");
 	build_data_part( "armors", "armor");
@@ -418,9 +423,7 @@ function update_skills(skill, subtype) {
 	if (skill_text.val() != '' && parseInt(skill_text.val()) > 0) {
 		// TODO - ugly, need a "save()" function
 		if (chardata.skills == null) {
-			chardata.skills = TAFFY([{
-				skill_name : skill.name
-			}]);
+			chardata.skills = TAFFY();
 		}
 
 		var char_skill = chardata.skills().first( {
@@ -431,7 +434,7 @@ function update_skills(skill, subtype) {
 				skill_name : skill.name
 			});
 		}
-		var updata = {};
+		 var updata = {};
 		if(subtype) {
 			updata.subtypes = $.extend({}, chardata.skills({ skill_name: skill.name }).first().subtypes);
 			updata.subtypes[subtype] = skill_text.val();
@@ -439,7 +442,7 @@ function update_skills(skill, subtype) {
 			updata.ranks = skill_text.val();
 		}
 
-		chardata.skills.update( updata,
+		chardata.skills().update( updata,
 		{
 			skill_name : skill.name
 		});
@@ -451,17 +454,6 @@ function update_skills(skill, subtype) {
 
 }
 
-function update_race_mods() {
-	var race = races().first( {
-		name : $('#race').val()
-	});
-	if (race) {
-		for (var ability in abilities) {
-			var mod = race.abilities[ability] == null ? ' ' : race.abilities[ability];
-			$('#race_' + ability + '_mod').text(pos(mod));
-		}
-	}
-}
 
 //function create_selector(part_id, name, table, onchange_action, addl_data, include_empty) {
 //	var addl_data = (addl_data == null ? [] : addl_data);
