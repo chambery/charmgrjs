@@ -115,9 +115,9 @@ function create_feat_listing(feat, indent) {
   // ignore already printed feats
   if ($('#' + feat._id).length == 0) {
     if (feat.prereqs && feat.prereqs.feats) {
-      var prereq = feats().first( {
+      var prereq = feats({
         name : feat.prereqs.feats[0]
-      });
+      }).first();
       var multi = prereq.multi ? "_sub_" : "";
       $('#' + prereq._id + multi).after(html);
       $("td[id='" + feat._id + "']").css('padding-left', (10 * (indent - count)) + 'px');
@@ -184,18 +184,18 @@ function populate_feats_page() {
     if (feat.multi) {
       var char_feat = false;
       if (chardata.feats != null) {
-        var char_feat = chardata.feats().first( {
+        var char_feat = chardata.feats({
           feat_name : feat.name
-        });
+        }).first();
       }
       if (feat.multi != "count") {
         var char_multi = (char_feat && char_feat.multi != null ? char_feat.multi : []);
 
         // put a check for each of the multi selections
         for ( var i = 0; i < char_multi.length; i++) {
-          var multi_id = feat.multi.type.first( {
+          var multi_id = feat.multi.type({
             name : char_multi[i]
-          })._id;
+          }).first()._id;
           $("input#" + feat._id + "_" + multi_id).attr('checked', true);
         }
       } else {
@@ -205,7 +205,7 @@ function populate_feats_page() {
       }
     } else {
 
-      var checked = chardata.feats != null && chardata.feats({ feat_name : feat.name }).first();
+      var checked = chardata.feats != null && chardata.feats({ feat_name : feat.name }).first() != false;
 
       //  class feats (something more efficient)
       if(is_class_feat(feat.name)) {
@@ -354,9 +354,9 @@ function is_prereqs_met(feat_id, prereqs) {
     if (prereqs.feats) {
         for (var k in prereqs.feats) {
             // if it's not a char feat or a class feat
-            if ((chardata.feats == null || chardata.feats().first({
-                feat_name: prereqs.feats[k]
-            }) == false) && !is_class_feat(prereqs.feats[k])) {
+            if ((chardata.feats == null || chardata.feats({
+                  feat_name: prereqs.feats[k]
+                }).first() == false) && !is_class_feat(prereqs.feats[k])) {
                 // console.log("feat fail: " + prereqs.feats[k]);
                 return false;
             }
@@ -366,11 +366,11 @@ function is_prereqs_met(feat_id, prereqs) {
     if (prereqs.multi) {
         for (var k in prereqs.multi) {
             for (var l in prereqs.multi[k]) {
-                if (chardata.feats || !chardata.feats().first({
-                    name: k
-                }) || !(chardata.feats().first({
-                    name: k
-                }).multi.indexOf(prereqs.multi[k][l]) > -1)) {
+                if (chardata.feats || !chardata.feats({
+                      name: k
+                    }).first() || !(chardata.feats({
+                      name: k
+                    }).first().multi.indexOf(prereqs.multi[k][l]) > -1)) {
                     // // console.log("multi fail: " + k + " - " + prereqs.multi[k][l]);
                     return false;
                 }
@@ -389,9 +389,9 @@ function is_prereqs_met(feat_id, prereqs) {
 
     if (prereqs.skills) {
         for (var k in prereqs.skills) {
-            var char_skill = chardata.skills && chardata.skills().first({
-                name: k
-            });
+            var char_skill = chardata.skills && chardata.skills({
+                  name: k
+                }).first();
             if (char_skill && char_skill.ranks < prereqs.skills[k]) {
                 // // console.log("skill fail: " + char_skill.ranks + " < " + prereqs.skills[k]);
                 return false;
@@ -477,15 +477,15 @@ function filter_options(feat, options_db) {
   }
   if (feat.multi.feats) {
     for ( var i in feat.multi.feats) {
-      var multi_feat = feats().first( {
+      var multi_feat = feats({
         name : feat.multi.feats[i]
-      });
+      }).first();
       // TODO - clumsy, but need a TaffyDB ref?
       var char_feats = get_char_feats();
       var char_feat = char_feats({ name : multi_feat.name }).first();
       if (multi_feat.collection) {
         if (char_feat) {
-          filtered_options = filtered_options.concat(multi_feat.collection.db.get(multi_feat.collection.filter));
+          filtered_options = filtered_options.concat(multi_feat.collection.db(multi_feat.collection.filter).get());
         }
       // } else if (multi_feat.multi.filter) {
 
@@ -494,14 +494,14 @@ function filter_options(feat, options_db) {
         // multi_feat: Weapon Focus
         // chardata.feats [{Exotic Weapon Proficiency, multi: ["Battleaxe"]}]
         if (char_feat && char_feat.multi != null && chardata.feats) {
-          char_feat_ref = chardata.feats().first( {
+          char_feat_ref = chardata.feats({
             feat_name : multi_feat.name
-          });
+          }).first();
           for ( var j in char_feat_ref.multi) {
             // // console.group("options");
-            var option = feat.multi.type.first( {
+            var option = feat.multi.type({
               name : char_feat_ref.multi[j]
-            });
+            }).first();
             // // console.log(option.name);
             // if you're filtering the list of multis...
             if (multi_feat.multi.filter) {
@@ -534,9 +534,9 @@ function update_count(feat) {
     alert('No feat selections remaining.');
     return;
   }
-  char_feat = chardata.feats().first( {
+  char_feat = chardata.feats({
     feat_name : feat_name
-  });
+  }).first();
   char_feat.multi += 1;
   $("span[id='feat_" + feat_id + "_count']").text(char_feat.multi);
   save_character();
@@ -544,9 +544,9 @@ function update_count(feat) {
 }
 
 function update_feat(feat, is_selected, multi_item, multi_type) {
-  var multi = multi_item ? "_" + multi_type.first( {
+  var multi = multi_item ? "_" + multi_type({
     name : multi_item
-  })._id : "";
+  }).first()._id : "";
   var count = calc_feats_remaining();
   var total_feats_remaining = count.bonus_feats.count + count.base_feats_remaining;
   var char_feat = chardata.feats({ feat_name : feat.name }).first();
@@ -561,9 +561,9 @@ function update_feat(feat, is_selected, multi_item, multi_type) {
         var count = chardata.feats.insert( {
           feat_name : feat.name
         });
-        char_feat = chardata.feats().first( {
+        char_feat = chardata.feats({
           feat_name : feat.name
-        });
+        }).first();
       }
       if (multi_item) {
         if (char_feat.multi == null) {
@@ -629,9 +629,9 @@ function create_rogue_special_abilities(level, clazz) {
 
   var rogue_specials = [];
   for ( var i in rogue_special_abilities) {
-    rogue_specials.push(special_abilities.first( {
+    rogue_specials.push(special_abilities({
       name : rogue_special_abilities[i]
-    }));
+    }).first());
   }
 
   // get the number of special abilities selectors
@@ -651,9 +651,9 @@ function create_rogue_special_abilities(level, clazz) {
   });
   for ( var i = 0; i < count; i++) {
     var selected = chardata.rogue_special_abilities && chardata.rogue_special_abilities[i] != null ? chardata.rogue_special_abilities[i].special_id : null;
-    var selected_special = special_abilities.first( {
+    var selected_special = special_abilities({
       name : selected
-    });
+    }).first();
     special_html += "<tr id='special_" + i + "'><td valign='top'>";
     special_html += create_select1('special_' + i, rogue_specials, 'update_rogue_special_ability( ' + i + ')', selected);
     special_html += "</a></td><td id='special_" + i + "_description'><a class='fake_link' onclick='show_item_detail(special_abilities, "
@@ -673,9 +673,9 @@ function create_rogue_special_abilities(level, clazz) {
 function handle_pick(group, count) {
   var matches = 0;
   for ( var i in group) {
-    if (char_feats().first( {
-      name : group[i]
-    })) {
+    if (char_feats({
+          name : group[i]
+        }).first()) {
       // // console.log("match " + matches + " of " + prereqs.pick.count);
       matches++;
       if (matches == count) {

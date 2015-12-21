@@ -954,7 +954,7 @@ feats = [{
 	benefit: "+1 bonus on ranged attack and damage within 30 ft.",
 	prereqs: {},
 	conditional: true,
-	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons().first( { name : chardata.weapons[i].weapon_name }); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
+	op: "if ($(this).attr('checked')) { for ( var i in chardata.weapons) { var weapon = weapons( { name : chardata.weapons[i].weapon_name }).first(); if (weapon.usage == 'ranged') { var att = $('#weapon_' + i + '_att').text(); var attacks = att.split('/'); var point_blank_shot_atts = ''; for (var j in attacks) { point_blank_shot_atts += pos(parseInt(attacks[j]) + 1); point_blank_shot_atts += (parseInt(j) + 1 < attacks.length ? '/' : ''); } $('#weapon_' + i + '_att').text(point_blank_shot_atts);  var dam = $('#weapon_' + i + '_dam').text(); var point_blank_shot_dam = ''; var damages = dam.split('/'); for(var j in damages) { var dam_components = damages[j].split('+'); var die = dam_components[0]; var weapon_mod = dam_components.length > 1 ? parseInt(dam_components[1]) : 0; point_blank_shot_dam += die + pos(weapon_mod + 1); point_blank_shot_dam += (parseInt(j) + 1 < damages.length ? ' / ' : ''); } $('#weapon_' + i + '_dam').text(point_blank_shot_dam); } } } else { recalc_main_page(); }",
 	fighter_bonus_feat: true
 },{
 	name: "Power Attack",
@@ -1082,8 +1082,8 @@ feats = [{
 	description: "You are proficient with bucklers, small shields, and large shields.",
 	detail: "You are proficient with bucklers, small shields, and large shields. <p class=sub><b>Benefit</b>: You can use a shield and take only the standard penalties (see Table 7-6: Armor and Shields, page 123). <p class=sub><b>Normal</b>: When you are using a shield with which you are not proficient, you take the shield&apos;s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride checks. <p class=sub><b>Special</b>: Barbarians, bards, clerics, druids, fighters, paladins, and rangers automatically have Shield Proficiency as a bonus feat. They need not select it.",
 	benefit: "No armor check penalty on attack rolls",
-	attack: "if(chardata.shields){ for(var i in chardata.shields) { var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'buckler' || shield.category == 'light' || shield.category == 'heavy') { attacks.acp += Math.abs(shield.acp) } } } return attacks; ",
-	mobility: "if(chardata.shields){ for(var i in chardata.shields) {	var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'buckler' || shield.category == 'light' || shield.category == 'heavy') { acp += Math.abs(shield.acp) } } } return acp; ",
+	attack: "if(chardata.shields){ for(var i in chardata.shields) { var shield = shields({ name: chardata.shields[i].shield_name }).first(); if(shield.category == 'buckler' || shield.category == 'light' || shield.category == 'heavy') { attacks.acp += Math.abs(shield.acp) } } } return attacks; ",
+	mobility: "if(chardata.shields){ for(var i in chardata.shields) {	var shield = shields({ name: chardata.shields[i].shield_name }).first(); if(shield.category == 'buckler' || shield.category == 'light' || shield.category == 'heavy') { acp += Math.abs(shield.acp) } } } return acp; ",
 	prereqs: {},
 	classes: {
 		"Barbarian": 1,
@@ -1289,8 +1289,8 @@ feats = [{
 	description: "You are proficient with tower shields.",
 	detail: "You are proficient with tower shields. <p class=sub><b>Prerequisite</b>: Shield Proficiency. <p class=sub><b>Benefit</b>: You can use a tower shield and suffer only the standard penalties (see Table 7-6: Armor and Shields, page 123). <p class=sub><b>Normal</b>: A character who is using a shield with which he or she is not proficient takes the shield&apos;s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride. <p class=sub><b>Special</b>: Fighters automatically have Tower Shield Proficiency as a bonus feat. They need not select it.",
 	benefit: "No armor check penalty on attack rolls",
-	attack: "if(chardata.shields){ for(var i in chardata.shields) { var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'tower') { attacks.acp += Math.abs(shield.acp) } } return attacks; }",
-	mobility: "if(chardata.shields){ for(var i in chardata.shields) {	var shield = shields.first({ name: chardata.shields[i].shield_name }); if(shield.category == 'tower') { acp += Math.abs(armor.acp) } } return acp; }",
+	attack: "if(chardata.shields){ for(var i in chardata.shields) { var shield = shields({ name: chardata.shields[i].shield_name }).first(); if(shield.category == 'tower') { attacks.acp += Math.abs(shield.acp) } } return attacks; }",
+	mobility: "if(chardata.shields){ for(var i in chardata.shields) {	var shield = shields({ name: chardata.shields[i].shield_name }).first(); if(shield.category == 'tower') { acp += Math.abs(armor.acp) } } return acp; }",
 	prereqs: {
 		feats: ["Shield Proficiency"]
 	}

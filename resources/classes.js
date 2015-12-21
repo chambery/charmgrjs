@@ -125,9 +125,9 @@ classes = TAFFY([{
 						}
 						var available_domains = domains.get();
 						if (chardata.deity) {
-							var deity = deities().first({
+							var deity = deities({
 								name: chardata.deity
-							});
+							}).first();
 							console.log(deity.name);
 							available_domains = domains.get({
 								name: deity.domains
@@ -246,9 +246,9 @@ classes = TAFFY([{
 		if (!chardata[favored_name]) {
 			chardata[favored_name] = [];
 		}
-		var favored = db().first({
+		var favored = db({
 			name: chardata[favored_name].length > index ? chardata[favored_name][index].name : ''
-		});
+		}).first();
 		if (favored) {
 			favored = favored._id;
 		}
@@ -265,9 +265,9 @@ classes = TAFFY([{
 	},
 	main_favored: function (favored_name, db, short_name, specials_id) {
 		for (var i in chardata[favored_name]) {
-			var f_e = db().first({
+			var f_e = db({
 				name: chardata[favored_name][i].name
-			});
+			}).first();
 			$('#specials').append('<tr id="special_' + favored_name + '_' + f_e._id + '"><td><input id="' + favored_name + '_' + f_e._id + '" type="checkbox"/></td><td><a class=fake_link onclick="show_item_detail(specials, \'' + specials_id + '\')">' + chardata[favored_name][i].name + ' ' + pos(chardata[favored_name][i].val) + ' (' + short_name + ')</a></td></tr>');
 			$('input[id="' + favored_name + '_' + f_e._id + '"]').bind('click', {
 				mod: chardata[favored_name][i].val
@@ -277,7 +277,7 @@ classes = TAFFY([{
 						main.update_weapon_attack(j, e.data.mod);
 						main.update_weapon_damage(j, e.data.mod);
 					}
-					update_skill_ranks(['Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival']);
+					main.update_skill_ranks(['Bluff', 'Knowledge', 'Perception', 'Sense Motive', 'Survival']);
 				} else {
 					main.recalc_main_page();
 				}
@@ -478,15 +478,15 @@ classes = TAFFY([{
 		return detail;
 	},
 	merge_bloodline_weapons: function (char_weapons) {
-		var bloodline = sorcerer_bloodlines.first({
+		var bloodline = sorcerer_bloodlines({
 			name: chardata.bloodline
-		});
+		}).first();
 		if (bloodline) {
 			var bloodlines_weapons = undefined;
 			for (var i in bloodline.powers) {
-				var power = bloodline_powers.first({
+				var power = bloodline_powers({
 					name: bloodline.powers[i]
-				});
+				}).first();
 				if (power) {
 					var power_weapons = undefined;
 					for (var level in power.levels) {
@@ -498,7 +498,7 @@ classes = TAFFY([{
 								}).first()) {
 									weapons.insert(power.levels[level].weapons[i])
 								} else {
-									weapons.update(power.levels[level].weapons[i], {
+									weapons({ name: power.levels[level].weapons[i].name }).update(power.levels[level].weapons[i], {
 											name: power.levels[level].weapons[i].name
 										});
 								}
@@ -523,14 +523,14 @@ classes = TAFFY([{
 		}
 	},
 	calc_dr_saves: function(save, type) {
-				var bloodline = sorcerer_bloodlines.first({
+				var bloodline = sorcerer_bloodlines({
 					name: chardata.bloodline
-				});
+				}).first();
 				if (bloodline) {
 					for (var i in bloodline.powers) {
-						var power = bloodline_powers.first({
+						var power = bloodline_powers({
 							name: bloodline.powers[i]
-						});
+						}).first();
 						var dr_fn = null;
 						for(var level in power.levels) {
 							if (level <= chardata.classes['Sorcerer'].level && power.levels[level][type]) {
@@ -556,14 +556,14 @@ classes = TAFFY([{
 			0: [{
 				ui: "<table style='width: 100%;border-collapse: collapse;'><tr style='background-color: #E2F0F9'><td>Bloodline: </td><td id='bloodline'></td></tr></table>",
 				script: function () {
-					var char_bloodline = sorcerer_bloodlines.first({
+					var char_bloodline = sorcerer_bloodlines({
 						name: chardata.bloodline
-					});
+					}).first();
 					var char_draconic_type = null
 					if(chardata.draconic_type) {
-						char_draconic_type = draconic_types.first({
+						char_draconic_type = draconic_types({
 							name: chardata.draconic_type
-						});
+						}).first();
 					}
 					update_bloodline = function () {
 						chardata.bloodline = $('#bloodline_select').val();
@@ -571,8 +571,8 @@ classes = TAFFY([{
 						chardata.draconic_type = chardata.bloodline == "Draconic" ? $("#draconic_select").val() : null;
 						save_character();
 					};
-					var select = create_select('bloodline_select', sorcerer_bloodlines.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_bloodline ? char_bloodline._id : ''));
-					var draconic_select = create_select('draconic_select', draconic_types.get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));
+					var select = create_select('bloodline_select', sorcerer_bloodlines().get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_bloodline ? char_bloodline._id : ''));
+					var draconic_select = create_select('draconic_select', draconic_types().get(), "update_bloodline(); recalc_edit_page();", false, "style='width: 100%;'", null, (char_draconic_type ? char_draconic_type._id : ''));
 					$('#bloodline').append('<tr><td></td><td>' + select + '</td></tr>');
 					$('#bloodline').append('<tr id="draconic_type"><td>type:</td><td>' + draconic_select + '</td></tr>');
 					$('#draconic_type').toggle(chardata.bloodline == "Draconic");
@@ -585,9 +585,9 @@ classes = TAFFY([{
 		},
 		skills: [
 			function (class_skills) {
-			var char_bloodline = sorcerer_bloodlines.first({
+			var char_bloodline = sorcerer_bloodlines({
 				name: chardata.bloodline
-			});
+			}).first();
 			class_skills.push(char_bloodline.skill);
 		}
 		],
@@ -609,16 +609,16 @@ classes = TAFFY([{
 				],
 			before_spells: [
 				function (all_spells) {
-				var bloodline = sorcerer_bloodlines.first({
+				var bloodline = sorcerer_bloodlines({
 					name: chardata.bloodline
-				});
+				}).first();
 				if (bloodline) {
 					// some bloodline spells are not "naturally" available to Sorcerers (eg Spell Resistance)
 					var class_spell_lvl = 0;
 					for (var bloodline_level in bloodline.spells) {
-						var spell = spells.first({
+						var spell = spells({
 							name: bloodline.spells[bloodline_level]
-						});
+						}).first();
 						if (!all_spells[spell.classes['Sorcerer']]) {
 							all_spells[spell.classes['Sorcerer']] = [];
 						}
@@ -633,15 +633,15 @@ classes = TAFFY([{
 			],
 			after_spells: [
 				function () {
-				var bloodline = sorcerer_bloodlines.first({
+				var bloodline = sorcerer_bloodlines({
 					name: chardata.bloodline
-				});
+				}).first();
 				if (bloodline) {
 					for (var level in bloodline.spells) {
 						if (chardata.classes['Sorcerer'].level >= level) {
-							var spell = spells.first({
+							var spell = spells({
 								name: bloodline.spells[level]
-							});
+							}).first();
 							$('#spell_' + spell._id).wrap('<i />');
 						}
 					}
@@ -651,14 +651,14 @@ classes = TAFFY([{
 			],
 			before_specials: [
 				function () {
-				var bloodline = sorcerer_bloodlines.first({
+				var bloodline = sorcerer_bloodlines({
 					name: chardata.bloodline
-				});
+				}).first();
 				if (bloodline) {
 					for (var i in bloodline.powers) {
-						var power = bloodline_powers.first({
+						var power = bloodline_powers({
 							name: bloodline.powers[i]
-						});
+						}).first();
 						var special = null;
 						for (var level in power.levels) {
 							if (level <= chardata.classes['Sorcerer'].level) {
@@ -686,9 +686,9 @@ classes = TAFFY([{
 			6: {
 				script: function (bonus) {
 					bonus.count += 1;
-					var bloodline = sorcerer_bloodlines.first({
+					var bloodline = sorcerer_bloodlines({
 						name: chardata.bloodline
-					});
+					}).first();
 					if (bloodline) {
 						for (var i in bloodline.feats) {
 							bonus.feats[bloodline.feats[i]] = true;
@@ -710,14 +710,14 @@ classes = TAFFY([{
 		spells: {
 			before_build: [
 				function (spells_known) {
-					var bloodline = sorcerer_bloodlines.first({
+					var bloodline = sorcerer_bloodlines({
 						name: chardata.bloodline
-					});
+					}).first();
 					if (bloodline) {
 						for (var i in bloodline.powers) {
-							var power = bloodline_powers.first({
+							var power = bloodline_powers({
 								name: bloodline.powers[i]
-							});
+							}).first();
 							var spells_known_fn = null;
 							for (var level in power.levels) {
 								if (level <= chardata.classes['Sorcerer'].level && power.levels[level].spells_known) {
@@ -733,15 +733,15 @@ classes = TAFFY([{
 			],
 			after_spells: [
 				function () {
-				var bloodline = sorcerer_bloodlines.first({
+				var bloodline = sorcerer_bloodlines({
 					name: chardata.bloodline
-				});
+				}).first();
 				if (bloodline) {
 					for (var bloodline_level in bloodline.spells) {
 						if (chardata.classes['Sorcerer'].level >= bloodline_level) {
-							var spell = spells.first({
+							var spell = spells({
 								name: bloodline.spells[bloodline_level]
-							});
+							}).first();
 							$('#spell_' + spell._id).wrap('<i />');
 							$('#' + spell._id + '_Sorcerer').attr('disabled', true);
 							if (chardata.classes['Sorcerer'].spells[spell.classes['Sorcerer']]) {

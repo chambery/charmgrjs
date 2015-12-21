@@ -189,9 +189,9 @@ main.build_main_page = function() {
 
 	var char_feats = get_char_feats()();
 	for (var i =0; i < char_feats.length; i++) {
-		var feat = feats().first({
+		var feat = feats({
 			name: char_feats[i].name
-		});
+		}).first();
 		if(feat && feat.conditional) {
 			conditional_feats.push(feat);
 		}
@@ -272,9 +272,9 @@ main.build_main_page = function() {
 	// spells
 	var char_domains = [];
 	for (var domain in chardata.domains) {
-		var domain = domains.first( {
+		var domain = domains({
 			name : chardata.domains[domain]
-		});
+		}).first();
 		char_domains.push(domain);
 	}
 
@@ -331,7 +331,7 @@ main.build_main_page = function() {
 						// domain spells added 1st through 9th
 						for (var domain in char_domains) {
 							if(clazz_spells.indexOf(char_domains[domain].spells[level - 1]) == -1) {
-								clazz_spells.push(spells.first({name: char_domains[domain].spells[level - 1]}).name);
+								clazz_spells.push(spells({name: char_domains[domain].spells[level - 1]}).first().name);
 							}
 						}
 					}
@@ -402,9 +402,9 @@ main.adjust_mod = function(type, magnitude) {
 
 main.populate_main_page = function() {
 	// console.group("populate_main_page");
-	var race = races().first( {
+	var race = races({
 		name : chardata.race_name
-	});
+	}).first();
 	$('#char_name').text(chardata.name);
 //	$('#race').text(race ? race : '');
 //	$('#clazz').text(clazz ? clazz : '');
@@ -445,9 +445,9 @@ main.populate_main_page = function() {
 
 	// armor
 	for (var j in chardata.armors) {
-		var armor_data = armors().first( {
+		var armor_data = armors({
 			name : chardata.armors[j]['armor_name']
-		});
+		}).first();
 		$('#armor_' + j + '_name').text(chardata.armors[j].name != null ? chardata.armors[j].name + (chardata.armors[j].name.indexOf(armor_data.name) == -1 ? " (" + armor_data.name + ")" : "") : armor_data.name);
 		// populate with char overrides
 		$('#armor_' + j + '_bon').text(armor_data.bon);
@@ -458,9 +458,9 @@ main.populate_main_page = function() {
 
 	// shield
 	for (var j in chardata.shields) {
-		var shield_data = shields.first( {
+		var shield_data = shields({
 			name : chardata.shields[j]['shield_name']
-		});
+		}).first();
 		$('#shield_' + j + '_name').text(chardata.shields[j].name != null ? chardata.shields[j].name + (chardata.shields[j].name.indexOf(shield_data.name) == -1 ? " (" + shield_data.name + ")" : "") : shield_data.name);
 		// populate with char overrides
 		$('#shield_' + j + '_bon').text(shield_data.bon);
@@ -581,9 +581,9 @@ main.recalc_main_page = function() {
 
 	// armor
 	for (var j in chardata.armors) {
-		var armor_data = armors().first( {
+		var armor_data = armors({
 			name : chardata.armors[j].armor_name
-		});
+		}).first();
 		// populate with char overrides
 		$('#armor_' + j + '_bon').text(armor_data.armor_bonus);
 		$('#armor_' + j + '_acp').text(armor_data.armor_check_penalty);
@@ -591,9 +591,9 @@ main.recalc_main_page = function() {
 
 	// shield
 	for (var j in chardata.shields) {
-		var shield_data = shields.first( {
+		var shield_data = shields({
 			name : chardata.shields[j].shield_name
-		});
+		}).first();
 		// populate with char overrides
 		$('#shield_' + j + '_bon').text(shield_data.shield_bonus);
 		$('#shield_' + j + '_acp').text(shield_data.shield_check_penalty);
@@ -678,14 +678,14 @@ main.calc_turn = function( cha_score) {
 	// equal to 3 + his Charisma modifier. A cleric with 5 or more ranks in
 	// Knowledge (religion) gets a +2 bonus on turning checks against
 	// undead.
-	var know_religion = skills().first( {
+	var know_religion = skills({
 		name : 'Knowledge (religion)'
-	});
+	}).first();
 	var char_know_religion = false;
 	if (chardata.skills != null) {
-		char_know_religion = chardata.skills().first( {
+		char_know_religion = chardata.skills({
 			skill_name : know_religion.name
-		});
+		}).first();
 	}
 	var feat_mod = 0;
 	var char_feats = get_char_feats();

@@ -3,7 +3,7 @@ function edit_spells() {
 }
 
 edit_spells.calc_spells_remaining = function(clazz, spell_level, curr_spells_chosen_count) {
-	return clazz.spells_known[chardata.classes[classname].level][spell_level] - curr_spells_chosen_count
+	return clazz.spells_known[chardata.classes[clazz.name].level][spell_level] - curr_spells_chosen_count
 }
 
 edit_spells.build_spells_page = function() {
@@ -18,10 +18,11 @@ edit_spells.build_spells_page = function() {
 	}
 	$('#content').html("");
 	for(var classname in chardata.classes) {
-		if(spellcasters.indexOf(classname) > -1) {
-			var clazz = classes().first({
+		var clazz = classes({
 				name : classname
-			});
+			}).first();
+		if(spellpickers.indexOf(classname) > -1) {
+			
 			if(clazz.spells_known.length > 0) {
 				$('#content').append("<div id='spell_selections_" + classname + "'><table id='spell_selection_" + classname + "' style='width: 100%' border='0' margin='0'></table></div>");
 				// init spells collection
@@ -47,9 +48,9 @@ edit_spells.build_spells_page = function() {
 							if(j % 3 == 0) {
 								$("table[id='" + classname + "_level_" + spell_level + "_sub_']").before("<tr id='" + classname + "_level_" + spell_level + "_sub_" + ((j / 3) | 0) + "'></tr>");
 							}
-							var spell = spells.first({
+							var spell = spells({
 								name : clazz.spells[spell_level][j]
-							});
+							}).first();
 							$("tr#" + classname + "_level_" + spell_level + "_sub_" + ((j / 3) | 0)).append("<td><input id='" + spell._id + "_" + classname + "' type='checkbox'/><a id='spell_" + spell._id + "' class='fake_link'>" + spell.name + "</a></td>");
 							$("input#" + spell._id + "_" + classname).bind('click', {
 								spell_name : spell.name,
@@ -84,10 +85,10 @@ edit_spells.build_spells_page = function() {
 
 edit_spells.populate_spells_page = function() {
 	for(classname in chardata.classes) {
-		if(spellcasters.indexOf(classname) > -1) {
-			var clazz = classes().first({
+		if(spellpickers.indexOf(classname) > -1) {
+			var clazz = classes({
 				name : classname
-			});
+			}).first();
 			for(var level in chardata.classes[classname].spells) {
 				if(classname == "Sorcerer" || classname == "Bard") {
 					// hide sorceror level selections if they're used up
@@ -95,9 +96,9 @@ edit_spells.populate_spells_page = function() {
 					$("td[id='" + classname + "_level_" + level + "_sub_']").toggle(clazz.spells_known[chardata.classes[classname].level][level] - curr_spells_chosen_count > 0);
 				}
 				for(var i in chardata.classes[classname].spells[level]) {
-					var spell_id = spells.first({
+					var spell_id = spells({
 						name : chardata.classes[classname].spells[level][i]
-					})._id;
+					}).first()._id;
 					$("input#" + spell_id + "_" + classname).attr('checked', true);
 				}
 			}
@@ -106,13 +107,13 @@ edit_spells.populate_spells_page = function() {
 }
 
 function recalc_spells_page(level, spell_name, classname) {
-	var spell_id = spells.first({
+	var spell_id = spells({
 		name : spell_name
-	})._id;
+	}).first()._id;
 	var checked = $("input#" + spell_id + "_" + classname).attr("checked");
-	var clazz = classes().first({
+	var clazz = classes({
 		name : classname
-	});
+	}).first();
 	// parse the current
 	var spells_remaining_text = $("#" + classname + "_spells_remaining_" + level).text();
 	var spells_remaining = parseInt(spells_remaining_text.substring(spells_remaining_text.indexOf(":") + 2));
@@ -135,6 +136,10 @@ function recalc_spells_page(level, spell_name, classname) {
 	// the max)
 	if($("input#" + spell_id + "_" + classname).attr('checked')) {
 		// add the spell the character spell list
+		if(chardata.classes[classname].spells[level] === undefined)
+		{
+			chardata.classes[classname].spells[level] = [];
+		}
 		chardata.classes[classname].spells[level].push(spell_name);
 	} else {
 		if(chardata.classes[classname].spells != null && chardata.classes[classname].spells[level]) {

@@ -554,7 +554,7 @@ var bloodline_powers = TAFFY([{
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
 				dam : function() { return (chardata.classes["Sorcerer"].level + 1) + "d6"; },
-				note : function() { return (draconic_types.first({ name: chardata.draconic_type }).breath + ", 1 time/day"); },
+				note : function() { return (draconic_types({ name: chardata.draconic_type }).first().breath + ", 1 time/day"); },
 				usage: "ranged"
 			}]
 		},
@@ -565,7 +565,7 @@ var bloodline_powers = TAFFY([{
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
 				dam : function() { return (chardata.classes["Sorcerer"].level + 1) + "d6"; },
-				note : function() { return (draconic_types.first({ name: chardata.draconic_type }).breath + ", 2 times/day"); },
+				note : function() { return (draconic_types({ name: chardata.draconic_type }).first().breath + ", 2 times/day"); },
 				usage: "ranged"
 			}]
 		},
@@ -576,7 +576,7 @@ var bloodline_powers = TAFFY([{
 				name : "Breath Weapon",
 				weapon_name : "Breath Weapon",
 				dam : function() { return (chardata.classes["Sorcerer"].level + 1) + "d6"; },
-				note : function() { return (draconic_types.first({ name: chardata.draconic_type }).breath + ", 3 times/day"); },
+				note : function() { return (draconic_types({ name: chardata.draconic_type }).first().breath + ", 3 times/day"); },
 				usage: "ranged"
 			}]
 		},

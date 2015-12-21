@@ -1,0 +1,33 @@
+{
+  "name": "charmgrjs",
+  "version": "0.0.1",
+  "description": "Character manager for the Pathfinder RPG",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "dateformat": "^1.0.11",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "yamljs": "^0.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "main": "server.js,"
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chambery/charmgrjs.git"
+  },
+  "author": "Todd Chambery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chambery/charmgrjs/issues"
+  },
+  "homepage": "https://github.com/chambery/charmgrjs#readme"
+}
