@@ -1,0 +1,15 @@
+*~
+/users
+*#
+<<<<<<< HEAD
+.idea/*
+=======
+node_modules/
+.idea/
+.settings/
+.externalToolBuilders/
+*.marks
+.vscode/
+projectFilesBackup/
+bower_components/
+>>>>>>> rework_calc_ability_mod
