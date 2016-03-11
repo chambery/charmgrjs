@@ -382,6 +382,7 @@ classes = TAFFY([{
 		},
 		feats: {
 			1: {
+
 				script: function (bonus) {
 					bonus.count += 1;
 					if (chardata.weapon_style == 'Archery') {
@@ -645,7 +646,7 @@ classes = TAFFY([{
 							$('#spell_' + spell._id).wrap('<i />');
 						}
 					}
-					$('#etc').append("<i>" + chardata.bloodline + " &nbsp;</i>");
+					$('#etc_Sor').append("<i>" + chardata.bloodline + " &nbsp;</i>");
 				}
 			}
 			],

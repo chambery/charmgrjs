@@ -145,12 +145,14 @@ function calc_skill_mod(skill, skill_ability_score, acp, subtype) {
 
 	var ranks = calc_ranks(char_skill_points, skill, subtype);
 
-	var synergy_mod = calc_synergies(skill);
-
 	// level + 1 + 3
 	var max_ranks = calc_ranks(calc_level() + 4, skill, subtype);
+
+	var synergy_mod = calc_synergies(skill);
+
+    var ability_mod = calc_ability_modifier(skill.ability);
 	// console.groupEnd();
-	return Math.min(Math.floor(max_ranks), ranks) + calc_ability_modifier(parseInt(skill_ability_score)) + synergy_mod + race_mod + feat_mod + (skill.mobility ? acp : 0) + calc_equip_mod(skill.name) | 0;
+	return Math.min(Math.floor(max_ranks), ranks) + ability_mod + synergy_mod + race_mod + feat_mod + (skill.mobility ? acp : 0) + calc_equip_mod(skill.name) | 0;
 }
 
 function is_class_skill(skill, subtype) {
@@ -261,17 +263,46 @@ function toggle_visible(section, hide) {
 	$("#" + section + '_expand_flag').html( hidden ? "<img src='images/collapsed.png'/>" : "<img src='images/expanded.png'/>");
 }
 
-function calc_ability_score(ability, race_name) {
+/**
+ * Returns the current/temp UNAUGMENTED ability score.
+ */
+function get_ability_score(ability)
+{
+    var ability_score = chardata.abilities[ability];
+    if(chardata.abilities[ability + "_curr"] != null)
+    {
+        ability_score = chardata.abilities[ability + "_curr"];
+    }
+    return ability_score;
+}
+
+/**
+ * Returns the ability score after all adjustments (race, equip)
+ * @param ability
+ * @param race_name
+ * @param score
+ * @returns int adjusted score
+ */
+function calc_ability_score(ability, race_name, score) {
+    if(race_name === undefined)
+    {
+        race_name = chardata.race_name;
+    }
 	var race = races({
 		name : race_name
 	}).first();
 	var race_mod = race.abilities[ability];
-	var ability_score = chardata['abilities'] != null && chardata['abilities'][ability] != null && chardata['abilities'][ability].length > 0 ? chardata['abilities'][ability] : 0;
+	var ability_score = get_ability_score(ability);
+    if(score !== undefined)
+    {
+        ability_score = score;
+    }
 	return parseInt(ability_score) + parseInt(race != false && race_mod != null ? race_mod : 0) + calc_equip_mod(ability);
 }
 
-function calc_ability_modifier(score, race) {
-	return Math.ceil((score - 11) / 2) | 0;
+function calc_ability_modifier(ability, race_name, score) {
+    var ability_score = calc_ability_score(ability, race_name, score);
+	return Math.ceil((ability_score - 11) / 2) | 0;
 }
 
 function set_links_part(page_id) {
@@ -443,7 +474,7 @@ function calc_init(dex_score) {
 		init = feat.init(init);
 		return init;
 	});
-	return calc_ability_modifier(dex_score) + init;
+	return calc_ability_modifier("Dex") + init;
 }
 
 function calc_ref(dex_score, class_name, xp, char_feats) {
@@ -459,7 +490,7 @@ function calc_ref(dex_score, class_name, xp, char_feats) {
 		ref = feat.ref(ref);
 		return ref;
 	});
-	return calc_ability_modifier(dex_score) + class_ref_score + ref + calc_equip_mod('Ref');
+	return calc_ability_modifier("Dex") + class_ref_score + ref + calc_equip_mod('Ref');
 }
 
 function calc_will(wis_score, class_name, xp, char_feats) {
@@ -475,7 +506,7 @@ function calc_will(wis_score, class_name, xp, char_feats) {
 		feat_mod = feat.will(feat_mod);
 		return feat_mod;
 	});
-	return calc_ability_modifier(wis_score) + class_will_score + feat_mod + calc_equip_mod('Will');
+	return calc_ability_modifier("Wis") + class_will_score + feat_mod + calc_equip_mod('Will');
 }
 
 function calc_fort(con_score) {
@@ -490,7 +521,7 @@ function calc_fort(con_score) {
 		feat_mod = feat.fort(feat_mod);
 		return feat_mod;
 	});
-	return calc_ability_modifier(con_score) + class_fort_score + feat_mod + calc_equip_mod('Fort');
+	return calc_ability_modifier("Con") + class_fort_score + feat_mod + calc_equip_mod('Fort');
 }
 
 function calc_spell_resistance() {
@@ -529,7 +560,7 @@ function calc_ac(dex_score) {
 	var shield_bonus = calc_armor_bonus(chardata.shields, shields, "shield");
 	// TODO - move to ac: in classes
 	var monk_mod = chardata.classes["Monk"] != null ? classes({ name: "Monk" }).first().ac_bonus[calc_level()] : 0;
-	return 10 + armor_bonus.bonus + Math.min(calc_ability_modifier(dex_score), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod('AC') + ac;
+	return 10 + armor_bonus.bonus + Math.min(calc_ability_modifier("Dex"), armor_bonus.max_dex_bonus) + shield_bonus.bonus + calc_size_mod(chardata.race_name) + monk_mod + calc_equip_mod('AC') + ac;
 }
 
 /**
@@ -605,7 +636,7 @@ function calc_damage(weapon, char_feats, char_weapon) {
 		weapon.ability = "Str";
 	}
 	if(weapon.ability != "none") {
-		ability_mod = calc_ability_modifier(chardata.abilities[weapon.ability]);
+		ability_mod = calc_ability_modifier(weapon.ability);
 	}
 	// Strength penalty, but not a bonus, applies on attacks made with a bow that is not a composite bow.
 	if(weapon.name == "Shortbow" || weapon.name == "Longbow") {
@@ -1041,19 +1072,16 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, other_mod) {
 	var attacks = {
 		base : base_attack_bonuses,
 		weapon_proficiency : -4,
-		acp : 0
+		acp : 0,
+        ability: "Str"
 	};
 
 	// apply strength score to composite weapons if strength > dex
-	if(weapon && weapon.usage == 'ranged') {
-		if(weapon.name.indexOf('Composite') > -1) {
-			attacks.ability_score = Math.max(chardata.abilities["Str_curr"], chardata.abilities["Dex_curr"]);
-		} else {
-			attacks.ability_score = chardata.abilities["Dex_curr"];
-		}
-	} else {
-		attacks.ability_score = chardata.abilities["Str_curr"];
-	}
+    if (weapon && weapon.usage == 'ranged' &&
+        (weapon.name.indexOf('Composite') == -1 || calc_ability_score("Str") < calc_ability_score("Dex")))
+    {
+        attacks.ability = "Dex";
+    }
 
 	attacks.acp = calc_armor_acp(chardata.armors);
 	attacks.acp += calc_shield_acp(chardata.shields);
@@ -1071,7 +1099,7 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, other_mod) {
 		return attacks;
 	});
 
-	attacks.base = calc_base_attack(base_attack_bonuses, attacks.ability_score, other_mod);
+	attacks.base = calc_base_attack(base_attack_bonuses, attacks.ability, other_mod);
 
 	// Melee Attack Roll: 1d20 + base attack bonus + Strength modifier + size modifier.
 	// Ranged Attack Roll: 1d20 + Base attack bonus + Dexterity modifier + size modifier + range penalty
@@ -1086,10 +1114,10 @@ function calc_attack(base_attack_bonuses, weapon, char_weapon, other_mod) {
 	return modified_attacks.join("/");
 }
 
-function calc_base_attack(base_attack_bonuses, ability_score, other_mod) {
+function calc_base_attack(base_attack_bonuses, ability, other_mod) {
 	other_mod = other_mod ? parseInt(other_mod) : 0;
 	return base_attack_bonuses.map(function(x) {
-		return x + calc_ability_modifier(ability_score) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod('Att');
+		return x + calc_ability_modifier(ability) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod('Att');
 	});
 }
 
@@ -1097,7 +1125,7 @@ function calc_cmb(base_attack_bonuses, other_mod) {
 	var cmb = "";
 	other_mod = other_mod ? parseInt(other_mod) : 0;
 	var babs = base_attack_bonuses.map(function(x) {
-		return x + calc_ability_modifier(chardata.abilities["Str"]) + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod('Att');
+		return x + calc_ability_modifier("Str") + calc_size_mod(chardata.race_name) + other_mod + calc_equip_mod('Att');
 	});
 	for(var i = 0; i < babs.length; i++) {
 		cmb += pos(babs[i]) + (i + 1 < babs.length ? "/" : "");
@@ -1109,7 +1137,7 @@ function calc_cmd(base_attack_bonuses, other_mod) {
 	var cmd = "";
 	other_mod = other_mod ? parseInt(other_mod) : 0;
 	var babs = base_attack_bonuses.map(function(x) {
-		return x + calc_ability_modifier(chardata.abilities["Str"]) + calc_ability_modifier(chardata.abilities["Dex"]) + calc_size_mod(chardata.race_name) + other_mod + 10;
+		return x + calc_ability_modifier("Str") + calc_ability_modifier("Dex") + calc_size_mod(chardata.race_name) + other_mod + 10;
 	});
 	for(var i = 0; i < babs.length; i++) {
 		cmd += pos(babs[i]) + (i + 1 < babs.length ? "/" : "");
@@ -1174,7 +1202,7 @@ function get_char_feats() {
 
 function calc_touch_ac(dex_score, race_name, char_feats) {
 	// TODO - include feats
-	return 10 + calc_ability_modifier(dex_score) + calc_size_mod(race_name);
+	return 10 + calc_ability_modifier("Dex") + calc_size_mod(race_name);
 }
 
 function calc_flat_footed_ac(char_armor) {
