@@ -1,7 +1,6 @@
 function calc_skill_points() {
 	// total skill points
-	var int_score = $('#ability_Int').val();
-	var int_mod = calc_ability_modifier(int_score);
+	var int_mod = calc_ability_modifier("Int");
 	var is_human = races({
 			name : 'Human'
 		}).first().name == $('#race').val();
@@ -362,8 +361,7 @@ function recalc_edit_page() {
 		});
 		feat_mod += calc_equip_mod(skill.name);
 		mods += feat_mod > 0 ? " o:" + pos(feat_mod) : "";
-		var skill_ability_score = $("input#ability_" + skill.ability).val();
-		var ability_mod = calc_ability_modifier(parseInt(skill_ability_score));
+		var ability_mod = calc_ability_modifier(skill.ability);
 		mods += ability_mod != 0 ? " a:" + pos(ability_mod) : "";
 
 		$("#" + skill._id + "_mods").text(mods);

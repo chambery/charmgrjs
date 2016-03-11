@@ -199,7 +199,7 @@ var bloodline_powers = TAFFY([{
 				name : "Acidic Ray",
 				weapon_name : "Acidic Ray",
 				dam : function() { return "1d6" + pos(Math.round((chardata.classes["Sorcerer"].level + 1) / 2)); },
-				note : function() { var times = (3 + (calc_ability_modifier(chardata.abilities["Cha"]))); return times > 0 ? times + " times/day" : null },
+				note : function() { var times = (3 + (calc_ability_modifier("Cha"))); return times > 0 ? times + " times/day" : null },
 				usage : "ranged"
 			}]
 		}
@@ -293,7 +293,7 @@ var bloodline_powers = TAFFY([{
 				name : "Claws",
 				weapon_name : "Claws",
 				dam : function() { var dam = "1d3/1d3"; var size = sizes.indexOf(races({ name: chardata.race }).first().size); if(size > 3) { dam = "1d4/1d4"; } return dam; },
-				note : function() { var rounds = (3 + calc_ability_modifier(chardata.abilities["Cha"])); return rounds > 0 ? "+1d6 fire " + rounds + " rounds/day" : "" }
+				note : function() { var rounds = (3 + calc_ability_modifier("Cha")); return rounds > 0 ? "+1d6 fire " + rounds + " rounds/day" : "" }
 			}]
 		}
 	},
