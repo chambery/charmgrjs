@@ -1,0 +1,141 @@
+#topline
+#topleceilft.dp66
+	#abilitiespart.dp40(style='float: left;')
+		table#abilities_table(border='0')
+			tr
+				td#char_name(colspan='4', style='font-weight: bold; color: blue;')
+			tr
+				td
+					b Str
+				td#ability_score_full_Str(nowrap='nowrap')
+				td
+					input#ability_Str_score.two_digit(ability='Str', value='', type='text')
+				td#ability_Str_mod(align='right', nowrap='nowrap')
+			tr
+				td
+					b Dex
+				td#ability_score_full_Dex(nowrap='nowrap')
+				td
+					input#ability_Dex_score.two_digit(ability='Dex', value='', type='text')
+				td#ability_Dex_mod(align='right', nowrap='nowrap')
+			tr
+				td
+					b Int
+				td#ability_score_full_Int(nowrap='nowrap')
+				td
+					input#ability_Int_score.two_digit(ability='Int', value='', type='text')
+				td#ability_Int_mod(align='right', nowrap='nowrap')
+			tr 
+				td
+					b Con
+				td#ability_score_full_Con(nowrap='nowrap')
+				td
+					input#ability_Con_score.two_digit(ability='Con', value='', type='text')
+				td#ability_Con_mod(align='right', nowrap='nowrap')
+			tr
+				td
+					b Cha
+				td#ability_score_full_Cha(nowrap='nowrap')
+				td
+					input#ability_Cha_score.two_digit(ability='Cha', value='', type='text')
+				td#ability_Cha_mod(align='right', nowrap='nowrap')
+			tr
+				td
+					b Wis
+				td#ability_score_full_Wis(nowrap='nowrap')
+				td
+					input#ability_Wis_score.two_digit(ability='Wis', value='', type='text')
+				td#ability_Wis_mod(align='right', nowrap='nowrap')
+			tr
+				td(colspan='3')
+					| Speed:
+					span#speed
+	#middlepart.dp60(style='float: left;')
+		table#middle_table(style='table-layout: fixed; width: 100%;')
+			tr
+				td(colspan='4', style='padding: 0px;')
+					table(border='0', style='padding: 0px; width: 100%;')
+						tr
+							td(align='left') HP
+							td#hp(align='right')
+							td(align='right')
+								input#temp_hp(style='width: 2em; text-align: center;', type='text', value='')
+							td(align='right')
+								| SD
+								input#subdual_hp(style='width: 15px; text-align: center;', type='text', value='')
+			tr
+				td(colspan='4')
+			tr
+				td Fort
+				td#fort.box.numeric(style='width: 30px;', nowrap='nowrap')
+				td AC
+				td#ac.box.numeric(style='width: 30px;')
+			tr
+				td Ref
+				td#ref.box.numeric(nowrap='nowrap')
+				td Tch
+				td#touch.box.numeric(nowrap='nowrap')
+			tr
+				td Will
+				td#will.box.numeric(nowrap='nowrap')
+				td Flat
+				td#flat.box.numeric(nowrap='nowrap')
+			tr
+				td SR
+				td#spell_resistance.box.numeric(nowrap='nowrap')
+				td Init
+				td#init.box.numeric
+			tr
+				td(colspan='4')
+					table#dr(style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;')
+			tr
+				td(colspan='4')
+					table#saves(style='border: 1px LightGrey solid; width: 100%; margin-top: 3px; margin-bottom: 3px;')
+			tr
+				td CMB
+				td#cmb.box(colspan='3')
+			tr
+				td CMD
+				td#cmd.box(colspan='3')
+			tr
+				td BAB
+				td#base_attack_bonus.box(colspan='3')
+			tr
+				td(colspan='4')
+			tr
+				td Att
+				td#attack_mod 0
+				td
+					a#plus_att.btn.box(style='font-family: monospace; font-size: larger; width: 20px;', name='plus_att') +
+				td(style='text-align: right;')
+					a#minus_att.btn.box(style='font-family: monospace; font-size: larger; width: 20px;', name='minus_att') -
+			tr
+				td Dam
+				td#damage_mod 0
+				td
+					a#plus_dam.btn.box(style='font-family: monospace; font-size: larger; width: 20px;', name='plus_dam') +
+				td(style='text-align: right;')
+					a#minus_dam.btn.box(style='font-family: monospace; font-size: larger; width: 20px;', name='minus_dam') -
+	#featspart.dp100
+		table(style='width: 100%; margin: 0px 0px 5px 0px; border-collapse: collapse;', border='0')
+			tbody
+				tr(onclick='\"toggle_visible(\'conditional_feats\')\"')
+					td(colspan='3', bgcolor='#8DC3E9')
+						span#conditional_feats_expand_flag(style='float: right; vertical-align: middle;')
+							img(src='images/collapsed.png')
+						a.fake_link Feats
+			tbody#conditional_feats
+	#specialpart.dp100
+		table#specials_table(style='width: 100%; border: 0px; margin: 0px 0px 5px 0px; border-collapse: collapse;')
+			tr#specials_heading(style='background-color: #8DC3E9;')
+				td(colspan='2')
+					span#specials_expand_flag(style='float: right;')
+						img(src='images/collapsed.png')
+					a.fake_link Special Abilities
+			tbody#specials
+	#weaponspart.dp100
+	#armorpart.dp100
+	#shieldspart.dp100
+	#spellspart.dp100
+#skillspart.dp33
+	table#skills_table(border='0')

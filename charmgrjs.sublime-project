@@ -1,0 +1,18 @@
+{
+    "folders":
+    [
+        {
+            "path": "src",
+            "folder_exclude_patterns": ["backup"]
+        },
+        {
+            "path": "stylesheets",
+            "file_include_patterns": ["*.css"]
+        },
+        {
+        	"path": "/",
+        	"file_include_patterns": ["index.html", "Cakefile", "server.js"],
+        	"folder_exclude_patterns": ["*"]
+        }
+    ]
+}
