@@ -1,9 +1,9 @@
 # Player's Companion Character Manager
 
-The Player's Companion Character Manager seeks to ease the burden of managing cascading calculations of character stats, spells, and loot.
+The Player's Companion Character Manager seeks to ease the burden of managing cascading calculations of character stats, spells, and loot, and provides a quick D20 reference for any skill, feat, spell, class ability.
 
-!(charmgr-demo.gif)
+![demo](charmgr-demo.gif)
 
-!(doc/log.png)
+![log](doc/log.png)
 
-!(doc/spell detail.png)
+![spells](doc/spell detail.png)
